@@ -156,6 +156,14 @@
             <DisplayName>Aspose.Email.Printing Features</DisplayName>
             <Url>Aspose.Email.Printing+Features</Url>
           </DocLink>
+          <OutputFiles>
+            <DataFile>
+              <Path>..\Data\test.tiff</Path>
+            </DataFile>
+            <DataFile>
+              <Path>..\Data\test.xps</Path>
+            </DataFile>
+          </OutputFiles>
           <Type>Console</Type>
         </Example>
       </Examples>
