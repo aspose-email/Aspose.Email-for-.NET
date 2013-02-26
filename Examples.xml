@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Folders>
+    <Folder>
+      <Title>Programmers Guide</Title>
+      <Description>This programmers guide for Apose.Email includes examples covering following topics: 
+
+- Programming Email
+- Programming Outlook
+- Programming Exchange
+- Programming Thunderbird
+- Programming Email Verify</Description>
+      <FolderName>ProgrammersGuide</FolderName>
+      <Order>1</Order>
+      <Folders>
+        <Folder>
+          <Title>Programming Email</Title>
+          <Description>This section includes examples related to following topics:
+
+- Introduction to Aspose.Email
+- Usage scenarios for Aspose.Email.Mail
+- Features of Aspose.Email.Mime
+- Features of Aspose.Email.Pop3
+- Features of Aspose.Email.Imap
+- Features of Aspose.Email.Exchange
+- Getting started with Programming Email
+- Sending Email Messages with SMTP
+- Managing Email Messages with POP3
+- Managing Emails with IMAP
+- Managing Email Message Files with MailMessage
+- Aspose.Email HowTos</Description>
+          <FolderName>ProgrammingEmail</FolderName>
+          <Order>1</Order>
+          <Folders>
+            <Folder>
+              <Title>Sending Email Messages with SMTP</Title>
+              <Description>This section includes the examples related to following topics: 
+
+- Sending Emails
+- Load Smtp Authentication Information from Config File
+- Connecting to SSL enabled Smtp Server
+- Specifying Multiple Recipients
+- Set Mail Body
+- Managing Email Attachments
+- Send Meeting Requests
+- Performing Mail Merge
+- Working with Embedded Objects
+- Importing/Exporting Emails
+- Load and Save Appointment in ICS Format
+- MailMessage Features
+- Customizing Email Headers
+- Introduction to Event Handling
+- Loading eml file from disk and sending it with SMTP</Description>
+              <FolderName>SendEmailMessagesWithSMTP</FolderName>
+              <Order>1</Order>
+              <Examples>
+                <Example>
+                  <Title>Load and Save Appointment in ICS Format</Title>
+                  <Description>The Appointment class in Aspose.Email can be used to load an appointment in ICS format as well as create a new appointment and save it to disk in ICS format. In this example, creation of an appointment, saving it to disk in ICS format, and then loading it back is explained in detail.</Description>
+                  <FolderName>LoadSaveAppointmentInICSFormat</FolderName>
+                  <Order>1</Order>
+                  <DocLink>
+                    <DisplayName>Load and Save Appointment in ICS Format</DisplayName>
+                    <Url>Load+and+Save+Appointment+in+ICS+Format</Url>
+                  </DocLink>
+                  <OutputFiles>
+                    <DataFile>
+                      <Path>..\Data\test.ics</Path>
+                    </DataFile>
+                  </OutputFiles>
+                  <Type>Console</Type>
+                </Example>
+              </Examples>
+            </Folder>
+          </Folders>
+        </Folder>
+        <Folder>
+          <Title>Programming Outlook</Title>
+          <Description>This section includes examples related to the following topics: 
+
+- Your First Application with Aspose.Email.Outlook 
+- Managing Message Files with Aspose.Email.Outlook</Description>
+          <FolderName>ProgrammingOutlook</FolderName>
+          <Order>2</Order>
+          <Folders>
+            <Folder>
+              <Title>Managing Message Files with Aspose.Email.Outlook</Title>
+              <Description>This section includes the examples related to following topics: 
+
+- Loading, Viewing and Parsing Outlook Message (MSG) File
+- Accessing Outlook MAPI Property
+- Reading Named MAPI Properties from Outlook Message (MSG) Files
+- Creating and Saving Outlook Message (MSG) Files
+- EML to MSG Converter
+- Managing Attachments with Aspose Outlook
+- Read Outlook Template File (.OFT)
+- Using Aspose Outlook Control to Drag &amp; Drop Outlook Messages to Windows Forms
+- Read Outlook PST File and Get Folder and Subfolder Information
+- Read Outlook OST File
+- Get Message Information from an Outlook PST File
+- Extract Messages from Outlook PST Files and Save to Disk or Stream in MSG Format
+- Access Contact Information from Outlook PST File and Save to Disk in MSG format
+- Save Contacts Information from Outlook PST to Disk in vCard format (VCF)
+- Save Calendar Items from Outlook PST to Disk in ICS format
+- Create a New PST File and Add Subfolders
+- Add Messages to PST Files
+- Delete Messages from PST Files
+- Check if a PST is password protected</Description>
+              <FolderName>ManageMessageFiles</FolderName>
+              <Order>1</Order>
+              <Examples>
+                <Example>
+                  <Title>Create a New PST File and Add Subfolders</Title>
+                  <Description>As well as parsing an existing PST file, Aspose.Email provides the means to create a PST file from scratch. This example  demonstrates how to create an Outlook PST file and add a subfolder to it.</Description>
+                  <FolderName>NewPSTAddSubfolders</FolderName>
+                  <Order>1</Order>
+                  <DocLink>
+                    <DisplayName>Create a New PST File and Add Subfolders</DisplayName>
+                    <Url>Create+a+New+PST+File+and+Add+Subfolders</Url>
+                  </DocLink>
+                  <OutputFiles>
+                    <DataFile>
+                      <Path>..\Data\PersonalStorage.pst</Path>
+                    </DataFile>
+                  </OutputFiles>
+                  <Type>Console</Type>
+                </Example>
+              </Examples>
+            </Folder>
+          </Folders>
+        </Folder>
+      </Folders>
+    </Folder>
+    <Folder>
+      <Title>Knowledge Base</Title>
+      <Description>This section includes the examples related to following topics: 
+
+- Technical Articles
+- Migration from Office Automation to Aspose
+- Utilizing Aspose.Email for .NET in other Programming Languages</Description>
+      <FolderName>KnowledgeBase</FolderName>
+      <Order>2</Order>
+      <Examples>
+        <Example>
+          <Title>Aspose.Email.Printing Features</Title>
+          <Description>The Aspose.Email.Printing namespace provides a rich set of features for printing mail messages to different formats (XPS or TIFF) and configuring page layouts. This examples describes these features in detail. Following are the key features explained by example:
+
+- Printing the message body only.
+- Printing the message body and headers.
+- Printing an HTML body.
+- Setting the page layout.
+- Auto-fit a TIFF to the printer.</Description>
+          <FolderName>PrintingFeatures</FolderName>
+          <Order>1</Order>
+          <DocLink>
+            <DisplayName>Aspose.Email.Printing Features</DisplayName>
+            <Url>Aspose.Email.Printing+Features</Url>
+          </DocLink>
+          <Type>Console</Type>
+        </Example>
+      </Examples>
+    </Folder>
+  </Folders>
+</Data>
