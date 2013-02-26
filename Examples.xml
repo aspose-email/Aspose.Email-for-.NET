@@ -31,6 +31,46 @@
 - Aspose.Email HowTos</Description>
           <FolderName>ProgrammingEmail</FolderName>
           <Order>1</Order>
+          <Examples>
+            <Example>
+              <Title>Create new Email</Title>
+              <Description>Aspose.Email enables the developers to create the Mime ( Multipurpose Internet Mail Extensions ) Messages from scratch. The main class for this purpose in Aspose.Email API is MailMessage class. This example explains the steps required for creating email messages in EML, MSG and MTH file formats using Aspose.Email.</Description>
+              <FolderName>CreateNewEmail</FolderName>
+              <Order>2</Order>
+              <DocLink>
+                <DisplayName>Create new Email</DisplayName>
+                <Url>http://www.aspose.com/docs/display/EmailJava/Create+new+Email</Url>
+              </DocLink>
+              <OutputFiles>
+                <DataFile>
+                  <Path>..\Data\Message.eml</Path>
+                </DataFile>
+                <DataFile>
+                  <Path>..\Data\Message.mhtml</Path>
+                </DataFile>
+                <DataFile>
+                  <Path>..\Data\Message.msg</Path>
+                </DataFile>
+              </OutputFiles>
+              <Type>Console</Type>
+            </Example>
+            <Example>
+              <Title>Save message as Draft</Title>
+              <Description>Draft is an unfinished message that is not sent yet, rather it is stored in a separate folder for future. Using the Aspose.Email API, the programmer can create a message using the MailMessage class and store it on disk using the MapiMessage class. The email message stored as Draft will always be of Outlook (.MSG) format. This example depicts this usage in detail using Aspose.Email API.</Description>
+              <FolderName>SaveMessageAsDraft</FolderName>
+              <Order>3</Order>
+              <DocLink>
+                <DisplayName>Save message as Draft</DisplayName>
+                <Url>http://www.aspose.com/docs/display/EmailJava/Save+message+as+Draft</Url>
+              </DocLink>
+              <OutputFiles>
+                <DataFile>
+                  <Path>..\Data\New-Draft.msg</Path>
+                </DataFile>
+              </OutputFiles>
+              <Type>Console</Type>
+            </Example>
+          </Examples>
           <Folders>
             <Folder>
               <Title>Sending Email Messages with SMTP</Title>
@@ -121,6 +161,36 @@
                   <OutputFiles>
                     <DataFile>
                       <Path>..\Data\PersonalStorage.pst</Path>
+                    </DataFile>
+                  </OutputFiles>
+                  <Type>Console</Type>
+                </Example>
+              </Examples>
+            </Folder>
+            <Folder>
+              <Title>Working with Outlook Message (MSG) Files</Title>
+              <Description>This section includes examples related to the following topics: 
+
+- Parsing Outlook Message Files
+- Accessing Outlook MAPI Properties
+- Parsing and Saving Attachments
+- Read Outlook Template File (.OFT)
+- Creating and Saving Outlook Message (MSG) Files</Description>
+              <FolderName>WorkWithOutlookMSGFiles</FolderName>
+              <Order>2</Order>
+              <Examples>
+                <Example>
+                  <Title>Creating and Saving Outlook Message (MSG) Files</Title>
+                  <Description>Aspose.Email also supports creating an outlook message (msg) files. The MailMessage class has the save() method that can save the outlook msg file to disk or stream. In this example, we will create an instance of the MailMessage class, set some properties like from, to, subject, body and save it.</Description>
+                  <FolderName>CreateSaveOutlookFiles</FolderName>
+                  <Order>1</Order>
+                  <DocLink>
+                    <DisplayName>Creating and Saving Outlook Message (MSG) Files</DisplayName>
+                    <Url>http://www.aspose.com/docs/display/EmailJava/Creating+and+Saving+Outlook+Message+(MSG)+Files</Url>
+                  </DocLink>
+                  <OutputFiles>
+                    <DataFile>
+                      <Path>..\Data\message.msg</Path>
                     </DataFile>
                   </OutputFiles>
                   <Type>Console</Type>
