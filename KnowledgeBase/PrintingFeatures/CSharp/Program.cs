@@ -24,7 +24,7 @@ namespace PrintingFeatures
             //Declare message as an MailMessage instance.
             MailMessage message = new MailMessage();
 
-            //Sender's address
+            //Sender's address.
             message.From = "user1@domain.com";
 
             //Recipient's address
