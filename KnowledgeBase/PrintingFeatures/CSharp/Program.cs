@@ -21,10 +21,10 @@ namespace PrintingFeatures
             // The path to the documents directory.
             string dataDir = Path.GetFullPath("../../../Data/");
 
-            //Declare message as an MailMessage instance.
+            //Declare message as an MailMessage instance
             MailMessage message = new MailMessage();
 
-            //Sender's address.
+            //Sender's address
             message.From = "user1@domain.com";
 
             //Recipient's address
