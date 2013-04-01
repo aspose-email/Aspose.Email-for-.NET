@@ -4,16 +4,16 @@ To: to1@domain.com, to2@domain.com
 Cc: cc1@domain.com, cc2@domain.com
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="--_=_NextPart1_a834d056-d6a4-4546-9a76-2376d78717ee"
+ boundary="--_=_NextPart1_ea514500-71dd-4d8e-bca3-6f3a6ec1d640"
 
 
-----_=_NextPart1_a834d056-d6a4-4546-9a76-2376d78717ee
+----_=_NextPart1_ea514500-71dd-4d8e-bca3-6f3a6ec1d640
 Content-Type: text/html; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
 <b>This line is in bold=2E</b> <br/> <br/><font color=3Dblue>This line is i=
 n blue color</font>
-----_=_NextPart1_a834d056-d6a4-4546-9a76-2376d78717ee
+----_=_NextPart1_ea514500-71dd-4d8e-bca3-6f3a6ec1d640
 Content-Type: application/octet-stream; charset="us-ascii"; name="License.txt"
 Content-Transfer-Encoding: quoted-printable
 
@@ -452,5 +452,5 @@ se=2Ecom	Page 10 of 10
 
 
 
-----_=_NextPart1_a834d056-d6a4-4546-9a76-2376d78717ee--
+----_=_NextPart1_ea514500-71dd-4d8e-bca3-6f3a6ec1d640--
 

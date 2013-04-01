@@ -2,29 +2,29 @@ Subject: New message created by Aspose.Email for .NET(Aspose.Email Evaluation)
 From: from@domain.com
 To: to1@domain.com, to2@domain.com
 Cc: cc1@domain.com, cc2@domain.com
-Date: 26 Feb 2013 15:00:34 +0500
+Date: 1 Apr 2013 22:12:23 +1300
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="--_=_NextPart1_ee25a757-14a3-46af-9ebd-2bbc36460b93"
+ boundary="--_=_NextPart1_e76d84c6-bbc2-421e-b396-52b157fa94d4"
 
 
-----_=_NextPart1_ee25a757-14a3-46af-9ebd-2bbc36460b93
+----_=_NextPart1_e76d84c6-bbc2-421e-b396-52b157fa94d4
 Content-Type: text/html; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
 <div class=3D'pageHeader'>from@domain=2Ecom<hr/></div><span class=3D'header=
 LineTitle'>From:</span><span class=3D'headerLineText'>from@domain=2Ecom</sp=
 an><br/><span class=3D'headerLineTitle'>Sent:</span><span class=3D'headerLi=
-neText'>26 Feb 2013 15:00:34 +0500</span><br/><span class=3D'headerLineTitl=
-e'>To:</span><span class=3D'headerLineText'>to1@domain=2Ecom;to2@domain=2Ec=
-om</span><br/><span class=3D'headerLineTitle'>Cc:</span><span class=3D'head=
-erLineText'>cc1@domain=2Ecom;cc2@domain=2Ecom</span><br/><span class=3D'hea=
-derLineTitle'>Subject:</span><span class=3D'headerLineText'>New message cre=
-ated by Aspose=2EEmail for =2ENET(Aspose=2EEmail Evaluation)</span><br/><sp=
-an class=3D'headerLineTitle'>Attachments:</span><span class=3D'headerLineTe=
-xt'>License=2Etxt</span><br/><b>This line is in bold=2E</b> <br/> <br/><fon=
-t color=3Dblue>This line is in blue color</font>
-----_=_NextPart1_ee25a757-14a3-46af-9ebd-2bbc36460b93
+neText'>1 Apr 2013 22:12:23 +1300</span><br/><span class=3D'headerLineTitle=
+'>To:</span><span class=3D'headerLineText'>to1@domain=2Ecom;to2@domain=2Eco=
+m</span><br/><span class=3D'headerLineTitle'>Cc:</span><span class=3D'heade=
+rLineText'>cc1@domain=2Ecom;cc2@domain=2Ecom</span><br/><span class=3D'head=
+erLineTitle'>Subject:</span><span class=3D'headerLineText'>New message crea=
+ted by Aspose=2EEmail for =2ENET(Aspose=2EEmail Evaluation)</span><br/><spa=
+n class=3D'headerLineTitle'>Attachments:</span><span class=3D'headerLineTex=
+t'>License=2Etxt</span><br/><b>This line is in bold=2E</b> <br/> <br/><font=
+ color=3Dblue>This line is in blue color</font>
+----_=_NextPart1_e76d84c6-bbc2-421e-b396-52b157fa94d4
 Content-Type: application/octet-stream; charset="us-ascii"; name="License.txt"
 Content-Transfer-Encoding: quoted-printable
 
@@ -463,5 +463,5 @@ se=2Ecom	Page 10 of 10
 
 
 
-----_=_NextPart1_ee25a757-14a3-46af-9ebd-2bbc36460b93--
+----_=_NextPart1_e76d84c6-bbc2-421e-b396-52b157fa94d4--
 
