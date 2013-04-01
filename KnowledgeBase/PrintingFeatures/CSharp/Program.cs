@@ -44,7 +44,7 @@ namespace PrintingFeatures
             message.HtmlBody = "<html><body><h1>Hello this is html body in Heading 1 format </h1></body></html>";
 
             //Instantiate an instance of MailPrinter
-            var printer = new Aspose.Email.Printing.MailPrinter();
+            Aspose.Email.Printing.MailPrinter printer = new Aspose.Email.Printing.MailPrinter();
 
             //Set the MessageFormattingFlags to none to display only the message body
             printer.FormattingFlags = Aspose.Email.Printing.MessageFormattingFlags.None;
