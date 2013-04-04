@@ -23,7 +23,9 @@ namespace NewPSTAddSubfolders
             bool IsExists = System.IO.Directory.Exists(dataDir);
             if (!IsExists)
                 System.IO.Directory.CreateDirectory(dataDir);
-				
+
+            System.IO.File.Delete(dataDir + "PersonalStorage.pst");
+
             // Create new PST
             PersonalStorage pst = PersonalStorage.Create(dataDir + "PersonalStorage.pst", FileFormatVersion.Unicode);
 

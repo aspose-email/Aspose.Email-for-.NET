@@ -22,6 +22,8 @@ Namespace NewPSTAddSubfolders
 				System.IO.Directory.CreateDirectory(dataDir)
 			End If
 			
+			System.IO.File.Delete(dataDir & "PersonalStorage.pst")
+			
 			' Create new PST
 			Dim pst As PersonalStorage = PersonalStorage.Create(dataDir & "PersonalStorage.pst", FileFormatVersion.Unicode)
 
