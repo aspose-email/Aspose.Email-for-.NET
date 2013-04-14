@@ -41,7 +41,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aspose.Email, Version=2.6.0.0, Culture=neutral, PublicKeyToken=ad504e9f0d34714a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\bin\net4.0\Aspose.Email.dll</HintPath>
+      <HintPath>..\..\..\..\bin\net3.5\Aspose.Email.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System" />
