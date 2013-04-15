@@ -19,12 +19,8 @@ namespace NewPSTAddSubfolders
             // The path to the documents directory.
             string dataDir = Path.GetFullPath("../../../Data/");
 
-			// Create directory if it is not already present.
-            bool IsExists = System.IO.Directory.Exists(dataDir);
-            if (!IsExists)
-                System.IO.Directory.CreateDirectory(dataDir);
-
-            System.IO.File.Delete(dataDir + "PersonalStorage.pst");
+            // Create the data directory if it doesn't exist.
+            Directory.CreateDirectory(dataDir);
 
             // Create new PST
             PersonalStorage pst = PersonalStorage.Create(dataDir + "PersonalStorage.pst", FileFormatVersion.Unicode);
