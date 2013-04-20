@@ -1,13 +1,20 @@
 #Aspose.Email for .NET Examples Repository
 
-Aspose.Email for .NET is a collection of components for working with email from within ASP.NET web applications, web services or Windows applications. It makes it easy to work with Outlook PST, EML, MSG and MHT files. 
+This package contains C# and VB.NET Example Projects for [Aspose.Email for .NET](http://www.aspose.com/.net/email-component.aspx).
 
-Aspose.Email makes it easy to work with HTML or plain text emails and their attachments. It allows developers to work against SMTP, POP, IMAP and Microsoft Exchange servers. It supports mail merge and iCalendar features, customized header and body, retrieving content, header information and embedded files and much more. 
+##How to use the Examples?
 
-These example projects provide helpful demonstrations and code when using Aspose.Email for .NET .
+###With the Examples Dashboard
 
-## Aspose.Email for .NET at a Glance
-![Aspose.Email Overview](http://www.aspose.com/Aspose.Email/Images/product-diagram-aspose.email-for-.net.jpg "The Main Features of Aspose.Email for .NET")
+Download the [Aspose Examples Dashboard for .NET](http://www.aspose.com/community/files/51/.net-components/aspose-examples-for-.net/default.aspx) to view and run all these examples on your PC. It updates itself with the latest dependency libraries and examples.
+
+![Aspose Examples Dashboard](http://www.aspose.com/blogs/wp-content/uploads/2013/04/Dotnet-Dashboard.png "Aspose Examples Dashboard")
+
+###With IDE
+
+Clone or Download the ZIP and extract the contents to your local hard drive. It has Solution (SLN) files for Microsoft Visual Studio 2005, 2008 and 2010.
+
+Also download the [latest version](http://www.aspose.com/community/files/51/.net-components/aspose.email-for-.net/default.aspx) of Aspose.Email for .NET and set/fix jar references.
 
 ##Open Source Feel of Aspose.Email
 
@@ -84,45 +91,6 @@ This package contains C# and VB.NET Example Projects for [Aspose.Email for .NET]
   <tr><td>Verify Email Address</td><td>This example shows how to validate an email address using Aspose.Email component.</td></tr>
   <tr><td>Create or Update Tasks with iCalender</td><td>This example demonstrates the ability of Aspose.Email for .NET to create and update tasks using iCalander</td></tr>
 </table>
-
-
-###Data
-
-Input Email Message Files - Some examples require message files as input. User can specify any supported format(Msg, Eml and Mht) file by browsing the disk.
-
-###Output
-
-All examples will output the result to client machine through browser. Its upto the user to save the output or open it directly.
-
-
-###Help Material
-
-For further details on setting up the examples and any requirements refer to the readme.txt found in the root of the repository.
-
-
-##Download the examples
-
-Please [download the Aspose.Email for .NET examples](https://github.com/asposeemail/Aspose_Email_NET/downloads) to try at your end.
-
-
-##How to use the examples?
-
-This package contains C# and VB.NET ASP.NET examples of Aspose.Email for .NET.
-
-Firstly make sure that you have downloaded and installed the latest version of [Aspose.Email for .NET](http://www.aspose.com/community/files/51/.net-components/aspose.email-for-.net/default.aspx). We recommend using the .MSI installer for fast installation and seamless intergration with the examples.
-
-Download the examples from the above link. The solution files for Microsoft Visual Studio 2008 and 2010 are provided with the examples. 
-
-Once downloaded you can open the examples by opening the appropriate solution file (.sln) according to the version of Visual Studio installed on your system.
-
-+ Aspose.Email.Demos.2008.sln - Open with Microsoft Visual Studio 2008
-+ Aspose.Email.Demos.2010.sln - Open with Microsoft Visual Studio 2010
-
-The example should be ready to compile. Click on "Debug" menu and choose one of the following menu items to start the example:
-
-- Start Debugging
-- Start Without Debugging
-
 
 ##Contact Us
 
