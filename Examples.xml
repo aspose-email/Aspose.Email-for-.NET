@@ -206,7 +206,221 @@ Aspose.Email lets you work with embedded objects in emails. This example shows h
                   </OutputFiles>
                   <Type>Console</Type>
                 </Example>
+                <Example>
+                  <Title>Sending Emails</Title>
+                  <Description>The SmtpClient class allows applications to send email using the Simple Mail Transfer Protocol (SMTP). The SmptClient class is the only major entry developers use to send mail messages. The SmtpClient class also provides other common email delivery methods, including writing email messages to the file system, message queue etc.</Description>
+                  <FolderName>SendingEmails</FolderName>
+                  <Order>5</Order>
+                  <DocLink>
+                    <DisplayName>Sending Emails</DisplayName>
+                    <Url>Sending+Emails</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Connecting to SSL Enabled SMTP Server</Title>
+                  <Description>The following properties need to be set when connecting with an SMTP server with SSL support.
+
+1: SecurityMode
+2: EnableSSL
+3: Port</Description>
+                  <FolderName>ConnectingToSSLEnabledSMTPServer</FolderName>
+                  <Order>6</Order>
+                  <DocLink>
+                    <DisplayName>Connecting to SSL Enabled SMTP Server</DisplayName>
+                    <Url>Connecting+to+SSL+Enabled+SMTP+Server</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Specifying Multiple Recipients</Title>
+                  <Description>The MailMessage class represents an email message. Instances of the MailMessage class are used to construct email messages that are transmitted to an SMTP server using the SmtpClient class. This topic demonstrates how to specify more than one email addresses.
+
+Email addresses can be specified using the MailMessage class. The email addresses used in the MailMessage class are:
+
+1: To
+2: Cc
+3: Bcc</Description>
+                  <FolderName>SpecifyingMultipleRecipients</FolderName>
+                  <Order>7</Order>
+                  <DocLink>
+                    <DisplayName>Specifying Multiple Recipients</DisplayName>
+                    <Url>Specifying+Multiple+Recipients</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Send Meeting Requests</Title>
+                  <Description>Microsoft Outlook offers calendar functions as well as email management. When a user opens an email with an invitation to an event, Outlook prompts them to accept or reject the invitation. Aspose.Email lets developers add calendar functions to your emails.</Description>
+                  <FolderName>SendMeetingRequests</FolderName>
+                  <Order>9</Order>
+                  <DocLink>
+                    <DisplayName>Send Meeting Requests</DisplayName>
+                    <Url>Send+Meeting+Requests</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Performing Mail Merge</Title>
+                  <Description>Mail merges help you create and send a batch of similar email messages. The core of the emails are the same, but the content can be personalized. Typically, a recipient's contact details (first name, second name, company and so on) are used to personalize the email.</Description>
+                  <FolderName>PerformingMailMerge</FolderName>
+                  <Order>10</Order>
+                  <DocLink>
+                    <DisplayName>Performing Mail Merge</DisplayName>
+                    <Url>Performing+Mail+Merge</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Loading EML Files from Disk and Sending it with SMTP</Title>
+                  <Description>You can load .eml files from disk or stream into the MailMessage class and send the email message using the SmtpClient class. The MailMessage class is the main class for creating new email messages, loading email message files from disk or stream and saving the messages.</Description>
+                  <FolderName>LoadingEMLFilesfromDiskSendingitwithSMTP</FolderName>
+                  <Order>13</Order>
+                  <DocLink>
+                    <DisplayName>Loading EML Files from Disk and Sending it with SMTP</DisplayName>
+                    <Url>Loading+EML+Files+from+Disk+and+Sending+it+with+SMTP</Url>
+                  </DocLink>
+                  <InputFiles>
+                    <DataFile>
+                      <Path>..\Data\test.eml</Path>
+                    </DataFile>
+                  </InputFiles>
+                  <Type>Console</Type>
+                </Example>
               </Examples>
+              <Folders>
+                <Folder>
+                  <Title>Set Mail Body</Title>
+                  <Description>The MailMessage class represents an email message. Instances of the MailMessage class are used to construct email messages that are transmitted to a SMTP server for delivery using the SmtpClient class. A mail body can be specified using the MailMessage class. An email can have multiple bodies. There are two types of mail bodies in MailMessage class:
+
+1: HTML body
+2: Text body</Description>
+                  <FolderName>SetMailBody</FolderName>
+                  <Order>8</Order>
+                  <Examples>
+                    <Example>
+                      <Title>Setting HTML Body</Title>
+                      <Description>HtmlBody is used to specify the HTML content of a message body. HtmlBody must be enclosed between &lt;html&gt; &lt;/html&gt; tags.</Description>
+                      <FolderName>SettingHTMLBody</FolderName>
+                      <Order>1</Order>
+                      <DocLink>
+                        <DisplayName>Setting HTML Body</DisplayName>
+                        <Url>Set+Mail+Body</Url>
+                      </DocLink>
+                      <Type>Console</Type>
+                    </Example>
+                    <Example>
+                      <Title>Setting Text Body</Title>
+                      <Description>TextBody is used to specify textual content for a message body.</Description>
+                      <FolderName>SettingTextBody</FolderName>
+                      <Order>2</Order>
+                      <DocLink>
+                        <DisplayName>Setting Text Body</DisplayName>
+                        <Url>Set+Mail+Body</Url>
+                      </DocLink>
+                      <Type>Console</Type>
+                    </Example>
+                  </Examples>
+                </Folder>
+                <Folder>
+                  <Title>Importing and Exporting Emails</Title>
+                  <Description>Different email servers use different email formats. To move emails between servers and email applications, it can be useful to convert them from one format to another. This article shows how to import and export email messages with Aspose.Email. Aspose.Email's MailMessage class can import email in different formats:
+
+1: Microsoft Outlook Email Message Format (MSG).
+2: Microsoft HTML Format (MHT).
+3: RFC 822 Compliant Message Format (EML).
+ 
+It can export email in different formats too:
+
+1: RFC 822 Compliant Message Format (EML).
+2: Microsoft Html Format (MHT).</Description>
+                  <FolderName>ImportingExportingEmails</FolderName>
+                  <Order>11</Order>
+                  <Examples>
+                    <Example>
+                      <Title>Import EML Format Email</Title>
+                      <Description>In this example, we will see how to import an EML format file using Aspose.Emails.</Description>
+                      <FolderName>ImportEMLFormatEmail</FolderName>
+                      <Order>1</Order>
+                      <DocLink>
+                        <DisplayName>Importing and Exporting Emails</DisplayName>
+                        <Url>Importing+and+Exporting+Emails</Url>
+                      </DocLink>
+                      <InputFiles>
+                        <DataFile>
+                          <Path>..\Data\test.eml</Path>
+                        </DataFile>
+                      </InputFiles>
+                      <Type>Console</Type>
+                    </Example>
+                    <Example>
+                      <Title>Export Message as EML File</Title>
+                      <Description>In this example we will see how we can export and email message to EML file using Aspose.Email.</Description>
+                      <FolderName>ExportMessageAsEMLFile</FolderName>
+                      <Order>2</Order>
+                      <DocLink>
+                        <DisplayName>Importing and Exporting Emails</DisplayName>
+                        <Url>Importing+and+Exporting+Emails</Url>
+                      </DocLink>
+                      <OutputFiles>
+                        <DataFile>
+                          <Path>..\Data\Message.eml</Path>
+                        </DataFile>
+                      </OutputFiles>
+                      <Type>Console</Type>
+                    </Example>
+                  </Examples>
+                </Folder>
+                <Folder>
+                  <Title>Utility Features of Email Related Protocols</Title>
+                  <Description>The MailMessage class represents the content of an email message. Instances of the MailMessage class are used to construct an email message that is transmitted to a SMTP server for delivery using the SmtpClient class.
+
+In this section we have given examples of various utility features that MailMessage provides.</Description>
+                  <FolderName>UtilityFeaturesofEmailRelatedProtocols</FolderName>
+                  <Order>12</Order>
+                  <Examples>
+                    <Example>
+                      <Title>Set Date, Priority and Sensitivity of Email</Title>
+                      <Description>In this example we will utlilize the following features of Mail Message class:
+
+1: Set Date and Time.
+2: Set Priority.
+3: Set Sensitivity.</Description>
+                      <FolderName>SetDatePriorityAndSensitivityofEmail</FolderName>
+                      <Order>1</Order>
+                      <DocLink>
+                        <DisplayName>MailMessage Utility Features</DisplayName>
+                        <Url>Utility+Features+of+Email+Related+Protocols</Url>
+                      </DocLink>
+                      <Type>Console</Type>
+                    </Example>
+                    <Example>
+                      <Title>Delivery Notifications</Title>
+                      <Description>Delivery notifications let senders know that the email they sent have been delivered to the recipient's inbox. Read receipts reassure them that the recipient has opened (thus read) the email. They are often used to track that important messages have reached their audience.
+
+In Microsoft Outlook, recipients have the option of sending or ignoring to send a read receipt to toggling the receipt on does not automatically mean that the sender will receive a receipt.</Description>
+                      <FolderName>DeliveryNotifications</FolderName>
+                      <Order>2</Order>
+                      <DocLink>
+                        <DisplayName>Utility Features of Email Related Protocols</DisplayName>
+                        <Url>Utility+Features+of+Email+Related+Protocols</Url>
+                      </DocLink>
+                      <Type>Console</Type>
+                    </Example>
+                    <Example>
+                      <Title>Customizing an Email Header</Title>
+                      <Description>Email headers represent an Internet standard and RFC define header fields which are included in Internet email messages. An email header can be specified using the MailMessage class. Common header types are defined in the HeaderType class. It is a sealed class working like a normal enumeration.</Description>
+                      <FolderName>CustomizingEmailHeader</FolderName>
+                      <Order>3</Order>
+                      <DocLink>
+                        <DisplayName>Utility Features of Email Related Protocols</DisplayName>
+                        <Url>Utility+Features+of+Email+Related+Protocols</Url>
+                      </DocLink>
+                      <Type>Console</Type>
+                    </Example>
+                  </Examples>
+                </Folder>
+              </Folders>
             </Folder>
             <Folder>
               <Title>Aspose Email How Tos</Title>
