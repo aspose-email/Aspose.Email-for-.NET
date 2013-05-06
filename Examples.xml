@@ -287,6 +287,17 @@ Email addresses can be specified using the MailMessage class. The email addresse
                   </InputFiles>
                   <Type>Console</Type>
                 </Example>
+                <Example>
+                  <Title>Load Smtp Authentication Information from Config File</Title>
+                  <Description>The SmtpClient class allows applications to read authentication information like username and password and the host address and port number directly from a configuration file. Using the .NET native configuration tag, as shown below, enables the SmptClient class to read this information through the Configuration Manager also available in .NET framework.</Description>
+                  <FolderName>LoadSmtpAuthenticationConfigFile</FolderName>
+                  <Order>14</Order>
+                  <DocLink>
+                    <DisplayName>Load Smtp Authentication Information from Config File</DisplayName>
+                    <Url>Load+Smtp+Authentication+Information+from+Config+File</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
               </Examples>
               <Folders>
                 <Folder>
