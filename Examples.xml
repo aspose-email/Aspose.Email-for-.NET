@@ -526,6 +526,311 @@ To extract headers from an email, follow these steps:
                 </Example>
               </Examples>
             </Folder>
+            <Folder>
+              <Title>Managing Email Messages with POP3</Title>
+              <Description>This section includes the following examples: 
+
+1: Connecting to POP3 Server 
+2: Connecting to SSL Enabled Pop3 server 
+3: Authenticating to a POP3 Server 
+4: Getting Mailbox Info 
+5: Receiving Emails and Saving to Disk 
+6: Filtering Messages from POP3 Mailbox Based on Sender, Recipient or Date</Description>
+              <FolderName>ManagingEmailMessagesWithPOP3</FolderName>
+              <Order>7</Order>
+              <Examples>
+                <Example>
+                  <Title>Connecting to POP3 Server</Title>
+                  <Description>The Pop3Client class allows applications to manage email boxes using the Post Office Protocol, Version 3 (POP3). To connect to a server, use the Pop3Client class. The Pop3Client class is the major entry for developers who want to add POP3 management to their .NET applications.</Description>
+                  <FolderName>ConnectingToPOP3Server</FolderName>
+                  <Order>2</Order>
+                  <DocLink>
+                    <DisplayName>Connecting to POP3 Server</DisplayName>
+                    <Url>Connecting+to+POP3+Server</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Connecting to SSL Enabled POP3 Server</Title>
+                  <Description>The process for connecting to an SSL enabled POP3 server requires some additional information:
+
+1: SecurityMode
+2: EnableSSL
+3: Port</Description>
+                  <FolderName>ConnectingToSSLEnabledPOP3Server</FolderName>
+                  <Order>3</Order>
+                  <DocLink>
+                    <DisplayName>Connecting to SSL Enabled POP3 Server</DisplayName>
+                    <Url>Connecting+to+SSL+Enabled+POP3+Server</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Getting Mailbox Info</Title>
+                  <Description>We can get information about the mailbox such as the number of messages and the mailbox size using the GetMailBoxSize() and GetMailBoxInfo() methods.
+
+1: The GetMailBoxSize() method returns the size of the mailbox in bytes.
+2: The GetMailBoxInfo() method returns an object of type Pop3MailBoxInfo.
+
+It is also possible to get the number of messages using the MessageCount property and the size using the OccupiedSize property.</Description>
+                  <FolderName>GettingMailboxInfo</FolderName>
+                  <Order>4</Order>
+                  <DocLink>
+                    <DisplayName>Getting Mailbox Info</DisplayName>
+                    <Url>Getting+Mailbox+Info</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+              </Examples>
+              <Folders>
+                <Folder>
+                  <Title>Receiving Emails and Saving to Disk</Title>
+                  <Description>This section includes the following examples:</Description>
+                  <FolderName>ReceivingEmailsAndSavingToDisk</FolderName>
+                  <Order>1</Order>
+                  <Examples>
+                    <Example>
+                      <Title>Retrieving Email Headers</Title>
+                      <Description>Email headers can give us information about an email message that we can use to decide whether or not to retrieve the whole email message. Typically, the header information contains sender, subject, received date etc.</Description>
+                      <FolderName>RetrievingEmailHeaders</FolderName>
+                      <Order>1</Order>
+                      <DocLink>
+                        <DisplayName>Receiving Emails and Saving to Disk</DisplayName>
+                        <Url>Receiving+Emails+and+Saving+to+Disk</Url>
+                      </DocLink>
+                      <Type>Console</Type>
+                    </Example>
+                    <Example>
+                      <Title>Retrieving Email Messages</Title>
+                      <Description>Aspose.Email.Pop3 component provides the capability to retrieve email messages from the POP3 server, and parse them into a MailMessage instance with the help of Aspose.Email.Mail components. The MailMessage class contains several properties and methods for manipulating email content. By using the Pop3Client class' FetchMessage function, you can get a MailMessage instance directly from the POP3 server.</Description>
+                      <FolderName>RetrievingEmailMessages</FolderName>
+                      <Order>2</Order>
+                      <DocLink>
+                        <DisplayName>Receiving Emails and Saving to Disk</DisplayName>
+                        <Url>Receiving+Emails+and+Saving+to+Disk</Url>
+                      </DocLink>
+                      <Type>Console</Type>
+                    </Example>
+                    <Example>
+                      <Title>Save Message to Disk without Parsing</Title>
+                      <Description>If you want to download email messages from the POP3 server without parsing them, use the Pop3Client class' SaveMessage function. The SaveMessage function does not parse the email message so it is faster than the FetchMessage function.</Description>
+                      <FolderName>SaveMessageToDiskWithoutParsing</FolderName>
+                      <Order>3</Order>
+                      <DocLink>
+                        <DisplayName>Receiving Emails and Saving to Disk</DisplayName>
+                        <Url>Receiving+Emails+and+Saving+to+Disk</Url>
+                      </DocLink>
+                      <OutputFiles>
+                        <DataFile>
+                          <Path>..\Data\1234.eml</Path>
+                        </DataFile>
+                      </OutputFiles>
+                      <Type>Console</Type>
+                    </Example>
+                    <Example>
+                      <Title>Parse Message Before Saving</Title>
+                      <Description>The following sample uses the Pop3Client's FetchMessage method to retrieve a message from a POP3 server by its sequence number, then save the message to disk using the subject as the file name.</Description>
+                      <FolderName>ParseMessageBeforeSaving</FolderName>
+                      <Order>4</Order>
+                      <DocLink>
+                        <DisplayName>Receiving Emails and Saving to Disk</DisplayName>
+                        <Url>Receiving+Emails+and+Saving+to+Disk</Url>
+                      </DocLink>
+                      <OutputFiles>
+                        <DataFile>
+                          <Path>..\Data\Msg1234.eml</Path>
+                        </DataFile>
+                      </OutputFiles>
+                      <Type>Console</Type>
+                    </Example>
+                    <Example>
+                      <Title>Getting Recipient Information</Title>
+                      <Description>The MapiRecipient class represents the sender or recipient information of the email message, which contains:* RecipientType indicates the type of the recipient.* DisplayName a string represents the display name of the recipient.* EmailAddress a string array represents the email address of the recipient.
+To query the mailbox status:# Create a MapiMessage instance by loading from files or stream.# Get the MapiRecipient from MapiMessage.Recipients.</Description>
+                      <FolderName>GettingRecipientInformation</FolderName>
+                      <Order>5</Order>
+                      <DocLink>
+                        <DisplayName>Receiving Emails and Saving to Disk</DisplayName>
+                        <Url>Receiving+Emails+and+Saving+to+Disk</Url>
+                      </DocLink>
+                      <InputFiles>
+                        <DataFile>
+                          <Path>..\Data\Message.msg</Path>
+                        </DataFile>
+                      </InputFiles>
+                      <Type>Console</Type>
+                    </Example>
+                  </Examples>
+                </Folder>
+              </Folders>
+            </Folder>
+            <Folder>
+              <Title>Managing Emails with IMAP</Title>
+              <Description>This section includes the following examples: 
+
+1: Connecting with IMAP Server 
+2: Connecting with SSL enabled Imap Server 
+3: Fetch Messages from Imap Server and Save to Disk 
+4: Delete Messages 
+5: Changing the Message Flags 
+6: Adding a New Message in a Folder 
+7: Getting Folders Information 
+8: Deleting and Renaming Folders 
+9: Get Folder and Sub-folders Information from IMAP Server and Read Messages Recursively 
+10: Filtering Messages from IMAP Mailbox Based on Sender, Recipient or Date</Description>
+              <FolderName>ManagingEmailsWithIMAP</FolderName>
+              <Order>6</Order>
+              <Examples>
+                <Example>
+                  <Title>Connecting with IMAP Server</Title>
+                  <Description>The ImapClient class allows applications to manage IMAP mailboxs using the IMAP protocol. The ImapClient class is used to connect to IMAP mail servers and manage emails in the IMAP email folders.</Description>
+                  <FolderName>ConnectingWithIMAPServer</FolderName>
+                  <Order>1</Order>
+                  <DocLink>
+                    <DisplayName>Connecting with IMAP Server</DisplayName>
+                    <Url>Connecting+with+IMAP+Server</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Connecting with SSL Enabled IMAP Server</Title>
+                  <Description>In this example, we will see how to connect with IMAP Server with SSL Enabled. The process for connecting to an SSL enables IMAP server requires following additional information:
+
+1: SecurityMode
+2: EnableSSL
+3: Port</Description>
+                  <FolderName>ConnectingWithSSLEnabledIMAPServer</FolderName>
+                  <Order>2</Order>
+                  <DocLink>
+                    <DisplayName>Connecting with SSL Enabled IMAP Server</DisplayName>
+                    <Url>Connecting+with+SSL+Enabled+IMAP+Server</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Fetch Messages from IMAP Server and Save to Disk</Title>
+                  <Description>The ImapClient class can fetch messages from an IMAP server and save the messages in EML format to a local disk.</Description>
+                  <FolderName>FetchMessagesFromIMAPServerSaveToDisk</FolderName>
+                  <Order>3</Order>
+                  <DocLink>
+                    <DisplayName>Fetch Messages from IMAP Server and Save to Disk</DisplayName>
+                    <Url>Fetch+Messages+from+IMAP+Server+and+Save+to+Disk</Url>
+                  </DocLink>
+                  <OutputFiles>
+                    <DataFile>
+                      <Path>..\Data\1.eml</Path>
+                    </DataFile>
+                  </OutputFiles>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Setting Message Flags</Title>
+                  <Description>You can change message flags by using the ChangeMessageFlags() method. This method takes two parameters. 
+
+1.The message sequence number or unique ID.
+2.MessageFlag.
+ 
+The following flags can be set:
+
+1: Answered
+2: Deleted
+3: Draft
+4: Empty
+5: Flagged
+6: IsRead
+7: Readed
+8: Recent</Description>
+                  <FolderName>SettingMessageFlags</FolderName>
+                  <Order>4</Order>
+                  <DocLink>
+                    <DisplayName>Changing the Message Flags</DisplayName>
+                    <Url>Changing+the+Message+Flags</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Removing Message Flags</Title>
+                  <Description>Message flags can also be removed with the RemoveMessageFlags() method. Usage is similar to that of the ChangeMessageFlags() method. It takes a sequence number or unique message ID and MessageFlag.</Description>
+                  <FolderName>RemovingMessageFlags</FolderName>
+                  <Order>5</Order>
+                  <DocLink>
+                    <DisplayName>Changing the Message Flags</DisplayName>
+                    <Url>Changing+the+Message+Flags</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Adding a New Message in a Folder</Title>
+                  <Description>Developers can add a new message to the folder using the MailMessage and ImapClient classes of Aspose.Email.</Description>
+                  <FolderName>AddingNewMessageInFolder</FolderName>
+                  <Order>6</Order>
+                  <DocLink>
+                    <DisplayName>Adding a New Message in a Folder</DisplayName>
+                    <Url>Adding+a+New+Message+in+a+Folder</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Getting Folders Information</Title>
+                  <Description>Getting information about folders from an IMAP server is very easy with Aspose.Email. Call the Aspose.Email.Imap namespace ListFolders() method. It returns an object of the ImapFolderInfoCollection type. Iterate through this collection and get information about individual folders in a loop. The method is overloaded. You can pass a folder name as a parameter to get a list of subfolders.</Description>
+                  <FolderName>GettingFoldersInformation</FolderName>
+                  <Order>7</Order>
+                  <DocLink>
+                    <DisplayName>Getting Folders Information</DisplayName>
+                    <Url>Getting+Folders+Information</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Get Folder Information from IMAP Server and Read Messages Recursively</Title>
+                  <Description>In this example, most of the ImapClient features are used to create an application that lists all the folders and sub-folders recursively from an IMAP server. It also saves the messages in each folder and sub-folder in MSG format on a local disk. In disk, folders and messages are created and saved in the same hierarchical structure as on the IMAP server.</Description>
+                  <FolderName>GetFolderInformationFromIMAPServerAndReadMessagesRecursively</FolderName>
+                  <Order>9</Order>
+                  <DocLink>
+                    <DisplayName>Get Folder and Sub folders Information from IMAP Server and Read Messages Recursively</DisplayName>
+                    <Url>Get+Folder+and+Sub+folders+Information+from+IMAP+Server+and+Read+Messages+Recursively</Url>
+                  </DocLink>
+                  <InputFiles>
+                    <DataFile>
+                      <Path>..\Data\INBOX\Test Email-4.msg</Path>
+                    </DataFile>
+                  </InputFiles>
+                  <Type>Console</Type>
+                </Example>
+              </Examples>
+              <Folders>
+                <Folder>
+                  <Title>Deleting and Renaming Folders</Title>
+                  <Description>This section includes the following examples:</Description>
+                  <FolderName>DeletingAndRenamingFolders</FolderName>
+                  <Order>8</Order>
+                  <Examples>
+                    <Example>
+                      <Title>Renaming Folders</Title>
+                      <Description>Aspose.Email allows developers to rename folders. Call the RenameFolder() method,and pass the current folder name and new folder name.</Description>
+                      <FolderName>RenamingFolders</FolderName>
+                      <Order>1</Order>
+                      <DocLink>
+                        <DisplayName>Deleting and Renaming Folders</DisplayName>
+                        <Url>Deleting+and+Renaming+Folders</Url>
+                      </DocLink>
+                      <Type>Console</Type>
+                    </Example>
+                    <Example>
+                      <Title>Deleting Folders</Title>
+                      <Description>A folder on an IMAP server can be deleted with a single line using Aspose.Email. Developer can pass folder name as parameter to DeleteFolder() method to delete a specific folder.</Description>
+                      <FolderName>DeletingFolders</FolderName>
+                      <Order>2</Order>
+                      <DocLink>
+                        <DisplayName>Deleting and Renaming Folders</DisplayName>
+                        <Url>Deleting+and+Renaming+Folders</Url>
+                      </DocLink>
+                      <Type>Console</Type>
+                    </Example>
+                  </Examples>
+                </Folder>
+              </Folders>
+            </Folder>
           </Folders>
         </Folder>
         <Folder>

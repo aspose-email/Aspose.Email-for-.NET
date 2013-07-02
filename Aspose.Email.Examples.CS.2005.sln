@@ -62,6 +62,50 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractingEmailHeaders", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayEmailInformationOnScreen", "ProgrammersGuide\ProgrammingEmail\ManageEmailMessageFilesWithMailMessage\DisplayEmailInformationOnScreen\CSharp\DisplayEmailInformationOnScreen.csproj", "{CC1C16FB-D565-4A95-9341-4B2A65F3BD95}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManagingEmailMessagesWithPOP3", "ManagingEmailMessagesWithPOP3", "{D33ADC8D-22AC-4C99-B3C0-1D00DD499A86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingToPOP3Server", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ConnectingToPOP3Server\CSharp\ConnectingToPOP3Server.csproj", "{975DBF6E-9D13-48E6-BF93-203A556B4AEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingToSSLEnabledPOP3Server", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ConnectingToSSLEnabledPOP3Server\CSharp\ConnectingToSSLEnabledPOP3Server.csproj", "{8933809D-7E66-45B4-8B9A-13C35F98E741}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingMailboxInfo", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\GettingMailboxInfo\CSharp\GettingMailboxInfo.csproj", "{12EEC77D-FB2C-4A1E-A901-FF6C76E22EA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReceivingEmailsAndSavingToDisk", "ReceivingEmailsAndSavingToDisk", "{783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetrievingEmailHeaders", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ReceivingEmailsAndSavingToDisk\RetrievingEmailHeaders\CSharp\RetrievingEmailHeaders.csproj", "{19DB1DE4-D171-412E-B2A3-D9E03A3E4C7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetrievingEmailMessages", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ReceivingEmailsAndSavingToDisk\RetrievingEmailMessages\CSharp\RetrievingEmailMessages.csproj", "{2359C02B-FE82-4FF1-A82C-5A88C489FBA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveMessageToDiskWithoutParsing", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ReceivingEmailsAndSavingToDisk\SaveMessageToDiskWithoutParsing\CSharp\SaveMessageToDiskWithoutParsing.csproj", "{EAE35D66-6344-423B-903F-7FCEE1C0A18E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseMessageBeforeSaving", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ReceivingEmailsAndSavingToDisk\ParseMessageBeforeSaving\CSharp\ParseMessageBeforeSaving.csproj", "{E97BE81D-F2E0-4D28-8391-77AC8135B0FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingRecipientInformation", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ReceivingEmailsAndSavingToDisk\GettingRecipientInformation\CSharp\GettingRecipientInformation.csproj", "{1EF174AF-CEA8-4626-BC53-8213A161B992}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManagingEmailsWithIMAP", "ManagingEmailsWithIMAP", "{2F6C8621-6612-4CE1-A336-7AF358253C53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingWithIMAPServer", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\ConnectingWithIMAPServer\CSharp\ConnectingWithIMAPServer.csproj", "{2F845F55-A6CB-43B5-A73E-911BCF922082}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingWithSSLEnabledIMAPServer", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\ConnectingWithSSLEnabledIMAPServer\CSharp\ConnectingWithSSLEnabledIMAPServer.csproj", "{BF96DE01-8A3F-475E-ACDE-F8248A1C4DBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FetchMessagesFromIMAPServerSaveToDisk", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\FetchMessagesFromIMAPServerSaveToDisk\CSharp\FetchMessagesFromIMAPServerSaveToDisk.csproj", "{AE291005-662A-409D-999C-E8A74891FC6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingMessageFlags", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\SettingMessageFlags\CSharp\SettingMessageFlags.csproj", "{6B01E022-26F6-4983-B7DF-D744C6383BB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemovingMessageFlags", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\RemovingMessageFlags\CSharp\RemovingMessageFlags.csproj", "{AAF42EFE-682C-4A57-A394-94A1E8C3305C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddingNewMessageInFolder", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\AddingNewMessageInFolder\CSharp\AddingNewMessageInFolder.csproj", "{D33982E3-8FF1-44A3-971E-4E8994CDB71A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingFoldersInformation", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\GettingFoldersInformation\CSharp\GettingFoldersInformation.csproj", "{29B7BF08-C989-45CF-AF7D-2310F7BD8EEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetFolderInformationFromIMAPServerAndReadMessagesRecursively", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\GetFolderInformationFromIMAPServerAndReadMessagesRecursively\CSharp\GetFolderInformationFromIMAPServerAndReadMessagesRecursively.csproj", "{5492F8A8-13FC-4E46-AA87-87D8F02AC9BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeletingAndRenamingFolders", "DeletingAndRenamingFolders", "{FB3DB86F-D748-4EDA-B1C7-DC0E4F1F3EE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenamingFolders", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\DeletingAndRenamingFolders\RenamingFolders\CSharp\RenamingFolders.csproj", "{0CECBC8C-73E1-4020-9498-09954DE048D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeletingFolders", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\DeletingAndRenamingFolders\DeletingFolders\CSharp\DeletingFolders.csproj", "{3D31898B-1FA5-4EE6-B96D-670B112A32A0}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProgrammingOutlook", "ProgrammingOutlook", "{F9314CF0-6B0E-4765-B329-EDCB1F52A35F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManageMessageFiles", "ManageMessageFiles", "{B205CF51-A560-4F8C-BA9E-D2169F5A4CD9}"
@@ -151,6 +195,60 @@ Global
 		{CC1C16FB-D565-4A95-9341-4B2A65F3BD95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC1C16FB-D565-4A95-9341-4B2A65F3BD95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC1C16FB-D565-4A95-9341-4B2A65F3BD95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{975DBF6E-9D13-48E6-BF93-203A556B4AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{975DBF6E-9D13-48E6-BF93-203A556B4AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{975DBF6E-9D13-48E6-BF93-203A556B4AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8933809D-7E66-45B4-8B9A-13C35F98E741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8933809D-7E66-45B4-8B9A-13C35F98E741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8933809D-7E66-45B4-8B9A-13C35F98E741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12EEC77D-FB2C-4A1E-A901-FF6C76E22EA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12EEC77D-FB2C-4A1E-A901-FF6C76E22EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12EEC77D-FB2C-4A1E-A901-FF6C76E22EA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19DB1DE4-D171-412E-B2A3-D9E03A3E4C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19DB1DE4-D171-412E-B2A3-D9E03A3E4C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19DB1DE4-D171-412E-B2A3-D9E03A3E4C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2359C02B-FE82-4FF1-A82C-5A88C489FBA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2359C02B-FE82-4FF1-A82C-5A88C489FBA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2359C02B-FE82-4FF1-A82C-5A88C489FBA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAE35D66-6344-423B-903F-7FCEE1C0A18E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAE35D66-6344-423B-903F-7FCEE1C0A18E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAE35D66-6344-423B-903F-7FCEE1C0A18E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E97BE81D-F2E0-4D28-8391-77AC8135B0FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E97BE81D-F2E0-4D28-8391-77AC8135B0FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E97BE81D-F2E0-4D28-8391-77AC8135B0FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EF174AF-CEA8-4626-BC53-8213A161B992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EF174AF-CEA8-4626-BC53-8213A161B992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EF174AF-CEA8-4626-BC53-8213A161B992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F845F55-A6CB-43B5-A73E-911BCF922082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F845F55-A6CB-43B5-A73E-911BCF922082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F845F55-A6CB-43B5-A73E-911BCF922082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF96DE01-8A3F-475E-ACDE-F8248A1C4DBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF96DE01-8A3F-475E-ACDE-F8248A1C4DBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF96DE01-8A3F-475E-ACDE-F8248A1C4DBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE291005-662A-409D-999C-E8A74891FC6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE291005-662A-409D-999C-E8A74891FC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE291005-662A-409D-999C-E8A74891FC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B01E022-26F6-4983-B7DF-D744C6383BB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B01E022-26F6-4983-B7DF-D744C6383BB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B01E022-26F6-4983-B7DF-D744C6383BB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAF42EFE-682C-4A57-A394-94A1E8C3305C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAF42EFE-682C-4A57-A394-94A1E8C3305C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAF42EFE-682C-4A57-A394-94A1E8C3305C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D33982E3-8FF1-44A3-971E-4E8994CDB71A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D33982E3-8FF1-44A3-971E-4E8994CDB71A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D33982E3-8FF1-44A3-971E-4E8994CDB71A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29B7BF08-C989-45CF-AF7D-2310F7BD8EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29B7BF08-C989-45CF-AF7D-2310F7BD8EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29B7BF08-C989-45CF-AF7D-2310F7BD8EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5492F8A8-13FC-4E46-AA87-87D8F02AC9BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5492F8A8-13FC-4E46-AA87-87D8F02AC9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5492F8A8-13FC-4E46-AA87-87D8F02AC9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CECBC8C-73E1-4020-9498-09954DE048D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CECBC8C-73E1-4020-9498-09954DE048D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CECBC8C-73E1-4020-9498-09954DE048D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D31898B-1FA5-4EE6-B96D-670B112A32A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D31898B-1FA5-4EE6-B96D-670B112A32A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D31898B-1FA5-4EE6-B96D-670B112A32A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08EED74A-ED15-4B8D-ACD9-12E92EBD5CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{08EED74A-ED15-4B8D-ACD9-12E92EBD5CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08EED74A-ED15-4B8D-ACD9-12E92EBD5CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -195,6 +293,28 @@ Global
 		{C569CA38-4CD5-46F6-BFEA-0E1DC7879C7F} = {0BF96160-5DF3-40AD-9148-355E1D0387C5}
 		{62EC2793-504C-4945-85DA-9D9FC2E8B235} = {C569CA38-4CD5-46F6-BFEA-0E1DC7879C7F}
 		{CC1C16FB-D565-4A95-9341-4B2A65F3BD95} = {C569CA38-4CD5-46F6-BFEA-0E1DC7879C7F}
+		{D33ADC8D-22AC-4C99-B3C0-1D00DD499A86} = {0BF96160-5DF3-40AD-9148-355E1D0387C5}
+		{975DBF6E-9D13-48E6-BF93-203A556B4AEA} = {D33ADC8D-22AC-4C99-B3C0-1D00DD499A86}
+		{8933809D-7E66-45B4-8B9A-13C35F98E741} = {D33ADC8D-22AC-4C99-B3C0-1D00DD499A86}
+		{12EEC77D-FB2C-4A1E-A901-FF6C76E22EA2} = {D33ADC8D-22AC-4C99-B3C0-1D00DD499A86}
+		{783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A} = {D33ADC8D-22AC-4C99-B3C0-1D00DD499A86}
+		{19DB1DE4-D171-412E-B2A3-D9E03A3E4C7E} = {783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A}
+		{2359C02B-FE82-4FF1-A82C-5A88C489FBA0} = {783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A}
+		{EAE35D66-6344-423B-903F-7FCEE1C0A18E} = {783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A}
+		{E97BE81D-F2E0-4D28-8391-77AC8135B0FE} = {783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A}
+		{1EF174AF-CEA8-4626-BC53-8213A161B992} = {783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A}
+		{2F6C8621-6612-4CE1-A336-7AF358253C53} = {0BF96160-5DF3-40AD-9148-355E1D0387C5}
+		{2F845F55-A6CB-43B5-A73E-911BCF922082} = {2F6C8621-6612-4CE1-A336-7AF358253C53}
+		{BF96DE01-8A3F-475E-ACDE-F8248A1C4DBF} = {2F6C8621-6612-4CE1-A336-7AF358253C53}
+		{AE291005-662A-409D-999C-E8A74891FC6D} = {2F6C8621-6612-4CE1-A336-7AF358253C53}
+		{6B01E022-26F6-4983-B7DF-D744C6383BB2} = {2F6C8621-6612-4CE1-A336-7AF358253C53}
+		{AAF42EFE-682C-4A57-A394-94A1E8C3305C} = {2F6C8621-6612-4CE1-A336-7AF358253C53}
+		{D33982E3-8FF1-44A3-971E-4E8994CDB71A} = {2F6C8621-6612-4CE1-A336-7AF358253C53}
+		{29B7BF08-C989-45CF-AF7D-2310F7BD8EEF} = {2F6C8621-6612-4CE1-A336-7AF358253C53}
+		{5492F8A8-13FC-4E46-AA87-87D8F02AC9BA} = {2F6C8621-6612-4CE1-A336-7AF358253C53}
+		{FB3DB86F-D748-4EDA-B1C7-DC0E4F1F3EE8} = {2F6C8621-6612-4CE1-A336-7AF358253C53}
+		{0CECBC8C-73E1-4020-9498-09954DE048D8} = {FB3DB86F-D748-4EDA-B1C7-DC0E4F1F3EE8}
+		{3D31898B-1FA5-4EE6-B96D-670B112A32A0} = {FB3DB86F-D748-4EDA-B1C7-DC0E4F1F3EE8}
 		{F9314CF0-6B0E-4765-B329-EDCB1F52A35F} = {92296BD7-541A-4ADF-90E7-5982154451B2}
 		{B205CF51-A560-4F8C-BA9E-D2169F5A4CD9} = {F9314CF0-6B0E-4765-B329-EDCB1F52A35F}
 		{08EED74A-ED15-4B8D-ACD9-12E92EBD5CA6} = {B205CF51-A560-4F8C-BA9E-D2169F5A4CD9}
