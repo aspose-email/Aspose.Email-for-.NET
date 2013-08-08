@@ -18,6 +18,7 @@ namespace CustomizingEmailHeaders
         {
             // The path to the documents directory.
             string dataDir = Path.GetFullPath("../../../Data/");
+            Directory.CreateDirectory(dataDir);
 
             //Create an instance MailMessage class
             MailMessage msg = new MailMessage();

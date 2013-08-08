@@ -19,7 +19,8 @@ namespace CreateSaveOutlookFiles
         {
             // The path to the documents directory.
             string dataDir = Path.GetFullPath("../../../Data/");
-            
+            Directory.CreateDirectory(dataDir);
+
             // Create an instance of MailMessage class
             MailMessage mailMsg = new MailMessage();
             

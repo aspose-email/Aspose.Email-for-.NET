@@ -5,6 +5,8 @@
 ' is only intended as a supplement to the documentation, and is provided
 ' "as is", without warranty of any kind, either expressed or implied.
 '////////////////////////////////////////////////////////////////////////
+
+Imports Microsoft.VisualBasic
 Imports System.IO
 
 Imports Aspose.Email
@@ -15,6 +17,7 @@ Namespace CustomizingEmailHeaders
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.
 			Dim dataDir As String = Path.GetFullPath("../../../Data/")
+			Directory.CreateDirectory(dataDir)
 
 			'Create an instance MailMessage class
 			Dim msg As New MailMessage()
@@ -36,7 +39,7 @@ Namespace CustomizingEmailHeaders
 			msg.Subject = "test mail"
 
 			'Specify Date
-			msg.Date = New Date(2006, 3, 6)
+			msg.Date = New System.DateTime(2006, 3, 6)
 
 			'Specify XMailer
 			msg.XMailer = "Aspose.Email"

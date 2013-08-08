@@ -19,6 +19,7 @@ namespace AppointmentInICSFormat
         {
             // The path to the documents directory.
             string dataDir = Path.GetFullPath("../../../Data/");
+            Directory.CreateDirectory(dataDir);
 
             // 1. 
             // Create and save an Appointment to disk.

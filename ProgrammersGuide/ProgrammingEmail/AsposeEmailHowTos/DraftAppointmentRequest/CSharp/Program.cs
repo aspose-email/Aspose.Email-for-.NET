@@ -20,6 +20,7 @@ namespace DraftAppointmentRequest
         {
             // The path to the documents directory.
             string dataDir = Path.GetFullPath("../../../Data/");
+            Directory.CreateDirectory(dataDir);
 
             string sender = "test@gmail.com";
             string recipient = "test@email.com";
