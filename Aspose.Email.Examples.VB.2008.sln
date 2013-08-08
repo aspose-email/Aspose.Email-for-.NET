@@ -8,95 +8,97 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateNewEmail", "Programme
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveMessageAsDraft", "ProgrammersGuide\ProgrammingEmail\SaveMessageAsDraft\VisualBasic\SaveMessageAsDraft.vbproj", "{16B01DD8-FB7E-48D9-884B-1F33376B02C2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SendEmailMessagesWithSMTP", "SendEmailMessagesWithSMTP", "{C401F018-722B-4D5A-A4E1-6D3306367560}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SendingWithSMTP", "SendingWithSMTP", "{FF5DC993-6F33-4725-96AE-6266826E2628}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadSaveAppointmentInICSFormat", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\LoadSaveAppointmentInICSFormat\VisualBasic\LoadSaveAppointmentInICSFormat.vbproj", "{A1F55D12-74EB-4D9A-A456-4D952CD8228B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentInICSFormat", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\AppointmentInICSFormat\VisualBasic\LoadSaveAppointmentInICSFormat.vbproj", "{A1F55D12-74EB-4D9A-A456-4D952CD8228B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagingEmailAttachments", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\ManagingEmailAttachments\VisualBasic\ManagingEmailAttachments.vbproj", "{6BC9D6E5-19A3-4B63-A394-AD4563157D37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagingEmailAttachments", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\ManagingEmailAttachments\VisualBasic\ManagingEmailAttachments.vbproj", "{6BC9D6E5-19A3-4B63-A394-AD4563157D37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithEmbeddedObjects", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\WorkingWithEmbeddedObjects\VisualBasic\WorkingWithEmbeddedObjects.vbproj", "{2048899E-965D-4BB2-9541-C1BEEDF68423}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmbeddedObjects", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\EmbeddedObjects\VisualBasic\WorkingWithEmbeddedObjects.vbproj", "{2048899E-965D-4BB2-9541-C1BEEDF68423}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomizingEmailHeaders", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\CustomizingEmailHeaders\VisualBasic\CustomizingEmailHeaders.vbproj", "{499A1DDF-63E0-43CA-9137-79989B32C642}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomizingEmailHeaders", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\CustomizingEmailHeaders\VisualBasic\CustomizingEmailHeaders.vbproj", "{499A1DDF-63E0-43CA-9137-79989B32C642}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendingEmails", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\SendingEmails\VisualBasic\SendingEmails.vbproj", "{09E3DA3B-634A-403F-8F26-A1C172F7B5A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendingEmails", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\SendingEmails\VisualBasic\SendingEmails.vbproj", "{09E3DA3B-634A-403F-8F26-A1C172F7B5A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingToSSLEnabledSMTPServer", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\ConnectingToSSLEnabledSMTPServer\VisualBasic\ConnectingToSSLEnabledSMTPServer.vbproj", "{FC9DA44D-3074-4737-9752-B883640185FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSLEnabledSMTPServer", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\SSLEnabledSMTPServer\VisualBasic\ConnectingToSSLEnabledSMTPServer.vbproj", "{FC9DA44D-3074-4737-9752-B883640185FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecifyingMultipleRecipients", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\SpecifyingMultipleRecipients\VisualBasic\SpecifyingMultipleRecipients.vbproj", "{871045BA-8BEA-4543-9081-BCDA5BD967F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultipleRecipients", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\MultipleRecipients\VisualBasic\SpecifyingMultipleRecipients.vbproj", "{871045BA-8BEA-4543-9081-BCDA5BD967F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendMeetingRequests", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\SendMeetingRequests\VisualBasic\SendMeetingRequests.vbproj", "{8F9F0EE0-194C-47C3-B82F-744CC8B5F98A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetingRequests", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\MeetingRequests\VisualBasic\SendMeetingRequests.vbproj", "{8F9F0EE0-194C-47C3-B82F-744CC8B5F98A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformingMailMerge", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\PerformingMailMerge\VisualBasic\PerformingMailMerge.vbproj", "{BEF750E8-2995-4E9F-BEF3-BBA261F489DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailMerge", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\MailMerge\VisualBasic\PerformingMailMerge.vbproj", "{BEF750E8-2995-4E9F-BEF3-BBA261F489DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadingEMLFilesfromDiskSendingitwithSMTP", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\LoadingEMLFilesfromDiskSendingitwithSMTP\VisualBasic\LoadingEMLFilesfromDiskSendingitwithSMTP.vbproj", "{7F2AA12E-4B17-4123-85A8-3BB526B070FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendingEMLFilesWithSMTP", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\SendingEMLFilesWithSMTP\VisualBasic\LoadingEMLFilesfromDiskSendingitwithSMTP.vbproj", "{7F2AA12E-4B17-4123-85A8-3BB526B070FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadSmtpAuthenticationConfigFile", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\LoadSmtpAuthenticationConfigFile\VisualBasic\LoadSmtpAuthenticationConfigFile.vbproj", "{37C7F2E2-D8CF-4A15-8802-EEF79939808A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadSmtpConfigFile", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\LoadSmtpConfigFile\VisualBasic\LoadSmtpAuthenticationConfigFile.vbproj", "{37C7F2E2-D8CF-4A15-8802-EEF79939808A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SetMailBody", "SetMailBody", "{7C845F24-551B-43C7-BB08-FD4C0F8B5B09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingHTMLBody", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\SetMailBody\SettingHTMLBody\VisualBasic\SettingHTMLBody.vbproj", "{FF371D66-CED6-4180-B3CA-4E4AAC0AF775}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingHTMLBody", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\SetMailBody\SettingHTMLBody\VisualBasic\SettingHTMLBody.vbproj", "{FF371D66-CED6-4180-B3CA-4E4AAC0AF775}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingTextBody", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\SetMailBody\SettingTextBody\VisualBasic\SettingTextBody.vbproj", "{497BC9BE-2C52-4DFC-A062-EF93451694F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingTextBody", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\SetMailBody\SettingTextBody\VisualBasic\SettingTextBody.vbproj", "{497BC9BE-2C52-4DFC-A062-EF93451694F9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImportingExportingEmails", "ImportingExportingEmails", "{DFA77D6C-477A-4027-A8B1-406473645FB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportEMLFormatEmail", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\ImportingExportingEmails\ImportEMLFormatEmail\VisualBasic\ImportEMLFormatEmail.vbproj", "{9D0420E6-C762-4025-A70D-147998579961}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportEML", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\ImportingExportingEmails\ImportEML\VisualBasic\ImportEMLFormatEmail.vbproj", "{9D0420E6-C762-4025-A70D-147998579961}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportMessageAsEMLFile", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\ImportingExportingEmails\ExportMessageAsEMLFile\VisualBasic\ExportMessageAsEMLFile.vbproj", "{2DBA76E0-621B-4F0D-8399-0CD98C733E4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportAsEML", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\ImportingExportingEmails\ExportAsEML\VisualBasic\ExportMessageAsEMLFile.vbproj", "{2DBA76E0-621B-4F0D-8399-0CD98C733E4C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UtilityFeaturesofEmailRelatedProtocols", "UtilityFeaturesofEmailRelatedProtocols", "{F8E6811B-13AE-4D98-851D-6DAC8D461F58}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProtocolUtilityFeatures", "ProtocolUtilityFeatures", "{3F44F41C-ED12-45E3-A071-E6DA6D03AEC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetDatePriorityAndSensitivityofEmail", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\UtilityFeaturesofEmailRelatedProtocols\SetDatePriorityAndSensitivityofEmail\VisualBasic\SetDatePriorityAndSensitivityofEmail.vbproj", "{0CA07E61-2B04-42C9-B07C-403F23AA099F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetEmailInfo", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\ProtocolUtilityFeatures\SetEmailInfo\VisualBasic\SetDatePriorityAndSensitivityofEmail.vbproj", "{0CA07E61-2B04-42C9-B07C-403F23AA099F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryNotifications", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\UtilityFeaturesofEmailRelatedProtocols\DeliveryNotifications\VisualBasic\DeliveryNotifications.vbproj", "{665CDFE7-824C-4CDA-9E2F-6643661EEC34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryNotifications", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\ProtocolUtilityFeatures\DeliveryNotifications\VisualBasic\DeliveryNotifications.vbproj", "{665CDFE7-824C-4CDA-9E2F-6643661EEC34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomizingEmailHeader", "ProgrammersGuide\ProgrammingEmail\SendEmailMessagesWithSMTP\UtilityFeaturesofEmailRelatedProtocols\CustomizingEmailHeader\VisualBasic\CustomizingEmailHeader.vbproj", "{0FD462DF-859D-403A-A62B-3CB97F2D54A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomizingEmailHeader", "ProgrammersGuide\ProgrammingEmail\SendingWithSMTP\ProtocolUtilityFeatures\CustomizingEmailHeader\VisualBasic\CustomizingEmailHeader.vbproj", "{0FD462DF-859D-403A-A62B-3CB97F2D54A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AsposeEmailHowTos", "AsposeEmailHowTos", "{C4021EFB-78BC-47BC-95D3-F936C7CDD528}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateDraftAppointmentRequest", "ProgrammersGuide\ProgrammingEmail\AsposeEmailHowTos\CreateDraftAppointmentRequest\VisualBasic\CreateDraftAppointmentRequest.vbproj", "{7CB30327-164E-4197-A09A-73DDF5CFE05B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DraftAppointmentRequest", "ProgrammersGuide\ProgrammingEmail\AsposeEmailHowTos\DraftAppointmentRequest\VisualBasic\CreateDraftAppointmentRequest.vbproj", "{7CB30327-164E-4197-A09A-73DDF5CFE05B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManageEmailMessageFilesWithMailMessage", "ManageEmailMessageFilesWithMailMessage", "{C569CA38-4CD5-46F6-BFEA-0E1DC7879C7F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManageEmailMessages", "ManageEmailMessages", "{B55D7FA5-FA7D-4E65-8BEF-9DB2D5438967}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractingEmailHeaders", "ProgrammersGuide\ProgrammingEmail\ManageEmailMessageFilesWithMailMessage\ExtractingEmailHeaders\VisualBasic\ExtractingEmailHeaders.vbproj", "{62EC2793-504C-4945-85DA-9D9FC2E8B235}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractingEmailHeaders", "ProgrammersGuide\ProgrammingEmail\ManageEmailMessages\ExtractingEmailHeaders\VisualBasic\ExtractingEmailHeaders.vbproj", "{62EC2793-504C-4945-85DA-9D9FC2E8B235}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayEmailInformationOnScreen", "ProgrammersGuide\ProgrammingEmail\ManageEmailMessageFilesWithMailMessage\DisplayEmailInformationOnScreen\VisualBasic\DisplayEmailInformationOnScreen.vbproj", "{CC1C16FB-D565-4A95-9341-4B2A65F3BD95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayEmailInformation", "ProgrammersGuide\ProgrammingEmail\ManageEmailMessages\DisplayEmailInformation\VisualBasic\DisplayEmailInformationOnScreen.vbproj", "{CC1C16FB-D565-4A95-9341-4B2A65F3BD95}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManagingEmailMessagesWithPOP3", "ManagingEmailMessagesWithPOP3", "{D33ADC8D-22AC-4C99-B3C0-1D00DD499A86}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManagingEmailMessagesPOP3", "ManagingEmailMessagesPOP3", "{38F38B8D-F437-418E-8EED-4666C766848D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingToPOP3Server", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ConnectingToPOP3Server\VisualBasic\ConnectingToPOP3Server.vbproj", "{975DBF6E-9D13-48E6-BF93-203A556B4AEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingToPOP3", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesPOP3\ConnectingToPOP3\VisualBasic\ConnectingToPOP3Server.vbproj", "{975DBF6E-9D13-48E6-BF93-203A556B4AEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingToSSLEnabledPOP3Server", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ConnectingToSSLEnabledPOP3Server\VisualBasic\ConnectingToSSLEnabledPOP3Server.vbproj", "{8933809D-7E66-45B4-8B9A-13C35F98E741}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSLEnabledPOP3Server", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesPOP3\SSLEnabledPOP3Server\VisualBasic\ConnectingToSSLEnabledPOP3Server.vbproj", "{8933809D-7E66-45B4-8B9A-13C35F98E741}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingMailboxInfo", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\GettingMailboxInfo\VisualBasic\GettingMailboxInfo.vbproj", "{12EEC77D-FB2C-4A1E-A901-FF6C76E22EA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingMailboxInfo", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesPOP3\GettingMailboxInfo\VisualBasic\GettingMailboxInfo.vbproj", "{12EEC77D-FB2C-4A1E-A901-FF6C76E22EA2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReceivingEmailsAndSavingToDisk", "ReceivingEmailsAndSavingToDisk", "{783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReceivingAndSavingToDisk", "ReceivingAndSavingToDisk", "{F11468FE-120A-41DA-A844-02D4FC571FC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetrievingEmailHeaders", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ReceivingEmailsAndSavingToDisk\RetrievingEmailHeaders\VisualBasic\RetrievingEmailHeaders.vbproj", "{19DB1DE4-D171-412E-B2A3-D9E03A3E4C7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetrievingEmailHeaders", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesPOP3\ReceivingAndSavingToDisk\RetrievingEmailHeaders\VisualBasic\RetrievingEmailHeaders.vbproj", "{19DB1DE4-D171-412E-B2A3-D9E03A3E4C7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetrievingEmailMessages", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ReceivingEmailsAndSavingToDisk\RetrievingEmailMessages\VisualBasic\RetrievingEmailMessages.vbproj", "{2359C02B-FE82-4FF1-A82C-5A88C489FBA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetrievingEmailMessages", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesPOP3\ReceivingAndSavingToDisk\RetrievingEmailMessages\VisualBasic\RetrievingEmailMessages.vbproj", "{2359C02B-FE82-4FF1-A82C-5A88C489FBA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveMessageToDiskWithoutParsing", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ReceivingEmailsAndSavingToDisk\SaveMessageToDiskWithoutParsing\VisualBasic\SaveMessageToDiskWithoutParsing.vbproj", "{EAE35D66-6344-423B-903F-7FCEE1C0A18E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveToDiskWithoutParsing", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesPOP3\ReceivingAndSavingToDisk\SaveToDiskWithoutParsing\VisualBasic\SaveMessageToDiskWithoutParsing.vbproj", "{EAE35D66-6344-423B-903F-7FCEE1C0A18E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseMessageBeforeSaving", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ReceivingEmailsAndSavingToDisk\ParseMessageBeforeSaving\VisualBasic\ParseMessageBeforeSaving.vbproj", "{E97BE81D-F2E0-4D28-8391-77AC8135B0FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseMessageAndSave", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesPOP3\ReceivingAndSavingToDisk\ParseMessageAndSave\VisualBasic\ParseMessageBeforeSaving.vbproj", "{E97BE81D-F2E0-4D28-8391-77AC8135B0FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingRecipientInformation", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesWithPOP3\ReceivingEmailsAndSavingToDisk\GettingRecipientInformation\VisualBasic\GettingRecipientInformation.vbproj", "{1EF174AF-CEA8-4626-BC53-8213A161B992}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipientInformation", "ProgrammersGuide\ProgrammingEmail\ManagingEmailMessagesPOP3\ReceivingAndSavingToDisk\RecipientInformation\VisualBasic\GettingRecipientInformation.vbproj", "{1EF174AF-CEA8-4626-BC53-8213A161B992}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManagingEmailsWithIMAP", "ManagingEmailsWithIMAP", "{2F6C8621-6612-4CE1-A336-7AF358253C53}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingWithIMAPServer", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\ConnectingWithIMAPServer\VisualBasic\ConnectingWithIMAPServer.vbproj", "{2F845F55-A6CB-43B5-A73E-911BCF922082}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingWithSSLEnabledIMAPServer", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\ConnectingWithSSLEnabledIMAPServer\VisualBasic\ConnectingWithSSLEnabledIMAPServer.vbproj", "{BF96DE01-8A3F-475E-ACDE-F8248A1C4DBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSLEnabledIMAPServer", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\SSLEnabledIMAPServer\VisualBasic\ConnectingWithSSLEnabledIMAPServer.vbproj", "{BF96DE01-8A3F-475E-ACDE-F8248A1C4DBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FetchMessagesFromIMAPServerSaveToDisk", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\FetchMessagesFromIMAPServerSaveToDisk\VisualBasic\FetchMessagesFromIMAPServerSaveToDisk.vbproj", "{AE291005-662A-409D-999C-E8A74891FC6D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagesFromIMAPServerToDisk", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\MessagesFromIMAPServerToDisk\VisualBasic\FetchMessagesFromIMAPServerSaveToDisk.vbproj", "{AE291005-662A-409D-999C-E8A74891FC6D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingMessageFlags", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\SettingMessageFlags\VisualBasic\SettingMessageFlags.vbproj", "{6B01E022-26F6-4983-B7DF-D744C6383BB2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemovingMessageFlags", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\RemovingMessageFlags\VisualBasic\RemovingMessageFlags.vbproj", "{AAF42EFE-682C-4A57-A394-94A1E8C3305C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddingNewMessageInFolder", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\AddingNewMessageInFolder\VisualBasic\AddingNewMessageInFolder.vbproj", "{D33982E3-8FF1-44A3-971E-4E8994CDB71A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddingNewMessage", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\AddingNewMessage\VisualBasic\AddingNewMessageInFolder.vbproj", "{D33982E3-8FF1-44A3-971E-4E8994CDB71A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingFoldersInformation", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\GettingFoldersInformation\VisualBasic\GettingFoldersInformation.vbproj", "{29B7BF08-C989-45CF-AF7D-2310F7BD8EEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadMessagesRecursively", "ProgrammersGuide\ProgrammingEmail\ManagingEmailsWithIMAP\ReadMessagesRecursively\VisualBasic\ReadMessagesRecursively.vbproj", "{5492F8A8-13FC-4E46-AA87-87D8F02AC9BA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeletingAndRenamingFolders", "DeletingAndRenamingFolders", "{FB3DB86F-D748-4EDA-B1C7-DC0E4F1F3EE8}"
 EndProject
@@ -264,43 +266,43 @@ Global
 		{0BF96160-5DF3-40AD-9148-355E1D0387C5} = {92296BD7-541A-4ADF-90E7-5982154451B2}
 		{8234BC50-4EA2-4848-8B55-8B4E8D078364} = {0BF96160-5DF3-40AD-9148-355E1D0387C5}
 		{16B01DD8-FB7E-48D9-884B-1F33376B02C2} = {0BF96160-5DF3-40AD-9148-355E1D0387C5}
-		{C401F018-722B-4D5A-A4E1-6D3306367560} = {0BF96160-5DF3-40AD-9148-355E1D0387C5}
-		{A1F55D12-74EB-4D9A-A456-4D952CD8228B} = {C401F018-722B-4D5A-A4E1-6D3306367560}
-		{6BC9D6E5-19A3-4B63-A394-AD4563157D37} = {C401F018-722B-4D5A-A4E1-6D3306367560}
-		{2048899E-965D-4BB2-9541-C1BEEDF68423} = {C401F018-722B-4D5A-A4E1-6D3306367560}
-		{499A1DDF-63E0-43CA-9137-79989B32C642} = {C401F018-722B-4D5A-A4E1-6D3306367560}
-		{09E3DA3B-634A-403F-8F26-A1C172F7B5A2} = {C401F018-722B-4D5A-A4E1-6D3306367560}
-		{FC9DA44D-3074-4737-9752-B883640185FF} = {C401F018-722B-4D5A-A4E1-6D3306367560}
-		{871045BA-8BEA-4543-9081-BCDA5BD967F2} = {C401F018-722B-4D5A-A4E1-6D3306367560}
-		{8F9F0EE0-194C-47C3-B82F-744CC8B5F98A} = {C401F018-722B-4D5A-A4E1-6D3306367560}
-		{BEF750E8-2995-4E9F-BEF3-BBA261F489DD} = {C401F018-722B-4D5A-A4E1-6D3306367560}
-		{7F2AA12E-4B17-4123-85A8-3BB526B070FA} = {C401F018-722B-4D5A-A4E1-6D3306367560}
-		{37C7F2E2-D8CF-4A15-8802-EEF79939808A} = {C401F018-722B-4D5A-A4E1-6D3306367560}
-		{7C845F24-551B-43C7-BB08-FD4C0F8B5B09} = {C401F018-722B-4D5A-A4E1-6D3306367560}
+		{FF5DC993-6F33-4725-96AE-6266826E2628} = {0BF96160-5DF3-40AD-9148-355E1D0387C5}
+		{A1F55D12-74EB-4D9A-A456-4D952CD8228B} = {FF5DC993-6F33-4725-96AE-6266826E2628}
+		{6BC9D6E5-19A3-4B63-A394-AD4563157D37} = {FF5DC993-6F33-4725-96AE-6266826E2628}
+		{2048899E-965D-4BB2-9541-C1BEEDF68423} = {FF5DC993-6F33-4725-96AE-6266826E2628}
+		{499A1DDF-63E0-43CA-9137-79989B32C642} = {FF5DC993-6F33-4725-96AE-6266826E2628}
+		{09E3DA3B-634A-403F-8F26-A1C172F7B5A2} = {FF5DC993-6F33-4725-96AE-6266826E2628}
+		{FC9DA44D-3074-4737-9752-B883640185FF} = {FF5DC993-6F33-4725-96AE-6266826E2628}
+		{871045BA-8BEA-4543-9081-BCDA5BD967F2} = {FF5DC993-6F33-4725-96AE-6266826E2628}
+		{8F9F0EE0-194C-47C3-B82F-744CC8B5F98A} = {FF5DC993-6F33-4725-96AE-6266826E2628}
+		{BEF750E8-2995-4E9F-BEF3-BBA261F489DD} = {FF5DC993-6F33-4725-96AE-6266826E2628}
+		{7F2AA12E-4B17-4123-85A8-3BB526B070FA} = {FF5DC993-6F33-4725-96AE-6266826E2628}
+		{37C7F2E2-D8CF-4A15-8802-EEF79939808A} = {FF5DC993-6F33-4725-96AE-6266826E2628}
+		{7C845F24-551B-43C7-BB08-FD4C0F8B5B09} = {FF5DC993-6F33-4725-96AE-6266826E2628}
 		{FF371D66-CED6-4180-B3CA-4E4AAC0AF775} = {7C845F24-551B-43C7-BB08-FD4C0F8B5B09}
 		{497BC9BE-2C52-4DFC-A062-EF93451694F9} = {7C845F24-551B-43C7-BB08-FD4C0F8B5B09}
-		{DFA77D6C-477A-4027-A8B1-406473645FB3} = {C401F018-722B-4D5A-A4E1-6D3306367560}
+		{DFA77D6C-477A-4027-A8B1-406473645FB3} = {FF5DC993-6F33-4725-96AE-6266826E2628}
 		{9D0420E6-C762-4025-A70D-147998579961} = {DFA77D6C-477A-4027-A8B1-406473645FB3}
 		{2DBA76E0-621B-4F0D-8399-0CD98C733E4C} = {DFA77D6C-477A-4027-A8B1-406473645FB3}
-		{F8E6811B-13AE-4D98-851D-6DAC8D461F58} = {C401F018-722B-4D5A-A4E1-6D3306367560}
-		{0CA07E61-2B04-42C9-B07C-403F23AA099F} = {F8E6811B-13AE-4D98-851D-6DAC8D461F58}
-		{665CDFE7-824C-4CDA-9E2F-6643661EEC34} = {F8E6811B-13AE-4D98-851D-6DAC8D461F58}
-		{0FD462DF-859D-403A-A62B-3CB97F2D54A6} = {F8E6811B-13AE-4D98-851D-6DAC8D461F58}
+		{3F44F41C-ED12-45E3-A071-E6DA6D03AEC3} = {FF5DC993-6F33-4725-96AE-6266826E2628}
+		{0CA07E61-2B04-42C9-B07C-403F23AA099F} = {3F44F41C-ED12-45E3-A071-E6DA6D03AEC3}
+		{665CDFE7-824C-4CDA-9E2F-6643661EEC34} = {3F44F41C-ED12-45E3-A071-E6DA6D03AEC3}
+		{0FD462DF-859D-403A-A62B-3CB97F2D54A6} = {3F44F41C-ED12-45E3-A071-E6DA6D03AEC3}
 		{C4021EFB-78BC-47BC-95D3-F936C7CDD528} = {0BF96160-5DF3-40AD-9148-355E1D0387C5}
 		{7CB30327-164E-4197-A09A-73DDF5CFE05B} = {C4021EFB-78BC-47BC-95D3-F936C7CDD528}
-		{C569CA38-4CD5-46F6-BFEA-0E1DC7879C7F} = {0BF96160-5DF3-40AD-9148-355E1D0387C5}
-		{62EC2793-504C-4945-85DA-9D9FC2E8B235} = {C569CA38-4CD5-46F6-BFEA-0E1DC7879C7F}
-		{CC1C16FB-D565-4A95-9341-4B2A65F3BD95} = {C569CA38-4CD5-46F6-BFEA-0E1DC7879C7F}
-		{D33ADC8D-22AC-4C99-B3C0-1D00DD499A86} = {0BF96160-5DF3-40AD-9148-355E1D0387C5}
-		{975DBF6E-9D13-48E6-BF93-203A556B4AEA} = {D33ADC8D-22AC-4C99-B3C0-1D00DD499A86}
-		{8933809D-7E66-45B4-8B9A-13C35F98E741} = {D33ADC8D-22AC-4C99-B3C0-1D00DD499A86}
-		{12EEC77D-FB2C-4A1E-A901-FF6C76E22EA2} = {D33ADC8D-22AC-4C99-B3C0-1D00DD499A86}
-		{783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A} = {D33ADC8D-22AC-4C99-B3C0-1D00DD499A86}
-		{19DB1DE4-D171-412E-B2A3-D9E03A3E4C7E} = {783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A}
-		{2359C02B-FE82-4FF1-A82C-5A88C489FBA0} = {783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A}
-		{EAE35D66-6344-423B-903F-7FCEE1C0A18E} = {783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A}
-		{E97BE81D-F2E0-4D28-8391-77AC8135B0FE} = {783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A}
-		{1EF174AF-CEA8-4626-BC53-8213A161B992} = {783C9C22-7A8B-4A3E-8D10-7F3DEDC7218A}
+		{B55D7FA5-FA7D-4E65-8BEF-9DB2D5438967} = {0BF96160-5DF3-40AD-9148-355E1D0387C5}
+		{62EC2793-504C-4945-85DA-9D9FC2E8B235} = {B55D7FA5-FA7D-4E65-8BEF-9DB2D5438967}
+		{CC1C16FB-D565-4A95-9341-4B2A65F3BD95} = {B55D7FA5-FA7D-4E65-8BEF-9DB2D5438967}
+		{38F38B8D-F437-418E-8EED-4666C766848D} = {0BF96160-5DF3-40AD-9148-355E1D0387C5}
+		{975DBF6E-9D13-48E6-BF93-203A556B4AEA} = {38F38B8D-F437-418E-8EED-4666C766848D}
+		{8933809D-7E66-45B4-8B9A-13C35F98E741} = {38F38B8D-F437-418E-8EED-4666C766848D}
+		{12EEC77D-FB2C-4A1E-A901-FF6C76E22EA2} = {38F38B8D-F437-418E-8EED-4666C766848D}
+		{F11468FE-120A-41DA-A844-02D4FC571FC9} = {38F38B8D-F437-418E-8EED-4666C766848D}
+		{19DB1DE4-D171-412E-B2A3-D9E03A3E4C7E} = {F11468FE-120A-41DA-A844-02D4FC571FC9}
+		{2359C02B-FE82-4FF1-A82C-5A88C489FBA0} = {F11468FE-120A-41DA-A844-02D4FC571FC9}
+		{EAE35D66-6344-423B-903F-7FCEE1C0A18E} = {F11468FE-120A-41DA-A844-02D4FC571FC9}
+		{E97BE81D-F2E0-4D28-8391-77AC8135B0FE} = {F11468FE-120A-41DA-A844-02D4FC571FC9}
+		{1EF174AF-CEA8-4626-BC53-8213A161B992} = {F11468FE-120A-41DA-A844-02D4FC571FC9}
 		{2F6C8621-6612-4CE1-A336-7AF358253C53} = {0BF96160-5DF3-40AD-9148-355E1D0387C5}
 		{2F845F55-A6CB-43B5-A73E-911BCF922082} = {2F6C8621-6612-4CE1-A336-7AF358253C53}
 		{BF96DE01-8A3F-475E-ACDE-F8248A1C4DBF} = {2F6C8621-6612-4CE1-A336-7AF358253C53}

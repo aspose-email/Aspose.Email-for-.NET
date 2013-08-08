@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2F845F55-A6CB-43B5-A73E-911BCF922082}</ProjectGuid>
+    <ProjectGuid>{BF96DE01-8A3F-475E-ACDE-F8248A1C4DBF}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace></RootNamespace>
-    <AssemblyName>ConnectingWithIMAPServer</AssemblyName>
+    <AssemblyName>ConnectingWithSSLEnabledIMAPServer</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
