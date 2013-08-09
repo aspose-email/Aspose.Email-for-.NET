@@ -13,7 +13,7 @@ Imports Aspose.Email
 Imports Aspose.Email.Pop3
 Imports System
 
-Namespace ConnectingToSSLEnabledPOP3Server
+Namespace SSLEnabledPOP3Server
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.

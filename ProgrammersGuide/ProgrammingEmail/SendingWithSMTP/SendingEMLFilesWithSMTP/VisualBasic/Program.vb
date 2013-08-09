@@ -12,7 +12,7 @@ Imports System.IO
 Imports Aspose.Email
 Imports Aspose.Email.Mail
 
-Namespace LoadingEMLFilesfromDiskSendingitwithSMTP
+Namespace SendingEMLFilesWithSMTP
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.
@@ -29,7 +29,7 @@ Namespace LoadingEMLFilesfromDiskSendingitwithSMTP
 			Try
 				'Client.Send will send this message
 				client.Send(msg)
-				'Show Message SentÅE only if message sent successfully
+				' Message sent successfully
 				System.Console.WriteLine("Message sent")
 
 			Catch ex As System.Exception

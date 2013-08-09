@@ -18,6 +18,7 @@ namespace MessagesFromIMAPServerToDisk
         {
             // The path to the documents directory.
             string dataDir = Path.GetFullPath("../../../Data/");
+            Directory.CreateDirectory(dataDir);
 
             //Create an instance of the ImapClient class
             ImapClient client = new ImapClient();

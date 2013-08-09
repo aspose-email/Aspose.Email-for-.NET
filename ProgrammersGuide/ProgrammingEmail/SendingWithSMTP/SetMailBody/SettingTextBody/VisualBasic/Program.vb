@@ -30,16 +30,16 @@ Namespace SettingTextBody
 			msg.TextBody = "This is text body"
 
 
-			Dim client As New SmtpClient("smtp.gmail.com", 587, "newcustomeronnet", "F123456f")
+			Dim client As New SmtpClient("smtp.gmail.com", 587, "asposetest123@gmail.com", "F123456f")
 
 			client.SecurityMode = SmtpSslSecurityMode.Explicit
 
 			client.EnableSsl = True
 
 			Try
-				'Client.Send will send this message
+				'Client will send this message
 				client.Send(msg)
-				'Show ‘Message Sent’, only if message sent successfully
+				'Show only if message sent successfully
 				Console.WriteLine("Message sent")
 
 			Catch ex As Exception

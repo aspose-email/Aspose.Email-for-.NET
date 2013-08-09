@@ -13,7 +13,7 @@ Imports Aspose.Email
 Imports Aspose.Email.Outlook
 Imports System
 
-Namespace GettingRecipientInformation
+Namespace RecipientInformation
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.

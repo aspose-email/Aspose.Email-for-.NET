@@ -12,7 +12,7 @@ Imports System.IO
 Imports Aspose.Email
 Imports Aspose.Email.Mail
 
-Namespace ConnectingToSSLEnabledSMTPServer
+Namespace SSLEnabledSMTPServer
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.

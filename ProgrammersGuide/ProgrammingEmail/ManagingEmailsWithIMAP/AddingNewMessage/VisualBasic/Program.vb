@@ -13,7 +13,7 @@ Imports Aspose.Email
 Imports System
 Imports Aspose.Email.Imap
 
-Namespace AddingNewMessageInFolder
+Namespace AddingNewMessage
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.

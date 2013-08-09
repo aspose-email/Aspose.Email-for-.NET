@@ -20,6 +20,7 @@ namespace ParseMessageAndSave
         {
             // The path to the documents directory.
             string dataDir = Path.GetFullPath("../../../Data/");
+            Directory.CreateDirectory(dataDir);
 
             //Create an instance of the Pop3Client class
             Pop3Client client = new Pop3Client();

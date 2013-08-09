@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2048899E-965D-4BB2-9541-C1BEEDF68423}</ProjectGuid>
+    <ProjectGuid>{BEF750E8-2995-4E9F-BEF3-BBA261F489DD}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace></RootNamespace>
-    <AssemblyName>WorkingWithEmbeddedObjects</AssemblyName>
+    <AssemblyName>MailMerge</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -43,14 +43,8 @@
       <HintPath>..\..\..\..\..\..\Bin\net2.0\Aspose.Email.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Import Include="Microsoft.VisualBasic" />
-    <Import Include="System.Collections.Generic" />
-    <Import Include="System.Collections" />
-    <Import Include="System.Diagnostics" />
-    <Import Include="System" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.vb" />

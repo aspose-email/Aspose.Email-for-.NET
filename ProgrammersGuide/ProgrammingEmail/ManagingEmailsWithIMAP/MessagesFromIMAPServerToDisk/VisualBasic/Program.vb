@@ -12,11 +12,12 @@ Imports System.IO
 Imports Aspose.Email
 Imports Aspose.Email.Imap
 
-Namespace FetchMessagesFromIMAPServerSaveToDisk
+Namespace MessagesFromIMAPServerToDisk
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.
 			Dim dataDir As String = Path.GetFullPath("../../../Data/")
+            Directory.CreateDirectory(dataDir)
 
 			'Create an instance of the ImapClient class
 			Dim client As New ImapClient()

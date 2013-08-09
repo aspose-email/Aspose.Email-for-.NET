@@ -5,12 +5,14 @@
 ' is only intended as a supplement to the documentation, and is provided
 ' "as is", without warranty of any kind, either expressed or implied.
 '////////////////////////////////////////////////////////////////////////
+
+Imports Microsoft.VisualBasic
 Imports System.IO
 
 Imports Aspose.Email
 Imports Aspose.Email.Mail
 
-Namespace DisplayEmailInformationOnScreen
+Namespace DisplayEmailInformation
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.

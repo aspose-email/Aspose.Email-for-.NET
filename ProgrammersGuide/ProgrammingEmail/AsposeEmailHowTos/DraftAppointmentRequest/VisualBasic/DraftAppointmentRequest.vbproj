@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7CB30327-164E-4197-A09A-73DDF5CFE05B}</ProjectGuid>
+    <ProjectGuid>{4AA29EBC-D540-4BF8-8F97-A28771C1FD9E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>DraftAppointmentRequest</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>

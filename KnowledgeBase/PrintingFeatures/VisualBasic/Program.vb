@@ -5,6 +5,9 @@
 ' is only intended as a supplement to the documentation, and is provided
 ' "as is", without warranty of any kind, either expressed or implied.
 '////////////////////////////////////////////////////////////////////////
+
+Imports Microsoft.VisualBasic
+Imports System
 Imports System.IO
 
 Imports Aspose.Email
@@ -18,11 +21,8 @@ Namespace PrintingFeatures
 			Dim dataDir As String = Path.GetFullPath("../../../Data/")
 
 			' Create directory if it is not already present.
-			Dim IsExists As Boolean = System.IO.Directory.Exists(dataDir)
-			If Not IsExists Then
-				System.IO.Directory.CreateDirectory(dataDir)
-			End If
-			
+			Directory.CreateDirectory(dataDir)
+
 			'Declare message as an MailMessage instance
 			Dim message As New MailMessage()
 
@@ -36,7 +36,7 @@ Namespace PrintingFeatures
 			message.Subject = "My First Mail"
 
 			'Set message date to current date and time
-			message.Date = Date.Now
+			message.Date = DateTime.Now
 
 			'Body of the email message
 			message.TextBody = "Text is the Mail Message"
@@ -46,7 +46,7 @@ Namespace PrintingFeatures
 			message.HtmlBody = "<html><body><h1>Hello this is html body in Heading 1 format </h1></body></html>"
 
 			'Instantiate an instance of MailPrinter
-            Dim printer As New Aspose.Email.Printing.MailPrinter()
+			Dim printer As New Aspose.Email.Printing.MailPrinter()
 
 			'Set the MessageFormattingFlags to none to display only the message body
 			printer.FormattingFlags = Aspose.Email.Printing.MessageFormattingFlags.None

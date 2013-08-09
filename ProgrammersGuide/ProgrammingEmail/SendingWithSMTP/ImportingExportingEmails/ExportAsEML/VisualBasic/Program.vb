@@ -12,11 +12,12 @@ Imports System.IO
 Imports Aspose.Email
 Imports Aspose.Email.Mail
 
-Namespace ExportMessageAsEMLFile
+Namespace ExportAsEML
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.
 			Dim dataDir As String = Path.GetFullPath("../../../Data/")
+            Directory.CreateDirectory(dataDir)
 
 			'Create a new instance of MailMessage class
 			Dim message As New MailMessage()
@@ -41,9 +42,6 @@ Namespace ExportMessageAsEMLFile
 
 			' Save message in EML, MSG and MHTML formats
 			message.Save(dataDir & "Message.eml", MailMessageSaveType.EmlFormat)
-
-
-
 		End Sub
 	End Class
 End Namespace

@@ -14,7 +14,7 @@ Imports Aspose.Email.Imap
 Imports System
 Imports Aspose.Email.Mail
 
-Namespace GetFolderInformationFromIMAPServerAndReadMessagesRecursively
+Namespace ReadMessagesRecursively
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 
@@ -77,8 +77,7 @@ Namespace GetFolderInformationFromIMAPServerAndReadMessagesRecursively
 		''' <param name="rootFolder"></param>
 		Private Shared Sub ListMessagesInFolder(ByVal folderInfo As ImapFolderInfo, ByVal rootFolder As String, ByVal client As ImapClient)
 			' Create the folder in disk (same name as on IMAP server)
-			Dim currentFolder As String = Path.GetFullPath("../../../Data/") & "\" & folderInfo.Name
-
+            Dim currentFolder As String = Path.Combine(Path.GetFullPath("../../../Data/"), folderInfo.Name)
 			Directory.CreateDirectory(currentFolder)
 
 			' Read the messages from the current folder, if it is selectable

@@ -13,7 +13,7 @@ Imports Aspose.Email
 Imports Aspose.Email.Mail
 Imports System
 
-Namespace SetDatePriorityAndSensitivityofEmail
+Namespace SetEmailInfo
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.
@@ -44,7 +44,7 @@ Namespace SetDatePriorityAndSensitivityofEmail
 			Try
 				'Client.Send will send this message
 				client.Send(msg)
-				'Show Message SentÅE only if message sent successfully
+                'Message sent successfully
 				Console.WriteLine("Message sent")
 
 			Catch ex As Exception

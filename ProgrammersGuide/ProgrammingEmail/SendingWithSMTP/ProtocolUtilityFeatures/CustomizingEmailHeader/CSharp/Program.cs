@@ -53,7 +53,7 @@ namespace CustomizingEmailHeader
             {
                 //Client.Send will send this message
                 client.Send(msg);
-                //Show Message SentE only if message sent successfully
+                //Message sent successfully
                 System.Console.WriteLine("Message sent");
             }
 

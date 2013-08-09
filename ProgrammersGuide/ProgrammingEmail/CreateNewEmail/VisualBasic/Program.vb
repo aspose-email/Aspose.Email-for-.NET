@@ -5,6 +5,8 @@
 ' is only intended as a supplement to the documentation, and is provided
 ' "as is", without warranty of any kind, either expressed or implied.
 '////////////////////////////////////////////////////////////////////////
+
+Imports Microsoft.VisualBasic
 Imports System.IO
 
 Imports Aspose.Email
@@ -15,6 +17,7 @@ Namespace CreateNewEmail
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.
 			Dim dataDir As String = Path.GetFullPath("../../../Data/")
+			Directory.CreateDirectory(dataDir)
 
 			' Create a new instance of MailMessage class
 			Dim message As New MailMessage()

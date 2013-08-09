@@ -38,7 +38,7 @@ Namespace DeliveryNotifications
 			Try
 				'Client.Send will send this message
 				client.Send(msg)
-				'Show Message SentÅE only if message sent successfully
+                'Message sent successfully
 				System.Console.WriteLine("Message sent")
 
 			Catch ex As System.Exception

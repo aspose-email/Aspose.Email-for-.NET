@@ -14,7 +14,7 @@ Imports Aspose.Email.Mail
 Imports System.Data
 Imports System
 
-Namespace PerformingMailMerge
+Namespace MailMerge
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.

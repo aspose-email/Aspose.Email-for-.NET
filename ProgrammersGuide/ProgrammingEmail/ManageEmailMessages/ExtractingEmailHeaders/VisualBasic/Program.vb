@@ -5,10 +5,13 @@
 ' is only intended as a supplement to the documentation, and is provided
 ' "as is", without warranty of any kind, either expressed or implied.
 '////////////////////////////////////////////////////////////////////////
+
+Imports Microsoft.VisualBasic
 Imports System.IO
 
 Imports Aspose.Email
 Imports Aspose.Email.Mail
+Imports System
 
 Namespace ExtractingEmailHeaders
 	Public Class Program
@@ -21,7 +24,7 @@ Namespace ExtractingEmailHeaders
 			'Create MailMessage instance by loading an EML file
 			message = MailMessage.Load(dataDir & "test.eml", MessageFormat.Eml)
 
-			Console.WriteLine(vbLf & vbLf & "headers:" & vbLf & vbLf)
+			Console.WriteLine(Constants.vbLf + Constants.vbLf & "headers:" & Constants.vbLf + Constants.vbLf)
 
 			'print out all the headers
 			Dim index As Integer = 0

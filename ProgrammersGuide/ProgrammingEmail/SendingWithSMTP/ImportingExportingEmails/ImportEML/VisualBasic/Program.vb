@@ -12,7 +12,7 @@ Imports System.IO
 Imports Aspose.Email
 Imports Aspose.Email.Mail
 
-Namespace ImportEMLFormatEmail
+Namespace ImportEML
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.
@@ -30,7 +30,7 @@ Namespace ImportEMLFormatEmail
 			Try
 				'Client.Send will send this message
 				client.Send(msg)
-				'Show Message SentÅE only if message sent successfully
+				'Show Message SentÔøΩE only if message sent successfully
 				System.Console.WriteLine("Message sent")
 
 			Catch ex As System.Exception

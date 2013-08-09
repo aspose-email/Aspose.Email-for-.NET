@@ -13,11 +13,12 @@ Imports Aspose.Email
 Imports Aspose.Email.Pop3
 Imports System
 
-Namespace SaveMessageToDiskWithoutParsing
+Namespace SaveToDiskWithoutParsing
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.
 			Dim dataDir As String = Path.GetFullPath("../../../Data/")
+            Directory.CreateDirectory(dataDir)
 
 			'Create an instance of the Pop3Client class
 			Dim client As New Pop3Client()

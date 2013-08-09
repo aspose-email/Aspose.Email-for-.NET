@@ -22,9 +22,7 @@ namespace PrintingFeatures
             string dataDir = Path.GetFullPath("../../../Data/");
 
 			// Create directory if it is not already present.
-            bool IsExists = System.IO.Directory.Exists(dataDir);
-            if (!IsExists)
-                System.IO.Directory.CreateDirectory(dataDir);
+            Directory.CreateDirectory(dataDir);
 				
             //Declare message as an MailMessage instance
             MailMessage message = new MailMessage();

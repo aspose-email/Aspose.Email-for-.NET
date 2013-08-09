@@ -55,8 +55,8 @@ namespace AppointmentInICSFormat
             Console.WriteLine("Description: " + loadedAppointment.Description);
             Console.WriteLine("Start date: " + loadedAppointment.StartDate);
             Console.WriteLine("End date: " + loadedAppointment.EndDate);
-            Console.WriteLine("Organizer: " + appointment.Organizer);
-            Console.WriteLine("Attendees: " + appointment.Attendees);
+            Console.WriteLine("Organizer: " + appointment.Organizer.ToString());
+            Console.WriteLine("Attendees: " + appointment.Attendees.ToString());
 
             // Display Status.
             System.Console.WriteLine("\nAppointment loaded and information displayed successfully.");

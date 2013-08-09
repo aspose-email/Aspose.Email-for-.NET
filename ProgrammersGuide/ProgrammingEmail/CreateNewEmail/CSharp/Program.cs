@@ -18,6 +18,7 @@ namespace CreateNewEmail
         {
             // The path to the documents directory.
             string dataDir = Path.GetFullPath("../../../Data/");
+            Directory.CreateDirectory(dataDir);
 
             // Create a new instance of MailMessage class
             MailMessage message = new MailMessage();

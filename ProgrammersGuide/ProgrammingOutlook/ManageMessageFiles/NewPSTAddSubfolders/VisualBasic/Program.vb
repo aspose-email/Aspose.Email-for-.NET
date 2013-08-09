@@ -5,6 +5,8 @@
 ' is only intended as a supplement to the documentation, and is provided
 ' "as is", without warranty of any kind, either expressed or implied.
 '////////////////////////////////////////////////////////////////////////
+
+Imports Microsoft.VisualBasic
 Imports System.IO
 
 Imports Aspose.Email
@@ -16,11 +18,9 @@ Namespace NewPSTAddSubfolders
 			' The path to the documents directory.
 			Dim dataDir As String = Path.GetFullPath("../../../Data/")
 
-            ' Create the data directory if it doesn't exist.
-            Directory.CreateDirectory(dataDir)
-			
-			System.IO.File.Delete(dataDir & "PersonalStorage.pst")
-			
+			' Create the data directory if it doesn't exist.
+			Directory.CreateDirectory(dataDir)
+
 			' Create new PST
 			Dim pst As PersonalStorage = PersonalStorage.Create(dataDir & "PersonalStorage.pst", FileFormatVersion.Unicode)
 

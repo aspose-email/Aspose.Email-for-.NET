@@ -83,8 +83,7 @@ namespace ReadMessagesRecursively
         private static void ListMessagesInFolder(ImapFolderInfo folderInfo, string rootFolder, ImapClient client)
         {
             // Create the folder in disk (same name as on IMAP server)
-            string currentFolder = Path.GetFullPath("../../../Data/") + "\\" + folderInfo.Name;
-
+            string currentFolder = Path.Combine(Path.GetFullPath("../../../Data/"), folderInfo.Name);
             Directory.CreateDirectory(currentFolder);
 
             // Read the messages from the current folder, if it is selectable

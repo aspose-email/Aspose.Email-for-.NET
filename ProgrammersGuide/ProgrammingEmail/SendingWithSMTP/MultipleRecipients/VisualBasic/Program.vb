@@ -13,7 +13,7 @@ Imports Aspose.Email
 Imports Aspose.Email.Mail
 Imports System
 
-Namespace SpecifyingMultipleRecipients
+Namespace MultipleRecipients
 	Public Class Program
 		Public Shared Sub Main(ByVal args() As String)
 			' The path to the documents directory.
