@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -35,9 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Email, Version=2.6.0.0, Culture=neutral, PublicKeyToken=ad504e9f0d34714a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\bin\net3.5\Aspose.Email.dll</HintPath>
+    <Reference Include="Aspose.Email, Version=3.2.0.0, Culture=neutral, PublicKeyToken=ad504e9f0d34714a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Bin\net2.0\Aspose.Email.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
