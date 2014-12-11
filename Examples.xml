@@ -9,7 +9,8 @@
 - Programming Outlook
 - Programming Exchange
 - Programming Thunderbird
-- Programming Email Verify</Description>
+- Programming Email Verify
+ - Working with Gmail Client</Description>
       <FolderName>ProgrammersGuide</FolderName>
       <Order>1</Order>
       <Folders>
@@ -912,6 +913,87 @@ The following flags can be set:
                       <Path>..\Data\message.msg</Path>
                     </DataFile>
                   </OutputFiles>
+                  <Type>Console</Type>
+                </Example>
+              </Examples>
+            </Folder>
+          </Folders>
+        </Folder>
+        <Folder>
+          <Title>Working With Gmail Client</Title>
+          <Description>This section includes the following topics:
+
+ - Create project in Google Developer Console
+ - Helper Classes
+ - Working with Gmail contacts
+ - Programming Gmail Calendar</Description>
+          <FolderName>WorkingWithGmailClient</FolderName>
+          <Order>3</Order>
+          <Folders>
+            <Folder>
+              <Title>Working With Gmail Contacts</Title>
+              <Description>This section includes the following topics:
+
+ - Access Gmail Contacts
+ - Create New Gmail Contacts
+ - Update existing Contacts
+ - Delete a Contact</Description>
+              <FolderName>WorkingWithGmailContacts</FolderName>
+              <Order>1</Order>
+              <Examples>
+                <Example>
+                  <Title>Access Gmail Contacts</Title>
+                  <Description>In this example, we will see how we can access the detail of gmail contacts in all the groups using Aspose.Email.</Description>
+                  <FolderName>AccessGmailContacts</FolderName>
+                  <Order>1</Order>
+                  <DocLink>
+                    <DisplayName>Working with Gmail contacts</DisplayName>
+                    <Url>http://www.aspose.com/docs/display/emailnet/Working+with+Gmail+contacts</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Create New Gmail Contact</Title>
+                  <Description>In this example, we will see how we can create a new gmail contact using Aspose.Email.</Description>
+                  <FolderName>CreateNewContact</FolderName>
+                  <Order>2</Order>
+                  <DocLink>
+                    <DisplayName>Working with Gmail Contacts</DisplayName>
+                    <Url>http://www.aspose.com/docs/display/emailnet/Working+with+Gmail+Contacts#WorkingwithGmailContacts-CreateGmailContacts</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Update Existing Contacts</Title>
+                  <Description>In this example, we will see how we can update an existing gmail account using Aspose.Email.</Description>
+                  <FolderName>UpdateExistingContacts</FolderName>
+                  <Order>3</Order>
+                  <DocLink>
+                    <DisplayName>Working with Gmail Contacts</DisplayName>
+                    <Url>http://www.aspose.com/docs/display/emailnet/Working+with+Gmail+Contacts#WorkingwithGmailContacts-UpdateGmailContact</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Delete A Contact</Title>
+                  <Description>In this example, we will see how we can delete a contact using Aspose.Email</Description>
+                  <FolderName>DeleteContact</FolderName>
+                  <Order>4</Order>
+                  <DocLink>
+                    <DisplayName>Working with Gmail Contacts</DisplayName>
+                    <Url>http://www.aspose.com/docs/display/emailnet/Working+with+Gmail+Contacts#WorkingwithGmailContacts-DeleteGmailContact</Url>
+                  </DocLink>
+                  <Type>Console</Type>
+                </Example>
+                <Example>
+                  <Title>Saving A Contact</Title>
+                  <Description>In this example, we will see how we can save a contact using Aspose.Email.</Description>
+                  <FolderName>SavingContact</FolderName>
+                  <Order>5</Order>
+                  <DocLink>
+                    <DisplayName>Working with Gmail Contacts</DisplayName>
+                    <Url>http://www.aspose.com/docs/display/emailnet/Working+with+Gmail+Contacts#WorkingwithGmailContacts-DeleteGmailContact</Url>
+                  </DocLink>
                   <Type>Console</Type>
                 </Example>
               </Examples>
