@@ -3,7 +3,7 @@
 This repository contains C# and VB.NET Example Projects for [Aspose.Email for .NET](http://www.aspose.com/.net/email-component.aspx).
 <br/><br/>
 <p align="center">
-  <a title="Download Examples Dashboard" href="http://www.aspose.com/community/files/72/java-components/aspose-examples-for-java/default.aspx">
+  <a title="Download Examples Dashboard" href="http://www.aspose.com/community/files/51/.net-components/aspose-examples-for-.net/default.aspx">
 	<img src="https://raw.github.com/AsposeExamples/java-examples-dashboard/master/images/downloadDasboard-Button-Large.png" />
   </a>
   &nbsp;
@@ -110,7 +110,6 @@ This package contains C# and VB.NET Example Projects for [Aspose.Email for .NET]
 + **Documentation:** [Aspose.Email for .NET Documentation](http://www.aspose.com/documentation/.net-components/aspose.email-for-.net/index.html)
 + **Forum:** [Aspose.Email for .NET Forum](http://www.aspose.com/community/forums/aspose.email-product-family/499/showforum.aspx)
 + **Blog:** [Aspose.Email for .NET Blog](http://www.aspose.com/blogs/aspose-products/aspose-email-product-family.html)
-
 
 
 
