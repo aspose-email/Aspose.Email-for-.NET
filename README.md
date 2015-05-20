@@ -3,22 +3,12 @@
 This repository contains C# and VB.NET Example Projects for [Aspose.Email for .NET](http://www.aspose.com/.net/email-component.aspx).
 <br/><br/>
 <p align="center">
-  <a title="Download Examples Dashboard" href="http://www.aspose.com/community/files/51/.net-components/aspose-examples-for-.net/default.aspx">
-	<img src="https://raw.github.com/AsposeExamples/java-examples-dashboard/master/images/downloadDasboard-Button-Large.png" />
-  </a>
-  &nbsp;
-  <a title="Download Examples ZIP" href="https://github.com/asposeemail/Aspose_Email_NET/archive/master.zip">
+<a title="Download Examples ZIP" href="https://github.com/asposeemail/Aspose_Email_NET/archive/master.zip">
 	<img src="https://raw.github.com/AsposeExamples/java-examples-dashboard/master/images/downloadZip-Button-Large.png" />
   </a>
 </p>
 
 ##How to use the Examples?
-
-###With the Examples Dashboard
-
-Download the [Aspose Examples Dashboard for .NET](http://www.aspose.com/community/files/51/.net-components/aspose-examples-for-.net/default.aspx) to view and run all these examples on your PC. It updates itself with the latest dependency libraries and examples.
-
-![Aspose Examples Dashboard](http://www.aspose.com/blogs/wp-content/uploads/2013/04/Dotnet-Dashboard.png "Aspose Examples Dashboard")
 
 ###With IDE
 
