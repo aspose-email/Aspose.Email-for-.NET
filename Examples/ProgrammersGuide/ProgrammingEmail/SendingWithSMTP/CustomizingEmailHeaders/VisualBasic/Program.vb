@@ -48,7 +48,7 @@ Namespace CustomizingEmailHeaders
 			msg.Headers.Add("secret-header", "mystery")
 
 			'Save message to disc
-			msg.Save(dataDir & "MsgHeaders.msg", MessageFormat.Msg)
+            msg.Save(dataDir & "MsgHeaders.msg", Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode)
 		End Sub
 	End Class
 End Namespace

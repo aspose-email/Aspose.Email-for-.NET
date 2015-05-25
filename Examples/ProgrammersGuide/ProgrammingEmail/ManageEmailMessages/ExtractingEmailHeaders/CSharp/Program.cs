@@ -23,7 +23,7 @@ namespace ExtractingEmailHeaders
             MailMessage message;
 
             //Create MailMessage instance by loading an EML file
-            message = MailMessage.Load(dataDir + "test.eml", MessageFormat.Eml);
+            message = MailMessage.Load(dataDir + "test.eml", MailMessageLoadOptions.DefaultEml);
 
             Console.WriteLine("\n\nheaders:\n\n");
 

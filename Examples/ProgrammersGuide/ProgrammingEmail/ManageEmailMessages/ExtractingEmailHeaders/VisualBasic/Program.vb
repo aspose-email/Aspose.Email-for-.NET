@@ -22,7 +22,7 @@ Namespace ExtractingEmailHeaders
 			Dim message As MailMessage
 
 			'Create MailMessage instance by loading an EML file
-			message = MailMessage.Load(dataDir & "test.eml", MessageFormat.Eml)
+            message = MailMessage.Load(dataDir & "test.eml", MailMessageLoadOptions.DefaultEml)
 
 			Console.WriteLine(Constants.vbLf + Constants.vbLf & "headers:" & Constants.vbLf + Constants.vbLf)
 

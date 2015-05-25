@@ -34,23 +34,11 @@ namespace ConnectingWithIMAPServer
             // Set the port to 993. This is the SSL port of IMAP server
             client.Port = 993;
 
-            // Enable SSL
-            client.EnableSsl = true;
+            // Set Security Options
+            client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {
-                System.Console.WriteLine("Connecting to the IMAP server");
-                //Connect to the remote server.
-                //Note:If you use Connect(true), it will invoke the login internal.
-                //        Otherwise, you need to call login sequentially.
-                client.Connect();
-                System.Console.WriteLine("Connected to the IMAP server");
-
-                //Log in to the remote server.
-                client.Login();
-
-                System.Console.WriteLine("Logged in to the IMAP server");
-
                 //Disconnect to the remote IMAP server
                 client.Disconnect();
                 System.Console.WriteLine("Disconnected from the IMAP server");

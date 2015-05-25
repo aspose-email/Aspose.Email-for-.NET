@@ -56,7 +56,7 @@ Namespace ManagingEmailAttachments
 			message.AddAttachment(New Attachment(dataDir & "1.pdf"))
 
 			'Save message to disk
-			message.Save(dataDir & "outputAttachments.msg", MessageFormat.Msg)
+            message.Save(dataDir & "outputAttachments.msg", Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode)
 
 
 
@@ -67,7 +67,7 @@ Namespace ManagingEmailAttachments
 			message.Attachments.Remove(attachment)
 
 			'Save message to disk after removing a single attachment 
-			message.Save(dataDir & "outputAttachmentRemoved.msg", MessageFormat.Msg)
+            message.Save(dataDir & "outputAttachmentRemoved.msg", Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode)
 
 
 

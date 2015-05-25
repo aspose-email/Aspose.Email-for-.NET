@@ -36,16 +36,10 @@ namespace GettingFoldersInformation
             client.Port = 993;
 
             // Enable SSL
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {
-                //Connect to the remote server.
-                client.Connect();               
-
-                //Log in to the remote server.
-                client.Login();
-
                 // Get all folders in the currently subscribed folder
                 Aspose.Email.Imap.ImapFolderInfoCollection folderInfoColl = client.ListFolders();
 

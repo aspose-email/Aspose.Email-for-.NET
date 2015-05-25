@@ -34,13 +34,10 @@ Namespace GettingMailboxInfo
 			' Set the port to 995. This is the SSL port of POP3 server
 			client.Port = 995
 
-			' Enable SSL
-			client.EnableSsl = True
+            ' Set Security Options
+            client.SecurityOptions = SecurityOptions.Auto
 
-			' Connect to a POP3 server
-			client.Connect(True)
-
-			' Get the size of the mailbox
+            ' Get the size of the mailbox
 			Dim nSize As Long = client.GetMailboxSize()
 
 			Console.WriteLine("Mailbox size is " & nSize & " bytes.")

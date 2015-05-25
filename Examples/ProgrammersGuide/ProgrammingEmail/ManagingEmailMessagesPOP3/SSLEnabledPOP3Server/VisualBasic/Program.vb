@@ -35,23 +35,12 @@ Namespace SSLEnabledPOP3Server
 			client.Port = 995
 
 			' Enable SSL
-			client.EnableSsl = True
+            client.SecurityOptions = SecurityOptions.Auto
 
-			'Set Security Mode
-			client.SecurityMode = Pop3SslSecurityMode.Implicit
-
-			'Connect and login to a POP3 server
+            'Connect and login to a POP3 server
 			Try
-				client.Connect()
-				Console.WriteLine("==================")
-				Console.WriteLine("connected ")
-				Console.WriteLine("==================")
-				client.Login()
-				Console.WriteLine("==================")
-				Console.WriteLine("logged in ")
-				Console.WriteLine("==================")
-			Catch ex As Pop3Exception
-				Console.Write(ex.ToString())
+            Catch ex As Pop3Exception
+                Console.Write(ex.ToString())
 			End Try
 
 

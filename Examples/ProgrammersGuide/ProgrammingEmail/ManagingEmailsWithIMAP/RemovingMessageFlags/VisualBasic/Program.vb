@@ -35,22 +35,10 @@ Namespace RemovingMessageFlags
 			client.Port = 993
 
 			' Enable SSL
-			client.EnableSsl = True
+            client.SecurityOptions = SecurityOptions.Auto
 
 			Try
-				System.Console.WriteLine("Connecting to the IMAP server")
-
-				'Connect to the remote server.
-				client.Connect()
-
-				System.Console.WriteLine("Connected to the IMAP server")
-
-				'Log in to the remote server.
-				client.Login()
-
-				System.Console.WriteLine("Logged in to the IMAP server")
-
-				' Mark the message as read
+                ' Mark the message as read
 				client.RemoveMessageFlags(1, Aspose.Email.Imap.ImapMessageFlags.IsRead)
 
 				'Disconnect to the remote IMAP server

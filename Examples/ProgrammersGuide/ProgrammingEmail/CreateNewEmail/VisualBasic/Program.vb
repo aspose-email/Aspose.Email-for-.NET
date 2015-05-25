@@ -41,9 +41,9 @@ Namespace CreateNewEmail
 			message.CC.Add("cc2@domain.com")
 
 			' Save message in EML, MSG and MHTML formats
-			message.Save(dataDir & "Message.eml", MailMessageSaveType.EmlFormat)
-			message.Save(dataDir & "Message.msg", MailMessageSaveType.OutlookMessageFormat)
-			message.Save(dataDir & "Message.mhtml", MailMessageSaveType.MHtmlFromat)
+            message.Save(dataDir + "Message.eml", Aspose.Email.Mail.SaveOptions.DefaultEml)
+            message.Save(dataDir + "Message.msg", Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode)
+            message.Save(dataDir + "Message.mhtml", Aspose.Email.Mail.SaveOptions.DefaultMhtml)
 
 			' Display Status.
 			System.Console.WriteLine("New Emails created successfully.")

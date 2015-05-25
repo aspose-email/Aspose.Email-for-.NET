@@ -34,22 +34,10 @@ Namespace ConnectingWithIMAPServer
 			client.Port = 993
 
 			' Enable SSL
-			client.EnableSsl = True
+            client.SecurityOptions = SecurityOptions.Auto
 
 			Try
-				System.Console.WriteLine("Connecting to the IMAP server")
-				'Connect to the remote server.
-				'Note:If you use Connect(true), it will invoke the login internal.
-				'        Otherwise, you need to call login sequentially.
-				client.Connect()
-				System.Console.WriteLine("Connected to the IMAP server")
-
-				'Log in to the remote server.
-				client.Login()
-
-				System.Console.WriteLine("Logged in to the IMAP server")
-
-				'Disconnect to the remote IMAP server
+                'Disconnect to the remote IMAP server
 				client.Disconnect()
 				System.Console.WriteLine("Disconnected from the IMAP server")
 			Catch ex As System.Exception

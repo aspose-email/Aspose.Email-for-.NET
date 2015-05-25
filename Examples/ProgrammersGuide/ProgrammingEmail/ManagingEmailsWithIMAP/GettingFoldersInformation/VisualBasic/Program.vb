@@ -35,16 +35,10 @@ Namespace GettingFoldersInformation
 			client.Port = 993
 
 			' Enable SSL
-			client.EnableSsl = True
+            client.SecurityOptions = SecurityOptions.Auto
 
 			Try
-				'Connect to the remote server.
-				client.Connect()
-
-				'Log in to the remote server.
-				client.Login()
-
-				' Get all folders in the currently subscribed folder
+                ' Get all folders in the currently subscribed folder
 				Dim folderInfoColl As Aspose.Email.Imap.ImapFolderInfoCollection = client.ListFolders()
 
 				' Iterate through the collection to get folder info one by one

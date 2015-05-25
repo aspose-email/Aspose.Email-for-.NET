@@ -41,7 +41,7 @@ Namespace ExportAsEML
 			message.CC.Add("cc2@domain.com")
 
 			' Save message in EML, MSG and MHTML formats
-			message.Save(dataDir & "Message.eml", MailMessageSaveType.EmlFormat)
+            message.Save(dataDir & "Message.eml", Aspose.Email.Mail.SaveOptions.DefaultEml)
 		End Sub
 	End Class
 End Namespace

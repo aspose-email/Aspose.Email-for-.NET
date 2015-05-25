@@ -27,14 +27,12 @@ Namespace SettingTextBody
 			msg.From = "newcustomeronnet@gmail.com"
 			msg.To = "newcustomeronnet2@gmail.com"
 			msg.Subject = "Test subject"
-			msg.TextBody = "This is text body"
+            msg.Body = "This is text body"
 
 
 			Dim client As New SmtpClient("smtp.gmail.com", 587, "asposetest123@gmail.com", "F123456f")
 
-			client.SecurityMode = SmtpSslSecurityMode.Explicit
-
-			client.EnableSsl = True
+            client.SecurityOptions = SecurityOptions.Auto
 
 			Try
 				'Client will send this message

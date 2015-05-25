@@ -53,7 +53,7 @@ namespace EmbeddedObjects
             mail.AlternateViews.Add(plainView);
             mail.AlternateViews.Add(htmlView);
             
-            mail.Save(dataDir + "EmbeddedImage.msg", MessageFormat.Msg);
+            mail.Save(dataDir + "EmbeddedImage.msg", Aspose.Email.Mail.SaveOptions.DefaultMsgUnicdoe);
         }
     }
 }

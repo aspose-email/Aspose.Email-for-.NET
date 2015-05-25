@@ -37,12 +37,10 @@ namespace RetrievingEmailMessages
             client.Port = 995;
 
             // Enable SSL
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {
-                client.Connect(true);
-
                 int messageCount = client.GetMessageCount();
                 // Create an instance of the MailMessage class
                 MailMessage msg;
@@ -55,7 +53,6 @@ namespace RetrievingEmailMessages
                     Console.WriteLine("From:" + msg.From.ToString());
                     Console.WriteLine("Subject:" + msg.Subject);
                     Console.WriteLine(msg.HtmlBody);
-
                 }
 
             }

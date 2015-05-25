@@ -37,16 +37,14 @@ Namespace ParseMessageAndSave
 			client.Port = 995
 
 			' Enable SSL
-			client.EnableSsl = True
+            client.SeurityOptions = SecurityOptions.Auto
 
 			Try
-				client.Connect(True)
-
-				'Fetch the message by its sequence number
+                'Fetch the message by its sequence number
 				Dim msg As MailMessage = client.FetchMessage(1)
 
 				'Save the message using its subject as the file name
-				msg.Save(dataDir & "Msg1234.eml", MessageFormat.Eml)
+                msg.Save(dataDir & "Msg1234.eml", Aspose.Email.Mail.SaveOptions.DefaultEml)
 				client.Disconnect()
 
 			Catch ex As Exception

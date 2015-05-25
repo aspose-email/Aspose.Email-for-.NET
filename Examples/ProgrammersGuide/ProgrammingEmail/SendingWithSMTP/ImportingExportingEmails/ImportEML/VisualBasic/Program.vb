@@ -22,7 +22,7 @@ Namespace ImportEML
 			Dim msg As New MailMessage()
 
 			'Import from EML format
-			msg = MailMessage.Load(dataDir & "test.eml", MessageFormat.Eml)
+            msg = MailMessage.Load(dataDir & "test.eml", MailMessageLoadOptions.DefaultEml)
 
 			'Create an instance of SmtpClient class
 			Dim client As SmtpClient = GetSmtpClient()
@@ -41,7 +41,7 @@ Namespace ImportEML
 
 		Private Shared Function GetSmtpClient() As SmtpClient
 			Dim client As New SmtpClient("smtp.gmail.com", 587, "asposetest123@gmail.com", "F123456f")
-			client.SecurityMode = SmtpSslSecurityMode.Explicit
+            client.SecurityOptions = SecurityOptions.Auto
 			client.EnableSsl = True
 
 			Return client

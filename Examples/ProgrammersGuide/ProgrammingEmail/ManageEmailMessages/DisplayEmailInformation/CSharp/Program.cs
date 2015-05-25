@@ -22,7 +22,7 @@ namespace DisplayEmailInformation
             MailMessage message;
 
             //Create MailMessage instance by loading an Eml file
-            message = MailMessage.Load(dataDir + "test.eml", MessageFormat.Eml);
+            message = MailMessage.Load(dataDir + "test.eml", MailMessageLoadOptions.DefaultEml);
 
             System.Console.Write("From:");
 
@@ -43,7 +43,7 @@ namespace DisplayEmailInformation
             System.Console.WriteLine("TextBody");
 
             //Gets the textbody
-            System.Console.WriteLine(message.TextBody);
+            System.Console.WriteLine(message.Body);
         }
     }
 }

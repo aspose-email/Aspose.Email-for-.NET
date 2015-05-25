@@ -35,25 +35,8 @@ namespace ConnectingToPOP3
             // Set the port to 995. This is the SSL port of POP3 server
             client.Port = 995;
                         
-            // Enable SSL
-            client.EnableSsl = true;
-
-            //Connect and login to a POP3 server
-            try
-            {
-                client.Connect();
-                Console.WriteLine("==================");
-                Console.WriteLine("connected ");
-                Console.WriteLine("==================");
-                client.Login();
-                Console.WriteLine("==================");
-                Console.WriteLine("logged in ");
-                Console.WriteLine("==================");
-            }
-            catch (Pop3Exception ex)
-            {
-                Console.Write(ex.ToString());
-            }
+            // Security Options Settings
+            client.SecurityOptions = SecurityOptions.Auto;
         }
     }
 }

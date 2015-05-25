@@ -36,13 +36,10 @@ Namespace SaveToDiskWithoutParsing
 			client.Port = 995
 
 			' Enable SSL
-			client.EnableSsl = True
+            client.SecurityOptions = SecurityOptions.Auto
 
 			Try
-				'Connect and log in to the POP3 mail server
-				client.Connect(True)
-
-				'Save message to disk by message sequence number
+                'Save message to disk by message sequence number
 				client.SaveMessage(19,dataDir & "1234.eml")
 
 				client.Disconnect()

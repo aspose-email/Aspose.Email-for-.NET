@@ -36,11 +36,8 @@ namespace GettingMailboxInfo
             client.Port = 995;
 
             // Enable SSL
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
-            // Connect to a POP3 server
-            client.Connect(true);
-            
             // Get the size of the mailbox
             long nSize = client.GetMailboxSize();
             

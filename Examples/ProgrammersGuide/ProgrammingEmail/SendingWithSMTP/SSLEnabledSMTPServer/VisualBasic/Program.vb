@@ -30,10 +30,7 @@ Namespace SSLEnabledSMTPServer
 			client.Port = 587
 
 			' Set the security mode to explicit
-			client.SecurityMode = SmtpSslSecurityMode.Explicit
-
-			' Enable SSL
-			client.EnableSsl = True
+			client.SecurityOptions = SecurityOptions.Auto
 
 			'Declare msg as MailMessage instance
 			Dim msg As New MailMessage()

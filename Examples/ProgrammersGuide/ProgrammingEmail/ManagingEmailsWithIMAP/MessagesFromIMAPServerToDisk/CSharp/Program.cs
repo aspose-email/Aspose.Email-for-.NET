@@ -33,21 +33,10 @@ namespace MessagesFromIMAPServerToDisk
             client.Password = "F123456f";
 
             // Set the port to 993. This is the SSL port of IMAP server
-            client.Port = 993;
-
-            client.SecurityMode = ImapSslSecurityMode.Implicit;
-
-            // Enable SSL
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {
-               
-                client.Connect();
-               
-                //Log in to the remote server.
-                client.Login();
-
                 // Select the inbox folder
                 client.SelectFolder(ImapFolderInfo.InBox);
 

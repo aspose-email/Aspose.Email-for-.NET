@@ -45,22 +45,10 @@ namespace AddingNewMessage
             client.Port = 993;
 
             // Enable SSL
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {
-                System.Console.WriteLine("Connecting to the IMAP server");
-
-                //Connect to the remote server.
-                client.Connect();
-
-                System.Console.WriteLine("Connected to the IMAP server");
-
-                //Log in to the remote server.
-                client.Login();
-
-                System.Console.WriteLine("Logged in to the IMAP server");
-
                 // Subscribe to the Inbox folder
                 client.SelectFolder(ImapFolderInfo.InBox);
                 client.SubscribeFolder(client.CurrentFolder.Name);
@@ -79,9 +67,6 @@ namespace AddingNewMessage
             {
                 System.Console.Write(ex.ToString());
             }
-
-            
-
         }
     }
 }

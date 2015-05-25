@@ -35,22 +35,10 @@ namespace ReadMessagesRecursively
             client.Port = 993;
 
             // Enable SSL
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {
-                System.Console.WriteLine("Connecting to the IMAP server");
-
-                //Connect to the remote server.
-                client.Connect();
-
-                System.Console.WriteLine("Connected to the IMAP server");
-
-                //Log in to the remote server.
-                client.Login();
-
-                System.Console.WriteLine("Logged in to the IMAP server");
-
                 // The root folder (which will be created on disk) consists of host and username
                 string rootFolder = client.Host + "-" + client.Username;
                 // Create the root folder
@@ -110,7 +98,7 @@ namespace ReadMessagesRecursively
 
                     // Save the message in MSG format
                     MailMessage msg = client.FetchMessage(msgInfo.SequenceNumber);
-                    msg.Save(currentFolder + "\\" + fileName + "-" + msgInfo.SequenceNumber + ".msg", MailMessageSaveType.OutlookMessageFormat);
+                    msg.Save(currentFolder + "\\" + fileName + "-" + msgInfo.SequenceNumber + ".msg", Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode);
                 }
                 Console.WriteLine("============================\n");
             }

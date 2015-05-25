@@ -38,17 +38,15 @@ namespace ParseMessageAndSave
             client.Port = 995;
 
             // Enable SSL
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {
-                client.Connect(true);
-
                 //Fetch the message by its sequence number
                 MailMessage msg = client.FetchMessage(1);
 
                 //Save the message using its subject as the file name
-                msg.Save(dataDir + "Msg1234.eml", MessageFormat.Eml);
+                msg.Save(dataDir + "Msg1234.eml", Aspose.Email.Mail.SaveOptions.DefaultEml);
                 client.Disconnect();
 
             }

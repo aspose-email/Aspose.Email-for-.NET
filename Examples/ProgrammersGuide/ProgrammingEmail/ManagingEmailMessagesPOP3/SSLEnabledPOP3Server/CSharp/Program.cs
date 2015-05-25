@@ -36,7 +36,7 @@ namespace SSLEnabledPOP3Server
             client.Port = 995;
 
             // Enable SSL
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
             //Set Security Mode
             client.SecurityMode = Pop3SslSecurityMode.Implicit;
@@ -44,14 +44,6 @@ namespace SSLEnabledPOP3Server
             //Connect and login to a POP3 server
             try
             {
-                client.Connect();
-                Console.WriteLine("==================");
-                Console.WriteLine("connected ");
-                Console.WriteLine("==================");
-                client.Login();
-                Console.WriteLine("==================");
-                Console.WriteLine("logged in ");
-                Console.WriteLine("==================");
             }
             catch (Pop3Exception ex)
             {

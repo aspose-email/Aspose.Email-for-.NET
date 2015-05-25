@@ -34,20 +34,10 @@ Namespace ReadMessagesRecursively
 			client.Port = 993
 
 			' Enable SSL
-			client.EnableSsl = True
+            client.SecurityOptions = SecurityOptions.Auto
 
 			Try
-				System.Console.WriteLine("Connecting to the IMAP server")
-
-				'Connect to the remote server.
-				client.Connect()
-
-				System.Console.WriteLine("Connected to the IMAP server")
-
-				'Log in to the remote server.
-				client.Login()
-
-				System.Console.WriteLine("Logged in to the IMAP server")
+                System.Console.WriteLine("Logged in to the IMAP server")
 
 				' The root folder (which will be created on disk) consists of host and username
 				Dim rootFolder As String = client.Host & "-" & client.Username
@@ -101,7 +91,7 @@ Namespace ReadMessagesRecursively
 
 					' Save the message in MSG format
 					Dim msg As MailMessage = client.FetchMessage(msgInfo.SequenceNumber)
-					msg.Save(currentFolder & "\" & fileName & "-" & msgInfo.SequenceNumber & ".msg", MailMessageSaveType.OutlookMessageFormat)
+                    msg.Save(currentFolder & "\" & fileName & "-" & msgInfo.SequenceNumber & ".msg", Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode)
 				Next msgInfo
 				Console.WriteLine("============================" & Constants.vbLf)
 			Else

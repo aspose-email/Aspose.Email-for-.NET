@@ -58,8 +58,7 @@ Namespace MultipleRecipients
 
 		Private Shared Function GetSmtpClient() As SmtpClient
 			Dim client As New SmtpClient("smtp.gmail.com", 587, "asposetest123@gmail.com", "F123456f")
-			client.SecurityMode = SmtpSslSecurityMode.Explicit
-			client.EnableSsl = True
+			client.SecurityOptions = SecurityOptions.Auto
 
 			Return client
 		End Function

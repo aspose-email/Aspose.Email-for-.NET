@@ -8,7 +8,6 @@
 
 Imports Microsoft.VisualBasic
 Imports System.IO
-
 Imports Aspose.Email
 Imports Aspose.Email.Imap
 
@@ -34,19 +33,10 @@ Namespace MessagesFromIMAPServerToDisk
 			' Set the port to 993. This is the SSL port of IMAP server
 			client.Port = 993
 
-			client.SecurityMode = ImapSslSecurityMode.Implicit
-
-			' Enable SSL
-			client.EnableSsl = True
+            client.SecurityOptions = SecurityOptions.Auto
 
 			Try
-
-				client.Connect()
-
-				'Log in to the remote server.
-				client.Login()
-
-				' Select the inbox folder
+                ' Select the inbox folder
 				client.SelectFolder(ImapFolderInfo.InBox)
 
 				' Get the message info collection

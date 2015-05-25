@@ -31,10 +31,7 @@ namespace SSLEnabledSMTPServer
             client.Port = 587;
             
             // Set the security mode to explicit
-            client.SecurityMode = SmtpSslSecurityMode.Explicit;
-            
-            // Enable SSL
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
             //Declare msg as MailMessage instance
             MailMessage msg = new MailMessage();

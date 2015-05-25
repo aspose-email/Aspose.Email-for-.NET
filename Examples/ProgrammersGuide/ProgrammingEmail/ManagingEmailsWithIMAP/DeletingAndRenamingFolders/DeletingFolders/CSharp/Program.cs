@@ -36,17 +36,10 @@ namespace DeletingFolders
             client.Port = 993;
 
             // Enable SSL
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {
-
-                //Connect to the remote server.
-                client.Connect();
-
-                //Log in to the remote server.
-                client.Login();
-
                 // Rename a folder
                 client.DeleteFolder("Client");
 

@@ -28,14 +28,12 @@ namespace SettingTextBody
             msg.From = "newcustomeronnet@gmail.com";
             msg.To = "newcustomeronnet2@gmail.com";
             msg.Subject = "Test subject";
-            msg.TextBody = "This is text body";
+            msg.Body = "This is text body";
 
 
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "asposetest123@gmail.com", "F123456f");
 
-            client.SecurityMode = SmtpSslSecurityMode.Explicit;
-
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {

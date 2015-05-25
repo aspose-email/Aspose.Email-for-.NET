@@ -37,12 +37,10 @@ namespace RetrievingEmailHeaders
             client.Port = 995;
 
             // Enable SSL
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {
-                client.Connect(true);
-                
                 HeaderCollection headers = client.GetMessageHeaders(1);
                 
                 for (int i = 0; i < headers.Count; i++)

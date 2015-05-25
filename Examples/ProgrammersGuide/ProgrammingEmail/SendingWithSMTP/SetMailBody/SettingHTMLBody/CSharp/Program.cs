@@ -33,9 +33,7 @@ namespace SettingHTMLBody
 
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "asposetest123@gmail.com", "F123456f");
 
-            client.SecurityMode = SmtpSslSecurityMode.Explicit;
-
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {

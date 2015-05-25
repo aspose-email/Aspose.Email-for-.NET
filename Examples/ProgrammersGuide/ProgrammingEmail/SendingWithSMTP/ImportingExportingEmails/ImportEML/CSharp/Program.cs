@@ -23,7 +23,7 @@ namespace ImportEML
             MailMessage msg = new MailMessage();
 
             //Import from EML format
-            msg = MailMessage.Load(dataDir + "test.eml", MessageFormat.Eml);
+            msg = MailMessage.Load(dataDir + "test.eml", MailMessageLoadOptions.DefaultEml);
 
             //Create an instance of SmtpClient class
             SmtpClient client = GetSmtpClient();
@@ -46,8 +46,7 @@ namespace ImportEML
         private static SmtpClient GetSmtpClient()
         {
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "asposetest123@gmail.com", "F123456f");
-            client.SecurityMode = SmtpSslSecurityMode.Explicit;
-            client.EnableSsl = true;
+            client.SecurityOptions = SecurityOptions.Auto;
 
             return client;
         }

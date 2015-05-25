@@ -36,12 +36,10 @@ Namespace RetrievingEmailMessages
 			client.Port = 995
 
 			' Enable SSL
-			client.EnableSsl = True
+            client.SecurityOptions = SecurityOptions.Auto
 
 			Try
-				client.Connect(True)
-
-				Dim messageCount As Integer = client.GetMessageCount()
+                Dim messageCount As Integer = client.GetMessageCount()
 				' Create an instance of the MailMessage class
 				Dim msg As MailMessage
 
