@@ -13,3 +13,12 @@ Aspose.Email for .NET is a collection of components for working with email from 
 Directory | Description
 --------- | -----------
 [Examples](https://github.com/asposeemail/Aspose_Email_NET/tree/master/Examples)  | A collection of .NET examples that help you learn how to product features
+
+## Resources
+
++ **Website:** [www.aspose.com](http://www.aspose.com)
++ **Product Home:** [Aspose.Email for .NET](http://www.aspose.com/.net/email-component.aspx)
++ **Download:** [Download Aspose.Email for .NET](http://www.aspose.com/community/files/51/.net-components/aspose.email-for-.net/default.aspx)
++ **Documentation:** [Aspose.Email for .NET Documentation](http://www.aspose.com/docs/display/emailnet/Home)
++ **Forum:** [Aspose.Email for .NET Forum](http://www.aspose.com/community/forums/aspose.email-product-family/188/showforum.aspx)
++ **Blog:** [Aspose.Email for .NET Blog](http://www.aspose.com/blogs/aspose-products/aspose-email-product-family.html)
