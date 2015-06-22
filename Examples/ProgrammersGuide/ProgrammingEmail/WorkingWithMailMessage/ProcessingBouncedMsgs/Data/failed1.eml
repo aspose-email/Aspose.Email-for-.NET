@@ -1,0 +1,82 @@
+Delivered-To: svcx@mail.ru
+Return-path: <>
+Received: from mail by f289.i.mail.ru with local id 1YrkgN-0000EH-H8
+	for svcx@mail.ru; Mon, 11 May 2015 13:11:31 +0300
+X-Failed-Recipients: svcx555svcx@gmail.com
+Auto-Submitted: auto-replied
+From: mailer-daemon@corp.mail.ru
+To: svcx@mail.ru
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Subject: =?UTF-8?B?0JLQsNGI0LUg0YHQvtC+0LHRidC10L3QuNC1INC90LUg0LTQvtGB0YLQsNCy0LvQtdC90L4=?=. Mail failure.
+Message-Id: <E1YrkgN-0000EH-H8@f289.i.mail.ru>
+Date: Mon, 11 May 2015 13:11:31 +0300
+
+Это письмо создано автоматически сервером Mail.Ru, отвечать на него не нужно.
+
+К сожалению, Ваше письмо не может быть доставлено одному или нескольким получателям:
+
+  svcx555svcx@gmail.com
+    SMTP error from remote mail server after RCPT TO:<svcx555svcx@gmail.com>:
+    host gmail-smtp-in.l.google.com [64.233.161.27]:
+    550-5.1.1 The email account that you tried to reach does not exist. Please try
+    550-5.1.1 double-checking the recipient's email address for typos or
+    550-5.1.1 unnecessary spaces. Learn more at
+    550 5.1.1 http://support.google.com/mail/bin/answer.py?answer=6596 eu8si8075304lbc.171 - gsmtp
+
+Рекомендуем Вам проверить корректность указания адресов получателей.
+
+**********************
+
+
+This message was created automatically by mail delivery software.
+
+A message that you sent could not be delivered to one or more of its
+recipients. This is a permanent error. The following address(es) failed:
+
+  svcx555svcx@gmail.com
+    SMTP error from remote mail server after RCPT TO:<svcx555svcx@gmail.com>:
+    host gmail-smtp-in.l.google.com [64.233.161.27]:
+    550-5.1.1 The email account that you tried to reach does not exist. Please try
+    550-5.1.1 double-checking the recipient's email address for typos or
+    550-5.1.1 unnecessary spaces. Learn more at
+    550 5.1.1 http://support.google.com/mail/bin/answer.py?answer=6596 eu8si8075304lbc.171 - gsmtp
+
+------ This is a copy of the message, including all the headers. ------
+
+Return-path: <svcx@mail.ru>
+Received: from [46.98.98.25] (ident=mail)
+	by f289.i.mail.ru with local (envelope-from <svcx@mail.ru>)
+	id 1YrkgN-0000E6-5H
+	for svcx555svcx@gmail.com; Mon, 11 May 2015 13:11:31 +0300
+Received: from [46.98.98.25] by e.mail.ru with HTTP;
+	Mon, 11 May 2015 13:11:31 +0300
+From: =?UTF-8?B?QWxleA==?= <svcx@mail.ru>
+To: svcx555svcx@gmail.com
+Subject: =?UTF-8?B?ZHNuIGRzbg==?=
+MIME-Version: 1.0
+X-Mailer: Mail.Ru Mailer 1.0
+X-Originating-IP: [46.98.98.25]
+Date: Mon, 11 May 2015 13:11:31 +0300
+Reply-To: =?UTF-8?B?QWxleA==?= <svcx@mail.ru>
+X-Priority: 3 (Normal)
+Message-ID: <1431339091.154738856@f289.i.mail.ru>
+Content-Type: multipart/alternative;
+	boundary="--ALT--SuWjxmZvcZbNgYThv37c58vI4alSHm6m1431339091"
+X-Mras: Ok
+X-Spam: undefined
+
+
+----ALT--SuWjxmZvcZbNgYThv37c58vI4alSHm6m1431339091
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: base64
+
+CnRlc3QgZHNu
+
+----ALT--SuWjxmZvcZbNgYThv37c58vI4alSHm6m1431339091
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+
+CjxIVE1MPjxCT0RZPjxicj50ZXN0IGRzbjwvQk9EWT48L0hUTUw+Cg==
+
+----ALT--SuWjxmZvcZbNgYThv37c58vI4alSHm6m1431339091--
