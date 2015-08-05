@@ -5,8 +5,6 @@ classes/
 generated/
 *.suo
 bin/
-* Out*
-* out*
 *.ldb
 Thumbs.db
 _ReSharper*/
@@ -14,7 +12,6 @@ out/
 *.lic
 *.user
 Out/
-Out*/
 Data/*Out*
 /ProgrammersGuide/ProgrammingEmail/SendingWithSMTP/AppointmentInICSFormat/Data/test.ics
 
