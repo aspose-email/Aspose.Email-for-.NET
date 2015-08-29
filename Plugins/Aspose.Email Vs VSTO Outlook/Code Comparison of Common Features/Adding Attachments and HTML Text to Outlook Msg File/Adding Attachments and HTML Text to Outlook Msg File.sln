@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspose Email", "Aspose Email\Aspose Email.csproj", "{FCD32BE2-AE31-42E6-88E3-2125F2AEF094}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSTO Email", "VSTO Email\VSTO Email.csproj", "{375D23F0-60D9-4566-8B3D-23ACBE8EF183}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCD32BE2-AE31-42E6-88E3-2125F2AEF094}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCD32BE2-AE31-42E6-88E3-2125F2AEF094}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCD32BE2-AE31-42E6-88E3-2125F2AEF094}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCD32BE2-AE31-42E6-88E3-2125F2AEF094}.Release|Any CPU.Build.0 = Release|Any CPU
+		{375D23F0-60D9-4566-8B3D-23ACBE8EF183}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{375D23F0-60D9-4566-8B3D-23ACBE8EF183}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{375D23F0-60D9-4566-8B3D-23ACBE8EF183}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{375D23F0-60D9-4566-8B3D-23ACBE8EF183}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
