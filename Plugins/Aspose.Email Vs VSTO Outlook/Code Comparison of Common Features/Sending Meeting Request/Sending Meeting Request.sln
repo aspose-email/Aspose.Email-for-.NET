@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspose Email", "Aspose Email\Aspose Email.csproj", "{981EC784-72E5-4A0F-86A7-696D36D0F1A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSTO Outlook", "VSTO Outlook\VSTO Outlook.csproj", "{4F609516-1CE0-47B1-807A-554C04E19F4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{981EC784-72E5-4A0F-86A7-696D36D0F1A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{981EC784-72E5-4A0F-86A7-696D36D0F1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{981EC784-72E5-4A0F-86A7-696D36D0F1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{981EC784-72E5-4A0F-86A7-696D36D0F1A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F609516-1CE0-47B1-807A-554C04E19F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F609516-1CE0-47B1-807A-554C04E19F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F609516-1CE0-47B1-807A-554C04E19F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F609516-1CE0-47B1-807A-554C04E19F4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
