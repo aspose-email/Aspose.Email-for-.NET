@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Email">
-      <HintPath>..\packages\Aspose.Email.5.4.0\lib\net40\Aspose.Email.dll</HintPath>
+    <Reference Include="Aspose.Email, Version=6.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.6.4.0\lib\net40\Aspose.Email.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -51,25 +51,34 @@
     <Compile Include="Email\ExtractingEmailHeaders.cs" />
     <Compile Include="Email\ProcessBouncedMsgs.cs" />
     <Compile Include="Email\SaveMessageAsDraft.cs" />
+    <Compile Include="Email\SaveMessageAsOFT.cs" />
     <Compile Include="Exchange\CreateExchangeTask.cs" />
     <Compile Include="Exchange\DeleteExchangeTask.cs" />
+    <Compile Include="Exchange\PagingSupportForListingAppointments.cs" />
+    <Compile Include="Exchange\PagingSupportForListingFolders.cs" />
+    <Compile Include="Exchange\PagingSupportForListingMessages.cs" />
     <Compile Include="Exchange\SaveExchangeTaskToDisc.cs" />
+    <Compile Include="Exchange\SendCalendarInvitation.cs" />
     <Compile Include="Exchange\SendExchangeTask.cs" />
     <Compile Include="Exchange\UpdateExchangeTask.cs" />
     <Compile Include="IMAP\AddingNewMessage.cs" />
     <Compile Include="IMAP\ConnectingWithIMAPServer.cs" />
     <Compile Include="IMAP\DeletingFolders.cs" />
     <Compile Include="IMAP\GettingFoldersInformation.cs" />
+    <Compile Include="IMAP\ListingMessagesWithPagingSupport.cs" />
     <Compile Include="IMAP\MessagesFromIMAPServerToDisk.cs" />
+    <Compile Include="IMAP\MoveMessage.cs" />
     <Compile Include="IMAP\ReadMessagesRecursively.cs" />
     <Compile Include="IMAP\RemovingMessageFlags.cs" />
     <Compile Include="IMAP\RenamingFolders.cs" />
+    <Compile Include="IMAP\SearchWithPagingSupport.cs" />
     <Compile Include="IMAP\SettingMessageFlags.cs" />
     <Compile Include="IMAP\SSLEnabledIMAPServer.cs" />
     <Compile Include="Knowledge-Base\PrintEmail.cs" />
     <Compile Include="Outlook\CreateSaveOutlookFiles.cs" />
     <Compile Include="Outlook\MergePSTFiles.cs" />
     <Compile Include="Outlook\NewPSTAddSubfolders.cs" />
+    <Compile Include="Outlook\SaveMsgAsTemplate.cs" />
     <Compile Include="Outlook\SplitPST.cs" />
     <Compile Include="POP3\ConnectingToPOP3.cs" />
     <Compile Include="POP3\GettingMailboxInfo.cs" />
@@ -98,9 +107,7 @@
     <Compile Include="SMTP\SettingHTMLBody.cs" />
     <Compile Include="SMTP\SettingTextBody.cs" />
     <Compile Include="SMTP\SSLEnabledSMTPServer.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="Thunderbird\GetMarkerInformation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Email\Data\" />
@@ -110,6 +117,10 @@
     <Folder Include="Outlook\Data\" />
     <Folder Include="POP3\Data\" />
     <Folder Include="SMTP\Data\" />
+    <Folder Include="Thunderbird\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
