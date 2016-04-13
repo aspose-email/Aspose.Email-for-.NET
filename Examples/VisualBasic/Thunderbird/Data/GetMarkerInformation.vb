@@ -32,6 +32,6 @@ Public Class GetMarkerInformation
                 Console.WriteLine(fromMarker)
             End Using
         End Using
-        'ExEnd: GetMarkerInformaiton
+        'ExEnd: GetMarkerInformation
     End Sub
 End Class

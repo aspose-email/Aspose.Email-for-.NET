@@ -39,7 +39,7 @@ namespace CSharp.Thunderbird
 
                 Console.WriteLine(fromMarker);
             }
-            //ExEnd: GetMarkerInformaiton
+            //ExEnd: GetMarkerInformation
         }
     }
 }
