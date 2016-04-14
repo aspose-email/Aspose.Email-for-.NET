@@ -12,5 +12,11 @@ This section contains the following Examples
 * [Getting List of Messages from Inbox of Microsoft Mailbox](Getting List of Messages from Inbox of Microsoft Mailbox)
 * [Access Outlook Contacts](Programmatically Access Outlook Contacts)
 * [Reading an Outlook Message (MSG) File](Reading an Outlook Message (MSG) File)
+* [Create Multiple Email Addresses](Create Multiple Email Addresses)
 * [Sending Meeting Request](Sending Meeting Request)
-
+* [Delete Messages](Delete Messages)
+* [Export Email](Export Email)
+* [Extracting Attachment](Extracting Attachment)
+* [Get the number of emails in the mailbox](Get the number of emails in the mailbox)
+* [Import Email](Import Email)
+* [Specify Mail Body Encoding](Specify Mail Body Encoding)
