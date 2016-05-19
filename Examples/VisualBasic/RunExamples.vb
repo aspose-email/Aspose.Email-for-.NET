@@ -13,7 +13,7 @@ Module RunExamples
         '' =====================================================
         '' =====================================================
 
-        DraftAppointmentRequest.Run()
+        'DraftAppointmentRequest.Run()
         'DisplayEmailInformation.Run()
         'ExtractingEmailHeaders.Run()
         'ProcessBouncedMsgs.Run()
@@ -45,6 +45,7 @@ Module RunExamples
         '' =====================================================
         '' =====================================================
 
+        'SecondaryCalendarEvents.Run()
         'SaveExchangeTaskToDisc.Run()
         'CreateExchangeTask.Run()
         'DeleteExchangeTask.Run()
@@ -72,6 +73,7 @@ Module RunExamples
         '' =====================================================
         '' =====================================================
 
+        'InsertHeaderAtSpecificLocation.Run()
         'DeletingFolders.Run()
         'RenamingFolders.Run()
         'AddingNewMessage.Run()
@@ -89,6 +91,8 @@ Module RunExamples
         '' =====================================================
         '' =====================================================
 
+
+        'SetSpecificIpAddress.Run()
         'ExportAsEML.Run()
         'ImportEML.Run()
         'CustomizingEmailHeader.Run()
