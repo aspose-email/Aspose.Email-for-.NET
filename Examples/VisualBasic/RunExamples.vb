@@ -13,7 +13,7 @@ Module RunExamples
         '' =====================================================
         '' =====================================================
 
-        'DraftAppointmentRequest.Run()
+        DraftAppointmentRequest.Run()
         'DisplayEmailInformation.Run()
         'ExtractingEmailHeaders.Run()
         'ProcessBouncedMsgs.Run()
