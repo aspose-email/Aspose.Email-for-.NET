@@ -32,8 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Email, Version=6.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Email.6.4.0\lib\net40\Aspose.Email.dll</HintPath>
+    <Reference Include="Aspose.Email, Version=6.5.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.6.5.0\lib\net40\Aspose.Email.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -58,6 +59,7 @@
     <Compile Include="Exchange\PagingSupportForListingFolders.cs" />
     <Compile Include="Exchange\PagingSupportForListingMessages.cs" />
     <Compile Include="Exchange\SaveExchangeTaskToDisc.cs" />
+    <Compile Include="Exchange\SecondaryCalendarEvents.cs" />
     <Compile Include="Exchange\SendCalendarInvitation.cs" />
     <Compile Include="Exchange\SendExchangeTask.cs" />
     <Compile Include="Exchange\UpdateExchangeTask.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="IMAP\ConnectingWithIMAPServer.cs" />
     <Compile Include="IMAP\DeletingFolders.cs" />
     <Compile Include="IMAP\GettingFoldersInformation.cs" />
+    <Compile Include="IMAP\InsertHeaderAtSpecificLocation.cs" />
     <Compile Include="IMAP\ListingMessagesWithPagingSupport.cs" />
     <Compile Include="IMAP\MessagesFromIMAPServerToDisk.cs" />
     <Compile Include="IMAP\MoveMessage.cs" />
@@ -104,6 +107,7 @@
     <Compile Include="SMTP\MultipleRecipients.cs" />
     <Compile Include="SMTP\SendingEMLFilesWithSMTP.cs" />
     <Compile Include="SMTP\SetEmailInfo.cs" />
+    <Compile Include="SMTP\SetSpecificIpAddress.cs" />
     <Compile Include="SMTP\SettingHTMLBody.cs" />
     <Compile Include="SMTP\SettingTextBody.cs" />
     <Compile Include="SMTP\SSLEnabledSMTPServer.cs" />
