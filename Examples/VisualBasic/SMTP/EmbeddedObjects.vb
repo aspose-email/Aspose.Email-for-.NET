@@ -1,12 +1,4 @@
-﻿' ///////////////////////////////////////////////////////////////////////
-' Copyright 2001-2015 Aspose Pty Ltd. All Rights Reserved.
-'
-' This file is part of Aspose.Email. The source code in this file
-' is only intended as a supplement to the documentation, and is provided
-' "as is", without warranty of any kind, either expressed or implied.
-' ///////////////////////////////////////////////////////////////////////
-
-Imports System.IO
+﻿Imports System.IO
 Imports Aspose.Email.Mail
 Imports Aspose.Email.Outlook
 Imports Aspose.Email.Pop3
@@ -19,47 +11,50 @@ Imports Aspose.Email.Mail.Bounce
 Imports Aspose.Email.Exchange
 Imports Aspose.Email.Outlook.Pst
 
-Public Class EmbeddedObjects
-    Public Shared Sub Run()
-        ' The path to the documents directory.
-        Dim dataDir As String = RunExamples.GetDataDir_SMTP()
-        Dim dstEmail As String = dataDir & Convert.ToString("EmbeddedImage.msg")
+Namespace Aspose.Email.Examples.VisualBasic.Knowledge.SMTP
 
-        'Create an instance of the MailMessage class
-        Dim mail As New MailMessage()
+    Public Class EmbeddedObjects
+        Public Shared Sub Run()
+            ' The path to the documents directory.
+            Dim dataDir As String = RunExamples.GetDataDir_SMTP()
+            Dim dstEmail As String = dataDir & Convert.ToString("EmbeddedImage.msg")
 
-        'Set the addresses
-        mail.From = New MailAddress("test001@gmail.com")
-        mail.[To].Add("test001@gmail.com")
+            'Create an instance of the MailMessage class
+            Dim mail As New MailMessage()
 
-        'Set the content
-        mail.Subject = "This is an email"
+            'Set the addresses
+            mail.From = New MailAddress("test001@gmail.com")
+            mail.[To].Add("test001@gmail.com")
 
-        'Create the plain text part
-        'It is viewable by those clients that don't support HTML
-        Dim plainView As AlternateView = AlternateView.CreateAlternateViewFromString("This is my plain text content", Nothing, "text/plain")
+            'Set the content
+            mail.Subject = "This is an email"
 
-        'Create the HTML part.
-        'To embed images, we need to use the prefix 'cid' in the img src value.
-        'The cid value will map to the Content-Id of a Linked resource.
-        'Thus <img src='cid:barcode'> will map to a LinkedResource with a ContentId of //'barcode'.
+            'Create the plain text part
+            'It is viewable by those clients that don't support HTML
+            Dim plainView As AlternateView = AlternateView.CreateAlternateViewFromString("This is my plain text content", Nothing, "text/plain")
 
-        Dim htmlView As AlternateView = AlternateView.CreateAlternateViewFromString("Here is an embedded image.<img src=cid:barcode>", Nothing, "text/html")
+            'Create the HTML part.
+            'To embed images, we need to use the prefix 'cid' in the img src value.
+            'The cid value will map to the Content-Id of a Linked resource.
+            'Thus <img src='cid:barcode'> will map to a LinkedResource with a ContentId of //'barcode'.
 
-        'create the LinkedResource (embedded image)
+            Dim htmlView As AlternateView = AlternateView.CreateAlternateViewFromString("Here is an embedded image.<img src=cid:barcode>", Nothing, "text/html")
 
-        Dim barcode As New LinkedResource(dataDir & Convert.ToString("barcode.png"), MediaTypeNames.Image.Png)
-        barcode.ContentId = "barcode"
+            'create the LinkedResource (embedded image)
 
-        'Add the LinkedResource to the appropriate view
+            Dim barcode As New LinkedResource(dataDir & Convert.ToString("barcode.png"), MediaTypeNames.Image.Png)
+            barcode.ContentId = "barcode"
 
-        mail.LinkedResources.Add(barcode)
+            'Add the LinkedResource to the appropriate view
 
-        mail.AlternateViews.Add(plainView)
-        mail.AlternateViews.Add(htmlView)
+            mail.LinkedResources.Add(barcode)
 
-        mail.Save(dstEmail, Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode)
+            mail.AlternateViews.Add(plainView)
+            mail.AlternateViews.Add(htmlView)
 
-        Console.WriteLine(Environment.NewLine + "Message saved with embedded objects successfully at " & dstEmail)
-    End Sub
-End Class
+            mail.Save(dstEmail, Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode)
+
+            Console.WriteLine(Environment.NewLine + "Message saved with embedded objects successfully at " & dstEmail)
+        End Sub
+    End Class
+End Namespace

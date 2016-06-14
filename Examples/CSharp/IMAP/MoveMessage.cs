@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CSharp.IMAP
+namespace Aspose.Email.Examples.CSharp.IMAP
 {
     class MoveMessage
     {

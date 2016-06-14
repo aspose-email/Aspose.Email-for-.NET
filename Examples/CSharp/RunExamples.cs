@@ -1,25 +1,26 @@
-﻿using CSharp.Email;
-using CSharp.Exchange;
-using CSharp.IMAP;
-using CSharp.Knowledge_Base;
-using CSharp.Outlook;
-using CSharp.POP3;
-using CSharp.SMTP;
+﻿using Aspose.Email.Examples.CSharp.Email;
+using Aspose.Email.Examples.CSharp.Exchange;
+using Aspose.Email.Examples.CSharp.IMAP;
+using Aspose.Email.Examples.CSharp.Knowledge.Base;
+using Aspose.Email.Examples.CSharp.Outlook;
+using Aspose.Email.Examples.CSharp.POP3;
+using Aspose.Email.Examples.CSharp.SMTP;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace CSharp
+namespace Aspose.Email.Examples.CSharp
 {
     class RunExamples
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Open RunExamples.cs. In Main() method, Un-comment the example that you want to run");
+            Console.WriteLine("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
             Console.WriteLine("=====================================================");
-            // Un-comment the one you want to try out
+
+            // Uncomment the one you want to try out
 
             // =====================================================
             // =====================================================

@@ -18,67 +18,71 @@ Imports System.Data
 Imports Aspose.Email.Mail.Bounce
 Imports Aspose.Email.Exchange
 
-Public Class PrintEmail
-    Public Shared Sub Run()
-        ' The path to the documents directory.
-        Dim dataDir As String = RunExamples.GetDataDir_KnowledgeBase()
-        Dim dstXPS As String = dataDir & Convert.ToString("email-print.xps")
-        Dim dstTIFF As String = dataDir & Convert.ToString("email-print.tiff")
+Namespace Aspose.Email.Examples.VisualBasic.Knowledge.Base
 
-        'Declare message as an MailMessage instance
-        Dim message As New MailMessage()
+    Public Class PrintEmail
 
-        'Sender's address
-        message.From = "user1@domain.com"
+        Public Shared Sub Run()
+            ' The path to the documents directory.
+            Dim dataDir As String = RunExamples.GetDataDir_KnowledgeBase()
+            Dim dstXPS As String = dataDir & Convert.ToString("email-print.xps")
+            Dim dstTIFF As String = dataDir & Convert.ToString("email-print.tiff")
 
-        'Recipient's address
-        message.[To] = "user2@domain.com"
+            'Declare message as an MailMessage instance
+            Dim message As New MailMessage()
 
-        'Subject of the email
-        message.Subject = "My First Mail"
+            'Sender's address
+            message.From = "user1@domain.com"
 
-        'Set message date to current date and time
-        message.[Date] = DateTime.Now
+            'Recipient's address
+            message.[To] = "user2@domain.com"
 
-        'Body of the email message
-        message.Body = "Text is the Mail Message"
+            'Subject of the email
+            message.Subject = "My First Mail"
 
-        'Body of the email message
-        message.IsBodyHtml = True
-        message.HtmlBody = "<html><body><h1>Hello this is html body in Heading 1 format </h1></body></html>"
+            'Set message date to current date and time
+            message.[Date] = DateTime.Now
 
-        'Instantiate an instance of MailPrinter
-        Dim printer As New Aspose.Email.Printing.MailPrinter()
+            'Body of the email message
+            message.Body = "Text is the Mail Message"
 
-        'Set the MessageFormattingFlags to none to display only the message body
-        printer.FormattingFlags = Aspose.Email.Printing.MessageFormattingFlags.None
+            'Body of the email message
+            message.IsBodyHtml = True
+            message.HtmlBody = "<html><body><h1>Hello this is html body in Heading 1 format </h1></body></html>"
 
-        'Set MessageFormattingFlags to MailInfo to display the message headers and body
-        printer.FormattingFlags = Aspose.Email.Printing.MessageFormattingFlags.MailInfo
+            'Instantiate an instance of MailPrinter
+            Dim printer As New Aspose.Email.Printing.MailPrinter()
 
-        'Just for testing, get the default property values
-        Dim width As Double = printer.PageWidth
-        Dim height As Double = printer.PageHeight
+            'Set the MessageFormattingFlags to none to display only the message body
+            printer.FormattingFlags = Aspose.Email.Printing.MessageFormattingFlags.None
 
-        'Set page layout for printing
-        printer.PageUnit = Aspose.Email.Printing.PrinterUnit.Cm
-        printer.MarginTop = 2
-        printer.MarginBottom = 2
-        printer.MarginLeft = 2
-        printer.MarginRight = 2
-        printer.PageWidth = 8
-        printer.PageHeight = 20
+            'Set MessageFormattingFlags to MailInfo to display the message headers and body
+            printer.FormattingFlags = Aspose.Email.Printing.MessageFormattingFlags.MailInfo
 
-        'Print the email to an XPS file
-        printer.Print(message, dstXPS, Aspose.Email.Printing.PrintFormat.XPS)
+            'Just for testing, get the default property values
+            Dim width As Double = printer.PageWidth
+            Dim height As Double = printer.PageHeight
 
-        ' Auto-Fit a TIFF
-        printer.FormattingFlags = Aspose.Email.Printing.MessageFormattingFlags.AutoFitWidth
+            'Set page layout for printing
+            printer.PageUnit = Aspose.Email.Printing.PrinterUnit.Cm
+            printer.MarginTop = 2
+            printer.MarginBottom = 2
+            printer.MarginLeft = 2
+            printer.MarginRight = 2
+            printer.PageWidth = 8
+            printer.PageHeight = 20
 
-        'Print the email to a TIFF file
-        printer.Print(message, dstTIFF, Aspose.Email.Printing.PrintFormat.Tiff)
+            'Print the email to an XPS file
+            printer.Print(message, dstXPS, Aspose.Email.Printing.PrintFormat.XPS)
 
-        Console.WriteLine(Convert.ToString(Environment.NewLine + "Printed email successfully. saved at ") & dstXPS)
-        Console.WriteLine(Convert.ToString(Environment.NewLine + "Printed email successfully. saved at ") & dstTIFF)
-    End Sub
-End Class
+            ' Auto-Fit a TIFF
+            printer.FormattingFlags = Aspose.Email.Printing.MessageFormattingFlags.AutoFitWidth
+
+            'Print the email to a TIFF file
+            printer.Print(message, dstTIFF, Aspose.Email.Printing.PrintFormat.Tiff)
+
+            Console.WriteLine(Convert.ToString(Environment.NewLine + "Printed email successfully. saved at ") & dstXPS)
+            Console.WriteLine(Convert.ToString(Environment.NewLine + "Printed email successfully. saved at ") & dstTIFF)
+        End Sub
+    End Class
+End Namespace

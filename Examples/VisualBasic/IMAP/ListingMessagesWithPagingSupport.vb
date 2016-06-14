@@ -1,48 +1,51 @@
 ﻿Imports Aspose.Email.Imap
 Imports Aspose.Email.Mail
 
-Public Class ListingMessagesWithPagingSupport
-    Private Shared Sub Run()
-        'ExStart: ListingMessagesWithPagingSupport
-        '<summary>
-        'This example shows the paging support of ImapClient for listing messages from the server
-        'Available in Aspose.Email for .NET 6.4.0 and onwards
-        '</summary>
-        Using client As New ImapClient("host.domain.com", 993, "username", "password")
-            Try
-                Dim messagesNum As Integer = 12
-                Dim itemsPerPage As Integer = 5
-                Dim message As MailMessage = Nothing
-                'Create some test messages and append these to server's inbox
-                For i As Integer = 0 To messagesNum - 1
-                    message = New MailMessage("from@domain.com", "to@domain.com", "EMAILNET-35157 - " + Guid.NewGuid().ToString(), "EMAILNET-35157 Move paging parameters to separate class")
-                    client.AppendMessage(ImapFolderInfo.InBox, message)
-                Next
+Namespace Aspose.Email.Examples.VisualBasic.IMAP
 
-                'List messages from inbox
-                client.SelectFolder(ImapFolderInfo.InBox)
-                Dim totalMessageInfoCol As ImapMessageInfoCollection = client.ListMessages()
-                'Verify the number of messages added
-                Console.WriteLine(totalMessageInfoCol.Count)
+    Public Class ListingMessagesWithPagingSupport
+        Private Shared Sub Run()
+            'ExStart: ListingMessagesWithPagingSupport
+            '<summary>
+            'This example shows the paging support of ImapClient for listing messages from the server
+            'Available in Aspose.Email for .NET 6.4.0 and onwards
+            '</summary>
+            Using client As New ImapClient("host.domain.com", 993, "username", "password")
+                Try
+                    Dim messagesNum As Integer = 12
+                    Dim itemsPerPage As Integer = 5
+                    Dim message As MailMessage = Nothing
+                    'Create some test messages and append these to server's inbox
+                    For i As Integer = 0 To messagesNum - 1
+                        message = New MailMessage("from@domain.com", "to@domain.com", "EMAILNET-35157 - " + Guid.NewGuid().ToString(), "EMAILNET-35157 Move paging parameters to separate class")
+                        client.AppendMessage(ImapFolderInfo.InBox, message)
+                    Next
 
-                '///////////////RETREIVE THE MESSAGES USING PAGING SUPPORT////////////////////////////////////
+                    'List messages from inbox
+                    client.SelectFolder(ImapFolderInfo.InBox)
+                    Dim totalMessageInfoCol As ImapMessageInfoCollection = client.ListMessages()
+                    'Verify the number of messages added
+                    Console.WriteLine(totalMessageInfoCol.Count)
 
-                Dim pages As New List(Of ImapPageInfo)()
-                Dim pageInfo As ImapPageInfo = client.ListMessagesByPage(itemsPerPage)
-                Console.WriteLine(pageInfo.TotalCount)
-                pages.Add(pageInfo)
-                While Not pageInfo.LastPage
-                    pageInfo = client.ListMessagesByPage(pageInfo.NextPage)
+                    '///////////////RETREIVE THE MESSAGES USING PAGING SUPPORT////////////////////////////////////
+
+                    Dim pages As New List(Of ImapPageInfo)()
+                    Dim pageInfo As ImapPageInfo = client.ListMessagesByPage(itemsPerPage)
+                    Console.WriteLine(pageInfo.TotalCount)
                     pages.Add(pageInfo)
-                End While
-                Dim retrievedItems As Integer = 0
-                For Each folderCol As ImapPageInfo In pages
-                    retrievedItems += folderCol.Items.Count
-                Next
-                Console.WriteLine(retrievedItems)
-            Finally
-            End Try
-        End Using
-        'ExEnd: ListingMessagesWithPagingSupport
-    End Sub
-End Class
+                    While Not pageInfo.LastPage
+                        pageInfo = client.ListMessagesByPage(pageInfo.NextPage)
+                        pages.Add(pageInfo)
+                    End While
+                    Dim retrievedItems As Integer = 0
+                    For Each folderCol As ImapPageInfo In pages
+                        retrievedItems += folderCol.Items.Count
+                    Next
+                    Console.WriteLine(retrievedItems)
+                Finally
+                End Try
+            End Using
+            'ExEnd: ListingMessagesWithPagingSupport
+        End Sub
+    End Class
+End Namespace

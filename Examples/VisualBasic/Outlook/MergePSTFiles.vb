@@ -1,12 +1,4 @@
-﻿' ///////////////////////////////////////////////////////////////////////
-' Copyright 2001-2015 Aspose Pty Ltd. All Rights Reserved.
-'
-' This file is part of Aspose.Email. The source code in this file
-' is only intended as a supplement to the documentation, and is provided
-' "as is", without warranty of any kind, either expressed or implied.
-' ///////////////////////////////////////////////////////////////////////
-
-Imports System.IO
+﻿Imports System.IO
 Imports Aspose.Email.Mail
 Imports Aspose.Email.Outlook
 Imports Aspose.Email.Pop3
@@ -19,49 +11,52 @@ Imports Aspose.Email.Mail.Bounce
 Imports Aspose.Email.Exchange
 Imports Aspose.Email.Outlook.Pst
 
-Public Class MergePSTFiles
-    Shared totalAdded As Integer
-    Shared currentFolder As String
-    Shared messageCount As Integer
+Namespace Aspose.Email.Examples.VisualBasic.Knowledge.Outlook
 
-    Public Shared Sub Run()
-        ' The path to the documents directory.
-        Dim dataDir As String = RunExamples.GetDataDir_Outlook()
-        Dim dst As String = dataDir & Convert.ToString("Test.pst")
+    Public Class MergePSTFiles
+        Shared totalAdded As Integer
+        Shared currentFolder As String
+        Shared messageCount As Integer
 
-        totalAdded = 0
+        Public Shared Sub Run()
+            ' The path to the documents directory.
+            Dim dataDir As String = RunExamples.GetDataDir_Outlook()
+            Dim dst As String = dataDir & Convert.ToString("Test.pst")
 
-        Using pst As PersonalStorage = PersonalStorage.FromFile(dst)
-            ' The events subscription is an optional step for the tracking process only.
-            AddHandler pst.StorageProcessed, AddressOf PstMerge_OnStorageProcessed
-            AddHandler pst.ItemMoved, AddressOf PstMerge_OnItemMoved
+            totalAdded = 0
 
-            ' Merges with the pst files that are located in separate folder. 
-            pst.MergeWith(Directory.GetFiles(dataDir & Convert.ToString("chunks\")))
-            Console.WriteLine("Total messages added: {0}", totalAdded)
-        End Using
+            Using pst As PersonalStorage = PersonalStorage.FromFile(dst)
+                ' The events subscription is an optional step for the tracking process only.
+                AddHandler pst.StorageProcessed, AddressOf PstMerge_OnStorageProcessed
+                AddHandler pst.ItemMoved, AddressOf PstMerge_OnItemMoved
 
-        Console.WriteLine(Convert.ToString(Environment.NewLine + "PST merged successfully at ") & dst)
-    End Sub
+                ' Merges with the pst files that are located in separate folder. 
+                pst.MergeWith(Directory.GetFiles(dataDir & Convert.ToString("chunks\")))
+                Console.WriteLine("Total messages added: {0}", totalAdded)
+            End Using
 
-    Private Shared Sub PstMerge_OnStorageProcessed(sender As Object, e As StorageProcessedEventArgs)
-        Console.WriteLine("*** The storage is merging: {0}", e.FileName)
-    End Sub
+            Console.WriteLine(Convert.ToString(Environment.NewLine + "PST merged successfully at ") & dst)
+        End Sub
 
-    Private Shared Sub PstMerge_OnItemMoved(sender As Object, e As ItemMovedEventArgs)
-        If currentFolder Is Nothing Then
-            currentFolder = e.DestinationFolder.RetrieveFullPath()
-        End If
+        Private Shared Sub PstMerge_OnStorageProcessed(sender As Object, e As StorageProcessedEventArgs)
+            Console.WriteLine("*** The storage is merging: {0}", e.FileName)
+        End Sub
 
-        Dim folderPath As String = e.DestinationFolder.RetrieveFullPath()
+        Private Shared Sub PstMerge_OnItemMoved(sender As Object, e As ItemMovedEventArgs)
+            If currentFolder Is Nothing Then
+                currentFolder = e.DestinationFolder.RetrieveFullPath()
+            End If
 
-        If currentFolder <> folderPath Then
-            Console.WriteLine("    Added {0} messages to ""{1}""", messageCount, currentFolder)
-            messageCount = 0
-            currentFolder = folderPath
-        End If
+            Dim folderPath As String = e.DestinationFolder.RetrieveFullPath()
 
-        messageCount += 1
-        totalAdded += 1
-    End Sub
-End Class
+            If currentFolder <> folderPath Then
+                Console.WriteLine("    Added {0} messages to ""{1}""", messageCount, currentFolder)
+                messageCount = 0
+                currentFolder = folderPath
+            End If
+
+            messageCount += 1
+            totalAdded += 1
+        End Sub
+    End Class
+End Namespace

@@ -1,12 +1,4 @@
-﻿' ///////////////////////////////////////////////////////////////////////
-' Copyright 2001-2015 Aspose Pty Ltd. All Rights Reserved.
-'
-' This file is part of Aspose.Email. The source code in this file
-' is only intended as a supplement to the documentation, and is provided
-' "as is", without warranty of any kind, either expressed or implied.
-' ///////////////////////////////////////////////////////////////////////
-
-Imports System.IO
+﻿Imports System.IO
 Imports Aspose.Email.Mail
 Imports Aspose.Email.Outlook
 Imports Aspose.Email.Pop3
@@ -19,43 +11,46 @@ Imports Aspose.Email.Mail.Bounce
 Imports Aspose.Email.Exchange
 Imports Aspose.Email.Outlook.Pst
 
-Public Class CustomizingEmailHeaders
-    Public Shared Sub Run()
-        ' The path to the documents directory.
-        Dim dataDir As String = RunExamples.GetDataDir_SMTP()
-        Dim dstEmail As String = dataDir & Convert.ToString("MsgHeaders.msg")
+Namespace Aspose.Email.Examples.VisualBasic.Knowledge.SMTP
 
-        'Create an instance MailMessage class
-        Dim msg As New MailMessage()
+    Public Class CustomizingEmailHeaders
+        Public Shared Sub Run()
+            ' The path to the documents directory.
+            Dim dataDir As String = RunExamples.GetDataDir_SMTP()
+            Dim dstEmail As String = dataDir & Convert.ToString("MsgHeaders.msg")
 
-        'Specify ReplyTo
-        msg.ReplyToList.Add("reply@reply.com")
+            'Create an instance MailMessage class
+            Dim msg As New MailMessage()
 
-        'From field
-        msg.From = "sender@sender.com"
+            'Specify ReplyTo
+            msg.ReplyToList.Add("reply@reply.com")
 
-        'To field
-        msg.[To].Add("receiver1@receiver.com")
+            'From field
+            msg.From = "sender@sender.com"
 
-        'Adding Cc and Bcc Addresses
-        msg.CC.Add("receiver2@receiver.com")
-        msg.Bcc.Add("receiver3@receiver.com")
+            'To field
+            msg.[To].Add("receiver1@receiver.com")
 
-        'Message subject
-        msg.Subject = "test mail"
+            'Adding Cc and Bcc Addresses
+            msg.CC.Add("receiver2@receiver.com")
+            msg.Bcc.Add("receiver3@receiver.com")
 
-        'Specify Date
-        msg.[Date] = New System.DateTime(2006, 3, 6)
+            'Message subject
+            msg.Subject = "test mail"
 
-        'Specify XMailer
-        msg.XMailer = "Aspose.Email"
+            'Specify Date
+            msg.[Date] = New System.DateTime(2006, 3, 6)
 
-        'Specify Secret Header
-        msg.Headers.Add("secret-header", "mystery")
+            'Specify XMailer
+            msg.XMailer = "Aspose.Email"
 
-        'Save message to disc
-        msg.Save(dstEmail, Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode)
+            'Specify Secret Header
+            msg.Headers.Add("secret-header", "mystery")
 
-        Console.WriteLine(Environment.NewLine + "Message saved with customized headers successfully at " & dstEmail)
-    End Sub
-End Class
+            'Save message to disc
+            msg.Save(dstEmail, Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode)
+
+            Console.WriteLine(Environment.NewLine + "Message saved with customized headers successfully at " & dstEmail)
+        End Sub
+    End Class
+End Namespace

@@ -1,12 +1,4 @@
-﻿' ///////////////////////////////////////////////////////////////////////
-' Copyright 2001-2015 Aspose Pty Ltd. All Rights Reserved.
-'
-' This file is part of Aspose.Email. The source code in this file
-' is only intended as a supplement to the documentation, and is provided
-' "as is", without warranty of any kind, either expressed or implied.
-' ///////////////////////////////////////////////////////////////////////
-
-Imports System.IO
+﻿Imports System.IO
 Imports Aspose.Email.Mail
 Imports Aspose.Email.Outlook
 Imports Aspose.Email.Pop3
@@ -18,43 +10,46 @@ Imports System.Data
 Imports Aspose.Email.Mail.Bounce
 Imports Aspose.Email.Exchange
 
-Public Class RemovingMessageFlags
-    Public Shared Sub Run()
-        ' The path to the documents directory.
-        Dim dataDir As String = RunExamples.GetDataDir_IMAP()
-        Dim dstEmail As String = dataDir & Convert.ToString("1234.eml")
+Namespace Aspose.Email.Examples.VisualBasic.IMAP
 
-        'Create an instance of the ImapClient class
-        Dim client As New ImapClient()
+    Public Class RemovingMessageFlags
+        Public Shared Sub Run()
+            ' The path to the documents directory.
+            Dim dataDir As String = RunExamples.GetDataDir_IMAP()
+            Dim dstEmail As String = dataDir & Convert.ToString("1234.eml")
 
-        'Specify host, username and password for your client
-        client.Host = "imap.gmail.com"
+            'Create an instance of the ImapClient class
+            Dim client As New ImapClient()
 
-        ' Set username
-        client.Username = "your.username@gmail.com"
+            'Specify host, username and password for your client
+            client.Host = "imap.gmail.com"
 
-        ' Set password
-        client.Password = "your.password"
+            ' Set username
+            client.Username = "your.username@gmail.com"
 
-        ' Set the port to 993. This is the SSL port of IMAP server
-        client.Port = 993
+            ' Set password
+            client.Password = "your.password"
 
-        ' Enable SSL
-        client.SecurityOptions = SecurityOptions.Auto
+            ' Set the port to 993. This is the SSL port of IMAP server
+            client.Port = 993
 
-        Try
-            System.Console.WriteLine("Logged in to the IMAP server")
+            ' Enable SSL
+            client.SecurityOptions = SecurityOptions.Auto
 
-            ' Mark the message as read
-            client.RemoveMessageFlags(1, Aspose.Email.Imap.ImapMessageFlags.IsRead)
+            Try
+                System.Console.WriteLine("Logged in to the IMAP server")
 
-            'Disconnect to the remote IMAP server
+                ' Mark the message as read
+                client.RemoveMessageFlags(1, Aspose.Email.Imap.ImapMessageFlags.IsRead)
 
-            client.Disconnect()
-        Catch ex As Exception
-            System.Console.Write(Environment.NewLine + ex.ToString())
-        End Try
+                'Disconnect to the remote IMAP server
 
-        Console.WriteLine(Environment.NewLine + "Removed message flags from IMAP server.")
-    End Sub
-End Class
+                client.Disconnect()
+            Catch ex As Exception
+                System.Console.Write(Environment.NewLine + ex.ToString())
+            End Try
+
+            Console.WriteLine(Environment.NewLine + "Removed message flags from IMAP server.")
+        End Sub
+    End Class
+End Namespace
