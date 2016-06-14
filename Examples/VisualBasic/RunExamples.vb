@@ -12,7 +12,7 @@ Namespace Aspose.Email.Examples.VisualBasic
 
         Sub Main()
 
-            Console.WriteLine("Open RunExamples.vb. \nIn Main() method uncomment the example that you want to run.")
+            Console.WriteLine("Open RunExamples.vb. " & vbLf & "In Main() method uncomment the example that you want to run.")
             Console.WriteLine("=====================================================")
 
             ' Uncomment the one you want to try out

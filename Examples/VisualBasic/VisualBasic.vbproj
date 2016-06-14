@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{ED8C5160-14B0-4E3B-8BE5-4DDC7F9C7912}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>RunExamples</StartupObject>
+    <StartupObject>Aspose.Email.Examples.VisualBasic.RunExamples</StartupObject>
     <RootNamespace>
     </RootNamespace>
     <AssemblyName>VisualBasic</AssemblyName>
