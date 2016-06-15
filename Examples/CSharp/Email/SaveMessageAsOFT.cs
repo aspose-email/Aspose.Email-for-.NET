@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CSharp.Email
+namespace Aspose.Email.Examples.CSharp.Email
 {
     class SaveMessageAsOFT
     {

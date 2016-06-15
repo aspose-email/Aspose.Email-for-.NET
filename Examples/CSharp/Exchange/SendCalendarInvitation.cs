@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CSharp.Exchange
+namespace Aspose.Email.Examples.CSharp.Exchange
 {
     class SendCalendarInvitation
     {
@@ -17,6 +17,7 @@ namespace CSharp.Exchange
             /// This exmpale shows how an Exchange user can share his/her calendar with someone using the EWS client of the API. 
             /// Available from Aspose.Email for .NET 6.4.0 onwards
             /// </summary>
+            
             using (IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain"))
             {
                 // delegate calendar access permission

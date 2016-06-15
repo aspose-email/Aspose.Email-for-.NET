@@ -7,7 +7,7 @@
    install it and then add its reference to this project. For any issues, questions or suggestions 
    please feel free to contact us using http://www.aspose.com/community/forums/default.aspx            
 */
-namespace CSharp.SMTP
+namespace Aspose.Email.Examples.CSharp.SMTP
 {
     class InsertHeaderAtSpecificLocation
     {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CSharp.Exchange
+namespace Aspose.Email.Examples.CSharp.Exchange
 {
     class PagingSupportForListingAppointments
     {
