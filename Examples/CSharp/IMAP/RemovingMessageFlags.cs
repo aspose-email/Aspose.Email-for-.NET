@@ -43,7 +43,7 @@ namespace Aspose.Email.Examples.CSharp.IMAP
                 client.RemoveMessageFlags(1, Aspose.Email.Imap.ImapMessageFlags.IsRead);
 
                 //Disconnect to the remote IMAP server
-                client.Disconnect();
+                client.Dispose();
 
             }
             catch (Exception ex)

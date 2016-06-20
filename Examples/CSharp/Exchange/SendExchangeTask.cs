@@ -4,6 +4,7 @@ using Aspose.Email;
 using Aspose.Email.Exchange;
 using Aspose.Email.Mail;
 using System.Net;
+using System.Text;
 
 namespace Aspose.Email.Examples.CSharp.Exchange
 {
@@ -13,14 +14,17 @@ namespace Aspose.Email.Examples.CSharp.Exchange
         {
             // The path to the documents directory.
             string dataDir = RunExamples.GetDataDir_Exchange();
-            string dstEmail = dataDir + "Message.msg";
+            string dstEmail = dataDir + "Message.eml";
             
             // Create instance of ExchangeClient class by giving credentials
             IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
-            MailMessageLoadOptions loadOptions = new MailMessageLoadOptions();
-            loadOptions.MessageFormat = MessageFormat.Msg;
-            loadOptions.FileCompatibilityMode = FileCompatibilityMode.PreserveTnefAttachments;
+
+            // load task from .eml file
+            EmlLoadOptions loadOptions = new EmlLoadOptions();
+
+            loadOptions.PrefferedTextEncoding = Encoding.UTF8;
+            loadOptions.PreserveTnefAttachments = true;
 
             // load task from .msg file
             MailMessage eml = MailMessage.Load(dstEmail, loadOptions);

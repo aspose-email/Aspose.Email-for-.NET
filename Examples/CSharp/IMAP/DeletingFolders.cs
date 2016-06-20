@@ -41,7 +41,7 @@ namespace Aspose.Email.Examples.CSharp.IMAP
                 client.DeleteFolder("Client");
 
                 //Disconnect to the remote IMAP server
-                client.Disconnect();
+                client.Dispose();
 
             }
             catch (Exception ex)

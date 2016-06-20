@@ -23,7 +23,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Knowledge.SMTP
             Dim msg As New MailMessage()
 
             'Import from EML format
-            msg = MailMessage.Load(dstEmail, MailMessageLoadOptions.DefaultEml)
+            msg = MailMessage.Load(dstEmail, New EmlLoadOptions())
 
             'Create an instance of SmtpClient class
             Dim client As SmtpClient = GetSmtpClient()

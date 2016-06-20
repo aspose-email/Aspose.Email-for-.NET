@@ -80,7 +80,7 @@ namespace Aspose.Email.Examples.CSharp.SMTP
                 SmtpClient client = GetSmtpClient();
 
                 //Send messages in bulk
-                client.BulkSend(messages);
+                client.Send(messages);
             }
             catch (MailException ex)
             {

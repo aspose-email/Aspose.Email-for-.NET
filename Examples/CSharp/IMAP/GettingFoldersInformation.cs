@@ -45,7 +45,7 @@ namespace Aspose.Email.Examples.CSharp.IMAP
                 {
                     // Folder name
                     Console.WriteLine("Folder name is " + folderInfo.Name);
-                    ImapFolderInfo folderExtInfo = client.ListFolder(folderInfo.Name);
+                    ImapFolderInfo folderExtInfo = client.GetFolderInfo(folderInfo.Name);
                     // New messages in the folder
                     Console.WriteLine("New message count: " + folderExtInfo.NewMessageCount);
                     // Check whether its readonly
@@ -55,7 +55,7 @@ namespace Aspose.Email.Examples.CSharp.IMAP
                 }
 
                 //Disconnect to the remote IMAP server
-                client.Disconnect();
+                client.Dispose();
 
             }
             catch (Exception ex)

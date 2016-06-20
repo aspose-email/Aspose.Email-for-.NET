@@ -20,7 +20,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             Dim message As MailMessage
 
             'Create MailMessage instance by loading an Eml file
-            message = MailMessage.Load(dataDir & Convert.ToString("test.eml"), MailMessageLoadOptions.DefaultEml)
+            message = MailMessage.Load(dataDir & Convert.ToString("test.eml"), New EmlLoadOptions())
 
             System.Console.Write("From:")
 

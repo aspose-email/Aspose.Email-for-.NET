@@ -56,7 +56,7 @@ namespace Aspose.Email.Examples.CSharp.IMAP
                 System.Console.WriteLine("New Message Added Successfully");
 
                 //Disconnect to the remote IMAP server
-                client.Disconnect();
+                client.Dispose();
 
             }
             catch (Exception ex)

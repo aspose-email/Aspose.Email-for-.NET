@@ -79,7 +79,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Knowledge.SMTP
                 Dim client As SmtpClient = GetSmtpClient()
 
                 'Send messages in bulk
-                client.BulkSend(messages)
+                client.Send(messages)
             Catch ex As MailException
                 System.Diagnostics.Debug.WriteLine(ex.ToString())
 
