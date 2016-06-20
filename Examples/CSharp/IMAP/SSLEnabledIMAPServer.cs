@@ -40,7 +40,7 @@ namespace Aspose.Email.Examples.CSharp.IMAP
                 System.Console.WriteLine("Logged in to the IMAP server");
 
                 //Disconnect to the remote IMAP server
-                client.Disconnect();
+                client.Dispose();
                 System.Console.WriteLine("Disconnected from the IMAP server");
 
             }

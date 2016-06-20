@@ -52,7 +52,7 @@ namespace Aspose.Email.Examples.CSharp.IMAP
 
 
                 //Disconnect to the remote IMAP server
-                client.Disconnect();
+                client.Dispose();
 
             }
             catch (Exception ex)
@@ -78,7 +78,7 @@ namespace Aspose.Email.Examples.CSharp.IMAP
             if (folderInfo.Selectable == true)
             {
                 // Send status command to get folder info
-                ImapFolderInfo folderInfoStatus = client.ListFolder(folderInfo.Name);
+                ImapFolderInfo folderInfoStatus = client.GetFolderInfo(folderInfo.Name);
                 Console.WriteLine(folderInfoStatus.Name + " folder selected. New messages: " + folderInfoStatus.NewMessageCount +
                             ", Total messages: " + folderInfoStatus.TotalMessageCount);
 

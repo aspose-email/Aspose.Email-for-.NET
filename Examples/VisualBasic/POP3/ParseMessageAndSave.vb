@@ -45,11 +45,11 @@ Namespace Aspose.Email.Examples.VisualBasic.Knowledge.POP3
                 'Save the message using its subject as the file name
                 msg.Save(dstEmail, Aspose.Email.Mail.SaveOptions.DefaultEml)
 
-                client.Disconnect()
+                client.Dispose()
             Catch ex As Exception
                 Console.WriteLine(Environment.NewLine + ex.Message)
             Finally
-                client.Disconnect()
+                client.Dispose()
             End Try
 
             Console.WriteLine(Environment.NewLine + "Downloaded email using POP3. Message saved at " & dstEmail)

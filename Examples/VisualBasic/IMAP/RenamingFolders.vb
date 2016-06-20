@@ -42,7 +42,7 @@ Namespace Aspose.Email.Examples.VisualBasic.IMAP
 
                 'Disconnect to the remote IMAP server
 
-                client.Disconnect()
+                client.Dispose()
             Catch ex As Exception
                 System.Console.Write(Environment.NewLine + ex.ToString())
             End Try

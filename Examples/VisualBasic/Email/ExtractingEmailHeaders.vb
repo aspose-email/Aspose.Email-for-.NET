@@ -19,7 +19,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             Dim message As MailMessage
 
             'Create MailMessage instance by loading an EML file
-            message = MailMessage.Load(dataDir & Convert.ToString("email-headers.eml"), MailMessageLoadOptions.DefaultEml)
+            message = MailMessage.Load(dataDir & Convert.ToString("email-headers.eml"), New EmlLoadOptions())
 
             Console.WriteLine(vbLf & vbLf & "headers:" & vbLf & vbLf)
 

@@ -51,7 +51,7 @@ namespace Aspose.Email.Examples.CSharp.IMAP
                 }
 
                 //Disconnect to the remote IMAP server
-                client.Disconnect();
+                client.Dispose();
 
             }
             catch (Exception ex)

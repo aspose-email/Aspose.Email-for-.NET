@@ -43,7 +43,7 @@ Namespace Aspose.Email.Examples.VisualBasic.IMAP
                 For Each folderInfo As Aspose.Email.Imap.ImapFolderInfo In folderInfoColl
                     ' Folder name
                     Console.WriteLine("Folder name is " + folderInfo.Name)
-                    Dim folderExtInfo As ImapFolderInfo = client.ListFolder(folderInfo.Name)
+                    Dim folderExtInfo As ImapFolderInfo = client.GetFolderInfo(folderInfo.Name)
                     ' New messages in the folder
                     Console.WriteLine("New message count: " + folderExtInfo.NewMessageCount)
                     ' Check whether its readonly
@@ -54,7 +54,7 @@ Namespace Aspose.Email.Examples.VisualBasic.IMAP
 
                 'Disconnect to the remote IMAP server
 
-                client.Disconnect()
+                client.Dispose()
             Catch ex As Exception
                 System.Console.Write(Environment.NewLine + ex.ToString())
             End Try

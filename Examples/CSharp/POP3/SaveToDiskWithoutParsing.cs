@@ -39,7 +39,7 @@ namespace Aspose.Email.Examples.CSharp.POP3
                 //Save message to disk by message sequence number
                 client.SaveMessage(1, dstEmail);
 
-                client.Disconnect();
+                client.Dispose();
             }
             catch (Exception ex)
             {

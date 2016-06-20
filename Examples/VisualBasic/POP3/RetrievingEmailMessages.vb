@@ -53,7 +53,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Knowledge.POP3
             Catch ex As Exception
                 Console.WriteLine(ex.Message)
             Finally
-                client.Disconnect()
+                client.Dispose()
             End Try
 
             Console.WriteLine(Environment.NewLine + "Retrieved email messages using POP3 ")

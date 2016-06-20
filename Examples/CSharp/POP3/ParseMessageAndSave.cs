@@ -40,7 +40,7 @@ namespace Aspose.Email.Examples.CSharp.POP3
 
                 //Save the message using its subject as the file name
                 msg.Save(dstEmail, Aspose.Email.Mail.SaveOptions.DefaultEml);
-                client.Disconnect();
+                client.Dispose();
 
             }
             catch (Exception ex)
@@ -49,7 +49,7 @@ namespace Aspose.Email.Examples.CSharp.POP3
             }
             finally
             {
-                client.Disconnect();
+                client.Dispose();
             } 
 
             Console.WriteLine(Environment.NewLine + "Downloaded email using POP3. Message saved at " + dstEmail);

@@ -57,7 +57,7 @@ namespace Aspose.Email.Examples.CSharp.POP3
             }
             finally
             {
-                client.Disconnect();
+                client.Dispose();
             } 
 
             Console.WriteLine(Environment.NewLine + "Retrieved email messages using POP3 ");

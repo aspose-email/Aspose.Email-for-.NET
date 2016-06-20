@@ -21,7 +21,7 @@ namespace Aspose.Email.Examples.CSharp.SMTP
             MailMessage msg = new MailMessage();
 
             //Import from EML format
-            msg = MailMessage.Load(dstEmail, MailMessageLoadOptions.DefaultEml);
+            msg = MailMessage.Load(dstEmail, new EmlLoadOptions());
 
             //Create an instance of SmtpClient class
             SmtpClient client = GetSmtpClient();

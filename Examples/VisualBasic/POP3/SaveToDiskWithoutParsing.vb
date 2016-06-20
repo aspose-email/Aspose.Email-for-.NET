@@ -40,7 +40,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Knowledge.POP3
                 'Save message to disk by message sequence number
                 client.SaveMessage(1, dstEmail)
 
-                client.Disconnect()
+                client.Dispose()
             Catch ex As Exception
                 Console.WriteLine(ex.Message)
             End Try

@@ -53,7 +53,7 @@ namespace Aspose.Email.Examples.CSharp.POP3
             }
             finally
             {
-                client.Disconnect();
+                client.Dispose();
             } 
 
             Console.WriteLine(Environment.NewLine + "Displayed header information from emails using POP3 ");

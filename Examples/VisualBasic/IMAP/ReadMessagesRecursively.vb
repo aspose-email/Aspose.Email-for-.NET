@@ -52,7 +52,7 @@ Namespace Aspose.Email.Examples.VisualBasic.IMAP
 
                 'Disconnect to the remote IMAP server
 
-                client.Disconnect()
+                client.Dispose()
             Catch ex As Exception
                 System.Console.Write(Environment.NewLine + ex.ToString())
             End Try
@@ -68,7 +68,7 @@ Namespace Aspose.Email.Examples.VisualBasic.IMAP
             ' Read the messages from the current folder, if it is selectable
             If folderInfo.Selectable = True Then
                 ' Send status command to get folder info
-                Dim folderInfoStatus As ImapFolderInfo = client.ListFolder(folderInfo.Name)
+                Dim folderInfoStatus As ImapFolderInfo = client.GetFolderInfo(folderInfo.Name)
                 Console.WriteLine(folderInfoStatus.Name + " folder selected. New messages: " + folderInfoStatus.NewMessageCount + ", Total messages: " + folderInfoStatus.TotalMessageCount)
 
                 ' Select the current folder

@@ -16,7 +16,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             MailMessage message;
 
             //Create MailMessage instance by loading an EML file
-            message = MailMessage.Load(dataDir + "email-headers.eml", MailMessageLoadOptions.DefaultEml);
+            message = MailMessage.Load(dataDir + "email-headers.eml", new EmlLoadOptions());
 
             Console.WriteLine("\n\nheaders:\n\n");
 
