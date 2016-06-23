@@ -10,7 +10,7 @@ using Aspose.Email;
    please feel free to contact us using http://www.aspose.com/community/forums/default.aspx            
 */
 
-namespace Aspose.Email.Examples.CSharp.SMTP
+namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
     class SetSpecificIpAddress
     {

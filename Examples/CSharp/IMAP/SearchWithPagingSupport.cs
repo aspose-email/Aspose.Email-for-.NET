@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Aspose.Email.Examples.CSharp.IMAP
+namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
     class SearchWithPagingSupport
     {

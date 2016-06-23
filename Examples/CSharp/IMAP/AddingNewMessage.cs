@@ -3,11 +3,9 @@ using System;
 using Aspose.Email.Mail;
 using Aspose.Email.Outlook;
 using Aspose.Email.Pop3;
-using Aspose.Email;
-using Aspose.Email.Mime;
 using Aspose.Email.Imap;
 
-namespace Aspose.Email.Examples.CSharp.IMAP
+namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
     class AddingNewMessage
     {

@@ -1,17 +1,17 @@
 ﻿using Aspose.Email.Examples.CSharp.Email;
 using Aspose.Email.Examples.CSharp.Exchange;
-using Aspose.Email.Examples.CSharp.IMAP;
-using Aspose.Email.Examples.CSharp.Knowledge.Base;
-using Aspose.Email.Examples.CSharp.Outlook;
-using Aspose.Email.Examples.CSharp.POP3;
-using Aspose.Email.Examples.CSharp.SMTP;
+using Aspose.Email.Examples.CSharp.Email.IMAP;
+using Aspose.Email.Examples.CSharp.Email.Knowledge.Base;
+using Aspose.Email.Examples.CSharp.Email.Outlook;
+using Aspose.Email.Examples.CSharp.Email.POP3;
+using Aspose.Email.Examples.CSharp.Email.IMAP;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Aspose.Email.Examples.CSharp
+namespace Aspose.Email.Examples.CSharp.Email
 {
     class RunExamples
     {
@@ -28,12 +28,13 @@ namespace Aspose.Email.Examples.CSharp
             // =====================================================
             // =====================================================
 
-            DraftAppointmentRequest.Run();
+            //DraftAppointmentRequest.Run();
             //DisplayEmailInformation.Run();
             //ExtractingEmailHeaders.Run();
             //ProcessBouncedMsgs.Run();
             //CreateNewEmail.Run();
             //SaveMessageAsDraft.Run();
+
 
             //// =====================================================
             //// =====================================================
@@ -45,6 +46,10 @@ namespace Aspose.Email.Examples.CSharp
             //MergePSTFiles.Run();
             //SplitPST.Run();
             //CreateSaveOutlookFiles.Run();
+
+            //DeleteMessagesFromPSTFiles.Run();                        
+            //DeleteBulkItemsFromPSTFile.Run();
+            //UpdateBulkMessagesInPSTFile.Run();
 
             //// =====================================================
             //// =====================================================
@@ -100,6 +105,12 @@ namespace Aspose.Email.Examples.CSharp
             //SettingMessageFlags.Run();
             //SSLEnabledIMAPServer.Run();
 
+            //IMAP4IDExtensionSupport.Run();
+            //IMAP4ExtendedListCommand.Run();
+            //CopyMultipleMessagesFromOneFoldertoAnother.Run();
+            //DeleteSingleMessage.Run();
+            //DeleteMultipleMessages.Run();
+            
             //// =====================================================
             //// =====================================================
             //// SMTP

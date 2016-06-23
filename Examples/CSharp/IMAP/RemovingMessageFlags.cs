@@ -7,7 +7,7 @@ using Aspose.Email;
 using Aspose.Email.Mime;
 using Aspose.Email.Imap;
 
-namespace Aspose.Email.Examples.CSharp.IMAP
+namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
     class RemovingMessageFlags
     {

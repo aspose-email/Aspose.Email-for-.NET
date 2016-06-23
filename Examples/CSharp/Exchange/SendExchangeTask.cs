@@ -6,7 +6,7 @@ using Aspose.Email.Mail;
 using System.Net;
 using System.Text;
 
-namespace Aspose.Email.Examples.CSharp.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange
 {
     class SendExchangeTask
     {

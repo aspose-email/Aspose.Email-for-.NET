@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using Aspose.Email.Imap;
+using Aspose.Email.Mail;
+
+/* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
+   API reference when the project is build. Please check https://docs.nuget.org/consume/nuget-faq 
+   for more information. If you do not wish to use NuGet, you can manually download 
+   Aspose.Email for .NET API from http://www.aspose.com/downloads, 
+   install it and then add its reference to this project. For any issues, questions or suggestions 
+   please feel free to contact us using http://www.aspose.com/community/forums/default.aspx            
+*/
+
+namespace Aspose.Email.Examples.CSharp.Email.IMAP
+{
+    class DeleteSingleMessage
+    {
+        public static void Run()
+        {
+            using (ImapClient client = new ImapClient("imap.gmail.com", 993, "task.email.2015@gmail.com", "Aspose_123"))
+            {
+                try
+                {
+                    Console.WriteLine(client.UidPlusSupported.ToString());
+
+                    // Append some test messages
+                    client.SelectFolder(ImapFolderInfo.InBox);
+                    MailMessage message = new MailMessage(
+                            "from@Aspose.com",
+                            "to@Aspose.com",
+                            "EMAILNET-35227 - " + Guid.NewGuid().ToString(),
+                            "EMAILNET-35227 Add ability in ImapClient to delete message");
+                    string emailId = client.AppendMessage(message);
+
+                    // now verify that all the messages have been appended to the mailbox
+                    ImapMessageInfoCollection messageInfoCol = null;
+                    messageInfoCol = client.ListMessages();
+                    Console.WriteLine(messageInfoCol.Count);
+
+                    // Select the inbox folder
+                    client.SelectFolder(ImapFolderInfo.InBox);                   
+                    // Delete message
+                    client.DeleteMessage(emailId);
+                    client.CommitDeletes();
+                }
+                finally
+                {
+
+                }
+            }
+        }
+    }
+}
+

@@ -2,7 +2,7 @@
 using System;
 using Aspose.Email.Mail;
 
-namespace Aspose.Email.Examples.CSharp.Knowledge.Base
+namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
 {
     class PrintEmail
     {
