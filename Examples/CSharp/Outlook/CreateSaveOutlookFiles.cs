@@ -5,7 +5,7 @@ using Aspose.Email.Outlook.Pst;
 using Aspose.Email.Outlook;
 using Aspose.Email.Mail;
 
-namespace Aspose.Email.Examples.CSharp.Outlook
+namespace Aspose.Email.Examples.CSharp.Email.Outlook
 {
     class CreateSaveOutlookFiles
     {

@@ -9,7 +9,7 @@ using Aspose.Email.Imap;
 using System.Configuration;
 using System.Data;
 
-namespace Aspose.Email.Examples.CSharp.SMTP
+namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
     class SSLEnabledSMTPServer
     {

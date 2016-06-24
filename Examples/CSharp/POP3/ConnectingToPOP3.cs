@@ -6,7 +6,7 @@ using Aspose.Email.Pop3;
 using Aspose.Email;
 using Aspose.Email.Mime;
 
-namespace Aspose.Email.Examples.CSharp.POP3
+namespace Aspose.Email.Examples.CSharp.Email.POP3
 {
     class ConnectingToPOP3
     {

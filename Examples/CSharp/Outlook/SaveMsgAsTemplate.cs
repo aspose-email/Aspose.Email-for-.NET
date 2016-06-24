@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Aspose.Email.Examples.CSharp.Outlook
+namespace Aspose.Email.Examples.CSharp.Email.Outlook
 {
     class SaveMsgAsTemplate
     {

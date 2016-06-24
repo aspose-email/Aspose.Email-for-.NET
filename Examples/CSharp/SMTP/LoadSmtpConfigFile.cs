@@ -8,7 +8,7 @@ using Aspose.Email.Mime;
 using Aspose.Email.Imap;
 using System.Configuration;
 
-namespace Aspose.Email.Examples.CSharp.SMTP
+namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
     class LoadSmtpConfigFile
     {

@@ -3,7 +3,7 @@ using System;
 using Aspose.Email;
 using Aspose.Email.Outlook.Pst;
 
-namespace Aspose.Email.Examples.CSharp.Outlook
+namespace Aspose.Email.Examples.CSharp.Email.Outlook
 {
     class NewPSTAddSubfolders
     {

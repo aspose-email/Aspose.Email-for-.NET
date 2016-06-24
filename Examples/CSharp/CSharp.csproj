@@ -48,6 +48,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Email\CreateNewEmail.cs" />
+    <Compile Include="IMAP\CopyMultipleMessagesFromOneFoldertoAnother.cs" />
+    <Compile Include="IMAP\DeleteSingleMessage.cs" />
+    <Compile Include="IMAP\DeleteMultipleMessages.cs" />
+    <Compile Include="IMAP\IMAP4ExtendedListCommand.cs" />
+    <Compile Include="IMAP\IMAP4IDExtensionSupport.cs" />
+    <Compile Include="Outlook\DeleteBulkItemsFromPSTFile.cs" />
+    <Compile Include="Outlook\DeleteMessagesFromPSTFiles.cs" />
     <Compile Include="Email\DisplayEmailInformation.cs" />
     <Compile Include="Email\DraftAppointmentRequest.cs" />
     <Compile Include="Email\ExtractingEmailHeaders.cs" />
@@ -84,6 +91,7 @@
     <Compile Include="Outlook\NewPSTAddSubfolders.cs" />
     <Compile Include="Outlook\SaveMsgAsTemplate.cs" />
     <Compile Include="Outlook\SplitPST.cs" />
+    <Compile Include="Outlook\UpdateBulkMessagesInPSTFile.cs" />
     <Compile Include="POP3\ConnectingToPOP3.cs" />
     <Compile Include="POP3\GettingMailboxInfo.cs" />
     <Compile Include="POP3\ParseMessageAndSave.cs" />

@@ -5,7 +5,7 @@ using Aspose.Email.Exchange;
 using Aspose.Email.Mail;
 using System.Net;
 
-namespace Aspose.Email.Examples.CSharp.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange
 {
     class SaveExchangeTaskToDisc
     {
