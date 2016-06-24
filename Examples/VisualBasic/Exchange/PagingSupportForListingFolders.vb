@@ -1,6 +1,6 @@
 ﻿Imports Aspose.Email.Exchange
 
-Namespace Aspose.Email.Examples.VisualBasic.Exchange
+Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
 
     Public Class PagingSupportForListingFolders
         Private Shared Sub Run()

@@ -1,7 +1,7 @@
 ﻿Imports Aspose.Email.Imap
 Imports Aspose.Email.Mail
 
-Namespace Aspose.Email.Examples.VisualBasic.IMAP
+Namespace Aspose.Email.Examples.VisualBasic.Email.IMAP
 
     Public Class ListingMessagesWithPagingSupport
         Private Shared Sub Run()

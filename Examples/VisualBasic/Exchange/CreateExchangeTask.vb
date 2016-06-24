@@ -10,7 +10,7 @@ Imports System.Data
 Imports Aspose.Email.Mail.Bounce
 Imports Aspose.Email.Exchange
 
-Namespace Aspose.Email.Examples.VisualBasic.Exchange
+Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
     Public Class CreateExchangeTask
         Public Shared Sub Run()
             ' Create instance of EWSClient class by giving credentials

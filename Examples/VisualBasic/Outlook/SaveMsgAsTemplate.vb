@@ -1,6 +1,6 @@
 ﻿Imports Aspose.Email.Outlook
 
-Namespace Aspose.Email.Examples.VisualBasic.Knowledge.Outlook
+Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
 
     Public Class SaveMsgAsTemplate
         Private Shared Sub Run()

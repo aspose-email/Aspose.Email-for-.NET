@@ -7,7 +7,7 @@
 '   install it and then add its reference to this project. For any issues, questions or suggestions 
 '   please feel free to contact us using http://www.aspose.com/community/forums/default.aspx            
 
-Namespace Aspose.Email.Examples.VisualBasic.IMAP
+Namespace Aspose.Email.Examples.VisualBasic.Email.IMAP
     Public Class InsertHeaderAtSpecificLocation
         Public Shared Sub Run()
             Dim dataDir As String = RunExamples.GetDataDir_IMAP()

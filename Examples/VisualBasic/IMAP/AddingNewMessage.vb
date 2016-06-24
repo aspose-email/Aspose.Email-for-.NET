@@ -10,7 +10,7 @@ Imports System.Data
 Imports Aspose.Email.Mail.Bounce
 Imports Aspose.Email.Exchange
 
-Namespace Aspose.Email.Examples.VisualBasic.IMAP
+Namespace Aspose.Email.Examples.VisualBasic.Email.IMAP
 
     Public Class AddingNewMessage
         Public Shared Sub Run()

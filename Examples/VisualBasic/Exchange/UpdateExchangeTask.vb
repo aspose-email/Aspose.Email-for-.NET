@@ -11,7 +11,7 @@ Imports Aspose.Email.Mail.Bounce
 Imports Aspose.Email.Exchange
 Imports System.Net
 
-Namespace Aspose.Email.Examples.VisualBasic.Exchange
+Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
     Public Class UpdateExchangeTask
         Public Shared Sub Run()
             ' Create and initialize credentials

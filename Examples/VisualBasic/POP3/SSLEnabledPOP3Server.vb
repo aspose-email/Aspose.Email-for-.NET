@@ -12,7 +12,7 @@ Imports Aspose.Email.Exchange
 Imports Aspose.Email.Outlook.Pst
 
 
-Namespace Aspose.Email.Examples.VisualBasic.Knowledge.POP3
+Namespace Aspose.Email.Examples.VisualBasic.Email.POP3
     Public Class SSLEnabledPOP3Server
         Public Shared Sub Run()
             ' The path to the documents directory.
