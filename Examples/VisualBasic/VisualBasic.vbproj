@@ -110,12 +110,12 @@
     <Compile Include="IMAP\SSLEnabledIMAPServer.vb" />
     <Compile Include="Knowledge-Base\PrintEmail.vb" />
     <Compile Include="Outlook\CreateSaveOutlookFiles.vb" />
-    <Compile Include="Outlook\DeleteBulkItemsFromPSTFile.vb" />
-    <Compile Include="Outlook\DeleteMessagesFromPSTFiles.vb" />
+    <Compile Include="PersonalOutlook\DeleteBulkItemsFromPSTFile.vb" />
     <Compile Include="Outlook\MergePSTFiles.vb" />
     <Compile Include="Outlook\NewPSTAddSubfolders.vb" />
     <Compile Include="Outlook\SaveMsgAsTemplate.vb" />
     <Compile Include="Outlook\SplitPST.vb" />
+    <Compile Include="PersonalOutlook\DeleteMessagesFromPSTFiles.vb" />
     <Compile Include="POP3\ConnectingToPOP3.vb" />
     <Compile Include="POP3\GettingMailboxInfo.vb" />
     <Compile Include="POP3\ParseMessageAndSave.vb" />

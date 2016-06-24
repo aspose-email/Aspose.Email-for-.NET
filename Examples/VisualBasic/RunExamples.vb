@@ -6,6 +6,7 @@ Imports Aspose.Email.Examples.VisualBasic.Email.Outlook
 Imports Aspose.Email.Examples.VisualBasic.Email.POP3
 Imports Aspose.Email.Examples.VisualBasic.Email.SMTP
 Imports Aspose.Email.Examples.VisualBasic.Email.IMAP
+Imports Aspose.Email.Examples.VisualBasic.Email.Personal.Outlook
 
 Namespace Aspose.Email.Examples.VisualBasic
     Module RunExamples
@@ -107,7 +108,6 @@ Namespace Aspose.Email.Examples.VisualBasic
             '' SMTP
             '' =====================================================
             '' =====================================================
-
 
             'SetSpecificIpAddress.Run()
             'ExportAsEML.Run()
