@@ -17,7 +17,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            using (ImapClient client = new ImapClient("imap.gmail.com", 993, "task.email.2015@gmail.com", "Aspose_123"))
+            using (ImapClient client = new ImapClient("exchange.aspose.com", "username", "password"))
             {
                 try
                 {
@@ -32,13 +32,14 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                             "EMAILNET-35227 Add ability in ImapClient to delete message");
                     string emailId = client.AppendMessage(message);
 
-                    // now verify that all the messages have been appended to the mailbox
+                    // Now verify that all the messages have been appended to the mailbox
                     ImapMessageInfoCollection messageInfoCol = null;
                     messageInfoCol = client.ListMessages();
                     Console.WriteLine(messageInfoCol.Count);
 
                     // Select the inbox folder
                     client.SelectFolder(ImapFolderInfo.InBox);                   
+                    
                     // Delete message
                     client.DeleteMessage(emailId);
                     client.CommitDeletes();

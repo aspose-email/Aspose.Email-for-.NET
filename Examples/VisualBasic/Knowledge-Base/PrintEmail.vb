@@ -18,7 +18,7 @@ Imports System.Data
 Imports Aspose.Email.Mail.Bounce
 Imports Aspose.Email.Exchange
 
-Namespace Aspose.Email.Examples.VisualBasic.Knowledge.Base
+Namespace Aspose.Email.Examples.VisualBasic.Email.Knowledge.Base
 
     Public Class PrintEmail
 

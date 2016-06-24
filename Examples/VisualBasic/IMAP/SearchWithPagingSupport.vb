@@ -2,7 +2,7 @@
 Imports Aspose.Email.Mail
 Imports Aspose.Email
 
-Namespace Aspose.Email.Examples.VisualBasic.IMAP
+Namespace Aspose.Email.Examples.VisualBasic.Email.IMAP
 
     Public Class SearchWithPagingSupport
         Private Shared Sub Run()

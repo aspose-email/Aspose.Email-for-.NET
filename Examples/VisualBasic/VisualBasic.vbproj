@@ -91,8 +91,13 @@
     <Compile Include="Exchange\UpdateExchangeTask.vb" />
     <Compile Include="IMAP\AddingNewMessage.vb" />
     <Compile Include="IMAP\ConnectingWithIMAPServer.vb" />
+    <Compile Include="IMAP\CopyMultipleMessagesFromOneFoldertoAnother.vb" />
+    <Compile Include="IMAP\DeleteMultipleMessages.vb" />
+    <Compile Include="IMAP\DeleteSingleMessage.vb" />
     <Compile Include="IMAP\DeletingFolders.vb" />
     <Compile Include="IMAP\GettingFoldersInformation.vb" />
+    <Compile Include="IMAP\IMAP4ExtendedListCommand.vb" />
+    <Compile Include="IMAP\IMAP4IDExtensionSupport.vb" />
     <Compile Include="IMAP\InsertHeaderAtSpecificLocation.vb" />
     <Compile Include="IMAP\ListingMessagesWithPagingSupport.vb" />
     <Compile Include="IMAP\MessagesFromIMAPServerToDisk.vb" />
@@ -181,6 +186,12 @@
     <Folder Include="Outlook\Data\" />
     <Folder Include="POP3\Data\" />
     <Folder Include="SMTP\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Outlook\DeleteMessagesFromPSTFiles.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Outlook\DeleteBulkItemsFromPSTFile.vb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,7 +11,7 @@ Imports Aspose.Email.Mail.Bounce
 Imports Aspose.Email.Exchange
 Imports Aspose.Email.Outlook.Pst
 
-Namespace Aspose.Email.Examples.VisualBasic.Knowledge.SMTP
+Namespace Aspose.Email.Examples.VisualBasic.Email.SMTP
 
     Public Class AppointmentInICSFormat
         Public Shared Sub Run()

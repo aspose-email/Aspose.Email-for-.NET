@@ -1,11 +1,11 @@
 ﻿Imports System.IO
 Imports Aspose.Email.Examples.VisualBasic.Email
-Imports Aspose.Email.Examples.VisualBasic.Exchange
-Imports Aspose.Email.Examples.VisualBasic.IMAP
-Imports Aspose.Email.Examples.VisualBasic.Knowledge.Base
-Imports Aspose.Email.Examples.VisualBasic.Knowledge.Outlook
-Imports Aspose.Email.Examples.VisualBasic.Knowledge.POP3
-Imports Aspose.Email.Examples.VisualBasic.Knowledge.SMTP
+Imports Aspose.Email.Examples.VisualBasic.Email.Exchange
+Imports Aspose.Email.Examples.VisualBasic.Email.Knowledge.Base
+Imports Aspose.Email.Examples.VisualBasic.Email.Outlook
+Imports Aspose.Email.Examples.VisualBasic.Email.POP3
+Imports Aspose.Email.Examples.VisualBasic.Email.SMTP
+Imports Aspose.Email.Examples.VisualBasic.Email.IMAP
 
 Namespace Aspose.Email.Examples.VisualBasic
     Module RunExamples
@@ -23,7 +23,7 @@ Namespace Aspose.Email.Examples.VisualBasic
             '' =====================================================
             '' =====================================================
 
-            DraftAppointmentRequest.Run()
+            'DraftAppointmentRequest.Run()
             'DisplayEmailInformation.Run()
             'ExtractingEmailHeaders.Run()
             'ProcessBouncedMsgs.Run()
@@ -40,6 +40,8 @@ Namespace Aspose.Email.Examples.VisualBasic
             'MergePSTFiles.Run()
             'SplitPST.Run()
             'CreateSaveOutlookFiles.Run()
+            'DeleteMessagesFromPSTFiles.Run()
+            'DeleteBulkItemsFromPSTFile.Run()
 
             '' =====================================================
             '' =====================================================
@@ -94,6 +96,11 @@ Namespace Aspose.Email.Examples.VisualBasic
             'ReadMessagesRecursively.Run()
             'SettingMessageFlags.Run()
             'SSLEnabledIMAPServer.Run()
+            'IMAP4IDExtensionSupport.Run()
+            'IMAP4ExtendedListCommand.Run()
+            'CopyMultipleMessagesFromOneFoldertoAnother.Run()
+            'DeleteSingleMessage.Run()
+            'DeleteMultipleMessages.Run()
 
             '' =====================================================
             '' =====================================================

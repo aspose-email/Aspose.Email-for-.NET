@@ -8,7 +8,7 @@ Imports Aspose.Email.Mail
 '   install it and then add its reference to this project. For any issues, questions or suggestions 
 '   please feel free to contact us using http://www.aspose.com/community/forums/default.aspx            
 
-Namespace Aspose.Email.Examples.VisualBasic.Exchange
+Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
 
     Public Class SecondaryCalendarEvents
         Public Shared Sub Run()

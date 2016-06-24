@@ -9,7 +9,7 @@ Imports Aspose.Email
 '  For any issues, questions or suggestions please feel free to contact us 
 '  using http://www.aspose.com/community/forums/default.aspx
 
-Namespace Aspose.Email.Examples.VisualBasic.Knowledge.SMTP
+Namespace Aspose.Email.Examples.VisualBasic.Email.SMTP
 
     Public Class SetSpecificIpAddress
         Public Shared Sub Run()

@@ -11,7 +11,7 @@ Imports Aspose.Email.Mail.Bounce
 Imports Aspose.Email.Exchange
 
 
-Namespace Aspose.Email.Examples.VisualBasic.Knowledge.Outlook
+Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
 
     Public Class CreateSaveOutlookFiles
         Public Shared Sub Run()
