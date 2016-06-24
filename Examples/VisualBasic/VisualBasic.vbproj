@@ -110,6 +110,8 @@
     <Compile Include="IMAP\SSLEnabledIMAPServer.vb" />
     <Compile Include="Knowledge-Base\PrintEmail.vb" />
     <Compile Include="Outlook\CreateSaveOutlookFiles.vb" />
+    <Compile Include="Outlook\DeleteBulkItemsFromPSTFile.vb" />
+    <Compile Include="Outlook\DeleteMessagesFromPSTFiles.vb" />
     <Compile Include="Outlook\MergePSTFiles.vb" />
     <Compile Include="Outlook\NewPSTAddSubfolders.vb" />
     <Compile Include="Outlook\SaveMsgAsTemplate.vb" />
@@ -186,12 +188,6 @@
     <Folder Include="Outlook\Data\" />
     <Folder Include="POP3\Data\" />
     <Folder Include="SMTP\Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Outlook\DeleteMessagesFromPSTFiles.vb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Outlook\DeleteBulkItemsFromPSTFile.vb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
