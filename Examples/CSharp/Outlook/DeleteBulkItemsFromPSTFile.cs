@@ -25,7 +25,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             using (PersonalStorage pst = PersonalStorage.FromFile(dataDir + @"Test.pst"))
             {
                 // Get Inbox SubFolder from Outlook file
-                FolderInfo inbox = pst.RootFolder.GetSubFolder("SubFolder");
+                FolderInfo inbox = pst.RootFolder.GetSubFolder("Inbox");
 
                 // Create instance of PersonalStorageQueryBuilder
                 PersonalStorageQueryBuilder queryBuilder = new PersonalStorageQueryBuilder();

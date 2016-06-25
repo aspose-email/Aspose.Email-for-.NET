@@ -20,7 +20,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Personal.Outlook
 
             Using pst As PersonalStorage = PersonalStorage.FromFile(dataDir & Convert.ToString("Test.pst"))
                 ' Get Inbox SubFolder from Outlook file
-                Dim inbox As FolderInfo = pst.RootFolder.GetSubFolder("SubFolder")
+                Dim inbox As FolderInfo = pst.RootFolder.GetSubFolder("Inbox")
 
                 ' Create instance of PersonalStorageQueryBuilder
                 Dim queryBuilder As New PersonalStorageQueryBuilder()
