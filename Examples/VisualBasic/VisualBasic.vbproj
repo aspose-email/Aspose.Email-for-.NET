@@ -116,6 +116,7 @@
     <Compile Include="Outlook\SaveMsgAsTemplate.vb" />
     <Compile Include="Outlook\SplitPST.vb" />
     <Compile Include="PersonalOutlook\DeleteMessagesFromPSTFiles.vb" />
+    <Compile Include="PersonalOutlook\UpdateBulkMessagesInPSTFile.vb" />
     <Compile Include="POP3\ConnectingToPOP3.vb" />
     <Compile Include="POP3\GettingMailboxInfo.vb" />
     <Compile Include="POP3\ParseMessageAndSave.vb" />

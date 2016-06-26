@@ -35,6 +35,5 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Personal.Outlook
                 End If
             Next
         End Sub
-
     End Class
 End Namespace

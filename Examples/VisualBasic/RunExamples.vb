@@ -43,6 +43,7 @@ Namespace Aspose.Email.Examples.VisualBasic
             'CreateSaveOutlookFiles.Run()
             'DeleteMessagesFromPSTFiles.Run()
             'DeleteBulkItemsFromPSTFile.Run()
+            'UpdateBulkMessagesInPSTFile.Run()
 
             '' =====================================================
             '' =====================================================
