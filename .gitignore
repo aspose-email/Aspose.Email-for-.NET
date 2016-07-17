@@ -15,15 +15,13 @@ out/
 *.lic
 *.user
 Out/
-Out*/
 Data/*Out*
+packages/
 TestResults/
 *.vsmdi
 test-results/
 *.userprefs
-packages/
 /ProgrammersGuide/ProgrammingEmail/SendingWithSMTP/AppointmentInICSFormat/Data/test.ics
-
 TestResults/
 *.vsmdi
 *.gitattributes
