@@ -9,11 +9,11 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
             '<summary>
             'This example shows how to list messages from Exchange Server with Paging support
             'Introduced in Aspose.Email for .NET 6.4.0
-            'ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage);
-            'ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage, int offset);
-            'ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage, int pageOffset, ExchangeListMessagesOptions options);
-            'ExchangeMessagePageInfo ListMessagesByPage(string folder, PageInfo pageInfo);
-            'ExchangeMessagePageInfo ListMessagesByPage(string folder, PageInfo pageInfo, ExchangeListMessagesOptions options);
+            'ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage)
+            'ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage, int offset)
+            'ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage, int pageOffset, ExchangeListMessagesOptions options)
+            'ExchangeMessagePageInfo ListMessagesByPage(string folder, PageInfo pageInfo)
+            'ExchangeMessagePageInfo ListMessagesByPage(string folder, PageInfo pageInfo, ExchangeListMessagesOptions options)
             '</summary>
             Using client As IEWSClient = EWSClient.GetEWSClient("exchange.domain.com", "username", "password")
                 Try
@@ -29,7 +29,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
                     Dim totalMessageInfoCol As ExchangeMessageInfoCollection = client.ListMessages(client.MailboxInfo.InboxUri)
                     Console.WriteLine(totalMessageInfoCol.Count)
 
-                    '/////////////// RETREIVING THE MESSAGES USING PAGING SUPPORT ////////////////////////////////////
+                    '/ RETREIVING THE MESSAGES USING PAGING SUPPORT 
 
                     Dim pages As New List(Of ExchangeMessagePageInfo)()
                     Dim pageInfo As ExchangeMessagePageInfo = client.ListMessagesByPage(client.MailboxInfo.InboxUri, itemsPerPage)

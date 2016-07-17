@@ -15,43 +15,43 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_SMTP();
             string dstEmail = dataDir + "outputAttachments.msg";
 
-            //Create an instance of the MailMessage class
+            // Create an instance of the MailMessage class
             MailMessage msg = new MailMessage();
 
-            //set the sender
+            // Set the sender
             msg.From = "newcustomeronnet@gmail.com";
 
-            //Set the recipient, who will receive the meeting request.
-            //Basically, the recipient is the same as the meeting attendees.
+            // Set the recipient, who will receive the meeting request.
+            // Basically, the recipient is the same as the meeting attendees.
             msg.To = "person1@domain.com, person2@domain.com, person3@domain.com, asposetest123@gmail.com";
 
-            //create Appointment instance
+            // Create Appointment instance
             Appointment app = new Appointment(
-            "Room 112", //location
-            new DateTime(2015, 7, 17, 13, 0, 0), //start time
-            new DateTime(2015, 7, 17, 14, 0, 0), //end time
+            "Room 112", // Location
+            new DateTime(2015, 7, 17, 13, 0, 0), // Start time
+            new DateTime(2015, 7, 17, 14, 0, 0), // End time
             msg.From,//organizer
-            msg.To //attendee
+            msg.To // Attendee
             );
 
             app.Summary = "Release Meetting";
             app.Description = "Discuss for the next release";
 
-            //add appointment to the message
+            // Add appointment to the message
             msg.AddAlternateView(app.RequestApointment());
 
-            //Create an instance of SmtpClient class
+            // Create an instance of SmtpClient class
             SmtpClient client = GetSmtpClient();
 
             try
             {
-                //Client.Send will send this message
+                // Client.Send will send this message
                 client.Send(msg);
-                //Show Message Sent�E only if message sent successfully
+                // Show Message Sent�E only if message sent successfully
                 Console.WriteLine("Message sent");
             }
 

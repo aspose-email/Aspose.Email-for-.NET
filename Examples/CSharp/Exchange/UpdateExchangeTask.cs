@@ -1,9 +1,7 @@
-﻿using System.IO;
-using System;
-using Aspose.Email;
+﻿using System;
+using System.Net;
 using Aspose.Email.Exchange;
 using Aspose.Email.Mail;
-using System.Net;
 
 namespace Aspose.Email.Examples.CSharp.Exchange
 {

@@ -27,7 +27,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.IMAP
                     'Verify the number of messages added
                     Console.WriteLine(totalMessageInfoCol.Count)
 
-                    '///////////////RETREIVE THE MESSAGES USING PAGING SUPPORT////////////////////////////////////
+                    '/RETREIVE THE MESSAGES USING PAGING SUPPORT
 
                     Dim pages As New List(Of ImapPageInfo)()
                     Dim pageInfo As ImapPageInfo = client.ListMessagesByPage(itemsPerPage)

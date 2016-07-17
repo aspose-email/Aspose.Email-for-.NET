@@ -14,7 +14,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
     Public Class CreateExchangeTask
         Public Shared Sub Run()
             ' Create instance of EWSClient class by giving credentials
-            Dim client As IEWSClient = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain")
+            Dim client As IEWSClient = EWSClient.GetEWSClient("https:outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain")
 
             ' Create Exchange task object
             Dim task As New ExchangeTask()

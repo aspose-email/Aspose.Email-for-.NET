@@ -14,7 +14,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
                 Dim totalFoldersCollection As ExchangeFolderInfoCollection = client.ListSubFolders(client.MailboxInfo.RootUri)
                 Console.WriteLine(totalFoldersCollection.Count)
 
-                '///////////////// RETREIVING INFORMATION USING PAGING SUPPORT //////////////////////////////////
+                '/ RETREIVING INFORMATION USING PAGING SUPPORT 
 
                 Dim pages As New List(Of ExchangeFolderPageInfo)()
                 Dim pagedFoldersCollection As ExchangeFolderPageInfo = client.ListSubFoldersByPage(client.MailboxInfo.RootUri, itemsPerPage)

@@ -13,11 +13,11 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_SMTP();
             string dstEmail = dataDir + "Message.eml";
 
-            //Create a new instance of MailMessage class
+            // Create a new instance of MailMessage class
             MailMessage message = new MailMessage();
 
             // Set subject of the message
@@ -34,7 +34,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             message.To.Add("to1@domain.com");
             message.To.Add("to2@domain.com");
 
-            //Add CC recipients
+            // Add CC recipients
             message.CC.Add("cc1@domain.com");
             message.CC.Add("cc2@domain.com");
 

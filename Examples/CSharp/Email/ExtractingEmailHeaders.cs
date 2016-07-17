@@ -9,18 +9,18 @@ namespace Aspose.Email.Examples.CSharp.Email
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Email();
             string dstEmail = dataDir + "test.eml";
 
             MailMessage message;
 
-            //Create MailMessage instance by loading an EML file
+            // Create MailMessage instance by loading an EML file
             message = MailMessage.Load(dataDir + "email-headers.eml", new EmlLoadOptions());
 
             Console.WriteLine("\n\nheaders:\n\n");
 
-            //print out all the headers
+            // Print out all the headers
             int index = 0;
             foreach (String header in message.Headers)
             {

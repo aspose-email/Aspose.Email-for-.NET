@@ -1,26 +1,24 @@
 ﻿Imports System.Collections.Generic
-Imports System.Linq
-Imports System.Text
 Imports Aspose.Email.Outlook.Pst
-Imports Aspose.Email
 
 ' This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
-'   API reference when the project is build. Please check https://docs.nuget.org/consume/nuget-faq 
+'   API reference when the project is build. Please check https:// Docs.nuget.org/consume/nuget-faq 
 '   for more information. If you do not wish to use NuGet, you can manually download 
 '   Aspose.Email for .NET API from http://www.aspose.com/downloads, 
 '   install it and then add its reference to this project. For any issues, questions or suggestions 
 '   please feel free to contact us using http://www.aspose.com/community/forums/default.aspx            
 '
 
-Namespace Aspose.Email.Examples.VisualBasic.Email.Personal.Outlook
+Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
     Class DeleteBulkItemsFromPSTFile
         Public Shared Sub Run()
-            ' The path to the documents directory.
-            Dim dataDir As String = RunExamples.GetDataDir_Outlook()
+            ' ExStart:DeleteBulkItemsFromPSTFile
+            ' The path to the File directory.
+            Dim dataDir As String = RunExamples.GetDataDir_Outlook() + "Sub.pst"
 
-            Using pst As PersonalStorage = PersonalStorage.FromFile(dataDir & Convert.ToString("Test.pst"))
+            Using personalStorage1 As PersonalStorage = PersonalStorage.FromFile(dataDir)
                 ' Get Inbox SubFolder from Outlook file
-                Dim inbox As FolderInfo = pst.RootFolder.GetSubFolder("Inbox")
+                Dim inbox As FolderInfo = personalStorage1.RootFolder.GetSubFolder("Inbox")
 
                 ' Create instance of PersonalStorageQueryBuilder
                 Dim queryBuilder As New PersonalStorageQueryBuilder()
@@ -35,6 +33,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Personal.Outlook
                 ' delete messages having From = "someuser@domain.com"
                 inbox.DeleteChildItems(deleteList)
             End Using
+            ' ExEnd:DeleteBulkItemsFromPSTFile
         End Sub
     End Class
 End Namespace

@@ -14,28 +14,28 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_SMTP();
             string dstEmail = dataDir + "EmbeddedImage.msg";
 
-            //Declare msg as MailMessage instance
+            // Declare msg as MailMessage instance
             MailMessage msg = new MailMessage();
 
-            //use MailMessage properties like specify sender, recipient and message
+            // Use MailMessage properties like specify sender, recipient and message
             msg.To = "asposetest123@gmail.com";
             msg.From = "aspose2@gmail.com";
             msg.Subject = "Test Email";
             msg.Body = "Hello World!";
 
-            //Create an instance of SmtpClient class and load SMTP Authentication settings from Config file
+            // Create an instance of SmtpClient class and load SMTP Authentication settings from Config file
             SmtpClient client = new SmtpClient(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None));
             client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {
-                //Client.Send will send this message
+                // Client.Send will send this message
                 client.Send(msg);
-                //Message sent successfully
+                // Message sent successfully
                 System.Console.WriteLine("Message sent");
             }
 

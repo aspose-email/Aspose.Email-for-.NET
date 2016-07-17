@@ -1,8 +1,6 @@
-﻿using Aspose.Email.Exchange;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Exchange;
 
 namespace Aspose.Email.Examples.CSharp.Exchange
 {
@@ -10,10 +8,10 @@ namespace Aspose.Email.Examples.CSharp.Exchange
     {
         static void Run()
         {
-            //ExStart: PagingSupportForListingFolders
+            // ExStart: PagingSupportForListingFolders
             ///<summary>
-            ///This example shows how to retrieve folders information from Exchange Server with Paging Support
-            ///Introduced in Aspose.Email for .NET 6.4.0
+            /// This example shows how to retrieve folders information from Exchange Server with Paging Support
+            /// Introduced in Aspose.Email for .NET 6.4.0
             ///</summary>
             using (IEWSClient client = EWSClient.GetEWSClient("exchange.domain.com", "username", "password"))
             {
@@ -38,10 +36,10 @@ namespace Aspose.Email.Examples.CSharp.Exchange
                 foreach (ExchangeFolderPageInfo pageCol in pages)
                     retrievedFolders += pageCol.Items.Count;
 
-                //Verify the total count of folders
+                // Verify the total count of folders
                 Console.WriteLine(retrievedFolders);
             }            
-            //ExEnd: PagingSupportForListingFolders
+            // ExEnd: PagingSupportForListingFolders
         }
     }
 }

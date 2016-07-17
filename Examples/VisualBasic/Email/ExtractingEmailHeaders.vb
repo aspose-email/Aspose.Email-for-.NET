@@ -27,7 +27,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             Dim index As Integer = 0
             For Each header As [String] In message.Headers
                 Console.Write(header + " - ")
-                '.GetValues(header).Length.ToString());
+                '.GetValues(header).Length.ToString())
                 Console.WriteLine(message.Headers.Get(index))
                 index = index + 1
             Next

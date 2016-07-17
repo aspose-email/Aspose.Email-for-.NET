@@ -13,15 +13,15 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_SMTP();
             string dstEmail = dataDir + "test.eml";
 
-            //Declare msg as MailMessage instance
+            // Declare msg as MailMessage instance
             MailMessage msg = new MailMessage();
 
-            //use MailMessage properties like specify sender, recipient and message
-            //use MailMessage properties like specify sender, recipient and message
+            // Use MailMessage properties like specify sender, recipient and message
+            // Use MailMessage properties like specify sender, recipient and message
             msg.From = "newcustomeronnet@gmail.com";
             msg.To = "newcustomeronnet2@gmail.com";
             msg.Subject = "Test subject";
@@ -32,9 +32,9 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
 
             try
             {
-                //Client will send this message
+                // Client will send this message
                 client.Send(msg);
-                //Show only if message sent successfully
+                // Show only if message sent successfully
                 Console.WriteLine("Message sent");
             }
 

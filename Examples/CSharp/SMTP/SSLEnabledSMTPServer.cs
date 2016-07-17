@@ -15,7 +15,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_SMTP();
             string dstEmail = dataDir + "test-load.eml";
 
@@ -33,10 +33,10 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             // Set the security mode to explicit
             client.SecurityOptions = SecurityOptions.Auto;
 
-            //Declare msg as MailMessage instance
+            // Declare msg as MailMessage instance
             MailMessage msg = new MailMessage();
 
-            //use MailMessage properties like specify sender, recipient and message
+            // Use MailMessage properties like specify sender, recipient and message
             msg.To = "newcustomeronnet@gmail.com";
             msg.From = "newcustomeronnet@gmail.com";
             msg.Subject = "Test Email";
@@ -44,9 +44,9 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
 
             try
             {
-                //Client will send this message
+                // Client will send this message
                 client.Send(msg);
-                //Show only if message sent successfully
+                // Show only if message sent successfully
                 System.Console.WriteLine("Message sent");
             }
 

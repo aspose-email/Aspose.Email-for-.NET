@@ -1,10 +1,6 @@
 ﻿using Aspose.Email.Exchange;
 using Aspose.Email.Mail;
 using Aspose.Email.Outlook;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Aspose.Email.Examples.CSharp.Exchange
 {
@@ -12,7 +8,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
     {
         public static void Run()
         {
-            //ExStart: SendCalendarInvitation
+            // ExStart: SendCalendarInvitation
             /// <summary>
             /// This exmpale shows how an Exchange user can share his/her calendar with someone using the EWS client of the API. 
             /// Available from Aspose.Email for .NET 6.4.0 onwards
@@ -25,7 +21,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
                 delegateUser.FolderPermissions.CalendarFolderPermissionLevel = ExchangeDelegateFolderPermissionLevel.Reviewer;
                 client.DelegateAccess(delegateUser, "sharingfrom@domain.com");
 
-                // create invitation
+                // Create invitation
                 MapiMessage mapiMessage = client.CreateCalendarSharingInvitationMessage("sharingfrom@domain.com");
 
                 // send invitation
@@ -33,7 +29,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
                 MailMessage mailMessage = messageInterpretor.InterpretAsTnef(mapiMessage);
                 client.Send(mailMessage);
             }
-            //ExEnd: SendCalendarInvitation
+            // ExEnd: SendCalendarInvitation
         }
     }
 }

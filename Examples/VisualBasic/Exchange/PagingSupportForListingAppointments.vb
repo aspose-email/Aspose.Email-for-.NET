@@ -27,7 +27,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
                     Next
                     Dim totalAppointmentCol As AppointmentCollection = client.ListAppointments()
 
-                    ' LISTING APPOINTMENTS WITH PAGING SUPPORT ///////
+                    ' LISTING APPOINTMENTS WITH PAGING SUPPORT /
                     Dim itemsPerPage As Integer = 2
                     Dim pages As New List(Of AppointmentPageInfo)()
                     Dim pagedAppointmentCol As AppointmentPageInfo = client.ListAppointmentsByPage(itemsPerPage)

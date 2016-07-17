@@ -1,9 +1,7 @@
-﻿using Aspose.Email.Exchange;
-using Aspose.Email.Mail;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Exchange;
+using Aspose.Email.Mail;
 
 namespace Aspose.Email.Examples.CSharp.Exchange
 {
@@ -11,7 +9,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
     {
         static void Run()
         { 
-            //ExStart: PagingSupportForListingAppointments
+            // ExStart: PagingSupportForListingAppointments
             using (IEWSClient client = EWSClient.GetEWSClient("exchange.domain.com", "username", "password"))
             {
                 try
@@ -61,7 +59,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
                 {
                 }
             }
-            //ExEnd: PagingSupportForListingAppointments
+            // ExEnd: PagingSupportForListingAppointments
         }
     }
 }

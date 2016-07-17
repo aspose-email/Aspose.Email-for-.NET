@@ -11,7 +11,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
             ' This exmpale shows how an Exchange user can share his/her calendar with someone using the EWS client of the API. 
             ' Available from Aspose.Email for .NET 6.4.0 onwards
             ' </summary>
-            Using client As IEWSClient = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain")
+            Using client As IEWSClient = EWSClient.GetEWSClient("https:outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain")
                 ' delegate calendar access permission
                 Dim delegateUser As New ExchangeDelegateUser("sharingfrom@domain.com", ExchangeDelegateFolderPermissionLevel.NotSpecified)
                 delegateUser.FolderPermissions.CalendarFolderPermissionLevel = ExchangeDelegateFolderPermissionLevel.Reviewer

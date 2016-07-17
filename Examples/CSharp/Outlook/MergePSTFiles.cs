@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System;
-using Aspose.Email;
 using Aspose.Email.Outlook.Pst;
 
 namespace Aspose.Email.Examples.CSharp.Email.Outlook
@@ -13,23 +12,22 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
         public static void Run()
         {
-            // The path to the documents directory.
+            // ExStart:MergePSTFiles
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
-            string dst = dataDir + "Test.pst";
-
+            string dst = dataDir + "Sub.pst";
             totalAdded = 0;
-
-            using (PersonalStorage pst = PersonalStorage.FromFile(dst))
+            using (PersonalStorage personalStorage = PersonalStorage.FromFile(dst))
             {
                 // The events subscription is an optional step for the tracking process only.
-                pst.StorageProcessed += PstMerge_OnStorageProcessed;
-                pst.ItemMoved += PstMerge_OnItemMoved;
+                personalStorage.StorageProcessed += PstMerge_OnStorageProcessed;
+                personalStorage.ItemMoved += PstMerge_OnItemMoved;
 
                 // Merges with the pst files that are located in separate folder. 
-                pst.MergeWith(Directory.GetFiles(dataDir + @"chunks\"));
+                personalStorage.MergeWith(Directory.GetFiles(dataDir + @"MergePST\"));
                 Console.WriteLine("Total messages added: {0}", totalAdded);
             }
-
+            // ExEnd:MergePSTFiles
             Console.WriteLine(Environment.NewLine + "PST merged successfully at " + dst);
         }
 
@@ -40,6 +38,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
         static void PstMerge_OnItemMoved(object sender, ItemMovedEventArgs e)
         {
+            // ExStart:MergePSTFiles-PstMerge_OnItemMoved
             if (currentFolder == null)
             {
                 currentFolder = e.DestinationFolder.RetrieveFullPath();
@@ -56,6 +55,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
             messageCount++;
             totalAdded++;
+            // ExEnd:MergePSTFiles-PstMerge_OnItemMoved
         }
     }
 }

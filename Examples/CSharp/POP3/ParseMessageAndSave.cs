@@ -11,14 +11,14 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_POP3();
             string dstEmail = dataDir + "first-message.eml";
 
-            //Create an instance of the Pop3Client class
+            // Create an instance of the Pop3Client class
             Pop3Client client = new Pop3Client();
 
-            //Specify host, username and password for your client
+            // Specify host, username and password for your client
             client.Host = "pop.gmail.com";
 
             // Set username
@@ -35,10 +35,10 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
 
             try
             {
-                //Fetch the message by its sequence number
+                // Fetch the message by its sequence number
                 MailMessage msg = client.FetchMessage(1);
 
-                //Save the message using its subject as the file name
+                // Save the message using its subject as the file name
                 msg.Save(dstEmail, Aspose.Email.Mail.SaveOptions.DefaultEml);
                 client.Dispose();
 

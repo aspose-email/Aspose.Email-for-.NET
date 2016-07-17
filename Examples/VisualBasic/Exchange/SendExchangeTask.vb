@@ -20,7 +20,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
             Dim dstEmail As String = dataDir & Convert.ToString("Message.eml")
 
             ' Create instance of ExchangeClient class by giving credentials
-            Dim client As IEWSClient = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain")
+            Dim client As IEWSClient = EWSClient.GetEWSClient("https:outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain")
 
             ' load task from .eml file
             Dim loadOptions As New EmlLoadOptions()
