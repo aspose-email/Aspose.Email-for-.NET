@@ -12,16 +12,16 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         static void Run()
         { 
-            //ExStart:SearchWithPagingSupport
+            // ExStart:SearchWithPagingSupport
             ///<summary>
-            ///This example shows how to search for messages using ImapClient of the API with paging support
-            ///Introduced in Aspose.Email for .NET 6.4.0
+            /// This example shows how to search for messages using ImapClient of the API with paging support
+            /// Introduced in Aspose.Email for .NET 6.4.0
             ///</summary>
             using (ImapClient client = new ImapClient("host.domain.com", 84, "username", "password"))
             {
                 try
                 {
-                    //Append some test messages
+                    // Append some test messages
                     int messagesNum = 12;
                     int itemsPerPage = 5;
                     MailMessage message = null;
@@ -71,7 +71,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                 {
                 }
             }
-            //ExEnd: SearchWithPagingSupport
+            // ExEnd: SearchWithPagingSupport
         }
     }
 }

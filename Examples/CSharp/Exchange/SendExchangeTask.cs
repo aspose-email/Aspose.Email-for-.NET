@@ -1,10 +1,7 @@
-﻿using System.IO;
-using System;
-using Aspose.Email;
+﻿using System;
+using System.Text;
 using Aspose.Email.Exchange;
 using Aspose.Email.Mail;
-using System.Net;
-using System.Text;
 
 namespace Aspose.Email.Examples.CSharp.Email.Exchange
 {
@@ -12,7 +9,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Exchange();
             string dstEmail = dataDir + "Message.eml";
             
@@ -30,7 +27,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
             MailMessage eml = MailMessage.Load(dstEmail, loadOptions);
             eml.From = "firstname.lastname@domain.com";
             eml.To.Clear();
-            eml.To.Add(new Aspose.Email.Mail.MailAddress("firstname.lastname@domain.com"));
+            eml.To.Add(new MailAddress("firstname.lastname@domain.com"));
 
             client.Send(eml);
 

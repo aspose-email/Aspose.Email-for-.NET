@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Aspose.Email.Outlook.Pst;
-using Aspose.Email;
 using Aspose.Email.Outlook;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
-   API reference when the project is build. Please check https://docs.nuget.org/consume/nuget-faq 
+   API reference when the project is build. Please check https:// Docs.nuget.org/consume/nuget-faq 
    for more information. If you do not wish to use NuGet, you can manually download 
    Aspose.Email for .NET API from http://www.aspose.com/downloads, 
    install it and then add its reference to this project. For any issues, questions or suggestions 
@@ -20,11 +18,12 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
     {
         public static void Run()
         {
-            // The path to the documents directory.
-            string dataDir = RunExamples.GetDataDir_Outlook();
+            // ExStart:UpdateBulkMessagesInPSTFile
+            // The path to the File directory.
+            string dataDir = RunExamples.GetDataDir_Outlook() + "Sub.pst";
 
             // Load the Outlook PST file
-            PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Test.pst");
+            PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir);
             
             // Get Requierd Subfolder 
             FolderInfo inbox = personalStorage.RootFolder.GetSubFolder("Inbox");
@@ -51,6 +50,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // update messages having From = "someuser@domain.com" with new properties
             inbox.ChangeMessages(changeList, updatedProperties);
         }
-
+        // ExEnd:UpdateBulkMessagesInPSTFile
     }
 }

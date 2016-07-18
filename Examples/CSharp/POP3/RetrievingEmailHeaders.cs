@@ -12,14 +12,14 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_POP3();
             string dstEmail = dataDir + "message.msg";
 
-            //Create an instance of the Pop3Client class
+            // Create an instance of the Pop3Client class
             Pop3Client client = new Pop3Client();
 
-            //Specify host, username and password for your client
+            // Specify host, username and password for your client
             client.Host = "pop.gmail.com";
 
             // Set username

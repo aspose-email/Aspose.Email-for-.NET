@@ -36,7 +36,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.SMTP
             'Create the HTML part.
             'To embed images, we need to use the prefix 'cid' in the img src value.
             'The cid value will map to the Content-Id of a Linked resource.
-            'Thus <img src='cid:barcode'> will map to a LinkedResource with a ContentId of //'barcode'.
+            'Thus <img src='cid:barcode'> will map to a LinkedResource with a ContentId of 'barcode'.
 
             Dim htmlView As AlternateView = AlternateView.CreateAlternateViewFromString("Here is an embedded image.<img src=cid:barcode>", Nothing, "text/html")
 

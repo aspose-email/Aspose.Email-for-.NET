@@ -13,39 +13,39 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_SMTP();
             string dstEmail = dataDir + "MsgHeaders.msg";
 
-            //Create an instance MailMessage class
+            // Create an instance MailMessage class
             MailMessage msg = new MailMessage();
 
-            //Specify ReplyTo
+            // Specify ReplyTo
             msg.ReplyToList.Add("reply@reply.com");
 
-            //From field
+            // From field
             msg.From = "sender@sender.com";
 
-            //To field
+            // To field
             msg.To.Add("receiver1@receiver.com");
 
-            //Adding Cc and Bcc Addresses
+            // Adding Cc and Bcc Addresses
             msg.CC.Add("receiver2@receiver.com");
             msg.Bcc.Add("receiver3@receiver.com");
 
-            //Message subject
+            // Message subject
             msg.Subject = "test mail";
 
-            //Specify Date
+            // Specify Date
             msg.Date = new System.DateTime(2006, 3, 6);
 
-            //Specify XMailer
+            // Specify XMailer
             msg.XMailer = "Aspose.Email";
 
-            //Specify Secret Header
+            // Specify Secret Header
             msg.Headers.Add("secret-header", "mystery");
 
-            //Save message to disc
+            // Save message to disc
             msg.Save(dstEmail, Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode);
 
             Console.WriteLine(Environment.NewLine + "Message saved with customized headers successfully at " + dstEmail);

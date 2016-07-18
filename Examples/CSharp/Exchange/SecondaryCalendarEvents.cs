@@ -3,7 +3,7 @@ using Aspose.Email.Exchange;
 using Aspose.Email.Mail;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
-   API reference when the project is build. Please check https://docs.nuget.org/consume/nuget-faq 
+   API reference when the project is build. Please check https:// Docs.nuget.org/consume/nuget-faq 
    for more information. If you do not wish to use NuGet, you can manually download 
    Aspose.Email for .NET API from http://www.aspose.com/downloads, 
    install it and then add its reference to this project. For any issues, questions or suggestions 
@@ -20,7 +20,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
             {
                 try
                 {
-                    //Create an appointmenta that will be added to secondary calendar folder
+                    // Create an appointmenta that will be added to secondary calendar folder
 
                     DateTime date = DateTime.Now;
                     DateTime startTime = new DateTime(date.Year, date.Month, date.Day, date.Hour, 0, 0);
@@ -34,7 +34,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
                     appointment.Summary = "EMAILNET-35198 - " + Guid.NewGuid().ToString();
                     appointment.Description = "EMAILNET-35198 Ability to add event to Secondary Calendar of Office 365";
 
-                    //Verify that the new folder has been created
+                    // Verify that the new folder has been created
                     ExchangeFolderInfoCollection calendarSubFolders = client.ListSubFolders(client.MailboxInfo.CalendarUri);
 
                     string getfolderName;
@@ -59,16 +59,16 @@ namespace Aspose.Email.Examples.CSharp.Exchange
                     }
                     else
                     {
-                        // create new calendar folder
+                        // Create new calendar folder
                         client.CreateFolder(client.MailboxInfo.CalendarUri, setFolderName, null, "IPF.Appointment");
 
                         Console.WriteLine(calendarSubFolders.Count);
 
-                        //Get the created folder URI
+                        // Get the created folder URI
                         string newCalendarFolderUri = calendarSubFolders[0].Uri;
 
                         // appointment api with calendar folder uri
-                        // create
+                        // Create
                         client.CreateAppointment(appointment, newCalendarFolderUri);
                         appointment.Location = "Room 122";
                         // update
@@ -79,13 +79,13 @@ namespace Aspose.Email.Examples.CSharp.Exchange
                         // list default calendar folder
                         listAppointments = client.ListAppointments(client.MailboxInfo.CalendarUri);
 
-                        // cancel
+                        // Cancel
                         client.CancelAppointment(appointment, newCalendarFolderUri);
                         listAppointments = client.ListAppointments(newCalendarFolderUri);
 
                         // appointment api with context current calendar folder uri
                         client.CurrentCalendarFolderUri = newCalendarFolderUri;
-                        // create
+                        // Create
                         client.CreateAppointment(appointment);
                         appointment.Location = "Room 122";
                         // update
@@ -96,7 +96,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
                         // list default calendar folder
                         listAppointments = client.ListAppointments(client.MailboxInfo.CalendarUri);
 
-                        // cancel
+                        // Cancel
                         client.CancelAppointment(appointment);
                         listAppointments = client.ListAppointments();
 

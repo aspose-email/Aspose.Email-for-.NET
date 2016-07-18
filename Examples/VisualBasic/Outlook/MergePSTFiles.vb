@@ -1,40 +1,28 @@
 ﻿Imports System.IO
-Imports Aspose.Email.Mail
-Imports Aspose.Email.Outlook
-Imports Aspose.Email.Pop3
-Imports Aspose.Email
-Imports Aspose.Email.Mime
-Imports Aspose.Email.Imap
-Imports System.Configuration
-Imports System.Data
-Imports Aspose.Email.Mail.Bounce
-Imports Aspose.Email.Exchange
 Imports Aspose.Email.Outlook.Pst
 
 Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
-
-    Public Class MergePSTFiles
+    Class MergePSTFiles
         Shared totalAdded As Integer
         Shared currentFolder As String
         Shared messageCount As Integer
 
         Public Shared Sub Run()
-            ' The path to the documents directory.
+            ' ExStart:MergePSTFiles
+            ' The path to the File directory.
             Dim dataDir As String = RunExamples.GetDataDir_Outlook()
-            Dim dst As String = dataDir & Convert.ToString("Test.pst")
-
+            Dim dst As String = dataDir & Convert.ToString("Sub.pst")
             totalAdded = 0
-
-            Using pst As PersonalStorage = PersonalStorage.FromFile(dst)
+            Using personalStorage__1 As PersonalStorage = PersonalStorage.FromFile(dst)
                 ' The events subscription is an optional step for the tracking process only.
-                AddHandler pst.StorageProcessed, AddressOf PstMerge_OnStorageProcessed
-                AddHandler pst.ItemMoved, AddressOf PstMerge_OnItemMoved
+                AddHandler personalStorage__1.StorageProcessed, AddressOf PstMerge_OnStorageProcessed
+                AddHandler personalStorage__1.ItemMoved, AddressOf PstMerge_OnItemMoved
 
                 ' Merges with the pst files that are located in separate folder. 
-                pst.MergeWith(Directory.GetFiles(dataDir & Convert.ToString("chunks\")))
+                personalStorage__1.MergeWith(Directory.GetFiles(dataDir & Convert.ToString("MergePST\")))
                 Console.WriteLine("Total messages added: {0}", totalAdded)
             End Using
-
+            ' ExEnd:MergePSTFiles
             Console.WriteLine(Convert.ToString(Environment.NewLine + "PST merged successfully at ") & dst)
         End Sub
 
@@ -43,6 +31,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
         End Sub
 
         Private Shared Sub PstMerge_OnItemMoved(sender As Object, e As ItemMovedEventArgs)
+            ' ExStart:MergePSTFiles-PstMerge_OnItemMoved
             If currentFolder Is Nothing Then
                 currentFolder = e.DestinationFolder.RetrieveFullPath()
             End If
@@ -57,6 +46,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
 
             messageCount += 1
             totalAdded += 1
+            ' ExEnd:MergePSTFiles-PstMerge_OnItemMoved
         End Sub
     End Class
 End Namespace

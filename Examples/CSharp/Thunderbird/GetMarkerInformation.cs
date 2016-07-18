@@ -12,10 +12,10 @@ namespace Aspose.Email.Examples.CSharp.Thunderbird
     {
         static void Run()
         { 
-            //ExStart: GetMarkerInformation
+            // ExStart: GetMarkerInformation
             ///<summary>
-            ///This exmaple shows how to get marker information while reading or writing a message to Mbox file.
-            ///Introduced in Aspose.Email for .NET 6.4.0
+            /// This exmaple shows how to get marker information while reading or writing a message to Mbox file.
+            /// Introduced in Aspose.Email for .NET 6.4.0
             ///</summary>
             using (FileStream stream = new FileStream("inbox.dat", FileMode.Open, FileAccess.Read))
             using (MboxrdStorageReader reader = new MboxrdStorageReader(stream, false))
@@ -39,7 +39,7 @@ namespace Aspose.Email.Examples.CSharp.Thunderbird
 
                 Console.WriteLine(fromMarker);
             }
-            //ExEnd: GetMarkerInformation
+            // ExEnd: GetMarkerInformation
         }
     }
 }

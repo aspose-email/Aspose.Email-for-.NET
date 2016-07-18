@@ -45,6 +45,76 @@ Namespace Aspose.Email.Examples.VisualBasic
             'DeleteBulkItemsFromPSTFile.Run()
             'UpdateBulkMessagesInPSTFile.Run()
 
+            'LoadMSGFiles.Run()
+            'LoadingFromStream.Run()
+            'GetMAPIProperty.Run()
+            'SetMAPIProperties.Run()
+            'ReadNamedMAPIProperties.Run()
+            'ReadiNamedMAPIPropertyFromAttachment.Run()
+            'ReadingNamedMAPIPropertyFromAttachment.Run()
+            'RemovePropertiesFromMSGAndAttachments.Run()
+            'ConvertEMLToMSG.Run()
+            'CreatEMLFileAndConvertToMSG.Run()
+            'ReadAndWritingOutlookTemplateFile.Run()
+            'SetFollowUpflag.Run()
+            'SetFollowUpForRecipients.Run()
+            'MarkFollowUpFlagAsCompleted.Run()
+            'RemoveFollowUpflag.Run()
+            'ReadFollowupFlagOptionsForMessage.Run()
+            'CreateAndSaveOutlookContact.Run()
+            'CreatingAndSavingOutlookTasks.Run()
+            'AddReminderInformationToMapiTask.Run()
+            'AddAttachmentsToMapiTask.Run()
+            'AddRecurrenceToMapiTask.Run()
+            'CreatAndSaveAnOutlookNote.Run()
+            'ReadMapiNote.Run()
+            'ConvertMIMEMessagesFromMSGToEML.Run()
+            'ConvertMIMEMessageToEML.Run()
+            'SetColorCategories.Run()
+            'SetReminderByAddingTags.Run()
+            'CreatAndSaveCalendaritems.Run()
+            'AddDisplayReminderToACalendar.Run()
+            'AddAudioReminderToCalendar.Run()
+            'ManageAttachmentsFromCalendarFiles.Run()
+            'CreatePollUsingMapiMessage.Run()
+            'ReadVotingOptionsFromMapiMessage.Run()
+            'AddVotingButtonToExistingMessage.Run()
+            'DeleteVotingButtonFromMessage.Run()
+            'CreateAndSaveDistributionList.Run()
+            'CreatReplyMessage.Run()
+            'CreateForwardMessage.Run()
+            'EndAfterNoccurrences.Run()
+            'GenerateRecurrenceFromRecurrenceRule.Run()
+            'RetreiveParentFolderInformationFromMessageInfo.Run()
+            'ParseSearchableFolders.Run()
+            'AccessContactInformation.Run()
+            'SaveContactInformation.Run()
+            'SaveCalendarItems.Run()
+            'AddMessagesToPSTFiles.Run()
+            'DisplayInformationOfPSTFile.Run()
+            'ReadandConvertOSTFiles.Run()
+            'ConvertOSTToPST.Run()
+            'GetMessageInformation.Run()
+            'ExtractMessagesFromPSTFile.Run()
+            'SaveMessagesDirectlyFromPSTToStream.Run()
+            'ExtractNumberOfMessages.Run()
+            'CreateNewPSTFileAndAddingSubfolders.Run()
+            'ChangeFolderContainerClass.Run()
+            'CheckPasswordProtection.Run()
+            'RemovingPaswordProperty.Run()
+            'SetPasswordOnPST.Run()
+            'CreateNewMapiContactAndAddToContactsSubfolder.Run()
+            'AddMapiTaskToPST.Run()
+            'CreateNewMapiJournalAndAddToSubfolder.Run()
+            'AddAttachmentsToMapiJournal.Run()
+            'AddMapiCalendarToPST.Run()
+            'CreateDistributionListInPST.Run()
+            'SearchMessagesAndFoldersInPST.Run()
+            'SearchStringInPSTWithIgnoreCaseParameter.Run()
+            'MoveItemsToOtherFolders.Run()
+            'AddFilesToPST.Run()
+            'ExtractAttachmentsFromPSTMessages.Run()
+
             '' =====================================================
             '' =====================================================
             '' Knowledge-Base
@@ -147,7 +217,7 @@ Namespace Aspose.Email.Examples.VisualBasic
         End Function
 
         Friend Function GetDataDir_Outlook() As String
-            Return Path.GetFullPath("../../Outlook/Data/")
+            Return Path.GetFullPath(GetDataDir_Data() + "Outlook/")
         End Function
 
         Friend Function GetDataDir_POP3() As String
@@ -161,6 +231,22 @@ Namespace Aspose.Email.Examples.VisualBasic
         Friend Function GetDataDir_SMTP() As String
             Return Path.GetFullPath("../../SMTP/Data/")
         End Function
+
+
+        Private Function GetDataDir_Data() As String
+            Dim parent = Directory.GetParent(Directory.GetCurrentDirectory()).Parent
+            Dim startDirectory As String = Nothing
+            If parent IsNot Nothing Then
+                Dim directoryInfo = parent.Parent
+                If directoryInfo IsNot Nothing Then
+                    startDirectory = directoryInfo.FullName
+                End If
+            Else
+                startDirectory = parent.FullName
+            End If
+            Return If(startDirectory IsNot Nothing, Path.Combine(startDirectory, "Data\"), Nothing)
+        End Function
+
 
     End Module
 End Namespace

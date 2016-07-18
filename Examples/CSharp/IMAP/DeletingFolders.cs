@@ -13,14 +13,14 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_IMAP();
             string dstEmail = dataDir + "1234.eml";
 
-            //Create an instance of the ImapClient class
+            // Create an instance of the ImapClient class
             ImapClient client = new ImapClient();
 
-            //Specify host, username and password for your client
+            // Specify host, username and password for your client
             client.Host = "imap.gmail.com";
 
             // Set username
@@ -40,7 +40,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                 // Rename a folder
                 client.DeleteFolder("Client");
 
-                //Disconnect to the remote IMAP server
+                // Disconnect to the remote IMAP server
                 client.Dispose();
 
             }

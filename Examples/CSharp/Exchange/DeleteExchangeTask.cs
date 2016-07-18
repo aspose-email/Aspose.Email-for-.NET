@@ -1,9 +1,5 @@
-﻿using System.IO;
-using System;
-using Aspose.Email;
+﻿using System;
 using Aspose.Email.Exchange;
-using Aspose.Email.Mail;
-using System.Net;
 
 namespace Aspose.Email.Examples.CSharp.Exchange
 {
@@ -26,7 +22,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
                 // Check if the current task fulfills the search criteria
                 if (task.Subject.Equals("test"))
                 {
-                    //Delete task from exchange
+                    // Delete task from exchange
                     client.DeleteTask(task.UniqueUri, DeleteTaskOptions.DeletePermanently);
                 }
             }

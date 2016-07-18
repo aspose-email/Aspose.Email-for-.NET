@@ -9,34 +9,34 @@ namespace Aspose.Email.Examples.CSharp.Email
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Email();
             string dstEmail = dataDir + "test.eml";
 
             MailMessage message;
 
-            //Create MailMessage instance by loading an Eml file
+            // Create MailMessage instance by loading an Eml file
             message = MailMessage.Load(dataDir + "test.eml", new EmlLoadOptions());
 
             System.Console.Write("From:");
 
-            //Gets the sender info
+            // Gets the sender info
             System.Console.WriteLine(message.From);
             System.Console.Write("To:");
 
-            //Gets the recipient info
+            // Gets the recipient info
             System.Console.WriteLine(message.To);
             System.Console.Write("Subject:");
 
-            //Gets the subject
+            // Gets the subject
             System.Console.WriteLine(message.Subject);
             System.Console.WriteLine("HtmlBody:");
 
-            //Gets the htmlbody 
+            // Gets the htmlbody 
             System.Console.WriteLine(message.HtmlBody);
             System.Console.WriteLine("TextBody");
 
-            //Gets the textbody
+            // Gets the textbody
             System.Console.WriteLine(message.Body);
 
             Console.WriteLine(Environment.NewLine + "Displayed email information from " + dstEmail);

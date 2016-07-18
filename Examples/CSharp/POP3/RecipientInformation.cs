@@ -11,14 +11,14 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_POP3();
             string dstEmail = dataDir + "message.msg";
 
-            //Load message file
+            // Load message file
             MapiMessage msg = MapiMessage.FromFile(dstEmail);
 
-            //Enumerate the recipients
+            // Enumerate the recipients
             foreach (MapiRecipient recip in msg.Recipients)
             {
                 switch (recip.RecipientType) // What's the type?
@@ -34,11 +34,11 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
                         break;
                 }
 
-                //Get email address
+                // Get email address
                 Console.WriteLine("Email Address: " + recip.EmailAddress);
-                //Get display name
+                // Get display name
                 Console.WriteLine("DisplayName: " + recip.DisplayName);
-                //Get address type
+                // Get address type
                 Console.WriteLine("AddressType: " + recip.AddressType);
             }
 

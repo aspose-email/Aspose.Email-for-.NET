@@ -11,10 +11,10 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         static void Run()
         {
-            //ExStart: ListingMessagesWithPagingSupport
+            // ExStart: ListingMessagesWithPagingSupport
             ///<summary>
-            ///This example shows the paging support of ImapClient for listing messages from the server
-            ///Available in Aspose.Email for .NET 6.4.0 and onwards
+            /// This example shows the paging support of ImapClient for listing messages from the server
+            /// Available in Aspose.Email for .NET 6.4.0 and onwards
             ///</summary>
             using (ImapClient client = new ImapClient("host.domain.com", 993, "username", "password"))
             {
@@ -23,7 +23,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                     int messagesNum = 12;
                     int itemsPerPage = 5;
                     MailMessage message = null;
-                    //Create some test messages and append these to server's inbox
+                    // Create some test messages and append these to server's inbox
                     for (int i = 0; i < messagesNum; i++)
                     {
                         message = new MailMessage(
@@ -34,13 +34,13 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                         client.AppendMessage(ImapFolderInfo.InBox, message);
                     }
 
-                    //List messages from inbox
+                    // List messages from inbox
                     client.SelectFolder(ImapFolderInfo.InBox);
                     ImapMessageInfoCollection totalMessageInfoCol = client.ListMessages();
-                    //Verify the number of messages added
+                    // Verify the number of messages added
                     Console.WriteLine(totalMessageInfoCol.Count);
 
-                    //////////////////RETREIVE THE MESSAGES USING PAGING SUPPORT////////////////////////////////////
+                    ////////////////// RETREIVE THE MESSAGES USING PAGING SUPPORT////////////////////////////////////
 
                     List<ImapPageInfo> pages = new List<ImapPageInfo>();
                     ImapPageInfo pageInfo = client.ListMessagesByPage(itemsPerPage);
@@ -60,7 +60,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                 {
                 }
             }
-            //ExEnd: ListingMessagesWithPagingSupport
+            // ExEnd: ListingMessagesWithPagingSupport
         }
     }
 }

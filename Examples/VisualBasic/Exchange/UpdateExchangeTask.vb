@@ -18,7 +18,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
             Dim credentials = New NetworkCredential("username", "12345")
 
             ' Create instance of ExchangeClient class by giving credentials
-            Dim client As IEWSClient = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain")
+            Dim client As IEWSClient = EWSClient.GetEWSClient("https:outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain")
 
             ' Get all tasks info collection from exchange
             Dim tasks As ExchangeMessageInfoCollection = client.ListMessages(client.MailboxInfo.TasksUri)

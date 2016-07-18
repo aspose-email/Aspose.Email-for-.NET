@@ -15,22 +15,22 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_SMTP();
             string dstEmail = dataDir + "test-load.eml";
 
-            //Create an instance of the MailMessage class
+            // Create an instance of the MailMessage class
             MailMessage msg = new MailMessage();
 
-            //Import from EML format
+            // Import from EML format
             msg = MailMessage.Load(dstEmail, new EmlLoadOptions());
 
-            //Create an instance of SmtpClient class
+            // Create an instance of SmtpClient class
             SmtpClient client = GetSmtpClient();
 
             try
             {
-                //Client.Send will send this message
+                // Client.Send will send this message
                 client.Send(msg);
                 // Message sent successfully
                 System.Console.WriteLine("Message sent");

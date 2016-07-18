@@ -1,9 +1,7 @@
-﻿using Aspose.Email.Exchange;
-using Aspose.Email.Mail;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Exchange;
+using Aspose.Email.Mail;
 
 namespace Aspose.Email.Examples.CSharp.Exchange
 {
@@ -11,21 +9,21 @@ namespace Aspose.Email.Examples.CSharp.Exchange
     {
         static void Run()
         {
-            //ExStart: PagingSupportForListingMessages
+            // ExStart: PagingSupportForListingMessages
             ///<summary>
-            ///This example shows how to list messages from Exchange Server with Paging support
-            ///Introduced in Aspose.Email for .NET 6.4.0
-            ///ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage);
-            ///ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage, int offset);
-            ///ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage, int pageOffset, ExchangeListMessagesOptions options);
-            ///ExchangeMessagePageInfo ListMessagesByPage(string folder, PageInfo pageInfo);
-            ///ExchangeMessagePageInfo ListMessagesByPage(string folder, PageInfo pageInfo, ExchangeListMessagesOptions options);
+            /// This example shows how to list messages from Exchange Server with Paging support
+            /// Introduced in Aspose.Email for .NET 6.4.0
+            /// ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage);
+            /// ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage, int offset);
+            /// ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage, int pageOffset, ExchangeListMessagesOptions options);
+            /// ExchangeMessagePageInfo ListMessagesByPage(string folder, PageInfo pageInfo);
+            /// ExchangeMessagePageInfo ListMessagesByPage(string folder, PageInfo pageInfo, ExchangeListMessagesOptions options);
             ///</summary>
             using (IEWSClient client = EWSClient.GetEWSClient("exchange.domain.com", "username", "password"))
             {
                 try
                 {
-                    //Create some test messages to be added to server for retrieval later
+                    // Create some test messages to be added to server for retrieval later
                     int messagesNum = 12;
                     int itemsPerPage = 5;
                     MailMessage message = null;
@@ -38,7 +36,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
                             "EMAILNET-35157 Move paging parameters to separate class");
                         client.AppendMessage(client.MailboxInfo.InboxUri, message);
                     }
-                    //Verfiy that the messages have been added to the server
+                    // Verfiy that the messages have been added to the server
                     ExchangeMessageInfoCollection totalMessageInfoCol = client.ListMessages(client.MailboxInfo.InboxUri);
                     Console.WriteLine(totalMessageInfoCol.Count);
 
@@ -46,7 +44,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
 
                     List<ExchangeMessagePageInfo> pages = new List<ExchangeMessagePageInfo>();
                     ExchangeMessagePageInfo pageInfo = client.ListMessagesByPage(client.MailboxInfo.InboxUri, itemsPerPage);
-                    //Total Pages Count
+                    // Total Pages Count
                     Console.WriteLine(pageInfo.TotalCount);
 
                     pages.Add(pageInfo);
@@ -58,14 +56,14 @@ namespace Aspose.Email.Examples.CSharp.Exchange
                     int retrievedItems = 0;
                     foreach (ExchangeMessagePageInfo pageCol in pages)
                         retrievedItems += pageCol.Items.Count;
-                    //Verify total message count using paging
+                    // Verify total message count using paging
                     Console.WriteLine(retrievedItems);
                 }
                 finally
                 {
                 }
             }            
-            //ExEnd: PagingSupportForListingMessages
+            // ExEnd: PagingSupportForListingMessages
         
         }
     }

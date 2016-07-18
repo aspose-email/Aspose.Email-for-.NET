@@ -35,7 +35,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.IMAP
                     Dim totalMessageInfoCol As ImapMessageInfoCollection = client.ListMessages(query)
                     Console.WriteLine(totalMessageInfoCol.Count)
 
-                    '///////////////////////////////////////////////////
+                    '/
 
                     Dim pages As New List(Of ImapPageInfo)()
                     Dim pageInfo As ImapPageInfo = client.ListMessagesByPage(ImapFolderInfo.InBox, query, itemsPerPage)

@@ -13,37 +13,37 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_SMTP();
             string dstEmail = dataDir + "test.eml";
 
-            //Create an instance MailMessage class
+            // Create an instance MailMessage class
             MailMessage msg = new MailMessage();
 
-            //Setting Date 
+            // Setting Date 
             msg.Date = DateTime.Now;
 
-            //Setting Priority
+            // Setting Priority
             msg.Priority = MailPriority.High;
 
-            //Setting Sensitivity
+            // Setting Sensitivity
             msg.Sensitivity = MailSensitivity.Normal;
 
-            //use MailMessage properties like specify sender, recipient and message
+            // Use MailMessage properties like specify sender, recipient and message
             msg.To = "asposetest123@gmail.com";
             msg.From = "asposetest123@gmail.com";
             msg.Subject = "Test Email";
             msg.Body = "Hello World!";
 
 
-            //Create an instance of SmtpClient class
+            // Create an instance of SmtpClient class
             SmtpClient client = GetSmtpClient();
 
             try
             {
-                //Client.Send will send this message
+                // Client.Send will send this message
                 client.Send(msg);
-                //Message sent successfully
+                // Message sent successfully
                 Console.WriteLine("Message sent");
             }
 

@@ -13,45 +13,45 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            // The path to the documents directory.
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_SMTP();
             string dstEmail = dataDir + "test.eml";
 
-            //Create an instance MailMessage class
+            // Create an instance MailMessage class
             MailMessage msg = new MailMessage();
 
-            //Specify ReplyTo
+            // Specify ReplyTo
             msg.ReplyToList.Add("reply@reply.com");
 
-            //From field
+            // From field
             msg.From = "sender@sender.com";
 
-            //To field
+            // To field
             msg.To.Add("receiver1@receiver.com");
 
-            //Adding CC and BCC Addresses
+            // Adding CC and BCC Addresses
             msg.CC.Add("receiver2@receiver.com");
             msg.Bcc.Add("receiver3@receiver.com");
 
-            //Message subject
+            // Message subject
             msg.Subject = "test mail";
 
-            //Specify Date
+            // Specify Date
             msg.Date = new System.DateTime(2006, 3, 6);
 
-            //Specify XMailer
+            // Specify XMailer
             msg.XMailer = "Aspose.Email";
 
             msg.Headers.Add_("secret-header", "mystery");
 
-            //Create an instance of SmtpClient class
+            // Create an instance of SmtpClient class
             SmtpClient client = GetSmtpClient();
 
             try
             {
-                //Client.Send will send this message
+                // Client.Send will send this message
                 client.Send(msg);
-                //Message sent successfully
+                // Message sent successfully
                 System.Console.WriteLine("Message sent");
             }
 

@@ -10,7 +10,7 @@ namespace Aspose.Email.Examples.CSharp.Email
     {
         static void Run()
         { 
-            //ExStart: SaveMessageAsOFT
+            // ExStart: SaveMessageAsOFT
             /// <summary>
             /// This exmpale shows how to save an email as Outlook Template (.OFT) file using the MailMesasge API
             /// MsgSaveOptions.SaveAsTemplate - Set to true, if need to be saved as Outlook File Template(OFT format).
@@ -25,7 +25,7 @@ namespace Aspose.Email.Examples.CSharp.Email
                 eml.Save(oftEmlFileName, options);
             }
 
-            //ExEnd: SaveMessageAsOFT
+            // ExEnd: SaveMessageAsOFT
         }
     }
 }
