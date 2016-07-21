@@ -39,7 +39,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
         Private Shared Sub WalkFolders(folder As FolderInfo, parentFolderName As String, folderData As IList(Of String))
             'ExStart:ParseSearchableFolders-WalkFolders
             Dim displayName As String = If((String.IsNullOrEmpty(folder.DisplayName)), "ROOT", folder.DisplayName)
-            Dim folderNames As String = String.Format("DisplayName = {0}; Parent.DisplayName = {1}", displayName, parentFolderName)
+            Dim folderNames As String = String.Format("DisplayName = {0} Parent.DisplayName = {1}", displayName, parentFolderName)
             folderData.Add(folderNames)
             If displayName = "Finder" Then
                 Console.WriteLine("Test this case")

@@ -4,7 +4,6 @@ using Aspose.Email.Examples.CSharp.Email.IMAP;
 using Aspose.Email.Examples.CSharp.Email.Knowledge.Base;
 using Aspose.Email.Examples.CSharp.Email.Outlook;
 using Aspose.Email.Examples.CSharp.Email.POP3;
-using Aspose.Email.Examples.CSharp.Email.IMAP;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -126,10 +125,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //MoveItemsToOtherFolders.Run();
             //AddFilesToPST.Run();
             //ExtractAttachmentsFromPSTMessages.Run();
-
-
-           
-
+            
             //// =====================================================
             //// =====================================================
             //// Knowledge-Base
@@ -144,6 +140,56 @@ namespace Aspose.Email.Examples.CSharp.Email
             //// =====================================================
             //// =====================================================
 
+            //GetMailboxInformationFromExchangeWebServices.Run();
+            //GetMailboxInformationFromExchangeServer.Run();
+            //GetMailboxInformationFromExchangeServer.Run();
+            //ListExchangeServerMessages.Run();
+            //ProgrammingSamplesUsingEWS.Run();
+            //ListMessagesFromDifferentFolders.Run();
+            //ExchangeServerUsingEWS.Run();
+            //ListMessagesByID.Run();
+            //EnumeratMessagesWithPaginginEWS.Run();
+            //SaveMessagesFromExchangeServerMailboxToEML.Run();
+            //SaveMessagesUsingExchangeWebServices.Run();
+            //SaveMessagesToMemoryStream.Run();
+            //SaveMessagesToMemoryStreamUsingEWS.Run();
+            //ExchangeClientSaveMessagesInMSGFormat.Run();
+            //SendEmailMessagesUsingExchangeServer.Run();
+            //SendEmailMessagesUsingExchangeWebServices.Run();
+            //MoveMessageFromOneFolderToAnotherUsingExchangeClient.Run();
+            //MoveMessageFromOneFolderToAnotherusingEWS.Run();
+            //DeleteMessagesFromExchangeServer.Run();
+            //DeleteMessagesFromusingEWS.Run();
+            //DownloadMessagesFromExchangeServerFoldersRecursively.Run();
+            //DownloadMessagesFromPublicFolders.Run();
+            //ConnectExchangeServerUsingIMAP.Run();
+            //ExchangeServerUsesSSL.Run();
+            //SendMeetingRequestsUsingExchangeServer.Run();
+            //SendMeetingRequestsUsingEWS.Run();
+            //FilterMessagesFromExchangeMailbox.Run();
+            //ExchangeServerReadRules.Run();
+            //CreateNewRuleOntheExchangeServer.Run();
+            //UpdateRuleOntheExchangeServer.Run();
+            //ReadUserConfiguration.Run();
+            //CreatUserConfigurations.Run();
+            //UpdateUserConfiguration.Run();
+            //DeleteUserConfiguration.Run();
+            //FindConversationsOnExchangeServer.Run();
+            //CopyConversations.Run();
+            //MoveConversations.Run();
+            //DeleteConversations.Run();
+            //GetMailTips.Run();
+            //AccessAnotherMailboxUsingExchangeClient.Run();
+            //AccessAnotherMailboxUsingExchangeWebServiceClient.Run();
+            //AccessCustomFolderUsingExchangeWebServiceClient.Run();
+            //ExchangeImpersonationUsingEWS.Run();
+            //RetrieveFolderPermissionsUsingExchangeWebServiceClient.Run();
+            //SendTaskRequestUsingIEWSClient.Run();
+            //ExchangeFoldersBackupToPST.Run();
+            //CreateREAndFWMessages.Run();
+            //CreateAndSendingMessageWithVotingOptions.Run();
+            //PreFetchMessageSizeUsingIEWSClient.Run();
+            //SynchronizeFolderItems.Run();
             // SecondaryCalendarEvents.Run();          
             // SaveExchangeTaskToDisc.Run();
             // CreateExchangeTask.Run();
@@ -231,7 +277,7 @@ namespace Aspose.Email.Examples.CSharp.Email
 
         internal static string GetDataDir_Exchange()
         {
-            return Path.GetFullPath("../../Exchange/Data/");
+            return Path.GetFullPath(GetDataDir_Data() + "/Exchange/");
         }
 
         internal static string GetDataDir_Outlook()
