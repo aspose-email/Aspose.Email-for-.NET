@@ -9,7 +9,7 @@ using Aspose.Email.Outlook;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
-when the project is build. Please check https:// Docs.nuget.org/consume/nuget-faq for more information. 
+when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq for more information. 
 If you do not wish to use NuGet, you can manually download Aspose.Email for .NET API from http://www.aspose.com/downloads, 
 install it and then add its reference to this project. For any issues, questions or suggestions 
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
@@ -19,31 +19,23 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
 {
     class DownloadMessagesFromExchangeServerFoldersRecursively
     {
-        static string mailboxURI = "https:// Ex2010/ews/exchange.asmx"; // EWS
-
+        // ExStart:DownloadMessagesFromExchangeServerFoldersRecursively
         static string username = "administrator";
         static string password = "pwd";
         static string domain = "ex2010.local";
-
+        private static string dataDir = RunExamples.GetDataDir_Exchange();
         public static void Run()
         {
-            // ExStart:DeleteMessagesFromExchangeServer
-            // Create instance of IEWSClient class by giving credentials
-            string mailboxURI = "http:// Ex2003/exchange/administrator"; // WebDAV 
-
             // Register callback method for SSL validation event
             ServicePointManager.ServerCertificateValidationCallback += RemoteCertificateValidationHandler;
-
             try
             {
-
                 DownloadAllMessages();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            // ExEnd:DeleteMessagesFromExchangeServer
         }
 
         private static void DownloadAllMessages()
@@ -78,11 +70,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
             }
         }
 
-        /// <summary>
-        /// Recursive method to get messages from folders and sub-folders
-        /// </summary>
-        /// <param name="folderInfo"></param>
-        /// <param name="rootFolder"></param>
+        // Recursive method to get messages from folders and sub-folders
         private static void ListMessagesInFolder(IEWSClient client, ExchangeFolderInfo folderInfo, string rootFolder)
         {
             // Create the folder in disk (same name as on IMAP server)
@@ -101,9 +89,9 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
                 // Get rid of characters like ? and :, which should not be included in a file name
                 string fileName = msgInfo.Subject.Replace(":", " ").Replace("?", " ");
 
-                // Save the message in MSG format
                 MailMessage msg = client.FetchMessage(msgInfo.UniqueUri);
-                // Msg.Save(msg);
+                msg.Save(dataDir + "\\" + fileName + "-" + i + ".msg");
+          
                 i++;
             }
             Console.WriteLine("============================\n");
@@ -120,10 +108,10 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
             {
             }
         }
-
         private static bool RemoteCertificateValidationHandler(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
             return true; // Ignore the checks and go ahead
         }
+        // ExEnd:DownloadMessagesFromExchangeServerFoldersRecursively
     }
 }

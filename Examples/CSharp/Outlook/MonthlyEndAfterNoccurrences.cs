@@ -2,7 +2,7 @@
 using Aspose.Email.Outlook;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
-   API reference when the project is build. Please check https:// Docs.nuget.org/consume/nuget-faq 
+   API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 
    for more information. If you do not wish to use NuGet, you can manually download 
    Aspose.Email for .NET API from http://www.aspose.com/downloads, 
    install it and then add its reference to this project. For any issues, questions or suggestions 
@@ -56,7 +56,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
         private static uint GetOccurrenceCount(DateTime start, DateTime endBy, string rrule)
         {
-            // ExStart:GetOccurrenceCountMonthlyEndAfterNoccurrences
+            // ExStart:GetOccurrenceCountMonthlyEndAfterNoccurrences             
             iCalendar.RecurrencePattern pattern = new iCalendar.RecurrencePattern(string.Format("DTSTART:{0}\r\nRRULE:{1}", start.ToString("yyyyMMdd"),rrule));
             iCalendar.DateCollection dates = pattern.GenerateOccurrences(start, endBy);
             return (uint)dates.Count;

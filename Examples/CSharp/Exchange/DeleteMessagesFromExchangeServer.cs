@@ -5,7 +5,7 @@ using Aspose.Email.Mail;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
-when the project is build. Please check https:// Docs.nuget.org/consume/nuget-faq for more information. 
+when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq for more information. 
 If you do not wish to use NuGet, you can manually download Aspose.Email for .NET API from http://www.aspose.com/downloads, 
 install it and then add its reference to this project. For any issues, questions or suggestions 
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
@@ -19,7 +19,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
         {
             // ExStart:DeleteMessagesFromExchangeServer
             // Create instance of IEWSClient class by giving credentials
-            string mailboxURI = "http:// Ex2003/exchange/administrator"; // WebDAV
+            string mailboxURI = "https://Ex2003/exchange/administrator"; // WebDAV
 
             string username = "administrator";
             string password = "pwd";
@@ -40,7 +40,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
                 if (msgInfo.Subject != null &&
                     msgInfo.Subject.ToLower().Contains("delete") == true)
                 {
-                    // Delete it
                     client.DeleteMessage(msgInfo.UniqueUri);
                     Console.WriteLine("Message deleted...." + msgInfo.Subject);
                 }

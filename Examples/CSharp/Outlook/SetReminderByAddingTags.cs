@@ -3,7 +3,7 @@ using Aspose.Email.Mail;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
-when the project is build. Please check https:// Docs.nuget.org/consume/nuget-faq for more information. 
+when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq for more information. 
 If you do not wish to use NuGet, you can manually download Aspose.Email for .NET API from http://www.aspose.com/downloads, 
 install it and then add its reference to this project. For any issues, questions or suggestions 
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
@@ -39,14 +39,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             audioReminder.Attachments.Add(attach);
             target.Reminders.Add(audioReminder);
 
-            string strAudioReminder = @"
-            BEGIN:VALARM
-            ACTION:AUDIO
-            REPEAT:4
-            DURATION:PT15M
-            TRIGGER;VALUE=DATE-TIME:19970317T133000Z
-            ATTACH:ftp:// Host.com/pub/sounds/bell-01.aud
-            END:VALARM";
 
             // Display alarm that will trigger 30 minutes before the
             // Scheduled start of the event it is
@@ -59,15 +51,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             displayReminder.Action = ReminderAction.Display;
             displayReminder.Description = "Breakfast meeting with executive team at 8:30 AM EST";
             target.Reminders.Add(displayReminder);
-
-            string strDisplayReminder = @"
-            BEGIN:VALARM
-            ACTION:DISPLAY
-            REPEAT:2
-            DURATION:PT15M
-            DESCRIPTION:Breakfast meeting with executive team at 8:30 AM EST
-            TRIGGER;RELATED=START:-PT30M
-            END:VALARM";
 
             // Email alarm that will trigger 2 days before the
             // Scheduled due date/time. It does not
@@ -84,16 +67,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             emailReminder.Attachments.Add(attach1);
             target.Reminders.Add(emailReminder);
 
-            string strEmailReminder = @"
-            BEGIN:VALARM
-            ACTION:EMAIL
-            DESCRIPTION:A draft agenda needs to be sent out to the attendees to the weekly managers meeting (MGR-LIST). Attached is a pointer the document template for the agenda file.
-            SUMMARY:REMINDER: SEND AGENDA FOR WEEKLY STAFF MEETING
-            TRIGGER;RELATED=START:-P2D
-            ATTENDEE:mailto:john_doe@host.com
-            ATTACH:http:// Host.com/templates/agenda.doc
-            END:VALARM";
-
             // Procedural alarm that will trigger at a precise date/time
             // And will repeat 23 more times at one hour intervals. The alarm will
             // Invoke a procedure file.
@@ -105,16 +78,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             ReminderAttachment attach2 = new ReminderAttachment(new Uri("ftp://Host.com/novo-procs/felizano.exe"));
             procReminder.Attachments.Add(attach2);
             target.Reminders.Add(procReminder);
-
-            string strProcReminder = @"
-            BEGIN:VALARM
-            ACTION:PROCEDURE
-            REPEAT:23
-            DURATION:PT1H
-            TRIGGER;VALUE=DATE-TIME:19980101T050000Z
-            ATTACH:ftp:// Host.com/novo-procs/felizano.exe
-            END:VALARM";
-
             target.Save(dataDir + "savedFile_out.ics");
             //ExEnd:SetReminderByAddingTags
         }

@@ -5,7 +5,7 @@ using Aspose.Email.Mail;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
-when the project is build. Please check https:// Docs.nuget.org/consume/nuget-faq for more information. 
+when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq for more information. 
 If you do not wish to use NuGet, you can manually download Aspose.Email for .NET API from http://www.aspose.com/downloads, 
 install it and then add its reference to this project. For any issues, questions or suggestions 
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
@@ -18,7 +18,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
         public static void Run()
         {
             // ExStart:MoveMessageFromOneFolderToAnotherUsingExchangeClient
-            string mailboxURI = "http:// Ex2003/exchange/administrator"; // WebDAV
+            string mailboxURI = "https://Ex2003/exchange/administrator"; // WebDAV
 
             string username = "administrator";
             string password = "pwd";
@@ -35,12 +35,10 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
             ExchangeMessageInfoCollection msgInfoColl = client.ListMessages(mailboxInfo.InboxUri);
             foreach (ExchangeMessageInfo msgInfo in msgInfoColl)
             {
-                // Nove message to "Processed" folder, after processing certain messages
-                // based on some criteria
+                // Nove message to "Processed" folder, after processing certain messages based on some criteria
                 if (msgInfo.Subject != null &&
                     msgInfo.Subject.ToLower().Contains("process this message") == true)
-                {
-                    // Move it
+                {                    
                     client.MoveItems(msgInfo.UniqueUri, client.MailboxInfo.RootUri + "/Processed/" + msgInfo.Subject);
                     Console.WriteLine("Message moved...." + msgInfo.Subject);
                 }
