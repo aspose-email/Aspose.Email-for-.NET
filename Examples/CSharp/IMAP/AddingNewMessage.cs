@@ -1,9 +1,6 @@
-﻿using System.IO;
-using System;
-using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
-using Aspose.Email.Pop3;
+﻿using System;
 using Aspose.Email.Imap;
+using Aspose.Email.Mail;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
@@ -11,58 +8,34 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            // The path to the File directory.
-            string dataDir = RunExamples.GetDataDir_IMAP();
-            string dstEmail = dataDir + "1234.eml";
-
+            //ExStart:AddingNewMessage
             // Create a message
-            Aspose.Email.Mail.MailMessage msg;
-            msg = new Aspose.Email.Mail.MailMessage(
-            "user@domain1.com",
-            "user@domain2.com",
-            "subject",
-            "message"
-            );
+            MailMessage msg = new MailMessage("user@domain1.com", "user@domain2.com", "subject", "message");
 
             // Create an instance of the ImapClient class
             ImapClient client = new ImapClient();
 
-            // Specify host, username and password for your client
+            // Specify host, username, password, port and SecurityOptions for your client
             client.Host = "imap.gmail.com";
-
-            // Set username
             client.Username = "your.username@gmail.com";
-
-            // Set password
             client.Password = "your.password";
-
-            // Set the port to 993. This is the SSL port of IMAP server
             client.Port = 993;
-
-            // Enable SSL
             client.SecurityOptions = SecurityOptions.Auto;
-
             try
             {
-                // Subscribe to the Inbox folder
+                // Subscribe to the Inbox folder, Append the newly created message and Disconnect to the remote IMAP server
                 client.SelectFolder(ImapFolderInfo.InBox);
                 client.SubscribeFolder(client.CurrentFolder.Name);
-
-                // Append the newly created message
                 client.AppendMessage(client.CurrentFolder.Name, msg);
-
-                System.Console.WriteLine("New Message Added Successfully");
-
-                // Disconnect to the remote IMAP server
+                Console.WriteLine("New Message Added Successfully");
                 client.Dispose();
-
             }
             catch (Exception ex)
             {
-                System.Console.Write(Environment.NewLine + ex.ToString());
+                Console.Write(Environment.NewLine + ex);
             }
-
             Console.WriteLine(Environment.NewLine + "Added new message on IMAP server.");
+            //ExEnd:AddingNewMessage
         }
     }
 }

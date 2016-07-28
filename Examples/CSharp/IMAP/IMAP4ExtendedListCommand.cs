@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Aspose.Email.Outlook.Pst;
-using Aspose.Email;
 using Aspose.Email.Imap;
-using Aspose.Email.Outlook;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
    API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 
@@ -21,16 +15,17 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-
+            //ExStart:IMAP4ExtendedListCommand
             using (ImapClient client = new ImapClient("imap.gmail.com", 993, "username", "password"))
             {
                 ImapFolderInfoCollection folderInfoCol = client.ListFolders("*");
                 Console.WriteLine("Extended List Supported: " + client.ExtendedListSupported);
                 foreach (ImapFolderInfo folderInfo in folderInfoCol)
+                {
                     switch (folderInfo.Name)
                     {
                         case "[Gmail]/All Mail":
-                            Console.WriteLine("Has Children: " + folderInfo.HasChildren.ToString());
+                            Console.WriteLine("Has Children: " + folderInfo.HasChildren);
                             break;
                         case "[Gmail]/Bin":
                             Console.WriteLine("Bin has children? " + folderInfo.HasChildren);
@@ -51,8 +46,9 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                             Console.WriteLine("Starred has Children? " + folderInfo.HasChildren);
                             break;
                     }
+                }
             }
+            //ExEnd:IMAP4ExtendedListCommand
         }
-
     }
 }

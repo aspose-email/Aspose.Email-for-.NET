@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Aspose.Email.Outlook.Pst;
-using Aspose.Email;
 using Aspose.Email.Imap;
-using Aspose.Email.Outlook;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
    API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 
@@ -21,23 +15,24 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
+            //ExStart:IMAP4IDExtensionSupport
             using (ImapClient client = new ImapClient("imap.gmail.com", 993, "username", "password"))
             {
                 // Set SecurityOptions
                 client.SecurityOptions = SecurityOptions.Auto;
-
                 Console.WriteLine(client.IdSupported.ToString());
 
                 ImapIdentificationInfo serverIdentificationInfo1 = client.IntroduceClient();
                 ImapIdentificationInfo serverIdentificationInfo2 = client.IntroduceClient(ImapIdentificationInfo.DefaultValue);
 
                 // Display ImapIdentificationInfo properties
-                Console.WriteLine(serverIdentificationInfo1.ToString(), serverIdentificationInfo2.ToString());
+                Console.WriteLine(serverIdentificationInfo1.ToString(), serverIdentificationInfo2);
                 Console.WriteLine(serverIdentificationInfo1.Name);
                 Console.WriteLine(serverIdentificationInfo1.Vendor);
                 Console.WriteLine(serverIdentificationInfo1.SupportUrl);
                 Console.WriteLine(serverIdentificationInfo1.Version);
             }
+            //ExEnd:IMAP4IDExtensionSupport
         }
     }
 }

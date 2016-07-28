@@ -1,9 +1,6 @@
-﻿using System.IO;
-using System;
+﻿using System;
 using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
 using Aspose.Email.Pop3;
-using Aspose.Email;
 
 namespace Aspose.Email.Examples.CSharp.Email.POP3
 {
@@ -11,37 +8,26 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
     {
         public static void Run()
         {
+            // ExStart:ParseMessageAndSave
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_POP3();
-            string dstEmail = dataDir + "first-message.eml";
 
             // Create an instance of the Pop3Client class
             Pop3Client client = new Pop3Client();
 
-            // Specify host, username and password for your client
+            // Specify host, username and password, Port and SecurityOptions for your client
             client.Host = "pop.gmail.com";
-
-            // Set username
             client.Username = "your.username@gmail.com";
-
-            // Set password
             client.Password = "your.password";
-
-            // Set the port to 995. This is the SSL port of POP3 server
             client.Port = 995;
-
-            // Enable SSL
             client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {
-                // Fetch the message by its sequence number
+                // Fetch the message by its sequence number and Save the message using its subject as the file name
                 MailMessage msg = client.FetchMessage(1);
-
-                // Save the message using its subject as the file name
-                msg.Save(dstEmail, Aspose.Email.Mail.SaveOptions.DefaultEml);
+                msg.Save(dataDir + "first-message_out.eml", SaveOptions.DefaultEml);
                 client.Dispose();
-
             }
             catch (Exception ex)
             {
@@ -50,9 +36,9 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
             finally
             {
                 client.Dispose();
-            } 
-
-            Console.WriteLine(Environment.NewLine + "Downloaded email using POP3. Message saved at " + dstEmail);
+            }
+            // ExEnd:ParseMessageAndSave
+            Console.WriteLine(Environment.NewLine + "Downloaded email using POP3. Message saved at " + dataDir + "first-message_out.eml");
         }
     }
 }

@@ -48,6 +48,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Email\CreateNewEmail.cs" />
+    <Compile Include="Exchange\CreateFoldersOnExchangeServerMailbox.cs" />
+    <Compile Include="Exchange\DeletePrivateDistributionList.cs" />
+    <Compile Include="Exchange\DeleteMembersWithoutListing.cs" />
+    <Compile Include="Exchange\DeleteMembersFromPrivateDistributionList.cs" />
+    <Compile Include="Exchange\AddMembersWithoutListing.cs" />
+    <Compile Include="Exchange\AddMembersToPrivateDistributionList.cs" />
+    <Compile Include="Exchange\DeleteWithoutListing.cs" />
+    <Compile Include="Exchange\FetchPrivateDistributionList.cs" />
+    <Compile Include="Exchange\CreatePrivateDistributionList.cs" />
+    <Compile Include="Exchange\CopyingMessageToAnotherFolder.cs" />
+    <Compile Include="Exchange\ListFoldersFromExchangeServer.cs" />
+    <Compile Include="Exchange\AddingHeadersToEWSRequests.cs" />
     <Compile Include="Exchange\SynchronizeFolderItems.cs" />
     <Compile Include="Exchange\PreFetchMessageSizeUsingIEWSClient.cs" />
     <Compile Include="Exchange\CreateAndSendingMessageWithVotingOptions.cs" />
@@ -103,8 +115,14 @@
     <Compile Include="IMAP\CopyMultipleMessagesFromOneFoldertoAnother.cs" />
     <Compile Include="IMAP\DeleteSingleMessage.cs" />
     <Compile Include="IMAP\DeleteMultipleMessages.cs" />
+    <Compile Include="IMAP\SupportIMAPIdleCommand.cs" />
+    <Compile Include="IMAP\RetreivingServerExtensions.cs" />
+    <Compile Include="IMAP\RetrievingMessagesAsynchronously.cs" />
+    <Compile Include="IMAP\ProxyServerAccessMailbox.cs" />
+    <Compile Include="IMAP\InternalDateFilter.cs" />
     <Compile Include="IMAP\IMAP4ExtendedListCommand.cs" />
     <Compile Include="IMAP\IMAP4IDExtensionSupport.cs" />
+    <Compile Include="IMAP\FilteringMessagesFromIMAPMailbox.cs" />
     <Compile Include="Outlook\AddMapiCalendarToPST.cs" />
     <Compile Include="Outlook\AddAttachmentsToMapiJournal.cs" />
     <Compile Include="Outlook\CreateNewMapiJournalAndAddToSubfolder.cs" />
@@ -227,10 +245,18 @@
     <Compile Include="Outlook\EndAfterNoccurrences.cs" />
     <Compile Include="Outlook\EndAfterDate.cs" />
     <Compile Include="Outlook\UpdateBulkMessagesInPSTFile.cs" />
+    <Compile Include="IMAP\GetMessageIdUsingImapMessageInfo.cs" />
+    <Compile Include="IMAP\ListingMessagesRecursively.cs" />
+    <Compile Include="IMAP\ListMessagesWithMaximumNumberOfMessages.cs" />
+    <Compile Include="IMAP\SavingMessagesFromIMAPServer.cs" />
     <Compile Include="POP3\ConnectingToPOP3.cs" />
+    <Compile Include="POP3\GetServerExtensionsUsingPop3Client.cs" />
+    <Compile Include="POP3\RetrievMessagesAsynchronously.cs" />
+    <Compile Include="POP3\RetrieveEmailViaPop3ClientProxyServer.cs" />
     <Compile Include="POP3\GettingMailboxInfo.cs" />
     <Compile Include="POP3\ParseMessageAndSave.cs" />
     <Compile Include="POP3\RecipientInformation.cs" />
+    <Compile Include="POP3\FilterMessagesFromPOP3Mailbox.cs" />
     <Compile Include="POP3\RetrievingEmailHeaders.cs" />
     <Compile Include="POP3\RetrievingEmailMessages.cs" />
     <Compile Include="POP3\SaveToDiskWithoutParsing.cs" />
@@ -259,12 +285,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Email\Data\" />
-    <Folder Include="Exchange\Data\" />
     <Folder Include="Gmail\" />
-    <Folder Include="IMAP\Data\" />
     <Folder Include="Knowledge-Base\Data\" />
-    <Folder Include="Outlook\Data\" />
-    <Folder Include="POP3\Data\" />
     <Folder Include="SMTP\Data\" />
     <Folder Include="Thunderbird\Data\" />
   </ItemGroup>

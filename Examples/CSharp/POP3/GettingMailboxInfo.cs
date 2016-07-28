@@ -1,10 +1,5 @@
-﻿using System.IO;
-using System;
-using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
+﻿using System;
 using Aspose.Email.Pop3;
-using Aspose.Email;
-using Aspose.Email.Mime;
 
 namespace Aspose.Email.Examples.CSharp.Email.POP3
 {
@@ -12,46 +7,25 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
     {
         public static void Run()
         {
-            // The path to the File directory.
-            string dataDir = RunExamples.GetDataDir_POP3();
-            string dstEmail = dataDir + "1234.eml";
-
             // Create an instance of the Pop3Client class
+            //ExStart:GettingMailboxInfo
             Pop3Client client = new Pop3Client();
-
-            // Specify host, username and password for your client
+            // Specify host, username, password, Port and SecurityOptions for your client
             client.Host = "pop.gmail.com";
-
-            // Set username
             client.Username = "your.username@gmail.com";
-
-            // Set password
             client.Password = "your.password";
-
-            // Set the port to 995. This is the SSL port of POP3 server
             client.Port = 995;
-
-            // Enable SSL
             client.SecurityOptions = SecurityOptions.Auto;
 
-            // Get the size of the mailbox
+            // Get the size of the mailbox,  Get mailbox info, number of messages in the mailbox
             long nSize = client.GetMailboxSize();
-
             Console.WriteLine("Mailbox size is " + nSize + " bytes.");
-            // Get mailbox info
-
-            Aspose.Email.Pop3.Pop3MailboxInfo info = client.GetMailboxInfo();
-
-            // Get the number of messages in the mailbox
+            Pop3MailboxInfo info = client.GetMailboxInfo();
             int nMessageCount = info.MessageCount;
-
             Console.WriteLine("Number of messages in mailbox are " + nMessageCount);
-
-            // Get occupied size
             long nOccupiedSize = info.OccupiedSize;
-
             Console.WriteLine("Occupied size is " + nOccupiedSize);
-
+            //ExEnd:GettingMailboxInfo
             Console.WriteLine(Environment.NewLine + "Getting the mailbox information of POP3 server.");
         }
     }

@@ -1,9 +1,6 @@
-﻿using Aspose.Email.Imap;
+﻿using System;
+using Aspose.Email.Imap;
 using Aspose.Email.Mail;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
@@ -36,7 +33,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                     MailMessage message = new MailMessage(
                         "from@domain.com",
                         "to@domain.com",
-                        "EMAILNET-35151 - " + Guid.NewGuid().ToString(),
+                        "EMAILNET-35151 - " + Guid.NewGuid(),
                         "EMAILNET-35151 ImapClient: Provide option to Move Message");
                     client.SelectFolder(ImapFolderInfo.InBox);
                     // Append the new message to Inbox folder

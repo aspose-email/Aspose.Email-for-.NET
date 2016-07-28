@@ -1,90 +1,65 @@
-﻿using System.IO;
-using System;
-using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
-using Aspose.Email.Pop3;
-using Aspose.Email;
-using Aspose.Email.Mime;
+﻿using System;
+using System.IO;
 using Aspose.Email.Imap;
+using Aspose.Email.Mail;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
     class ReadMessagesRecursively
     {
+        // ExStart:ReadMessagesRecursively
         public static void Run()
         {
-            // The path to the File directory.
-            string dataDir = RunExamples.GetDataDir_IMAP();
-            string dstEmail = dataDir + "1234.eml";
-
             // Create an instance of the ImapClient class
             ImapClient client = new ImapClient();
 
-            // Specify host, username and password for your client
+            // Specify host, username, password, Port and SecurityOptions for your client
             client.Host = "imap.gmail.com";
-
-            // Set username
             client.Username = "your.username@gmail.com";
-
-            // Set password
             client.Password = "your.password";
-
-            // Set the port to 993. This is the SSL port of IMAP server
             client.Port = 993;
-
-            // Enable SSL
             client.SecurityOptions = SecurityOptions.Auto;
-
             try
             {
                 // The root folder (which will be created on disk) consists of host and username
                 string rootFolder = client.Host + "-" + client.Username;
-                // Create the root folder
-                Directory.CreateDirectory(rootFolder);
 
-                // List all the folders from IMAP server
+                // Create the root folder and List all the folders from IMAP server
+                Directory.CreateDirectory(rootFolder);
                 ImapFolderInfoCollection folderInfoCollection = client.ListFolders();
                 foreach (ImapFolderInfo folderInfo in folderInfoCollection)
                 {
                     // Call the recursive method to read messages and get sub-folders
                     ListMessagesInFolder(folderInfo, rootFolder, client);
                 }
-
-
                 // Disconnect to the remote IMAP server
                 client.Dispose();
-
             }
             catch (Exception ex)
             {
-                System.Console.Write(Environment.NewLine + ex.ToString());
+                Console.Write(Environment.NewLine + ex);
             }
 
             Console.WriteLine(Environment.NewLine + "Downloaded messages recursively from IMAP server.");
         }
 
-        /// <summary>
+
         /// Recursive method to get messages from folders and sub-folders
-        /// </summary>
-        /// <param name="folderInfo"></param>
-        /// <param name="rootFolder"></param>
         private static void ListMessagesInFolder(ImapFolderInfo folderInfo, string rootFolder, ImapClient client)
         {
             // Create the folder in disk (same name as on IMAP server)
-            string currentFolder = Path.Combine(Path.GetFullPath("../../../Data/"), folderInfo.Name);
+            string currentFolder = RunExamples.GetDataDir_IMAP();
             Directory.CreateDirectory(currentFolder);
 
             // Read the messages from the current folder, if it is selectable
-            if (folderInfo.Selectable == true)
+            if (folderInfo.Selectable)
             {
                 // Send status command to get folder info
                 ImapFolderInfo folderInfoStatus = client.GetFolderInfo(folderInfo.Name);
-                Console.WriteLine(folderInfoStatus.Name + " folder selected. New messages: " + folderInfoStatus.NewMessageCount +
-                            ", Total messages: " + folderInfoStatus.TotalMessageCount);
+                Console.WriteLine(folderInfoStatus.Name + " folder selected. New messages: " + folderInfoStatus.NewMessageCount + ", Total messages: " + folderInfoStatus.TotalMessageCount);
 
-                // Select the current folder
+                // Select the current folder and List messages
                 client.SelectFolder(folderInfo.Name);
-                // List messages
                 ImapMessageInfoCollection msgInfoColl = client.ListMessages();
                 Console.WriteLine("Listing messages....");
                 foreach (ImapMessageInfo msgInfo in msgInfoColl)
@@ -93,12 +68,10 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                     Console.WriteLine("Subject: " + msgInfo.Subject);
                     Console.WriteLine("Read: " + msgInfo.IsRead + ", Recent: " + msgInfo.Recent + ", Answered: " + msgInfo.Answered);
 
-                    // Get rid of characters like ? and :, which should not be included in a file name
+                    // Get rid of characters like ? and :, which should not be included in a file name and Save the message in MSG format
                     string fileName = msgInfo.Subject.Replace(":", " ").Replace("?", " ");
-
-                    // Save the message in MSG format
                     MailMessage msg = client.FetchMessage(msgInfo.SequenceNumber);
-                    msg.Save(currentFolder + "\\" + fileName + "-" + msgInfo.SequenceNumber + ".msg", Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode);
+                    msg.Save(currentFolder + "\\" + fileName + "-" + msgInfo.SequenceNumber + ".msg", SaveOptions.DefaultMsgUnicode);
                 }
                 Console.WriteLine("============================\n");
             }
@@ -117,6 +90,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                 }
             }
             catch (Exception) { }
+            // ExEnd:ReadMessagesRecursively
         }
     }
 }

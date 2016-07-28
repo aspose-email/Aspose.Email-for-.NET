@@ -1,10 +1,4 @@
-﻿using System.IO;
-using System;
-using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
-using Aspose.Email.Pop3;
-using Aspose.Email;
-using Aspose.Email.Mime;
+﻿using System;
 using Aspose.Email.Imap;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
@@ -13,42 +7,27 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            // The path to the File directory.
-            string dataDir = RunExamples.GetDataDir_IMAP();
-            string dstEmail = dataDir + "1234.eml";
-
+            //ExStart:DeletingFolders
             // Create an instance of the ImapClient class
             ImapClient client = new ImapClient();
 
-            // Specify host, username and password for your client
+            // Specify host, username and password, and set port for your client
             client.Host = "imap.gmail.com";
-
-            // Set username
             client.Username = "your.username@gmail.com";
-
-            // Set password
             client.Password = "your.password";
-
-            // Set the port to 993. This is the SSL port of IMAP server
             client.Port = 993;
-
-            // Enable SSL
             client.SecurityOptions = SecurityOptions.Auto;
-
             try
             {
-                // Rename a folder
+                // Rename a folder and Disconnect to the remote IMAP server
                 client.DeleteFolder("Client");
-
-                // Disconnect to the remote IMAP server
                 client.Dispose();
-
             }
             catch (Exception ex)
             {
-                System.Console.Write(Environment.NewLine + ex.ToString());
-            } 
-
+                Console.Write(Environment.NewLine + ex);
+            }
+            //ExEnd:DeletingFolders
             Console.WriteLine(Environment.NewLine + "Deleted folders on IMAP server.");
         }
     }
