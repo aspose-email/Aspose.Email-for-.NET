@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Aspose.Email.Imap;
 using Aspose.Email.Mail;
 
@@ -17,19 +16,15 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
+            //ExStart:DeleteSingleMessage
             using (ImapClient client = new ImapClient("exchange.aspose.com", "username", "password"))
             {
                 try
                 {
                     Console.WriteLine(client.UidPlusSupported.ToString());
-
                     // Append some test messages
                     client.SelectFolder(ImapFolderInfo.InBox);
-                    MailMessage message = new MailMessage(
-                            "from@Aspose.com",
-                            "to@Aspose.com",
-                            "EMAILNET-35227 - " + Guid.NewGuid().ToString(),
-                            "EMAILNET-35227 Add ability in ImapClient to delete message");
+                    MailMessage message = new MailMessage("from@Aspose.com", "to@Aspose.com", "EMAILNET-35227 - " + Guid.NewGuid(), "EMAILNET-35227 Add ability in ImapClient to delete message");
                     string emailId = client.AppendMessage(message);
 
                     // Now verify that all the messages have been appended to the mailbox
@@ -37,10 +32,8 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                     messageInfoCol = client.ListMessages();
                     Console.WriteLine(messageInfoCol.Count);
 
-                    // Select the inbox folder
-                    client.SelectFolder(ImapFolderInfo.InBox);                   
-                    
-                    // Delete message
+                    // Select the inbox folder and Delete message
+                    client.SelectFolder(ImapFolderInfo.InBox);
                     client.DeleteMessage(emailId);
                     client.CommitDeletes();
                 }
@@ -49,6 +42,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
 
                 }
             }
+            //ExEnd:DeleteSingleMessage
         }
     }
 }

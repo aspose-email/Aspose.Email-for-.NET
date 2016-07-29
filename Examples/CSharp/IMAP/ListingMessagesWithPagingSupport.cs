@@ -1,9 +1,7 @@
-﻿using Aspose.Email.Imap;
-using Aspose.Email.Mail;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Imap;
+using Aspose.Email.Mail;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
@@ -29,7 +27,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                         message = new MailMessage(
                             "from@domain.com",
                             "to@domain.com",
-                            "EMAILNET-35157 - " + Guid.NewGuid().ToString(),
+                            "EMAILNET-35157 - " + Guid.NewGuid(),
                             "EMAILNET-35157 Move paging parameters to separate class");
                         client.AppendMessage(ImapFolderInfo.InBox, message);
                     }

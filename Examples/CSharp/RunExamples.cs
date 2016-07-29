@@ -35,7 +35,6 @@ namespace Aspose.Email.Examples.CSharp.Email
             // CreateNewEmail.Run();
             // SaveMessageAsDraft.Run();
 
-
             //// =====================================================
             //// =====================================================
             //// Outlook
@@ -93,7 +92,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //MonthlyEndAfterNoccurrences.Run();
             //YearlyEndAfterNoccurrences.Run();
             //GenerateRecurrenceFromRecurrenceRule.Run();
-       
+
             // Working with Outlook Personal Storage (PST) files
 
             //RetreiveParentFolderInformationFromMessageInfo.Run();
@@ -125,7 +124,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //MoveItemsToOtherFolders.Run();
             //AddFilesToPST.Run();
             //ExtractAttachmentsFromPSTMessages.Run();
-            
+
             //// =====================================================
             //// =====================================================
             //// Knowledge-Base
@@ -203,14 +202,18 @@ namespace Aspose.Email.Examples.CSharp.Email
             //// =====================================================
             //// =====================================================
 
-            // ParseMessageAndSave.Run();
-            // RecipientInformation.Run();
-            // RetrievingEmailHeaders.Run();
-            // RetrievingEmailMessages.Run();
-            // SaveToDiskWithoutParsing.Run();
-            // ConnectingToPOP3.Run();
-            // GettingMailboxInfo.Run();
-            // SSLEnabledPOP3Server.Run();
+            //ParseMessageAndSave.Run();
+            //RecipientInformation.Run();
+            //RetrievingEmailHeaders.Run();
+            //RetrievingEmailMessages.Run();
+            //SaveToDiskWithoutParsing.Run();
+            //ConnectingToPOP3.Run();
+            //GettingMailboxInfo.Run();
+            //SSLEnabledPOP3Server.Run();
+            //FilterMessagesFromPOP3Mailbox.Run();
+            //RetrieveEmailViaPop3ClientProxyServer.Run();
+            //GetServerExtensionsUsingPop3Client.Run();
+            //RetrievMessagesAsynchronously.Run();
 
             //// =====================================================
             //// =====================================================
@@ -218,22 +221,32 @@ namespace Aspose.Email.Examples.CSharp.Email
             //// =====================================================
             //// =====================================================
 
-            // InsertHeaderAtSpecificLocation.Run();
-            // DeletingFolders.Run();
-            // RenamingFolders.Run();
-            // AddingNewMessage.Run();
-            // ConnectingWithIMAPServer.Run();
-            // GettingFoldersInformation.Run();
-            // MessagesFromIMAPServerToDisk.Run();
-            // RemovingMessageFlags.Run();
-            // ReadMessagesRecursively.Run();
-            // SettingMessageFlags.Run();
-            // SSLEnabledIMAPServer.Run();
-            // IMAP4IDExtensionSupport.Run();
-            // IMAP4ExtendedListCommand.Run();
-            // CopyMultipleMessagesFromOneFoldertoAnother.Run();            
-            // DeleteSingleMessage.Run();
-            // DeleteMultipleMessages.Run();
+            //InsertHeaderAtSpecificLocation.Run();
+            //DeletingFolders.Run();
+            //RenamingFolders.Run();
+            //AddingNewMessage.Run();
+            //ConnectingWithIMAPServer.Run();
+            //GettingFoldersInformation.Run();
+            //MessagesFromIMAPServerToDisk.Run();
+            //RemovingMessageFlags.Run();
+            //ReadMessagesRecursively.Run();
+            //SettingMessageFlags.Run();
+            //SSLEnabledIMAPServer.Run();
+            //IMAP4IDExtensionSupport.Run();
+            //IMAP4ExtendedListCommand.Run();
+            //CopyMultipleMessagesFromOneFoldertoAnother.Run();
+            //DeleteSingleMessage.Run();
+            //DeleteMultipleMessages.Run();
+            //SavingMessagesFromIMAPServer.Run();
+            //ListMessagesWithMaximumNumberOfMessages.Run();
+            //ListingMessagesRecursively.Run();
+            //GetMessageIdUsingImapMessageInfo.Run();
+            //FilteringMessagesFromIMAPMailbox.Run();
+            //InternalDateFilter.Run();
+            //ProxyServerAccessMailbox.Run(); 
+            //RetrievingMessagesAsynchronously.Run();
+            //RetreivingServerExtensions.Run();            
+            //SupportIMAPIdleCommand.Run();
 
             //// =====================================================
             //// =====================================================
@@ -285,22 +298,20 @@ namespace Aspose.Email.Examples.CSharp.Email
             return Path.GetFullPath(GetDataDir_Data() + "Outlook/");
         }
 
-
         internal static string GetDataDir_POP3()
         {
-            return Path.GetFullPath("../../POP3/Data/");
+            return Path.GetFullPath(GetDataDir_Data() + "POP3");
         }
 
         internal static string GetDataDir_IMAP()
         {
-            return Path.GetFullPath("../../IMAP/Data/");
+            return Path.GetFullPath(GetDataDir_Data() + "IMAP");
         }
 
         internal static string GetDataDir_SMTP()
         {
             return Path.GetFullPath("../../SMTP/Data/");
         }
-
 
         private static string GetDataDir_Data()
         {

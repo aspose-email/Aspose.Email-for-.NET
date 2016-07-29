@@ -1,10 +1,7 @@
-﻿using Aspose.Email;
+﻿using System;
+using System.Collections.Generic;
 using Aspose.Email.Imap;
 using Aspose.Email.Mail;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
@@ -30,7 +27,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                         message = new MailMessage(
                             "from@domain.com",
                             "to@domain.com",
-                            "EMAILNET-35128 - " + Guid.NewGuid().ToString(),
+                            "EMAILNET-35128 - " + Guid.NewGuid(),
                             "111111111111111");
                         client.AppendMessage(ImapFolderInfo.InBox, message);
                     }
@@ -40,7 +37,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                         message = new MailMessage(
                             "from@domain.com",
                             "to@domain.com",
-                            "EMAILNET-35128 - " + Guid.NewGuid().ToString(),
+                            "EMAILNET-35128 - " + Guid.NewGuid(),
                             body);
                         client.AppendMessage(ImapFolderInfo.InBox, message);
                     }

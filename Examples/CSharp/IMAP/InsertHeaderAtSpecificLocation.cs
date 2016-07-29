@@ -13,12 +13,14 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
+            //ExStart:InsertHeaderAtSpecificLocation
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_IMAP();
             string loadFile = dataDir + "InsertHeaders.eml";
             MailMessage eml = MailMessage.Load(loadFile);
             eml.Headers.Insert("secret-header", "mystery1");
-            eml.Save(dataDir + "Updated-MessageHeaders.eml");
+            eml.Save(dataDir + "Updated-MessageHeaders_out.eml");
+            //ExEnd:InsertHeaderAtSpecificLocation
         }
     }
 }

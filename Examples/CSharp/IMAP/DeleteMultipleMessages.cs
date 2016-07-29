@@ -17,12 +17,12 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
+            //ExStart:DeleteMultipleMessages
             using (ImapClient client = new ImapClient("exchange.aspose.com", "username", "password"))
             {
                 try
                 {
                     Console.WriteLine(client.UidPlusSupported.ToString());
-
                     // Append some test messages
                     client.SelectFolder(ImapFolderInfo.InBox);
                     List<string> uidList = new List<string>();
@@ -32,7 +32,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                         MailMessage message = new MailMessage(
                             "from@Aspose.com",
                             "to@Aspose.com",
-                            "EMAILNET-35226 - " + Guid.NewGuid().ToString(),
+                            "EMAILNET-35226 - " + Guid.NewGuid(),
                             "EMAILNET-35226 Add ability in ImapClient to delete messages and change flags for set of messages");
                         string uid = client.AppendMessage(message);
                         uidList.Add(uid);
@@ -43,11 +43,9 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                     messageInfoCol = client.ListMessages();
                     Console.WriteLine(messageInfoCol.Count);
 
-                    // Bulk Delete Messages
+                    // Bulk Delete Messages and  Verify that the messages are deleted
                     client.DeleteMessages(uidList, true);
-                    client.CommitDeletes();
-
-                    // Verify that the messages are deleted
+                    client.CommitDeletes(); 
                     messageInfoCol = null;
                     messageInfoCol = client.ListMessages();
                     Console.WriteLine(messageInfoCol.Count);
@@ -57,6 +55,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
 
                 }
             }
+            //ExStart:DeleteMultipleMessages
         }
     }
 }
