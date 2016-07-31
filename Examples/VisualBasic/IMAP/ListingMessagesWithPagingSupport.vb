@@ -1,33 +1,29 @@
-﻿Imports Aspose.Email.Imap
+﻿Imports System.Collections.Generic
+Imports Aspose.Email.Imap
 Imports Aspose.Email.Mail
 
 Namespace Aspose.Email.Examples.VisualBasic.Email.IMAP
-
-    Public Class ListingMessagesWithPagingSupport
+    Class ListingMessagesWithPagingSupport
         Private Shared Sub Run()
-            'ExStart: ListingMessagesWithPagingSupport
-            '<summary>
-            'This example shows the paging support of ImapClient for listing messages from the server
-            'Available in Aspose.Email for .NET 6.4.0 and onwards
-            '</summary>
+            ' ExStart: ListingMessagesWithPagingSupport
             Using client As New ImapClient("host.domain.com", 993, "username", "password")
                 Try
                     Dim messagesNum As Integer = 12
                     Dim itemsPerPage As Integer = 5
                     Dim message As MailMessage = Nothing
-                    'Create some test messages and append these to server's inbox
+                    ' Create some test messages and append these to server's inbox
                     For i As Integer = 0 To messagesNum - 1
                         message = New MailMessage("from@domain.com", "to@domain.com", "EMAILNET-35157 - " + Guid.NewGuid().ToString(), "EMAILNET-35157 Move paging parameters to separate class")
                         client.AppendMessage(ImapFolderInfo.InBox, message)
                     Next
 
-                    'List messages from inbox
+                    ' List messages from inbox
                     client.SelectFolder(ImapFolderInfo.InBox)
                     Dim totalMessageInfoCol As ImapMessageInfoCollection = client.ListMessages()
-                    'Verify the number of messages added
+                    ' Verify the number of messages added
                     Console.WriteLine(totalMessageInfoCol.Count)
 
-                    '/RETREIVE THE MESSAGES USING PAGING SUPPORT
+                    ' RETREIVE THE MESSAGES USING PAGING SUPPORT
 
                     Dim pages As New List(Of ImapPageInfo)()
                     Dim pageInfo As ImapPageInfo = client.ListMessagesByPage(itemsPerPage)
@@ -45,7 +41,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.IMAP
                 Finally
                 End Try
             End Using
-            'ExEnd: ListingMessagesWithPagingSupport
+            ' ExEnd: ListingMessagesWithPagingSupport
         End Sub
     End Class
 End Namespace

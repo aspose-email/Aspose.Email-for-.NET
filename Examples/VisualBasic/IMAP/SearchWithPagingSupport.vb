@@ -1,19 +1,14 @@
-﻿Imports Aspose.Email.Imap
+﻿Imports System.Collections.Generic
+Imports Aspose.Email.Imap
 Imports Aspose.Email.Mail
-Imports Aspose.Email
 
 Namespace Aspose.Email.Examples.VisualBasic.Email.IMAP
-
-    Public Class SearchWithPagingSupport
+    Class SearchWithPagingSupport
         Private Shared Sub Run()
-            'ExStart:SearchWithPagingSupport
-            '<summary>
-            'This example shows how to search for messages using ImapClient of the API with paging support
-            'Introduced in Aspose.Email for .NET 6.4.0
-            '</summary>
+            ' ExStart:SearchWithPagingSupport
             Using client As New ImapClient("host.domain.com", 84, "username", "password")
                 Try
-                    'Append some test messages
+                    ' Append some test messages
                     Dim messagesNum As Integer = 12
                     Dim itemsPerPage As Integer = 5
                     Dim message As MailMessage = Nothing
@@ -35,8 +30,6 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.IMAP
                     Dim totalMessageInfoCol As ImapMessageInfoCollection = client.ListMessages(query)
                     Console.WriteLine(totalMessageInfoCol.Count)
 
-                    '/
-
                     Dim pages As New List(Of ImapPageInfo)()
                     Dim pageInfo As ImapPageInfo = client.ListMessagesByPage(ImapFolderInfo.InBox, query, itemsPerPage)
                     pages.Add(pageInfo)
@@ -51,7 +44,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.IMAP
                 Finally
                 End Try
             End Using
-            'ExEnd: SearchWithPagingSupport
+            ' ExEnd: SearchWithPagingSupport
         End Sub
     End Class
 End Namespace

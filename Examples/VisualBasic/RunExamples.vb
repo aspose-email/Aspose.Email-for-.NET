@@ -1,12 +1,11 @@
 ﻿Imports System.IO
-Imports Aspose.Email.Examples.VisualBasic.Email
-Imports Aspose.Email.Examples.VisualBasic.Email.Exchange
-Imports Aspose.Email.Examples.VisualBasic.Email.Knowledge.Base
-Imports Aspose.Email.Examples.VisualBasic.Email.Outlook
-Imports Aspose.Email.Examples.VisualBasic.Email.POP3
-Imports Aspose.Email.Examples.VisualBasic.Email.SMTP
-Imports Aspose.Email.Examples.VisualBasic.Email.IMAP
-Imports Aspose.Email.Examples.VisualBasic.Email.Personal.Outlook
+Imports Aspose.Email.Examples.Visualbasic.Email
+Imports Aspose.Email.Examples.Visualbasic.Email.Exchange
+Imports Aspose.Email.Examples.Visualbasic.Email.Knowledge.Base
+Imports Aspose.Email.Examples.Visualbasic.Email.Outlook
+Imports Aspose.Email.Examples.Visualbasic.Email.POP3
+Imports Aspose.Email.Examples.Visualbasic.Email.SMTP
+Imports Aspose.Email.Examples.Visualbasic.Email.IMAP
 
 Namespace Aspose.Email.Examples.VisualBasic
     Module RunExamples
@@ -44,7 +43,6 @@ Namespace Aspose.Email.Examples.VisualBasic
             'DeleteMessagesFromPSTFiles.Run()
             'DeleteBulkItemsFromPSTFile.Run()
             'UpdateBulkMessagesInPSTFile.Run()
-
             'LoadMSGFiles.Run()
             'LoadingFromStream.Run()
             'GetMAPIProperty.Run()
@@ -185,6 +183,17 @@ Namespace Aspose.Email.Examples.VisualBasic
             'DeleteExchangeTask.Run()
             'SendExchangeTask.Run()
             'UpdateExchangeTask.Run()
+            'AddingHeadersToEWSRequests.Run()
+            'ListFoldersFromExchangeServer.Run()
+            'CopyingMessageToAnotherFolder.Run()
+            'CreatePrivateDistributionList.Run()
+            'FetchPrivateDistributionList.Run()
+            'AddMembersToPrivateDistributionList.Run()
+            'AddMembersWithoutListing.Run()
+            'DeleteMembersFromPrivateDistributionList.Run()
+            'DeletePrivateDistributionList.Run()
+            'DeleteWithoutListing.Run()
+            'CreateFoldersOnExchangeServerMailbox.Run()
 
             '' =====================================================
             '' =====================================================
@@ -200,6 +209,11 @@ Namespace Aspose.Email.Examples.VisualBasic
             'ConnectingToPOP3.Run()
             'GettingMailboxInfo.Run()
             'SSLEnabledPOP3Server.Run()
+            'FilterMessagesFromPOP3Mailbox.Run()
+            'RetrieveEmailViaPop3ClientProxyServer.Run()
+            'GetServerExtensionsUsingPop3Client.Run()
+            'RetrievMessagesAsynchronously.Run()
+            'ParseMessageAndSave.Run()
 
             '' =====================================================
             '' =====================================================
@@ -223,6 +237,17 @@ Namespace Aspose.Email.Examples.VisualBasic
             'CopyMultipleMessagesFromOneFoldertoAnother.Run()
             'DeleteSingleMessage.Run()
             'DeleteMultipleMessages.Run()
+            'SavingMessagesFromIMAPServer.Run()
+            'ListMessagesWithMaximumNumberOfMessages.Run()
+            'ListingMessagesRecursively.Run()
+            'GetMessageIdUsingImapMessageInfo.Run()
+            'FilteringMessagesFromIMAPMailbox.Run()
+            'InternalDateFilter.Run()
+            'ProxyServerAccessMailbox.Run()
+            'RetrievingMessagesAsynchronously.Run()
+            'RetreivingServerExtensions.Run()
+            'SupportIMAPIdleCommand.Run()
+
 
             '' =====================================================
             '' =====================================================
@@ -271,11 +296,11 @@ Namespace Aspose.Email.Examples.VisualBasic
         End Function
 
         Friend Function GetDataDir_POP3() As String
-            Return Path.GetFullPath("../../POP3/Data/")
+            Return Path.GetFullPath(GetDataDir_Data() + "POP3")
         End Function
 
         Friend Function GetDataDir_IMAP() As String
-            Return Path.GetFullPath("../../IMAP/Data/")
+            Return Path.GetFullPath(GetDataDir_Data() + "IMAP")
         End Function
 
         Friend Function GetDataDir_SMTP() As String

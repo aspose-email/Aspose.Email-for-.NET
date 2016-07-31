@@ -15,6 +15,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
 
     Public Class SendExchangeTask
         Public Shared Sub Run()
+            ' ExStart:SendExchangeTask
             ' The path to the documents directory.
             Dim dataDir As String = RunExamples.GetDataDir_Exchange()
             Dim dstEmail As String = dataDir & Convert.ToString("Message.eml")
@@ -32,9 +33,8 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
             eml.From = "firstname.lastname@domain.com"
             eml.[To].Clear()
             eml.[To].Add(New Aspose.Email.Mail.MailAddress("firstname.lastname@domain.com"))
-
             client.Send(eml)
-
+            ' ExEnd:SendExchangeTask
             Console.WriteLine(Environment.NewLine + "Task sent on Exchange Server successfully.")
         End Sub
     End Class
