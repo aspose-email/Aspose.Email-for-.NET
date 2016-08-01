@@ -8,8 +8,9 @@
 'please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 '
 
+
 Namespace Aspose.Email.Examples.VisualBasic.Email.POP3
-    Class ConnectingToPOP3
+    Class GetServerExtensionsUsingPop3Client
         Public Shared Sub Run()
             ' ExStart:GetServerExtensionsUsingPop3Client
             ' Connect and log in to POP3
