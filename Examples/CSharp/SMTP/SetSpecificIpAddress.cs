@@ -1,6 +1,5 @@
 ﻿using System.Net;
 using Aspose.Email.Mail;
-using Aspose.Email;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
    API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 

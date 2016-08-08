@@ -1,15 +1,8 @@
-﻿using System.IO;
-using System;
+﻿using System;
+using System.Diagnostics;
 using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
-using Aspose.Email.Pop3;
-using Aspose.Email;
-using Aspose.Email.Mime;
-using Aspose.Email.Imap;
-using System.Configuration;
-using System.Data;
 
-namespace Aspose.Email.Examples.CSharp.Email.IMAP
+namespace Aspose.Email.Examples.CSharp.Email.SMTP
 {
     class SendingEMLFilesWithSMTP
     {
@@ -17,39 +10,29 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
         {
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_SMTP();
-            string dstEmail = dataDir + "test-load.eml";
+            string dstEmail = dataDir + "Message.eml";
 
             // Create an instance of the MailMessage class
-            MailMessage msg = new MailMessage();
+            MailMessage message = new MailMessage();
 
             // Import from EML format
-            msg = MailMessage.Load(dstEmail, new EmlLoadOptions());
+            message = MailMessage.Load(dstEmail, new EmlLoadOptions());
 
             // Create an instance of SmtpClient class
-            SmtpClient client = GetSmtpClient();
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
+            client.SecurityOptions = SecurityOptions.Auto;
 
             try
             {
                 // Client.Send will send this message
-                client.Send(msg);
-                // Message sent successfully
-                System.Console.WriteLine("Message sent");
+                client.Send(message);
+                Console.WriteLine("Message sent");
             }
-
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                System.Diagnostics.Trace.WriteLine(ex.ToString());
+                Trace.WriteLine(ex.ToString());
             }
-
             Console.WriteLine(Environment.NewLine + "Email sent using EML file successfully. " + dstEmail);
-        }
-
-        private static SmtpClient GetSmtpClient()
-        {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
-            client.SecurityOptions = SecurityOptions.Auto;
-
-            return client;
         }
     }
 }

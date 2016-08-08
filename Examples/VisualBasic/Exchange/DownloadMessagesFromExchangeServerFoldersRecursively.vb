@@ -57,7 +57,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
             End Try
         End Sub
 
-        ''' Recursive method to get messages from folders and sub-folders
+        ' Recursive method to get messages from folders and sub-folders
         Private Shared Sub ListMessagesInFolder(ByVal client As IEWSClient, ByVal folderInfo As ExchangeFolderInfo, ByVal rootFolder As String)
             ' Create the folder in disk (same name as on IMAP server)
             Dim currentFolder As String = rootFolder & "\" & folderInfo.DisplayName

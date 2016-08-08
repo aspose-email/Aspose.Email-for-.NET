@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Aspose.Email.Examples.CSharp.Email.Exchange;
+using Aspose.Email.Examples.CSharp.Email.SMTP;
 
 namespace Aspose.Email.Examples.CSharp.Email
 {
@@ -28,12 +29,38 @@ namespace Aspose.Email.Examples.CSharp.Email
             // =====================================================
             // =====================================================
 
-            // DraftAppointmentRequest.Run();
-            // DisplayEmailInformation.Run();
-            // ExtractingEmailHeaders.Run();
-            // ProcessBouncedMsgs.Run();
-            // CreateNewEmail.Run();
-            // SaveMessageAsDraft.Run();
+            //DraftAppointmentRequest.Run();
+            //DisplayEmailInformation.Run();
+            //ExtractingEmailHeaders.Run();
+            //ProcessBouncedMsgs.Run();
+            //CreateNewEmail.Run();
+            //SaveMessageAsDraft.Run();
+            //SpecifyRecipientAddresses.Run();
+            //DisplayEmailAddressesNames.Run();            
+            //SetHTMLBody.Run();
+            //SetAlternateText.Run();            
+            //ManagingEmailAttachments.Run();            
+            //RemoveAttachments.Run();
+            //EmbeddedObjects.Run();
+            //LoadMessageWithLoadOptions.Run();
+            //SetEmailHeaders.Run();            
+            //ExtractAttachments.Run();
+            //CreateNewMailMessage.Run();            
+            //ReadMessageByPreservingTNEFAttachments.Run();
+            //CreatingTNEFFromMSG.Run();
+            //LoadAndSaveFileAsEML.Run();            
+            //PreserveOriginalBoundaries.Run();           
+            //PreserveTNEFAttachment.Run();
+            //EncryptAndDecryptMessage.Run();            
+            //PrintHeaderUsingMhtFormatOptions.Run();
+            //ExtraPrintHeaderUsingHideExtraPrintHeader.Run();
+            //BayesianSpamAnalyzer.Run();
+            //GetDeliveryStatusNotificationMessages.Run();
+            //DetectDifferentFileFormats.Run();          
+            //ExtractEmbeddedObjectsFromEmail.Run();
+            //EncryptAndDecryptMessage.Run(); 
+
+
 
             //// =====================================================
             //// =====================================================
@@ -124,6 +151,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //MoveItemsToOtherFolders.Run();
             //AddFilesToPST.Run();
             //ExtractAttachmentsFromPSTMessages.Run();
+            //AddMapiNoteToPST.Run();
+            
 
             //// =====================================================
             //// =====================================================
@@ -131,7 +160,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //// =====================================================
             //// =====================================================
 
-            // PrintEmail.Run();
+            //PrintEmail.Run();
 
             //// =====================================================
             //// =====================================================
@@ -189,12 +218,12 @@ namespace Aspose.Email.Examples.CSharp.Email
             //CreateAndSendingMessageWithVotingOptions.Run();
             //PreFetchMessageSizeUsingIEWSClient.Run();
             //SynchronizeFolderItems.Run();
-            // SecondaryCalendarEvents.Run();          
-            // SaveExchangeTaskToDisc.Run();
-            // CreateExchangeTask.Run();
-            // DeleteExchangeTask.Run();
-            // SendExchangeTask.Run();
-            // UpdateExchangeTask.Run();
+            //SecondaryCalendarEvents.Run();          
+            //SaveExchangeTaskToDisc.Run();
+            //CreateExchangeTask.Run();
+            //DeleteExchangeTask.Run();
+            //SendExchangeTask.Run();
+            //UpdateExchangeTask.Run();
 
             //// =====================================================
             //// =====================================================
@@ -272,6 +301,24 @@ namespace Aspose.Email.Examples.CSharp.Email
             // MultipleRecipients.Run();
             // SendingEMLFilesWithSMTP.Run();
             // SSLEnabledSMTPServer.Run();
+            //SendEmailUsingSMTP.Run();
+            //SendEmailAsynchronously.Run();
+            //SendingBulkEmails.Run();
+            //SendMessageAsTNEF.Run();
+            //SendEmailViaProxyServer.Run();
+            //SendPlainTextEmailMessage.Run();
+            //SendEmailWithAlternateText.Run();
+            //ForwardEmail.Run();       
+            //SignAMessage.Run();
+           
+            //// =====================================================
+            //// =====================================================
+            //// Thunderbird
+            //// =====================================================
+            //// =====================================================
+
+            //ReadMessagesFromThunderbird.Run();
+            //CreateNewMessagesToThunderbird.Run();
 
             // Stop before exiting
             Console.WriteLine(Environment.NewLine + "Program Finished. Press any key to exit....");
@@ -280,12 +327,17 @@ namespace Aspose.Email.Examples.CSharp.Email
 
         internal static string GetDataDir_KnowledgeBase()
         {
-            return Path.GetFullPath("../../Knowledge-Base/Data/");
+            return Path.GetFullPath(GetDataDir_Data() + "KnowledgeBase/");
+        }
+
+        internal static string Thunderbird()
+        {
+            return Path.GetFullPath(GetDataDir_Data() + "Thunderbird/");
         }
 
         internal static string GetDataDir_Email()
         {
-            return Path.GetFullPath("../../Email/Data/");
+            return Path.GetFullPath(GetDataDir_Data() + "Email/");
         }
 
         internal static string GetDataDir_Exchange()
@@ -310,7 +362,7 @@ namespace Aspose.Email.Examples.CSharp.Email
 
         internal static string GetDataDir_SMTP()
         {
-            return Path.GetFullPath("../../SMTP/Data/");
+            return Path.GetFullPath(GetDataDir_Data() + "SMTP/");
         }
 
         private static string GetDataDir_Data()

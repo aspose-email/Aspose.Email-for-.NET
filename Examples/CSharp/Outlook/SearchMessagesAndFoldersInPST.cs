@@ -16,8 +16,9 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
     {
         public static void Run()
         {
-            // The path to the File directory.
+            
             // ExStart:SearchMessagesAndFoldersInPST
+            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
 
             using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Sub.pst"))

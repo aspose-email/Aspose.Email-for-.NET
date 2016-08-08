@@ -1,13 +1,6 @@
-﻿using System.IO;
-using System;
+﻿using System;
+using System.Diagnostics;
 using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
-using Aspose.Email.Pop3;
-using Aspose.Email;
-using Aspose.Email.Mime;
-using Aspose.Email.Imap;
-using System.Configuration;
-using System.Data;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
@@ -54,7 +47,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
 
             catch (Exception ex)
             {
-                System.Diagnostics.Trace.WriteLine(ex.ToString());
+                Trace.WriteLine(ex.ToString());
             }
 
             Console.WriteLine(Environment.NewLine + "Email sent to multiple recipients successfully.");

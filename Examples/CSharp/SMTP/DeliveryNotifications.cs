@@ -1,11 +1,6 @@
-﻿using System.IO;
-using System;
+﻿using System;
+using System.Diagnostics;
 using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
-using Aspose.Email.Pop3;
-using Aspose.Email;
-using Aspose.Email.Mime;
-using Aspose.Email.Imap;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
@@ -39,12 +34,12 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                 // Client.Send will send this message
                 client.Send(msg);
                 // Message sent successfully
-                System.Console.WriteLine("Message sent");
+                Console.WriteLine("Message sent");
             }
 
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                System.Diagnostics.Trace.WriteLine(ex.ToString());
+                Trace.WriteLine(ex.ToString());
             }
 
             Console.WriteLine(Environment.NewLine + "Email sent with delivery notification.");

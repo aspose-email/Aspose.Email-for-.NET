@@ -38,11 +38,11 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             ' ExEnd:GetMessageInformation
         End Sub
 
-        ''' <summary>
-        ''' This is a recursive method to display contents of a folder
-        ''' </summary>
-        ''' <param name="folderInfo"></param>
-        ''' <param name="pst"></param>
+        ' <summary>
+        ' This is a recursive method to display contents of a folder
+        ' </summary>
+        ' <param name="folderInfo"></param>
+        ' <param name="pst"></param>
         Private Shared Sub DisplayFolderContents(folderInfo As FolderInfo, pst As PersonalStorage)
             ' ExStart:GetMessageInformationDisplayFolderContents
             ' Display the folder name

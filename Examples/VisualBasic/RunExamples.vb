@@ -1,46 +1,75 @@
-﻿Imports System.IO
-Imports Aspose.Email.Examples.Visualbasic.Email
-Imports Aspose.Email.Examples.Visualbasic.Email.Exchange
-Imports Aspose.Email.Examples.Visualbasic.Email.Knowledge.Base
-Imports Aspose.Email.Examples.Visualbasic.Email.Outlook
-Imports Aspose.Email.Examples.Visualbasic.Email.POP3
-Imports Aspose.Email.Examples.Visualbasic.Email.SMTP
-Imports Aspose.Email.Examples.Visualbasic.Email.IMAP
+﻿Imports Aspose.Email.Examples.VisualBasic.Email
+Imports Aspose.Email.Examples.VisualBasic.Exchange
+Imports Aspose.Email.Examples.VisualBasic.Email.IMAP
+Imports Aspose.Email.Examples.VisualBasic.Email.Knowledge.Base
+Imports Aspose.Email.Examples.VisualBasic.Email.Outlook
+Imports Aspose.Email.Examples.VisualBasic.Email.POP3
+Imports System.Collections.Generic
+Imports System.IO
+Imports System.Linq
+Imports System.Text
+Imports Aspose.Email.Examples.VisualBasic.Email.Exchange
+Imports Aspose.Email.Examples.VisualBasic.Email.SMTP
+Imports Aspose.Email.Examples.VisualBasic.Email.Thunderbird
 
-Namespace Aspose.Email.Examples.VisualBasic
-    Module RunExamples
-
-        Sub Main()
-
-            Console.WriteLine("Open RunExamples.vb. " & vbLf & "In Main() method uncomment the example that you want to run.")
+Namespace Aspose.Email.Examples.VisualBasic.Email
+    Class RunExamples
+        Private Shared Sub Main()
+            Console.WriteLine("Open RunExamples.cs. " & vbLf & "In Main() method uncomment the example that you want to run.")
             Console.WriteLine("=====================================================")
 
             ' Uncomment the one you want to try out
 
-            '' =====================================================
-            '' =====================================================
-            '' Email
-            '' =====================================================
-            '' =====================================================
+            ' =====================================================
+            ' =====================================================
+            ' Email
+            ' =====================================================
+            ' =====================================================
 
-            'DraftAppointmentRequest.Run()
-            'DisplayEmailInformation.Run()
-            'ExtractingEmailHeaders.Run()
-            'ProcessBouncedMsgs.Run()
-            'CreateNewEmail.Run()
-            'SaveMessageAsDraft.Run()
+            ' DraftAppointmentRequest.Run()
+            ' DisplayEmailInformation.Run()
+            ' ExtractingEmailHeaders.Run()
+            ' ProcessBouncedMsgs.Run()
+            ' CreateNewEmail.Run()
+            ' SaveMessageAsDraft.Run()
+            'SpecifyRecipientAddresses.Run()
+            'DisplayEmailAddressesNames.Run()            
+            'SetHTMLBody.Run()
+            'SetAlternateText.Run()            
+            'ManagingEmailAttachments.Run()            
+            'RemoveAttachments.Run()
+            'EmbeddedObjects.Run()
+            'LoadMessageWithLoadOptions.Run()
+            'SetEmailHeaders.Run()            
+            'ExtractAttachments.Run()
+            'CreateNewMailMessage.Run()            
+            'ReadMessageByPreservingTNEFAttachments.Run()
+            'CreatingTNEFFromMSG.Run()
+            'LoadAndSaveFileAsEML.Run()            
+            'PreserveOriginalBoundaries.Run()           
+            'PreserveTNEFAttachment.Run()
+            'EncryptAndDecryptMessage.Run()            
+            'PrintHeaderUsingMhtFormatOptions.Run()
+            'ExtraPrintHeaderUsingHideExtraPrintHeader.Run()
+            'BayesianSpamAnalyzer.Run()
+            'GetDeliveryStatusNotificationMessages.Run()
+            'DetectDifferentFileFormats.Run()
+            'ExtractEmbeddedObjectsFromEmail.Run()
+            'EncryptAndDecryptMessage.Run() 
+            'AddMapiNoteToPST.Run()
 
-            '' =====================================================
-            '' =====================================================
-            '' Outlook
-            '' =====================================================
-            '' =====================================================
+
+            '/ =====================================================
+            '/ =====================================================
+            '/ Outlook
+            '/ =====================================================
+            '/ =====================================================
 
             'NewPSTAddSubfolders.Run()
             'MergePSTFiles.Run()
             'SplitPST.Run()
             'CreateSaveOutlookFiles.Run()
-            'DeleteMessagesFromPSTFiles.Run()
+            'DeleteMessagesFromPSTFiles.Run()                        
             'DeleteBulkItemsFromPSTFile.Run()
             'UpdateBulkMessagesInPSTFile.Run()
             'LoadMSGFiles.Run()
@@ -82,13 +111,20 @@ Namespace Aspose.Email.Examples.VisualBasic
             'CreatReplyMessage.Run()
             'CreateForwardMessage.Run()
             'EndAfterNoccurrences.Run()
+            'WeeklyEndAfterNoccurrences.Run()
+            'EndAfterNoccurrenceSelectMultipleDaysInweek.Run()
+            'MonthlyEndAfterNoccurrences.Run()
+            'YearlyEndAfterNoccurrences.Run()
             'GenerateRecurrenceFromRecurrenceRule.Run()
+
+            ' Working with Outlook Personal Storage (PST) files
+
             'RetreiveParentFolderInformationFromMessageInfo.Run()
             'ParseSearchableFolders.Run()
             'AccessContactInformation.Run()
             'SaveContactInformation.Run()
             'SaveCalendarItems.Run()
-            'AddMessagesToPSTFiles.Run()
+            'AddMessagesToPSTFiles.Run()            
             'DisplayInformationOfPSTFile.Run()
             'ReadandConvertOSTFiles.Run()
             'ConvertOSTToPST.Run()
@@ -112,20 +148,22 @@ Namespace Aspose.Email.Examples.VisualBasic
             'MoveItemsToOtherFolders.Run()
             'AddFilesToPST.Run()
             'ExtractAttachmentsFromPSTMessages.Run()
+            'AddMapiNoteToPST.Run()
 
-            '' =====================================================
-            '' =====================================================
-            '' Knowledge-Base
-            '' =====================================================
-            '' =====================================================
 
-            'PrintEmail.Run()
+            '/ =====================================================
+            '/ =====================================================
+            '/ Knowledge-Base
+            '/ =====================================================
+            '/ =====================================================
 
-            '' =====================================================
-            '' =====================================================
-            '' Exchange
-            '' =====================================================
-            '' =====================================================
+            ' PrintEmail.Run()
+
+            '/ =====================================================
+            '/ =====================================================
+            '/ Exchange
+            '/ =====================================================
+            '/ =====================================================
 
             'GetMailboxInformationFromExchangeWebServices.Run()
             'GetMailboxInformationFromExchangeServer.Run()
@@ -158,7 +196,7 @@ Namespace Aspose.Email.Examples.VisualBasic
             'CreateNewRuleOntheExchangeServer.Run()
             'UpdateRuleOntheExchangeServer.Run()
             'ReadUserConfiguration.Run()
-            'CreateUserConfigurations.Run()
+            'CreatUserConfigurations.Run()
             'UpdateUserConfiguration.Run()
             'DeleteUserConfiguration.Run()
             'FindConversationsOnExchangeServer.Run()
@@ -177,29 +215,18 @@ Namespace Aspose.Email.Examples.VisualBasic
             'CreateAndSendingMessageWithVotingOptions.Run()
             'PreFetchMessageSizeUsingIEWSClient.Run()
             'SynchronizeFolderItems.Run()
-            'SecondaryCalendarEvents.Run()
+            'SecondaryCalendarEvents.Run()          
             'SaveExchangeTaskToDisc.Run()
             'CreateExchangeTask.Run()
             'DeleteExchangeTask.Run()
             'SendExchangeTask.Run()
             'UpdateExchangeTask.Run()
-            'AddingHeadersToEWSRequests.Run()
-            'ListFoldersFromExchangeServer.Run()
-            'CopyingMessageToAnotherFolder.Run()
-            'CreatePrivateDistributionList.Run()
-            'FetchPrivateDistributionList.Run()
-            'AddMembersToPrivateDistributionList.Run()
-            'AddMembersWithoutListing.Run()
-            'DeleteMembersFromPrivateDistributionList.Run()
-            'DeletePrivateDistributionList.Run()
-            'DeleteWithoutListing.Run()
-            'CreateFoldersOnExchangeServerMailbox.Run()
 
-            '' =====================================================
-            '' =====================================================
-            '' POP3
-            '' =====================================================
-            '' =====================================================
+            '/ =====================================================
+            '/ =====================================================
+            '/ POP3
+            '/ =====================================================
+            '/ =====================================================
 
             'ParseMessageAndSave.Run()
             'RecipientInformation.Run()
@@ -213,13 +240,12 @@ Namespace Aspose.Email.Examples.VisualBasic
             'RetrieveEmailViaPop3ClientProxyServer.Run()
             'GetServerExtensionsUsingPop3Client.Run()
             'RetrievMessagesAsynchronously.Run()
-            'ParseMessageAndSave.Run()
 
-            '' =====================================================
-            '' =====================================================
-            '' IMAP
-            '' =====================================================
-            '' =====================================================
+            '/ =====================================================
+            '/ =====================================================
+            '/ IMAP
+            '/ =====================================================
+            '/ =====================================================
 
             'InsertHeaderAtSpecificLocation.Run()
             'DeletingFolders.Run()
@@ -243,17 +269,16 @@ Namespace Aspose.Email.Examples.VisualBasic
             'GetMessageIdUsingImapMessageInfo.Run()
             'FilteringMessagesFromIMAPMailbox.Run()
             'InternalDateFilter.Run()
-            'ProxyServerAccessMailbox.Run()
+            'ProxyServerAccessMailbox.Run() 
             'RetrievingMessagesAsynchronously.Run()
-            'RetreivingServerExtensions.Run()
+            'RetreivingServerExtensions.Run()            
             'SupportIMAPIdleCommand.Run()
 
-
-            '' =====================================================
-            '' =====================================================
-            '' SMTP
-            '' =====================================================
-            '' =====================================================
+            '/ =====================================================
+            '/ =====================================================
+            '/ SMTP
+            '/ =====================================================
+            '/ =====================================================
 
             'SetSpecificIpAddress.Run()
             'ExportAsEML.Run()
@@ -273,42 +298,64 @@ Namespace Aspose.Email.Examples.VisualBasic
             'MultipleRecipients.Run()
             'SendingEMLFilesWithSMTP.Run()
             'SSLEnabledSMTPServer.Run()
+            'SendEmailUsingSMTP.Run()
+            'SendEmailAsynchronously.Run()
+            'SendingBulkEmails.Run()
+            'SendMessageAsTNEF.Run()
+            'SendEmailViaProxyServer.Run()
+            'SendPlainTextEmailMessage.Run()
+            'SendEmailWithAlternateText.Run()
+            'ForwardEmail.Run()
+            'SignAMessage.Run()
 
+            '/ =====================================================
+            '/ =====================================================
+            '/ Thunderbird
+            '/ =====================================================
+            '/ =====================================================
+
+            'ReadMessagesFromThunderbird.Run()
+            'CreateNewMessagesToThunderbird.Run()
+         
             ' Stop before exiting
             Console.WriteLine(Environment.NewLine + "Program Finished. Press any key to exit....")
             Console.ReadKey()
         End Sub
 
-        Friend Function GetDataDir_KnowledgeBase() As String
-            Return Path.GetFullPath("../../Knowledge-Base/Data/")
+        Friend Shared Function GetDataDir_KnowledgeBase() As String
+            Return Path.GetFullPath(GetDataDir_Data() + "KnowledgeBase/")
         End Function
 
-        Friend Function GetDataDir_Email() As String
-            Return Path.GetFullPath("../../Email/Data/")
+        Friend Shared Function Thunderbird() As String
+            Return Path.GetFullPath(GetDataDir_Data() & Convert.ToString("Thunderbird/"))
         End Function
 
-        Friend Function GetDataDir_Exchange() As String
-            Return Path.GetFullPath("../../Exchange/Data/")
-        End Function
-
-        Friend Function GetDataDir_Outlook() As String
-            Return Path.GetFullPath(GetDataDir_Data() + "Outlook/")
-        End Function
-
-        Friend Function GetDataDir_POP3() As String
-            Return Path.GetFullPath(GetDataDir_Data() + "POP3")
-        End Function
-
-        Friend Function GetDataDir_IMAP() As String
-            Return Path.GetFullPath(GetDataDir_Data() + "IMAP")
-        End Function
-
-        Friend Function GetDataDir_SMTP() As String
-            Return Path.GetFullPath("../../SMTP/Data/")
+        Friend Shared Function GetDataDir_Email() As String
+            Return Path.GetFullPath(GetDataDir_Data() & Convert.ToString("Email/"))
         End Function
 
 
-        Private Function GetDataDir_Data() As String
+        Friend Shared Function GetDataDir_Exchange() As String
+            Return Path.GetFullPath(GetDataDir_Data() & Convert.ToString("/Exchange/"))
+        End Function
+
+        Friend Shared Function GetDataDir_Outlook() As String
+            Return Path.GetFullPath(GetDataDir_Data() & Convert.ToString("Outlook/"))
+        End Function
+
+        Friend Shared Function GetDataDir_POP3() As String
+            Return Path.GetFullPath(GetDataDir_Data() & Convert.ToString("POP3"))
+        End Function
+
+        Friend Shared Function GetDataDir_IMAP() As String
+            Return Path.GetFullPath(GetDataDir_Data() & Convert.ToString("IMAP"))
+        End Function
+
+        Friend Shared Function GetDataDir_SMTP() As String
+            Return Path.GetFullPath(GetDataDir_Data() & Convert.ToString("SMTP/"))
+        End Function
+
+        Private Shared Function GetDataDir_Data() As String
             Dim parent = Directory.GetParent(Directory.GetCurrentDirectory()).Parent
             Dim startDirectory As String = Nothing
             If parent IsNot Nothing Then
@@ -321,7 +368,5 @@ Namespace Aspose.Email.Examples.VisualBasic
             End If
             Return If(startDirectory IsNot Nothing, Path.Combine(startDirectory, "Data\"), Nothing)
         End Function
-
-
-    End Module
+    End Class
 End Namespace

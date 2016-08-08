@@ -1,11 +1,5 @@
-﻿using System.IO;
-using System;
+﻿using System;
 using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
-using Aspose.Email.Pop3;
-using Aspose.Email;
-using Aspose.Email.Mime;
-using Aspose.Email.Imap;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
@@ -39,7 +33,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             message.CC.Add("cc2@domain.com");
 
             // Save message in EML, MSG and MHTML formats
-            message.Save(dstEmail, Aspose.Email.Mail.SaveOptions.DefaultEml);  
+            message.Save(dstEmail, SaveOptions.DefaultEml);  
 
             Console.WriteLine(Environment.NewLine + "Email saved at " + dstEmail);
         }

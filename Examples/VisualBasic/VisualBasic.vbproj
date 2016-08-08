@@ -72,13 +72,35 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email\SetAlternateText.vb" />
+    <Compile Include="Email\SetHTMLBody.vb" />
+    <Compile Include="Email\DisplayEmailAddressesNames.vb" />
+    <Compile Include="Email\BayesianSpamAnalyzer.vb" />
     <Compile Include="Email\CreateNewEmail.vb" />
+    <Compile Include="Email\CreateNewMailMessage.vb" />
+    <Compile Include="Email\CreatingTNEFFromMSG.vb" />
+    <Compile Include="Email\DetectDifferentFileFormats.vb" />
     <Compile Include="Email\DisplayEmailInformation.vb" />
     <Compile Include="Email\DraftAppointmentRequest.vb" />
+    <Compile Include="Email\EncryptAndDecryptMessage.vb" />
+    <Compile Include="Email\ExtractAttachments.vb" />
+    <Compile Include="Email\ExtractEmbeddedObjectsFromEmail.vb" />
     <Compile Include="Email\ExtractingEmailHeaders.vb" />
+    <Compile Include="Email\ExtraPrintHeaderUsingHideExtraPrintHeader.vb" />
+    <Compile Include="Email\GetDeliveryStatusNotificationMessages.vb" />
+    <Compile Include="Email\LoadAndSaveFileAsEML.vb" />
+    <Compile Include="Email\LoadMessageWithLoadOptions.vb" />
+    <Compile Include="Email\ManagingEmailAttachments.vb" />
+    <Compile Include="Email\PreserveOriginalBoundaries.vb" />
+    <Compile Include="Email\PreserveTNEFAttachment.vb" />
+    <Compile Include="Email\PrintHeaderUsingMhtFormatOptions.vb" />
     <Compile Include="Email\ProcessBouncedMsgs.vb" />
+    <Compile Include="Email\ReadMessageByPreservingTNEFAttachments.vb" />
+    <Compile Include="Email\RemoveAttachments.vb" />
     <Compile Include="Email\SaveMessageAsDraft.vb" />
     <Compile Include="Email\SaveMessageAsOFT.vb" />
+    <Compile Include="Email\SetEmailHeaders.vb" />
+    <Compile Include="Email\SpecifyRecipientAddresses.vb" />
     <Compile Include="Exchange\AccessAnotherMailboxUsingExchangeClient.vb" />
     <Compile Include="Exchange\AccessAnotherMailboxUsingExchangeWebServiceClient.vb" />
     <Compile Include="Exchange\AccessCustomFolderUsingExchangeWebServiceClient.vb" />
@@ -184,6 +206,7 @@
     <Compile Include="IMAP\SupportIMAPIdleCommand.vb" />
     <Compile Include="Knowledge-Base\PrintEmail.vb" />
     <Compile Include="Outlook\AddMessagesToPSTFiles.vb" />
+    <Compile Include="Outlook\AddMapiNoteToPST.vb" />
     <Compile Include="Outlook\SaveCalendarItems.vb" />
     <Compile Include="Outlook\SaveContactInformation.vb" />
     <Compile Include="Outlook\AccessContactInformation.vb" />
@@ -299,19 +322,29 @@
     <Compile Include="SMTP\DeliveryNotifications.vb" />
     <Compile Include="SMTP\EmbeddedObjects.vb" />
     <Compile Include="SMTP\ExportAsEML.vb" />
+    <Compile Include="SMTP\SignAMessage.vb" />
     <Compile Include="SMTP\ImportEML.vb" />
     <Compile Include="SMTP\LoadSmtpConfigFile.vb" />
     <Compile Include="SMTP\MailMerge.vb" />
-    <Compile Include="SMTP\ManagingEmailAttachments.vb" />
     <Compile Include="SMTP\MeetingRequests.vb" />
     <Compile Include="SMTP\MultipleRecipients.vb" />
+    <Compile Include="SMTP\SendEmailAsynchronously.vb" />
+    <Compile Include="SMTP\ForwardEmail.vb" />
+    <Compile Include="SMTP\SendEmailUsingSMTP.vb" />
+    <Compile Include="SMTP\SendEmailViaProxyServer.vb" />
+    <Compile Include="SMTP\SendEmailWithAlternateText.vb" />
+    <Compile Include="SMTP\SendingBulkEmails.vb" />
     <Compile Include="SMTP\SendingEMLFilesWithSMTP.vb" />
+    <Compile Include="SMTP\SendMessageAsTNEF.vb" />
+    <Compile Include="SMTP\SendPlainTextEmailMessage.vb" />
     <Compile Include="SMTP\SetEmailInfo.vb" />
     <Compile Include="SMTP\SetSpecificIpAddress.vb" />
     <Compile Include="SMTP\SettingHTMLBody.vb" />
     <Compile Include="SMTP\SettingTextBody.vb" />
     <Compile Include="SMTP\SSLEnabledSMTPServer.vb" />
-    <Compile Include="Thunderbird\Data\GetMarkerInformation.vb" />
+    <Compile Include="Thunderbird\CreateNewMessagesToThunderbird.vb" />
+    <Compile Include="Thunderbird\GetMarkerInformation.vb" />
+    <Compile Include="Thunderbird\ReadMessagesFromThunderbird.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -333,14 +366,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Email\Data\" />
-    <Folder Include="Exchange\Data\" />
-    <Folder Include="IMAP\Data\" />
-    <Folder Include="Knowledge-Base\Data\" />
-    <Folder Include="Outlook\Data\" />
-    <Folder Include="SMTP\Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

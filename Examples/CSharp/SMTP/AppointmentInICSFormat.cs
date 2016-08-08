@@ -1,13 +1,7 @@
-﻿using System.IO;
-using System;
+﻿using System;
 using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
-using Aspose.Email.Pop3;
-using Aspose.Email;
-using Aspose.Email.Mime;
-using Aspose.Email.Imap;
 
-namespace Aspose.Email.Examples.CSharp.Email.IMAP
+namespace Aspose.Email.Examples.CSharp.Email.SMTP
 {
     class AppointmentInICSFormat
     {
@@ -32,28 +26,20 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
 
             // Save the appointment to disk in ICS format
             appointment.Save(dstEmail, AppointmentSaveFormat.Ics);
+            Console.WriteLine("Appointment created and saved to disk successfully.");
 
-            // Display Status.
-            System.Console.WriteLine("Appointment created and saved to disk successfully.");
 
-            // 2.
             // Load an Appointment just created and saved to disk and display its details.
-
-            // Load the appointment in ICS format
             Appointment loadedAppointment = Appointment.Load(dstEmail);
-
-            // Display Status.
-            System.Console.WriteLine(Environment.NewLine + "Loaded Appointment details are as follows:");
-
+            Console.WriteLine(Environment.NewLine + "Loaded Appointment details are as follows:");
             // Display the appointment information on screen
             Console.WriteLine("Summary: " + loadedAppointment.Summary);
             Console.WriteLine("Location: " + loadedAppointment.Location);
             Console.WriteLine("Description: " + loadedAppointment.Description);
             Console.WriteLine("Start date: " + loadedAppointment.StartDate);
             Console.WriteLine("End date: " + loadedAppointment.EndDate);
-            Console.WriteLine("Organizer: " + appointment.Organizer.ToString());
-            Console.WriteLine("Attendees: " + appointment.Attendees.ToString());
-
+            Console.WriteLine("Organizer: " + appointment.Organizer);
+            Console.WriteLine("Attendees: " + appointment.Attendees);
             Console.WriteLine(Environment.NewLine + "Appointment loaded successfully from " + dstEmail);
         }
     }
