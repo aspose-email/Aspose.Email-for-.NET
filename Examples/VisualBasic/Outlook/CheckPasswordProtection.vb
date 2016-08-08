@@ -21,9 +21,9 @@ Namespace Aspose.Email.Examples.Visualbasic.Email.Outlook
             mapiMessage__1.Save(dataDir & Convert.ToString("MarkedCompleted_out.msg"))
         End Sub
 
-        ''' <summary>
-        ''' Determines whether the specified PST is password protected.
-        ''' </summary>
+        ' <summary>
+        ' Determines whether the specified PST is password protected.
+        ' </summary>
         Private Shared Function IsPasswordProtected(pst As PersonalStorage) As Boolean
             ' ExStart:CheckPasswordProtection-IsPasswordProtected
             ' If the property exists and is nonzero, then the PST file is password protected.

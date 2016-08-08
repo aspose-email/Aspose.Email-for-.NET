@@ -17,7 +17,6 @@ namespace Aspose.Email.Examples.CSharp.Email
 
             // Create MailMessage instance by loading an EML file
             message = MailMessage.Load(dataDir + "email-headers.eml", new EmlLoadOptions());
-
             Console.WriteLine("\n\nheaders:\n\n");
 
             // Print out all the headers
@@ -25,9 +24,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             foreach (String header in message.Headers)
             {
                 Console.Write(header + " - ");
-                Console.WriteLine(message.Headers.Get(index++));//.GetValues(header).Length.ToString());
+                Console.WriteLine(message.Headers.Get(index++)); //.GetValues(header).Length.ToString());
             }
-
             Console.WriteLine(Environment.NewLine + "Displayed email headers from " + dstEmail);
         }
     }

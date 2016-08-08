@@ -9,37 +9,27 @@ namespace Aspose.Email.Examples.CSharp.Email
     {
         public static void Run()
         {
+            // ExStart:DisplayEmailInformation
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Email();
             string dstEmail = dataDir + "test.eml";
 
-            MailMessage message;
-
             // Create MailMessage instance by loading an Eml file
-            message = MailMessage.Load(dataDir + "test.eml", new EmlLoadOptions());
+            MailMessage message = MailMessage.Load(dataDir + "test.eml", new EmlLoadOptions());
 
-            System.Console.Write("From:");
-
-            // Gets the sender info
-            System.Console.WriteLine(message.From);
-            System.Console.Write("To:");
-
-            // Gets the recipient info
-            System.Console.WriteLine(message.To);
-            System.Console.Write("Subject:");
-
-            // Gets the subject
-            System.Console.WriteLine(message.Subject);
-            System.Console.WriteLine("HtmlBody:");
-
-            // Gets the htmlbody 
-            System.Console.WriteLine(message.HtmlBody);
-            System.Console.WriteLine("TextBody");
-
-            // Gets the textbody
-            System.Console.WriteLine(message.Body);
-
+            // Gets the sender info, recipient info, Subject, htmlbody and textbody
+            Console.Write("From:");
+            Console.WriteLine(message.From);
+            Console.Write("To:");
+            Console.WriteLine(message.To);
+            Console.Write("Subject:");
+            Console.WriteLine(message.Subject);
+            Console.WriteLine("HtmlBody:");
+            Console.WriteLine(message.HtmlBody);
+            Console.WriteLine("TextBody");
+            Console.WriteLine(message.Body);
             Console.WriteLine(Environment.NewLine + "Displayed email information from " + dstEmail);
+            // ExEnd:DisplayEmailInformation
         }
     }
 }

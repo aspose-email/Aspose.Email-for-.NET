@@ -1,15 +1,5 @@
 ﻿Imports System.IO
 Imports Aspose.Email.Mail
-Imports Aspose.Email.Outlook
-Imports Aspose.Email.Pop3
-Imports Aspose.Email
-Imports Aspose.Email.Mime
-Imports Aspose.Email.Imap
-Imports System.Configuration
-Imports System.Data
-Imports Aspose.Email.Mail.Bounce
-Imports Aspose.Email.Exchange
-Imports Aspose.Email.Outlook.Pst
 
 Namespace Aspose.Email.Examples.VisualBasic.Email.SMTP
 
@@ -31,7 +21,6 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.SMTP
             Try
                 'Client.Send will send this message
                 client.Send(msg)
-                ' Message sent successfully
                 System.Console.WriteLine("Message sent")
 
             Catch ex As System.Exception

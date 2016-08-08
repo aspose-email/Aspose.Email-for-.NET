@@ -1,11 +1,5 @@
-﻿using System.IO;
-using System;
+﻿using System;
 using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
-using Aspose.Email.Pop3;
-using Aspose.Email;
-using Aspose.Email.Mime;
-using Aspose.Email.Imap;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
@@ -37,7 +31,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             msg.Subject = "test mail";
 
             // Specify Date
-            msg.Date = new System.DateTime(2006, 3, 6);
+            msg.Date = new DateTime(2006, 3, 6);
 
             // Specify XMailer
             msg.XMailer = "Aspose.Email";
@@ -46,7 +40,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             msg.Headers.Add("secret-header", "mystery");
 
             // Save message to disc
-            msg.Save(dstEmail, Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode);
+            msg.Save(dstEmail, SaveOptions.DefaultMsgUnicode);
 
             Console.WriteLine(Environment.NewLine + "Message saved with customized headers successfully at " + dstEmail);
         }

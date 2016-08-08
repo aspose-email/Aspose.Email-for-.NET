@@ -1,18 +1,13 @@
-﻿using System.IO;
-using System;
-using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
-using Aspose.Email.Pop3;
-using Aspose.Email;
-using Aspose.Email.Mime;
-using Aspose.Email.Imap;
-using System.Configuration;
+﻿using System;
 using System.Data;
+using System.Diagnostics;
+using Aspose.Email.Mail;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
     class MailMerge
     {
+        // ExStart:MailMerge
         public static void Run()
         {
             // The path to the File directory.
@@ -26,44 +21,34 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             msg.Subject = "Hello, #FirstName#";
             msg.From = "sender@sender.com";
 
-            // Add email address to send email
+            // Add email address to send email also Add mesage field to HTML body
             msg.To.Add("your.email@gmail.com");
-
-            // Add mesage field to HTML body
             msg.HtmlBody = "Your message here";
             msg.HtmlBody += "Thank you for your interest in <STRONG>Aspose.Email</STRONG>.";
 
             // Use GetSignment as the template routine, which will provide the same signature
             msg.HtmlBody += "<br><br>Have fun with it.<br><br>#GetSignature()#";
 
-            // Create a new TemplateEngine with the MSG message.
+            // Create a new TemplateEngine with the MSG message,  Register GetSignature routine. It will be used in MSG.
             TemplateEngine engine = new TemplateEngine(msg);
+            engine.RegisterRoutine("GetSignature", GetSignature);
 
-            // Register GetSignature routine. It will be used in MSG.
-            engine.RegisterRoutine("GetSignature", new TemplateRoutine(GetSignature));
-
-            // Create an instance of DataTable
-            // Fill a DataTable as data source
+            // Create an instance of DataTable and Fill a DataTable as data source
             DataTable dt = new DataTable();
             dt.Columns.Add("Receipt", typeof(string));
             dt.Columns.Add("FirstName", typeof(string));
             dt.Columns.Add("LastName", typeof(string));
 
-            // Create an instance of DataRow
-            DataRow dr;
-
-            dr = dt.NewRow();
+            DataRow dr = dt.NewRow();
             dr["Receipt"] = "abc<asposetest123@gmail.com>";
             dr["FirstName"] = "a";
             dr["LastName"] = "bc";
             dt.Rows.Add(dr);
-
             dr = dt.NewRow();
             dr["Receipt"] = "John<email.2@gmail.com>";
             dr["FirstName"] = "John";
             dr["LastName"] = "Doe";
             dt.Rows.Add(dr);
-
             dr = dt.NewRow();
             dr["Receipt"] = "Third Recipient<email.3@gmail.com>";
             dr["FirstName"] = "Third";
@@ -77,19 +62,20 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                 messages = engine.Instantiate(dt);
 
                 // Create an instance of SmtpClient and specify server, port, username and password
-                SmtpClient client = GetSmtpClient();
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
+                client.SecurityOptions = SecurityOptions.Auto;
 
                 // Send messages in bulk
                 client.Send(messages);
             }
             catch (MailException ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
+                Debug.WriteLine(ex.ToString());
             }
 
             catch (SmtpException ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
+                Debug.WriteLine(ex.ToString());
             }
 
             Console.WriteLine(Environment.NewLine + "Message sent after performing mail merge.");
@@ -100,13 +86,6 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
         {
             return "Aspose.Email Team<br>Aspose Ltd.<br>" + DateTime.Now.ToShortDateString();
         }
-
-        private static SmtpClient GetSmtpClient()
-        {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
-            client.SecurityOptions = SecurityOptions.Auto;
-
-            return client;
-        }
+        // ExEnd:MailMerge
     }
 }

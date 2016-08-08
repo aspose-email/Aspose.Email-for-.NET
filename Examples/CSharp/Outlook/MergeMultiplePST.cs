@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using Aspose.Email;
-using Aspose.Email.Examples.CSharp.Email;
-using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
 using Aspose.Email.Outlook.Pst;
 
 /*
@@ -21,7 +14,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 {
     class MergeMultiplePST
     {
-        public static int totalAdded=0;
+        public static int totalAdded = 0;
         public static int messageCount;
         public static string currentFolder;
         public static void Run()
@@ -29,7 +22,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // The path to the File directory.
             // ExStart:MergeMultiplePST
             string dataDir = RunExamples.GetDataDir_Outlook();
-            using (PersonalStorage pst = PersonalStorage.FromFile(dataDir + "Test.pst"))
+            using (PersonalStorage pst = PersonalStorage.FromFile(dataDir + "PersonalStorage.pst"))
             {
                 // The events subscription is an optional step for the tracking process only.
                 pst.StorageProcessed += PstMerge_OnStorageProcessed;
@@ -49,13 +42,12 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
         static void PstMerge_OnItemMoved(object sender, ItemMovedEventArgs e)
         {
-          
+            string folderPath = e.DestinationFolder.RetrieveFullPath();
+
             if (currentFolder == null)
             {
                 currentFolder = e.DestinationFolder.RetrieveFullPath();
             }
-
-            string folderPath = e.DestinationFolder.RetrieveFullPath();
 
             if (currentFolder != folderPath)
             {
@@ -63,7 +55,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 messageCount = 0;
                 currentFolder = folderPath;
             }
-
             messageCount++;
             totalAdded++;
         }

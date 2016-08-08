@@ -40,11 +40,11 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             ' ExEnd:ExtractMessagesFromPSTFile
         End Sub
 
-        ''' <summary>
-        ''' This is a recursive method to display contents of a folder
-        ''' </summary>
-        ''' <param name="folderInfo"></param>
-        ''' <param name="pst"></param>
+        ' <summary>
+        ' This is a recursive method to display contents of a folder
+        ' </summary>
+        ' <param name="folderInfo"></param>
+        ' <param name="pst"></param>
         Private Shared Sub ExtractMsgFiles(folderInfo As FolderInfo, pst As PersonalStorage)
             ' ExStart:ExtractMessagesFromPSTFileExtractMsgFiles
             ' display the folder name
