@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Email\CreateNewEmail.cs" />
+    <Compile Include="Email\ExtractEmbeddObjects.cs" />
     <Compile Include="Email\DisplayEmailAddressesNames.cs" />
     <Compile Include="Email\CreatingTNEFFromMSG.cs" />
     <Compile Include="Email\PreserveTNEFAttachment.cs" />
@@ -288,6 +289,7 @@
     <Compile Include="RunExamples.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SMTP\AppointmentInICSFormat.cs" />
+    <Compile Include="SMTP\SignEmailsWithDKIM.cs" />
     <Compile Include="SMTP\SignAMessage.cs" />
     <Compile Include="Thunderbird\CreateNewMessagesToThunderbird.cs" />
     <Compile Include="SMTP\SendEmailWithAlternateText.cs" />

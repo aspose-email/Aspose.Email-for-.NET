@@ -18,6 +18,8 @@ namespace Aspose.Email.Examples.CSharp.Email
     {
         static void Main(string[] args)
         {
+           
+
             Console.WriteLine("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
             Console.WriteLine("=====================================================");
 
@@ -56,7 +58,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ExtraPrintHeaderUsingHideExtraPrintHeader.Run();
             //BayesianSpamAnalyzer.Run();
             //GetDeliveryStatusNotificationMessages.Run();
-            //DetectDifferentFileFormats.Run();          
+            //DetectDifferentFileFormats.Run();   
+            //ExtractEmbeddObjects.Run();
             //ExtractEmbeddedObjectsFromEmail.Run();
             //EncryptAndDecryptMessage.Run(); 
 
@@ -119,7 +122,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //MonthlyEndAfterNoccurrences.Run();
             //YearlyEndAfterNoccurrences.Run();
             //GenerateRecurrenceFromRecurrenceRule.Run();
-
+            
             // Working with Outlook Personal Storage (PST) files
 
             //RetreiveParentFolderInformationFromMessageInfo.Run();
@@ -219,7 +222,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //PreFetchMessageSizeUsingIEWSClient.Run();
             //SynchronizeFolderItems.Run();
             //SecondaryCalendarEvents.Run();          
-            //SaveExchangeTaskToDisc.Run();
+            //SaveExchangeTaskToDisc.Run();             
             //CreateExchangeTask.Run();
             //DeleteExchangeTask.Run();
             //SendExchangeTask.Run();
@@ -283,24 +286,24 @@ namespace Aspose.Email.Examples.CSharp.Email
             //// =====================================================
             //// =====================================================
 
-            // SetSpecificIpAddress.Run();
-            // ExportAsEML.Run();
-            // ImportEML.Run();
-            // CustomizingEmailHeader.Run();
-            // DeliveryNotifications.Run();
-            // SetEmailInfo.Run();
-            // SettingHTMLBody.Run();
-            // SettingTextBody.Run();
-            // AppointmentInICSFormat.Run();
-            // CustomizingEmailHeaders.Run();
-            // EmbeddedObjects.Run();
-            // LoadSmtpConfigFile.Run();
-            // MailMerge.Run();
-            // ManagingEmailAttachments.Run();
-            // MeetingRequests.Run();
-            // MultipleRecipients.Run();
-            // SendingEMLFilesWithSMTP.Run();
-            // SSLEnabledSMTPServer.Run();
+            //SetSpecificIpAddress.Run();
+            //ExportAsEML.Run();
+            //ImportEML.Run();
+            //CustomizingEmailHeader.Run();
+            //DeliveryNotifications.Run();
+            //SetEmailInfo.Run();
+            //SettingHTMLBody.Run();
+            //SettingTextBody.Run();
+            //AppointmentInICSFormat.Run();
+            //CustomizingEmailHeaders.Run();
+            //EmbeddedObjects.Run();
+            //LoadSmtpConfigFile.Run();
+            //MailMerge.Run();
+            //ManagingEmailAttachments.Run();
+            //MeetingRequests.Run();
+            //MultipleRecipients.Run();
+            //SendingEMLFilesWithSMTP.Run();
+            //SSLEnabledSMTPServer.Run();
             //SendEmailUsingSMTP.Run();
             //SendEmailAsynchronously.Run();
             //SendingBulkEmails.Run();
@@ -309,6 +312,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SendPlainTextEmailMessage.Run();
             //SendEmailWithAlternateText.Run();
             //ForwardEmail.Run();       
+            //SignEmailsWithDKIM.Run();
             //SignAMessage.Run();
            
             //// =====================================================

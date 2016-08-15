@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{ED8C5160-14B0-4E3B-8BE5-4DDC7F9C7912}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>Aspose.Email.Examples.VisualBasic.RunExamples</StartupObject>
+    <StartupObject>Sub Main</StartupObject>
     <RootNamespace>
     </RootNamespace>
     <AssemblyName>VisualBasic</AssemblyName>
@@ -72,6 +72,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email\ExtractEmbeddObjects.vb" />
     <Compile Include="Email\SetAlternateText.vb" />
     <Compile Include="Email\SetHTMLBody.vb" />
     <Compile Include="Email\DisplayEmailAddressesNames.vb" />
@@ -322,6 +323,7 @@
     <Compile Include="SMTP\DeliveryNotifications.vb" />
     <Compile Include="SMTP\EmbeddedObjects.vb" />
     <Compile Include="SMTP\ExportAsEML.vb" />
+    <Compile Include="SMTP\SignEmailsWithDKIM.vb" />
     <Compile Include="SMTP\SignAMessage.vb" />
     <Compile Include="SMTP\ImportEML.vb" />
     <Compile Include="SMTP\LoadSmtpConfigFile.vb" />

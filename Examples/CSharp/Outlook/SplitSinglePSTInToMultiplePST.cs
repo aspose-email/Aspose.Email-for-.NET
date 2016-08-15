@@ -28,7 +28,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // The path to the File directory.
             // ExStart:SplitSinglePSTInToMultiplePST
             string dataDir = RunExamples.GetDataDir_Outlook();
-            using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Split.pst"))
+            using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Source.pst"))
             {
                 // The events subscription is an optional step for the tracking process only.
                 personalStorage.StorageProcessed += PstSplit_OnStorageProcessed;

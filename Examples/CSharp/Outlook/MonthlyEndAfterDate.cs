@@ -40,14 +40,12 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             var rec = new MapiCalendarMonthlyRecurrencePattern
             {
                 Day = 15,
-                Period = 1,
+                Period = 12,
                 PatternType = MapiCalendarRecurrencePatternType.Month,
-                EndType = MapiCalendarRecurrenceEndType.EndAfterDate,
-                OccurrenceCount = 5,
+                EndType = MapiCalendarRecurrenceEndType.EndAfterNOccurrences,
+                OccurrenceCount = 3,
                 WeekStartDay = DayOfWeek.Monday
             };
-
-
             task.Recurrence = rec;
             task.Save(dataDir + "Monthly_out.msg", TaskSaveFormat.Msg);
         }
