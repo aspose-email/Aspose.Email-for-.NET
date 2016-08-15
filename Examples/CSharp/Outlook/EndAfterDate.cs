@@ -23,34 +23,32 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
         {
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
-
             TimeZone localZone = TimeZone.CurrentTimeZone;
             TimeSpan timeSpan = localZone.GetUtcOffset(DateTime.Now);
-            DateTime StartDate = new DateTime(2015, 7, 16);
+            DateTime StartDate = new DateTime(2015, 7, 1);
             StartDate = StartDate.Add(timeSpan);
 
-            DateTime DueDate = new DateTime(2015, 7, 16);
-            DateTime endByDate = new DateTime(2015, 8, 1);
+            DateTime DueDate = new DateTime(2015, 7, 1);
+            DateTime endByDate = new DateTime(2020, 12, 31);
             DueDate = DueDate.Add(timeSpan);
             endByDate = endByDate.Add(timeSpan);
-
 
             MapiTask task = new MapiTask("This is test task", "Sample Body", StartDate, DueDate);
             task.State = MapiTaskState.NotAssigned;
 
-            // Set the Daily recurrence
-            var rec = new MapiCalendarDailyRecurrencePattern
+            // Set the Yearly recurrence
+            var rec = new MapiCalendarMonthlyRecurrencePattern
             {
+                Day = 15,
+                Period = 12,
                 PatternType = MapiCalendarRecurrencePatternType.Day,
-                Period = 1,
-                WeekStartDay = DayOfWeek.Sunday,
-                EndType = MapiCalendarRecurrenceEndType.EndAfterDate,
-                OccurrenceCount = 2,
+                EndType = MapiCalendarRecurrenceEndType.None,
+                OccurrenceCount = 3,
             };
 
             task.Recurrence = rec;
             task.Save(dataDir + "EndAfterDate_out.msg", TaskSaveFormat.Msg);
         }
-       
+
     }
 }

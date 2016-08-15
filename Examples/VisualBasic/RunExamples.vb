@@ -1,5 +1,4 @@
 ﻿Imports Aspose.Email.Examples.VisualBasic.Email
-Imports Aspose.Email.Examples.VisualBasic.Exchange
 Imports Aspose.Email.Examples.VisualBasic.Email.IMAP
 Imports Aspose.Email.Examples.VisualBasic.Email.Knowledge.Base
 Imports Aspose.Email.Examples.VisualBasic.Email.Outlook
@@ -14,8 +13,8 @@ Imports Aspose.Email.Examples.VisualBasic.Email.Thunderbird
 
 Namespace Aspose.Email.Examples.VisualBasic.Email
     Class RunExamples
-        Private Shared Sub Main()
-            Console.WriteLine("Open RunExamples.cs. " & vbLf & "In Main() method uncomment the example that you want to run.")
+        Public Shared Sub Main()
+            Console.WriteLine("Open RunExamples.vb " & vbLf & "In Main() method uncomment the example that you want to run.")
             Console.WriteLine("=====================================================")
 
             ' Uncomment the one you want to try out
@@ -26,12 +25,12 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             ' =====================================================
             ' =====================================================
 
-            ' DraftAppointmentRequest.Run()
-            ' DisplayEmailInformation.Run()
-            ' ExtractingEmailHeaders.Run()
-            ' ProcessBouncedMsgs.Run()
-            ' CreateNewEmail.Run()
-            ' SaveMessageAsDraft.Run()
+            'DraftAppointmentRequest.Run()
+            'DisplayEmailInformation.Run()
+            'ExtractingEmailHeaders.Run()
+            'ProcessBouncedMsgs.Run()
+            'CreateNewEmail.Run()
+            'SaveMessageAsDraft.Run()
             'SpecifyRecipientAddresses.Run()
             'DisplayEmailAddressesNames.Run()            
             'SetHTMLBody.Run()
@@ -48,6 +47,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'LoadAndSaveFileAsEML.Run()            
             'PreserveOriginalBoundaries.Run()           
             'PreserveTNEFAttachment.Run()
+            'ExtractEmbeddObjects.Run()
             'EncryptAndDecryptMessage.Run()            
             'PrintHeaderUsingMhtFormatOptions.Run()
             'ExtraPrintHeaderUsingHideExtraPrintHeader.Run()
@@ -57,6 +57,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'ExtractEmbeddedObjectsFromEmail.Run()
             'EncryptAndDecryptMessage.Run() 
             'AddMapiNoteToPST.Run()
+            'ExtractEmbeddObjects.Run()
 
 
             '/ =====================================================
@@ -307,6 +308,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'SendEmailWithAlternateText.Run()
             'ForwardEmail.Run()
             'SignAMessage.Run()
+            'SignEmailsWithDKIM.Run()
 
             '/ =====================================================
             '/ =====================================================
@@ -316,7 +318,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
 
             'ReadMessagesFromThunderbird.Run()
             'CreateNewMessagesToThunderbird.Run()
-         
+
             ' Stop before exiting
             Console.WriteLine(Environment.NewLine + "Program Finished. Press any key to exit....")
             Console.ReadKey()
