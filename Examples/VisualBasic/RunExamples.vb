@@ -58,6 +58,8 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'EncryptAndDecryptMessage.Run() 
             'AddMapiNoteToPST.Run()
             'ExtractEmbeddObjects.Run()
+            'DetectTNEFMessage.Run()
+            'DetermineAttachmentEmbeddedMessage.Run()
 
 
             '/ =====================================================
@@ -150,6 +152,9 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'AddFilesToPST.Run()
             'ExtractAttachmentsFromPSTMessages.Run()
             'AddMapiNoteToPST.Run()
+            'SpecificCriterionSplitPST.Run()
+            'UpdatePSTCustomProperites.Run()
+
 
 
             '/ =====================================================
@@ -241,6 +246,9 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'RetrieveEmailViaPop3ClientProxyServer.Run()
             'GetServerExtensionsUsingPop3Client.Run()
             'RetrievMessagesAsynchronously.Run()
+            'RetrieveMessageSummaryInformationUsingUniqueId.Run()
+
+
 
             '/ =====================================================
             '/ =====================================================
