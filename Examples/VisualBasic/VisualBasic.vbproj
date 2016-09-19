@@ -48,8 +48,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Email, Version=6.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Email.6.6.0\lib\net40\Aspose.Email.dll</HintPath>
+    <Reference Include="Aspose.Email, Version=6.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.6.9.0\lib\net40\Aspose.Email.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Email\ExtractEmbeddObjects.vb" />
+    <Compile Include="Email\DetermineAttachmentEmbeddedMessage.vb" />
     <Compile Include="Email\SetAlternateText.vb" />
     <Compile Include="Email\SetHTMLBody.vb" />
     <Compile Include="Email\DisplayEmailAddressesNames.vb" />
@@ -101,6 +102,7 @@
     <Compile Include="Email\SaveMessageAsDraft.vb" />
     <Compile Include="Email\SaveMessageAsOFT.vb" />
     <Compile Include="Email\SetEmailHeaders.vb" />
+    <Compile Include="Email\DetectTNEFMessage.vb" />
     <Compile Include="Email\SpecifyRecipientAddresses.vb" />
     <Compile Include="Exchange\AccessAnotherMailboxUsingExchangeClient.vb" />
     <Compile Include="Exchange\AccessAnotherMailboxUsingExchangeWebServiceClient.vb" />
@@ -206,6 +208,8 @@
     <Compile Include="IMAP\SSLEnabledIMAPServer.vb" />
     <Compile Include="IMAP\SupportIMAPIdleCommand.vb" />
     <Compile Include="Knowledge-Base\PrintEmail.vb" />
+    <Compile Include="Outlook\UpdatePSTCustomProperites.vb" />
+    <Compile Include="Outlook\SpecificCriterionSplitPST.vb" />
     <Compile Include="Outlook\AddMessagesToPSTFiles.vb" />
     <Compile Include="Outlook\AddMapiNoteToPST.vb" />
     <Compile Include="Outlook\SaveCalendarItems.vb" />
@@ -289,6 +293,7 @@
     <Compile Include="Outlook\SplitPST.vb" />
     <Compile Include="PersonalOutlook\DeleteMessagesFromPSTFiles.vb" />
     <Compile Include="PersonalOutlook\UpdateBulkMessagesInPSTFile.vb" />
+    <Compile Include="POP3\RetrieveMessageSummaryInformationUsingUniqueId.vb" />
     <Compile Include="POP3\GetServerExtensionsUsingPop3Client.vb" />
     <Compile Include="POP3\ConnectingToPOP3.vb" />
     <Compile Include="POP3\FilterMessagesFromPOP3Mailbox.vb" />

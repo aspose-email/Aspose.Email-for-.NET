@@ -26,7 +26,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
 
 			Dim messageInfoCol As ExchangeMessageInfoCollection = client.ListMessages(client.MailboxInfo.InboxUri)
 
-			Dim result As SyncFolderResult = client.SyncFolder(client.MailboxInfo.InboxUri, Nothing)
+            Dim result As SyncFolderResult = client.SyncFolder(client.MailboxInfo.InboxUri, CType(Nothing, SyncFolderType))
 			Console.WriteLine(result.NewItems.Count)
 			Console.WriteLine(result.ChangedItems.Count)
 			Console.WriteLine(result.ReadFlagChanged.Count)

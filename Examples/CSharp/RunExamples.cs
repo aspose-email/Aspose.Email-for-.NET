@@ -17,9 +17,7 @@ namespace Aspose.Email.Examples.CSharp.Email
     class RunExamples
     {
         static void Main(string[] args)
-        {
-           
-
+        {           
             Console.WriteLine("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
             Console.WriteLine("=====================================================");
 
@@ -31,6 +29,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             // =====================================================
             // =====================================================
 
+            //DetermineAttachmentEmbeddedMessage.Run();
             //DraftAppointmentRequest.Run();
             //DisplayEmailInformation.Run();
             //ExtractingEmailHeaders.Run();
@@ -62,7 +61,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ExtractEmbeddObjects.Run();
             //ExtractEmbeddedObjectsFromEmail.Run();
             //EncryptAndDecryptMessage.Run(); 
-
+            //DetectTNEFMessage.Run();
 
 
             //// =====================================================
@@ -155,7 +154,9 @@ namespace Aspose.Email.Examples.CSharp.Email
             //AddFilesToPST.Run();
             //ExtractAttachmentsFromPSTMessages.Run();
             //AddMapiNoteToPST.Run();
-            
+            //UpdatePSTCustomProperites.Run();                        
+            //SpecificCriterionSplitPST.Run();
+
 
             //// =====================================================
             //// =====================================================
@@ -246,6 +247,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //RetrieveEmailViaPop3ClientProxyServer.Run();
             //GetServerExtensionsUsingPop3Client.Run();
             //RetrievMessagesAsynchronously.Run();
+            //RetrieveMessageSummaryInformationUsingUniqueId.Run();
+
 
             //// =====================================================
             //// =====================================================

@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Email, Version=6.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Email.6.6.0\lib\net40\Aspose.Email.dll</HintPath>
+    <Reference Include="Aspose.Email, Version=6.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.6.9.0\lib\net40\Aspose.Email.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email\DetectTNEFMessage.cs" />
+    <Compile Include="Email\DetermineAttachmentEmbeddedMessage.cs" />
     <Compile Include="Email\CreateNewEmail.cs" />
     <Compile Include="Email\ExtractEmbeddObjects.cs" />
     <Compile Include="Email\DisplayEmailAddressesNames.cs" />
@@ -147,6 +149,8 @@
     <Compile Include="IMAP\IMAP4ExtendedListCommand.cs" />
     <Compile Include="IMAP\IMAP4IDExtensionSupport.cs" />
     <Compile Include="IMAP\FilteringMessagesFromIMAPMailbox.cs" />
+    <Compile Include="Outlook\SpecificCriterionSplitPST.cs" />
+    <Compile Include="Outlook\UpdatePSTCustomProperites.cs" />
     <Compile Include="Outlook\AddMapiCalendarToPST.cs" />
     <Compile Include="Outlook\AddAttachmentsToMapiJournal.cs" />
     <Compile Include="Outlook\CreateNewMapiJournalAndAddToSubfolder.cs" />
@@ -276,6 +280,7 @@
     <Compile Include="IMAP\SavingMessagesFromIMAPServer.cs" />
     <Compile Include="POP3\ConnectingToPOP3.cs" />
     <Compile Include="POP3\GetServerExtensionsUsingPop3Client.cs" />
+    <Compile Include="POP3\RetrieveMessageSummaryInformationUsingUniqueId.cs" />
     <Compile Include="POP3\RetrievMessagesAsynchronously.cs" />
     <Compile Include="POP3\RetrieveEmailViaPop3ClientProxyServer.cs" />
     <Compile Include="POP3\GettingMailboxInfo.cs" />
