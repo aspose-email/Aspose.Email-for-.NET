@@ -27,7 +27,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             AlternateView htmlView = AlternateView.CreateAlternateViewFromString("Here is an embedded image.<img src=cid:barcode>", null, "text/html");
 
             // Create the LinkedResource (embedded image) and Add the LinkedResource to the appropriate view
-            LinkedResource barcode = new LinkedResource(dataDir + "barcode_out.png", MediaTypeNames.Image.Png)
+            LinkedResource barcode = new LinkedResource(dataDir + "1.jpg", MediaTypeNames.Image.Jpeg)
             {
                 ContentId = "barcode"
             };

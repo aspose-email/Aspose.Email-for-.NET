@@ -26,7 +26,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // ExStart:CreateNewMapiCalendarAndAddToCalendarSubfolder
             string dataDir = RunExamples.GetDataDir_Outlook();
 
-            MapiMessage mapiMessage = MapiMessage.FromMailMessage(dataDir + "SampleNote.pst");
+            MapiMessage mapiMessage = MapiMessage.FromMailMessage(dataDir + "Note.msg");
 
             // Note #1
             MapiNote note1 = (MapiNote)mapiMessage.ToMapiMessageItem();

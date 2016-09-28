@@ -70,7 +70,6 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
 
             'NewPSTAddSubfolders.Run()
             'MergePSTFiles.Run()
-            'SplitPST.Run()
             'CreateSaveOutlookFiles.Run()
             'DeleteMessagesFromPSTFiles.Run()                        
             'DeleteBulkItemsFromPSTFile.Run()
@@ -315,7 +314,6 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'SendPlainTextEmailMessage.Run()
             'SendEmailWithAlternateText.Run()
             'ForwardEmail.Run()
-            'SignAMessage.Run()
             'SignEmailsWithDKIM.Run()
 
             '/ =====================================================

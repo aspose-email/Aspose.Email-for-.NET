@@ -25,7 +25,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             string dataDir = RunExamples.GetDataDir_Outlook();
 
             // Load the Outlook file
-            string path = dataDir + "AddMessagesToPSTFiles_out.pst";
+            string path = dataDir + "Sub.pst";
             AddMessagesInBulkMode(path, "Inbox");
         }
         private static void AddMessagesInBulkMode(string fileName, string msgFolderName)

@@ -20,12 +20,12 @@ namespace Aspose.Email.Examples.CSharp.Email
             string dataDir = RunExamples.GetDataDir_Email();
 
             // Create an instance of MailMessage and load an email file
-            MailMessage mailMsg = MailMessage.Load(dataDir + "EmbeddedImage1.msg", new MsgLoadOptions());
+            MailMessage mailMsg = MailMessage.Load(dataDir + "Message.msg", new MsgLoadOptions());
 
             foreach (Attachment attachment in mailMsg.Attachments)
             {
                 // To display the the attachment file name
-                attachment.Save("filename");
+                attachment.Save(dataDir + "MessageEmbedded_out.msg");
                 Console.WriteLine(attachment.Name);
             }
 
@@ -39,7 +39,7 @@ namespace Aspose.Email.Examples.CSharp.Email
                 Password = "password"
             };
 
-            client.Send(dataDir + "EmbeddedImage1_out.eml");
+            client.Send(dataDir + "Message.msg");
             // ExEnd:ExtractEmbeddedObjectsFromEmail
         }
     }
