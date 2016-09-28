@@ -14,7 +14,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
         {
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
-            string dst = dataDir + "Outlook.pst";
+            string dst = dataDir + "Sub.pst";
             String dstSplit = dataDir + @"Chunks-Split\";
 
             // Delete the files if already present
@@ -26,9 +26,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 // The events subscription is an optional step for the tracking process only.
                 pst.StorageProcessed += PstSplit_OnStorageProcessed;
                 pst.ItemMoved += PstSplit_OnItemMoved;
-
-                // Splits into pst chunks with the size of 300 KB
-                pst.SplitInto(300 * 1024, dstSplit);
+                pst.SplitInto(1000000, dstSplit);               
             }
 
             Console.WriteLine(Environment.NewLine + "PST split successfully at " + dst);

@@ -17,7 +17,7 @@ namespace Aspose.Email.Examples.CSharp.Email
     class RunExamples
     {
         static void Main(string[] args)
-        {           
+        {
             Console.WriteLine("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
             Console.WriteLine("=====================================================");
 
@@ -70,9 +70,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //// =====================================================
             //// =====================================================
 
-            //NewPSTAddSubfolders.Run();
-            //MergePSTFiles.Run();
-            //SplitPST.Run();
+            //NewPSTAddSubfolders.Run();                       
             //CreateSaveOutlookFiles.Run();
             //DeleteMessagesFromPSTFiles.Run();                        
             //DeleteBulkItemsFromPSTFile.Run();
@@ -121,7 +119,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //MonthlyEndAfterNoccurrences.Run();
             //YearlyEndAfterNoccurrences.Run();
             //GenerateRecurrenceFromRecurrenceRule.Run();
-            
+
             // Working with Outlook Personal Storage (PST) files
 
             //RetreiveParentFolderInformationFromMessageInfo.Run();
@@ -316,8 +314,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SendEmailWithAlternateText.Run();
             //ForwardEmail.Run();       
             //SignEmailsWithDKIM.Run();
-            //SignAMessage.Run();
-           
+            
+
             //// =====================================================
             //// =====================================================
             //// Thunderbird

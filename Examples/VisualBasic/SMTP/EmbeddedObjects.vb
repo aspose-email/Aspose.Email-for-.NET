@@ -24,7 +24,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.SMTP
             Dim htmlView As AlternateView = AlternateView.CreateAlternateViewFromString("Here is an embedded image.<img src=cid:barcode>", Nothing, "text/html")
 
             ' Create the LinkedResource (embedded image) and Add the LinkedResource to the appropriate view
-            Dim barcode As New LinkedResource(dataDir & Convert.ToString("barcode_out.png"), MediaTypeNames.Image.Png) With { _
+            Dim barcode As New LinkedResource(dataDir & Convert.ToString("1.jpg"), MediaTypeNames.Image.Jpeg) With { _
                 .ContentId = "barcode" _
             }
             mail.LinkedResources.Add(barcode)

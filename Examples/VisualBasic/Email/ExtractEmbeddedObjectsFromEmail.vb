@@ -16,7 +16,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
 			Dim dataDir As String = RunExamples.GetDataDir_Email()
 
 			' Create an instance of MailMessage and load an email file
-			Dim mailMsg As MailMessage = MailMessage.Load(dataDir & Convert.ToString("EmbeddedImage1.msg"), New MsgLoadOptions())
+            Dim mailMsg As MailMessage = MailMessage.Load(dataDir & Convert.ToString("Message.msg"), New MsgLoadOptions())
 
 			For Each attachment As Attachment In mailMsg.Attachments
 				' To display the the attachment file name
@@ -33,7 +33,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
                 .Password = "password" _
             }
 
-			client.Send(dataDir & Convert.ToString("EmbeddedImage1_out.eml"))
+            client.Send(dataDir & Convert.ToString("Message.msg"))
 			' ExEnd:ExtractEmbeddedObjectsFromEmail
 		End Sub
 	End Class

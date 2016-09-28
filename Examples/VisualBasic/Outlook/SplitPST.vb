@@ -19,7 +19,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
         Public Shared Sub Run()
             ' The path to the documents directory.
             Dim dataDir As String = RunExamples.GetDataDir_Outlook()
-            Dim dst As String = dataDir & Convert.ToString("Outlook.pst")
+            Dim dst As String = dataDir & Convert.ToString("Sub.pst")
             Dim dstSplit As [String] = dataDir & Convert.ToString("Chunks-Split\")
 
             ' Delete the files if already present
@@ -31,9 +31,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
                 ' The events subscription is an optional step for the tracking process only.
                 AddHandler pst.StorageProcessed, AddressOf PstSplit_OnStorageProcessed
                 AddHandler pst.ItemMoved, AddressOf PstSplit_OnItemMoved
-
-                ' Splits into pst chunks with the size of 300 KB
-                pst.SplitInto(300 * 1024, dstSplit)
+                pst.SplitInto(1000000, dstSplit)
             End Using
 
             Console.WriteLine(Environment.NewLine + "PST split successfully at " & dst)
