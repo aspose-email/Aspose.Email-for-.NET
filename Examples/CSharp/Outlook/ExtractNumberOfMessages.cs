@@ -1,4 +1,5 @@
-﻿using Aspose.Email.Outlook.Pst;
+﻿using System.IO;
+using Aspose.Email.Outlook.Pst;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
    API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 
@@ -28,6 +29,8 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 MessageInfoCollection messages = inbox.GetContents(10, 100);    // Extracts messages starting from 10th index top and extract total 100 messages
             }
             // ExEnd:ExtractNumberOfMessages
+
+           
         }
     }
 }

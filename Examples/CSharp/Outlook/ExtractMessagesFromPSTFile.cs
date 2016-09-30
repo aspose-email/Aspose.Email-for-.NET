@@ -26,7 +26,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
             try
             {
-                Console.WriteLine("Loading PST file....");
                 // load the Outlook PST file
                 PersonalStorage pst = PersonalStorage.FromFile(path);
 

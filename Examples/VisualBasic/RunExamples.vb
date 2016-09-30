@@ -69,9 +69,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             '/ =====================================================
 
             'NewPSTAddSubfolders.Run()
-            'MergePSTFiles.Run()
             'CreateSaveOutlookFiles.Run()
-            'DeleteMessagesFromPSTFiles.Run()                        
             'DeleteBulkItemsFromPSTFile.Run()
             'UpdateBulkMessagesInPSTFile.Run()
             'LoadMSGFiles.Run()
@@ -85,6 +83,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'ConvertEMLToMSG.Run()
             'CreatEMLFileAndConvertToMSG.Run()
             'ReadAndWritingOutlookTemplateFile.Run()
+            'DeleteMessagesFromPSTFiles.Run()
             'SetFollowUpflag.Run()
             'SetFollowUpForRecipients.Run()
             'MarkFollowUpFlagAsCompleted.Run()
@@ -121,39 +120,38 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
 
             ' Working with Outlook Personal Storage (PST) files
 
+            'ConvertOSTToPST.Run()
+            'ExtractNumberOfMessages.Run()
+            'ExtractAttachmentsFromPSTMessages.Run()
+            'AddMessagesToPSTFiles.Run()
+            'ReadandConvertOSTFiles.Run()
+            'SaveCalendarItems.Run()
             'RetreiveParentFolderInformationFromMessageInfo.Run()
             'ParseSearchableFolders.Run()
             'AccessContactInformation.Run()
-            'SaveContactInformation.Run()
-            'SaveCalendarItems.Run()
-            'AddMessagesToPSTFiles.Run()            
-            'DisplayInformationOfPSTFile.Run()
-            'ReadandConvertOSTFiles.Run()
-            'ConvertOSTToPST.Run()
             'GetMessageInformation.Run()
-            'ExtractMessagesFromPSTFile.Run()
-            'SaveMessagesDirectlyFromPSTToStream.Run()
-            'ExtractNumberOfMessages.Run()
-            'CreateNewPSTFileAndAddingSubfolders.Run()
             'ChangeFolderContainerClass.Run()
             'CheckPasswordProtection.Run()
-            'RemovingPaswordProperty.Run()
             'SetPasswordOnPST.Run()
+            'CreateNewPSTFileAndAddingSubfolders.Run()
             'CreateNewMapiContactAndAddToContactsSubfolder.Run()
+            'ExtractMessagesFromPSTFile.Run()
+            'RemovingPaswordProperty.Run()
             'AddMapiTaskToPST.Run()
             'CreateNewMapiJournalAndAddToSubfolder.Run()
             'AddAttachmentsToMapiJournal.Run()
             'AddMapiCalendarToPST.Run()
             'CreateDistributionListInPST.Run()
-            'SearchMessagesAndFoldersInPST.Run()
+            'SaveMessagesDirectlyFromPSTToStream.Run()
             'SearchStringInPSTWithIgnoreCaseParameter.Run()
-            'MoveItemsToOtherFolders.Run()
             'AddFilesToPST.Run()
-            'ExtractAttachmentsFromPSTMessages.Run()
+            'SearchMessagesAndFoldersInPST.Run()
+            'MoveItemsToOtherFolders.Run()
             'AddMapiNoteToPST.Run()
-            'SpecificCriterionSplitPST.Run()
             'UpdatePSTCustomProperites.Run()
-
+            'SaveContactInformation.Run()
+            'DisplayInformationOfPSTFile.Run()
+            'SpecificCriterionSplitPST.Run()
 
 
             '/ =====================================================
@@ -201,7 +199,6 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'CreateNewRuleOntheExchangeServer.Run()
             'UpdateRuleOntheExchangeServer.Run()
             'ReadUserConfiguration.Run()
-            'CreatUserConfigurations.Run()
             'UpdateUserConfiguration.Run()
             'DeleteUserConfiguration.Run()
             'FindConversationsOnExchangeServer.Run()
@@ -352,11 +349,11 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
         End Function
 
         Friend Shared Function GetDataDir_POP3() As String
-            Return Path.GetFullPath(GetDataDir_Data() & Convert.ToString("POP3"))
+            Return Path.GetFullPath(GetDataDir_Data() & Convert.ToString("POP3/"))
         End Function
 
         Friend Shared Function GetDataDir_IMAP() As String
-            Return Path.GetFullPath(GetDataDir_Data() & Convert.ToString("IMAP"))
+            Return Path.GetFullPath(GetDataDir_Data() & Convert.ToString("IMAP/"))
         End Function
 
         Friend Shared Function GetDataDir_SMTP() As String

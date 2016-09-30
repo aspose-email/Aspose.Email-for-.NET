@@ -18,7 +18,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             Dim dataDir As String = RunExamples.GetDataDir_Outlook()
 
             ' Load the Outlook PST file
-            Dim personalStorage__1 As PersonalStorage = PersonalStorage.FromFile(dataDir + "Sub.pst")
+            Dim personalStorage__1 As PersonalStorage = PersonalStorage.FromFile(dataDir + "Outlook.pst")
             ' Get the Contacts folder
             Dim folderInfo As FolderInfo = personalStorage__1.RootFolder.GetSubFolder("Contacts")
             ' Loop through all the contacts in this folder

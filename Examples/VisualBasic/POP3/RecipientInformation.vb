@@ -6,7 +6,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.POP3
 			' ExStart:RecipientInformation
 			' The path to the File directory.
 			Dim dataDir As String = RunExamples.GetDataDir_POP3()
-			Dim dstEmail As String = dataDir & Convert.ToString("message.msg")
+            Dim dstEmail As String = dataDir & Convert.ToString("Message.msg")
 
 			' Load message file and Enumerate the recipients
 			Dim message As MapiMessage = MapiMessage.FromFile(dstEmail)

@@ -21,19 +21,26 @@ namespace Aspose.Email.Examples.CSharp.Email
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_SMTP();
 
-            // Open the storage file with FileStream
-            FileStream stream = new FileStream(dataDir + "Outlook.pst", FileMode.Open, FileAccess.Read);
+            try
+            {
+                // Open the storage file with FileStream
+                FileStream stream = new FileStream(dataDir + "Please add your Thunderbird file name here", FileMode.Open, FileAccess.Read);
 
-            // Initialize MboxStorageWriter and pass the above stream to it
-            MboxrdStorageWriter writer = new MboxrdStorageWriter(stream, false);
-            // Prepare a new message using the MailMessage class
-            MailMessage message = new MailMessage("from@domain.com", "to@domain.com", "added 1 from Aspose.Email", "added from Aspose.Email");
-            // Add this message to storage
-            writer.WriteMessage(message);
-            // Close all related streams
-            writer.Dispose();
-            stream.Close();
-            // ExEnd:CreateNewMessagesToThunderbird
+                // Initialize MboxStorageWriter and pass the above stream to it
+                MboxrdStorageWriter writer = new MboxrdStorageWriter(stream, false);
+                // Prepare a new message using the MailMessage class
+                MailMessage message = new MailMessage("from@domain.com", "to@domain.com", "added 1 from Aspose.Email", "added from Aspose.Email");
+                // Add this message to storage
+                writer.WriteMessage(message);
+                // Close all related streams
+                writer.Dispose();
+                stream.Close();
+                // ExEnd:CreateNewMessagesToThunderbird
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + "\nPlease add Thunderbird file name to the FileStream");
+            }
         }
     }
 }

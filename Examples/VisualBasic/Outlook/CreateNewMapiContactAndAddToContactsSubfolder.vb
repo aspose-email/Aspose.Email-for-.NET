@@ -1,4 +1,5 @@
-﻿Imports Aspose.Email.Outlook
+﻿Imports System.IO
+Imports Aspose.Email.Outlook
 Imports Aspose.Email.Outlook.Pst
 
 '
@@ -48,6 +49,15 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             contact6.PhysicalAddresses.WorkAddress.Address = "Im Astenfeld 59 8580 EDELSCHROTT"
             contact6.ElectronicAddresses.Email1 = New MapiContactElectronicAddress("Experwas", "SMTP", "BerthaABuell@armyspy.com")
             contact6.Telephones = New MapiContactTelephonePropertySet("06605045265")
+
+            Dim checkfile As String = dataDir + "SampleContacts_out.pst"
+
+            If File.Exists(checkfile) Then
+                File.Delete(checkfile)
+            Else
+            End If
+
+
 
             Using personalStorage__1 As PersonalStorage = PersonalStorage.Create(dataDir & Convert.ToString("SampleContacts_out.pst"), FileFormatVersion.Unicode)
                 Dim contactFolder As FolderInfo = personalStorage__1.CreatePredefinedFolder("Contacts", StandardIpmFolder.Contacts)

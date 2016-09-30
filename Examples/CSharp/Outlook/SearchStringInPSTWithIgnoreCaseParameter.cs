@@ -2,6 +2,7 @@
 using Aspose.Email.Mail;
 using Aspose.Email.Outlook;
 using Aspose.Email.Outlook.Pst;
+using System.IO;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -20,6 +21,14 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // The path to the File directory.
             // ExStart:SearchStringInPSTWithIgnoreCaseParameter
             string dataDir = RunExamples.GetDataDir_Outlook();
+
+            string path = dataDir + "SearchStringInPSTWithIgnoreCaseParameter_out.pst";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
 
             using (PersonalStorage personalStorage = PersonalStorage.Create(dataDir + "SearchStringInPSTWithIgnoreCaseParameter_out.pst", FileFormatVersion.Unicode))
             {

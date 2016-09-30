@@ -21,7 +21,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
 
-            using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Sub.pst"))
+            using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Outlook.pst"))
             {
                 FolderInfo folder = personalStorage.RootFolder.GetSubFolder("Inbox");
                 PersonalStorageQueryBuilder builder = new PersonalStorageQueryBuilder();

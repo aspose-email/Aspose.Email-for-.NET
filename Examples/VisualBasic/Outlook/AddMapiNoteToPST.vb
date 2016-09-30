@@ -1,4 +1,5 @@
-﻿Imports Aspose.Email.Outlook
+﻿Imports System.IO
+Imports Aspose.Email.Outlook
 Imports Aspose.Email.Outlook.Pst
 
 ' This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
@@ -15,6 +16,14 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             ' ExStart:AddMapiNoteToPST
             ' The path to the documents directory.
             Dim dataDir As String = RunExamples.GetDataDir_Outlook()
+
+            Dim checkfile As String = dataDir + "Note.pst"
+
+            If File.Exists(checkfile) Then
+                File.Delete(checkfile)
+            Else
+            End If
+
             Dim mess As MapiMessage = MapiMessage.FromFile(dataDir & Convert.ToString("Note.msg"))
 
             ' Create three Notes  
@@ -33,6 +42,13 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             note2.Color = NoteColor.Blue
             note3.Height = 500
             note3.Width = 500
+
+            Dim checkfile1 As String = dataDir + "AddMapiNoteToPST_out.pst"
+
+            If File.Exists(checkfile1) Then
+                File.Delete(checkfile1)
+            Else
+            End If
 
             Using personalStorage1 As PersonalStorage = PersonalStorage.Create(dataDir & Convert.ToString("AddMapiNoteToPST_out.pst"), FileFormatVersion.Unicode)
                 Dim notesFolder As FolderInfo = personalStorage1.CreatePredefinedFolder("Notes", StandardIpmFolder.Notes)

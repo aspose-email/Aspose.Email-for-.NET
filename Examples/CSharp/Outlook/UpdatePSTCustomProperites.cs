@@ -20,7 +20,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
         public static void Run()
         {
             // Load the Outlook file
-            string dataDir = RunExamples.GetDataDir_Outlook() + "Sub.pst";
+            string dataDir = RunExamples.GetDataDir_Outlook() + "Outlook.pst";
             using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir))
             {
                 FolderInfo testFolder = personalStorage.RootFolder.GetSubFolder("Inbox");

@@ -17,19 +17,23 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Thunderbird
             ' The path to the File directory.
             Dim dataDir As String = RunExamples.Thunderbird()
 
-            ' Open the storage file with FileStream
-            Dim stream As New FileStream(dataDir & Convert.ToString("Outlook.pst"), FileMode.Open, FileAccess.Read)
+            Try
+                ' Open the storage file with FileStream
+                Dim stream As New FileStream(dataDir + "Please add your Thunderbird file name here", FileMode.Open, FileAccess.Read)
 
-            ' Initialize MboxStorageWriter and pass the above stream to it
-            Dim writer As New MboxrdStorageWriter(stream, False)
-            ' Prepare a new message using the MailMessage class
-            Dim message As New MailMessage("from@domain.com", "to@domain.com", "added 1 from Aspose.Email", "added from Aspose.Email")
-            ' Add this message to storage
-            writer.WriteMessage(message)
-            ' Close all related streams
-            writer.Dispose()
-            stream.Close()
-            ' ExEnd:CreateNewMessagesToThunderbird
+                ' Initialize MboxStorageWriter and pass the above stream to it
+                Dim writer As New MboxrdStorageWriter(stream, False)
+                ' Prepare a new message using the MailMessage class
+                Dim message As New MailMessage("from@domain.com", "to@domain.com", "added 1 from Aspose.Email", "added from Aspose.Email")
+                ' Add this message to storage
+                writer.WriteMessage(message)
+                ' Close all related streams
+                writer.Dispose()
+                ' ExEnd:CreateNewMessagesToThunderbird
+                stream.Close()
+            Catch ex As Exception
+                Console.WriteLine(ex.Message + vbLf & "Please add Thunderbird file name to the FileStream")
+            End Try
         End Sub
     End Class
 End Namespace

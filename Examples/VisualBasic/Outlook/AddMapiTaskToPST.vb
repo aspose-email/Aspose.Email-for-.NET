@@ -1,4 +1,5 @@
-﻿Imports Aspose.Email.Outlook
+﻿Imports System.IO
+Imports Aspose.Email.Outlook
 Imports Aspose.Email.Outlook.Pst
 
 '
@@ -26,6 +27,13 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             task.Users.LastDelegate = "Harkness"
             task.Users.Ownership = MapiTaskOwnership.AssignersCopy
 
+            Dim checkfile As String = dataDir + "AddMapiTaskToPST_out.pst"
+
+            If File.Exists(checkfile) Then
+                File.Delete(checkfile)
+
+            Else
+            End If
             Using personalStorage__1 As PersonalStorage = PersonalStorage.Create(dataDir & Convert.ToString("AddMapiTaskToPST_out.pst"), FileFormatVersion.Unicode)
                 Dim taskFolder As FolderInfo = personalStorage__1.CreatePredefinedFolder("Tasks", StandardIpmFolder.Tasks)
                 taskFolder.AddMapiMessageItem(task)

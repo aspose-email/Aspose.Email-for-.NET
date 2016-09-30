@@ -10,7 +10,7 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
             // ExStart:RecipientInformation
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_POP3();
-            string dstEmail = dataDir + "message.msg";
+            string dstEmail = dataDir + "Message.msg";
 
             // Load message file and Enumerate the recipients
             MapiMessage message = MapiMessage.FromFile(dstEmail);

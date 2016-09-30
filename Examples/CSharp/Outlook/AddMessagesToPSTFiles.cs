@@ -1,5 +1,6 @@
 ﻿using Aspose.Email.Outlook;
 using Aspose.Email.Outlook.Pst;
+using System.IO;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
    API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 
@@ -17,10 +18,19 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
         {
             // ExStart:AddMessagesToPSTFiles
             // The path to the file directory.
-            string dataDir = RunExamples.GetDataDir_Outlook();
+            string dataDir = RunExamples.GetDataDir_Outlook() + "AddMessagesToPSTFiles_out.pst";
+
+            if (File.Exists(dataDir))
+            {
+                File.Delete(dataDir);
+            }
+            else
+            {
+                
+            }
 
             // Create new PST            
-            PersonalStorage personalStorage = PersonalStorage.Create(dataDir + "AddMessagesToPSTFiles_out.pst", FileFormatVersion.Unicode);
+            PersonalStorage personalStorage = PersonalStorage.Create(dataDir, FileFormatVersion.Unicode);
 
             // Add new folder "Inbox"
             personalStorage.RootFolder.AddSubFolder("Inbox");
@@ -29,7 +39,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             FolderInfo inboxFolder = personalStorage.RootFolder.GetSubFolder("Inbox");
 
             // Add some messages to "Inbox" folder
-            inboxFolder.AddMessage(MapiMessage.FromFile(dataDir + "MapiMsgWithPoll.msg"));
+            inboxFolder.AddMessage(MapiMessage.FromFile(RunExamples.GetDataDir_Outlook() + "MapiMsgWithPoll.msg"));
             // ExEnd:AddMessagesToPSTFiles            
         }
     }

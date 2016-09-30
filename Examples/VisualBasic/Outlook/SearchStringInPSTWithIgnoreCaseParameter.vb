@@ -1,4 +1,5 @@
-﻿Imports Aspose.Email.Outlook
+﻿Imports System.IO
+Imports Aspose.Email.Outlook
 Imports Aspose.Email.Outlook.Pst
 Imports Aspose.Email.Mail
 
@@ -16,6 +17,12 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             ' The path to the File directory.
             ' ExStart:SearchStringInPSTWithIgnoreCaseParameter
             Dim dataDir As String = RunExamples.GetDataDir_Outlook()
+            Dim checkfile As String = dataDir + "SearchStringInPSTWithIgnoreCaseParameter_out.pst"
+
+            If File.Exists(checkfile) Then
+                File.Delete(checkfile)
+            Else
+            End If
 
             Using personalStorage1 As PersonalStorage = PersonalStorage.Create(dataDir & Convert.ToString("SearchStringInPSTWithIgnoreCaseParameter_out.pst"), FileFormatVersion.Unicode)
                 Dim folderInfo As FolderInfo = personalStorage1.CreatePredefinedFolder("Inbox", StandardIpmFolder.Inbox)
@@ -28,7 +35,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
 
                 Dim query As MailQuery = builder.GetQuery()
                 Dim coll As MessageInfoCollection = folderInfo.GetContents(query)
-                Console.WriteLine(coll.Count)
+                Console.WriteLine(coll.Count.ToString())
             End Using
             ' ExEnd:SearchStringInPSTWithIgnoreCaseParameter
         End Sub

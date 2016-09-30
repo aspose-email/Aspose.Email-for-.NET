@@ -14,7 +14,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             ' The path to the File directory.
             ' ExStart:MoveItemsToOtherFolders
             Dim dataDir As String = RunExamples.GetDataDir_Outlook()
-            Using personalStorage1 As PersonalStorage = PersonalStorage.FromFile(dataDir & Convert.ToString("Sub.pst"))
+            Using personalStorage1 As PersonalStorage = PersonalStorage.FromFile(dataDir & Convert.ToString("Outlook_1.pst"))
                 Dim inbox As FolderInfo = personalStorage1.GetPredefinedFolder(StandardIpmFolder.Inbox)
                 Dim deleted As FolderInfo = personalStorage1.GetPredefinedFolder(StandardIpmFolder.DeletedItems)
                 Dim subfolder As FolderInfo = inbox.GetSubFolder("Inbox")

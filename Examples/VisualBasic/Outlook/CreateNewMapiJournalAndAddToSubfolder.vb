@@ -1,4 +1,5 @@
 ﻿
+Imports System.IO
 Imports Aspose.Email.Outlook
 Imports Aspose.Email.Outlook.Pst
 
@@ -20,6 +21,13 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             Dim journal As New MapiJournal("daily record", "called out in the dark", "Phone call", "Phone call")
             journal.StartTime = DateTime.Now
             journal.EndTime = journal.StartTime.AddHours(1)
+
+            Dim checkfile As String = dataDir + "CreateNewMapiJournalAndAddToSubfolder_out.pst"
+
+            If File.Exists(checkfile) Then
+                File.Delete(checkfile)
+            Else
+            End If
 
             Using personalStorage__1 As PersonalStorage = PersonalStorage.Create(dataDir & Convert.ToString("CreateNewMapiJournalAndAddToSubfolder_out.pst"), FileFormatVersion.Unicode)
                 Dim journalFolder As FolderInfo = personalStorage__1.CreatePredefinedFolder("Journal", StandardIpmFolder.Journal)

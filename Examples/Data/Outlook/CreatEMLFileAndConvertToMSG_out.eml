@@ -2,21 +2,21 @@ X-Unsent: 1
 From: from@domain.com
 Subject: subject of email(Aspose.Email Evaluation)
 To: to@domain.com
-Date: Sun, 17 Jul 2016 16:55:21 +0000
+Date: Fri, 30 Sep 2016 10:31:19 +0000
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="--_=_NextPart1_c6f1c6de-93e6-48f6-aaa7-d33ed89749dc"
+ boundary="--_=_NextPart1_7cd45691-87d4-4d83-96f0-85dac0bade19"
 
 This is a multi-part message in MIME format.
 
-----_=_NextPart1_c6f1c6de-93e6-48f6-aaa7-d33ed89749dc
+----_=_NextPart1_7cd45691-87d4-4d83-96f0-85dac0bade19
 Content-Type: text/html; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
 <b>Eml to msg conversion using Aspose=2EEmail</b><br><hr><br><font color=3Db=
 lue>This is a test eml file which will be converted to msg format=2E</font>=
 
-----_=_NextPart1_c6f1c6de-93e6-48f6-aaa7-d33ed89749dc
+----_=_NextPart1_7cd45691-87d4-4d83-96f0-85dac0bade19
 Content-Transfer-Encoding: base64
 Content-Type: application/octet-stream; name="attachment_1.doc"
 
@@ -416,7 +416,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAA==
-----_=_NextPart1_c6f1c6de-93e6-48f6-aaa7-d33ed89749dc
+----_=_NextPart1_7cd45691-87d4-4d83-96f0-85dac0bade19
 Content-Transfer-Encoding: base64
 Content-Type: application/octet-stream; name="download.png"
 
@@ -2273,5 +2273,5 @@ IECAAAECBAgQIECAwL2AgH7/IgcSIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAQCEgoBfK
 NggQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIEDgXkBAv3+RAwkQIECAAAECBAgQIECAAAEC
 BAgQIECAAAECBAgQIECgEBDQC2UbBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIHAvMBhX
 UgN7yKFwAAAAAElFTkSuQmCC
-----_=_NextPart1_c6f1c6de-93e6-48f6-aaa7-d33ed89749dc--
+----_=_NextPart1_7cd45691-87d4-4d83-96f0-85dac0bade19--
 

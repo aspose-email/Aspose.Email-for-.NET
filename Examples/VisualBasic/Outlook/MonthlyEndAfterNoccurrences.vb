@@ -1,7 +1,7 @@
 ﻿Imports Aspose.Email.Outlook
 
 ' This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
-'   API reference when the project is build. Please check https:// Docs.nuget.org/consume/nuget-faq 
+'   API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 
 '   for more information. If you do not wish to use NuGet, you can manually download 
 '   Aspose.Email for .NET API from http://www.aspose.com/downloads, 
 '   install it and then add its reference to this project. For any issues, questions or suggestions 
@@ -12,7 +12,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
     Class MonthlyEndAfterNoccurrences
         Public Shared Sub Run()
             ' ExStart:MonthlyEndAfterNoccurrences
-            ' The path to the documents directory.
+            ' The path to the File directory.
             Dim dataDir As String = RunExamples.GetDataDir_Outlook()
             Dim localZone As TimeZone = TimeZone.CurrentTimeZone
             Dim ts As TimeSpan = localZone.GetUtcOffset(DateTime.Now)
@@ -34,7 +34,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
                 .Period = 1, _
                 .PatternType = MapiCalendarRecurrencePatternType.Month, _
                 .EndType = MapiCalendarRecurrenceEndType.EndAfterNOccurrences, _
-                .OccurrenceCount = GetOccurrenceCount(StartDate, endByDate, "FREQ=MONTHLYBYMONTHDAY=15INTERVAL=1"), _
+                .OccurrenceCount = GetOccurrenceCount(StartDate, endByDate, "FREQ=MONTHLY;BYMONTHDAY=15;INTERVAL=1"), _
                 .WeekStartDay = DayOfWeek.Monday _
             }
 
@@ -43,13 +43,13 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             End If
             task.Recurrence = rec
 
-            task.Save(dataDir & Convert.ToString("Monthly_out.msg"), TaskSaveFormat.Msg)
+            task.Save(dataDir & "Monthly_out.msg", TaskSaveFormat.Msg)
             ' ExEnd:MonthlyEndAfterNoccurrences
 
         End Sub
 
         Private Shared Function GetOccurrenceCount(start As DateTime, endBy As DateTime, rrule As String) As UInteger
-            ' ExStart:GetOccurrenceCountMonthlyEndAfterNoccurrences
+            ' ExStart:GetOccurrenceCountMonthlyEndAfterNoccurrences             
             Dim pattern As New iCalendar.RecurrencePattern(String.Format("DTSTART:{0}" & vbCr & vbLf & "RRULE:{1}", start.ToString("yyyyMMdd"), rrule))
             Dim dates As iCalendar.DateCollection = pattern.GenerateOccurrences(start, endBy)
             Return CUInt(dates.Count)

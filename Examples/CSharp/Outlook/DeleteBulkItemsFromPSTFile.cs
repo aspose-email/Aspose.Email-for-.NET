@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using Aspose.Email.Outlook.Pst;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
@@ -18,7 +19,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // ExStart:DeleteBulkItemsFromPSTFile
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook() + @"Sub.pst";
-
             using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir))
             {
                 // Get Inbox SubFolder from Outlook file

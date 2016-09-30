@@ -17,7 +17,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // The path to the File directory.
             // ExStart:MoveItemsToOtherFolders
             string dataDir = RunExamples.GetDataDir_Outlook();
-            using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Sub.pst"))
+            using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Outlook_1.pst"))
             {
                 FolderInfo inbox = personalStorage.GetPredefinedFolder(StandardIpmFolder.Inbox);
                 FolderInfo deleted = personalStorage.GetPredefinedFolder(StandardIpmFolder.DeletedItems);

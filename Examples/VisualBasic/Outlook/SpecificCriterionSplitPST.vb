@@ -25,7 +25,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             pstQueryBuilder.SentDate.Before(New DateTime(2005, 4, 13))
             criteria.Add(pstQueryBuilder.GetQuery())
 
-            Using personalStorage__1 As PersonalStorage = PersonalStorage.FromFile(dataDir & Convert.ToString("Sub.pst"))
+            Using personalStorage__1 As PersonalStorage = PersonalStorage.FromFile(dataDir & Convert.ToString("PersonalStorage_New.pst"))
                 personalStorage__1.SplitInto(criteria, dataDir & Convert.ToString("pathToPst"))
             End Using
             ' ExEnd:SpecificCriterionSplitPST
