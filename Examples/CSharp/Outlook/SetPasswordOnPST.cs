@@ -1,4 +1,5 @@
-﻿using Aspose.Email.Outlook.Pst;
+﻿using System.IO;
+using Aspose.Email.Outlook.Pst;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -17,6 +18,18 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // The path to the File directory.
             // ExStart:SetPasswordOnPST
             string dataDir = RunExamples.GetDataDir_Outlook();
+
+            string alreadyCreated = dataDir + "SetPasswordOnPST_out.pst";
+            if (File.Exists(alreadyCreated))
+            {
+                File.Delete(alreadyCreated);
+            }
+            else
+            {
+
+            }
+
+
             using (PersonalStorage pst = PersonalStorage.Create(dataDir + "SetPasswordOnPST_out.pst", FileFormatVersion.Unicode))
             {
                 // Set the password

@@ -17,7 +17,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
 
 			' Detect file format and Gets the detected load format
 			Dim info As FileFormatInfo = FileFormatUtil.DetectFileFormat(dataDir & Convert.ToString("message.msg"))
-			Console.WriteLine("The message format is: " + info.FileFormatType)
+            Console.WriteLine("The message format is: " + info.FileFormatType.ToString())
 			' ExEnd:DetectDifferentFileFormats
 		End Sub
 	End Class

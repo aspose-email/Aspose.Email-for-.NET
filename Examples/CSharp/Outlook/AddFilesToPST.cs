@@ -1,4 +1,5 @@
 ﻿using Aspose.Email.Outlook.Pst;
+using System.IO;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -17,6 +18,14 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // The path to the File directory.
             // ExStart:AddFilesToPST
             string dataDir = RunExamples.GetDataDir_Outlook();
+
+            string path = dataDir + "Ps1_out.pst";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
             using (PersonalStorage personalStorage = PersonalStorage.Create(dataDir + "Ps1_out.pst", FileFormatVersion.Unicode))
             {
                 FolderInfo folder = personalStorage.RootFolder.AddSubFolder("Files");

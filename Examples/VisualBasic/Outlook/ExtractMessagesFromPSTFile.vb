@@ -22,12 +22,11 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             Dim path As String = dataDir & Convert.ToString("PersonalStorage.pst")
 
             Try
-                Console.WriteLine("Loading PST file....")
                 ' load the Outlook PST file
                 Dim pst As PersonalStorage = PersonalStorage.FromFile(path)
 
                 ' get the Display Format of the PST file
-                Console.WriteLine("Display Format: " + pst.Format)
+                Console.WriteLine("Display Format: " + pst.Format.ToString())
 
                 ' get the folders and messages information
                 Dim folderInfo As FolderInfo = pst.RootFolder

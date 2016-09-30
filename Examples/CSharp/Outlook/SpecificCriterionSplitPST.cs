@@ -30,7 +30,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             pstQueryBuilder.SentDate.Before(new DateTime(2005, 04, 13));
             criteria.Add(pstQueryBuilder.GetQuery());
 
-            using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Sub.pst"))
+            using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "PersonalStorage_New.pst"))
             {
                 personalStorage.SplitInto(criteria, dataDir + "pathToPst");
             }

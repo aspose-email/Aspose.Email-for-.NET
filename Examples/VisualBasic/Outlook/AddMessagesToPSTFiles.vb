@@ -1,4 +1,5 @@
-﻿Imports Aspose.Email.Outlook
+﻿Imports System.IO
+Imports Aspose.Email.Outlook
 Imports Aspose.Email.Outlook.Pst
 
 ' This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
@@ -15,6 +16,14 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             ' ExStart:AddMessagesToPSTFiles
             ' The path to the file directory.
             Dim dataDir As String = RunExamples.GetDataDir_Outlook()
+
+            Dim checkfile As String = dataDir + "AddMessagesToPSTFiles_out.pst"
+
+            If File.Exists(checkfile) Then
+                File.Delete(checkfile)
+
+            Else
+            End If
 
             ' Create new PST            
             Dim personalStorage__1 As PersonalStorage = PersonalStorage.Create(dataDir & Convert.ToString("AddMessagesToPSTFiles_out.pst"), FileFormatVersion.Unicode)

@@ -1,4 +1,5 @@
-﻿using Aspose.Email.Outlook;
+﻿using System.IO;
+using Aspose.Email.Outlook;
 using Aspose.Email.Outlook.Pst;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
@@ -37,6 +38,13 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             note2.Color = NoteColor.Blue;
             note3.Height = 500;
             note3.Width = 500;
+
+            string path = dataDir + "AddMapiNoteToPST_out.pst";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
 
             using (PersonalStorage personalStorage = PersonalStorage.Create(dataDir + "AddMapiNoteToPST_out.pst", FileFormatVersion.Unicode))
             {

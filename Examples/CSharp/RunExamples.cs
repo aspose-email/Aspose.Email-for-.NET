@@ -70,9 +70,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //// =====================================================
             //// =====================================================
 
-            //NewPSTAddSubfolders.Run();                       
+            //NewPSTAddSubfolders.Run();
             //CreateSaveOutlookFiles.Run();
-            //DeleteMessagesFromPSTFiles.Run();                        
             //DeleteBulkItemsFromPSTFile.Run();
             //UpdateBulkMessagesInPSTFile.Run();
             //LoadMSGFiles.Run();
@@ -86,6 +85,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ConvertEMLToMSG.Run();
             //CreatEMLFileAndConvertToMSG.Run();
             //ReadAndWritingOutlookTemplateFile.Run();
+            //DeleteMessagesFromPSTFiles.Run();
             //SetFollowUpflag.Run();
             //SetFollowUpForRecipients.Run();
             //MarkFollowUpFlagAsCompleted.Run();
@@ -121,40 +121,38 @@ namespace Aspose.Email.Examples.CSharp.Email
             //GenerateRecurrenceFromRecurrenceRule.Run();
 
             // Working with Outlook Personal Storage (PST) files
-
+            //ConvertOSTToPST.Run();
+            //ExtractNumberOfMessages.Run();
+            //ExtractAttachmentsFromPSTMessages.Run();
+            //AddMessagesToPSTFiles.Run();
+            //ReadandConvertOSTFiles.Run();
+            //SaveCalendarItems.Run();
             //RetreiveParentFolderInformationFromMessageInfo.Run();
             //ParseSearchableFolders.Run();
             //AccessContactInformation.Run();
-            //SaveContactInformation.Run();
-            //SaveCalendarItems.Run();
-            //AddMessagesToPSTFiles.Run();            
-            //DisplayInformationOfPSTFile.Run();
-            //ReadandConvertOSTFiles.Run();
-            //ConvertOSTToPST.Run();
             //GetMessageInformation.Run();
-            //ExtractMessagesFromPSTFile.Run();
-            //SaveMessagesDirectlyFromPSTToStream.Run();
-            //ExtractNumberOfMessages.Run();
-            //CreateNewPSTFileAndAddingSubfolders.Run();
             //ChangeFolderContainerClass.Run();
             //CheckPasswordProtection.Run();
-            //RemovingPaswordProperty.Run();
             //SetPasswordOnPST.Run();
+            //CreateNewPSTFileAndAddingSubfolders.Run();
             //CreateNewMapiContactAndAddToContactsSubfolder.Run();
+            //ExtractMessagesFromPSTFile.Run();
+            //RemovingPaswordProperty.Run();
             //AddMapiTaskToPST.Run();
             //CreateNewMapiJournalAndAddToSubfolder.Run();
             //AddAttachmentsToMapiJournal.Run();
             //AddMapiCalendarToPST.Run();
             //CreateDistributionListInPST.Run();
-            //SearchMessagesAndFoldersInPST.Run();
+            //SaveMessagesDirectlyFromPSTToStream.Run();
             //SearchStringInPSTWithIgnoreCaseParameter.Run();
-            //MoveItemsToOtherFolders.Run();
             //AddFilesToPST.Run();
-            //ExtractAttachmentsFromPSTMessages.Run();
+            //SearchMessagesAndFoldersInPST.Run();
+            //MoveItemsToOtherFolders.Run();
             //AddMapiNoteToPST.Run();
-            //UpdatePSTCustomProperites.Run();                        
+            //UpdatePSTCustomProperites.Run();
+            //SaveContactInformation.Run();
+            //DisplayInformationOfPSTFile.Run();
             //SpecificCriterionSplitPST.Run();
-
 
             //// =====================================================
             //// =====================================================
@@ -357,7 +355,7 @@ namespace Aspose.Email.Examples.CSharp.Email
 
         internal static string GetDataDir_POP3()
         {
-            return Path.GetFullPath(GetDataDir_Data() + "POP3");
+            return Path.GetFullPath(GetDataDir_Data() + "POP3/");
         }
 
         internal static string GetDataDir_IMAP()

@@ -1,6 +1,7 @@
 ﻿using System;
 using Aspose.Email.Outlook;
 using Aspose.Email.Outlook.Pst;
+using System.IO;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -22,6 +23,13 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             MapiJournal journal = new MapiJournal("daily record", "called out in the dark", "Phone call", "Phone call");
             journal.StartTime = DateTime.Now;
             journal.EndTime = journal.StartTime.AddHours(1);
+
+            string path = dataDir + "CreateNewMapiJournalAndAddToSubfolder_out.pst";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
 
             using (PersonalStorage personalStorage = PersonalStorage.Create(dataDir + "CreateNewMapiJournalAndAddToSubfolder_out.pst", FileFormatVersion.Unicode))
             {

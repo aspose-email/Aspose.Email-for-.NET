@@ -1,6 +1,7 @@
 ﻿using System;
 using Aspose.Email.Outlook;
 using Aspose.Email.Outlook.Pst;
+using System.IO;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -28,6 +29,13 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
             string strEntryId1;
             string strEntryId2;
+
+            string path = dataDir + "CreateDistributionListInPST_out.pst";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
 
             // Create distribution list from contacts
             using (PersonalStorage personalStorage = PersonalStorage.Create(dataDir + "CreateDistributionListInPST_out.pst", FileFormatVersion.Unicode))
@@ -58,6 +66,14 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
                 // Add distribution list to PST
                 contactFolder.AddMapiMessageItem(distributionList);
+            }
+
+
+            string path1 = dataDir + "CreateDistributionListInPST_OneOffmembers_out.pst";
+
+            if (File.Exists(path1))
+            {
+                File.Delete(path1);
             }
 
             // Create one-off distribution list members (for which no separate contacts were created)

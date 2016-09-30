@@ -1,5 +1,6 @@
 ﻿using Aspose.Email.Outlook;
 using Aspose.Email.Outlook.Pst;
+using System.IO;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -51,6 +52,14 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             contact6.PhysicalAddresses.WorkAddress.Address = "Im Astenfeld 59 8580 EDELSCHROTT";
             contact6.ElectronicAddresses.Email1 = new MapiContactElectronicAddress("Experwas", "SMTP", "BerthaABuell@armyspy.com");
             contact6.Telephones = new MapiContactTelephonePropertySet("06605045265");
+
+            // Load the Outlook file
+            string path = dataDir + "SampleContacts_out.pst";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
 
             using (PersonalStorage personalStorage = PersonalStorage.Create(dataDir + "SampleContacts_out.pst", FileFormatVersion.Unicode))
             {

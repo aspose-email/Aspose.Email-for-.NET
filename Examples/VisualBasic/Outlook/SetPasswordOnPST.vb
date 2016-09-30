@@ -1,4 +1,5 @@
-﻿Imports Aspose.Email.Outlook.Pst
+﻿Imports System.IO
+Imports Aspose.Email.Outlook.Pst
 
 '
 'This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -15,6 +16,15 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             ' The path to the documents directory.
             ' ExStart:SetPasswordOnPST
             Dim dataDir As String = RunExamples.GetDataDir_Outlook()
+
+            Dim checkfile As String = dataDir + "SetPasswordOnPST_out.pst"
+
+            If File.Exists(checkfile) Then
+                File.Delete(checkfile)
+
+            Else
+            End If
+
             Using pst As PersonalStorage = PersonalStorage.Create(dataDir + "SetPasswordOnPST_out.pst", FileFormatVersion.Unicode)
                 ' Set the password
                 Const password As String = "Password1"

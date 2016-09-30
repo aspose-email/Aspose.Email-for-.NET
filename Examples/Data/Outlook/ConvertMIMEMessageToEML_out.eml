@@ -9,11 +9,11 @@ X-Mailer: Aspose.Email
 secret-header: mystery
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="--_=_NextPart1_a70523a7-3dc1-45b6-b6ca-6fd84848be98"
+ boundary="--_=_NextPart1_399096f2-c4b9-4ed8-ae29-1eae5231f220"
 
 This is a multi-part message in MIME format.
 
-----_=_NextPart1_a70523a7-3dc1-45b6-b6ca-6fd84848be98
+----_=_NextPart1_399096f2-c4b9-4ed8-ae29-1eae5231f220
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -23,7 +23,7 @@ cense-agreement=2Easpx
 ------------------------------
 
 This is a test email message body text=2E
-----_=_NextPart1_a70523a7-3dc1-45b6-b6ca-6fd84848be98
+----_=_NextPart1_399096f2-c4b9-4ed8-ae29-1eae5231f220
 Content-Type: application/octet-stream; name="License.txt"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment
@@ -510,5 +510,5 @@ ZSB0ZXJtcyBvZiB0aGlzIEFncmVlbWVudCwgdGhlIHRlcm1zIG9mIHRoaXMgQWdyZWVtZW50IHNo
 YWxsIGNvbnRyb2wuDQoNCg0KDQoNCj8gMjAwNSA/IDIwMTIgQXNwb3NlIFB0eSBMdGQuIEFsbCBy
 aWdodHMgcmVzZXJ2ZWQuIAkgICAgICAgICB3d3cuYXNwb3NlLmNvbQlQYWdlIDEwIG9mIDEwDQoN
 Cg0K
-----_=_NextPart1_a70523a7-3dc1-45b6-b6ca-6fd84848be98--
+----_=_NextPart1_399096f2-c4b9-4ed8-ae29-1eae5231f220--
 

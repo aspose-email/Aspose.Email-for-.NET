@@ -19,13 +19,11 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             Dim path As String = dataDir & Convert.ToString("PersonalStorage.pst")
 
             Try
-                Console.WriteLine("Loading PST file....")
-
                 ' Load the Outlook PST file
                 Dim personalStorage__1 As PersonalStorage = PersonalStorage.FromFile(path)
 
                 ' Get the Display Format of the PST file
-                Console.WriteLine("Display Format: " + personalStorage__1.Format)
+                Console.WriteLine("Display Format: " + personalStorage__1.Format.ToString())
 
                 ' Get the folders and messages information
                 Dim folderInfo As FolderInfo = personalStorage__1.RootFolder
@@ -46,15 +44,13 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
         Private Shared Sub DisplayFolderContents(folderInfo As FolderInfo, pst As PersonalStorage)
             ' ExStart:GetMessageInformationDisplayFolderContents
             ' Display the folder name
-            Console.WriteLine("Folder: " + folderInfo.DisplayName)
-            Console.WriteLine("==================================")
+            Console.WriteLine("Folder: " + folderInfo.DisplayName.ToString())
             ' Display information about messages inside this folder
             Dim messageInfoCollection As MessageInfoCollection = folderInfo.GetContents()
             For Each messageInfo As MessageInfo In messageInfoCollection
-                Console.WriteLine("Subject: " + messageInfo.Subject)
-                Console.WriteLine("Sender: " + messageInfo.SenderRepresentativeName)
-                Console.WriteLine("Recipients: " + messageInfo.DisplayTo)
-                Console.WriteLine("------------------------------")
+                Console.WriteLine("Subject: " + messageInfo.Subject.ToString())
+                Console.WriteLine("Sender: " + messageInfo.SenderRepresentativeName.ToString())
+                Console.WriteLine("Recipients: " + messageInfo.DisplayTo.ToString())
             Next
 
             ' Call this method recursively for each subfolder

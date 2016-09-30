@@ -17,7 +17,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             ' ExStart:SearchMessagesAndFoldersInPST
             Dim dataDir As String = RunExamples.GetDataDir_Outlook()
 
-            Using personalStorage__1 As PersonalStorage = PersonalStorage.FromFile(dataDir & Convert.ToString("Sub.pst"))
+            Using personalStorage__1 As PersonalStorage = PersonalStorage.FromFile(dataDir & Convert.ToString("Outlook.pst"))
                 Dim folder As FolderInfo = personalStorage__1.RootFolder.GetSubFolder("Inbox")
                 Dim builder As New PersonalStorageQueryBuilder()
 

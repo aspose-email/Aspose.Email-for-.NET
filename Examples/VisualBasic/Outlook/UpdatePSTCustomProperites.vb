@@ -16,7 +16,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
         ' ExStart:UpdatePSTCustomProperites
         Public Shared Sub Run()
             ' Load the Outlook file
-            Dim dataDir As String = RunExamples.GetDataDir_Outlook() + "Sub.pst"
+            Dim dataDir As String = RunExamples.GetDataDir_Outlook() + "Outlook.pst"
             Using personalStorage__1 As PersonalStorage = PersonalStorage.FromFile(dataDir)
                 Dim testFolder As FolderInfo = personalStorage__1.RootFolder.GetSubFolder("Inbox")
 

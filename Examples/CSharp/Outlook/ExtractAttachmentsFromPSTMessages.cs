@@ -19,7 +19,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // ExStart:ExtractAttachmentsFromPSTMessages
             string dataDir = RunExamples.GetDataDir_Outlook();
 
-            using (PersonalStorage personalstorage = PersonalStorage.FromFile(dataDir + "Sub.pst"))
+            using (PersonalStorage personalstorage = PersonalStorage.FromFile(dataDir + "Outlook.pst"))
             {
                 FolderInfo folder = personalstorage.RootFolder.GetSubFolder("Inbox");
 

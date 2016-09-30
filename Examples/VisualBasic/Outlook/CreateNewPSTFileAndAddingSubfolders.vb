@@ -1,4 +1,5 @@
-﻿Imports Aspose.Email.Outlook.Pst
+﻿Imports System.IO
+Imports Aspose.Email.Outlook.Pst
 
 ' This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
 '   API reference when the project is build. Please check https:// Docs.nuget.org/consume/nuget-faq 
@@ -14,6 +15,14 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             ' ExStart:CreateNewPSTFileAndAddingSubfolders
             ' The path to the file directory.
             Dim dataDir As String = RunExamples.GetDataDir_Outlook()
+
+            Dim checkfile As String = dataDir + "CreateNewPSTFileAndAddingSubfolders_out.pst"
+
+            If File.Exists(checkfile) Then
+                File.Delete(checkfile)
+
+            Else
+            End If
 
             ' Load the Outlook file
             Dim path As String = dataDir & Convert.ToString("CreateNewPSTFileAndAddingSubfolders_out.pst")

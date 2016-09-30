@@ -1,4 +1,5 @@
 ﻿using Aspose.Email.Outlook.Pst;
+using System.IO;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
    API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 
@@ -20,6 +21,15 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
             // Load the Outlook file
             string path = dataDir + "CreateNewPSTFileAndAddingSubfolders_out.pst";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+            else
+            {
+
+            }
 
             // Create new PST
             PersonalStorage personalStorage = PersonalStorage.Create(path, FileFormatVersion.Unicode);

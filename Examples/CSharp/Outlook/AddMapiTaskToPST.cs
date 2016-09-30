@@ -1,6 +1,7 @@
 ﻿using System;
 using Aspose.Email.Outlook;
 using Aspose.Email.Outlook.Pst;
+using System.IO;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -29,6 +30,16 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             task.Users.LastAssigner = "Harkness";
             task.Users.LastDelegate = "Harkness";
             task.Users.Ownership = MapiTaskOwnership.AssignersCopy;
+
+            string alreadyCreated = dataDir + "AddMapiTaskToPST_out.pst";
+            if (File.Exists(alreadyCreated))
+            {
+                File.Delete(alreadyCreated);
+            }
+            else
+            {
+
+            }
 
             using (PersonalStorage personalStorage = PersonalStorage.Create(dataDir + "AddMapiTaskToPST_out.pst", FileFormatVersion.Unicode))
             {

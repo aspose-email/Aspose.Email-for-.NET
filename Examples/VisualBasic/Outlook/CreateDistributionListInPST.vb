@@ -1,4 +1,5 @@
-﻿Imports Aspose.Email.Outlook
+﻿Imports System.IO
+Imports Aspose.Email.Outlook
 Imports Aspose.Email.Outlook.Pst
 
 '
@@ -24,6 +25,13 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
 
             Dim strEntryId1 As String
             Dim strEntryId2 As String
+
+            Dim checkfile As String = dataDir + "CreateDistributionListInPST_out.pst"
+
+            If File.Exists(checkfile) Then
+                File.Delete(checkfile)
+            Else
+            End If
 
             ' Create distribution list from contacts
             Using personalStorage__1 As PersonalStorage = PersonalStorage.Create(dataDir & Convert.ToString("CreateDistributionListInPST_out.pst"), FileFormatVersion.Unicode)
@@ -54,6 +62,12 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
                 ' Add distribution list to PST
                 contactFolder.AddMapiMessageItem(distributionList)
             End Using
+
+            Dim checkfile1 As String = dataDir + "CreateDistributionListInPST_OneOffmembers_out.pst"
+            If File.Exists(checkfile1) Then
+                File.Delete(checkfile1)
+            Else
+            End If
 
             ' Create one-off distribution list members (for which no separate contacts were created)
             Using personalStorage__1 As PersonalStorage = PersonalStorage.Create(dataDir & Convert.ToString("CreateDistributionListInPST_OneOffmembers_out.pst"), FileFormatVersion.Unicode)

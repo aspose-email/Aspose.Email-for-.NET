@@ -21,7 +21,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             string dataDir = RunExamples.GetDataDir_Outlook();
  
             // Load the Outlook PST file
-            PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Sub.pst");
+            PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Outlook.pst");
             // Get the Contacts folder
             FolderInfo folderInfo = personalStorage.RootFolder.GetSubFolder("Contacts");
             // Loop through all the contacts in this folder

@@ -16,7 +16,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             ' ExStart:ExtractAttachmentsFromPSTMessages
             Dim dataDir As String = RunExamples.GetDataDir_Outlook()
 
-            Using personalstorage__1 As PersonalStorage = PersonalStorage.FromFile(dataDir & Convert.ToString("Sub.pst"))
+            Using personalstorage__1 As PersonalStorage = PersonalStorage.FromFile(dataDir & Convert.ToString("Outlook_1.pst"))
                 Dim folder As FolderInfo = personalstorage__1.RootFolder.GetSubFolder("Inbox")
 
                 For Each messageInfo In folder.EnumerateMessagesEntryId()
@@ -28,7 +28,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
                                 If attachment.LongFileName.Contains(".msg") Then
                                     Continue For
                                 Else
-                                    attachment.Save((dataDir & Convert.ToString("\Attachments\")) + attachment.LongFileName)
+                                    attachment.Save((dataDir & Convert.ToString("\Attachments\")) + attachment.LongFileName.ToString())
                                 End If
                             End If
                         Next
