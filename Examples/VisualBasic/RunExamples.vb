@@ -60,6 +60,10 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'ExtractEmbeddObjects.Run()
             'DetectTNEFMessage.Run()
             'DetermineAttachmentEmbeddedMessage.Run()
+            'IdentifyInlineAndRegularAttachments.Run()
+            'ReceiveNotifications.Run()
+            'SetDefaultTextEncoding.Run()
+            'SendIMAPAsynchronousEmail.Run()
 
 
             '/ =====================================================
@@ -117,6 +121,10 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'MonthlyEndAfterNoccurrences.Run()
             'YearlyEndAfterNoccurrences.Run()
             'GenerateRecurrenceFromRecurrenceRule.Run()
+            'Exposeproperties.Run()
+            'GetTheTextAndRTFBodies.Run()
+            'ParseOutlookMessageFile.Run()
+            'CreateMeetingRequestWithRecurrence.Run()
 
             ' Working with Outlook Personal Storage (PST) files
 
@@ -244,7 +252,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'RetrievMessagesAsynchronously.Run()
             'RetrieveMessageSummaryInformationUsingUniqueId.Run()
 
-
+          
 
             '/ =====================================================
             '/ =====================================================

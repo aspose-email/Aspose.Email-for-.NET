@@ -9,7 +9,7 @@ Imports Aspose.Email.Outlook.Pst
 'please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 '
 
-Namespace Aspose.Email.Examples.Visualbasic.Email.Outlook
+Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
     Class CheckPasswordProtection
         Public Shared Sub Run()
             ' ExStart:CheckPasswordProtection

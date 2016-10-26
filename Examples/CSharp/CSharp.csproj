@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Email, Version=6.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Email.6.9.0\lib\net40\Aspose.Email.dll</HintPath>
+    <Reference Include="Aspose.Email, Version=16.10.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.16.10.0\lib\net40\Aspose.Email.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -49,6 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exchange\ListMessagesByExtendedProperties.cs" />
+    <Compile Include="Exchange\GetContactsExtendedProperties.cs" />
+    <Compile Include="Exchange\RetrieveExtraParametersAsSummaryInformation.cs" />
+    <Compile Include="IMAP\SendIMAPasynchronousEmail.cs" />
+    <Compile Include="Outlook\CreateMeetingRequestWithRecurrence.cs" />
+    <Compile Include="Email\IdentifyInlineAndRegularAttachments.cs" />
+    <Compile Include="Email\SetDefaultTextEncoding.cs" />
+    <Compile Include="Email\ReceiveNotifications.cs" />
     <Compile Include="Email\DetectTNEFMessage.cs" />
     <Compile Include="Email\DetermineAttachmentEmbeddedMessage.cs" />
     <Compile Include="Email\CreateNewEmail.cs" />
@@ -149,6 +157,9 @@
     <Compile Include="IMAP\IMAP4ExtendedListCommand.cs" />
     <Compile Include="IMAP\IMAP4IDExtensionSupport.cs" />
     <Compile Include="IMAP\FilteringMessagesFromIMAPMailbox.cs" />
+    <Compile Include="Outlook\AddAudioReminderToCalendar.cs" />
+    <Compile Include="Outlook\ParseOutlookMessageFile.cs" />
+    <Compile Include="Outlook\GetTheTextAndRTFBodies.cs" />
     <Compile Include="Outlook\SpecificCriterionSplitPST.cs" />
     <Compile Include="Outlook\UpdatePSTCustomProperites.cs" />
     <Compile Include="Outlook\AddMapiCalendarToPST.cs" />
@@ -203,7 +214,7 @@
     <Compile Include="Outlook\ManageAttachmentsFromCalendarFiles.cs" />
     <Compile Include="Outlook\AddDisplayReminderToACalendar.cs" />
     <Compile Include="Outlook\CreatAndSaveCalendaritems.cs" />
-    <Compile Include="Outlook\AddAudioReminderToCalendar.cs" />
+    <Compile Include="Outlook\ExposeProperties.cs" />
     <Compile Include="Outlook\SetReminderByAddingTags.cs" />
     <Compile Include="Outlook\SetColorCategories.cs" />
     <Compile Include="Outlook\ConvertMIMEMessagesFromMSGToEML.cs" />

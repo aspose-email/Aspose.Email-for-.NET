@@ -61,7 +61,10 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ExtractEmbeddObjects.Run();
             //ExtractEmbeddedObjectsFromEmail.Run();
             //EncryptAndDecryptMessage.Run(); 
-            //DetectTNEFMessage.Run();
+            //DetectTNEFMessage.Run();            
+            //ReceiveNotifications.Run();
+            //SetDefaultTextEncoding.Run();
+            //IdentifyInlineAndRegularAttachments.Run();
 
 
             //// =====================================================
@@ -119,6 +122,9 @@ namespace Aspose.Email.Examples.CSharp.Email
             //MonthlyEndAfterNoccurrences.Run();
             //YearlyEndAfterNoccurrences.Run();
             //GenerateRecurrenceFromRecurrenceRule.Run();
+            //ExposeProperties.Run();
+            //GetTheTextAndRTFBodies.Run();
+            //ParseOutlookMessageFile.Run();
 
             // Working with Outlook Personal Storage (PST) files
             //ConvertOSTToPST.Run();
@@ -223,7 +229,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //CreateExchangeTask.Run();
             //DeleteExchangeTask.Run();
             //SendExchangeTask.Run();
-            //UpdateExchangeTask.Run();
+            //UpdateExchangeTask.Run();           
 
             //// =====================================================
             //// =====================================================
@@ -278,6 +284,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //RetrievingMessagesAsynchronously.Run();
             //RetreivingServerExtensions.Run();            
             //SupportIMAPIdleCommand.Run();
+          
 
             //// =====================================================
             //// =====================================================
@@ -312,7 +319,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SendEmailWithAlternateText.Run();
             //ForwardEmail.Run();       
             //SignEmailsWithDKIM.Run();
-            
+            //CreateMeetingRequestWithRecurrence.Run();
 
             //// =====================================================
             //// =====================================================

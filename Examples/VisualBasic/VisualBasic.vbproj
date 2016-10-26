@@ -48,8 +48,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Email, Version=6.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Email.6.9.0\lib\net40\Aspose.Email.dll</HintPath>
+    <Reference Include="Aspose.Email, Version=16.10.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.16.10.0\lib\net40\Aspose.Email.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -72,6 +72,16 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exchange\GetContactsExtendedProperties.vb" />
+    <Compile Include="Exchange\ListMessagesByExtendedProperties.vb" />
+    <Compile Include="Exchange\RetrieveExtraParametersAsSummaryInformation.vb" />
+    <Compile Include="Outlook\ParseOutlookMessageFile.vb" />
+    <Compile Include="Outlook\GetTheTextAndRTFBodies.vb" />
+    <Compile Include="Outlook\ExposeProperties.vb" />
+    <Compile Include="Email\SendIMAPAsynchronousEmail.vb" />
+    <Compile Include="Email\SetDefaultTextEncoding.vb" />
+    <Compile Include="Email\ReceiveNotifications.vb" />
+    <Compile Include="Email\IdentifyInlineAndRegularAttachments.vb" />
     <Compile Include="Email\ExtractEmbeddObjects.vb" />
     <Compile Include="Email\DetermineAttachmentEmbeddedMessage.vb" />
     <Compile Include="Email\SetAlternateText.vb" />
@@ -285,6 +295,7 @@
     <Compile Include="Outlook\SetPasswordOnPST.vb" />
     <Compile Include="Outlook\SetReminderByAddingTags.vb" />
     <Compile Include="Outlook\WeeklyEndAfterNoccurrences.vb" />
+    <Compile Include="Outlook\CreateMeetingRequestWithRecurrence.vb" />
     <Compile Include="Outlook\YearlyEndAfterNoccurrences.vb" />
     <Compile Include="PersonalOutlook\DeleteBulkItemsFromPSTFile.vb" />
     <Compile Include="Outlook\MergePSTFiles.vb" />
