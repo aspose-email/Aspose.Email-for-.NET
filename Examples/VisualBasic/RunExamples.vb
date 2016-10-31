@@ -125,6 +125,8 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'GetTheTextAndRTFBodies.Run()
             'ParseOutlookMessageFile.Run()
             'CreateMeetingRequestWithRecurrence.Run()
+            'CreateNewMapiCalendarAndAddToCalendarSubfolder.Run()
+
 
             ' Working with Outlook Personal Storage (PST) files
 

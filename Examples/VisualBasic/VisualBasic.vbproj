@@ -218,6 +218,7 @@
     <Compile Include="IMAP\SSLEnabledIMAPServer.vb" />
     <Compile Include="IMAP\SupportIMAPIdleCommand.vb" />
     <Compile Include="Knowledge-Base\PrintEmail.vb" />
+    <Compile Include="Outlook\CreateNewMapiCalendarAndAddToCalendarSubfolder.vb" />
     <Compile Include="Outlook\UpdatePSTCustomProperites.vb" />
     <Compile Include="Outlook\SpecificCriterionSplitPST.vb" />
     <Compile Include="Outlook\AddMessagesToPSTFiles.vb" />
