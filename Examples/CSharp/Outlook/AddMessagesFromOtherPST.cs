@@ -23,26 +23,25 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             string dataDir = RunExamples.GetDataDir_Outlook();
 
             // Load the Outlook file
-            string path = dataDir + "PersonalStorage2.pst";
+            string path = dataDir + "SampleContacts.pst";
             BulkAddFromAnotherPst(path);
         }
         private static void BulkAddFromAnotherPst(string source)
         {
             using (PersonalStorage pst = PersonalStorage.FromFile(source, false))
-            using (PersonalStorage pstDest = PersonalStorage.FromFile(RunExamples.GetDataDir_Outlook() + "PersonalStorage1.pst"))
+            using (PersonalStorage pstDest = PersonalStorage.FromFile(RunExamples.GetDataDir_Outlook() + "PersonalStorageFile1.pst"))
             {
                 // Get the folder by name
-                FolderInfo folderInfo = pst.RootFolder.GetSubFolder("Inbox");
+                FolderInfo folderInfo = pst.RootFolder.GetSubFolder("Contacts");
                 MessageInfoCollection ms = folderInfo.GetContents();
 
                 // Get the folder by name
-                FolderInfo f = pstDest.RootFolder.GetSubFolder("Inbox");
+                FolderInfo f = pstDest.RootFolder.GetSubFolder("myInbox");
                 f.MessageAdded += new MessageAddedEventHandler(OnMessageAdded);
-
                 f.AddMessages(folderInfo.EnumerateMapiMessages());
-
-                FolderInfo fi = pstDest.RootFolder.GetSubFolder("Inbox");
+                FolderInfo fi = pstDest.RootFolder.GetSubFolder("myInbox");
                 MessageInfoCollection msgs = fi.GetContents();
+
             }
 
         }

@@ -25,17 +25,15 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             string dataDir = RunExamples.GetDataDir_Outlook();
 
             // Load the Outlook file
-            string path = dataDir + "Sub.pst";
-            AddMessagesInBulkMode(path, "Inbox");
+            string path = dataDir + "PersonalStorageFile2.pst";
+            AddMessagesInBulkMode(path, "Contacts");
         }
         private static void AddMessagesInBulkMode(string fileName, string msgFolderName)
         {
             using (PersonalStorage personalStorage = PersonalStorage.FromFile(fileName))
             {
-                FolderInfo folder = personalStorage.RootFolder.GetSubFolder("Inbox");
-
+                FolderInfo folder = personalStorage.RootFolder.GetSubFolder("myInbox");
                 folder.MessageAdded += OnMessageAdded;
-
                 folder.AddMessages(new MapiMessageCollection(msgFolderName));
             }
         }

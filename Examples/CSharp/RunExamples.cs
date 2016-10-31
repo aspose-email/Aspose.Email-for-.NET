@@ -21,6 +21,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             Console.WriteLine("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
             Console.WriteLine("=====================================================");
 
+                 
             // Uncomment the one you want to try out
 
             // =====================================================
@@ -124,6 +125,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //GenerateRecurrenceFromRecurrenceRule.Run();
             //ExposeProperties.Run();
             //GetTheTextAndRTFBodies.Run();
+            //CreateNewMapiCalendarAndAddToCalendarSubfolder.Run();
             //ParseOutlookMessageFile.Run();
 
             // Working with Outlook Personal Storage (PST) files
@@ -159,6 +161,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SaveContactInformation.Run();
             //DisplayInformationOfPSTFile.Run();
             //SpecificCriterionSplitPST.Run();
+            //AddMessagesFromOtherPST.Run();
 
             //// =====================================================
             //// =====================================================

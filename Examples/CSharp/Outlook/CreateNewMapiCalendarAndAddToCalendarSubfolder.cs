@@ -25,22 +25,21 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // The path to the File directory.
             // ExStart:CreateNewMapiCalendarAndAddToCalendarSubfolder
             string dataDir = RunExamples.GetDataDir_Outlook();
-
-            MapiMessage mapiMessage = MapiMessage.FromMailMessage(dataDir + "Note.msg");
+            MapiMessage message = MapiMessage.FromFile(dataDir + "Note.msg");
 
             // Note #1
-            MapiNote note1 = (MapiNote)mapiMessage.ToMapiMessageItem();
+            MapiNote note1 = (MapiNote)message.ToMapiMessageItem();
             note1.Subject = "Yellow color note";
             note1.Body = "This is a yellow color note";
 
             // Note #2
-            MapiNote note2 = (MapiNote)mapiMessage.ToMapiMessageItem();
+            MapiNote note2 = (MapiNote)message.ToMapiMessageItem();
             note2.Subject = "Pink color note";
             note2.Body = "This is a pink color note";
             note2.Color = NoteColor.Pink;
 
             // Note #3
-            MapiNote note3 = (MapiNote)mapiMessage.ToMapiMessageItem();
+            MapiNote note3 = (MapiNote)message.ToMapiMessageItem();
             note2.Subject = "Blue color note";
             note2.Body = "This is a blue color note";
             note2.Color = NoteColor.Blue;
