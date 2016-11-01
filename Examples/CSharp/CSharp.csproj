@@ -178,7 +178,7 @@
     <Compile Include="Outlook\SearchMessagesAndFoldersInPST.cs" />
     <Compile Include="Outlook\MoveItemsToOtherFolders.cs" />
     <Compile Include="Outlook\AddFilesToPST.cs" />
-    <Compile Include="Outlook\MergeMultiplePST.cs" />
+    <Compile Include="Outlook\MergeFolderFromAnotherPSTFile.cs" />
     <Compile Include="Outlook\ExtractAttachmentsFromPSTMessages.cs" />
     <Compile Include="Outlook\SplitSinglePSTInToMultiplePST.cs" />
     <Compile Include="Outlook\SetPasswordOnPST.cs" />
@@ -275,11 +275,10 @@
     <Compile Include="Outlook\SetMAPIProperties.cs" />
     <Compile Include="Outlook\GetMAPIProperty.cs" />
     <Compile Include="Outlook\LoadMSGFiles.cs" />
-    <Compile Include="Outlook\MergePSTFiles.cs" />
+    <Compile Include="Outlook\MergeMultiplePSTsInToSinglePST.cs" />
     <Compile Include="Outlook\LoadingFromStream.cs" />
     <Compile Include="Outlook\NewPSTAddSubfolders.cs" />
     <Compile Include="Outlook\SaveMsgAsTemplate.cs" />
-    <Compile Include="Outlook\SplitPST.cs" />
     <Compile Include="Outlook\CreatReplyMessage.cs" />
     <Compile Include="Outlook\CreateForwardMessage.cs" />
     <Compile Include="Outlook\EndAfterNoccurrences.cs" />

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Aspose.Email;
-using Aspose.Email.Examples.CSharp.Email;
-using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
+using System.IO;
 using Aspose.Email.Outlook.Pst;
 
 /*
@@ -28,14 +22,29 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // The path to the File directory.
             // ExStart:SplitSinglePSTInToMultiplePST
             string dataDir = RunExamples.GetDataDir_Outlook();
-            using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Sub.pst"))
+            try
             {
-                // The events subscription is an optional step for the tracking process only.
-                personalStorage.StorageProcessed += PstSplit_OnStorageProcessed;
-                personalStorage.ItemMoved += PstSplit_OnItemMoved;
+                String dstSplit = dataDir + Convert.ToString("Chunks\\");
 
-                // Splits into pst chunks with the size of 5mb
-                personalStorage.SplitInto(5000000, dataDir + @"\chunks\");
+                // Delete the files if already present
+                foreach (string file__1 in Directory.GetFiles(dstSplit))
+                {
+                    File.Delete(file__1);
+                }
+
+                using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "Sub.pst"))
+                {
+                    // The events subscription is an optional step for the tracking process only.
+                    personalStorage.StorageProcessed += PstSplit_OnStorageProcessed;
+                    personalStorage.ItemMoved += PstSplit_OnItemMoved;
+
+                    // Splits into pst chunks with the size of 5mb
+                    personalStorage.SplitInto(5000000, dataDir + @"\Chunks\");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + "\nThis example will only work if you apply a valid Aspose Email License. You can purchase full license or get 30 day temporary license from http:// Www.aspose.com/purchase/default.aspx.");
             }
             // ExEnd:SplitSinglePSTInToMultiplePST
         }
@@ -52,7 +61,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
         void PstMerge_OnItemMoved(object sender, ItemMovedEventArgs e)
         {
-          
+
             if (currentFolder == null)
             {
                 currentFolder = e.DestinationFolder.RetrieveFullPath();

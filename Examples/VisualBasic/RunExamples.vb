@@ -130,6 +130,9 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
 
             ' Working with Outlook Personal Storage (PST) files
 
+            'SplitSinglePSTInToMultiplePST.Run()
+            'MergeMultiplePSTsInToSinglePST.Run()
+            'MergeFolderFromAnotherPSTFile.Run()
             'ConvertOSTToPST.Run()
             'ExtractNumberOfMessages.Run()
             'ExtractAttachmentsFromPSTMessages.Run()
