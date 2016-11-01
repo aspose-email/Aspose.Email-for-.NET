@@ -129,6 +129,9 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ParseOutlookMessageFile.Run();
 
             // Working with Outlook Personal Storage (PST) files
+            //SplitSinglePSTInToMultiplePST.Run();
+            //MergeMultiplePSTsInToSinglePST.Run();
+            //MergeFolderFromAnotherPSTFile.Run();
             //ConvertOSTToPST.Run();
             //ExtractNumberOfMessages.Run();
             //ExtractAttachmentsFromPSTMessages.Run();

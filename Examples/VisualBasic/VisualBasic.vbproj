@@ -75,6 +75,7 @@
     <Compile Include="Exchange\GetContactsExtendedProperties.vb" />
     <Compile Include="Exchange\ListMessagesByExtendedProperties.vb" />
     <Compile Include="Exchange\RetrieveExtraParametersAsSummaryInformation.vb" />
+    <Compile Include="Outlook\MergeFolderFromAnotherPSTFile.vb" />
     <Compile Include="Outlook\ParseOutlookMessageFile.vb" />
     <Compile Include="Outlook\GetTheTextAndRTFBodies.vb" />
     <Compile Include="Outlook\ExposeProperties.vb" />
@@ -299,10 +300,10 @@
     <Compile Include="Outlook\CreateMeetingRequestWithRecurrence.vb" />
     <Compile Include="Outlook\YearlyEndAfterNoccurrences.vb" />
     <Compile Include="PersonalOutlook\DeleteBulkItemsFromPSTFile.vb" />
-    <Compile Include="Outlook\MergePSTFiles.vb" />
+    <Compile Include="Outlook\MergeMultiplePSTsInToSinglePST.vb" />
     <Compile Include="Outlook\NewPSTAddSubfolders.vb" />
     <Compile Include="Outlook\SaveMsgAsTemplate.vb" />
-    <Compile Include="Outlook\SplitPST.vb" />
+    <Compile Include="Outlook\SplitSinglePSTInToMultiplePST.vb" />
     <Compile Include="PersonalOutlook\DeleteMessagesFromPSTFiles.vb" />
     <Compile Include="PersonalOutlook\UpdateBulkMessagesInPSTFile.vb" />
     <Compile Include="POP3\RetrieveMessageSummaryInformationUsingUniqueId.vb" />
