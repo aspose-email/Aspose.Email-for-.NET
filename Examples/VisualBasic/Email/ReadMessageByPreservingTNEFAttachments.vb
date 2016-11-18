@@ -15,11 +15,9 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             ' The path to the File directory.
             Dim dataDir As String = RunExamples.GetDataDir_Email()
 
-            Dim options As New MailMessageLoadOptions()
-            options.MessageFormat = MessageFormat.Eml
-            ' This will Preserve the TNEF attachment as it is, file contains the TNEF attachment
-            options.FileCompatibilityMode = FileCompatibilityMode.PreserveTnefAttachments
-            Dim eml As MailMessage = MailMessage.Load(dataDir & Convert.ToString("Attachments.eml"), options)
+            Dim options As New MsgLoadOptions()
+            options.PreserveTnefAttachments = True
+            Dim eml As MailMessage = MailMessage.Load(dataDir & Convert.ToString("EmbeddedImage1.msg"), options)
             For Each attachment As Attachment In eml.Attachments
                 Console.WriteLine(attachment.Name)
             Next

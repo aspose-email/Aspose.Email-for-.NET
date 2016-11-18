@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Aspose.Email.Exchange;
 
 /*
@@ -15,15 +16,15 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
     {
         public static void Run()
         {
-            // ExStart:EnumeratMessagesWithPaginginEWS
-            // Create instance of ExchangeWebServiceClient class by giving credentials
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "Shabir.haider@studentpartner.com", "LoveAir1993");
-
-            // Call ListMessages method to list messages info from Inbox
-            ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.GetMailboxInfo().InboxUri);
-
             try
             {
+                // ExStart:EnumeratMessagesWithPaginginEWS
+                // Create instance of ExchangeWebServiceClient class by giving credentials
+                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "UserName", "Password");
+
+                // Call ListMessages method to list messages info from Inbox
+                ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.GetMailboxInfo().InboxUri);
+
                 int itemsPerPage = 5;
                 List<ExchangeMessageInfoCollection> pages = new List<ExchangeMessageInfoCollection>();
                 ExchangeMessageInfoCollection pagedMessageInfoCol = client.ListMessages(client.MailboxInfo.InboxUri, itemsPerPage);
@@ -42,6 +43,11 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
                     client.ListMessages(client.MailboxInfo.InboxUri, pagedMessageInfoCol, itemsPerPage, pagedMessageInfoCol.LastItemOffset.Value + 1);
                 }
             }
+            catch (Exception ex)
+            {
+
+                Console.Write(ex.Message);
+            }          
             finally
             {
 

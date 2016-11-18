@@ -19,25 +19,30 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
     {
         public static void Run()
         {
-            // ExStart:SynchronizeFolderItems
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+            try
+            {
 
-            MailMessage message1 = new MailMessage("user@domain.com", "user@domain.com", "EMAILNET-34738 - " + Guid.NewGuid().ToString(),
-                "EMAILNET-34738 Sync Folder Items");
-            client.Send(message1);
+                // ExStart:SynchronizeFolderItems
+                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+                MailMessage message1 = new MailMessage("user@domain.com", "user@domain.com", "EMAILNET-34738 - " + Guid.NewGuid().ToString(),  "EMAILNET-34738 Sync Folder Items");
+                client.Send(message1);
 
-            MailMessage message2 = new MailMessage("user@domain.com", "user@domain.com", "EMAILNET-34738 - " + Guid.NewGuid().ToString(),
-                "EMAILNET-34738 Sync Folder Items");
-            client.Send(message2);
-            
-            ExchangeMessageInfoCollection messageInfoCol = client.ListMessages(client.MailboxInfo.InboxUri);
+                MailMessage message2 = new MailMessage("user@domain.com", "user@domain.com", "EMAILNET-34738 - " + Guid.NewGuid().ToString(),"EMAILNET-34738 Sync Folder Items");
+                client.Send(message2);
 
-            SyncFolderResult result = client.SyncFolder(client.MailboxInfo.InboxUri,null);
-            Console.WriteLine(result.NewItems.Count);
-            Console.WriteLine(result.ChangedItems.Count);
-            Console.WriteLine(result.ReadFlagChanged.Count);
-            Console.WriteLine(result.DeletedItems.Length);
-            // ExEnd:SynchronizeFolderItems
+                ExchangeMessageInfoCollection messageInfoCol = client.ListMessages(client.MailboxInfo.InboxUri);
+                SyncFolderResult result = client.SyncFolder(client.MailboxInfo.InboxUri, null);
+                Console.WriteLine(result.NewItems.Count);
+                Console.WriteLine(result.ChangedItems.Count);
+                Console.WriteLine(result.ReadFlagChanged.Count);
+                Console.WriteLine(result.DeletedItems.Length);
+                // ExEnd:SynchronizeFolderItems
+            }
+            catch (Exception ex)
+            {
+
+                Console.Write(ex.Message);
+            }
         }
     }
 }

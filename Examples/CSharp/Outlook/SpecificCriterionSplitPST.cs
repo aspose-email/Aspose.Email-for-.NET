@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using Aspose.Email.Outlook.Pst;
 
@@ -29,6 +30,21 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             pstQueryBuilder.SentDate.Since(new DateTime(2005, 04, 07));
             pstQueryBuilder.SentDate.Before(new DateTime(2005, 04, 13));
             criteria.Add(pstQueryBuilder.GetQuery());
+
+            if (Directory.GetFiles(dataDir + "pathToPst", "*.pst").Length == 0)
+            {
+                
+            }
+            else
+            {
+                string[] files = Directory.GetFiles(dataDir + "pathToPst");
+
+                foreach (string file in files)
+                {
+                    if(file.Contains(".pst"))
+                    File.Delete(file);
+                }
+            }
 
             using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "PersonalStorage_New.pst"))
             {

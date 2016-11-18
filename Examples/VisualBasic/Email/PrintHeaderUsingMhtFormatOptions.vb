@@ -14,15 +14,19 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             ' ExStart:PrintHeaderUsingMhtFormatOptions
             ' The path to the File directory.
             Dim dataDir As String = RunExamples.GetDataDir_Email()
-
-            Dim options As New MailMessageLoadOptions()
-            options.MessageFormat = MessageFormat.Eml
-            ' This will Preserve the TNEF attachment as it is, file contains the TNEF attachment
-            options.FileCompatibilityMode = FileCompatibilityMode.PreserveTnefAttachments
-            Dim eml As MailMessage = MailMessage.Load(dataDir & Convert.ToString("Attachments.eml"), options)
-            For Each attachment As Attachment In eml.Attachments
-                Console.WriteLine(attachment.Name)
-            Next
+            Const pageHeader As String = "<div><div class='pageHeader'>&quot;Panditharatne, Mithra&quot; &lt;mithra.panditharatne@cibc.com&gt;<hr/></div>"
+            Dim message As MailMessage = MailMessage.Load(dataDir & Convert.ToString("Message.eml"))
+            Dim mailFormatter As New MhtMessageFormatter()
+            Dim copyMessage As MailMessage = message.Clone()
+            mailFormatter.Format(copyMessage)
+            Console.WriteLine(If(copyMessage.HtmlBody.Contains(pageHeader), "True", "False"))
+            Dim options As MhtFormatOptions = MhtFormatOptions.HideExtraPrintHeader Or MhtFormatOptions.WriteCompleteEmailAddress
+            mailFormatter.Format(message, options)
+            If Not message.HtmlBody.Contains(pageHeader) Then
+                Console.WriteLine("True")
+            Else
+                Console.WriteLine("False")
+            End If
             ' ExEnd:PrintHeaderUsingMhtFormatOptions
         End Sub
     End Class

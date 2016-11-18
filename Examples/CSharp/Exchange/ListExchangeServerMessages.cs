@@ -15,26 +15,36 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
     {
         public static void Run()
         {
-            // ExStart:ListExchangeServerMessages
-            // Create instance of ExchangeClient class by giving credentials
-            ExchangeClient client = new ExchangeClient("https://MachineName/exchange/Username","username", "password", "domain");
-
-            // Call ListMessages method to list messages info from Inbox
-            ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
-
-            // Loop through the collection to display the basic information
-            foreach (ExchangeMessageInfo msgInfo in msgCollection)
+          
+            try
             {
-                Console.WriteLine("Subject: " + msgInfo.Subject);
-                Console.WriteLine("From: " + msgInfo.From.ToString());
-                Console.WriteLine("To: " + msgInfo.To.ToString());
-                Console.WriteLine("Sent Date: " + msgInfo.Date.ToString());
-                Console.WriteLine("Read?: " + msgInfo.IsRead.ToString());
-                Console.WriteLine("Message ID: " + msgInfo.MessageId);
-                Console.WriteLine("Unique URI: " + msgInfo.UniqueUri);
-                Console.WriteLine("==================================");
+                // ExStart:ListExchangeServerMessages
+                // Create instance of ExchangeClient class by giving credentials
+                ExchangeClient client = new ExchangeClient("https://MachineName/exchange/Username", "username", "password", "domain");
+
+                // Call ListMessages method to list messages info from Inbox
+                ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
+
+                // Loop through the collection to display the basic information
+                foreach (ExchangeMessageInfo msgInfo in msgCollection)
+                {
+                    Console.WriteLine("Subject: " + msgInfo.Subject);
+                    Console.WriteLine("From: " + msgInfo.From.ToString());
+                    Console.WriteLine("To: " + msgInfo.To.ToString());
+                    Console.WriteLine("Sent Date: " + msgInfo.Date.ToString());
+                    Console.WriteLine("Read?: " + msgInfo.IsRead.ToString());
+                    Console.WriteLine("Message ID: " + msgInfo.MessageId);
+                    Console.WriteLine("Unique URI: " + msgInfo.UniqueUri);                    
+                }
+                // ExEnd:ListExchangeServerMessages
             }
-            // ExEnd:ListExchangeServerMessages
+            catch (Exception ex)
+            {
+
+                Console.Write(ex.Message);
+            }
+
+          
         }
     }
 }

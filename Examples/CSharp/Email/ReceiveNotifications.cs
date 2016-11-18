@@ -43,7 +43,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             catch (Exception ex)
             {
                 Console.Write(ex.Message);
-                throw;
+                
             }
 
         }

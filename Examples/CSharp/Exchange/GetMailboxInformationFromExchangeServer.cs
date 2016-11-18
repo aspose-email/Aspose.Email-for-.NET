@@ -15,18 +15,25 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
     {
         public static void Run()
         {
-            // ExStart:GetMailboxInformationFromExchangeServer 
-            // Create instance of ExchangeClient class by giving credentials
-            ExchangeClient client = new ExchangeClient("https://MachineName/exchange/Username","Username", "password", "domain");
+            try
+            {
+                // ExStart:GetMailboxInformationFromExchangeServer 
+                // Create instance of ExchangeClient class by giving credentials
+                ExchangeClient client = new ExchangeClient("https://MachineName/exchange/Username", "Username", "password", "domain");
+                // Get mailbox size, exchange mailbox info, Mailbox, Inbox folder, Sent Items folder URI , Drafts folder URI
+                Console.WriteLine("Mailbox size: " + client.GetMailboxSize() + " bytes");
+                ExchangeMailboxInfo mailboxInfo = client.GetMailboxInfo();
+                Console.WriteLine("Mailbox URI: " + mailboxInfo.MailboxUri);
+                Console.WriteLine("Inbox folder URI: " + mailboxInfo.InboxUri);
+                Console.WriteLine("Sent Items URI: " + mailboxInfo.SentItemsUri);
+                Console.WriteLine("Drafts folder URI: " + mailboxInfo.DraftsUri);
+                // ExEnd:GetMailboxInformationFromExchangeServer
+            }
+            catch (Exception ex)
+            {
 
-            // Get mailbox size, exchange mailbox info, Mailbox, Inbox folder, Sent Items folder URI , Drafts folder URI
-            Console.WriteLine("Mailbox size: " + client.GetMailboxSize() + " bytes");
-            ExchangeMailboxInfo mailboxInfo = client.GetMailboxInfo();
-            Console.WriteLine("Mailbox URI: " + mailboxInfo.MailboxUri);
-            Console.WriteLine("Inbox folder URI: " + mailboxInfo.InboxUri);
-            Console.WriteLine("Sent Items URI: " + mailboxInfo.SentItemsUri);
-            Console.WriteLine("Drafts folder URI: " + mailboxInfo.DraftsUri);
-            // ExEnd:GetMailboxInformationFromExchangeServer
+                Console.Write(ex.Message);
+            }
         }
     }
 }

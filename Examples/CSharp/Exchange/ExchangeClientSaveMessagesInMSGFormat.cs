@@ -1,4 +1,5 @@
-﻿using Aspose.Email.Exchange;
+﻿using System;
+using Aspose.Email.Exchange;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -14,24 +15,32 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
     {
         public static void Run()
         {
-            // ExStart:ExchangeClientSaveMessagesInMSGFormat
-
-            string dataDir = RunExamples.GetDataDir_Exchange();
-            // Create instance of ExchangeClient class by giving credentials
-            ExchangeClient client = new ExchangeClient("https://Servername/exchange/username","username", "password", "domain");
-
-            // Call ListMessages method to list messages info from Inbox
-            ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
-
-            // Loop through the collection to get Message URI
-            foreach (ExchangeMessageInfo msgInfo in msgCollection)
+            try
             {
-                string strMessageURI = msgInfo.UniqueUri;
+                // ExStart:ExchangeClientSaveMessagesInMSGFormat
+                string dataDir = RunExamples.GetDataDir_Exchange();
+                // Create instance of ExchangeClient class by giving credentials
+                ExchangeClient client = new ExchangeClient("https://Servername/exchange/username", "username", "password", "domain");
 
-                // Now save the message in disk
-                client.SaveMessage(strMessageURI, dataDir + msgInfo.MessageId + ".eml");
+                // Call ListMessages method to list messages info from Inbox
+                ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
+
+                // Loop through the collection to get Message URI
+                foreach (ExchangeMessageInfo msgInfo in msgCollection)
+                {
+                    string strMessageURI = msgInfo.UniqueUri;
+
+                    // Now save the message in disk
+                    client.SaveMessage(strMessageURI, dataDir + msgInfo.MessageId + ".eml");
+                }
+                // ExEnd:ExchangeClientSaveMessagesInMSGFormat
             }
-            // ExEnd:ExchangeClientSaveMessagesInMSGFormat
+            catch (Exception ex)
+            {
+
+                Console.Write(ex.Message);
+            }
+
         }
     }
 }

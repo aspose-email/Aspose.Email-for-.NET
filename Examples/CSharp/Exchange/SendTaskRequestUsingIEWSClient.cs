@@ -17,24 +17,28 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
     {
         public static void Run()
         {
-            // ExStart:SendTaskRequestUsingIEWSClient
-            string dataDir = RunExamples.GetDataDir_Exchange();
-            // Create instance of ExchangeClient class by giving credentials
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+            try
+            {
+                // ExStart:SendTaskRequestUsingIEWSClient
+                string dataDir = RunExamples.GetDataDir_Exchange();
+                // Create instance of ExchangeClient class by giving credentials
+                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
-            MailMessageLoadOptions loadOptions = new MailMessageLoadOptions();
+                MsgLoadOptions options = new MsgLoadOptions();
+                options.PreserveTnefAttachments = true;
 
-            loadOptions.MessageFormat = MessageFormat.Msg;
-            loadOptions.FileCompatibilityMode = FileCompatibilityMode.PreserveTnefAttachments;
-
-            // load task from .msg file
-            MailMessage eml = MailMessage.Load(dataDir + "task.msg", loadOptions);
-            eml.From = "firstname.lastname@domain.com";
-            eml.To.Clear();
-            eml.To.Add(new MailAddress("firstname.lastname@domain.com"));
-
-            client.Send(eml);
-            // ExEnd:SendTaskRequestUsingIEWSClient
+                // load task from .msg file
+                MailMessage eml = MailMessage.Load(dataDir + "task.msg", options);
+                eml.From = "firstname.lastname@domain.com";
+                eml.To.Clear();
+                eml.To.Add(new MailAddress("firstname.lastname@domain.com"));
+                client.Send(eml);
+                // ExEnd:SendTaskRequestUsingIEWSClient
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
         }
     }
 }

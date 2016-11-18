@@ -20,8 +20,6 @@ namespace Aspose.Email.Examples.CSharp.Email
         {
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Email();
-            string dstEmail = dataDir + "test.eml";
-
             // Create a new instance of MailMessage class
             MailMessage message = new MailMessage();
 

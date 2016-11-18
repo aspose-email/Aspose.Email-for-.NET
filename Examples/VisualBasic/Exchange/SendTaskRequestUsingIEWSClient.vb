@@ -11,25 +11,27 @@ Imports Aspose.Email.Mail
 '
 
 Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
-	Class SendTaskRequestUsingIEWSClient
-		Public Shared Sub Run()
-			' ExStart:SendTaskRequestUsingIEWSClient
-			Dim dataDir As String = RunExamples.GetDataDir_Exchange()
-			' Create instance of ExchangeClient class by giving credentials
-			Dim client As IEWSClient = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain")
+    Class SendTaskRequestUsingIEWSClient
+        Public Shared Sub Run()
+            Try
+                ' ExStart:SendTaskRequestUsingIEWSClient
+                Dim dataDir As String = RunExamples.GetDataDir_Exchange()
+                ' Create instance of ExchangeClient class by giving credentials
+                Dim client As IEWSClient = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain")
 
-			Dim loadOptions As New MailMessageLoadOptions()
-			loadOptions.MessageFormat = MessageFormat.Msg
-			loadOptions.FileCompatibilityMode = FileCompatibilityMode.PreserveTnefAttachments
+                Dim options As New MsgLoadOptions()
+                options.PreserveTnefAttachments = True
 
-			' load task from .msg file
-			Dim eml As MailMessage = MailMessage.Load(dataDir & Convert.ToString("task.msg"), loadOptions)
-			eml.From = "firstname.lastname@domain.com"
-			eml.[To].Clear()
-			eml.[To].Add(New MailAddress("firstname.lastname@domain.com"))
-
-			client.Send(eml)
-			' ExEnd:SendTaskRequestUsingIEWSClient
-		End Sub
-	End Class
+                ' load task from .msg file
+                Dim eml As MailMessage = MailMessage.Load(dataDir & Convert.ToString("task.msg"), options)
+                eml.From = "firstname.lastname@domain.com"
+                eml.[To].Clear()
+                eml.[To].Add(New MailAddress("firstname.lastname@domain.com"))
+                ' ExEnd:SendTaskRequestUsingIEWSClient
+                client.Send(eml)
+            Catch ex As Exception
+                Console.Write(ex.Message)
+            End Try
+        End Sub
+    End Class
 End Namespace

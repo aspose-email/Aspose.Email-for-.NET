@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Aspose.Email.Exchange;
 
 /*
@@ -15,24 +16,33 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
     {
         public static void Run()
         {
-            // ExStart:SaveMessagesToMemoryStream
-            string datadir = RunExamples.GetDataDir_Exchange();
-            // Create instance of EWSClient class by giving credentials
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
-            // Call ListMessages method to list messages info from Inbox
-            ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
-
-            // Loop through the collection to get Message URI
-            foreach (ExchangeMessageInfo msgInfo in msgCollection)
+            try
             {
-                string strMessageURI = msgInfo.UniqueUri;
+                // ExStart:SaveMessagesToMemoryStream
+                string datadir = RunExamples.GetDataDir_Exchange();
+                // Create instance of EWSClient class by giving credentials
+                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
-                // Now save the message in memory stream
-                MemoryStream stream = new MemoryStream();
-                client.SaveMessage(strMessageURI, datadir + stream);
+                // Call ListMessages method to list messages info from Inbox
+                ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
+
+                // Loop through the collection to get Message URI
+                foreach (ExchangeMessageInfo msgInfo in msgCollection)
+                {
+                    string strMessageURI = msgInfo.UniqueUri;
+
+                    // Now save the message in memory stream
+                    MemoryStream stream = new MemoryStream();
+                    client.SaveMessage(strMessageURI, datadir + stream);
+                }
+                // ExEnd:SaveMessagesToMemoryStream
             }
-            // ExEnd:SaveMessagesToMemoryStream
+            catch (Exception ex)
+            {
+
+                Console.Write(ex.Message);
+            }
         }
     }
 }

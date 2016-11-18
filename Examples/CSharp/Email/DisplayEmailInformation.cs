@@ -12,7 +12,6 @@ namespace Aspose.Email.Examples.CSharp.Email
             // ExStart:DisplayEmailInformation
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Email();
-            string dstEmail = dataDir + "test.eml";
 
             // Create MailMessage instance by loading an Eml file
             MailMessage message = MailMessage.Load(dataDir + "test.eml", new EmlLoadOptions());
@@ -28,7 +27,6 @@ namespace Aspose.Email.Examples.CSharp.Email
             Console.WriteLine(message.HtmlBody);
             Console.WriteLine("TextBody");
             Console.WriteLine(message.Body);
-            Console.WriteLine(Environment.NewLine + "Displayed email information from " + dstEmail);
             // ExEnd:DisplayEmailInformation
         }
     }

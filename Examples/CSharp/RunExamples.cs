@@ -38,31 +38,31 @@ namespace Aspose.Email.Examples.CSharp.Email
             //CreateNewEmail.Run();
             //SaveMessageAsDraft.Run();
             //SpecifyRecipientAddresses.Run();
-            //DisplayEmailAddressesNames.Run();            
+            //DisplayEmailAddressesNames.Run();
             //SetHTMLBody.Run();
-            //SetAlternateText.Run();            
-            //ManagingEmailAttachments.Run();            
+            //SetAlternateText.Run();
+            //ManagingEmailAttachments.Run();
             //RemoveAttachments.Run();
             //EmbeddedObjects.Run();
             //LoadMessageWithLoadOptions.Run();
-            //SetEmailHeaders.Run();            
+            //SetEmailHeaders.Run();
             //ExtractAttachments.Run();
-            //CreateNewMailMessage.Run();            
+            //CreateNewMailMessage.Run();
             //ReadMessageByPreservingTNEFAttachments.Run();
             //CreatingTNEFFromMSG.Run();
-            //LoadAndSaveFileAsEML.Run();            
-            //PreserveOriginalBoundaries.Run();           
+            //LoadAndSaveFileAsEML.Run();
+            //PreserveOriginalBoundaries.Run();
             //PreserveTNEFAttachment.Run();
-            //EncryptAndDecryptMessage.Run();            
+            //EncryptAndDecryptMessage.Run();
             //PrintHeaderUsingMhtFormatOptions.Run();
             //ExtraPrintHeaderUsingHideExtraPrintHeader.Run();
             //BayesianSpamAnalyzer.Run();
             //GetDeliveryStatusNotificationMessages.Run();
-            //DetectDifferentFileFormats.Run();   
+            //DetectDifferentFileFormats.Run();
             //ExtractEmbeddObjects.Run();
             //ExtractEmbeddedObjectsFromEmail.Run();
-            //EncryptAndDecryptMessage.Run(); 
-            //DetectTNEFMessage.Run();            
+            //EncryptAndDecryptMessage.Run();
+            //DetectTNEFMessage.Run();
             //ReceiveNotifications.Run();
             //SetDefaultTextEncoding.Run();
             //IdentifyInlineAndRegularAttachments.Run();
@@ -74,6 +74,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //// =====================================================
             //// =====================================================
 
+           
             //NewPSTAddSubfolders.Run();
             //CreateSaveOutlookFiles.Run();
             //DeleteBulkItemsFromPSTFile.Run();
@@ -88,8 +89,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //RemovePropertiesFromMSGAndAttachments.Run();
             //ConvertEMLToMSG.Run();
             //CreatEMLFileAndConvertToMSG.Run();
-            //ReadAndWritingOutlookTemplateFile.Run();
-            //DeleteMessagesFromPSTFiles.Run();
+            //ReadAndWritingOutlookTemplateFile.Run();          
             //SetFollowUpflag.Run();
             //SetFollowUpForRecipients.Run();
             //MarkFollowUpFlagAsCompleted.Run();
@@ -127,6 +127,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //GetTheTextAndRTFBodies.Run();
             //CreateNewMapiCalendarAndAddToCalendarSubfolder.Run();
             //ParseOutlookMessageFile.Run();
+            //ConvertMSGToMIMEMessage.Run();
+         
 
             // Working with Outlook Personal Storage (PST) files
             //SplitSinglePSTInToMultiplePST.Run();
@@ -165,6 +167,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //DisplayInformationOfPSTFile.Run();
             //SpecificCriterionSplitPST.Run();
             //AddMessagesFromOtherPST.Run();
+            //DeleteMessagesFromPSTFiles.Run();
 
             //// =====================================================
             //// =====================================================
@@ -230,8 +233,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //CreateAndSendingMessageWithVotingOptions.Run();
             //PreFetchMessageSizeUsingIEWSClient.Run();
             //SynchronizeFolderItems.Run();
-            //SecondaryCalendarEvents.Run();          
-            //SaveExchangeTaskToDisc.Run();             
+            //SecondaryCalendarEvents.Run();
+            //SaveExchangeTaskToDisc.Run();
             //CreateExchangeTask.Run();
             //DeleteExchangeTask.Run();
             //SendExchangeTask.Run();
@@ -286,9 +289,9 @@ namespace Aspose.Email.Examples.CSharp.Email
             //GetMessageIdUsingImapMessageInfo.Run();
             //FilteringMessagesFromIMAPMailbox.Run();
             //InternalDateFilter.Run();
-            //ProxyServerAccessMailbox.Run(); 
+            //ProxyServerAccessMailbox.Run();
             //RetrievingMessagesAsynchronously.Run();
-            //RetreivingServerExtensions.Run();            
+            //RetreivingServerExtensions.Run();
             //SupportIMAPIdleCommand.Run();
           
 
@@ -323,7 +326,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SendEmailViaProxyServer.Run();
             //SendPlainTextEmailMessage.Run();
             //SendEmailWithAlternateText.Run();
-            //ForwardEmail.Run();       
+            //ForwardEmail.Run();
             //SignEmailsWithDKIM.Run();
             //CreateMeetingRequestWithRecurrence.Run();
 

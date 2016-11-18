@@ -13,26 +13,30 @@ namespace Aspose.Email.Examples.CSharp.Email.SMTP
 {
     class SendMessageAsTNEF
     {
- 
         public static void Run()
         {
-            // ExStart:SendMessageAsTNEF
-            var emlFileName = RunExamples.GetDataDir_Email() +  "Message.eml";     // A TNEF Email
-            MailMessageLoadOptions options = new MailMessageLoadOptions();
-            options.MessageFormat = MessageFormat.Eml;         
-            MailMessage eml = MailMessage.Load(emlFileName, options);
-            eml.From = "somename@gmail.com";
-            eml.To.Clear();
-            eml.To.Add(new MailAddress("first.last@test.com"));
-            eml.Subject = "With PreserveTnef flag during loading";
-            eml.Date = DateTime.Now;
+            try
+            {
+                // ExStart:SendMessageAsTNEF
+                var emlFileName = RunExamples.GetDataDir_Email() + "Message.eml";     // A TNEF Email
 
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "somename", "password");
-            client.SecurityOptions = SecurityOptions.Auto;
-            client.UseTnef = true;     // Use this flag to send as TNEF
-            client.Send(eml);
-            // ExEnd:SendMessageAsTNEF
+                // Load from eml
+                MailMessage eml1 = MailMessage.Load(emlFileName, new EmlLoadOptions());
+                eml1.From = "somename@gmail.com";
+                eml1.To.Clear();
+                eml1.To.Add(new MailAddress("first.last@test.com"));
+                eml1.Subject = "With PreserveTnef flag during loading";
+                eml1.Date = DateTime.Now;
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "somename", "password");
+                client.SecurityOptions = SecurityOptions.Auto;
+                client.UseTnef = true;     // Use this flag to send as TNEF
+                client.Send(eml1);
+                // ExEnd:SendMessageAsTNEF
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
         }
-        
     }
 }

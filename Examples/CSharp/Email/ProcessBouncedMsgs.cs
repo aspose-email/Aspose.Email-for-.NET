@@ -26,8 +26,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             Console.WriteLine(fileName);
             Console.WriteLine("IsBounced : " + result.IsBounced);
             Console.WriteLine("Action : " + result.Action);
-            Console.WriteLine("Recipient : " + result.Recipient);
-            
+            Console.WriteLine("Recipient : " + result.Recipient);            
             Console.WriteLine(Environment.NewLine + "Bounce information displayed successfully.");
         }
     }
