@@ -34,7 +34,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             mail.LinkedResources.Add(barcode);
             mail.AlternateViews.Add(plainView);
             mail.AlternateViews.Add(htmlView);
-            mail.Save(dstEmail, SaveOptions.DefaultMsgUnicode);
+            mail.Save(dataDir + "EmbeddedImage_out.msg", SaveOptions.DefaultMsgUnicode);
             // ExEnd:EmbeddedObjects
             Console.WriteLine(Environment.NewLine + "Message saved with embedded objects successfully at " + dstEmail);
         }

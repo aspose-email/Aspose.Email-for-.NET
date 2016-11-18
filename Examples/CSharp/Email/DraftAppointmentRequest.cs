@@ -11,7 +11,7 @@ namespace Aspose.Email.Examples.CSharp.Email
         {
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Email();
-            string dstDraft = dataDir + "appointment-draft.msg";
+            string dstDraft = dataDir + "appointment-draft_out.msg";
             
             string sender = "test@gmail.com";
             string recipient = "test@email.com";

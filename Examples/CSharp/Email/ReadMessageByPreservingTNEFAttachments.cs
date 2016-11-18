@@ -19,11 +19,9 @@ namespace Aspose.Email.Examples.CSharp.Email
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Email();
 
-            MailMessageLoadOptions options = new MailMessageLoadOptions();
-            options.MessageFormat = MessageFormat.Eml;
-            // This will Preserve the TNEF attachment as it is, file contains the TNEF attachment
-            options.FileCompatibilityMode = FileCompatibilityMode.PreserveTnefAttachments;
-            MailMessage eml = MailMessage.Load(dataDir + "Attachments.eml", options);
+            MsgLoadOptions options = new MsgLoadOptions();
+            options.PreserveTnefAttachments = true;
+            MailMessage eml = MailMessage.Load(dataDir + "EmbeddedImage1.msg", options);
             foreach (Attachment attachment in eml.Attachments)
             {
                 Console.WriteLine(attachment.Name);

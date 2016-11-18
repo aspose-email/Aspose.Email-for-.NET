@@ -10,27 +10,27 @@
 
 Namespace Aspose.Email.Examples.VisualBasic.Email.SMTP
     Class SendMessageAsTNEF
-
         Public Shared Sub Run()
-            ' ExStart:SendMessageAsTNEF
-            Dim emlFileName = RunExamples.GetDataDir_SMTP() + "Message.eml"
-            ' A TNEF Email
-            Dim options As New MailMessageLoadOptions()
-            options.MessageFormat = MessageFormat.Eml
-            Dim eml As MailMessage = MailMessage.Load(emlFileName, options)
-            eml.From = "somename@gmail.com"
-            eml.[To].Clear()
-            eml.[To].Add(New MailAddress("first.last@test.com"))
-            eml.Subject = "With PreserveTnef flag during loading"
-            eml.[Date] = DateTime.Now
-
-            Dim client As New SmtpClient("smtp.gmail.com", 587, "somename", "password")
-            client.SecurityOptions = SecurityOptions.Auto
-            client.UseTnef = True
-            ' Use this flag to send as TNEF
-            client.Send(eml)
-            ' ExEnd:SendMessageAsTNEF
+            Try
+                ' ExStart:SendMessageAsTNEF
+                Dim emlFileName = RunExamples.GetDataDir_Email() + "Message.eml"
+                ' A TNEF Email
+                ' Load from eml
+                Dim eml1 As MailMessage = MailMessage.Load(emlFileName, New EmlLoadOptions())
+                eml1.From = "somename@gmail.com"
+                eml1.[To].Clear()
+                eml1.[To].Add(New MailAddress("first.last@test.com"))
+                eml1.Subject = "With PreserveTnef flag during loading"
+                eml1.[Date] = DateTime.Now
+                Dim client As New SmtpClient("smtp.gmail.com", 587, "somename", "password")
+                client.SecurityOptions = SecurityOptions.Auto
+                client.UseTnef = True
+                ' Use this flag to send as TNEF
+                ' ExEnd:SendMessageAsTNEF
+                client.Send(eml1)
+            Catch ex As Exception
+                Console.Write(ex.Message)
+            End Try
         End Sub
-
     End Class
 End Namespace

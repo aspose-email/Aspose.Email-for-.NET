@@ -1,4 +1,5 @@
-﻿using Aspose.Email.Exchange;
+﻿using System;
+using Aspose.Email.Exchange;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -14,20 +15,28 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
     {
         public static void Run()
         {
-            // ExStart:ExchangeServerUsingEWS
-            // Create instance of EWSClient class by giving credentials
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+            try
+            {
+                // ExStart:ExchangeServerUsingEWS
+                // Create instance of EWSClient class by giving credentials
+                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
-            // Get folder URI
-            string strFolderURI = string.Empty;
-            strFolderURI = client.MailboxInfo.InboxUri;
-            strFolderURI = client.MailboxInfo.DeletedItemsUri;
-            strFolderURI = client.MailboxInfo.DraftsUri;
-            strFolderURI = client.MailboxInfo.SentItemsUri;
+                // Get folder URI
+                string strFolderURI = string.Empty;
+                strFolderURI = client.MailboxInfo.InboxUri;
+                strFolderURI = client.MailboxInfo.DeletedItemsUri;
+                strFolderURI = client.MailboxInfo.DraftsUri;
+                strFolderURI = client.MailboxInfo.SentItemsUri;
 
-            // Get list of messages from the specified folder
-            ExchangeMessageInfoCollection msgCollection = client.ListMessages(strFolderURI);
-            // ExEnd:ExchangeServerUsingEWS
+                // Get list of messages from the specified folder
+                ExchangeMessageInfoCollection msgCollection = client.ListMessages(strFolderURI);
+                // ExEnd:ExchangeServerUsingEWS
+            }
+            catch (Exception ex)
+            {
+
+                Console.Write(ex.Message);
+            }
         }
     }
 }

@@ -18,28 +18,36 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
     {
         public static void Run()
         {
-            // The path to the File directory.
-            string dataDir = RunExamples.GetDataDir_Exchange();
-            string dstEmail = dataDir + "Message.eml";
-            
-            // Create instance of ExchangeClient class by giving credentials
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
-            // load task from .eml file
-            EmlLoadOptions loadOptions = new EmlLoadOptions();
+            try
+            {
 
-            loadOptions.PrefferedTextEncoding = Encoding.UTF8;
-            loadOptions.PreserveTnefAttachments = true;
+                // The path to the File directory.
+                string dataDir = RunExamples.GetDataDir_Exchange();
+                string dstEmail = dataDir + "Message.eml";
 
-            // load task from .msg file
-            MailMessage eml = MailMessage.Load(dstEmail, loadOptions);
-            eml.From = "firstname.lastname@domain.com";
-            eml.To.Clear();
-            eml.To.Add(new MailAddress("firstname.lastname@domain.com"));
+                // Create instance of ExchangeClient class by giving credentials
+                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
-            client.Send(eml);
+                // load task from .eml file
+                EmlLoadOptions loadOptions = new EmlLoadOptions();
 
-            Console.WriteLine(Environment.NewLine + "Task sent on Exchange Server successfully.");
+                loadOptions.PrefferedTextEncoding = Encoding.UTF8;
+                loadOptions.PreserveTnefAttachments = true;
+
+                // load task from .msg file
+                MailMessage eml = MailMessage.Load(dstEmail, loadOptions);
+                eml.From = "firstname.lastname@domain.com";
+                eml.To.Clear();
+                eml.To.Add(new MailAddress("firstname.lastname@domain.com"));
+                client.Send(eml);
+                Console.WriteLine(Environment.NewLine + "Task sent on Exchange Server successfully.");
+            }
+            catch (Exception ex)
+            {
+
+                Console.Write(ex.Message);
+            }
         }
     }
 }

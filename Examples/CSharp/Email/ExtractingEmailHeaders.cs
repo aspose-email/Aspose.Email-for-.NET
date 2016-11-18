@@ -11,8 +11,6 @@ namespace Aspose.Email.Examples.CSharp.Email
         {
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Email();
-            string dstEmail = dataDir + "test.eml";
-
             MailMessage message;
 
             // Create MailMessage instance by loading an EML file
@@ -26,7 +24,6 @@ namespace Aspose.Email.Examples.CSharp.Email
                 Console.Write(header + " - ");
                 Console.WriteLine(message.Headers.Get(index++)); //.GetValues(header).Length.ToString());
             }
-            Console.WriteLine(Environment.NewLine + "Displayed email headers from " + dstEmail);
         }
     }
 }

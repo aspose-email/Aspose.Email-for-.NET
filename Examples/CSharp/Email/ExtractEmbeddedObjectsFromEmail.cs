@@ -39,7 +39,16 @@ namespace Aspose.Email.Examples.CSharp.Email
                 Password = "password"
             };
 
-            client.Send(dataDir + "Message.msg");
+            try
+            {
+                client.Send(dataDir + "Message.msg");
+            }
+            catch (Exception ex)
+            {
+                
+               Console.Write(ex.Message);
+            }
+          
             // ExEnd:ExtractEmbeddedObjectsFromEmail
         }
     }

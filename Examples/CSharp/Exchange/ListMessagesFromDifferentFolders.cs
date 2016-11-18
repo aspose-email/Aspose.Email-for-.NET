@@ -1,4 +1,5 @@
-﻿using Aspose.Email.Exchange;
+﻿using System;
+using Aspose.Email.Exchange;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -14,20 +15,28 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
     {
         public static void Run()
         {
-            // ExStart:ListMessagesFromDifferentFolders
-            // Create instance of ExchangeClient class by giving credentials
-            ExchangeClient client = new ExchangeClient("https://MachineName/exchange/Username","username", "password", "domain");
+            try
+            {
+                // ExStart:ListMessagesFromDifferentFolders
+                // Create instance of ExchangeClient class by giving credentials
+                ExchangeClient client = new ExchangeClient("https://MachineName/exchange/Username", "username", "password", "domain");
 
-            // Get folder URI
-            string strFolderURI = string.Empty;
-            strFolderURI = client.MailboxInfo.InboxUri;
-            strFolderURI = client.MailboxInfo.DeletedItemsUri;
-            strFolderURI = client.MailboxInfo.DraftsUri;
-            strFolderURI = client.MailboxInfo.SentItemsUri;
+                // Get folder URI
+                string strFolderURI = string.Empty;
+                strFolderURI = client.MailboxInfo.InboxUri;
+                strFolderURI = client.MailboxInfo.DeletedItemsUri;
+                strFolderURI = client.MailboxInfo.DraftsUri;
+                strFolderURI = client.MailboxInfo.SentItemsUri;
 
-            // get list of messages from the specified folder
-            ExchangeMessageInfoCollection msgCollection = client.ListMessages(strFolderURI);
-            // ExEnd:ListMessagesFromDifferentFolders
+                // get list of messages from the specified folder
+                ExchangeMessageInfoCollection msgCollection = client.ListMessages(strFolderURI);
+                // ExEnd:ListMessagesFromDifferentFolders
+            }
+            catch (Exception ex)
+            {
+
+                Console.Write(ex.Message);
+            }
         }
     }
 }

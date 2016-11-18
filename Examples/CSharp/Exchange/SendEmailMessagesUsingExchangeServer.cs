@@ -1,4 +1,5 @@
-﻿using Aspose.Email.Exchange;
+﻿using System;
+using Aspose.Email.Exchange;
 using Aspose.Email.Mail;
 
 /*
@@ -15,20 +16,29 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
     {
         public static void Run()
         {
-            // ExStart:SendEmailMessagesUsingExchangeServer
-            // Create instance of ExchangeClient class by giving credentials
-            ExchangeClient client = new ExchangeClient("https://MachineName/exchange/username", "username", "password", "domain");
+            try
+            {
+                // ExStart:SendEmailMessagesUsingExchangeServer
+                // Create instance of ExchangeClient class by giving credentials
+                ExchangeClient client = new ExchangeClient("https://MachineName/exchange/username", "username", "password", "domain");
 
-            // Create instance of type MailMessage
-            MailMessage msg = new MailMessage();
-            msg.From = "sender@domain.com";
-            msg.To = "recipient@ domain.com ";
-            msg.Subject = "Sending message from exchange server";
-            msg.HtmlBody = "<h3>sending message from exchange server</h3>";
+                // Create instance of type MailMessage
+                MailMessage msg = new MailMessage();
+                msg.From = "sender@domain.com";
+                msg.To = "recipient@ domain.com ";
+                msg.Subject = "Sending message from exchange server";
+                msg.HtmlBody = "<h3>sending message from exchange server</h3>";
 
-            // Send the message
-            client.Send(msg);
-            // ExEnd:SendEmailMessagesUsingExchangeServer
+                // Send the message
+                client.Send(msg);
+                // ExEnd:SendEmailMessagesUsingExchangeServer
+            }
+            catch (Exception ex)
+            {
+
+                Console.Write(ex.Message);
+            }
+
         }
     }
 }

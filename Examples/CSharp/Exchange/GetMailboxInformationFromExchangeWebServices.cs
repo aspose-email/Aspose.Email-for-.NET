@@ -18,6 +18,9 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
             // The path to the File directory.
             // ExStart:GetMailboxInformationFromExchangeWebServices 
             // Create instance of EWSClient class by giving credentials
+            try
+            {          
+
             IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
             // Get mailbox size, exchange mailbox info, Mailbox and Inbox folder URI
@@ -28,6 +31,12 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
             Console.WriteLine("Sent Items URI: " + mailboxInfo.SentItemsUri);
             Console.WriteLine("Drafts folder URI: " + mailboxInfo.DraftsUri);
             // ExEnd:GetMailboxInformationFromExchangeWebServices
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
+
         }
     }
 }
