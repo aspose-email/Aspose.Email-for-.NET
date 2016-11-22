@@ -36,12 +36,12 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 newProperties.Add(namedProperty2.Tag, namedProperty2);
                 newProperties.Add(property.Tag, property);
                 testFolder.ChangeMessages(testFolder.EnumerateMessagesEntryId(), newProperties);
-            }
+            }          
         }
 
         private static long GenerateNamedPropertyTag(long index, MapiPropertyType dataType)
         {
-            return (((0x8000 | index) << 16) | (long)dataType) & 0x00000000FFFFFFFF;
+            return ((long)(long)dataType | (0x8000 | index) << 16) & 0x00000000FFFFFFFF;
         }
         // ExEnd:UpdatePSTCustomProperites
     }

@@ -12,37 +12,37 @@ Imports Aspose.Email.Mail.Calendaring
 '
 
 Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
-	Class SendMeetingRequestsUsingEWS
-		Public Shared Sub Run()
-			' ExStart:SendMeetingRequestsUsingEWS
-			Try
-				' Create instance of IEWSClient class by giving credentials
-				Dim client As IEWSClient = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain")
+    Class SendMeetingRequestsUsingEWS
+        Public Shared Sub Run()
+            ' ExStart:SendMeetingRequestsUsingEWS
+            Try
+                ' Create instance of IEWSClient class by giving credentials
+                Dim client As IEWSClient = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain")
 
-				' create the meeting request
-				Dim app As New Appointment("meeting request", DateTime.Now.AddHours(1), DateTime.Now.AddHours(1.5), "administrator@test.com", "bob@test.com")
-				app.Summary = "meeting request summary"
-				app.Description = "description"
-				' set recurrence pattern for this appointment
-				Dim pattern As RecurrencePattern = New DailyRecurrencePattern(DateTime.Now.AddDays(5))
-				app.RecurrencePattern = pattern
+                ' create the meeting request
+                Dim app As New Appointment("meeting request", DateTime.Now.AddHours(1), DateTime.Now.AddHours(1.5), "administrator@test.com", "bob@test.com")
+                app.Summary = "meeting request summary"
+                app.Description = "description"
 
-				' create the message and set the meeting request
-				Dim msg As New MailMessage()
-				msg.From = "administrator@test.com"
-				msg.[To] = "bob@test.com"
-				msg.IsBodyHtml = True
-				msg.HtmlBody = "<h3>HTML Heading</h3><p>Email Message detail</p>"
-				msg.Subject = "meeting request"
-				msg.AddAlternateView(app.RequestApointment(0))
+                Dim pattern As Aspose.Email.Recurrences.RecurrencePattern = New Recurrences.DailyRecurrencePattern(DateTime.Now.AddDays(5))
+                app.Recurrence = pattern
 
-				' send the appointment
-				client.Send(msg)
-				Console.WriteLine("Appointment request sent")
-			Catch ex As Exception
-				Console.WriteLine(ex.Message)
-			End Try
-			' ExEnd:SendMeetingRequestsUsingEWS
-		End Sub
-	End Class
+                ' create the message and set the meeting request
+                Dim msg As New MailMessage()
+                msg.From = "administrator@test.com"
+                msg.[To] = "bob@test.com"
+                msg.IsBodyHtml = True
+                msg.HtmlBody = "<h3>HTML Heading</h3><p>Email Message detail</p>"
+                msg.Subject = "meeting request"
+                msg.AddAlternateView(app.RequestApointment(0))
+
+                ' send the appointment
+                client.Send(msg)
+                Console.WriteLine("Appointment request sent")
+            Catch ex As Exception
+                Console.WriteLine(ex.Message)
+            End Try
+            ' ExEnd:SendMeetingRequestsUsingEWS
+        End Sub
+    End Class
 End Namespace

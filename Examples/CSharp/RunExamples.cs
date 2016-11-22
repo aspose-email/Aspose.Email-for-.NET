@@ -239,6 +239,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //DeleteExchangeTask.Run();
             //SendExchangeTask.Run();
             //UpdateExchangeTask.Run();           
+            //SendCalendarInvitation.Run();
 
             //// =====================================================
             //// =====================================================

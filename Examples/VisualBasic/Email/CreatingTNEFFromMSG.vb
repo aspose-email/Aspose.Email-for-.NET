@@ -11,16 +11,17 @@ Imports Aspose.Email.Outlook
 '
 
 Namespace Aspose.Email.Examples.VisualBasic.Email
-	Class CreatingTNEFFromMSG
-		Public Shared Sub Run()
-			' ExStart:CreatingTNEFFromMSG
-			' The path to the File directory.
-			Dim dataDir As String = RunExamples.GetDataDir_Email()
-
-			Dim msg As MapiMessage = MapiMessage.FromFile(dataDir & Convert.ToString("Message.msg"))
-			Dim mi As MailMessageInterpretor = MailMessageInterpretorFactory.Instance.GetIntepretor(msg.MessageClass)
-			Dim eml As MailMessage = mi.InterpretAsTnef(msg)
-			' ExEnd:CreatingTNEFFromMSG
-		End Sub
-	End Class
+    Class CreatingTNEFFromMSG
+        Public Shared Sub Run()
+            ' ExStart:CreatingTNEFFromMSG
+            ' The path to the File directory.
+            Dim dataDir As String = RunExamples.GetDataDir_Email()
+            Dim msg As MapiMessage = MapiMessage.FromFile(dataDir & Convert.ToString("Message.msg"))
+            Dim options As New MailConversionOptions() With { _
+                .ConvertAsTnef = True _
+            }
+            Dim mail As MailMessage = msg.ToMailMessage(options)
+            ' ExEnd:CreatingTNEFFromMSG
+        End Sub
+    End Class
 End Namespace

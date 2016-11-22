@@ -19,10 +19,9 @@ namespace Aspose.Email.Examples.CSharp.Email
             // ExStart:CreatingTNEFFromMSG
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Email();
-
             MapiMessage msg = MapiMessage.FromFile(dataDir + "Message.msg");
-            MailMessageInterpretor mi = MailMessageInterpretorFactory.Instance.GetIntepretor(msg.MessageClass);
-            MailMessage eml = mi.InterpretAsTnef(msg);
+            MailConversionOptions options = new MailConversionOptions {ConvertAsTnef = true};
+            MailMessage mail = msg.ToMailMessage(options);           
             // ExEnd:CreatingTNEFFromMSG
         }
     }
