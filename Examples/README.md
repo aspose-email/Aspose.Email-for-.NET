@@ -1,6 +1,6 @@
 ##Aspose.Email for .NET Examples
 
-This repository contains C# and VB.NET examples for [Aspose.Email for .NET](http://www.aspose.com/.net/email-component.aspx) which will help you learn Aspose.Pdf for .NET and write your own applications.
+This repository contains C# and VB.NET examples for [Aspose.Email for .NET](http://www.aspose.com/.net/email-component.aspx) which will help you learn Aspose.Email for .NET and write your own applications.
 
 <p align="center">
   <a title="Download complete Aspose.Email for .NET source code" href="https://github.com/asposeemail/Aspose_Email_NET/archive/master.zip">
