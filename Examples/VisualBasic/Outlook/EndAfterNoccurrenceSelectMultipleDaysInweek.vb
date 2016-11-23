@@ -1,4 +1,5 @@
 ﻿Imports Aspose.Email.Outlook
+Imports Aspose.Email.Recurrences
 
 ' This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
 '   API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 
@@ -47,9 +48,9 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
             ' ExEnd:EndAfterNoccurrenceSelectMultipleDaysInweek
         End Sub
         Private Shared Function GetOccurrenceCount(start As DateTime, endBy As DateTime, rrule As String) As UInteger
-            Dim pattern As New iCalendar.RecurrencePattern(String.Format("DTSTART:{0}" & vbCr & vbLf & "RRULE:{1}", start.ToString("yyyyMMdd"), rrule))
-            Dim dates As iCalendar.DateCollection = pattern.GenerateOccurrences(start, endBy)
-            Return CUInt(dates.Count)
+            Dim pattern As New CalendarRecurrence(String.Format("DTSTART:{0}" & vbCr & vbLf & "RRULE:{1}", start.ToString("yyyyMMdd"), rrule))
+            Dim [date] As DateCollection = pattern.GenerateOccurrences(start, endBy)
+            Return CUInt([date].Count)
         End Function
     End Class
 End Namespace

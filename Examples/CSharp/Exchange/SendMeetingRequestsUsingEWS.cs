@@ -24,15 +24,16 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
                 // Create instance of IEWSClient class by giving credentials
                 IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
-                // create the meeting request
+                // Create the meeting request
                 Appointment app = new Appointment("meeting request", DateTime.Now.AddHours(1), DateTime.Now.AddHours(1.5), "administrator@test.com", "bob@test.com");
                 app.Summary = "meeting request summary";
                 app.Description = "description";
-                // set recurrence pattern for this appointment
-                RecurrencePattern pattern = new DailyRecurrencePattern(DateTime.Now.AddDays(5));
-                app.RecurrencePattern = pattern;
 
-                // create the message and set the meeting request
+
+                Aspose.Email.Recurrences.RecurrencePattern pattern = new Recurrences.DailyRecurrencePattern(DateTime.Now.AddDays(5));
+                app.Recurrence = pattern;
+
+                // Create the message and set the meeting request
                 MailMessage msg = new MailMessage();
                 msg.From = "administrator@test.com";
                 msg.To = "bob@test.com";

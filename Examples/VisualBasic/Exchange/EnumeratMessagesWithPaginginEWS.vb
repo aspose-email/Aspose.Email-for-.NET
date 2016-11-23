@@ -10,35 +10,32 @@ Imports Aspose.Email.Exchange
 '
 
 Namespace Aspose.Email.Examples.VisualBasic.Email.Exchange
-	Class EnumeratMessagesWithPaginginEWS
-		Public Shared Sub Run()
-			' ExStart:EnumeratMessagesWithPaginginEWS
-			' Create instance of ExchangeWebServiceClient class by giving credentials
-			Dim client As IEWSClient = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "Shabir.haider@studentpartner.com", "LoveAir1993")
+    Class EnumeratMessagesWithPaginginEWS
+        Public Shared Sub Run()
+            Try
+                ' ExStart:EnumeratMessagesWithPaginginEWS
+                ' Create instance of ExchangeWebServiceClient class by giving credentials
+                Dim client As IEWSClient = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "UserName", "Password")
 
-			' Call ListMessages method to list messages info from Inbox
-			Dim msgCollection As ExchangeMessageInfoCollection = client.ListMessages(client.GetMailboxInfo().InboxUri)
-
-			Try
-				Dim itemsPerPage As Integer = 5
-				Dim pages As New List(Of ExchangeMessageInfoCollection)()
-				Dim pagedMessageInfoCol As ExchangeMessageInfoCollection = client.ListMessages(client.MailboxInfo.InboxUri, itemsPerPage)
-				pages.Add(pagedMessageInfoCol)
-
-				While Not pagedMessageInfoCol.LastPage
-					pagedMessageInfoCol = client.ListMessages(client.MailboxInfo.InboxUri, itemsPerPage, pagedMessageInfoCol.LastItemOffset.Value + 1)
-					pages.Add(pagedMessageInfoCol)
-				End While
-
-				pagedMessageInfoCol = client.ListMessages(client.MailboxInfo.InboxUri, itemsPerPage)
-
-				While Not pagedMessageInfoCol.LastPage
-					client.ListMessages(client.MailboxInfo.InboxUri, pagedMessageInfoCol, itemsPerPage, pagedMessageInfoCol.LastItemOffset.Value + 1)
-				End While
-
-			Finally
-			End Try
-			' ExEnd:EnumeratMessagesWithPaginginEWS
-		End Sub
-	End Class
+                ' Call ListMessages method to list messages info from Inbox
+                Dim msgCollection As ExchangeMessageInfoCollection = client.ListMessages(client.GetMailboxInfo().InboxUri)
+                Dim itemsPerPage As Integer = 5
+                Dim pages As New List(Of PageInfo)()
+                Dim pagedMessageInfoCol As PageInfo = client.ListMessagesByPage(client.MailboxInfo.InboxUri, itemsPerPage)
+                pages.Add(pagedMessageInfoCol)
+                While Not pagedMessageInfoCol.LastPage
+                    pagedMessageInfoCol = client.ListMessagesByPage(client.MailboxInfo.InboxUri, itemsPerPage)
+                    pages.Add(pagedMessageInfoCol)
+                End While
+                pagedMessageInfoCol = client.ListMessagesByPage(client.MailboxInfo.InboxUri, itemsPerPage)
+                While Not pagedMessageInfoCol.LastPage
+                    client.ListMessages(client.MailboxInfo.InboxUri)
+                End While
+            Catch ex As Exception
+                Console.Write(ex.Message)
+            Finally
+            End Try
+            ' ExEnd:EnumeratMessagesWithPaginginEWS
+        End Sub
+    End Class
 End Namespace

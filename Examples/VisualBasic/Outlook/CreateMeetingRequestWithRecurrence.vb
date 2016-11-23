@@ -1,4 +1,5 @@
 ﻿Imports Aspose.Email.Mail
+Imports Aspose.Email.Recurrences
 
 '
 'This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -12,7 +13,6 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
     Class CreateMeetingRequestWithRecurrence
 
         Public Shared Sub Run()
-
             Try
                 ' ExStart:CreateMeetingRequestWithRecurrence
                 Dim szUniqueId As [String]
@@ -36,17 +36,17 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
                 agendaAppointment.Description = "----------------"
 
                 ' Create a weekly reccurence pattern object
-                Dim pattern2 As New Aspose.Email.Mail.Calendaring.WeeklyRecurrencePattern(14)
+                Dim pattern1 As Aspose.Email.Recurrences.WeeklyRecurrencePattern = New WeeklyRecurrencePattern(14)
 
                 ' Set weekly pattern properties like days: Mon, Tue and Thu
-                pattern2.StartDays = New Aspose.Email.Mail.Calendaring.CalendarDay(2) {}
-                pattern2.StartDays(0) = Aspose.Email.Mail.Calendaring.CalendarDay.Monday
-                pattern2.StartDays(1) = Aspose.Email.Mail.Calendaring.CalendarDay.Tuesday
-                pattern2.StartDays(2) = Aspose.Email.Mail.Calendaring.CalendarDay.Thursday
-                pattern2.Interval = 1
+                pattern1.StartDays = New CalendarDay(2) {}
+                pattern1.StartDays(0) = CalendarDay.Monday
+                pattern1.StartDays(1) = CalendarDay.Tuesday
+                pattern1.StartDays(2) = CalendarDay.Thursday
+                pattern1.Interval = 1
 
                 ' Set recurrence pattern for the appointment
-                agendaAppointment.RecurrencePattern = pattern2
+                agendaAppointment.Recurrence = pattern1
 
                 'Attach this appointment with mail
                 msg1.AlternateViews.Add(agendaAppointment.RequestApointment())
@@ -55,14 +55,13 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
                 Dim client As New SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password")
                 client.SecurityOptions = SecurityOptions.Auto
 
-                ' Send mail with appointment request
-                client.Send(msg1)
-
-                ' Return unique id for later usage
+                ' Send mail with appointment request and Return unique id for later usage
                 ' return szUniqueId;
                 ' ExEnd:SendMailUsingDNS
-            Catch ex As Exception
-                Console.WriteLine(ex.Message)
+                client.Send(msg1)
+            Catch exception As Exception
+                Console.Write(exception.Message)
+                Throw
             End Try
         End Sub
     End Class

@@ -1,6 +1,15 @@
-﻿using Aspose.Email.Exchange;
+﻿using System;
+using Aspose.Email.Exchange;
 using Aspose.Email.Mail;
 using Aspose.Email.Outlook;
+
+/*
+This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
+when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq for more information. 
+If you do not wish to use NuGet, you can manually download Aspose.Email for .NET API from http://www.aspose.com/downloads, 
+install it and then add its reference to this project. For any issues, questions or suggestions 
+please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
+*/
 
 namespace Aspose.Email.Examples.CSharp.Exchange
 {
@@ -8,28 +17,31 @@ namespace Aspose.Email.Examples.CSharp.Exchange
     {
         public static void Run()
         {
-            // ExStart: SendCalendarInvitation
-            /// <summary>
-            /// This exmpale shows how an Exchange user can share his/her calendar with someone using the EWS client of the API. 
-            /// Available from Aspose.Email for .NET 6.4.0 onwards
-            /// </summary>
-            
-            using (IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain"))
+            try
             {
-                // delegate calendar access permission
-                ExchangeDelegateUser delegateUser = new ExchangeDelegateUser("sharingfrom@domain.com", ExchangeDelegateFolderPermissionLevel.NotSpecified);
-                delegateUser.FolderPermissions.CalendarFolderPermissionLevel = ExchangeDelegateFolderPermissionLevel.Reviewer;
-                client.DelegateAccess(delegateUser, "sharingfrom@domain.com");
 
-                // Create invitation
-                MapiMessage mapiMessage = client.CreateCalendarSharingInvitationMessage("sharingfrom@domain.com");
+                // ExStart: SendCalendarInvitation
+                using (IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain"))
+                {
+                    // delegate calendar access permission
+                    ExchangeDelegateUser delegateUser = new ExchangeDelegateUser("sharingfrom@domain.com", ExchangeDelegateFolderPermissionLevel.NotSpecified);
+                    delegateUser.FolderPermissions.CalendarFolderPermissionLevel = ExchangeDelegateFolderPermissionLevel.Reviewer;
+                    client.DelegateAccess(delegateUser, "sharingfrom@domain.com");
 
-                // send invitation
-                MailMessageInterpretor messageInterpretor = MailMessageInterpretorFactory.Instance.GetIntepretor(mapiMessage.MessageClass);
-                MailMessage mailMessage = messageInterpretor.InterpretAsTnef(mapiMessage);
-                client.Send(mailMessage);
+                    // Create invitation
+                    MapiMessage mapiMessage = client.CreateCalendarSharingInvitationMessage("sharingfrom@domain.com");
+                    MailConversionOptions options = new MailConversionOptions();
+                    options.ConvertAsTnef = true;
+                    MailMessage mail = mapiMessage.ToMailMessage(options);
+                    client.Send(mail);
+                }
+                // ExEnd: SendCalendarInvitation
+
             }
-            // ExEnd: SendCalendarInvitation
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

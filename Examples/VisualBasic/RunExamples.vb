@@ -32,30 +32,30 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'CreateNewEmail.Run()
             'SaveMessageAsDraft.Run()
             'SpecifyRecipientAddresses.Run()
-            'DisplayEmailAddressesNames.Run()            
+            'DisplayEmailAddressesNames.Run()
             'SetHTMLBody.Run()
-            'SetAlternateText.Run()            
-            'ManagingEmailAttachments.Run()            
+            'SetAlternateText.Run()
+            'ManagingEmailAttachments.Run()
             'RemoveAttachments.Run()
             'EmbeddedObjects.Run()
             'LoadMessageWithLoadOptions.Run()
-            'SetEmailHeaders.Run()            
+            'SetEmailHeaders.Run()
             'ExtractAttachments.Run()
-            'CreateNewMailMessage.Run()            
+            'CreateNewMailMessage.Run()
             'ReadMessageByPreservingTNEFAttachments.Run()
             'CreatingTNEFFromMSG.Run()
-            'LoadAndSaveFileAsEML.Run()            
-            'PreserveOriginalBoundaries.Run()           
+            'LoadAndSaveFileAsEML.Run()
+            'PreserveOriginalBoundaries.Run()
             'PreserveTNEFAttachment.Run()
             'ExtractEmbeddObjects.Run()
-            'EncryptAndDecryptMessage.Run()            
+            'EncryptAndDecryptMessage.Run()
             'PrintHeaderUsingMhtFormatOptions.Run()
             'ExtraPrintHeaderUsingHideExtraPrintHeader.Run()
             'BayesianSpamAnalyzer.Run()
             'GetDeliveryStatusNotificationMessages.Run()
             'DetectDifferentFileFormats.Run()
             'ExtractEmbeddedObjectsFromEmail.Run()
-            'EncryptAndDecryptMessage.Run() 
+            'EncryptAndDecryptMessage.Run()
             'AddMapiNoteToPST.Run()
             'ExtractEmbeddObjects.Run()
             'DetectTNEFMessage.Run()
@@ -63,7 +63,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'IdentifyInlineAndRegularAttachments.Run()
             'ReceiveNotifications.Run()
             'SetDefaultTextEncoding.Run()
-            'SendIMAPAsynchronousEmail.Run()
+            'SendIMAPasynchronousEmail.Run()
 
 
             '/ =====================================================
@@ -230,12 +230,13 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'CreateAndSendingMessageWithVotingOptions.Run()
             'PreFetchMessageSizeUsingIEWSClient.Run()
             'SynchronizeFolderItems.Run()
-            'SecondaryCalendarEvents.Run()          
+            'SecondaryCalendarEvents.Run()
             'SaveExchangeTaskToDisc.Run()
             'CreateExchangeTask.Run()
             'DeleteExchangeTask.Run()
             'SendExchangeTask.Run()
             'UpdateExchangeTask.Run()
+            'SendCalendarInvitation.Run()
 
             '/ =====================================================
             '/ =====================================================
@@ -257,7 +258,6 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'RetrievMessagesAsynchronously.Run()
             'RetrieveMessageSummaryInformationUsingUniqueId.Run()
 
-          
 
             '/ =====================================================
             '/ =====================================================
@@ -287,9 +287,9 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
             'GetMessageIdUsingImapMessageInfo.Run()
             'FilteringMessagesFromIMAPMailbox.Run()
             'InternalDateFilter.Run()
-            'ProxyServerAccessMailbox.Run() 
+            'ProxyServerAccessMailbox.Run()
             'RetrievingMessagesAsynchronously.Run()
-            'RetreivingServerExtensions.Run()            
+            'RetreivingServerExtensions.Run()
             'SupportIMAPIdleCommand.Run()
 
             '/ =====================================================

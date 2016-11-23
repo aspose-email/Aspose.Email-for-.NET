@@ -1,5 +1,6 @@
 ﻿using System;
 using Aspose.Email.Mail;
+using Aspose.Email.Recurrences;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -29,7 +30,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
                 // Create appointment object
                 Appointment agendaAppointment = default(Appointment);
-
+             
                 // Fill appointment object
                 System.DateTime StartDate = new DateTime(2013, 12, 1, 17, 0, 0);
                 System.DateTime EndDate = new DateTime(2013, 12, 31, 17, 30, 0);
@@ -41,17 +42,17 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 agendaAppointment.Description = "----------------";
 
                 // Create a weekly reccurence pattern object
-                Aspose.Email.Mail.Calendaring.WeeklyRecurrencePattern pattern2 = new Aspose.Email.Mail.Calendaring.WeeklyRecurrencePattern(14);
+                Aspose.Email.Recurrences.WeeklyRecurrencePattern pattern1 = new WeeklyRecurrencePattern(14);
 
                 // Set weekly pattern properties like days: Mon, Tue and Thu
-                pattern2.StartDays = new Aspose.Email.Mail.Calendaring.CalendarDay[3];
-                pattern2.StartDays[0] = Aspose.Email.Mail.Calendaring.CalendarDay.Monday;
-                pattern2.StartDays[1] = Aspose.Email.Mail.Calendaring.CalendarDay.Tuesday;
-                pattern2.StartDays[2] = Aspose.Email.Mail.Calendaring.CalendarDay.Thursday;
-                pattern2.Interval = 1;
+                pattern1.StartDays = new CalendarDay[3];
+                pattern1.StartDays[0] = CalendarDay.Monday;
+                pattern1.StartDays[1] = CalendarDay.Tuesday;
+                pattern1.StartDays[2] =CalendarDay.Thursday;
+                pattern1.Interval = 1;
 
                 // Set recurrence pattern for the appointment
-                agendaAppointment.RecurrencePattern = pattern2;
+                agendaAppointment.Recurrence = pattern1;
 
                 //Attach this appointment with mail
                 msg1.AlternateViews.Add(agendaAppointment.RequestApointment());

@@ -35,7 +35,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email.Outlook
         End Sub
 
         Private Shared Function GenerateNamedPropertyTag(index As Long, dataType As MapiPropertyType) As Long
-            Return (((&H8000 Or index) << 16) Or CLng(dataType)) And &HFFFFFFFFUI
+            Return (CLng(CLng(dataType)) Or (&H8000 Or index) << 16) And &HFFFFFFFFUI
         End Function
         ' ExEnd:UpdatePSTCustomProperites
     End Class

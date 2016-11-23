@@ -24,30 +24,26 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
 
                 // Call ListMessages method to list messages info from Inbox
                 ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.GetMailboxInfo().InboxUri);
-
                 int itemsPerPage = 5;
-                List<ExchangeMessageInfoCollection> pages = new List<ExchangeMessageInfoCollection>();
-                ExchangeMessageInfoCollection pagedMessageInfoCol = client.ListMessages(client.MailboxInfo.InboxUri, itemsPerPage);
+                List<PageInfo> pages = new List<PageInfo>();
+                PageInfo pagedMessageInfoCol = client.ListMessagesByPage(client.MailboxInfo.InboxUri, itemsPerPage);
                 pages.Add(pagedMessageInfoCol);
-
                 while (!pagedMessageInfoCol.LastPage)
                 {
-                    pagedMessageInfoCol = client.ListMessages(client.MailboxInfo.InboxUri, itemsPerPage, pagedMessageInfoCol.LastItemOffset.Value + 1);
+                    pagedMessageInfoCol = client.ListMessagesByPage(client.MailboxInfo.InboxUri, itemsPerPage);
                     pages.Add(pagedMessageInfoCol);
                 }
-
-                pagedMessageInfoCol = client.ListMessages(client.MailboxInfo.InboxUri, itemsPerPage);
-
+                pagedMessageInfoCol = client.ListMessagesByPage(client.MailboxInfo.InboxUri, itemsPerPage);
                 while (!pagedMessageInfoCol.LastPage)
                 {
-                    client.ListMessages(client.MailboxInfo.InboxUri, pagedMessageInfoCol, itemsPerPage, pagedMessageInfoCol.LastItemOffset.Value + 1);
+                    client.ListMessages(client.MailboxInfo.InboxUri);
                 }
             }
             catch (Exception ex)
             {
 
                 Console.Write(ex.Message);
-            }          
+            }
             finally
             {
 

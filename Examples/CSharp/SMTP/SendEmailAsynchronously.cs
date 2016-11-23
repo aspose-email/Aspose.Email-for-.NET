@@ -32,33 +32,41 @@ namespace Aspose.Email.Examples.CSharp.Email.SMTP
         }
         static void SendMail()
         {
-            //Declare msg as MailMessage instance
-            MailMessage msg = new MailMessage("sender@gmail.com", "receiver@gmail.com", "Test subject", "Test body");
-            SmtpClient client = GetSmtpClient2();
-            object state = new object();
-            IAsyncResult ar = client.BeginSend(msg, Callback, state);
-
-            Console.WriteLine("Sending message... press c to cancel mail. Press any other key to exit.");
-            string answer = Console.ReadLine();
-
-            // If the user canceled the send, and mail hasn't been sent yet,
-            if (answer != null && answer.StartsWith("c"))
+            try
             {
-                client.CancelAsyncOperation(ar);
-            }
 
-            msg.Dispose();
-            Console.WriteLine("Goodbye.");
+                // Declare msg as MailMessage instance
+                MailMessage msg = new MailMessage("sender@gmail.com", "receiver@gmail.com", "Test subject", "Test body");
+                SmtpClient client = GetSmtpClient2();
+                object state = new object();
+                IAsyncResult ar = client.BeginSend(msg, Callback, state);
+
+                Console.WriteLine("Sending message... press c to cancel mail. Press any other key to exit.");
+                string answer = Console.ReadLine();
+
+                // If the user canceled the send, and mail hasn't been sent yet,
+                if (answer != null && answer.StartsWith("c"))
+                {
+                    client.CancelAsyncOperation(ar);
+                }
+
+                msg.Dispose();
+                Console.WriteLine("Goodbye.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         static AsyncCallback Callback = delegate(IAsyncResult ar)
         {
-            MailClientTask task = (MailClientTask)ar;
-            if (task.IsCanceled)
+            var task = ar as IAsyncResultExt;
+            if (task != null && task.IsCanceled)
             {
                 Console.WriteLine("Send canceled.");
             }
 
-            if (task.ErrorInfo != null)
+            if (task != null && task.ErrorInfo != null)
             {
                 Console.WriteLine("{0}", task.ErrorInfo);
             }

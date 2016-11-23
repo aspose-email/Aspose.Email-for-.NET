@@ -1,6 +1,6 @@
 ##Aspose.Email for .NET Examples
 
-This package contains C# and VB.NET Example Projects for [Aspose.Email for .NET](http://www.aspose.com/.net/email-component.aspx).
+This repository contains C# and VB.NET examples for [Aspose.Email for .NET](http://www.aspose.com/.net/email-component.aspx) which will help you learn Aspose.Email for .NET and write your own applications.
 
 <p align="center">
   <a title="Download complete Aspose.Email for .NET source code" href="https://github.com/asposeemail/Aspose_Email_NET/archive/master.zip">
@@ -8,6 +8,10 @@ This package contains C# and VB.NET Example Projects for [Aspose.Email for .NET]
   </a>
 </p>
 
-## How to run the Examples?
+## How to Run the Examples?
 
-There are two Visual projects, one for C# and other for Visual Basic examples. You can just download the repository, browse the folder and open the file in Visual Studio. For more details, visit our [documentation website](http://www.aspose.com/docs/display/emailnet/How+to+Run+the+Examples).
+After you have downloaded the ZIP file from the [Download ZIP](https://github.com/asposeemail/Aspose_Email_NET/archive/master.zip) link above, please check the following link with detailed instructions on how to run these Source Code Examples.
+
+[How to Run the Examples](http://www.aspose.com/docs/display/pdfnet/How+to+Run+the+Examples)
+
+Please feel free to contact us if you have any question, issue or suggestion.

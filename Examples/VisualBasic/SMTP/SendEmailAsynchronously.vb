@@ -44,7 +44,7 @@ Namespace Aspose.Email.Examples.VisualBasic.Email
 			Console.WriteLine("Goodbye.")
 		End Sub
 		Shared Callback As AsyncCallback = Sub(ar As IAsyncResult) 
-		Dim task As MailClientTask = DirectCast(ar, MailClientTask)
+		Dim task = TryCast(ar, IAsyncResultExt)
 		If task.IsCanceled Then
 			Console.WriteLine("Send canceled.")
 		End If
