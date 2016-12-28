@@ -5,15 +5,7 @@
 This repository contains [Examples](Examples), [Plugins](Plugins) and Showcase projects for [Aspose.Email for .NET](http://www.aspose.com/products/email/net) to help you learn and write your own applications.
 
 <p align="center">
-<<<<<<< HEAD
-  <a title="Download Examples Dashboard" href="http://www.aspose.com/community/files/51/.net-components/aspose-examples-for-.net/default.aspx">
-	<img src="https://raw.github.com/AsposeExamples/java-examples-dashboard/master/images/downloadDasboard-Button-Large.png" />
-  </a>
-  &nbsp;
-  <a title="Download Examples ZIP" href="https://github.com/asposeemail/Aspose_Email_NET/archive/master.zip">
-=======
 <a title="Download complete Aspose.Email for .NET source code" href="https://github.com/aspose-email/Aspose.Email-for-.NET/archive/master.zip">
->>>>>>> 037c7a67f9f2b5a80474bc177fd26141d145a5d8
 	<img src="https://raw.github.com/AsposeExamples/java-examples-dashboard/master/images/downloadZip-Button-Large.png" />
   </a>
 </p>
