@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{79BDFFB8-2273-412D-9880-A9EF6A6450E0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CSharp</RootNamespace>
+    <AssemblyName>CSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Aspose.Email.Examples.CSharp.Email.RunExamples</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Email, Version=16.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.16.11.0\lib\net40\Aspose.Email.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Exchange\ListMessagesByExtendedProperties.cs" />
+    <Compile Include="Exchange\GetContactsExtendedProperties.cs" />
+    <Compile Include="Exchange\RetrieveExtraParametersAsSummaryInformation.cs" />
+    <Compile Include="IMAP\SendIMAPasynchronousEmail.cs" />
+    <Compile Include="Outlook\ConvertMSGToMIMEMessage.cs" />
+    <Compile Include="Outlook\CreateMeetingRequestWithRecurrence.cs" />
+    <Compile Include="Email\IdentifyInlineAndRegularAttachments.cs" />
+    <Compile Include="Email\SetDefaultTextEncoding.cs" />
+    <Compile Include="Email\ReceiveNotifications.cs" />
+    <Compile Include="Email\DetectTNEFMessage.cs" />
+    <Compile Include="Email\DetermineAttachmentEmbeddedMessage.cs" />
+    <Compile Include="Email\CreateNewEmail.cs" />
+    <Compile Include="Email\ExtractEmbeddObjects.cs" />
+    <Compile Include="Email\DisplayEmailAddressesNames.cs" />
+    <Compile Include="Email\CreatingTNEFFromMSG.cs" />
+    <Compile Include="Email\PreserveTNEFAttachment.cs" />
+    <Compile Include="Email\PreserveOriginalBoundaries.cs" />
+    <Compile Include="Email\BayesianSpamAnalyzer.cs" />
+    <Compile Include="Email\ExtraPrintHeaderUsingHideExtraPrintHeader.cs" />
+    <Compile Include="Email\SetAlternateText.cs" />
+    <Compile Include="Email\SetHTMLBody.cs" />
+    <Compile Include="Email\RemoveAttachments.cs" />
+    <Compile Include="Email\LoadMessageWithLoadOptions.cs" />
+    <Compile Include="Email\SetEmailHeaders.cs" />
+    <Compile Include="Email\ExtractAttachments.cs" />
+    <Compile Include="Email\ExtractEmbeddedObjectsFromEmail.cs" />
+    <Compile Include="Email\CreateNewMailMessage.cs" />
+    <Compile Include="Email\ReadMessageByPreservingTNEFAttachments.cs" />
+    <Compile Include="Email\LoadAndSaveFileAsEML.cs" />
+    <Compile Include="Email\EncryptAndDecryptMessage.cs" />
+    <Compile Include="Email\PrintHeaderUsingMhtFormatOptions.cs" />
+    <Compile Include="Email\GetDeliveryStatusNotificationMessages.cs" />
+    <Compile Include="Email\DetectDifferentFileFormats.cs" />
+    <Compile Include="Email\SpecifyRecipientAddresses.cs" />
+    <Compile Include="Exchange\CreateFoldersOnExchangeServerMailbox.cs" />
+    <Compile Include="Exchange\DeletePrivateDistributionList.cs" />
+    <Compile Include="Exchange\DeleteMembersWithoutListing.cs" />
+    <Compile Include="Exchange\DeleteMembersFromPrivateDistributionList.cs" />
+    <Compile Include="Exchange\AddMembersWithoutListing.cs" />
+    <Compile Include="Exchange\AddMembersToPrivateDistributionList.cs" />
+    <Compile Include="Exchange\DeleteWithoutListing.cs" />
+    <Compile Include="Exchange\FetchPrivateDistributionList.cs" />
+    <Compile Include="Exchange\CreatePrivateDistributionList.cs" />
+    <Compile Include="Exchange\CopyingMessageToAnotherFolder.cs" />
+    <Compile Include="Exchange\ListFoldersFromExchangeServer.cs" />
+    <Compile Include="Exchange\AddingHeadersToEWSRequests.cs" />
+    <Compile Include="Exchange\SynchronizeFolderItems.cs" />
+    <Compile Include="Exchange\PreFetchMessageSizeUsingIEWSClient.cs" />
+    <Compile Include="Exchange\CreateAndSendingMessageWithVotingOptions.cs" />
+    <Compile Include="Exchange\ExchangeFoldersBackupToPST.cs" />
+    <Compile Include="Exchange\CreateREAndFWMessages.cs" />
+    <Compile Include="Exchange\SendTaskRequestUsingIEWSClient.cs" />
+    <Compile Include="Exchange\DeleteTaskOnExchange.cs" />
+    <Compile Include="Exchange\UpdateTaskOnExchange.cs" />
+    <Compile Include="Exchange\ProcessExchangeTasksUsingIEWSClient.cs" />
+    <Compile Include="Exchange\RetrieveFolderPermissionsUsingExchangeWebServiceClient.cs" />
+    <Compile Include="Exchange\ExchangeImpersonationUsingEWS.cs" />
+    <Compile Include="Exchange\AccessCustomFolderUsingExchangeWebServiceClient.cs" />
+    <Compile Include="Exchange\AccessAnotherMailboxUsingExchangeWebServiceClient.cs" />
+    <Compile Include="Exchange\AccessAnotherMailboxUsingExchangeClient.cs" />
+    <Compile Include="Exchange\GetMailTips.cs" />
+    <Compile Include="Exchange\DeleteConversations.cs" />
+    <Compile Include="Exchange\MoveConversations.cs" />
+    <Compile Include="Exchange\DeleteUserConfiguration.cs" />
+    <Compile Include="Exchange\CopyConversations.cs" />
+    <Compile Include="Exchange\FindConversationsOnExchangeServer.cs" />
+    <Compile Include="Exchange\UpdateUserConfiguration.cs" />
+    <Compile Include="Exchange\CreatUserConfigurations.cs" />
+    <Compile Include="Exchange\ReadUserConfiguration.cs" />
+    <Compile Include="Exchange\UpdateRuleOntheExchangeServer.cs" />
+    <Compile Include="Exchange\CreateNewRuleOntheExchangeServer.cs" />
+    <Compile Include="Exchange\ExchangeServerReadRules.cs" />
+    <Compile Include="Exchange\FilterMessagesFromExchangeMailbox.cs" />
+    <Compile Include="Exchange\SendMeetingRequestsUsingEWS.cs" />
+    <Compile Include="Exchange\SendMeetingRequestsUsingExchangeServer.cs" />
+    <Compile Include="Exchange\ExchangeServerUsesSSL.cs" />
+    <Compile Include="Exchange\ConnectExchangeServerUsingIMAP.cs" />
+    <Compile Include="Exchange\DownloadMessagesFromPublicFolders.cs" />
+    <Compile Include="Exchange\DownloadMessagesFromExchangeServerFoldersRecursively.cs" />
+    <Compile Include="Exchange\DeleteMessagesFromUsingEWS.cs" />
+    <Compile Include="Exchange\DeleteMessagesFromExchangeServer.cs" />
+    <Compile Include="Exchange\MoveMessageFromOneFolderToAnotherusingEWS.cs" />
+    <Compile Include="Exchange\MoveMessageFromOneFolderToAnotherUsingExchangeClient.cs" />
+    <Compile Include="Exchange\SendEmailMessagesUsingExchangeWebServices.cs" />
+    <Compile Include="Exchange\SendEmailMessagesUsingExchangeServer.cs" />
+    <Compile Include="Exchange\ExchangeClientSaveMessagesInMSGFormat.cs" />
+    <Compile Include="Exchange\SaveMessagesToMemoryStreamUsingEWS.cs" />
+    <Compile Include="Exchange\SaveMessagesToMemoryStream.cs" />
+    <Compile Include="Exchange\SaveMessagesUsingExchangeWebServices.cs" />
+    <Compile Include="Exchange\SaveMessagesFromExchangeServerMailboxToEML.cs" />
+    <Compile Include="Exchange\EnumeratMessagesWithPaginginEWS.cs" />
+    <Compile Include="Exchange\ListMessagesByID.cs" />
+    <Compile Include="Exchange\ExchangeServerUsingEWS.cs" />
+    <Compile Include="Exchange\ListMessagesFromDifferentFolders.cs" />
+    <Compile Include="Exchange\ProgrammingSamplesUsingEWS.cs" />
+    <Compile Include="Exchange\ListExchangeServerMessages.cs" />
+    <Compile Include="Exchange\GetMailboxInformationFromExchangeServer.cs" />
+    <Compile Include="Exchange\GetMailboxInformationFromExchangeWebServices.cs" />
+    <Compile Include="IMAP\CopyMultipleMessagesFromOneFoldertoAnother.cs" />
+    <Compile Include="IMAP\DeleteSingleMessage.cs" />
+    <Compile Include="IMAP\DeleteMultipleMessages.cs" />
+    <Compile Include="IMAP\SupportIMAPIdleCommand.cs" />
+    <Compile Include="IMAP\RetreivingServerExtensions.cs" />
+    <Compile Include="IMAP\RetrievingMessagesAsynchronously.cs" />
+    <Compile Include="IMAP\ProxyServerAccessMailbox.cs" />
+    <Compile Include="IMAP\InternalDateFilter.cs" />
+    <Compile Include="IMAP\IMAP4ExtendedListCommand.cs" />
+    <Compile Include="IMAP\IMAP4IDExtensionSupport.cs" />
+    <Compile Include="IMAP\FilteringMessagesFromIMAPMailbox.cs" />
+    <Compile Include="Outlook\AddAudioReminderToCalendar.cs" />
+    <Compile Include="Outlook\ParseOutlookMessageFile.cs" />
+    <Compile Include="Outlook\GetTheTextAndRTFBodies.cs" />
+    <Compile Include="Outlook\SpecificCriterionSplitPST.cs" />
+    <Compile Include="Outlook\UpdatePSTCustomProperites.cs" />
+    <Compile Include="Outlook\AddMapiCalendarToPST.cs" />
+    <Compile Include="Outlook\AddAttachmentsToMapiJournal.cs" />
+    <Compile Include="Outlook\CreateNewMapiJournalAndAddToSubfolder.cs" />
+    <Compile Include="Outlook\AddMessagesFromOtherPST.cs" />
+    <Compile Include="Outlook\AddingBulkMessagesWithImprovedPerformance.cs" />
+    <Compile Include="Outlook\AddMessagesToPSTFiles.cs" />
+    <Compile Include="Outlook\ChangeFolderContainerClass.cs" />
+    <Compile Include="Outlook\CreateNewMapiContactAndAddToContactsSubfolder.cs" />
+    <Compile Include="Outlook\AddMapiTaskToPST.cs" />
+    <Compile Include="Outlook\CreateNewMapiCalendarAndAddToCalendarSubfolder.cs" />
+    <Compile Include="Outlook\CreateDistributionListInPST.cs" />
+    <Compile Include="Outlook\AddMapiNoteToPST.cs" />
+    <Compile Include="Outlook\SearchStringInPSTWithIgnoreCaseParameter.cs" />
+    <Compile Include="Outlook\SearchMessagesAndFoldersInPST.cs" />
+    <Compile Include="Outlook\MoveItemsToOtherFolders.cs" />
+    <Compile Include="Outlook\AddFilesToPST.cs" />
+    <Compile Include="Outlook\MergeFolderFromAnotherPSTFile.cs" />
+    <Compile Include="Outlook\ExtractAttachmentsFromPSTMessages.cs" />
+    <Compile Include="Outlook\SplitSinglePSTInToMultiplePST.cs" />
+    <Compile Include="Outlook\SetPasswordOnPST.cs" />
+    <Compile Include="Outlook\RemovingPaswordProperty.cs" />
+    <Compile Include="Outlook\CheckPasswordProtection.cs" />
+    <Compile Include="Outlook\SaveCalendarItems.cs" />
+    <Compile Include="Outlook\SaveContactInformation.cs" />
+    <Compile Include="Outlook\AddVotingButtonToExistingMessage.cs" />
+    <Compile Include="Outlook\AccessContactInformation.cs" />
+    <Compile Include="Outlook\ExtractNumberOfMessages.cs" />
+    <Compile Include="Outlook\CreateNewPSTFileAndAddingSubfolders.cs" />
+    <Compile Include="Outlook\SaveMessagesDirectlyFromPSTToStream.cs" />
+    <Compile Include="Outlook\GenerateRecurrenceFromRecurrenceRule.cs" />
+    <Compile Include="Outlook\ConvertOSTToPST.cs" />
+    <Compile Include="Outlook\GetMessageInformation.cs" />
+    <Compile Include="Outlook\ExtractMessagesFromPSTFile.cs" />
+    <Compile Include="Outlook\ReadandConvertOSTFiles.cs" />
+    <Compile Include="Outlook\RetreiveParentFolderInformationFromMessageInfo.cs" />
+    <Compile Include="Outlook\ParseSearchableFolders.cs" />
+    <Compile Include="Outlook\PST\DisplayInformationOfPSTFile.cs" />
+    <Compile Include="Outlook\YearlyEndAfterDate.cs" />
+    <Compile Include="Outlook\YearlyEndAfterNoccurrences.cs" />
+    <Compile Include="Outlook\MonthlyEndAfterDate.cs" />
+    <Compile Include="Outlook\MonthlyEndAfterNoccurrences.cs" />
+    <Compile Include="Outlook\EndAfterNoccurrenceSelectMultipleDaysInweek.cs" />
+    <Compile Include="Outlook\WeeklyEndAfterNoccurrences.cs" />
+    <Compile Include="Outlook\ReadVoteResultsInformation.cs" />
+    <Compile Include="Outlook\RetrieveReadAndDeliveryReceiptInformation.cs" />
+    <Compile Include="Outlook\DeleteVotingButtonFromMessage.cs" />
+    <Compile Include="Outlook\CreateAndSaveDistributionList.cs" />
+    <Compile Include="Outlook\ReadVotingOptionsFromMapiMessage.cs" />
+    <Compile Include="Outlook\CreatePollUsingMapiMessage.cs" />
+    <Compile Include="Outlook\ManageAttachmentsFromCalendarFiles.cs" />
+    <Compile Include="Outlook\AddDisplayReminderToACalendar.cs" />
+    <Compile Include="Outlook\CreatAndSaveCalendaritems.cs" />
+    <Compile Include="Outlook\ExposeProperties.cs" />
+    <Compile Include="Outlook\SetReminderByAddingTags.cs" />
+    <Compile Include="Outlook\SetColorCategories.cs" />
+    <Compile Include="Outlook\ConvertMIMEMessagesFromMSGToEML.cs" />
+    <Compile Include="Outlook\ConvertMIMEMessageToEML.cs" />
+    <Compile Include="Outlook\ReadMapiNote.cs" />
+    <Compile Include="Outlook\CreatAndSaveAnOutlookNote.cs" />
+    <Compile Include="Outlook\AddRecurrenceToMapiTask.cs" />
+    <Compile Include="Outlook\AddAttachmentsToMapiTask.cs" />
+    <Compile Include="Outlook\AddReminderInformationToMapiTask.cs" />
+    <Compile Include="Outlook\CreatingAndSavingOutlookTasks.cs" />
+    <Compile Include="Outlook\MarkFollowUpFlagAsCompleted.cs" />
+    <Compile Include="Outlook\CreateAndSaveOutlookContact.cs" />
+    <Compile Include="Outlook\ReadFollowupFlagOptionsForMessage.cs" />
+    <Compile Include="Outlook\RemoveFollowUpflag.cs" />
+    <Compile Include="Outlook\SetFollowUpForRecipients.cs" />
+    <Compile Include="Outlook\SetFollowUpflag.cs" />
+    <Compile Include="Outlook\ReadAndWritingOutlookTemplateFile.cs" />
+    <Compile Include="Outlook\CreatEMLFileAndConvertToMSG.cs" />
+    <Compile Include="Outlook\DeleteBulkItemsFromPSTFile.cs" />
+    <Compile Include="Outlook\DeleteMessagesFromPSTFiles.cs" />
+    <Compile Include="Email\DisplayEmailInformation.cs" />
+    <Compile Include="Email\DraftAppointmentRequest.cs" />
+    <Compile Include="Email\ExtractingEmailHeaders.cs" />
+    <Compile Include="Email\ProcessBouncedMsgs.cs" />
+    <Compile Include="Email\SaveMessageAsDraft.cs" />
+    <Compile Include="Email\SaveMessageAsOFT.cs" />
+    <Compile Include="Exchange\CreateExchangeTask.cs" />
+    <Compile Include="Exchange\DeleteExchangeTask.cs" />
+    <Compile Include="Exchange\PagingSupportForListingAppointments.cs" />
+    <Compile Include="Exchange\PagingSupportForListingFolders.cs" />
+    <Compile Include="Exchange\PagingSupportForListingMessages.cs" />
+    <Compile Include="Exchange\SaveExchangeTaskToDisc.cs" />
+    <Compile Include="Exchange\SecondaryCalendarEvents.cs" />
+    <Compile Include="Exchange\SendCalendarInvitation.cs" />
+    <Compile Include="Exchange\SendExchangeTask.cs" />
+    <Compile Include="Exchange\UpdateExchangeTask.cs" />
+    <Compile Include="IMAP\AddingNewMessage.cs" />
+    <Compile Include="IMAP\ConnectingWithIMAPServer.cs" />
+    <Compile Include="IMAP\DeletingFolders.cs" />
+    <Compile Include="IMAP\GettingFoldersInformation.cs" />
+    <Compile Include="IMAP\InsertHeaderAtSpecificLocation.cs" />
+    <Compile Include="IMAP\ListingMessagesWithPagingSupport.cs" />
+    <Compile Include="IMAP\MessagesFromIMAPServerToDisk.cs" />
+    <Compile Include="IMAP\MoveMessage.cs" />
+    <Compile Include="IMAP\ReadMessagesRecursively.cs" />
+    <Compile Include="IMAP\RemovingMessageFlags.cs" />
+    <Compile Include="IMAP\RenamingFolders.cs" />
+    <Compile Include="IMAP\SearchWithPagingSupport.cs" />
+    <Compile Include="IMAP\SettingMessageFlags.cs" />
+    <Compile Include="IMAP\SSLEnabledIMAPServer.cs" />
+    <Compile Include="Knowledge-Base\PrintEmail.cs" />
+    <Compile Include="Outlook\CreateSaveOutlookFiles.cs" />
+    <Compile Include="Outlook\ConvertEMLToMSG.cs" />
+    <Compile Include="Outlook\RemovePropertiesFromMSGAndAttachments.cs" />
+    <Compile Include="Outlook\ReadingNamedMAPIPropertyFromAttachment.cs" />
+    <Compile Include="Outlook\ReadiNamedMAPIPropertyFromAttachment.cs" />
+    <Compile Include="Outlook\ReadNamedMAPIProperties.cs" />
+    <Compile Include="Outlook\SetMAPIProperties.cs" />
+    <Compile Include="Outlook\GetMAPIProperty.cs" />
+    <Compile Include="Outlook\LoadMSGFiles.cs" />
+    <Compile Include="Outlook\MergeMultiplePSTsInToSinglePST.cs" />
+    <Compile Include="Outlook\LoadingFromStream.cs" />
+    <Compile Include="Outlook\NewPSTAddSubfolders.cs" />
+    <Compile Include="Outlook\SaveMsgAsTemplate.cs" />
+    <Compile Include="Outlook\CreatReplyMessage.cs" />
+    <Compile Include="Outlook\CreateForwardMessage.cs" />
+    <Compile Include="Outlook\EndAfterNoccurrences.cs" />
+    <Compile Include="Outlook\EndAfterDate.cs" />
+    <Compile Include="Outlook\UpdateBulkMessagesInPSTFile.cs" />
+    <Compile Include="IMAP\GetMessageIdUsingImapMessageInfo.cs" />
+    <Compile Include="IMAP\ListingMessagesRecursively.cs" />
+    <Compile Include="IMAP\ListMessagesWithMaximumNumberOfMessages.cs" />
+    <Compile Include="IMAP\SavingMessagesFromIMAPServer.cs" />
+    <Compile Include="POP3\ConnectingToPOP3.cs" />
+    <Compile Include="POP3\GetServerExtensionsUsingPop3Client.cs" />
+    <Compile Include="POP3\RetrieveMessageSummaryInformationUsingUniqueId.cs" />
+    <Compile Include="POP3\RetrievMessagesAsynchronously.cs" />
+    <Compile Include="POP3\RetrieveEmailViaPop3ClientProxyServer.cs" />
+    <Compile Include="POP3\GettingMailboxInfo.cs" />
+    <Compile Include="POP3\ParseMessageAndSave.cs" />
+    <Compile Include="POP3\RecipientInformation.cs" />
+    <Compile Include="POP3\FilterMessagesFromPOP3Mailbox.cs" />
+    <Compile Include="POP3\RetrievingEmailHeaders.cs" />
+    <Compile Include="POP3\RetrievingEmailMessages.cs" />
+    <Compile Include="POP3\SaveToDiskWithoutParsing.cs" />
+    <Compile Include="POP3\SSLEnabledPOP3Server.cs" />
+    <Compile Include="RunExamples.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SMTP\AppointmentInICSFormat.cs" />
+    <Compile Include="SMTP\SignEmailsWithDKIM.cs" />
+    <Compile Include="SMTP\SignAMessage.cs" />
+    <Compile Include="Thunderbird\CreateNewMessagesToThunderbird.cs" />
+    <Compile Include="SMTP\SendEmailWithAlternateText.cs" />
+    <Compile Include="SMTP\ForwardEmail.cs" />
+    <Compile Include="Thunderbird\ReadMessagesFromThunderbird.cs" />
+    <Compile Include="SMTP\SendPlainTextEmailMessage.cs" />
+    <Compile Include="SMTP\SendEmailViaProxyServer.cs" />
+    <Compile Include="SMTP\SendMessageAsTNEF.cs" />
+    <Compile Include="SMTP\SendingBulkEmails.cs" />
+    <Compile Include="SMTP\SendEmailUsingSMTP.cs" />
+    <Compile Include="SMTP\SendEmailAsynchronously.cs" />
+    <Compile Include="SMTP\CustomizingEmailHeader.cs" />
+    <Compile Include="SMTP\CustomizingEmailHeaders.cs" />
+    <Compile Include="SMTP\DeliveryNotifications.cs" />
+    <Compile Include="Email\EmbeddedObjects.cs" />
+    <Compile Include="SMTP\ExportAsEML.cs" />
+    <Compile Include="SMTP\ImportEML.cs" />
+    <Compile Include="SMTP\LoadSmtpConfigFile.cs" />
+    <Compile Include="SMTP\MailMerge.cs" />
+    <Compile Include="Email\ManagingEmailAttachments.cs" />
+    <Compile Include="SMTP\MeetingRequests.cs" />
+    <Compile Include="SMTP\MultipleRecipients.cs" />
+    <Compile Include="SMTP\SendingEMLFilesWithSMTP.cs" />
+    <Compile Include="SMTP\SetEmailInfo.cs" />
+    <Compile Include="SMTP\SetSpecificIpAddress.cs" />
+    <Compile Include="SMTP\SettingHTMLBody.cs" />
+    <Compile Include="SMTP\SettingTextBody.cs" />
+    <Compile Include="SMTP\SSLEnabledSMTPServer.cs" />
+    <Compile Include="Thunderbird\GetMarkerInformation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Gmail\" />
+    <Folder Include="SMTP\Data\" />
+    <Folder Include="Thunderbird\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

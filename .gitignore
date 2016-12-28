@@ -5,7 +5,9 @@ classes/
 generated/
 *.suo
 bin/
+*_out*
 * Out*
+*_out_*
 * out*
 *.ldb
 Thumbs.db
@@ -14,11 +16,13 @@ out/
 *.lic
 *.user
 Out/
-Out*/
 Data/*Out*
-/ProgrammersGuide/ProgrammingEmail/SendingWithSMTP/AppointmentInICSFormat/Data/test.ics
-
+packages/
 TestResults/
 *.vsmdi
 test-results/
 *.userprefs
+/ProgrammersGuide/ProgrammingEmail/SendingWithSMTP/AppointmentInICSFormat/Data/test.ics
+TestResults/
+*.vsmdi
+*.gitattributes

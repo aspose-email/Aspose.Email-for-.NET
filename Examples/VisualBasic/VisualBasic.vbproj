@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED8C5160-14B0-4E3B-8BE5-4DDC7F9C7912}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <StartupObject>Sub Main</StartupObject>
+    <RootNamespace>
+    </RootNamespace>
+    <AssemblyName>VisualBasic</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Console</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>VisualBasic.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>VisualBasic.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Email, Version=16.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.16.11.0\lib\net40\Aspose.Email.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Exchange\FilterTasksFromServer.vb" />
+    <Compile Include="Exchange\GetContactsExtendedProperties.vb" />
+    <Compile Include="Exchange\ListMessagesByExtendedProperties.vb" />
+    <Compile Include="Exchange\RetrieveExtraParametersAsSummaryInformation.vb" />
+    <Compile Include="Outlook\ConvertMSGToMIMEMessage.vb" />
+    <Compile Include="Outlook\MergeFolderFromAnotherPSTFile.vb" />
+    <Compile Include="Outlook\ParseOutlookMessageFile.vb" />
+    <Compile Include="Outlook\GetTheTextAndRTFBodies.vb" />
+    <Compile Include="Outlook\ExposeProperties.vb" />
+    <Compile Include="Email\SendIMAPAsynchronousEmail.vb" />
+    <Compile Include="Email\SetDefaultTextEncoding.vb" />
+    <Compile Include="Email\ReceiveNotifications.vb" />
+    <Compile Include="Email\IdentifyInlineAndRegularAttachments.vb" />
+    <Compile Include="Email\ExtractEmbeddObjects.vb" />
+    <Compile Include="Email\DetermineAttachmentEmbeddedMessage.vb" />
+    <Compile Include="Email\SetAlternateText.vb" />
+    <Compile Include="Email\SetHTMLBody.vb" />
+    <Compile Include="Email\DisplayEmailAddressesNames.vb" />
+    <Compile Include="Email\BayesianSpamAnalyzer.vb" />
+    <Compile Include="Email\CreateNewEmail.vb" />
+    <Compile Include="Email\CreateNewMailMessage.vb" />
+    <Compile Include="Email\CreatingTNEFFromMSG.vb" />
+    <Compile Include="Email\DetectDifferentFileFormats.vb" />
+    <Compile Include="Email\DisplayEmailInformation.vb" />
+    <Compile Include="Email\DraftAppointmentRequest.vb" />
+    <Compile Include="Email\EncryptAndDecryptMessage.vb" />
+    <Compile Include="Email\ExtractAttachments.vb" />
+    <Compile Include="Email\ExtractEmbeddedObjectsFromEmail.vb" />
+    <Compile Include="Email\ExtractingEmailHeaders.vb" />
+    <Compile Include="Email\ExtraPrintHeaderUsingHideExtraPrintHeader.vb" />
+    <Compile Include="Email\GetDeliveryStatusNotificationMessages.vb" />
+    <Compile Include="Email\LoadAndSaveFileAsEML.vb" />
+    <Compile Include="Email\LoadMessageWithLoadOptions.vb" />
+    <Compile Include="Email\ManagingEmailAttachments.vb" />
+    <Compile Include="Email\PreserveOriginalBoundaries.vb" />
+    <Compile Include="Email\PreserveTNEFAttachment.vb" />
+    <Compile Include="Email\PrintHeaderUsingMhtFormatOptions.vb" />
+    <Compile Include="Email\ProcessBouncedMsgs.vb" />
+    <Compile Include="Email\ReadMessageByPreservingTNEFAttachments.vb" />
+    <Compile Include="Email\RemoveAttachments.vb" />
+    <Compile Include="Email\SaveMessageAsDraft.vb" />
+    <Compile Include="Email\SaveMessageAsOFT.vb" />
+    <Compile Include="Email\SetEmailHeaders.vb" />
+    <Compile Include="Email\DetectTNEFMessage.vb" />
+    <Compile Include="Email\SpecifyRecipientAddresses.vb" />
+    <Compile Include="Exchange\AccessAnotherMailboxUsingExchangeClient.vb" />
+    <Compile Include="Exchange\AccessAnotherMailboxUsingExchangeWebServiceClient.vb" />
+    <Compile Include="Exchange\AccessCustomFolderUsingExchangeWebServiceClient.vb" />
+    <Compile Include="Exchange\AddingHeadersToEWSRequests.vb" />
+    <Compile Include="Exchange\AddMembersToPrivateDistributionList.vb" />
+    <Compile Include="Exchange\AddMembersWithoutListing.vb" />
+    <Compile Include="Exchange\ConnectExchangeServerUsingIMAP.vb" />
+    <Compile Include="Exchange\CopyConversations.vb" />
+    <Compile Include="Exchange\CopyingMessageToAnotherFolder.vb" />
+    <Compile Include="Exchange\CreateAndSendingMessageWithVotingOptions.vb" />
+    <Compile Include="Exchange\CreateExchangeTask.vb" />
+    <Compile Include="Exchange\CreateFoldersOnExchangeServerMailbox.vb" />
+    <Compile Include="Exchange\CreateNewRuleOntheExchangeServer.vb" />
+    <Compile Include="Exchange\CreatePrivateDistributionList.vb" />
+    <Compile Include="Exchange\CreateREAndFWMessages.vb" />
+    <Compile Include="Exchange\CreateUserConfigurations.vb" />
+    <Compile Include="Exchange\DeleteConversations.vb" />
+    <Compile Include="Exchange\DeleteExchangeTask.vb" />
+    <Compile Include="Exchange\DeleteMembersFromPrivateDistributionList.vb" />
+    <Compile Include="Exchange\DeleteMembersWithoutListing.vb" />
+    <Compile Include="Exchange\DeleteMessagesFromExchangeServer.vb" />
+    <Compile Include="Exchange\DeleteMessagesFromUsingEWS.vb" />
+    <Compile Include="Exchange\DeletePrivateDistributionList.vb" />
+    <Compile Include="Exchange\DeleteTaskOnExchange.vb" />
+    <Compile Include="Exchange\DeleteUserConfiguration.vb" />
+    <Compile Include="Exchange\DeleteWithoutListing.vb" />
+    <Compile Include="Exchange\DownloadMessagesFromExchangeServerFoldersRecursively.vb" />
+    <Compile Include="Exchange\DownloadMessagesFromPublicFolders.vb" />
+    <Compile Include="Exchange\EnumeratMessagesWithPaginginEWS.vb" />
+    <Compile Include="Exchange\ExchangeClientSaveMessagesInMSGFormat.vb" />
+    <Compile Include="Exchange\ExchangeFoldersBackupToPST.vb" />
+    <Compile Include="Exchange\ExchangeImpersonationUsingEWS.vb" />
+    <Compile Include="Exchange\ExchangeServerReadRules.vb" />
+    <Compile Include="Exchange\ExchangeServerUsesSSL.vb" />
+    <Compile Include="Exchange\ExchangeServerUsingEWS.vb" />
+    <Compile Include="Exchange\FetchPrivateDistributionList.vb" />
+    <Compile Include="Exchange\FilterMessagesFromExchangeMailbox.vb" />
+    <Compile Include="Exchange\FindConversationsOnExchangeServer.vb" />
+    <Compile Include="Exchange\GetMailboxInformationFromExchangeServer.vb" />
+    <Compile Include="Exchange\GetMailboxInformationFromExchangeWebServices.vb" />
+    <Compile Include="Exchange\GetMailTips.vb" />
+    <Compile Include="Exchange\ListExchangeServerMessages.vb" />
+    <Compile Include="Exchange\ListFoldersFromExchangeServer.vb" />
+    <Compile Include="Exchange\ListMessagesByID.vb" />
+    <Compile Include="Exchange\ListMessagesFromDifferentFolders.vb" />
+    <Compile Include="Exchange\MoveConversations.vb" />
+    <Compile Include="Exchange\MoveMessageFromOneFolderToAnotherusingEWS.vb" />
+    <Compile Include="Exchange\MoveMessageFromOneFolderToAnotherUsingExchangeClient.vb" />
+    <Compile Include="Exchange\PagingSupportForListingAppointments.vb" />
+    <Compile Include="Exchange\PagingSupportForListingFolders.vb" />
+    <Compile Include="Exchange\PagingSupportForListingMessages.vb" />
+    <Compile Include="Exchange\PreFetchMessageSizeUsingIEWSClient.vb" />
+    <Compile Include="Exchange\ProcessExchangeTasksUsingIEWSClient.vb" />
+    <Compile Include="Exchange\ProgrammingSamplesUsingEWS.vb" />
+    <Compile Include="Exchange\ReadUserConfiguration.vb" />
+    <Compile Include="Exchange\RetrieveFolderPermissionsUsingExchangeWebServiceClient.vb" />
+    <Compile Include="Exchange\SaveExchangeTaskToDisc.vb" />
+    <Compile Include="Exchange\SaveMessagesFromExchangeServerMailboxToEML.vb" />
+    <Compile Include="Exchange\SaveMessagesToMemoryStream.vb" />
+    <Compile Include="Exchange\SaveMessagesToMemoryStreamUsingEWS.vb" />
+    <Compile Include="Exchange\SaveMessagesUsingExchangeWebServices.vb" />
+    <Compile Include="Exchange\SecondaryCalendarEvents.vb" />
+    <Compile Include="Exchange\SendCalendarInvitation.vb" />
+    <Compile Include="Exchange\SendEmailMessagesUsingExchangeServer.vb" />
+    <Compile Include="Exchange\SendEmailMessagesUsingExchangeWebServices.vb" />
+    <Compile Include="Exchange\SendExchangeTask.vb" />
+    <Compile Include="Exchange\SendMeetingRequestsUsingEWS.vb" />
+    <Compile Include="Exchange\SendMeetingRequestsUsingExchangeServer.vb" />
+    <Compile Include="Exchange\SendTaskRequestUsingIEWSClient.vb" />
+    <Compile Include="Exchange\SynchronizeFolderItems.vb" />
+    <Compile Include="Exchange\UpdateExchangeTask.vb" />
+    <Compile Include="Exchange\UpdateRuleOntheExchangeServer.vb" />
+    <Compile Include="Exchange\UpdateTaskOnExchange.vb" />
+    <Compile Include="Exchange\UpdateUserConfiguration.vb" />
+    <Compile Include="IMAP\AddingNewMessage.vb" />
+    <Compile Include="IMAP\ConnectingWithIMAPServer.vb" />
+    <Compile Include="IMAP\CopyMultipleMessagesFromOneFoldertoAnother.vb" />
+    <Compile Include="IMAP\DeleteMultipleMessages.vb" />
+    <Compile Include="IMAP\DeleteSingleMessage.vb" />
+    <Compile Include="IMAP\DeletingFolders.vb" />
+    <Compile Include="IMAP\FilteringMessagesFromIMAPMailbox.vb" />
+    <Compile Include="IMAP\GetMessageIdUsingImapMessageInfo.vb" />
+    <Compile Include="IMAP\GettingFoldersInformation.vb" />
+    <Compile Include="IMAP\IMAP4ExtendedListCommand.vb" />
+    <Compile Include="IMAP\IMAP4IDExtensionSupport.vb" />
+    <Compile Include="IMAP\InsertHeaderAtSpecificLocation.vb" />
+    <Compile Include="IMAP\InternalDateFilter.vb" />
+    <Compile Include="IMAP\ListingMessagesRecursively.vb" />
+    <Compile Include="IMAP\ListingMessagesWithPagingSupport.vb" />
+    <Compile Include="IMAP\ListMessagesWithMaximumNumberOfMessages.vb" />
+    <Compile Include="IMAP\MessagesFromIMAPServerToDisk.vb" />
+    <Compile Include="IMAP\MoveMessage.vb" />
+    <Compile Include="IMAP\ProxyServerAccessMailbox.vb" />
+    <Compile Include="IMAP\ReadMessagesRecursively.vb" />
+    <Compile Include="IMAP\RemovingMessageFlags.vb" />
+    <Compile Include="IMAP\RenamingFolders.vb" />
+    <Compile Include="IMAP\RetreivingServerExtensions.vb" />
+    <Compile Include="IMAP\RetrievingMessagesAsynchronously.vb" />
+    <Compile Include="IMAP\SavingMessagesFromIMAPServer.vb" />
+    <Compile Include="IMAP\SearchWithPagingSupport.vb" />
+    <Compile Include="IMAP\SettingMessageFlags.vb" />
+    <Compile Include="IMAP\SSLEnabledIMAPServer.vb" />
+    <Compile Include="IMAP\SupportIMAPIdleCommand.vb" />
+    <Compile Include="Knowledge-Base\PrintEmail.vb" />
+    <Compile Include="Outlook\CreateNewMapiCalendarAndAddToCalendarSubfolder.vb" />
+    <Compile Include="Outlook\UpdatePSTCustomProperites.vb" />
+    <Compile Include="Outlook\SpecificCriterionSplitPST.vb" />
+    <Compile Include="Outlook\AddMessagesToPSTFiles.vb" />
+    <Compile Include="Outlook\AddMapiNoteToPST.vb" />
+    <Compile Include="Outlook\SaveCalendarItems.vb" />
+    <Compile Include="Outlook\SaveContactInformation.vb" />
+    <Compile Include="Outlook\AccessContactInformation.vb" />
+    <Compile Include="Outlook\AddAttachmentsToMapiJournal.vb" />
+    <Compile Include="Outlook\AddAttachmentsToMapiTask..vb" />
+    <Compile Include="Outlook\AddAudioReminderToCalendar.vb" />
+    <Compile Include="Outlook\ParseSearchableFolders.vb" />
+    <Compile Include="Outlook\RetreiveParentFolderInformationFromMessageInfo.vb" />
+    <Compile Include="Outlook\AddDisplayReminderToACalendar.vb" />
+    <Compile Include="Outlook\DisplayInformationOfPSTFile.vb" />
+    <Compile Include="Outlook\AddFilesToPST.vb" />
+    <Compile Include="Outlook\AddMapiCalendarToPST.vb" />
+    <Compile Include="Outlook\AddMapiTaskToPST.vb" />
+    <Compile Include="Outlook\AddRecurrenceToMapiTask.vb" />
+    <Compile Include="Outlook\AddReminderInformationToMapiTask.vb" />
+    <Compile Include="Outlook\AddVotingButtonToExistingMessage.vb" />
+    <Compile Include="Outlook\ChangeFolderContainerClass.vb" />
+    <Compile Include="Outlook\CheckPasswordProtection.vb" />
+    <Compile Include="Outlook\ConvertEMLToMSG.vb" />
+    <Compile Include="Outlook\ConvertMIMEMessagesFromMSGToEML.vb" />
+    <Compile Include="Outlook\ConvertMIMEMessageToEML.vb" />
+    <Compile Include="Outlook\ConvertOSTToPST.vb" />
+    <Compile Include="Outlook\CreatAndSaveAnOutlookNote.vb" />
+    <Compile Include="Outlook\CreatAndSaveCalendaritems.vb" />
+    <Compile Include="Outlook\CreateAndSaveDistributionList.vb" />
+    <Compile Include="Outlook\CreateAndSaveOutlookContact.vb" />
+    <Compile Include="Outlook\CreateDistributionListInPST.vb" />
+    <Compile Include="Outlook\CreatEMLFileAndConvertToMSG.vb" />
+    <Compile Include="Outlook\CreateNewMapiContactAndAddToContactsSubfolder.vb" />
+    <Compile Include="Outlook\CreateNewMapiJournalAndAddToSubfolder.vb" />
+    <Compile Include="Outlook\CreateNewPSTFileAndAddingSubfolders.vb" />
+    <Compile Include="Outlook\CreatePollUsingMapiMessage.vb" />
+    <Compile Include="Outlook\CreateSaveOutlookFiles.vb" />
+    <Compile Include="Outlook\CreatForwardMessage.vb" />
+    <Compile Include="Outlook\CreatingAndSavingOutlookTasks.vb" />
+    <Compile Include="Outlook\CreatReplyMessage.vb" />
+    <Compile Include="Outlook\DeleteVotingButtonFromMessage.vb" />
+    <Compile Include="Outlook\EndAfterDate.vb" />
+    <Compile Include="Outlook\EndAfterNoccurrences.vb" />
+    <Compile Include="Outlook\EndAfterNoccurrenceSelectMultipleDaysInweek.vb" />
+    <Compile Include="Outlook\ExtractAttachmentsFromPSTMessages.vb" />
+    <Compile Include="Outlook\ExtractMessagesFromPSTFile.vb" />
+    <Compile Include="Outlook\ExtractNumberOfMessages.vb" />
+    <Compile Include="Outlook\GenerateRecurrenceFromRecurrenceRule.vb" />
+    <Compile Include="Outlook\GetMAPIProperty.vb" />
+    <Compile Include="Outlook\GetMessageInformation.vb" />
+    <Compile Include="Outlook\LoadingfromStream.vb" />
+    <Compile Include="Outlook\LoadMSGFiles.vb" />
+    <Compile Include="Outlook\ManageAttachmentsFromCalendarFiles.vb" />
+    <Compile Include="Outlook\MarkFollowUpFlagAsCompleted.vb" />
+    <Compile Include="Outlook\MonthlyEndAfterNoccurrences.vb" />
+    <Compile Include="Outlook\MoveItemsToOtherFolders.vb" />
+    <Compile Include="Outlook\ReadandConvertOSTFiles.vb" />
+    <Compile Include="Outlook\ReadAndWritingOutlookTemplateFile.vb" />
+    <Compile Include="Outlook\ReadFollowupFlagOptionsForMessage.vb" />
+    <Compile Include="Outlook\ReadiNamedMAPIPropertyFromAttachment.vb" />
+    <Compile Include="Outlook\ReadingNamedMAPIPropertyFromAttachment.vb" />
+    <Compile Include="Outlook\ReadMapiNote.vb" />
+    <Compile Include="Outlook\ReadNamedMAPIProperties.vb" />
+    <Compile Include="Outlook\ReadVotingOptionsFromMapiMessage.vb" />
+    <Compile Include="Outlook\RemoveFollowUpflag.vb" />
+    <Compile Include="Outlook\RemovePropertiesFromMSGAndAttachments.vb" />
+    <Compile Include="Outlook\RemovingPaswordProperty.vb" />
+    <Compile Include="Outlook\SaveMessagesDirectlyFromPSTToStream.vb" />
+    <Compile Include="Outlook\SearchMessagesAndFoldersInPST.vb" />
+    <Compile Include="Outlook\SearchStringInPSTWithIgnoreCaseParameter.vb" />
+    <Compile Include="Outlook\SetColorCategories.vb" />
+    <Compile Include="Outlook\SetFollowUpflag.vb" />
+    <Compile Include="Outlook\SetFollowUpForRecipients.vb" />
+    <Compile Include="Outlook\SetMAPIProperties.vb" />
+    <Compile Include="Outlook\SetPasswordOnPST.vb" />
+    <Compile Include="Outlook\SetReminderByAddingTags.vb" />
+    <Compile Include="Outlook\WeeklyEndAfterNoccurrences.vb" />
+    <Compile Include="Outlook\CreateMeetingRequestWithRecurrence.vb" />
+    <Compile Include="Outlook\YearlyEndAfterNoccurrences.vb" />
+    <Compile Include="PersonalOutlook\DeleteBulkItemsFromPSTFile.vb" />
+    <Compile Include="Outlook\MergeMultiplePSTsInToSinglePST.vb" />
+    <Compile Include="Outlook\NewPSTAddSubfolders.vb" />
+    <Compile Include="Outlook\SaveMsgAsTemplate.vb" />
+    <Compile Include="Outlook\SplitSinglePSTInToMultiplePST.vb" />
+    <Compile Include="PersonalOutlook\DeleteMessagesFromPSTFiles.vb" />
+    <Compile Include="PersonalOutlook\UpdateBulkMessagesInPSTFile.vb" />
+    <Compile Include="POP3\RetrieveMessageSummaryInformationUsingUniqueId.vb" />
+    <Compile Include="POP3\GetServerExtensionsUsingPop3Client.vb" />
+    <Compile Include="POP3\ConnectingToPOP3.vb" />
+    <Compile Include="POP3\FilterMessagesFromPOP3Mailbox.vb" />
+    <Compile Include="POP3\GettingMailboxInfo.vb" />
+    <Compile Include="POP3\ParseMessageAndSave.vb" />
+    <Compile Include="POP3\RecipientInformation.vb" />
+    <Compile Include="POP3\RetrieveEmailViaPop3ClientProxyServer.vb" />
+    <Compile Include="POP3\RetrievingEmailHeaders.vb" />
+    <Compile Include="POP3\RetrievingEmailMessages.vb" />
+    <Compile Include="POP3\RetrievMessagesAsynchronously.vb" />
+    <Compile Include="POP3\SaveToDiskWithoutParsing.vb" />
+    <Compile Include="POP3\SSLEnabledPOP3Server.vb" />
+    <Compile Include="RunExamples.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SMTP\AppointmentInICSFormat.vb" />
+    <Compile Include="SMTP\CustomizingEmailHeader.vb" />
+    <Compile Include="SMTP\CustomizingEmailHeaders.vb" />
+    <Compile Include="SMTP\DeliveryNotifications.vb" />
+    <Compile Include="SMTP\EmbeddedObjects.vb" />
+    <Compile Include="SMTP\ExportAsEML.vb" />
+    <Compile Include="SMTP\SignEmailsWithDKIM.vb" />
+    <Compile Include="SMTP\SignAMessage.vb" />
+    <Compile Include="SMTP\ImportEML.vb" />
+    <Compile Include="SMTP\LoadSmtpConfigFile.vb" />
+    <Compile Include="SMTP\MailMerge.vb" />
+    <Compile Include="SMTP\MeetingRequests.vb" />
+    <Compile Include="SMTP\MultipleRecipients.vb" />
+    <Compile Include="SMTP\SendEmailAsynchronously.vb" />
+    <Compile Include="SMTP\ForwardEmail.vb" />
+    <Compile Include="SMTP\SendEmailUsingSMTP.vb" />
+    <Compile Include="SMTP\SendEmailViaProxyServer.vb" />
+    <Compile Include="SMTP\SendEmailWithAlternateText.vb" />
+    <Compile Include="SMTP\SendingBulkEmails.vb" />
+    <Compile Include="SMTP\SendingEMLFilesWithSMTP.vb" />
+    <Compile Include="SMTP\SendMessageAsTNEF.vb" />
+    <Compile Include="SMTP\SendPlainTextEmailMessage.vb" />
+    <Compile Include="SMTP\SetEmailInfo.vb" />
+    <Compile Include="SMTP\SetSpecificIpAddress.vb" />
+    <Compile Include="SMTP\SettingHTMLBody.vb" />
+    <Compile Include="SMTP\SettingTextBody.vb" />
+    <Compile Include="SMTP\SSLEnabledSMTPServer.vb" />
+    <Compile Include="Thunderbird\CreateNewMessagesToThunderbird.vb" />
+    <Compile Include="Thunderbird\GetMarkerInformation.vb" />
+    <Compile Include="Thunderbird\ReadMessagesFromThunderbird.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

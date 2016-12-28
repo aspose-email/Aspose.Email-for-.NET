@@ -1,0 +1,12 @@
+X-Unsent: 1
+Subject: New message created by Aspose.Email for .NET(Aspose.Email Evaluation)
+From: "Sender Name" <from@domain.com>
+To: "Recipient 1" <to1@domain.com>, "Recipient 2" <to2@domain.com>
+Cc: "Recipient 3" <cc1@domain.com>, "Recipient 4" <cc2@domain.com>
+Date: Tue, 2 Aug 2016 09:37:11 +0000
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<b>This line is in bold=2E</b> <br/> <br/><font color=3Dblue>This line is i=
+n blue color</font>

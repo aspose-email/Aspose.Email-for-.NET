@@ -1,0 +1,261 @@
+MIME-Version: 1.0
+Subject: (Aspose.Email Evaluation)
+Date: Fri, 18 Nov 2016 10:49:19 +0000
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+=EF=BB=BF<h4><div class=3D'pageHeader'>from@domain=2Ecom<hr/></div><span cl=
+ass=3D'headerLineTitle'>From:</span><span class=3D'headerLineText'>from@dom=
+ain=2Ecom</span><br/><span class=3D'headerLineTitle'>Sent:</span><span clas=
+s=3D'headerLineText'>Fri, 18 Nov 2016 10:49:18 +0000</span><br/><span class=
+=3D'headerLineTitle'>To:</span><span class=3D'headerLineText'>to1@domain=2Ec=
+om;to2@domain=2Ecom</span><br/><span class=3D'headerLineTitle'>Cc:</span><s=
+pan class=3D'headerLineText'>cc1@domain=2Ecom;cc2@domain=2Ecom</span><br/><=
+span class=3D'headerLineTitle'>Subject:</span><span class=3D'headerLineText=
+'>New message created by Aspose=2EEmail for =2ENET(Aspose=2EEmail Evaluatio=
+n)</span><br/><br/></h4>=EF=BB=BF<h4><div class=3D'pageHeader'>from@domain=
+=2Ecom<hr/></div><span class=3D'headerLineTitle'>From:</span><span class=3D'=
+headerLineText'>from@domain=2Ecom</span><br/><span class=3D'headerLineTitle=
+'>Sent:</span><span class=3D'headerLineText'>Fri, 18 Nov 2016 10:49:18 +000=
+0</span><br/><span class=3D'headerLineTitle'>To:</span><span class=3D'heade=
+rLineText'>to1@domain=2Ecom;to2@domain=2Ecom</span><br/><span class=3D'head=
+erLineTitle'>Cc:</span><span class=3D'headerLineText'>cc1@domain=2Ecom;cc2@=
+domain=2Ecom</span><br/><span class=3D'headerLineTitle'>Subject:</span><spa=
+n class=3D'headerLineText'>New message created by Aspose=2EEmail for =2ENET=
+(Aspose=2EEmail Evaluation)</span><br/><br/></h4>=EF=BB=BF<head><style type=
+=3D"text/css">
+
+    h4=20
+    {
+        text-align: left;
+    }
+
+@media screen=20
+{
+
+	=2EheaderLineTitle
+	{
+		width:1=2E5in;
+		display:inline;
+		margin:0in;
+		margin-bottom:=2E0001pt;
+		font-size:11=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:bold;
+	}
+
+	=2EheaderLineText
+	{
+		display:inline;
+		margin:0in;
+		margin-bottom:=2E0001pt;
+		font-size:11=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:normal;
+	}
+
+   =2EpageHeader
+   {
+		font-size:14=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:bold;
+		visibility:hidden;
+		display:none;
+   }  =20
+}
+
+@media print=20
+{
+	=2EheaderLineTitle
+	{
+		width:1=2E5in;
+		display:inline;
+		margin:0in;
+		margin-bottom:=2E0001pt;
+		font-size:11=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:bold;
+	}
+
+	=2EheaderLineText
+	{
+		display:inline;
+		margin:0in;
+		margin-bottom:=2E0001pt;
+		font-size:11=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:normal;
+	}
+
+   =2EpageHeader
+   {
+		font-size:14=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:bold;
+		visibility:visible;
+		display:block;
+   }
+
+}
+</style><style type=3D"text/css">
+
+    h4=20
+    {
+        text-align: left;
+    }
+
+@media screen=20
+{
+
+	=2EheaderLineTitle
+	{
+		width:1=2E5in;
+		display:inline;
+		margin:0in;
+		margin-bottom:=2E0001pt;
+		font-size:11=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:bold;
+	}
+
+	=2EheaderLineText
+	{
+		display:inline;
+		margin:0in;
+		margin-bottom:=2E0001pt;
+		font-size:11=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:normal;
+	}
+
+   =2EpageHeader
+   {
+		font-size:14=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:bold;
+		visibility:hidden;
+		display:none;
+   }  =20
+}
+
+@media print=20
+{
+	=2EheaderLineTitle
+	{
+		width:1=2E5in;
+		display:inline;
+		margin:0in;
+		margin-bottom:=2E0001pt;
+		font-size:11=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:bold;
+	}
+
+	=2EheaderLineText
+	{
+		display:inline;
+		margin:0in;
+		margin-bottom:=2E0001pt;
+		font-size:11=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:normal;
+	}
+
+   =2EpageHeader
+   {
+		font-size:14=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:bold;
+		visibility:visible;
+		display:block;
+   }
+
+}
+</style><style type=3D"text/css">
+
+    h4=20
+    {
+        text-align: left;
+    }
+
+@media screen=20
+{
+
+	=2EheaderLineTitle
+	{
+		width:1=2E5in;
+		display:inline;
+		margin:0in;
+		margin-bottom:=2E0001pt;
+		font-size:11=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:bold;
+	}
+
+	=2EheaderLineText
+	{
+		display:inline;
+		margin:0in;
+		margin-bottom:=2E0001pt;
+		font-size:11=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:normal;
+	}
+
+   =2EpageHeader
+   {
+		font-size:14=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:bold;
+		visibility:hidden;
+		display:none;
+   }  =20
+}
+
+@media print=20
+{
+	=2EheaderLineTitle
+	{
+		width:1=2E5in;
+		display:inline;
+		margin:0in;
+		margin-bottom:=2E0001pt;
+		font-size:11=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:bold;
+	}
+
+	=2EheaderLineText
+	{
+		display:inline;
+		margin:0in;
+		margin-bottom:=2E0001pt;
+		font-size:11=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:normal;
+	}
+
+   =2EpageHeader
+   {
+		font-size:14=2E0pt;
+		font-family:"Calibri","sans-serif";
+		font-weight:bold;
+		visibility:visible;
+		display:block;
+   }
+
+}
+</style></head><h4><div class=3D'pageHeader'>from@domain=2Ecom<hr/></div><s=
+pan class=3D'headerLineTitle'>From:</span><span class=3D'headerLineText'>fr=
+om@domain=2Ecom</span><br/><span class=3D'headerLineTitle'>Sent:</span><spa=
+n class=3D'headerLineText'>Fri, 18 Nov 2016 10:49:18 +0000</span><br/><span=
+ class=3D'headerLineTitle'>To:</span><span class=3D'headerLineText'>to1@dom=
+ain=2Ecom;to2@domain=2Ecom</span><br/><span class=3D'headerLineTitle'>Cc:</=
+span><span class=3D'headerLineText'>cc1@domain=2Ecom;cc2@domain=2Ecom</span=
+><br/><span class=3D'headerLineTitle'>Subject:</span><span class=3D'headerL=
+ineText'>New message created by Aspose=2EEmail for =2ENET(Aspose=2EEmail Ev=
+aluation)</span><br/><br/></h4><br><center>This is an evaluation copy of As=
+pose=2EEmail for =2ENET=2E</center><br><a href=3D"http://www=2Easpose=2Ecom=
+/corporate/purchase/end-user-license-agreement=2Easpx"><center>View EULA On=
+line</center></a><hr><b>This line is in bold=2E</b> <br/> <br/><font color=
+=3Dblue>This line is in blue color</font>
