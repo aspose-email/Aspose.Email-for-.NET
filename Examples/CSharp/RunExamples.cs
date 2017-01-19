@@ -66,6 +66,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ReceiveNotifications.Run();
             //SetDefaultTextEncoding.Run();
             //IdentifyInlineAndRegularAttachments.Run();
+            //PreservingEmbeddedMsgFormat.Run();
+            //RenderingCalendarEvents.Run();
 
 
             //// =====================================================
@@ -238,8 +240,11 @@ namespace Aspose.Email.Examples.CSharp.Email
             //CreateExchangeTask.Run();
             //DeleteExchangeTask.Run();
             //SendExchangeTask.Run();
-            //UpdateExchangeTask.Run();           
+            //UpdateExchangeTask.Run();  
             //SendCalendarInvitation.Run();
+            //ListTasksFromExchangeServer.Run();
+            //AddContactsToExchangeServerUsingEWS.Run();
+            //FilterTasksFromServer.Run();
 
             //// =====================================================
             //// =====================================================

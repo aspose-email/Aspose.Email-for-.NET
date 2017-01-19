@@ -43,7 +43,9 @@ namespace Aspose.Email.Examples.CSharp.Email
 
             // Save message in EML, MSG and MHTML formats
             message.Save(dataDir + "Message.eml", Aspose.Email.Mail.SaveOptions.DefaultEml);
+
             message.Save(dataDir + "Message.msg", Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode);
+
             message.Save(dataDir + "Message.mhtml", Aspose.Email.Mail.SaveOptions.DefaultMhtml);
 
             Console.WriteLine(Environment.NewLine + "Created new email in EML, MSG and MHTML formats successfully.");

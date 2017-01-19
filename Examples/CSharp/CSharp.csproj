@@ -52,8 +52,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email\PreservingEmbeddedMsgFormat.cs" />
+    <Compile Include="Email\RemoveLRTracesFromMessageBody.cs" />
+    <Compile Include="Email\RenderingCalendarEvents.cs" />
+    <Compile Include="Exchange\AddContactsToExchangeServerUsingEWS.cs" />
+    <Compile Include="Exchange\FilterTasksFromServer.cs" />
     <Compile Include="Exchange\ListMessagesByExtendedProperties.cs" />
     <Compile Include="Exchange\GetContactsExtendedProperties.cs" />
+    <Compile Include="Exchange\ListTasksFromExchangeServer.cs" />
     <Compile Include="Exchange\RetrieveExtraParametersAsSummaryInformation.cs" />
     <Compile Include="IMAP\SendIMAPasynchronousEmail.cs" />
     <Compile Include="Outlook\ConvertMSGToMIMEMessage.cs" />
