@@ -27,15 +27,24 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
 
             // Check if specified custom folder exisits and Get all the messages info from the target Uri
             client.FolderExists(mailbox.InboxUri, "TestInbox", out subfolderInfo);
-            messages = client.FindMessages(subfolderInfo.Uri);
 
-            // Parse all the messages info collection
-            foreach (ExchangeMessageInfo info in messages)
+            //if custom folder exists
+            if (subfolderInfo != null)
             {
-                string strMessageURI = info.UniqueUri;
-                // now get the message details using FetchMessage()
-                MailMessage msg = client.FetchMessage(strMessageURI);
-                Console.WriteLine("Subject: " + msg.Subject);
+                messages = client.ListMessages(subfolderInfo.Uri);
+
+                // Parse all the messages info collection
+                foreach (ExchangeMessageInfo info in messages)
+                {
+                    string strMessageURI = info.UniqueUri;
+                    // now get the message details using FetchMessage()
+                    MailMessage msg = client.FetchMessage(strMessageURI);
+                    Console.WriteLine("Subject: " + msg.Subject);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No folder with this name found.");
             }
             // ExEnd:AccessCustomFolderUsingExchangeWebServiceClient
         }

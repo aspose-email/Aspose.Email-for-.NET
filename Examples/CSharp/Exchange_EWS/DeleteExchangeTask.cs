@@ -7,7 +7,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
     {
         public static void Run()
         {
-            // Create instance of ExchangeClient class by giving credentials
+            // Create instance of IEWSClient class by giving credentials
             IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
             // Get all tasks info collection from exchange
