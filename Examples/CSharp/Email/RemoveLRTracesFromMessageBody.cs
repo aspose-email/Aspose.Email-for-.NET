@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aspose.Email.Mail;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace CSharp.Email
         public static void Run()
         {
             // ExStart:CreateNewMailMessage
-            string dataDir = RunExamples.GetDataDir_Email();
+            string dataDir = Aspose.Email.Examples.CSharp.Email.RunExamples.GetDataDir_Email();
 
             //sample input file
             string fileName = "EmlWithLinkedResources.eml";

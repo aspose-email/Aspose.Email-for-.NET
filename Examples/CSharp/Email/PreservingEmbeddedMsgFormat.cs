@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Aspose.Email.Mail;
+using Aspose.Email.Outlook;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
