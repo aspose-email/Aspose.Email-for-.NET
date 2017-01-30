@@ -68,7 +68,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //IdentifyInlineAndRegularAttachments.Run();
             //PreservingEmbeddedMsgFormat.Run();
             //RenderingCalendarEvents.Run();
-
+            //UseMailMessageFeatures.Run();
 
             //// =====================================================
             //// =====================================================
