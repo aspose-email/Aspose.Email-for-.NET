@@ -55,6 +55,7 @@
     <Compile Include="Email\PreservingEmbeddedMsgFormat.cs" />
     <Compile Include="Email\RemoveLRTracesFromMessageBody.cs" />
     <Compile Include="Email\RenderingCalendarEvents.cs" />
+    <Compile Include="Email\UseMailMessageFeatures.cs" />
     <Compile Include="Exchange_EWS\AddContactsToExchangeServerUsingEWS.cs" />
     <Compile Include="Exchange_EWS\FilterTasksFromServer.cs" />
     <Compile Include="Exchange_EWS\ListTasksFromExchangeServer.cs" />
