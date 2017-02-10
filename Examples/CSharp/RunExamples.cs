@@ -30,6 +30,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             // =====================================================
             // =====================================================
 
+            //ChangeEmailAddress.Run();
             //DetermineAttachmentEmbeddedMessage.Run();
             //DraftAppointmentRequest.Run();
             //DisplayEmailInformation.Run();
@@ -41,7 +42,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //DisplayEmailAddressesNames.Run();
             //SetHTMLBody.Run();
             //SetAlternateText.Run();
-            //ManagingEmailAttachments.Run();
+            //AddEmailAttachments.Run();
             //RemoveAttachments.Run();
             //EmbeddedObjects.Run();
             //LoadMessageWithLoadOptions.Run();
@@ -59,7 +60,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //BayesianSpamAnalyzer.Run();
             //GetDeliveryStatusNotificationMessages.Run();
             //DetectDifferentFileFormats.Run();
-            //ExtractEmbeddObjects.Run();
+            //ExtractEmbeddedObjects.Run();
             //ExtractEmbeddedObjectsFromEmail.Run();
             //EncryptAndDecryptMessage.Run();
             //DetectTNEFMessage.Run();
@@ -69,6 +70,26 @@ namespace Aspose.Email.Examples.CSharp.Email
             //PreservingEmbeddedMsgFormat.Run();
             //RenderingCalendarEvents.Run();
             //UseMailMessageFeatures.Run();
+            //RequestReadReceipt.Run();
+            //SpecifyCustomHeader.Run();
+            //DisplayAttachmentFileName.Run();
+            //GetDecodedHeaderValues.Run();
+            //RetrieveContentDescriptionFromAttachment.Run();
+            //ExtractMSGEmbeddedAttachment.Run();
+            //LoadingEMLAndSavingToMSG.Run();
+            //SavingMSGWithPreservedDates.Run();
+            //SaveMailMessageAsMHTML.Run();
+            //ConvertMHTMLWithOptionalSettings.Run();
+            //ExportEmailToMHTWithCustomTimezone.Run();
+            //ExportEmailToEML.Run();
+            //SaveMessageAsHTML.Run();
+            //SaveMessageAsOFT.Run();
+            //CheckMessageForEncryption.Run();
+            //UpdateTNEFAttachments.Run();
+            //AddNewTNEFAttachments.Run();
+            //CreateTNEFEMLFromMSG.Run();
+            //DetectMessageIsTNEF.Run();
+            //CheckBouncedMessage.Run();
 
             //// =====================================================
             //// =====================================================
@@ -320,7 +341,6 @@ namespace Aspose.Email.Examples.CSharp.Email
             //EmbeddedObjects.Run();
             //LoadSmtpConfigFile.Run();
             //MailMerge.Run();
-            //ManagingEmailAttachments.Run();
             //MeetingRequests.Run();
             //MultipleRecipients.Run();
             //SendingEMLFilesWithSMTP.Run();
@@ -346,6 +366,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //CreateNewMessagesToThunderbird.Run();
 
             // Stop before exiting
+            
             Console.WriteLine(Environment.NewLine + "Program Finished. Press any key to exit....");
             Console.ReadKey();
         }
