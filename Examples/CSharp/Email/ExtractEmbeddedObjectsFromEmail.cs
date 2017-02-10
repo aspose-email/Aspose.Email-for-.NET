@@ -47,8 +47,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             {
                 
                Console.Write(ex.Message);
-            }
-          
+            }          
             // ExEnd:ExtractEmbeddedObjectsFromEmail
         }
     }
