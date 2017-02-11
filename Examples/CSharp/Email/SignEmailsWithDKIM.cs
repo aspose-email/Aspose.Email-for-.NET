@@ -11,12 +11,13 @@ using Aspose.Email.Mail.DKIM;
    please feel free to contact us using http://www.aspose.com/community/forums/default.aspx            
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.IMAP
+namespace Aspose.Email.Examples.CSharp.Email
 {
     class SignEmailsWithDKIM
     {
         public static void Run()
         {
+            // ExStart:SignEmailsWithDKIM
             string privateKeyFile = Path.Combine(RunExamples.GetDataDir_SMTP().Replace("_Send", string.Empty), RunExamples.GetDataDir_SMTP()+ "key2.pem");
 
             RSACryptoServiceProvider rsa = PemReader.GetPrivateKey(privateKeyFile);
@@ -36,6 +37,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             }
             finally
             {}
+            // ExEnd:SignEmailsWithDKIM
         }
     }
 }

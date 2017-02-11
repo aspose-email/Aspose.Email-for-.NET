@@ -12,11 +12,11 @@ please feel free to contact us using http://www.aspose.com/community/forums/defa
 
 namespace Aspose.Email.Examples.CSharp.Email
 {
-    class ExtractEmbeddObjects
+    class ExtractEmbeddedObjects
     {
         public static void Run()
         {
-            // ExStart:CreatingTNEFFromMSG
+            // ExStart:ExtractEmbeddedObjects
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Email();
 
@@ -45,6 +45,7 @@ namespace Aspose.Email.Examples.CSharp.Email
 
                 lr.Save(lr.ContentType.Name);
             }
+            // ExEnd:ExtractEmbeddedObjects
         }
     }
 }
