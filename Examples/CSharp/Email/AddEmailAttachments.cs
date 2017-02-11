@@ -10,11 +10,11 @@ please feel free to contact us using http://www.aspose.com/community/forums/defa
 
 namespace Aspose.Email.Examples.CSharp.Email
 {
-    class ManagingEmailAttachments
+    class AddEmailAttachments
     {
         public static void Run()
         {
-            // ExStart:ManagingEmailAttachments
+            // ExStart:AddEmailAttachments
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Email();
          
@@ -32,7 +32,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             message.AddAttachment(new Attachment(dataDir + "1.rar"));
             message.AddAttachment(new Attachment(dataDir + "1.pdf"));
             message.Save(dataDir + "outputAttachments_out.msg", SaveOptions.DefaultMsgUnicode);
-            // ExEnd:ManagingEmailAttachments
+            // ExEnd:AddEmailAttachments
         }
     }
 }

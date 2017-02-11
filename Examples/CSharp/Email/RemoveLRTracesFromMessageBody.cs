@@ -10,7 +10,7 @@ namespace CSharp.Email
     {
         public static void Run()
         {
-            // ExStart:CreateNewMailMessage
+            // ExStart:RemoveLRTracesFromMessageBody
             string dataDir = Aspose.Email.Examples.CSharp.Email.RunExamples.GetDataDir_Email();
 
             //sample input file
@@ -24,7 +24,7 @@ namespace CSharp.Email
 
             //Now clear the Alternate View for linked Resources
             msg.AlternateViews[0].LinkedResources.Clear(true);
-            // ExEnd:CreateNewMailMessage
+            // ExEnd:RemoveLRTracesFromMessageBody
         }
     }
 }

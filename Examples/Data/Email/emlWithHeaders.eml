@@ -1,0 +1,148 @@
+Delivered-To: user@gmail.com
+Received: by 10.194.9.40 with SMTP id w8csp4659410wja;        Mon, 9 Jan 2017 06:24:36
+ -0800 (PST)
+Received: from EUR01-VE1-obe.outbound.protection.outlook.com
+ (mail-ve1eur01on0099.outbound.protection.outlook.com. [104.47.1.99])       
+ by mx.google.com with ESMTPS id g31si6504724otd.137.2017.01.09.06.24.36     
+   for <user@gmail.com>        (version=TLS1_2
+ cipher=ECDHE-RSA-AES128-SHA bits=128/128);        Mon, 09 Jan 2017 06:24:36
+ -0800 (PST)
+Received: from HE1PR0402MB2908.eurprd04.prod.outlook.com (10.175.32.13) by
+ HE1PR0402MB2908.eurprd04.prod.outlook.com (10.175.32.13) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384)
+ id 15.1.817.10; Mon, 9 Jan 2017 14:24:34 +0000
+Received: from HE1PR0402MB2908.eurprd04.prod.outlook.com ([10.175.32.13]) by
+ HE1PR0402MB2908.eurprd04.prod.outlook.com ([10.175.32.13]) with mapi id
+ 15.01.0817.015; Mon, 9 Jan 2017 14:24:34 +0000
+X-Received: by 10.202.219.193 with SMTP id s184mr44185752oig.151.1483971876820;       
+ Mon, 09 Jan 2017 06:24:36 -0800 (PST)
+Return-Path: <user@company.onmicrosoft.com>
+Received-SPF: pass (google.com: domain of user@company.onmicrosoft.com designates
+ 104.47.1.99 as permitted sender) client-ip=104.47.1.99;
+Received-SPF: None (protection.outlook.com: company.onmicrosoft.com does not designate
+ permitted sender hosts)
+Received-SPF: pass (google.com: domain of user@company.onmicrosoft.com designates
+ 104.47.1.99 as permitted sender) client-ip=104.47.1.99;
+Received-SPF: None (protection.outlook.com: company.onmicrosoft.com does not designate
+ permitted sender hosts)
+Authentication-Results: mx.google.com;       dkim=pass header.i=@company.onmicrosoft.com;      
+ spf=pass (google.com: domain of user@company.onmicrosoft.com designates
+ 104.47.1.99 as permitted sender)
+ smtp.mailfrom=user@company.onmicrosoft.com
+Authentication-Results: spf=none (sender IP is ) smtp.mailfrom=user@company.onmicrosoft.com; 
+Authentication-Results: mx.google.com;       dkim=pass header.i=@company.onmicrosoft.com;      
+ spf=pass (google.com: domain of user@company.onmicrosoft.com designates
+ 104.47.1.99 as permitted sender)
+ smtp.mailfrom=user@company.onmicrosoft.com
+Authentication-Results: spf=none (sender IP is ) smtp.mailfrom=user@company.onmicrosoft.com; 
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=company.onmicrosoft.com;
+ s=selector1-company-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
+ bh=Bx68lBssX/scBh8OTG/lQGZL78FdoLQOZbU3ZUkJUIg=;
+ b=IQCfz1/XJPrSE5AfOidd+OhajYArnX4tFmZtd3VPsNfhqVx4xiU8yxetXLtBaiSTlCcPnQQykuQ0QMSTQERII2e84HEyIr2XHubnc2481EMDERYrBzybblrkpEDi4uDLERbidpJdCepnQ6gOfiWX5AqkW0iehu2ycN3OwQKQQiU=
+From: "Maria Shahid" <user@company.onmicrosoft.com>
+To: "user@gmail.com" <user@gmail.com>
+Subject: Test Message 1(Aspose.Email Evaluation)
+Thread-Topic: Test Message 1
+Thread-Index: AdJqhCNxFj+o/T0gQECE8k0huFR1CA==
+Date: Mon, 9 Jan 2017 14:24:34 +0000
+Message-ID: <HE1PR0402MB29089093274CCF090F29AC60F4640@HE1PR0402MB2908.eurprd04.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [103.255.6.79]
+x-ms-office365-filtering-correlation-id: cb32a0a0-9bf7-4cb5-eb8e-08d4389b3c0e
+x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:(22001);SRVR:HE1PR0402MB2908;
+x-microsoft-exchange-diagnostics: 1;HE1PR0402MB2908;7:XJr8wrIlF3heDFUZERGj2WPRKvtL4dOdk0o+jxIzL9upW9Wx784Y/CJWEB/TtBRciJGxfCoDP7ysUMDPlBlWpY93Dpqy/7hgw4FR8ug9NwkkQZkvHgGJK/EtzgcobNlRhxe4fa/MnzvxNfttl/EblNJcY6fETndkdgJgtmwCmYISM4P2zj42Wo/PtP2bLGJy9vMGMzpCNW1nnIr1HfbQ3cqCSYiHASB62EHPtuFUsfR34v5Yfi4EuoxRk0S1i4oiuaQ3EMNl6DEwRJeLr3hs8JclZyt0EGL8jpNwg6L2vWQXE9sAya9hno9DIhnqUZZhC+UDGJ9c1YOCWy21QhO1momFetCwEmLwxOiXix7TmALALvfrTEM/7wt1LM2BBbE3vKBW40AAV4DRlCZxdgkQ6tGHuuI7ZHuYozFx1qQl3GcCTHsqVFbwuYRRBxc7/Ox/MSlufaei/eUobjU16GyI+Q==
+x-microsoft-antispam-prvs: <HE1PR0402MB29086ECB82B71D9DA27D4456F4640@HE1PR0402MB2908.eurprd04.prod.outlook.com>
+x-exchange-antispam-report-test: UriScan:(21748063052155);
+x-exchange-antispam-report-cfa-test: BCL:0;PCL:0;RULEID:(6040375)(601004)(2401047)(5005006)(8121501046)(3002001)(10201501046)(6041248)(20161123562025)(20161123555025)(6059035)(20161123564025)(20161123560025)(2016111802025)(16040078)(16043105)(6072148)(6047074)(6043046);SRVR:HE1PR0402MB2908;BCL:0;PCL:0;RULEID:;SRVR:HE1PR0402MB2908;
+x-forefront-prvs: 0182DBBB05
+x-forefront-antispam-report: SFV:NSPM;SFS:(10019020)(6009001)(7916002)(39830400002)(39410400002)(39450400003)(199003)(189002)(450100001)(8676002)(2420400007)(790700001)(5630700001)(102836003)(122556002)(10710500007)(105586002)(68736007)(2351001)(106356001)(2900100001)(2906002)(8936002)(81166006)(81156014)(1240700005)(3846002)(2501003)(7110500001)(107886002)(6306002)(9686003)(6116002)(55016002)(92566002)(97736004)(25786008)(86902001)(50986999)(86362001)(54356999)(38620400001)(74316002)(101416001)(99286003)(38480400004)(54896002)(555874004)(189998001)(77096006)(110136003)(38600400001)(86442001)(6506006)(38500400001)(586005)(38610400001)(42882006)(558084003)(3280700002)(64872007)(7116003)(588024002)(5660300001)(15650500001)(3660700001)(39060400001)(6436002)(6456002)(66066001)(7696004)(6916009)(5640700003)(7736002)(33656002)(83022003);DIR:OUT;SFP:1102;SCL:1;SRVR:HE1PR0402MB2908;H:HE1PR0402MB2908.eurprd04.prod.outlook.com;FPR:;SPF:None;PTR:InfoNoRecords;A:0;MX:1;LANG:en;
+spamdiagnosticoutput: 1:99
+spamdiagnosticmetadata: NSPM
+MIME-Version: 1.0
+X-OriginatorOrg: company.onmicrosoft.com
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Jan 2017 14:24:34.4159 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3deb3ce8-b93c-4fd9-aedd-6249ed57e638
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: HE1PR0402MB2908
+Content-Type: multipart/alternative;
+ boundary="--_=_NextPart0_7ef64ee0-61dd-40be-a625-f389d05de522"
+
+This is a multi-part message in MIME format.
+
+----_=_NextPart0_7ef64ee0-61dd-40be-a625-f389d05de522
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+This is an evaluation copy of Aspose=2EEmail for =2ENET=2E=20
+ http://www=2Easpose=2Ecom/corporate/purchase/end-user-license-agreement=2Ea=
+spx: View EULA Online
+------------------------------
+
+Test Message 1
+
+----_=_NextPart0_7ef64ee0-61dd-40be-a625-f389d05de522
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas=2Emicrosoft=2Ecom/office/2004/12/omml" xmlns=3D"h=
+ttp://www=2Ew3=2Eorg/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 14 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p=2EMsoNormal, li=2EMsoNormal, div=2EMsoNormal
+	{margin:0in;
+	margin-bottom:=2E0001pt;
+	font-size:11=2E0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span=2EMsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span=2EMsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+span=2EEmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri","sans-serif";
+	color:windowtext;}
+=2EMsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri","sans-serif";}
+@page WordSection1
+	{size:8=2E5in 11=2E0in;
+	margin:1=2E0in 1=2E0in 1=2E0in 1=2E0in;}
+div=2EWordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72"><br><center>This is=
+ an evaluation copy of Aspose=2EEmail for =2ENET=2E</center><br><a href=3D"=
+http://www=2Easpose=2Ecom/corporate/purchase/end-user-license-agreement=2Ea=
+spx"><center>View EULA Online</center></a><hr>
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal">Test Message 1<o:p></o:p></p>
+</div>
+</body>
+</html>
+
+----_=_NextPart0_7ef64ee0-61dd-40be-a625-f389d05de522--
+

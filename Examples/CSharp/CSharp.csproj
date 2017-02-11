@@ -52,9 +52,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email\AddNewTNEFAttachments.cs" />
+    <Compile Include="Email\ChangeEmailAddress.cs" />
+    <Compile Include="Email\CheckBouncedMessage.cs" />
+    <Compile Include="Email\CheckMessageForEncryption.cs" />
+    <Compile Include="Email\ConvertMHTMLWithOptionalSettings.cs" />
+    <Compile Include="Email\CreateTNEFEMLFromMSG.cs" />
+    <Compile Include="Email\DetectMessageIsTNEF.cs" />
+    <Compile Include="Email\DisplayAttachmentFileName.cs" />
+    <Compile Include="Email\ExportEmailToEML.cs" />
+    <Compile Include="Email\ExportEmailToMHTWithCustomTimezone.cs" />
+    <Compile Include="Email\ExtractMSGEmbeddedAttachment.cs" />
+    <Compile Include="Email\GetDecodedHeaderValues.cs" />
+    <Compile Include="Email\LoadingEMLAndSavingToMSG.cs" />
     <Compile Include="Email\PreservingEmbeddedMsgFormat.cs" />
     <Compile Include="Email\RemoveLRTracesFromMessageBody.cs" />
     <Compile Include="Email\RenderingCalendarEvents.cs" />
+    <Compile Include="Email\RequestReadReceipt.cs" />
+    <Compile Include="Email\RetrieveContentDescriptionFromAttachment.cs" />
+    <Compile Include="Email\SaveMailMessageAsMHTML.cs" />
+    <Compile Include="Email\SaveMessageAsHTML.cs" />
+    <Compile Include="Email\SavingMSGWithPreservedDates.cs" />
+    <Compile Include="Email\SpecifyCustomHeader.cs" />
+    <Compile Include="Email\UpdateTNEFAttachments.cs" />
     <Compile Include="Email\UseMailMessageFeatures.cs" />
     <Compile Include="Exchange_EWS\AddContactsToExchangeServerUsingEWS.cs" />
     <Compile Include="Exchange_EWS\FilterTasksFromServer.cs" />
@@ -69,7 +89,7 @@
     <Compile Include="Email\DetectTNEFMessage.cs" />
     <Compile Include="Email\DetermineAttachmentEmbeddedMessage.cs" />
     <Compile Include="Email\CreateNewEmail.cs" />
-    <Compile Include="Email\ExtractEmbeddObjects.cs" />
+    <Compile Include="Email\ExtractEmbeddedObjects.cs" />
     <Compile Include="Email\DisplayEmailAddressesNames.cs" />
     <Compile Include="Email\CreatingTNEFFromMSG.cs" />
     <Compile Include="Email\PreserveTNEFAttachment.cs" />
@@ -313,7 +333,7 @@
     <Compile Include="RunExamples.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SMTP\AppointmentInICSFormat.cs" />
-    <Compile Include="SMTP\SignEmailsWithDKIM.cs" />
+    <Compile Include="Email\SignEmailsWithDKIM.cs" />
     <Compile Include="SMTP\SignAMessage.cs" />
     <Compile Include="Thunderbird\CreateNewMessagesToThunderbird.cs" />
     <Compile Include="SMTP\SendEmailWithAlternateText.cs" />
@@ -333,7 +353,7 @@
     <Compile Include="SMTP\ImportEML.cs" />
     <Compile Include="SMTP\LoadSmtpConfigFile.cs" />
     <Compile Include="SMTP\MailMerge.cs" />
-    <Compile Include="Email\ManagingEmailAttachments.cs" />
+    <Compile Include="Email\AddEmailAttachments.cs" />
     <Compile Include="SMTP\MeetingRequests.cs" />
     <Compile Include="SMTP\MultipleRecipients.cs" />
     <Compile Include="SMTP\SendingEMLFilesWithSMTP.cs" />

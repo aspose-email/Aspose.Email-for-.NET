@@ -18,7 +18,7 @@ namespace Aspose.Email.Examples.CSharp.Email
     {
         public static void Run()
         {
-            // ExStart:PrintHeaderUsingMailMessageSaveOptions
+            // ExStart:BayesianSpamAnalyzer
             string hamFolder = RunExamples.GetDataDir_Email() + "/hamFolder";
             string spamFolder = RunExamples.GetDataDir_Email() + "/Spam";
             string testFolder = RunExamples.GetDataDir_Email();
@@ -34,7 +34,7 @@ namespace Aspose.Email.Examples.CSharp.Email
                 double probability = analyzer.Test(msg);
                 PrintResult(probability);
             }
-            // ExEnd:PrintHeaderUsingMailMessageSaveOptions
+            // ExEnd:BayesianSpamAnalyzer
         }
 
         private static void TeachAndCreateDatabase(string hamFolder, string spamFolder, string dataBaseFile)
