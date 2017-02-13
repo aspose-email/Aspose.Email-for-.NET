@@ -1,6 +1,9 @@
-﻿using System;
-using Aspose.Email.Outlook;
+﻿using Aspose.Email.Outlook;
 using Aspose.Email.Recurrences;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
    API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 
@@ -12,11 +15,10 @@ using Aspose.Email.Recurrences;
 
 namespace Aspose.Email.Examples.CSharp.Email.Outlook
 {
-    class MonthlyEndAfterNoccurrences
+    class SetWeeklyEndAfterDateRecurrence
     {
         public static void Run()
         {
-            // ExStart:MonthlyEndAfterNoccurrences
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
             TimeZone localZone = TimeZone.CurrentTimeZone;
@@ -25,24 +27,26 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             StartDate = StartDate.Add(ts);
 
             DateTime DueDate = new DateTime(2015, 7, 16);
-            DateTime endByDate = new DateTime(2015, 12, 31);
+            DateTime endByDate = new DateTime(2015, 9, 1);
             DueDate = DueDate.Add(ts);
             endByDate = endByDate.Add(ts);
 
             MapiTask task = new MapiTask("This is test task", "Sample Body", StartDate, DueDate);
             task.State = MapiTaskState.NotAssigned;
 
-            // Set the Monthly recurrence
-            var rec = new MapiCalendarMonthlyRecurrencePattern
+            // ExStart:SetWeeklyEndAfterDateEveryDayRecurrence
+            // Set the weekly recurrence
+            var rec = new MapiCalendarWeeklyRecurrencePattern
             {
-                Day = 15,
+                EndType = MapiCalendarRecurrenceEndType.EndAfterDate,
+                PatternType = MapiCalendarRecurrencePatternType.Week,
                 Period = 1,
-                PatternType = MapiCalendarRecurrencePatternType.Month,
-                EndType = MapiCalendarRecurrenceEndType.EndAfterNOccurrences,
-                OccurrenceCount = GetOccurrenceCount(StartDate, endByDate, "FREQ=MONTHLY;BYMONTHDAY=15;INTERVAL=1"),
-                WeekStartDay = DayOfWeek.Monday,
-
+                WeekStartDay = DayOfWeek.Sunday,
+                DayOfWeek = MapiCalendarDayOfWeek.Friday,
+                EndDate = endByDate,
+                OccurrenceCount = GetOccurrenceCount(StartDate, endByDate, "FREQ=WEEKLY;BYDAY=FR;INTERVAL=1"),
             };
+            // ExEnd:SetWeeklyEndAfterDateEveryDayRecurrence
 
             if (rec.OccurrenceCount == 0)
             {
@@ -50,33 +54,31 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             }
 
             task.Recurrence = rec;
-            task.Save(dataDir + "Monthly_out.msg", TaskSaveFormat.Msg);
-            // ExEnd:MonthlyEndAfterNoccurrences
+            task.Save(dataDir + "SetWeeklyEndAfterDateEveryDayRecurrence_out.msg", TaskSaveFormat.Msg);
 
-            // ExStart:SetFixNumberOfOccurrences
-            // Set the Monthly recurrence
-            var records = new MapiCalendarMonthlyRecurrencePattern
+            // ExStart:SetWeeklyEndAfterDateMultipleDaysRecurrence
+            var record = new MapiCalendarWeeklyRecurrencePattern
             {
-                Day = 15,
-                Period = 1,
-                PatternType = MapiCalendarRecurrencePatternType.Month,
-                EndType = MapiCalendarRecurrenceEndType.EndAfterNOccurrences,
-                OccurrenceCount = 5,
-                WeekStartDay = DayOfWeek.Monday
+                EndType = MapiCalendarRecurrenceEndType.EndAfterDate,
+                PatternType = MapiCalendarRecurrencePatternType.Week,
+                Period = 2,
+                WeekStartDay = DayOfWeek.Sunday,
+                EndDate = endByDate,
+                DayOfWeek = MapiCalendarDayOfWeek.Friday | MapiCalendarDayOfWeek.Monday,
+                OccurrenceCount = GetOccurrenceCount(StartDate, endByDate, "FREQ=WEEKLY;BYDAY=FR,MO;INTERVAL=2"),
             };
-            // ExEnd:SetFixNumberOfOccurrences
+            // ExEnd:SetWeeklyEndAfterDateMultipleDaysRecurrence
 
-            task.Recurrence = records;
-            task.Save(dataDir + "SetFixNumberOfOccurrences_out.msg", TaskSaveFormat.Msg);
+            task.Recurrence = record;
+            task.Save(dataDir + "SetWeeklyEndAfterDateMultipleDaysRecurrence_out.msg", TaskSaveFormat.Msg);
+
         }
 
-        // ExStart:EventsBetweenTheTwoDates     
         private static uint GetOccurrenceCount(DateTime start, DateTime endBy, string rrule)
         {
             CalendarRecurrence pattern = new CalendarRecurrence(string.Format("DTSTART:{0}\r\nRRULE:{1}", start.ToString("yyyyMMdd"), rrule));
-            DateCollection dates = pattern.GenerateOccurrences(start, endBy);       
+            DateCollection dates = pattern.GenerateOccurrences(start, endBy);
             return (uint)dates.Count;
         }
-        // ExEnd:EventsBetweenTheTwoDates
     }
 }

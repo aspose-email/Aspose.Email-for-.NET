@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Aspose.Email.Outlook;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Aspose.Email.Outlook.Pst;
-using Aspose.Email;
-using Aspose.Email.Outlook;
-using Aspose.Email.Recurrences;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
    API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 
@@ -17,7 +14,7 @@ using Aspose.Email.Recurrences;
 
 namespace Aspose.Email.Examples.CSharp.Email.Outlook
 {
-    class YearlyEndAfterDate
+    class SetYearlyNeverEndRecurrence
     {
         public static void Run()
         {
@@ -36,33 +33,25 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             MapiTask task = new MapiTask("This is test task", "Sample Body", StartDate, DueDate);
             task.State = MapiTaskState.NotAssigned;
 
-            // ExStart:YearlyEndAfterDate
+            // ExStart:SetYearlyNeverEndRecurrence
             // Set the Yearly recurrence
-            var rec = new MapiCalendarMonthlyRecurrencePattern
+            var recurrence = new MapiCalendarMonthlyRecurrencePattern
             {
                 Day = 15,
                 Period = 12,
                 PatternType = MapiCalendarRecurrencePatternType.Month,
-                EndType = MapiCalendarRecurrenceEndType.EndAfterDate,
-                EndDate = endByDate,
-                OccurrenceCount = GetOccurrenceCount(StartDate, endByDate, "FREQ=YEARLY;BYMONTHDAY=15;BYMONTH=7;INTERVAL=1"),
-            };
-            task.Recurrence = rec;
-            // ExEnd:YearlyEndAfterDate
+                EndType = MapiCalendarRecurrenceEndType.NeverEnd,
+            };            
+            // ExEnd:SetYearlyNeverEndRecurrence
 
-            if (rec.OccurrenceCount == 0)
+            task.Recurrence = recurrence;
+            if (recurrence.OccurrenceCount == 0)
             {
-                rec.OccurrenceCount = 1;
+                recurrence.OccurrenceCount = 1;
             }
 
-            task.Save(dataDir  + "Yearly_out.msg", TaskSaveFormat.Msg);
+            task.Save(dataDir + "SetYearlyNeverEndRecurrence_out.msg", TaskSaveFormat.Msg);
         }
 
-        private static uint GetOccurrenceCount(DateTime start, DateTime endBy, string rrule)
-        {
-            CalendarRecurrence pattern = new CalendarRecurrence(string.Format("DTSTART:{0}\r\nRRULE:{1}", start.ToString("yyyyMMdd"), rrule));
-            DateCollection dates = pattern.GenerateOccurrences(start, endBy);
-            return (uint)dates.Count;
-        }
     }
 }

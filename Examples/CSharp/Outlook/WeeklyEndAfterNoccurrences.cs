@@ -57,13 +57,14 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             task.Save(dataDir + "Weekly_out.msg", TaskSaveFormat.Msg);
             // ExEnd:WeeklyEndAfterNoccurrences
         }
+
+        // ExStart:EventsBetweenTheTwoDates
         private static uint GetOccurrenceCount(DateTime start, DateTime endBy, string rrule)
-        {
-            // ExStart:GetOccurrenceCount
+        {            
             CalendarRecurrence pattern = new CalendarRecurrence(string.Format("DTSTART:{0}\r\nRRULE:{1}", start.ToString("yyyyMMdd"),rrule));            
             DateCollection dates = pattern.GenerateOccurrences(start, endBy);            
             return (uint)dates.Count;
-            // ExEnd:GetOccurrenceCount
         }
+        // ExEnd:EventsBetweenTheTwoDates
     }
 }

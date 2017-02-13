@@ -25,6 +25,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
 
+            // ExStart:ReadVoteResultsInformation
             MapiMessage msg = MapiMessage.FromFile(dataDir + @"AddVotingButtonToExistingMessage.msg");
             foreach (MapiRecipient recipient in msg.Recipients)
             {
@@ -38,6 +39,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
                 Console.WriteLine();
             }
+            // ExEnd:ReadVoteResultsInformation
         }
     }
 }

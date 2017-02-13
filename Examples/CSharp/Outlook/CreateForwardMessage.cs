@@ -23,7 +23,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             builder.AdditionMode = OriginalMessageAdditionMode.Textpart;
             MapiMessage forwardMsg = builder.BuildResponse(originalMsg);
             forwardMsg.Save(dataDir + "forward_out.msg");
-            // ExStart:CreatForwardMessage
+            // ExEnd:CreatForwardMessage
         }
 
     }
