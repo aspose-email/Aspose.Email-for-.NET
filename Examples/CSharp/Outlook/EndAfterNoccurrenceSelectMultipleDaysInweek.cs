@@ -15,8 +15,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
     class EndAfterNoccurrenceSelectMultipleDaysInweek
     {
         public static void Run()
-        {
-            // ExStart:EndAfterNoccurrenceSelectMultipleDaysInweek
+        {            
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
             TimeZone localZone = TimeZone.CurrentTimeZone;
@@ -32,6 +31,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             MapiTask task = new MapiTask("This is test task", "Sample Body", StartDate, DueDate);
             task.State = MapiTaskState.NotAssigned;
 
+            // ExStart:EndAfterNoccurrenceSelectMultipleDaysInweek
             // Set the weekly recurrence
             var rec = new MapiCalendarWeeklyRecurrencePattern
             {
@@ -42,6 +42,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 DayOfWeek = MapiCalendarDayOfWeek.Friday | MapiCalendarDayOfWeek.Monday,
                 OccurrenceCount = GetOccurrenceCount(StartDate, endByDate, "FREQ=WEEKLY;BYDAY=FR,MO"),
             };
+            // ExEnd:EndAfterNoccurrenceSelectMultipleDaysInweek
 
             if (rec.OccurrenceCount == 0)
             {
@@ -49,9 +50,9 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             }
 
             task.Recurrence = rec;
-            task.Save(dataDir + "Weekly_out.msg", TaskSaveFormat.Msg);
-            // ExEnd:EndAfterNoccurrenceSelectMultipleDaysInweek
+            task.Save(dataDir + "EndAfterNoccurrenceSelectMultipleDaysInweek_out.msg", TaskSaveFormat.Msg);            
         }
+
         private static uint GetOccurrenceCount(DateTime start, DateTime endBy, string rrule)
         {
             CalendarRecurrence pattern = new CalendarRecurrence(string.Format("DTSTART:{0}\r\nRRULE:{1}", start.ToString("yyyyMMdd"), rrule));

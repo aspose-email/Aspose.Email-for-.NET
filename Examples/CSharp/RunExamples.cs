@@ -11,11 +11,14 @@ using System.Linq;
 using System.Text;
 using Aspose.Email.Examples.CSharp.Email.Exchange;
 using Aspose.Email.Examples.CSharp.Email.SMTP;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace Aspose.Email.Examples.CSharp.Email
 {
     class RunExamples
     {
+        [STAThread]
         static void Main(string[] args)
         {
             Console.WriteLine("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
@@ -129,7 +132,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ConvertMIMEMessageToEML.Run();
             //SetColorCategories.Run();
             //SetReminderByAddingTags.Run();
-            //CreatAndSaveCalendaritems.Run();
+            //CreateAndSaveCalendaritems.Run();
             //AddDisplayReminderToACalendar.Run();
             //AddAudioReminderToCalendar.Run();
             //ManageAttachmentsFromCalendarFiles.Run();
@@ -151,7 +154,42 @@ namespace Aspose.Email.Examples.CSharp.Email
             //CreateNewMapiCalendarAndAddToCalendarSubfolder.Run();
             //ParseOutlookMessageFile.Run();
             //ConvertMSGToMIMEMessage.Run();
-         
+            //CreatingAndSavingOutlookMessages.Run();
+            //CreateMessagesWithAttachments.Run();
+            //Application.Run(new WorkingWithMSGAttachments());
+            //CreatingMSGFilesWithRTFBody.Run();
+            //SavingMessageInDraftStatus.Run();
+            //SetBodyCompression.Run();
+            //Application.Run(new DragDropOutlookMessages());
+            //ReadingVotingOptions.Run();
+            //ReadingOnlyVotingButtons.Run();
+            //SetAdditionalMAPIProperties.Run();
+            //SaveAttachmentsFromOutlookMSGFile.Run();
+            //RemoveAttachmentsFromFile.Run();
+            //DestroyAttachment.Run();
+            //EmbedMessageAsAttachment.Run();
+            //ReadEmbeddedMessageFromAttachment.Run();
+            //InsertMSGAttachmentAtSpecificlocation.Run();
+            //ReplaceEmbeddedMSGAttachmentContents.Run();
+            //LoadingContactFromMSG.Run();
+            //LoadingContactFromVCard.Run();
+            //LoadingContactFromVCardWithSpecifiedEncoding.Run();
+            //ReadingMapiTask.Run();
+            //ReadingVToDoTask.Run();
+            //SavingTheCalendarItemAsMSG.Run();
+            //DisplayRecipientsStatusFromMeetingRequest.Run();
+            //CreateMapiCalendarTimeZoneFromStandardTimezone.Run();
+            //ReadingDistributionListFromPST.Run();
+            //SetDailyOccurrenceCount.Run();
+            //SetRecurrenceEveryDay.Run();
+            //SetDailyNeverEndRecurrence.Run();
+            //SetWeeklyRecurrenceMultipleDaysInWeekWithInterval.Run();
+            //SetWeeklyEndAfterDateRecurrence.Run();
+            //SetWeeklyNeverEndRecurrence.Run();
+            //SetMonthlyEndAfterDateRecurrence.Run();
+            //SetMonthlyNeverEndRecurrence.Run();
+            //YearlyEndAfterDate.Run();
+            //SetYearlyNeverEndRecurrence.Run();
 
             // Working with Outlook Personal Storage (PST) files
             //SplitSinglePSTInToMultiplePST.Run();

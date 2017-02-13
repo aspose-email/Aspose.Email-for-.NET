@@ -26,6 +26,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
 
+            // ExStart:AddRecurrenceToMapiTask
             DateTime startDate = new DateTime(2015, 04, 30, 10, 00, 00);
             MapiTask task = new MapiTask("abc", "def", startDate, startDate.AddHours(1));
             task.State = MapiTaskState.NotAssigned;
@@ -78,6 +79,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             };
             task.Recurrence = recYearly;
             task.Save(dataDir + "AsposeYearly_out.msg", TaskSaveFormat.Msg);
+            // ExEnd:AddRecurrenceToMapiTask
         }
     }
 }

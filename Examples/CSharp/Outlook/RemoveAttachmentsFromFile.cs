@@ -1,6 +1,8 @@
-﻿using System;
-using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
+﻿using Aspose.Email.Outlook;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -12,24 +14,17 @@ please feel free to contact us using http://www.aspose.com/community/forums/defa
 
 namespace Aspose.Email.Examples.CSharp.Email.Outlook
 {
-    class CreatAndSaveCalendaritems
+    class RemoveAttachmentsFromFile
     {
         public static void Run()
         {
-            //ExStart:CreatAndSaveCalendaritems
-            // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
+            MapiMessage msg = MapiMessage.FromFile(dataDir + "MsgWithAtt.msg");
+            msg.Save(dataDir + "AttachmentsToRemove_out.msg");
 
-            // Create the appointment
-            MapiCalendar calendar = new MapiCalendar(
-                "LAKE ARGYLE WA 6743",
-                "Appointment",
-                "This is a very important meeting :)",
-                new DateTime(2012, 10, 2, 13, 0, 0),
-                new DateTime(2012, 10, 2, 14, 0, 0));
-
-            calendar.Save(dataDir + "CalendarItem_out.ics", AppointmentSaveFormat.Ics);
-            //ExEnd:CreatAndSaveCalendaritems
+            // ExStart:RemoveAttachmentsFromFile
+            MapiMessage.RemoveAttachments(dataDir + "AttachmentsToRemove_out.msg");
+            // ExEnd:RemoveAttachmentsFromFile
         }
     }
 }

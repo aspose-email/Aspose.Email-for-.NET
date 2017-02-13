@@ -43,8 +43,10 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -82,6 +84,7 @@
     <Compile Include="Exchange_EWS\RetrieveExtraParametersAsSummaryInformation.cs" />
     <Compile Include="IMAP\SendIMAPasynchronousEmail.cs" />
     <Compile Include="Outlook\ConvertMSGToMIMEMessage.cs" />
+    <Compile Include="Outlook\CreateMapiCalendarTimeZoneFromStandardTimezone.cs" />
     <Compile Include="Outlook\CreateMeetingRequestWithRecurrence.cs" />
     <Compile Include="Email\IdentifyInlineAndRegularAttachments.cs" />
     <Compile Include="Email\SetDefaultTextEncoding.cs" />
@@ -187,8 +190,49 @@
     <Compile Include="IMAP\IMAP4IDExtensionSupport.cs" />
     <Compile Include="IMAP\FilteringMessagesFromIMAPMailbox.cs" />
     <Compile Include="Outlook\AddAudioReminderToCalendar.cs" />
+    <Compile Include="Outlook\CreatingAndSavingOutlookMessages.cs" />
+    <Compile Include="Outlook\CreatingMSGFilesWithRTFBody.cs" />
+    <Compile Include="Outlook\DestroyAttachment.cs" />
+    <Compile Include="Outlook\DisplayRecipientsStatusFromMeetingRequest.cs" />
+    <Compile Include="Outlook\DragDropOutlookMessages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Outlook\DragDropOutlookMessages.Designer.cs">
+      <DependentUpon>DragDropOutlookMessages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Outlook\EmbedMessageAsAttachment.cs" />
+    <Compile Include="Outlook\GetNestedMailMessageAttachments.cs" />
+    <Compile Include="Outlook\InsertMSGAttachmentAtSpecificlocation.cs" />
+    <Compile Include="Outlook\LoadingContactFromMSG.cs" />
+    <Compile Include="Outlook\LoadingContactFromVCard.cs" />
+    <Compile Include="Outlook\LoadingContactFromVCardWithSpecifiedEncoding.cs" />
+    <Compile Include="Outlook\MyPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Outlook\ParseOutlookMessageFile.cs" />
     <Compile Include="Outlook\GetTheTextAndRTFBodies.cs" />
+    <Compile Include="Outlook\ReadEmbeddedMessageFromAttachment.cs" />
+    <Compile Include="Outlook\ReadingDistributionListFromPST.cs" />
+    <Compile Include="Outlook\ReadingMapiTask.cs" />
+    <Compile Include="Outlook\ReadingOnlyVotingButtons.cs" />
+    <Compile Include="Outlook\ReadingVotingOptions.cs" />
+    <Compile Include="Outlook\ReadingVToDoTask.cs" />
+    <Compile Include="Outlook\RemoveAttachmentsFromFile.cs" />
+    <Compile Include="Outlook\ReplaceEmbeddedMSGAttachmentContents.cs" />
+    <Compile Include="Outlook\SaveAttachmentsFromOutlookMSGFile.cs" />
+    <Compile Include="Outlook\SavingMessageInDraftStatus.cs" />
+    <Compile Include="Outlook\SavingTheCalendarItemAsMSG.cs" />
+    <Compile Include="Outlook\SetAdditionalMAPIProperties.cs" />
+    <Compile Include="Outlook\SetBodyCompression.cs" />
+    <Compile Include="Outlook\SetDailyNeverEndRecurrence.cs" />
+    <Compile Include="Outlook\SetDailyOccurrenceCount.cs" />
+    <Compile Include="Outlook\SetMonthlyEndAfterDateRecurrence.cs" />
+    <Compile Include="Outlook\SetMonthlyNeverEndRecurrence.cs" />
+    <Compile Include="Outlook\SetRecurrenceEveryDay.cs" />
+    <Compile Include="Outlook\SetWeeklyEndAfterDateRecurrence.cs" />
+    <Compile Include="Outlook\SetWeeklyNeverEndRecurrence.cs" />
+    <Compile Include="Outlook\SetWeeklyRecurrenceMultipleDaysInWeekWithInterval.cs" />
+    <Compile Include="Outlook\SetYearlyNeverEndRecurrence.cs" />
     <Compile Include="Outlook\SpecificCriterionSplitPST.cs" />
     <Compile Include="Outlook\UpdatePSTCustomProperites.cs" />
     <Compile Include="Outlook\AddMapiCalendarToPST.cs" />
@@ -228,6 +272,12 @@
     <Compile Include="Outlook\RetreiveParentFolderInformationFromMessageInfo.cs" />
     <Compile Include="Outlook\ParseSearchableFolders.cs" />
     <Compile Include="Outlook\PST\DisplayInformationOfPSTFile.cs" />
+    <Compile Include="Outlook\WorkingWithMSGAttachments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Outlook\WorkingWithMSGAttachments.Designer.cs">
+      <DependentUpon>WorkingWithMSGAttachments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Outlook\YearlyEndAfterDate.cs" />
     <Compile Include="Outlook\YearlyEndAfterNoccurrences.cs" />
     <Compile Include="Outlook\MonthlyEndAfterDate.cs" />
@@ -242,7 +292,7 @@
     <Compile Include="Outlook\CreatePollUsingMapiMessage.cs" />
     <Compile Include="Outlook\ManageAttachmentsFromCalendarFiles.cs" />
     <Compile Include="Outlook\AddDisplayReminderToACalendar.cs" />
-    <Compile Include="Outlook\CreatAndSaveCalendaritems.cs" />
+    <Compile Include="Outlook\CreateAndSaveCalendaritems.cs" />
     <Compile Include="Outlook\ExposeProperties.cs" />
     <Compile Include="Outlook\SetReminderByAddingTags.cs" />
     <Compile Include="Outlook\SetColorCategories.cs" />
@@ -371,6 +421,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Outlook\DragDropOutlookMessages.resx">
+      <DependentUpon>DragDropOutlookMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Outlook\WorkingWithMSGAttachments.resx">
+      <DependentUpon>WorkingWithMSGAttachments.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
