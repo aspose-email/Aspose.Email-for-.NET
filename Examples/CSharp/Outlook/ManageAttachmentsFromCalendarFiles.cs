@@ -26,6 +26,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
 
+            // ExStart:GetAttachmentsFromCalendar 
             string[] files = new string[3];
             files[0] = dataDir + "attachment_1.doc";
             files[1] = dataDir + "download.png";
@@ -46,7 +47,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             Console.WriteLine(app2.Attachments.Count);
             foreach (Attachment att in app2.Attachments)
                 Console.WriteLine(att.Name);
-            
+            // ExEnd:GetAttachmentsFromCalendar
         }
     }
 }

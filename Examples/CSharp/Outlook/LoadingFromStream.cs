@@ -20,6 +20,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             string dataDir = RunExamples.GetDataDir_Outlook();
             string dst = dataDir + "PersonalStorage.pst";
 
+            // ExStart:LoadingFromStream
             // Create an instance of MapiMessage from file
             byte[] bytes = File.ReadAllBytes(dataDir + @"message.msg");
 
@@ -39,6 +40,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 Console.WriteLine("Body" + msg.Body);
 
             }
+            // ExEnd:LoadingFromStream
         }
     }
 }
