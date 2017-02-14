@@ -15,7 +15,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
     {
         public static void Run()
         {
-            // ExStart:CreateNewPSTFileAndAddingSubfolders
             // The path to the file directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
 
@@ -31,6 +30,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
             }
 
+            // ExStart:CreateNewPSTFileAndAddingSubfolders            
             // Create new PST
             PersonalStorage personalStorage = PersonalStorage.Create(path, FileFormatVersion.Unicode);
 

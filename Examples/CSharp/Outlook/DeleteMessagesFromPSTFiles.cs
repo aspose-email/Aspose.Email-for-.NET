@@ -40,7 +40,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                     Console.WriteLine("Deleted this message");
                 }
             }
-            // ExStart:DeleteMessagesFromPSTFiles
+            // ExEnd:DeleteMessagesFromPSTFiles
         }
     }
 }

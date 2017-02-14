@@ -28,6 +28,8 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             string path = dataDir + "PersonalStorageFile2.pst";
             AddMessagesInBulkMode(path, "Contacts");
         }
+
+        // ExStart:AddingBulkMessages
         private static void AddMessagesInBulkMode(string fileName, string msgFolderName)
         {
             using (PersonalStorage personalStorage = PersonalStorage.FromFile(fileName))
@@ -42,7 +44,9 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             Console.WriteLine(e.EntryId);
             Console.WriteLine(e.Message.Subject);
         }
+        // ExEnd:AddingBulkMessages
 
+        // ExStart:IEnumerableImplementation
         public class MapiMessageCollection : IEnumerable<MapiMessage>
         {
             private string path;
@@ -112,5 +116,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             {
             }
         }
+        // ExEnd:IEnumerableImplementation
     }
 }

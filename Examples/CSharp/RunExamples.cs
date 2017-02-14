@@ -13,6 +13,7 @@ using Aspose.Email.Examples.CSharp.Email.Exchange;
 using Aspose.Email.Examples.CSharp.Email.SMTP;
 using System.Threading;
 using System.Windows.Forms;
+using Aspose.Email.Examples.CSharp.Email.Outlook.PST;
 
 namespace Aspose.Email.Examples.CSharp.Email
 {
@@ -190,7 +191,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SetMonthlyNeverEndRecurrence.Run();
             //YearlyEndAfterDate.Run();
             //SetYearlyNeverEndRecurrence.Run();
-
+           
             // Working with Outlook Personal Storage (PST) files
             //SplitSinglePSTInToMultiplePST.Run();
             //MergeMultiplePSTsInToSinglePST.Run();
@@ -229,6 +230,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SpecificCriterionSplitPST.Run();
             //AddMessagesFromOtherPST.Run();
             //DeleteMessagesFromPSTFiles.Run();
+            //MergeFolderFromAnotherPSTFile.Run();
+            LoadingPSTFile.Run();
 
             //// =====================================================
             //// =====================================================

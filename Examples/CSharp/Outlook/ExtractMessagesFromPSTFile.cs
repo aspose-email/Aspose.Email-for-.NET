@@ -15,9 +15,9 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 {
     class ExtractMessagesFromPSTFile
     {
+        // ExStart:ExtractMessagesFromPSTFile
         public static void Run()
-        {
-            // ExStart:ExtractMessagesFromPSTFile
+        {            
             // The path to the file directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
 
@@ -41,8 +41,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }
-            // ExEnd:ExtractMessagesFromPSTFile
+            }            
         }
 
         /// <summary>
@@ -52,7 +51,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
         /// <param name="pst"></param>
         private static void ExtractMsgFiles(FolderInfo folderInfo, PersonalStorage pst)
         {
-            // ExStart:ExtractMessagesFromPSTFileExtractMsgFiles
             // display the folder name
             Console.WriteLine("Folder: " + folderInfo.DisplayName);
             Console.WriteLine("==================================");
@@ -78,7 +76,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                     ExtractMsgFiles(subfolderInfo, pst);
                 }
             }
-            // ExEnd:ExtractMessagesFromPSTFileExtractMsgFiles
         }
+        // ExEnd:ExtractMessagesFromPSTFile
     }
 }
