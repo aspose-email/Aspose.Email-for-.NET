@@ -49,7 +49,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
             // update messages having From = "someuser@domain.com" with new properties
             inbox.ChangeMessages(changeList, updatedProperties);
+            // ExEnd:UpdateBulkMessagesInPSTFile
         }
-        // ExEnd:UpdateBulkMessagesInPSTFile
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Aspose.Email.Outlook;
 using Aspose.Email.Outlook.Pst;
+using System;
+using System.Text;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -15,13 +17,13 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
     {
         public static void Run()
         {
-            // ExStart:CheckPasswordProtection
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
 
-            MapiMessage mapiMessage = MapiMessage.FromFile(dataDir + "message1.msg");
-            FollowUpManager.MarkAsCompleted(mapiMessage);
-            mapiMessage.Save(dataDir + "MarkedCompleted_out.msg");
+            using (PersonalStorage pst = PersonalStorage.FromFile(dataDir + "passwordprotectedPST.pst"))
+            {
+                Console.WriteLine("PST is protected: {0}",IsPasswordProtected(pst));
+            }
         }
 
         /// <summary>
@@ -29,7 +31,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
         /// </summary>
         private static bool IsPasswordProtected(PersonalStorage pst)
         {
-            // ExStart:CheckPasswordProtection-IsPasswordProtected
             // If the property exists and is nonzero, then the PST file is password protected.
             if (pst.Store.Properties.Contains(MapiPropertyTag.PR_PST_PASSWORD))
             {
@@ -37,7 +38,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 return passwordHash != 0;
             }
             return false;
-            // ExEnd:CheckPasswordProtection-IsPasswordProtected
-        }     
+        }
     }
 }

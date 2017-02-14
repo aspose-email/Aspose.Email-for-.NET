@@ -28,16 +28,17 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                     // Merges with the pst files that are located in separate folder. 
                     personalStorage.MergeWith(Directory.GetFiles(dataDir + @"MergePST\"));
                     Console.WriteLine("Total messages added: {0}", totalAdded);
-                }
-                // ExEnd:MergePSTFiles
+                }                
                 Console.WriteLine(Environment.NewLine + "PST merged successfully at " + dst);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message + "\nThis example will only work if you apply a valid Aspose Email License. You can purchase full license or get 30 day temporary license from http:// Www.aspose.com/purchase/default.aspx.");
             }
+            // ExEnd:MergePSTFiles
         }
 
+        // ExStart:HelperMethods
         static void PstMerge_OnStorageProcessed(object sender, StorageProcessedEventArgs e)
         {
             Console.WriteLine("*** The storage is merging: {0}", e.FileName);
@@ -45,7 +46,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
         static void PstMerge_OnItemMoved(object sender, ItemMovedEventArgs e)
         {
-            // ExStart:MergePSTFiles-PstMerge_OnItemMoved
             if (currentFolder == null)
             {
                 currentFolder = e.DestinationFolder.RetrieveFullPath();
@@ -62,7 +62,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
             messageCount++;
             totalAdded++;
-            // ExEnd:MergePSTFiles-PstMerge_OnItemMoved
         }
+        // ExEnd:HelperMethods
     }
 }

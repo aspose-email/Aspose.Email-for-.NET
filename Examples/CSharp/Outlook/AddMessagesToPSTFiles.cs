@@ -15,8 +15,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
     class AddMessagesToPSTFiles
     {
         public static void Run()
-        {
-            // ExStart:AddMessagesToPSTFiles
+        {            
             // The path to the file directory.
             string dataDir = RunExamples.GetDataDir_Outlook() + "AddMessagesToPSTFiles_out.pst";
 
@@ -28,7 +27,8 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             {
                 
             }
-
+            
+            // ExStart:AddMessagesToPSTFiles
             // Create new PST            
             PersonalStorage personalStorage = PersonalStorage.Create(dataDir, FileFormatVersion.Unicode);
 

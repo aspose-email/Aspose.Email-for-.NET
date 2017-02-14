@@ -14,8 +14,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
     class ExtractNumberOfMessages
     {
         public static void Run()
-        {
-            // ExStart:ExtractNumberOfMessages
+        {            
             // The path to the file directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
 
@@ -25,12 +24,13 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // Save message to file
             using (PersonalStorage personalStorage = PersonalStorage.FromFile(path))
             {
+                // ExStart:ExtractNnumberOfMessages
                 FolderInfo inbox = personalStorage.RootFolder.GetSubFolder("Inbox");
-                MessageInfoCollection messages = inbox.GetContents(10, 100);    // Extracts messages starting from 10th index top and extract total 100 messages
-            }
-            // ExEnd:ExtractNumberOfMessages
 
-           
+                // Extracts messages starting from 10th index top and extract total 100 messages
+                MessageInfoCollection messages = inbox.GetContents(10, 100);
+                // ExEnd:ExtractNnumberOfMessages   
+            }                    
         }
     }
 }

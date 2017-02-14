@@ -211,6 +211,9 @@
     </Compile>
     <Compile Include="Outlook\ParseOutlookMessageFile.cs" />
     <Compile Include="Outlook\GetTheTextAndRTFBodies.cs" />
+    <Compile Include="Outlook\PST\ConvertingOSTToPST.cs" />
+    <Compile Include="Outlook\PST\LoadingPSTFile.cs" />
+    <Compile Include="Outlook\PST\ReadingOSTFiles.cs" />
     <Compile Include="Outlook\ReadEmbeddedMessageFromAttachment.cs" />
     <Compile Include="Outlook\ReadingDistributionListFromPST.cs" />
     <Compile Include="Outlook\ReadingMapiTask.cs" />

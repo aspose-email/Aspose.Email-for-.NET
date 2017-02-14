@@ -17,7 +17,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
         public static void Run()
         {
             // The path to the File directory.
-            // ExStart:CreateNewMapiContactAndAddToContactsSubfolder
+            // ExStart:AddAttachmentsToMapiJournal
             string dataDir = RunExamples.GetDataDir_Outlook();
 
             string[] attachFileNames = new string[] { dataDir + "Desert.jpg", dataDir + "download.png" };
