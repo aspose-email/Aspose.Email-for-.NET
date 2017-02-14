@@ -26,6 +26,8 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             string path = dataDir + "SampleContacts.pst";
             BulkAddFromAnotherPst(path);
         }
+
+        // ExStart:AddMessagesFromOtherPST
         private static void BulkAddFromAnotherPst(string source)
         {
             using (PersonalStorage pst = PersonalStorage.FromFile(source, false))
@@ -54,5 +56,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             Console.WriteLine(e.EntryId);
             Console.WriteLine(e.Message.Subject);
         }
+        // ExEnd:AddMessagesFromOtherPST
     }
 }

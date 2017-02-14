@@ -13,9 +13,9 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 {
     class GetMessageInformation
     {
+        // ExStart:GetMessageInformation
         public static void Run()
-        {
-            // ExStart:GetMessageInformation
+        {            
             string dataDir = RunExamples.GetDataDir_Outlook();
 
             // Load the Outlook file
@@ -39,8 +39,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);               
-            }
-            // ExEnd:GetMessageInformation
+            }            
         }
 
         /// <summary>
@@ -50,7 +49,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
         /// <param name="pst"></param>
         private static void DisplayFolderContents(FolderInfo folderInfo, PersonalStorage pst)
         {
-            // ExStart:GetMessageInformationDisplayFolderContents
             // Display the folder name
             Console.WriteLine("Folder: " + folderInfo.DisplayName);
             Console.WriteLine("==================================");
@@ -72,7 +70,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                     DisplayFolderContents(subfolderInfo, pst);
                 }
             }
-            // ExEnd:GetMessageInformationDisplayFolderContents
         }
+        // ExEnd:GetMessageInformation
     }
 }

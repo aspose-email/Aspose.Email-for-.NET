@@ -1,4 +1,8 @@
 ﻿using Aspose.Email.Outlook.Pst;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
    API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 
@@ -8,25 +12,20 @@
    please feel free to contact us using http://www.aspose.com/community/forums/default.aspx            
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Outlook
+namespace Aspose.Email.Examples.CSharp.Email.Outlook.PST
 {
-    class ChangeFolderContainerClass
+    class ConvertingOSTToPST
     {
         public static void Run()
         {
-            // ExStart:ChangeFolderContainerClass
-            // The path to the file directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
 
-            // Load the Outlook file
-            string path = dataDir + "PersonalStorage1.pst";
-            using(PersonalStorage personalStorage = PersonalStorage.FromFile(path))
+            // ExStart:ConvertingOSTToPST
+            using (PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "PersonalStorageFile.ost"))
             {
-                FolderInfo folder = personalStorage.RootFolder.GetSubFolder("Inbox");
-                folder.ChangeContainerClass("IPF.Note");
-                personalStorage.Dispose();
+                personalStorage.SaveAs(dataDir + "test.pst", FileFormat.Pst);
             }
-            // ExEnd:ChangeFolderContainerClass
+            // ExEnd:ConvertingOSTToPST
         }
     }
 }

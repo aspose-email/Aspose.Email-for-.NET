@@ -15,23 +15,25 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
     class MergeFolderFromAnotherPSTFile
     {
         public static int totalAdded = 0;
-        public static int messageCount;
-        public static string currentFolder;
+
         public static void Run()
         {
             // The path to the File directory.
-            // ExStart:MergeMultiplePST
+            // ExStart:MergePSTFolders
             string dataDir = RunExamples.GetDataDir_Outlook();
             try
             {
-                using (PersonalStorage pst = PersonalStorage.FromFile(dataDir + "PersonalStorage.pst"))
+                using (PersonalStorage destinationPst = PersonalStorage.FromFile(dataDir + @"destination.pst"))
+                using (PersonalStorage sourcePst = PersonalStorage.FromFile(dataDir + @"source.pst"))
                 {
-                    // The events subscription is an optional step for the tracking process only.
-                    pst.StorageProcessed += PstMerge_OnStorageProcessed;
-                    pst.ItemMoved += PstMerge_OnItemMoved;
+                    FolderInfo destinationFolder = destinationPst.RootFolder.AddSubFolder("FolderFromAnotherPst");
+                    FolderInfo sourceFolder = sourcePst.GetPredefinedFolder(StandardIpmFolder.DeletedItems);
 
-                    // Merges with the pst files that are located in separate folder.
-                    pst.MergeWith(Directory.GetFiles(dataDir + @"\Sources\"));
+                    // The events subscription is an optional step for the tracking process only.
+                    destinationFolder.ItemMoved += destinationFolder_ItemMoved;
+
+                    // Merges with the folder from another pst.
+                    destinationFolder.MergeWith(sourceFolder);
                     Console.WriteLine("Total messages added: {0}", totalAdded);
                 }
             }
@@ -39,31 +41,15 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             {
                 Console.WriteLine(ex.Message + "\nThis example will only work if you apply a valid Aspose Email License. You can purchase full license or get 30 day temporary license from http:// Www.aspose.com/purchase/default.aspx.");
             }
-            // ExEnd:MergeMultiplePST
+            // ExEnd:MergePSTFolders
         }
 
-        static void PstMerge_OnStorageProcessed(object sender, StorageProcessedEventArgs e)
+        // ExStart:HelperMethods
+        static void destinationFolder_ItemMoved(object sender, ItemMovedEventArgs e)
         {
-            Console.WriteLine("*** The storage is merging: {0}", e.FileName);
-        }
-
-        static void PstMerge_OnItemMoved(object sender, ItemMovedEventArgs e)
-        {
-            string folderPath = e.DestinationFolder.RetrieveFullPath();
-
-            if (currentFolder == null)
-            {
-                currentFolder = e.DestinationFolder.RetrieveFullPath();
-            }
-
-            if (currentFolder != folderPath)
-            {
-                Console.WriteLine("    Added {0} messages to \"{1}\"", messageCount, currentFolder);
-                messageCount = 0;
-                currentFolder = folderPath;
-            }
-            messageCount++;
             totalAdded++;
         }
+        // ExEnd:HelperMethods
+
     }
 }

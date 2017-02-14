@@ -15,8 +15,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
     {
         public static void Run()
         {
-            // The path to the File directory.
-            // ExStart:AddFilesToPST
+            // The path to the File directory.            
             string dataDir = RunExamples.GetDataDir_Outlook();
 
             string path = dataDir + "Ps1_out.pst";
@@ -26,6 +25,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 File.Delete(path);
             }
 
+            // ExStart:AddFilesToPST
             using (PersonalStorage personalStorage = PersonalStorage.Create(dataDir + "Ps1_out.pst", FileFormatVersion.Unicode))
             {
                 FolderInfo folder = personalStorage.RootFolder.AddSubFolder("Files");

@@ -42,7 +42,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             task.Recurrence = record;
             task.Save(dataDir + "SetRecurrenceEveryDay_out.msg", TaskSaveFormat.Msg);
 
-            // ExEnd:SetRecurrenceEveryDayInterval
+            // ExStart:SetRecurrenceEveryDayInterval
             // Set the Daily recurrence
             var record1 = new MapiCalendarDailyRecurrencePattern
             {
