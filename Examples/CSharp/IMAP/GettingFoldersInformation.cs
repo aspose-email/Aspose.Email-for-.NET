@@ -6,8 +6,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     class GettingFoldersInformation
     {
         public static void Run()
-        {
-            // ExStart:ConnectingWithIMAPServer
+        {            
             // Create an instance of the ImapClient class
             ImapClient client = new ImapClient();
 
@@ -20,6 +19,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
 
             try
             {
+                // ExStart:GettingFoldersInformation
                 // Get all folders in the currently subscribed folder
                 ImapFolderInfoCollection folderInfoColl = client.ListFolders();
 
@@ -33,6 +33,8 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                     Console.WriteLine("Is it readonly? " + folderExtInfo.ReadOnly);
                     Console.WriteLine("Total number of messages " + folderExtInfo.TotalMessageCount);
                 }
+                // ExEnd:GettingFoldersInformation
+
                 // Disconnect to the remote IMAP server
                 client.Dispose();
             }
@@ -40,7 +42,6 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             {
                 Console.Write(Environment.NewLine + ex);
             }
-            // ExEnd:ConnectingWithIMAPServer
             Console.WriteLine(Environment.NewLine + "Getting folders information from IMAP server.");
         }
     }

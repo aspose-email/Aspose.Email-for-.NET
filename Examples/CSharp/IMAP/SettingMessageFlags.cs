@@ -6,8 +6,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     class SettingMessageFlags
     {
         public static void Run()
-        {
-            //ExStart:SettingMessageFlags
+        {            
             // Create an instance of the ImapClient class
             ImapClient client = new ImapClient();
 
@@ -21,15 +20,18 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             try
             {
                 Console.WriteLine("Logged in to the IMAP server");
-                // Mark the message as read and Disconnect to the remote IMAP server
+                
+                // ExStart:SettingMessageFlags
+                // Mark the message as read
                 client.ChangeMessageFlags(1, ImapMessageFlags.IsRead);
+                // ExEnd:SettingMessageFlags
+
                 client.Dispose();
             }
             catch (Exception ex)
             {
                 Console.Write(Environment.NewLine + ex);
-            }
-            //ExEnd:SettingMessageFlags
+            }            
             Console.WriteLine(Environment.NewLine + "Set message flags from IMAP server.");
         }
     }

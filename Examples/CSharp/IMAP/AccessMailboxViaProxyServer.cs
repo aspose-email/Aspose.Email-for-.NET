@@ -1,5 +1,6 @@
 ﻿using Aspose.Email.Imap;
 using Aspose.Email.Protocols.Proxy;
+using System;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -11,22 +12,31 @@ please feel free to contact us using http://www.aspose.com/community/forums/defa
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
-    class ProxyServerAccessMailbox
+    class AccessMailboxViaProxyServer
     {
         public static void Run()
         {
-            // ExStart:ProxyServerAccessMailbox
+            // ExStart:AccessMailboxViaProxyServer
             // Connect and log in to IMAP and set SecurityOptions
             ImapClient client = new ImapClient("imap.domain.com", "username", "password");
             client.SecurityOptions = SecurityOptions.Auto;
+            
             string proxyAddress = "192.168.203.142"; // proxy address
             int proxyPort = 1080; // proxy port
             SocksProxy proxy = new SocksProxy(proxyAddress, proxyPort, SocksVersion.SocksV5);
 
             // Set the proxy
             client.SocksProxy = proxy;
-            client.SelectFolder("Inbox");
-            // ExEnd:ProxyServerAccessMailbox
+           
+            try
+            {
+                client.SelectFolder("Inbox");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            // ExEnd:AccessMailboxViaProxyServer
         }
     }
 }

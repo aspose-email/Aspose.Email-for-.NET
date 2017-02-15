@@ -43,7 +43,6 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             Console.WriteLine(Environment.NewLine + "Downloaded messages recursively from IMAP server.");
         }
 
-
         /// Recursive method to get messages from folders and sub-folders
         private static void ListMessagesInFolder(ImapFolderInfo folderInfo, string rootFolder, ImapClient client)
         {
@@ -89,8 +88,8 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                     ListMessagesInFolder(subfolderInfo, rootFolder, client);
                 }
             }
-            catch (Exception) { }
-            // ExEnd:ReadMessagesRecursively
+            catch (Exception) { }            
         }
+        // ExEnd:ReadMessagesRecursively
     }
 }
