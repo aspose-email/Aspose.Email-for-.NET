@@ -325,9 +325,17 @@ namespace Aspose.Email.Examples.CSharp.Email
             //FilterMessagesFromPOP3Mailbox.Run();
             //RetrieveEmailViaPop3ClientProxyServer.Run();
             //GetServerExtensionsUsingPop3Client.Run();
-            //RetrievMessagesAsynchronously.Run();
+            //RetrieveMessagesAsynchronously.Run();
             //RetrieveMessageSummaryInformationUsingUniqueId.Run();
-
+            //DeleteEmailByIndex.Run();
+            //DeleteAllEmails.Run();
+            //CancelDeletes.Run();
+            //Pop3ClientActivityLogging.Run();
+            //GetEmailCountIntheMailbox.Run();
+            //GetMessagesUsingSpecificCriteria.Run();
+            //BuildComplexQueries.Run();
+            //ApplyCaseSensitiveFilters.Run();
+            //ListMessagesAsynchronouslyWithMailQuery.Run();
 
             //// =====================================================
             //// =====================================================
@@ -402,7 +410,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SendingEmailWithAlternateText.Run();
             //RetreiveServerExtensions.Run();
             //SMTPClientActivityLogging.Run();
-            UsingDetachedCertificate.Run();
+            //UsingDetachedCertificate.Run();
 
             //// =====================================================
             //// =====================================================
