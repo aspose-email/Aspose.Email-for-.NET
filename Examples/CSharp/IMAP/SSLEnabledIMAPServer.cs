@@ -9,13 +9,11 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
         {
             //ExStart:SSLEnabledIMAPServer
             // Create an instance of the ImapClient class
-            ImapClient client = new ImapClient();
-            // Specify host, username and password, Port and SecurityOptions for your client
-            client.Host = "imap.gmail.com";
-            client.Username = "your.username@gmail.com";
-            client.Password = "your.password";
-            client.Port = 993;
-            client.SecurityOptions = SecurityOptions.Auto;
+            Aspose.Email.Imap.ImapClient client = new Aspose.Email.Imap.ImapClient("imap.domain.com", 993, "user@domain.com", "pwd");
+            
+            // Set the security mode to implicit
+            client.SecurityOptions = SecurityOptions.SSLImplicit;
+            //ExEnd:SSLEnabledIMAPServer
 
             try
             {
@@ -28,7 +26,6 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             {
                 Console.Write(Environment.NewLine + ex);
             }
-            //ExEnd:SSLEnabledIMAPServer
             Console.WriteLine(Environment.NewLine + "Connected to IMAP server with SSL.");
         }
     }

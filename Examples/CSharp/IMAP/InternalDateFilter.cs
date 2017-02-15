@@ -28,6 +28,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             ImapQueryBuilder builder = new ImapQueryBuilder();
             builder.Subject.Contains("Newsletter");
             builder.InternalDate.On(DateTime.Now);
+
             // Build the query and Get list of messages
             MailQuery query = builder.GetQuery();
             ImapMessageInfoCollection messages = client.ListMessages(query);
@@ -35,6 +36,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             {
                 Console.WriteLine("Internal Date: " + info.InternalDate);
             }
+            
             // Disconnect from IMAP
             client.Dispose();
             // ExEnd:InternalDateFilter
