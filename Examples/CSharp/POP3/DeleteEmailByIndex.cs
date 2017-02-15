@@ -1,6 +1,8 @@
-﻿using System;
-using Aspose.Email.Pop3;
-using Aspose.Email.Protocols.Proxy;
+﻿using Aspose.Email.Pop3;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -12,28 +14,27 @@ please feel free to contact us using http://www.aspose.com/community/forums/defa
 
 namespace Aspose.Email.Examples.CSharp.Email.POP3
 {
-    class RetrieveEmailViaPop3ClientProxyServer
+    class DeleteEmailByIndex
     {
         public static void Run()
         {
-            // ExStart:RetrieveEmailViaPop3ClientProxyServer
-            Pop3Client client = new Pop3Client("pop.domain.com", "username", "password");
-          
-            // Set proxy address, Port and Proxy
-            string proxyAddress = "192.168.203.142";
-            int proxyPort = 1080;
-            SocksProxy proxy = new SocksProxy(proxyAddress, proxyPort, Aspose.Email.Protocols.Proxy.SocksVersion.SocksV5);
-            client.SocksProxy = proxy;
-
+            // ExStart:DeleteEmailByIndex
+            // Create a POP3 client
+            Pop3Client client = new Pop3Client("mail.aspose.com", 110, "username", "psw");
             try
             {
-                Pop3MailboxInfo mailboxInfo = client.GetMailboxInfo();
+                // Delete all the message one by one
+                int messageCount = client.GetMessageCount();
+                for (int i = 1; i <= messageCount; i++)
+                {
+                    client.DeleteMessage(i);
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }            
-            // ExEnd:RetrieveEmailViaPop3ClientProxyServer
+            }
+            // ExEnd:DeleteEmailByIndex
         }
     }
 }

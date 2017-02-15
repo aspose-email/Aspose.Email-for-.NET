@@ -15,6 +15,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
     {
         public static void Run()
         {
+            // ExStart:DisplayInformationOfPSTFile
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
             string dst = dataDir + "PersonalStorage.pst";
@@ -33,6 +34,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 Console.WriteLine("Total unread items: " + folderInfo.ContentUnreadCount);
                 Console.WriteLine("-----------------------------------");
             }
+            // ExEnd:DisplayInformationOfPSTFile
         }
     }
 }

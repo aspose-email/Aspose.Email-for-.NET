@@ -370,10 +370,19 @@
     <Compile Include="IMAP\ListingMessagesRecursively.cs" />
     <Compile Include="IMAP\ListMessagesWithMaximumNumberOfMessages.cs" />
     <Compile Include="IMAP\SavingMessagesFromIMAPServer.cs" />
+    <Compile Include="POP3\ApplyCaseSensitiveFilters.cs" />
+    <Compile Include="POP3\BuildComplexQueries.cs" />
+    <Compile Include="POP3\CancelDeletes.cs" />
     <Compile Include="POP3\ConnectingToPOP3.cs" />
+    <Compile Include="POP3\DeleteAllEmails.cs" />
+    <Compile Include="POP3\DeleteEmailByIndex.cs" />
+    <Compile Include="POP3\GetEmailCountIntheMailbox.cs" />
+    <Compile Include="POP3\GetMessagesUsingSpecificCriteria.cs" />
     <Compile Include="POP3\GetServerExtensionsUsingPop3Client.cs" />
+    <Compile Include="POP3\ListMessagesAsynchronouslyWithMailQuery.cs" />
+    <Compile Include="POP3\Pop3ClientActivityLogging.cs" />
     <Compile Include="POP3\RetrieveMessageSummaryInformationUsingUniqueId.cs" />
-    <Compile Include="POP3\RetrievMessagesAsynchronously.cs" />
+    <Compile Include="POP3\RetrieveMessagesAsynchronously.cs" />
     <Compile Include="POP3\RetrieveEmailViaPop3ClientProxyServer.cs" />
     <Compile Include="POP3\GettingMailboxInfo.cs" />
     <Compile Include="POP3\ParseMessageAndSave.cs" />
@@ -387,7 +396,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SMTP\AppointmentInICSFormat.cs" />
     <Compile Include="Email\SignEmailsWithDKIM.cs" />
+    <Compile Include="SMTP\LoadingEMLFilesFromDisk.cs" />
+    <Compile Include="SMTP\RetreiveServerExtensions.cs" />
+    <Compile Include="SMTP\RowWiseMailMerge.cs" />
+    <Compile Include="SMTP\SendEmailsSynchronously.cs" />
+    <Compile Include="SMTP\SendingEmailWithAlternateText.cs" />
     <Compile Include="SMTP\SignAMessage.cs" />
+    <Compile Include="SMTP\SMTPClientActivityLogging.cs" />
+    <Compile Include="SMTP\UseSmtpClientFeatures.cs" />
+    <Compile Include="SMTP\UsingDetachedCertificate.cs" />
     <Compile Include="Thunderbird\CreateNewMessagesToThunderbird.cs" />
     <Compile Include="SMTP\SendEmailWithAlternateText.cs" />
     <Compile Include="SMTP\ForwardEmail.cs" />
@@ -423,6 +440,7 @@
     <Folder Include="Thunderbird\Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,8 @@
-﻿using System;
-using Aspose.Email.Pop3;
+﻿using Aspose.Email.Pop3;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -11,11 +14,11 @@ please feel free to contact us using http://www.aspose.com/community/forums/defa
 
 namespace Aspose.Email.Examples.CSharp.Email.POP3
 {
-    class RetrievMessagesAsynchronously
+    class ApplyCaseSensitiveFilters
     {
         public static void Run()
         {
-            // ExStart:RetrievMessagesAsynchronously
+
             // Connect and log in to POP3
             const string host = "host";
             const int port = 110;
@@ -23,15 +26,20 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
             const string password = "password";
             Pop3Client client = new Pop3Client(host, port, username, password);
 
-            // Set conditions, Subject contains "Newsletter", Emails that arrived today
-            MailQueryBuilder builder = new MailQueryBuilder();      
-            builder.Subject.Contains("Newsletter");
-            builder.InternalDate.On(DateTime.Now);
-            // Build the query and Get list of messages
-            MailQuery query = builder.GetQuery();
-            Pop3MessageInfoCollection messages = client.ListMessages(query);
-            Console.WriteLine("Pop3: " + messages.Count + " message(s) found.");
-            // ExEnd:RetrievMessagesAsynchronously
+            try
+            {
+                // ExStart:ApplyCaseSensitiveFilters
+                // IgnoreCase is True
+                MailQueryBuilder builder1 = new MailQueryBuilder();
+                builder1.From.Contains("tesT", true);
+                MailQuery query1 = builder1.GetQuery();
+                Pop3MessageInfoCollection messageInfoCol1 = client.ListMessages(query1);
+                // ExEnd:ApplyCaseSensitiveFilters
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

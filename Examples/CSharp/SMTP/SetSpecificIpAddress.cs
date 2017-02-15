@@ -13,6 +13,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
     class SetSpecificIpAddress
     {
+        // ExStart:SetSpecificIpAddress
         public static void Run()
         {
             using (SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.Password", SecurityOptions.Auto))
@@ -22,10 +23,12 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                 client.Noop();
             }
         }
+
         // get local endpoint callbak
         private static IPEndPoint BindIPEndPointCallback(IPEndPoint remoteEndPoint)
         {
             return new IPEndPoint(IPAddress.Any, 0);
         }
+        // ExEnd:SetSpecificIpAddress
     }
 }
