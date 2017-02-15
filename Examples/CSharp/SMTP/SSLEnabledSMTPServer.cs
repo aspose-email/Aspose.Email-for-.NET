@@ -7,19 +7,20 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     class SSLEnabledSMTPServer
     {
         public static void Run()
-        {
-            // ExStart:SSLEnabledSMTPServer
+        {        
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_SMTP();
             string dstEmail = dataDir + "test-load.eml";
 
+            // ExStart:SSLEnabledSMTPServer
             SmtpClient client = new SmtpClient("smtp.gmail.com");
 
             // Set username, Password, Port No, and SecurityOptions
             client.Username = "your.email@gmail.com";
             client.Password = "your.password";
             client.Port = 587;
-            client.SecurityOptions = SecurityOptions.Auto;
+            client.SecurityOptions = SecurityOptions.SSLExplicit;
+            // ExEnd:SSLEnabledSMTPServer
 
             // Declare message as MailMessage instance
             MailMessage message = new MailMessage();
@@ -40,7 +41,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             {
                 Trace.WriteLine(ex.ToString());
             }
-            // ExEnd:SSLEnabledSMTPServer
+
             Console.WriteLine(Environment.NewLine + "Email sent SSL successfully.");
         }
     }

@@ -22,8 +22,11 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             msg.Subject = "Test Email";
             msg.Body = "Hello World!";
 
+            // ExStart:LoadSmtpConfigFile
             // Create an instance of SmtpClient class and load SMTP Authentication settings from Config file
             SmtpClient client = new SmtpClient(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None));
+            // ExEnd:LoadSmtpConfigFile
+
             client.SecurityOptions = SecurityOptions.Auto;
 
             try

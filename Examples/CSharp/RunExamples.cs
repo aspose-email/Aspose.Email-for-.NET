@@ -231,7 +231,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //AddMessagesFromOtherPST.Run();
             //DeleteMessagesFromPSTFiles.Run();
             //MergeFolderFromAnotherPSTFile.Run();
-            LoadingPSTFile.Run();
+            //LoadingPSTFile.Run();
 
             //// =====================================================
             //// =====================================================
@@ -325,9 +325,17 @@ namespace Aspose.Email.Examples.CSharp.Email
             //FilterMessagesFromPOP3Mailbox.Run();
             //RetrieveEmailViaPop3ClientProxyServer.Run();
             //GetServerExtensionsUsingPop3Client.Run();
-            //RetrievMessagesAsynchronously.Run();
+            //RetrieveMessagesAsynchronously.Run();
             //RetrieveMessageSummaryInformationUsingUniqueId.Run();
-
+            //DeleteEmailByIndex.Run();
+            //DeleteAllEmails.Run();
+            //CancelDeletes.Run();
+            //Pop3ClientActivityLogging.Run();
+            //GetEmailCountIntheMailbox.Run();
+            //GetMessagesUsingSpecificCriteria.Run();
+            //BuildComplexQueries.Run();
+            //ApplyCaseSensitiveFilters.Run();
+            //ListMessagesAsynchronouslyWithMailQuery.Run();
 
             //// =====================================================
             //// =====================================================
@@ -396,6 +404,13 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ForwardEmail.Run();
             //SignEmailsWithDKIM.Run();
             //CreateMeetingRequestWithRecurrence.Run();
+            //LoadingEMLFilesFromDisk.Run();
+            //SendEmailsSynchronously.Run();
+            //UseSmtpClientFeatures.Run();
+            //SendingEmailWithAlternateText.Run();
+            //RetreiveServerExtensions.Run();
+            //SMTPClientActivityLogging.Run();
+            //UsingDetachedCertificate.Run();
 
             //// =====================================================
             //// =====================================================
