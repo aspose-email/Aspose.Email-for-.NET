@@ -387,7 +387,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SMTP\AppointmentInICSFormat.cs" />
     <Compile Include="Email\SignEmailsWithDKIM.cs" />
+    <Compile Include="SMTP\LoadingEMLFilesFromDisk.cs" />
+    <Compile Include="SMTP\RetreiveServerExtensions.cs" />
+    <Compile Include="SMTP\RowWiseMailMerge.cs" />
+    <Compile Include="SMTP\SendEmailsSynchronously.cs" />
+    <Compile Include="SMTP\SendingEmailWithAlternateText.cs" />
     <Compile Include="SMTP\SignAMessage.cs" />
+    <Compile Include="SMTP\SMTPClientActivityLogging.cs" />
+    <Compile Include="SMTP\UseSmtpClientFeatures.cs" />
+    <Compile Include="SMTP\UsingDetachedCertificate.cs" />
     <Compile Include="Thunderbird\CreateNewMessagesToThunderbird.cs" />
     <Compile Include="SMTP\SendEmailWithAlternateText.cs" />
     <Compile Include="SMTP\ForwardEmail.cs" />
@@ -423,6 +431,7 @@
     <Folder Include="Thunderbird\Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

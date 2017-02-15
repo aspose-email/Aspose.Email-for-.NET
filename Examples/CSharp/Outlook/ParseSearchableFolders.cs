@@ -16,6 +16,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 {
     class ParseSearchableFolders
     {
+        // ExStart:ParseSearchableFolders
         public static void Run()
         {
             WalkAllFolders();            
@@ -24,8 +25,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
         // Open an OST and get the name and
         // parent name for all folders in the file
         private static void WalkAllFolders()
-        {
-            //ExStart:ParseSearchableFolders
+        {            
             string dataDir = RunExamples.GetDataDir_Outlook();
             string path = dataDir + "PersonalStorage.pst";
             byte[] buffer = File.ReadAllBytes(path);
@@ -37,14 +37,12 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 FolderInfo target = pst.GetFolderById("AAAAAB9of1CGOidPhTb686WQY68igAAA");
                 IList<string> folderData = new List<string>();
                 WalkFolders(pst.RootFolder, "N/A", folderData);
-            }
-            //ExEnd:ParseSearchableFolders
+            }            
         }
 
         // Walk the folder structure recursively
         private static void WalkFolders(FolderInfo folder, string parentFolderName, IList<string> folderData)
         {
-            //ExStart:ParseSearchableFolders-WalkFolders
             string displayName = (string.IsNullOrEmpty(folder.DisplayName)) ? "ROOT" : folder.DisplayName;
             string folderNames = string.Format("DisplayName = {0}; Parent.DisplayName = {1}", displayName, parentFolderName);
             folderData.Add(folderNames);
@@ -62,7 +60,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             {
                 WalkFolders(subfolder, displayName, folderData);
             }
-            //ExEnd:ParseSearchableFolders-WalkFolders
         }
+        //ExEnd:ParseSearchableFolders
     }
 }

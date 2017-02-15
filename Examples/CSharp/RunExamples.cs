@@ -231,7 +231,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //AddMessagesFromOtherPST.Run();
             //DeleteMessagesFromPSTFiles.Run();
             //MergeFolderFromAnotherPSTFile.Run();
-            LoadingPSTFile.Run();
+            //LoadingPSTFile.Run();
 
             //// =====================================================
             //// =====================================================
@@ -396,6 +396,13 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ForwardEmail.Run();
             //SignEmailsWithDKIM.Run();
             //CreateMeetingRequestWithRecurrence.Run();
+            //LoadingEMLFilesFromDisk.Run();
+            //SendEmailsSynchronously.Run();
+            //UseSmtpClientFeatures.Run();
+            //SendingEmailWithAlternateText.Run();
+            //RetreiveServerExtensions.Run();
+            //SMTPClientActivityLogging.Run();
+            UsingDetachedCertificate.Run();
 
             //// =====================================================
             //// =====================================================

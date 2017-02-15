@@ -12,6 +12,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             string dataDir = RunExamples.GetDataDir_SMTP();
             string dstEmail = dataDir + "outputAttachments.msg";
 
+            // ExStart:SendingMeetingRequestsViaEmail
             // Create an instance of the MailMessage class
             MailMessage msg = new MailMessage();
 
@@ -38,6 +39,8 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             {
                 Trace.WriteLine(ex.ToString());
             }
+            // ExEnd:SendingMeetingRequestsViaEmail
+
             Console.WriteLine(Environment.NewLine + "Meeting request send successfully.");
         }
 
