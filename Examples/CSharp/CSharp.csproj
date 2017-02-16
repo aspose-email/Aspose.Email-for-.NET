@@ -82,7 +82,17 @@
     <Compile Include="Exchange_EWS\FilterTasksFromServer.cs" />
     <Compile Include="Exchange_EWS\ListTasksFromExchangeServer.cs" />
     <Compile Include="Exchange_EWS\RetrieveExtraParametersAsSummaryInformation.cs" />
+    <Compile Include="IMAP\BuildingComplexQueries.cs" />
+    <Compile Include="IMAP\CaseSensitiveEmailsFiltering.cs" />
+    <Compile Include="IMAP\DeletingAndRenamingFolders.cs" />
+    <Compile Include="IMAP\FetchEmailMessagesFromIMAPServer.cs" />
+    <Compile Include="IMAP\GetMessagesWithSpecificCriteria.cs" />
+    <Compile Include="IMAP\ImapClientActivityLogging.cs" />
+    <Compile Include="IMAP\ListingMIMEMessageIdInImapMessageInfo.cs" />
+    <Compile Include="IMAP\ListMessagesAsynchronously.cs" />
+    <Compile Include="IMAP\RetrieveExtraParameters.cs" />
     <Compile Include="IMAP\SendIMAPasynchronousEmail.cs" />
+    <Compile Include="IMAP\SpecifyEncodingForQueryBuilder.cs" />
     <Compile Include="Outlook\ConvertMSGToMIMEMessage.cs" />
     <Compile Include="Outlook\CreateMapiCalendarTimeZoneFromStandardTimezone.cs" />
     <Compile Include="Outlook\CreateMeetingRequestWithRecurrence.cs" />
@@ -184,7 +194,7 @@
     <Compile Include="IMAP\SupportIMAPIdleCommand.cs" />
     <Compile Include="IMAP\RetreivingServerExtensions.cs" />
     <Compile Include="IMAP\RetrievingMessagesAsynchronously.cs" />
-    <Compile Include="IMAP\ProxyServerAccessMailbox.cs" />
+    <Compile Include="IMAP\AccessMailboxViaProxyServer.cs" />
     <Compile Include="IMAP\InternalDateFilter.cs" />
     <Compile Include="IMAP\IMAP4ExtendedListCommand.cs" />
     <Compile Include="IMAP\IMAP4IDExtensionSupport.cs" />

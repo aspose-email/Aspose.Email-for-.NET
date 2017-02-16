@@ -7,11 +7,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     class AddingNewMessage
     {
         public static void Run()
-        {
-            //ExStart:AddingNewMessage
-            // Create a message
-            MailMessage msg = new MailMessage("user@domain1.com", "user@domain2.com", "subject", "message");
-
+        {        
             // Create an instance of the ImapClient class
             ImapClient client = new ImapClient();
 
@@ -23,10 +19,16 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             client.SecurityOptions = SecurityOptions.Auto;
             try
             {
-                // Subscribe to the Inbox folder, Append the newly created message and Disconnect to the remote IMAP server
+                //ExStart:AddingNewMessageToFolder
+                // Create a message
+                MailMessage msg = new MailMessage("user@domain1.com", "user@domain2.com", "subject", "message");
+
+                // Subscribe to the Inbox folder and Append the newly created message
                 client.SelectFolder(ImapFolderInfo.InBox);
                 client.SubscribeFolder(client.CurrentFolder.Name);
                 client.AppendMessage(client.CurrentFolder.Name, msg);
+                //ExEnd:AddingNewMessageToFolder
+
                 Console.WriteLine("New Message Added Successfully");
                 client.Dispose();
             }
@@ -35,7 +37,6 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                 Console.Write(Environment.NewLine + ex);
             }
             Console.WriteLine(Environment.NewLine + "Added new message on IMAP server.");
-            //ExEnd:AddingNewMessage
         }
     }
 }

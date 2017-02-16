@@ -365,12 +365,17 @@ namespace Aspose.Email.Examples.CSharp.Email
             //GetMessageIdUsingImapMessageInfo.Run();
             //FilteringMessagesFromIMAPMailbox.Run();
             //InternalDateFilter.Run();
-            //ProxyServerAccessMailbox.Run();
+            //AccessMailboxViaProxyServer.Run();
             //RetrievingMessagesAsynchronously.Run();
             //RetreivingServerExtensions.Run();
             //SupportIMAPIdleCommand.Run();
-          
-
+            //ListMessagesAsynchronously.Run();
+            //ListingMIMEMessageIdInImapMessageInfo.Run();
+            GetMessagesWithSpecificCriteria.Run();
+            BuildingComplexQueries.Run();
+            CaseSensitiveEmailsFiltering.Run();
+            SpecifyEncodingForQueryBuilder.Run();
+            
             //// =====================================================
             //// =====================================================
             //// SMTP

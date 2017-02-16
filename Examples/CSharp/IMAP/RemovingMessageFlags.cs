@@ -6,8 +6,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     class RemovingMessageFlags
     {
         public static void Run()
-        {
-            // ExStart:RemovingMessageFlags
+        {            
             // Create an instance of the ImapClient class
             ImapClient client = new ImapClient();
 
@@ -20,15 +19,18 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             try
             {
                 Console.WriteLine("Logged in to the IMAP server");
-                // Mark the message as read and Disconnect to the remote IMAP server
+
+                // ExStart:RemovingMessageFlags
+                // Remove the message flag
                 client.RemoveMessageFlags(1, ImapMessageFlags.IsRead);
+                // ExEnd:RemovingMessageFlags
+
                 client.Dispose();
             }
             catch (Exception ex)
             {
                 Console.Write(Environment.NewLine + ex);
-            }
-            // ExEnd:RemovingMessageFlags
+            }            
             Console.WriteLine(Environment.NewLine + "Removed message flags from IMAP server.");
         }
     }

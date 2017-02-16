@@ -55,7 +55,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
 
                 }
             }
-            //ExStart:DeleteMultipleMessages
+            //ExEnd:DeleteMultipleMessages
         }
     }
 }
