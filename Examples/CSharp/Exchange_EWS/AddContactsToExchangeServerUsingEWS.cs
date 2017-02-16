@@ -12,7 +12,8 @@ If you do not wish to use NuGet, you can manually download Aspose.Email for .NET
 install it and then add its reference to this project. For any issues, questions or suggestions 
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
-namespace aspose.Email.Examples.CSharp.Exchange
+
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
 {
     class AddContactsToExchangeServerUsingEWS
     {

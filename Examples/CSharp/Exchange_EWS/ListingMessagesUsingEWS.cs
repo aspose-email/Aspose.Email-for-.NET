@@ -9,15 +9,15 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
 {
-    class ProgrammingSamplesUsingEWS
+    class ListingMessagesUsingEWS
     {
         public static void Run()
         {
             try
             {
-                // ExStart:ProgrammingSamplesUsingEWS
+                // ExStart:ListingMessagesUsingEWS
                 // Create instance of ExchangeWebServiceClient class by giving credentials
                 IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "UserName", "Password");
 
@@ -33,7 +33,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
                     Console.WriteLine("Message ID: " + msgInfo.MessageId);
                     Console.WriteLine("Unique URI: " + msgInfo.UniqueUri);
                 }
-                // ExEnd:ProgrammingSamplesUsingEWS
+                // ExEnd:ListingMessagesUsingEWS
             }
             catch (Exception ex)
             {

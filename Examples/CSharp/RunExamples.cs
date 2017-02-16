@@ -14,6 +14,7 @@ using Aspose.Email.Examples.CSharp.Email.SMTP;
 using System.Threading;
 using System.Windows.Forms;
 using Aspose.Email.Examples.CSharp.Email.Outlook.PST;
+using Aspose.Email.Examples.CSharp.Email.Exchange_EWS;
 
 namespace Aspose.Email.Examples.CSharp.Email
 {
@@ -251,9 +252,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //GetMailboxInformationFromExchangeServer.Run();
             //GetMailboxInformationFromExchangeServer.Run();
             //ListExchangeServerMessages.Run();
-            //ProgrammingSamplesUsingEWS.Run();
             //ListMessagesFromDifferentFolders.Run();
-            //ExchangeServerUsingEWS.Run();
+            //ListingMessagesFromFolders.Run();
             //ListMessagesByID.Run();
             //EnumeratMessagesWithPaginginEWS.Run();
             //SaveMessagesFromExchangeServerMailboxToEML.Run();
@@ -307,6 +307,26 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ListTasksFromExchangeServer.Run();
             //AddContactsToExchangeServerUsingEWS.Run();
             //FilterTasksFromServer.Run();
+            //ConnectingToExchangeServerUsingEWS.Run();
+            //SaveMessagesUsingIMAP.Run();
+            //ListingMessagesUsingEWS.Run();
+            //SaveMessagesInMSGFormatExchangeEWS.Run();
+            //GetExchangeMessageInfoFromMessageURI.Run();
+            //FetchMessageUsingEWS.Run();
+            //FilterMessagesUsingEWS.Run();
+            //FilterMessagesOnCriteriaUsingEWS.Run();
+            //FilterWithComplexQueriesUsingEWS.Run();
+            //CaseSensitiveEmailsFilteringUsingEWS.Run();
+            //CreatingUpdatingAndDeletingCalendarItemsUsingEWS.Run();
+            //GettingContactsUsingEWS.Run();
+            //ResolveContactsUsingContactName.Run();
+            //FetchContactUsingId.Run();
+            //UpdateContactInformationUsingEWS.Run();
+            //DeleteContactsFromExchangeServerUsingEWS.Run();
+            //ExpandPublicDistributionList.Run();
+            //SendEmailToPrivateDistributionList.Run();
+            //SpecifyTimeZoneForExchange.Run();
+            //GettingUnifiedMessagingConfigurationInformation.Run();
 
             //// =====================================================
             //// =====================================================
@@ -371,10 +391,10 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SupportIMAPIdleCommand.Run();
             //ListMessagesAsynchronously.Run();
             //ListingMIMEMessageIdInImapMessageInfo.Run();
-            GetMessagesWithSpecificCriteria.Run();
-            BuildingComplexQueries.Run();
-            CaseSensitiveEmailsFiltering.Run();
-            SpecifyEncodingForQueryBuilder.Run();
+            //GetMessagesWithSpecificCriteria.Run();
+            //BuildingComplexQueries.Run();
+            //CaseSensitiveEmailsFiltering.Run();
+            //SpecifyEncodingForQueryBuilder.Run();
             
             //// =====================================================
             //// =====================================================
