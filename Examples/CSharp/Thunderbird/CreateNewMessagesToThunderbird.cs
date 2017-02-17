@@ -17,14 +17,15 @@ namespace Aspose.Email.Examples.CSharp.Email
     {
         public static void Run()
         {
-            // ExStart:CreateNewMessagesToThunderbird
+            
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_SMTP();
 
             try
             {
+                // ExStart:WritingNewMessagesToThunderbird
                 // Open the storage file with FileStream
-                FileStream stream = new FileStream(dataDir + "Please add your Thunderbird file name here", FileMode.Open, FileAccess.Read);
+                FileStream stream = new FileStream(@"Thunderbird\inbox", FileMode.Open, FileAccess.Write);
 
                 // Initialize MboxStorageWriter and pass the above stream to it
                 MboxrdStorageWriter writer = new MboxrdStorageWriter(stream, false);
@@ -35,7 +36,7 @@ namespace Aspose.Email.Examples.CSharp.Email
                 // Close all related streams
                 writer.Dispose();
                 stream.Close();
-                // ExEnd:CreateNewMessagesToThunderbird
+                // ExEnd:WritingNewMessagesToThunderbird
             }
             catch (Exception ex)
             {

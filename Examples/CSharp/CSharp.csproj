@@ -62,6 +62,12 @@
     <Compile Include="Email\CreateTNEFEMLFromMSG.cs" />
     <Compile Include="Email\DetectMessageIsTNEF.cs" />
     <Compile Include="Email\DisplayAttachmentFileName.cs" />
+    <Compile Include="Email\EmailValidations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Email\EmailValidations.Designer.cs">
+      <DependentUpon>EmailValidations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Email\ExportEmailToEML.cs" />
     <Compile Include="Email\ExportEmailToMHTWithCustomTimezone.cs" />
     <Compile Include="Email\ExtractMSGEmbeddedAttachment.cs" />
@@ -78,6 +84,7 @@
     <Compile Include="Email\SpecifyCustomHeader.cs" />
     <Compile Include="Email\UpdateTNEFAttachments.cs" />
     <Compile Include="Email\UseMailMessageFeatures.cs" />
+    <Compile Include="Email\ValidatingEmails.cs" />
     <Compile Include="Exchange_EWS\AddContactsToExchangeServerUsingEWS.cs" />
     <Compile Include="Exchange_EWS\CaseSensitiveEmailsFilteringUsingEWS.cs" />
     <Compile Include="Exchange_EWS\ConnectingToExchangeServerUsingEWS.cs" />
@@ -102,11 +109,32 @@
     <Compile Include="Exchange_EWS\SendEmailToPrivateDistributionList.cs" />
     <Compile Include="Exchange_EWS\SpecifyTimeZoneForExchange.cs" />
     <Compile Include="Exchange_EWS\UpdateContactInformationUsingEWS.cs" />
+    <Compile Include="Exchange_WebDav\CaseSensitiveEmailsFilteringUsingExchangeClient.cs" />
     <Compile Include="Exchange_WebDav\ConnectingToExchange.cs" />
     <Compile Include="Exchange_WebDav\FetchMessageUsingExchangeClient.cs" />
     <Compile Include="Exchange_WebDav\FilterMessagesOnCriteriaUsingExchangeClient.cs" />
+    <Compile Include="Exchange_WebDav\FilterWithComplexQueriesUsingExchangeClient.cs" />
+    <Compile Include="Exchange_WebDav\GettingContactsFromAnExchangeServer.cs" />
+    <Compile Include="Exchange_WebDav\ListFoldersUsingExchangeClient.cs" />
     <Compile Include="Exchange_WebDav\PreFetchMessageSizeUsingExchangeClient.cs" />
     <Compile Include="Exchange_WebDav\SaveMessagesInMSGFormatExchangeClient.cs" />
+    <Compile Include="Gmail\AccessClientSettings.cs" />
+    <Compile Include="Gmail\AccessColorInfo.cs" />
+    <Compile Include="Gmail\AccessGmailContacts.cs" />
+    <Compile Include="Gmail\AddingAnAppointment.cs" />
+    <Compile Include="Gmail\CreateGmailContact.cs" />
+    <Compile Include="Gmail\DeleteGmailContact.cs" />
+    <Compile Include="Gmail\DeleteParticularCalendar.cs" />
+    <Compile Include="Gmail\GoogleOAuthHelper.cs" />
+    <Compile Include="Gmail\GoogleTestUser.cs" />
+    <Compile Include="Gmail\InsertFetchAndUpdateCalendar.cs" />
+    <Compile Include="Gmail\ManageAccessRule.cs" />
+    <Compile Include="Gmail\MoveAndDeleteAppointment.cs" />
+    <Compile Include="Gmail\QueryingCalendar.cs" />
+    <Compile Include="Gmail\RetrieveUpdateAppointment.cs" />
+    <Compile Include="Gmail\SavingContact.cs" />
+    <Compile Include="Gmail\TestUser.cs" />
+    <Compile Include="Gmail\UpdateGmailContact.cs" />
     <Compile Include="IMAP\BuildingComplexQueries.cs" />
     <Compile Include="IMAP\CaseSensitiveEmailsFiltering.cs" />
     <Compile Include="IMAP\DeletingAndRenamingFolders.cs" />
@@ -470,7 +498,6 @@
     <Compile Include="Thunderbird\GetMarkerInformation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Gmail\" />
     <Folder Include="SMTP\Data\" />
     <Folder Include="Thunderbird\Data\" />
   </ItemGroup>
@@ -479,6 +506,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Email\EmailValidations.resx">
+      <DependentUpon>EmailValidations.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Outlook\DragDropOutlookMessages.resx">
       <DependentUpon>DragDropOutlookMessages.cs</DependentUpon>
     </EmbeddedResource>
