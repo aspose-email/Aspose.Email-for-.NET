@@ -92,9 +92,9 @@
     <Compile Include="Exchange_EWS\FilterWithComplexQueriesUsingEWS.cs" />
     <Compile Include="Exchange_EWS\GetExchangeMessageInfoFromMessageURI.cs" />
     <Compile Include="Exchange_EWS\GettingContactsUsingEWS.cs" />
+    <Compile Include="Exchange_EWS\GettingUnifiedMessagingConfigurationInformation.cs" />
     <Compile Include="Exchange_EWS\IgnoringInvalidSSLCertificates.cs" />
     <Compile Include="Exchange_EWS\ListTasksFromExchangeServer.cs" />
-    <Compile Include="Exchange_EWS\OAuthSupportInEWS.cs" />
     <Compile Include="Exchange_EWS\ResolveContactsUsingContactName.cs" />
     <Compile Include="Exchange_EWS\RetrieveExtraParametersAsSummaryInformation.cs" />
     <Compile Include="Exchange_EWS\SaveMessagesInMSGFormatExchangeEWS.cs" />
@@ -102,6 +102,11 @@
     <Compile Include="Exchange_EWS\SendEmailToPrivateDistributionList.cs" />
     <Compile Include="Exchange_EWS\SpecifyTimeZoneForExchange.cs" />
     <Compile Include="Exchange_EWS\UpdateContactInformationUsingEWS.cs" />
+    <Compile Include="Exchange_WebDav\ConnectingToExchange.cs" />
+    <Compile Include="Exchange_WebDav\FetchMessageUsingExchangeClient.cs" />
+    <Compile Include="Exchange_WebDav\FilterMessagesOnCriteriaUsingExchangeClient.cs" />
+    <Compile Include="Exchange_WebDav\PreFetchMessageSizeUsingExchangeClient.cs" />
+    <Compile Include="Exchange_WebDav\SaveMessagesInMSGFormatExchangeClient.cs" />
     <Compile Include="IMAP\BuildingComplexQueries.cs" />
     <Compile Include="IMAP\CaseSensitiveEmailsFiltering.cs" />
     <Compile Include="IMAP\DeletingAndRenamingFolders.cs" />
@@ -195,7 +200,7 @@
     <Compile Include="Exchange_WebDav\MoveMessageFromOneFolderToAnotherUsingExchangeClient.cs" />
     <Compile Include="Exchange_EWS\SendEmailMessagesUsingExchangeWebServices.cs" />
     <Compile Include="Exchange_WebDav\SendEmailMessagesUsingExchangeServer.cs" />
-    <Compile Include="Exchange_WebDav\ExchangeClientSaveMessagesInMSGFormat.cs" />
+    <Compile Include="Exchange_WebDav\ExchangeClientSaveMessagesInEMLFormat.cs" />
     <Compile Include="Exchange_EWS\SaveMessagesToMemoryStreamUsingEWS.cs" />
     <Compile Include="Exchange_WebDav\SaveMessagesToMemoryStream.cs" />
     <Compile Include="Exchange_EWS\SaveMessagesUsingExchangeWebServices.cs" />

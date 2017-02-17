@@ -15,6 +15,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Aspose.Email.Examples.CSharp.Email.Outlook.PST;
 using Aspose.Email.Examples.CSharp.Email.Exchange_EWS;
+using Aspose.Email.Examples.CSharp.Email.Exchange_WebDav;
 
 namespace Aspose.Email.Examples.CSharp.Email
 {
@@ -250,7 +251,6 @@ namespace Aspose.Email.Examples.CSharp.Email
 
             //GetMailboxInformationFromExchangeWebServices.Run();
             //GetMailboxInformationFromExchangeServer.Run();
-            //GetMailboxInformationFromExchangeServer.Run();
             //ListExchangeServerMessages.Run();
             //ListMessagesFromDifferentFolders.Run();
             //ListingMessagesFromFolders.Run();
@@ -260,7 +260,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SaveMessagesUsingExchangeWebServices.Run();
             //SaveMessagesToMemoryStream.Run();
             //SaveMessagesToMemoryStreamUsingEWS.Run();
-            //ExchangeClientSaveMessagesInMSGFormat.Run();
+            //ExchangeClientSaveMessagesInEMLFormat.Run();
             //SendEmailMessagesUsingExchangeServer.Run();
             //SendEmailMessagesUsingExchangeWebServices.Run();
             //MoveMessageFromOneFolderToAnotherUsingExchangeClient.Run();
@@ -327,6 +327,13 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SendEmailToPrivateDistributionList.Run();
             //SpecifyTimeZoneForExchange.Run();
             //GettingUnifiedMessagingConfigurationInformation.Run();
+            //ConnectingToExchange.Run();
+            //SaveMessagesInMSGFormatExchangeClient.Run();
+            //FetchMessageUsingExchangeClient.Run();
+            //FilterMessagesOnCriteriaUsingExchangeClient.Run();
+            //FilterWithComplexQueriesUsingExchangeClient.Run();
+            //CaseSensitiveEmailsFilteringUsingExchangeClient.Run();
+            //GettingContactsFromAnExchangeServer.Run(); 
 
             //// =====================================================
             //// =====================================================

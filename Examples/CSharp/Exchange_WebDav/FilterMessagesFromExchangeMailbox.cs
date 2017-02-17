@@ -12,7 +12,7 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.ExchangeExchange_WebDav
 {
     class FilterMessagesFromExchangeMailbox
     {
@@ -40,9 +40,9 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
                 MailQuery query = builder.GetQuery();
                 // Get list of messages
                 ExchangeMessageInfoCollection messages = client.ListMessages(client.MailboxInfo.InboxUri, query, false);
-                Console.WriteLine("Imap: " + messages.Count + " message(s) found.");
+                Console.WriteLine("Exchange: " + messages.Count + " message(s) found.");
 
-                // Disconnect from IMAP
+                // Disconnect from Exchange
                 client.Dispose();
             }
             catch (Exception ex)

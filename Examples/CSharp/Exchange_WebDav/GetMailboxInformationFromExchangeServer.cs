@@ -9,7 +9,7 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_WebDav
 {
     class GetMailboxInformationFromExchangeServer
     {
@@ -20,6 +20,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
                 // ExStart:GetMailboxInformationFromExchangeServer 
                 // Create instance of ExchangeClient class by giving credentials
                 ExchangeClient client = new ExchangeClient("https://MachineName/exchange/Username", "Username", "password", "domain");
+                
                 // Get mailbox size, exchange mailbox info, Mailbox, Inbox folder, Sent Items folder URI , Drafts folder URI
                 Console.WriteLine("Mailbox size: " + client.GetMailboxSize() + " bytes");
                 ExchangeMailboxInfo mailboxInfo = client.GetMailboxInfo();

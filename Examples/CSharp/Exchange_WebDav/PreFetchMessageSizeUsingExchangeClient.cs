@@ -1,5 +1,8 @@
-﻿using System;
-using Aspose.Email.Exchange;
+﻿using Aspose.Email.Exchange;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -9,38 +12,36 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_WebDav
 {
-    class ExchangeClientSaveMessagesInMSGFormat
+    class PreFetchMessageSizeUsingExchangeClient
     {
         public static void Run()
         {
             try
             {
-                // ExStart:ExchangeClientSaveMessagesInMSGFormat
-                string dataDir = RunExamples.GetDataDir_Exchange();
+                // ExStart:PreFetchMessageSizeUsingExchangeClient
                 // Create instance of ExchangeClient class by giving credentials
-                ExchangeClient client = new ExchangeClient("https://Servername/exchange/username", "username", "password", "domain");
+                ExchangeClient client = new ExchangeClient("http://ex07sp1/exchange/Administrator", "user", "pwd", "domain");
 
                 // Call ListMessages method to list messages info from Inbox
                 ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
 
-                // Loop through the collection to get Message URI
+                // Loop through the collection to display the basic information
                 foreach (ExchangeMessageInfo msgInfo in msgCollection)
                 {
-                    string strMessageURI = msgInfo.UniqueUri;
-
-                    // Now save the message in disk
-                    client.SaveMessage(strMessageURI, dataDir + msgInfo.MessageId + ".eml");
+                    Console.WriteLine("Subject: " + msgInfo.Subject);
+                    Console.WriteLine("From: " + msgInfo.From.ToString());
+                    Console.WriteLine("To: " + msgInfo.To.ToString());
+                    Console.WriteLine("Message Size: " + msgInfo.Size);
+                    Console.WriteLine("==================================");
                 }
-                // ExEnd:ExchangeClientSaveMessagesInMSGFormat
+                // ExEnd:PreFetchMessageSizeUsingExchangeClient
             }
             catch (Exception ex)
             {
-
-                Console.Write(ex.Message);
+                Console.WriteLine(ex.Message);
             }
-
         }
     }
 }

@@ -1,6 +1,9 @@
-﻿using System;
-using System.IO;
-using Aspose.Email.Exchange;
+﻿using Aspose.Email.Exchange;
+using Aspose.Email.Mail;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -12,36 +15,35 @@ please feel free to contact us using http://www.aspose.com/community/forums/defa
 
 namespace Aspose.Email.Examples.CSharp.Email.Exchange_WebDav
 {
-    class SaveMessagesToMemoryStream
+    class SaveMessagesInMSGFormatExchangeClient
     {
         public static void Run()
         {
             try
             {
-                // ExStart:SaveMessagesToMemoryStream
                 string dataDir = RunExamples.GetDataDir_Exchange();
+
+                // ExStart:SaveMessagesInMSGFormatExchangeClient
                 // Create instance of ExchangeClient class by giving credentials
-                ExchangeClient client = new ExchangeClient("https://Ex07sp1/exchange/Administrator", "user", "pwd",
-                    "domain");
+                ExchangeClient client = new ExchangeClient("http://ex07sp1/exchange/Administrator", "user", "pwd", "domain");
 
                 // Call ListMessages method to list messages info from Inbox
                 ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
 
+                int count = 0;
                 // Loop through the collection to get Message URI
                 foreach (ExchangeMessageInfo msgInfo in msgCollection)
                 {
                     string strMessageURI = msgInfo.UniqueUri;
-
-                    // Now save the message in memory stream
-                    MemoryStream stream = new MemoryStream();
-                    client.SaveMessage(strMessageURI, stream);
+                    // Now get the message details using FetchMessage() and Save message as msg
+                    MailMessage message = client.FetchMessage(strMessageURI);
+                    message.Save(dataDir + (count++) + "_out.msg", SaveOptions.DefaultMsgUnicode);
                 }
-                // ExEnd:SaveMessagesToMemoryStream
+                // ExEnd:SaveMessagesInMSGFormatExchangeClient
             }
             catch (Exception ex)
             {
-
-                Console.Write(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
     }
