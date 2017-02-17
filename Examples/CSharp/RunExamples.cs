@@ -27,7 +27,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             Console.WriteLine("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
             Console.WriteLine("=====================================================");
 
-                 
+
             // Uncomment the one you want to try out
 
             // =====================================================
@@ -103,7 +103,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //// =====================================================
             //// =====================================================
 
-           
+
             //NewPSTAddSubfolders.Run();
             //CreateSaveOutlookFiles.Run();
             //DeleteBulkItemsFromPSTFile.Run();
@@ -193,7 +193,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SetMonthlyNeverEndRecurrence.Run();
             //YearlyEndAfterDate.Run();
             //SetYearlyNeverEndRecurrence.Run();
-           
+
             // Working with Outlook Personal Storage (PST) files
             //SplitSinglePSTInToMultiplePST.Run();
             //MergeMultiplePSTsInToSinglePST.Run();
@@ -334,6 +334,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //FilterWithComplexQueriesUsingExchangeClient.Run();
             //CaseSensitiveEmailsFilteringUsingExchangeClient.Run();
             //GettingContactsFromAnExchangeServer.Run(); 
+            //RetreiveExtAttributesForCalendarItems.Run();
 
             //// =====================================================
             //// =====================================================
@@ -402,7 +403,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //BuildingComplexQueries.Run();
             //CaseSensitiveEmailsFiltering.Run();
             //SpecifyEncodingForQueryBuilder.Run();
-            
+
             //// =====================================================
             //// =====================================================
             //// SMTP
@@ -454,7 +455,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //CreateNewMessagesToThunderbird.Run();
 
             // Stop before exiting
-            
+
             Console.WriteLine(Environment.NewLine + "Program Finished. Press any key to exit....");
             Console.ReadKey();
         }

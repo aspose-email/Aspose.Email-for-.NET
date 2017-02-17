@@ -22,7 +22,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             string dataDir = RunExamples.GetDataDir_Email();
             const string pageHeader = @"<div><div class='pageHeader'>&quot;Panditharatne, Mithra&quot; &lt;mithra.panditharatne@cibc.com&gt;<hr/></div>";
             MailMessage message = MailMessage.Load(dataDir + "Message.eml");
-            MhtMessageFormatter mailFormatter = new MhtMessageFormatter();
+            //MhtMessageFormatter mailFormatter = new MhtMessageFormatter();
             MailMessage copyMessage = message.Clone();
             mailFormatter.Format(copyMessage);
             Console.WriteLine(copyMessage.HtmlBody.Contains(pageHeader) ? "True" : "False");
