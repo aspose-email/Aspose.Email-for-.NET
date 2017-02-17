@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using Aspose.Email.Examples.CSharp.Email.Outlook.PST;
 using Aspose.Email.Examples.CSharp.Email.Exchange_EWS;
 using Aspose.Email.Examples.CSharp.Email.Exchange_WebDav;
+using Aspose.Email.Examples.CSharp.Email.Gmail;
 
 namespace Aspose.Email.Examples.CSharp.Email
 {
@@ -96,6 +97,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //CreateTNEFEMLFromMSG.Run();
             //DetectMessageIsTNEF.Run();
             //CheckBouncedMessage.Run();
+            //Application.Run(new EmailValidations());
+            //ValidatingEmails.Run();
 
             //// =====================================================
             //// =====================================================
@@ -334,6 +337,21 @@ namespace Aspose.Email.Examples.CSharp.Email
             //FilterWithComplexQueriesUsingExchangeClient.Run();
             //CaseSensitiveEmailsFilteringUsingExchangeClient.Run();
             //GettingContactsFromAnExchangeServer.Run(); 
+            
+            //// =====================================================
+            //// =====================================================
+            //// Gmail
+            //// =====================================================
+            //// =====================================================
+
+            //InsertFetchAndUpdateCalendar.Run();
+            //DeleteParticularCalendar.Run();
+            //AccessColorInfo.Run();
+            //AccessGmailContacts.Run();
+            //CreateGmailContact.Run();
+            //UpdateGmailContact.Run();
+            //DeleteGmailContact.Run();
+            //SavingContact.Run();
 
             //// =====================================================
             //// =====================================================
@@ -497,6 +515,11 @@ namespace Aspose.Email.Examples.CSharp.Email
         internal static string GetDataDir_SMTP()
         {
             return Path.GetFullPath(GetDataDir_Data() + "SMTP/");
+        }
+
+        internal static string GetDataDir_Gmail()
+        {
+            return Path.GetFullPath(GetDataDir_Data() + "Gmail/");
         }
 
         private static string GetDataDir_Data()
