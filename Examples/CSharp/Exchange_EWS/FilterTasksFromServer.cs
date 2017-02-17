@@ -13,7 +13,7 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
 {
     class FilterTasksFromServer
     {

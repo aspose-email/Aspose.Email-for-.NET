@@ -11,7 +11,7 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
 {
     class DeleteConversations
     {
@@ -22,9 +22,11 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
             const string username = @"username@ASE305.onmicrosoft.com";
             const string password = @"password";
             NetworkCredential credentials = new NetworkCredential(username, password, domain);
+
+            // ExStart:DeleteConversations
             IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
             Console.WriteLine("Connected to Exchange 2010");
-            // ExStart:DeleteConversations
+            
             // Find those Conversation Items in the Inbox folder which we want to delete
             ExchangeConversation[] conversations = client.FindConversations(client.MailboxInfo.InboxUri);
             foreach (ExchangeConversation conversation in conversations)

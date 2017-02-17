@@ -10,7 +10,7 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
 {
     class SendEmailMessagesUsingExchangeWebServices
     {
@@ -18,7 +18,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
         {
             try
             {
-                // ExStart:SendEmailMessagesUsingExchangeServer
+                // ExStart:SendEmailMessagesUsingExchangeWebServices
                 // Create instance of IEWSClient class by giving credentials
                 IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
@@ -31,7 +31,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
 
                 // Send the message
                 client.Send(msg);
-                // ExEnd:SendEmailMessagesUsingExchangeServer
+                // ExEnd:SendEmailMessagesUsingExchangeWebServices
             }
             catch (Exception ex)
             {

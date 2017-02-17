@@ -10,12 +10,13 @@ using Aspose.Email.Mail;
    please feel free to contact us using http://www.aspose.com/community/forums/default.aspx            
 */
 
-namespace Aspose.Email.Examples.CSharp.Exchange
+namespace Aspose.Email.Examples.CSharp.Exchange_EWS
 {
     class SecondaryCalendarEvents
     {
         public static void Run()
         {
+            // ExStart:SecondaryCalendarEvents
             using (IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "your.username", "your.Password"))
             {
                 try
@@ -106,6 +107,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
                 {
                 }
             }
+            // ExEnd:SecondaryCalendarEvents
         }
     }
 }
