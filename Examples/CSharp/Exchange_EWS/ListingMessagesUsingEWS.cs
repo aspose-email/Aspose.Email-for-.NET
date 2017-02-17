@@ -9,38 +9,36 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
 {
-    class ExchangeClientSaveMessagesInMSGFormat
+    class ListingMessagesUsingEWS
     {
         public static void Run()
         {
             try
             {
-                // ExStart:ExchangeClientSaveMessagesInMSGFormat
-                string dataDir = RunExamples.GetDataDir_Exchange();
-                // Create instance of ExchangeClient class by giving credentials
-                ExchangeClient client = new ExchangeClient("https://Servername/exchange/username", "username", "password", "domain");
+                // ExStart:ListingMessagesUsingEWS
+                // Create instance of ExchangeWebServiceClient class by giving credentials
+                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "UserName", "Password");
 
                 // Call ListMessages method to list messages info from Inbox
                 ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
 
-                // Loop through the collection to get Message URI
+                // Loop through the collection to display the basic information
                 foreach (ExchangeMessageInfo msgInfo in msgCollection)
                 {
-                    string strMessageURI = msgInfo.UniqueUri;
-
-                    // Now save the message in disk
-                    client.SaveMessage(strMessageURI, dataDir + msgInfo.MessageId + ".eml");
+                    Console.WriteLine("Subject: " + msgInfo.Subject);
+                    Console.WriteLine("From: " + msgInfo.From.ToString());
+                    Console.WriteLine("To: " + msgInfo.To.ToString());
+                    Console.WriteLine("Message ID: " + msgInfo.MessageId);
+                    Console.WriteLine("Unique URI: " + msgInfo.UniqueUri);
                 }
-                // ExEnd:ExchangeClientSaveMessagesInMSGFormat
+                // ExEnd:ListingMessagesUsingEWS
             }
             catch (Exception ex)
             {
-
                 Console.Write(ex.Message);
             }
-
         }
     }
 }

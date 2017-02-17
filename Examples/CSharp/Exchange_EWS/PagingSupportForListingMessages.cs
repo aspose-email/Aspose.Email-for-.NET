@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using Aspose.Email.Exchange;
 using Aspose.Email.Mail;
 
-namespace Aspose.Email.Examples.CSharp.Exchange
+namespace Aspose.Email.Examples.CSharp.Exchange_EWS
 {
     class PagingSupportForListingMessages
     {
         static void Run()
-        {
-            // ExStart: PagingSupportForListingMessages
+        {            
             ///<summary>
             /// This example shows how to list messages from Exchange Server with Paging support
             /// Introduced in Aspose.Email for .NET 6.4.0
@@ -19,6 +18,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
             /// ExchangeMessagePageInfo ListMessagesByPage(string folder, PageInfo pageInfo);
             /// ExchangeMessagePageInfo ListMessagesByPage(string folder, PageInfo pageInfo, ExchangeListMessagesOptions options);
             ///</summary>
+            // ExStart: PagingSupportForListingMessages
             using (IEWSClient client = EWSClient.GetEWSClient("exchange.domain.com", "username", "password"))
             {
                 try

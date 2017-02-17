@@ -10,7 +10,7 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_WebDav
 {
     class SaveMessagesToMemoryStream
     {
@@ -34,7 +34,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
 
                     // Now save the message in memory stream
                     MemoryStream stream = new MemoryStream();
-                    client.SaveMessage(strMessageURI, dataDir + stream);
+                    client.SaveMessage(strMessageURI, stream);
                 }
                 // ExEnd:SaveMessagesToMemoryStream
             }

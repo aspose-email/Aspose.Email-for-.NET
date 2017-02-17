@@ -1,5 +1,8 @@
-﻿using System;
-using Aspose.Email.Exchange;
+﻿using Aspose.Email.Exchange;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -9,17 +12,17 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_WebDav
 {
-    class ProgrammingSamplesUsingEWS
+    class PreFetchMessageSizeUsingExchangeClient
     {
         public static void Run()
         {
             try
             {
-                // ExStart:ProgrammingSamplesUsingEWS
-                // Create instance of ExchangeWebServiceClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "UserName", "Password");
+                // ExStart:PreFetchMessageSizeUsingExchangeClient
+                // Create instance of ExchangeClient class by giving credentials
+                ExchangeClient client = new ExchangeClient("http://ex07sp1/exchange/Administrator", "user", "pwd", "domain");
 
                 // Call ListMessages method to list messages info from Inbox
                 ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
@@ -30,14 +33,14 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
                     Console.WriteLine("Subject: " + msgInfo.Subject);
                     Console.WriteLine("From: " + msgInfo.From.ToString());
                     Console.WriteLine("To: " + msgInfo.To.ToString());
-                    Console.WriteLine("Message ID: " + msgInfo.MessageId);
-                    Console.WriteLine("Unique URI: " + msgInfo.UniqueUri);
+                    Console.WriteLine("Message Size: " + msgInfo.Size);
+                    Console.WriteLine("==================================");
                 }
-                // ExEnd:ProgrammingSamplesUsingEWS
+                // ExEnd:PreFetchMessageSizeUsingExchangeClient
             }
             catch (Exception ex)
             {
-                Console.Write(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
     }

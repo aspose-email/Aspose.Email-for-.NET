@@ -9,28 +9,26 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
 {
     class GetMailboxInformationFromExchangeWebServices
     {
         public static void Run()
         {
-            // The path to the File directory.
-            // ExStart:GetMailboxInformationFromExchangeWebServices 
-            // Create instance of EWSClient class by giving credentials
             try
-            {          
+            {
+                // ExStart:GetMailboxInformationFromExchangeWebServices 
+                // Create instance of EWSClient class by giving credentials         
+                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
-
-            // Get mailbox size, exchange mailbox info, Mailbox and Inbox folder URI
-            Console.WriteLine("Mailbox size: " + client.GetMailboxSize() + " bytes");
-            ExchangeMailboxInfo mailboxInfo = client.GetMailboxInfo();
-            Console.WriteLine("Mailbox URI: " + mailboxInfo.MailboxUri);
-            Console.WriteLine("Inbox folder URI: " + mailboxInfo.InboxUri);
-            Console.WriteLine("Sent Items URI: " + mailboxInfo.SentItemsUri);
-            Console.WriteLine("Drafts folder URI: " + mailboxInfo.DraftsUri);
-            // ExEnd:GetMailboxInformationFromExchangeWebServices
+                // Get mailbox size, exchange mailbox info, Mailbox and Inbox folder URI
+                Console.WriteLine("Mailbox size: " + client.GetMailboxSize() + " bytes");
+                ExchangeMailboxInfo mailboxInfo = client.GetMailboxInfo();
+                Console.WriteLine("Mailbox URI: " + mailboxInfo.MailboxUri);
+                Console.WriteLine("Inbox folder URI: " + mailboxInfo.InboxUri);
+                Console.WriteLine("Sent Items URI: " + mailboxInfo.SentItemsUri);
+                Console.WriteLine("Drafts folder URI: " + mailboxInfo.DraftsUri);
+                // ExEnd:GetMailboxInformationFromExchangeWebServices
             }
             catch (Exception ex)
             {

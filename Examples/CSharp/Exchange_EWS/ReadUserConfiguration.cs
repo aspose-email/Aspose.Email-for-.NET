@@ -11,21 +11,17 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
 {
     class ReadUserConfiguration
     {
         public static void Run()
         {
-            const string mailboxUri = "https://exchnage/ews/exchange.asmx";
-            const string domain = @"";
-            const string username = @"username@ASE305.onmicrosoft.com";
-            const string password = @"password";
-            NetworkCredential credentials = new NetworkCredential(username, password, domain);
-            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
+            // ExStart:ReadUserConfiguration
+
+            IEWSClient client = GetExchangeEWSClient();
             Console.WriteLine("Connected to Exchange 2010");
 
-            // ExStart:ReadUserConfiguration
             // Get the User Configuration for Inbox folder
             UserConfigurationName userConfigName = new UserConfigurationName("inbox.config", client.MailboxInfo.InboxUri);
             UserConfiguration userConfig = client.GetUserConfiguration(userConfigName);
@@ -38,6 +34,17 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
                 Console.WriteLine(key + ": " + userConfig.Dictionary[key].ToString());
             }
             // ExEnd:ReadUserConfiguration
+        }
+
+        private static IEWSClient GetExchangeEWSClient()
+        {
+            const string mailboxUri = "https://outlook.office365.com/ews/exchange.asmx";
+            const string domain = @"";
+            const string username = @"username@ASE305.onmicrosoft.com";
+            const string password = @"password";
+            NetworkCredential credentials = new NetworkCredential(username, password, domain);
+            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
+            return client;
         }
     }
 }

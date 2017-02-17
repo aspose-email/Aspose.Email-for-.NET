@@ -9,15 +9,15 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
 {
-    class ExchangeServerUsingEWS
+    class ListingMessagesFromFolders
     {
         public static void Run()
         {
             try
             {
-                // ExStart:ExchangeServerUsingEWS
+                // ExStart:ListingMessagesFromFolders
                 // Create instance of EWSClient class by giving credentials
                 IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
@@ -30,7 +30,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
 
                 // Get list of messages from the specified folder
                 ExchangeMessageInfoCollection msgCollection = client.ListMessages(strFolderURI);
-                // ExEnd:ExchangeServerUsingEWS
+                // ExEnd:ListingMessagesFromFolders
             }
             catch (Exception ex)
             {

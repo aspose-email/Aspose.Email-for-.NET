@@ -11,13 +11,13 @@ install it and then add its reference to this project. For any issues, questions
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
 
-namespace Aspose.Email.Examples.CSharp.Email.Exchange
+namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
 {
     class MoveMessageFromOneFolderToAnotherusingEWS
     {
         public static void Run()
         {
-            // ExStart:MoveMessageFromOneFolderToAnotherUsingExchangeClient
+            // ExStart:MoveMessageFromOneFolderToAnotherusingEWS
             // Create instance of IEWSClient class by giving credentials
             IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
 
@@ -40,7 +40,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange
                     // Do something else
                 }
             }
-            // ExEnd:MoveMessageFromOneFolderToAnotherUsingExchangeClient
+            // ExEnd:MoveMessageFromOneFolderToAnotherusingEWS
         }
     }
 }
