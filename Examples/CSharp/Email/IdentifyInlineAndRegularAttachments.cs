@@ -19,9 +19,9 @@ namespace Aspose.Email.Examples.CSharp.Email
 {
     class IdentifyInlineAndRegularAttachments
     {
+        // ExStart:IdentifyInlineAndRegularAttachments
         public static void Run()
-        {
-            // ExStart:IdentifyInlineAndRegularAttachments           
+        {                       
             string dataDir = RunExamples.GetDataDir_Email();
             var message = MapiMessage.FromFile(dataDir + "RemoveAttachments.msg");
             var attachments = message.Attachments;
