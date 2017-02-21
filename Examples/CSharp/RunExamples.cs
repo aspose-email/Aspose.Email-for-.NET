@@ -245,6 +245,39 @@ namespace Aspose.Email.Examples.CSharp.Email
             //// =====================================================
 
             //PrintEmail.Run();
+            //ConnectingGmailSMTPServer.Run();
+            //SendEmailMessage.Run();
+            //ConnectToGmailUsingIMAP.Run();
+            //GetGmailMessageCountUsingIMAP.Run();
+            //SaveGmailMessages.Run();
+            //CreateNewGmailFolderUsingIMAP.Run();
+            //AddingMessageToGmailFolderUsingIMAP.Run();
+            //ConnectToGmailUsingPOP3.Run();
+            //CheckGmailMailboxStatus.Run();
+            //CheckGmailMessageInformation.Run();
+            //RetrieveGmailMessages.Run();
+            //LoadingMSGFile.Run();
+            //GetMessageProperties.Run();
+            //GetAttachmentsFromMSGFile.Run();
+            //GetMAPIProperties.Run();
+            //ParsingOutlookFiles.Run();
+            //ReceiveNotifications.Run();
+            //DetectingNewMessages.Run();
+            //ConvertMSGToTIFF.Run();
+            //LoadWordDocAsEmailBody.Run();
+            //PrintMessageBody.Run();
+            //PrintMessageHeadersAndBody.Run();
+            //PrintMessageHTMLBody.Run();
+            //SetPrintPageLayout.Run();
+            //SetAutofitForPrinting.Run();
+            //AdjustTargetDPIForPrinting.Run();
+            //SendExcelWorksheetAsMessageBody.Run();
+            //AccessSMTPAndIMAPServersUsingOAuth.Run();
+            //SaveEmailAsPDF.Run();
+            //SendAppointmentUpdateRequest.Run();
+            //Application.Run(new SendMeetingRequests());
+            //Application.Run(new CancelMeetingRequest());
+            //Application.Run(new AsposeEmailOutlookSampleApp());
 
             //// =====================================================
             //// =====================================================

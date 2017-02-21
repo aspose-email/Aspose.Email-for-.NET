@@ -66,12 +66,11 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
                 // Return unique id for later usage
                 // return szUniqueId;
-                // ExEnd:SendMailUsingDNS
+                // ExEnd:CreateMeetingRequestWithRecurrence
             }
             catch (Exception exception)
             {
                 Console.Write(exception.Message);
-                throw;
             }
 
         }

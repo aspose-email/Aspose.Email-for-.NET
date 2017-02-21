@@ -36,8 +36,16 @@
     <StartupObject>Aspose.Email.Examples.CSharp.Email.RunExamples</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=17.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Cells.17.02.0\lib\net40\Aspose.Cells.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Aspose.Email, Version=17.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\Aspose.Email.17.2.0\lib\net40\Aspose.Email.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Aspose.Words, Version=17.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Words.17.2.0\lib\net40\Aspose.Words.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -147,6 +155,80 @@
     <Compile Include="IMAP\RetrieveExtraParameters.cs" />
     <Compile Include="IMAP\SendIMAPasynchronousEmail.cs" />
     <Compile Include="IMAP\SpecifyEncodingForQueryBuilder.cs" />
+    <Compile Include="Knowledge-Base\AccessSMTPAndIMAPServersUsingOAuth.cs" />
+    <Compile Include="Knowledge-Base\AddingMessageToGmailFolderUsingIMAP.cs" />
+    <Compile Include="Knowledge-Base\AdjustTargetDPIForPrinting.cs" />
+    <Compile Include="Knowledge-Base\AsposeEmailExchangeSampleApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Knowledge-Base\AsposeEmailExchangeSampleApp.Designer.cs">
+      <DependentUpon>AsposeEmailExchangeSampleApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Knowledge-Base\AsposeEmailIMAPSampleApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Knowledge-Base\AsposeEmailIMAPSampleApp.Designer.cs">
+      <DependentUpon>AsposeEmailIMAPSampleApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Knowledge-Base\AsposeEmailMailSampleApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Knowledge-Base\AsposeEmailMailSampleApp.Designer.cs">
+      <DependentUpon>AsposeEmailMailSampleApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Knowledge-Base\AsposeEmailOutlookSampleApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Knowledge-Base\AsposeEmailOutlookSampleApp.Designer.cs">
+      <DependentUpon>AsposeEmailOutlookSampleApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Knowledge-Base\AsposeEmailPop3SampleApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Knowledge-Base\AsposeEmailPop3SampleApp.Designer.cs">
+      <DependentUpon>AsposeEmailPop3SampleApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Knowledge-Base\CancelMeetingRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Knowledge-Base\CancelMeetingRequest.Designer.cs">
+      <DependentUpon>CancelMeetingRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Knowledge-Base\CheckGmailMailboxStatus.cs" />
+    <Compile Include="Knowledge-Base\CheckGmailMessageInformation.cs" />
+    <Compile Include="Knowledge-Base\ConnectingGmailSMTPServer.cs" />
+    <Compile Include="Knowledge-Base\ConnectToGmailUsingIMAP.cs" />
+    <Compile Include="Knowledge-Base\ConnectToGmailUsingPOP3.cs" />
+    <Compile Include="Knowledge-Base\ConvertMSGToTIFF.cs" />
+    <Compile Include="Knowledge-Base\CreateDraftAppointmentFromText.cs" />
+    <Compile Include="Knowledge-Base\CreateNewGmailFolderUsingIMAP.cs" />
+    <Compile Include="Knowledge-Base\DetectingNewMessages.cs" />
+    <Compile Include="Knowledge-Base\GeneratingOccurrencesFromRecurrencePatterns.cs" />
+    <Compile Include="Knowledge-Base\GetAttachmentsFromMSGFile.cs" />
+    <Compile Include="Knowledge-Base\GetGmailMessageCountUsingIMAP.cs" />
+    <Compile Include="Knowledge-Base\GetMAPIProperties.cs" />
+    <Compile Include="Knowledge-Base\GetMessageProperties.cs" />
+    <Compile Include="Knowledge-Base\LoadingMSGFile.cs" />
+    <Compile Include="Knowledge-Base\LoadWordDocAsEmailBody.cs" />
+    <Compile Include="Knowledge-Base\ParsingOutlookFiles.cs" />
+    <Compile Include="Knowledge-Base\PrintMessageBody.cs" />
+    <Compile Include="Knowledge-Base\PrintMessageHeadersAndBody.cs" />
+    <Compile Include="Knowledge-Base\PrintMessageHTMLBody.cs" />
+    <Compile Include="Knowledge-Base\ReceiveNotifications.cs" />
+    <Compile Include="Knowledge-Base\RetrieveGmailMessages.cs" />
+    <Compile Include="Knowledge-Base\SaveEmailAsPDF.cs" />
+    <Compile Include="Knowledge-Base\SaveGmailMessages.cs" />
+    <Compile Include="Knowledge-Base\SendAppointmentUpdateRequest.cs" />
+    <Compile Include="Knowledge-Base\SendEmailMessage.cs" />
+    <Compile Include="Knowledge-Base\SendExcelWorksheetAsMessageBody.cs" />
+    <Compile Include="Knowledge-Base\SendMeetingRequests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Knowledge-Base\SendMeetingRequests.Designer.cs">
+      <DependentUpon>SendMeetingRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Knowledge-Base\SetAutofitForPrinting.cs" />
+    <Compile Include="Knowledge-Base\SetPrintPageLayout.cs" />
     <Compile Include="Outlook\ConvertMSGToMIMEMessage.cs" />
     <Compile Include="Outlook\CreateMapiCalendarTimeZoneFromStandardTimezone.cs" />
     <Compile Include="Outlook\CreateMeetingRequestWithRecurrence.cs" />
@@ -510,6 +592,27 @@
   <ItemGroup>
     <EmbeddedResource Include="Email\EmailValidations.resx">
       <DependentUpon>EmailValidations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Knowledge-Base\AsposeEmailExchangeSampleApp.resx">
+      <DependentUpon>AsposeEmailExchangeSampleApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Knowledge-Base\AsposeEmailIMAPSampleApp.resx">
+      <DependentUpon>AsposeEmailIMAPSampleApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Knowledge-Base\AsposeEmailMailSampleApp.resx">
+      <DependentUpon>AsposeEmailMailSampleApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Knowledge-Base\AsposeEmailOutlookSampleApp.resx">
+      <DependentUpon>AsposeEmailOutlookSampleApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Knowledge-Base\AsposeEmailPop3SampleApp.resx">
+      <DependentUpon>AsposeEmailPop3SampleApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Knowledge-Base\CancelMeetingRequest.resx">
+      <DependentUpon>CancelMeetingRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Knowledge-Base\SendMeetingRequests.resx">
+      <DependentUpon>SendMeetingRequests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Outlook\DragDropOutlookMessages.resx">
       <DependentUpon>DragDropOutlookMessages.cs</DependentUpon>
