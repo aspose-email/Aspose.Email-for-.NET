@@ -22,7 +22,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Gmail
             try
             {
                 // ExStart:AddingAnAppointment
-                
+
                 GoogleTestUser User2 = new GoogleTestUser("user", "email address", "password", "clientId", "client secret");
                 string accessToken;
                 string refreshToken;

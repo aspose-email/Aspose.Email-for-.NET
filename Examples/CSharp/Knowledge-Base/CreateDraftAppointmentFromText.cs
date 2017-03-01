@@ -24,16 +24,16 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_KnowledgeBase();
             string ical = @"BEGIN:VCALENDAR
-            METHOD:PUBLISH
-            PRODID:-//Aspose Ltd//iCalender Builder (v3.0)//EN
-            VERSION:2.0
-            BEGIN:VEVENT
-            ATTENDEE;CN=test@gmail.com:mailto:test@gmail.com
-            DTSTART:20130220T171439
-            DTEND:20130220T174439
-            DTSTAMP:20130220T161439Z
-            END:VEVENT
-            END:VCALENDAR";
+METHOD:PUBLISH
+PRODID:-//Aspose Ltd//iCalender Builder (v3.0)//EN
+VERSION:2.0
+BEGIN:VEVENT
+ATTENDEE;CN=test@gmail.com:mailto:test@gmail.com
+DTSTART:20130220T171439
+DTEND:20130220T174439
+DTSTAMP:20130220T161439Z
+END:VEVENT
+END:VCALENDAR";
 
             string sender = "test@gmail.com";
             string recipient = "test@email.com";
