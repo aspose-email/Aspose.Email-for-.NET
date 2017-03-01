@@ -36,7 +36,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             Appointment appUpdate = new Appointment("Different Place", StartDate,
             EndDate, "newcustomeronnet@gmail.com", "kashif.iqbal@aspose.com");
             appUpdate.UniqueId = szUniqueId;
-            Aspose.Email.Mail.Calendaring.WeeklyRecurrencePattern pattern3 = (Aspose.Email.Mail.Calendaring.WeeklyRecurrencePattern)appUpdate.RecurrencePattern;
+            Aspose.Email.Recurrences.WeeklyRecurrencePattern pattern3 = (Aspose.Email.Recurrences.WeeklyRecurrencePattern)appUpdate.Recurrence;
             appUpdate.Summary = "update meeting request summary";
             appUpdate.Description = "update";
             MailMessage msgUpdate = new MailMessage("newcustomeronnet@gmail.com", "kashif.iqbal@aspose.com", "06 - test email - update meeting request", "test email");

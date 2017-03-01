@@ -229,6 +229,9 @@
     </Compile>
     <Compile Include="Knowledge-Base\SetAutofitForPrinting.cs" />
     <Compile Include="Knowledge-Base\SetPrintPageLayout.cs" />
+    <Compile Include="Knowledge-Base\UsingMailMessageWrapper.cs" />
+    <Compile Include="Knowledge-Base\WrapperMailMessage.cs" />
+    <Compile Include="Knowledge-Base\WrapperMailMessage_2_0.cs" />
     <Compile Include="Outlook\ConvertMSGToMIMEMessage.cs" />
     <Compile Include="Outlook\CreateMapiCalendarTimeZoneFromStandardTimezone.cs" />
     <Compile Include="Outlook\CreateMeetingRequestWithRecurrence.cs" />

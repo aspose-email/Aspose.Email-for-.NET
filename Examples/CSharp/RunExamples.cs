@@ -278,6 +278,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //Application.Run(new SendMeetingRequests());
             //Application.Run(new CancelMeetingRequest());
             //Application.Run(new AsposeEmailOutlookSampleApp());
+            //UsingMailMessageWrapper.Run();
+            //CreateDraftAppointmentFromText.Run();
 
             //// =====================================================
             //// =====================================================
@@ -386,7 +388,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //UpdateGmailContact.Run();
             //DeleteGmailContact.Run();
             //SavingContact.Run();
-
+            
             //// =====================================================
             //// =====================================================
             //// POP3
