@@ -368,6 +368,7 @@
     <Compile Include="Outlook\ReadingVotingOptions.cs" />
     <Compile Include="Outlook\ReadingVToDoTask.cs" />
     <Compile Include="Outlook\RemoveAttachmentsFromFile.cs" />
+    <Compile Include="Outlook\RenderingContactInformationToMhtml.cs" />
     <Compile Include="Outlook\ReplaceEmbeddedMSGAttachmentContents.cs" />
     <Compile Include="Outlook\SaveAttachmentsFromOutlookMSGFile.cs" />
     <Compile Include="Outlook\SavingMessageInDraftStatus.cs" />
