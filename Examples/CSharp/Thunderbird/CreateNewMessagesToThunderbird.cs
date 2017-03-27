@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-using Aspose.Email.Formats.Mbox;
-using Aspose.Email.Mail;
+using Aspose.Email.Mime;
+using Aspose.Email.Storage.Mbox;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 

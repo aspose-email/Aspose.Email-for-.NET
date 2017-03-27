@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Net;
-using Aspose.Email.Exchange;
-using Aspose.Email.Mail;
-using Aspose.Email.Mail.Calendaring;
+using Aspose.Email.Mime;
+using Aspose.Email.Clients.Exchange.Dav;
+using Aspose.Email.Clients.Exchange;
+using Aspose.Email.Tools.Search;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
-using Aspose.Email.Mail;
+using Aspose.Email.Mime;
+using Aspose.Email.Clients.Smtp;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 

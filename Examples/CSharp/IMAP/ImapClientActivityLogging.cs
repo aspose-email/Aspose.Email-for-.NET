@@ -1,4 +1,5 @@
-﻿using Aspose.Email.Imap;
+﻿using Aspose.Email.Clients;
+using Aspose.Email.Clients.Imap;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             string dataDir = RunExamples.GetDataDir_IMAP();
 
             // ExStart:ImapClientActivityLogging
-            Aspose.Email.Imap.ImapClient client = new Aspose.Email.Imap.ImapClient("imap.gmail.com", 993, "user@gmail.com", "password");
+            ImapClient client = new ImapClient("imap.gmail.com", 993, "user@gmail.com", "password");
 
             // Set security mode
             client.SecurityOptions = SecurityOptions.Auto;

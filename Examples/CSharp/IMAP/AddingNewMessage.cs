@@ -1,6 +1,7 @@
 ﻿using System;
-using Aspose.Email.Imap;
-using Aspose.Email.Mail;
+using Aspose.Email.Clients.Imap;
+using Aspose.Email.Mime;
+using Aspose.Email.Clients;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {

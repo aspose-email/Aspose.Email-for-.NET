@@ -1,8 +1,5 @@
-﻿using Aspose.Email.Google;
+﻿using Aspose.Email.Clients.Google;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -27,14 +24,14 @@ namespace Aspose.Email.Examples.CSharp.Email.Gmail
                 string refreshToken;
                 GoogleOAuthHelper.GetAccessToken(User2, out accessToken, out refreshToken);
 
-                using (IGmailClient client = Aspose.Email.Google.GmailClient.GetInstance(accessToken, User2.EMail))
+                using (IGmailClient client = GmailClient.GetInstance(accessToken, User2.EMail))
                 {
                     // Insert, get and update calendar
-                    Calendar calendar = new Calendar("summary - " + Guid.NewGuid().ToString(), null, null, "America/Los_Angeles");
-
+                    Aspose.Email.Clients.Google.Calendar calendar = new Aspose.Email.Clients.Google.Calendar("summary - " + Guid.NewGuid().ToString(), null, null, "America/Los_Angeles");
+                    
                     // Insert calendar and Retrieve same calendar using id
                     string id = client.CreateCalendar(calendar);
-                    Calendar cal = client.FetchCalendar(id);
+                    Aspose.Email.Clients.Google.Calendar cal = client.FetchCalendar(id);
 
                     //Match the retrieved calendar info with local calendar
                     if ((calendar.Summary == cal.Summary) && (calendar.TimeZone == cal.TimeZone))

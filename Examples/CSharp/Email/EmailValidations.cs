@@ -1,4 +1,4 @@
-﻿using Aspose.Email.Verifications;
+﻿using Aspose.Email.Tools.Verifications;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,8 +28,8 @@ namespace Aspose.Email.Examples.CSharp.Email
         private void button1_Click(object sender, EventArgs e)
         {
             // ExStart:EmailValidations
-            Aspose.Email.Verifications.EmailValidator ev = new Aspose.Email.Verifications.EmailValidator();
-            Aspose.Email.Verifications.ValidationResult result;
+            EmailValidator ev = new EmailValidator();
+            ValidationResult result;
             try
             {
                 ev.Validate(txtEmailAddr.Text, out result);

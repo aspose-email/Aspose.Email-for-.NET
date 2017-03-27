@@ -1,4 +1,6 @@
-﻿using Aspose.Email.Imap;
+﻿using Aspose.Email.Clients;
+using Aspose.Email.Clients.Imap;
+using Aspose.Email.Tools.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;

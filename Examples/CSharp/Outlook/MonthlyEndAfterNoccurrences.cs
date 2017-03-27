@@ -1,6 +1,6 @@
 ﻿using System;
-using Aspose.Email.Outlook;
-using Aspose.Email.Recurrences;
+using Aspose.Email.Mapi;
+using Aspose.Email.Calendar.Recurrences;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
    API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 

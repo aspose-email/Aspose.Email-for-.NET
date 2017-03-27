@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Aspose.Email.Outlook.Pst;
+using Aspose.Email.Storage.Pst;
 using Aspose.Email;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 

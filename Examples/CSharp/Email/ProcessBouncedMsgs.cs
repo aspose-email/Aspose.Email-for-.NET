@@ -1,14 +1,14 @@
 ﻿using System.IO;
 using System;
-using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
-using Aspose.Email.Pop3;
+using Aspose.Email.Mime;
+using Aspose.Email.Mapi;
+using Aspose.Email.Clients.Pop3;
 using Aspose.Email;
 using Aspose.Email.Mime;
-using Aspose.Email.Imap;
+using Aspose.Email.Clients.Imap;
 using System.Configuration;
 using System.Data;
-using Aspose.Email.Mail.Bounce;
+using Aspose.Email.Bounce;
 
 namespace Aspose.Email.Examples.CSharp.Email
 {

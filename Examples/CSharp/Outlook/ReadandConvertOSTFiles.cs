@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Aspose.Email;
-using Aspose.Email.Outlook.Pst;
+using Aspose.Email.Storage.Pst;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
    API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 

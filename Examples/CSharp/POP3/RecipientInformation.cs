@@ -1,5 +1,5 @@
 ﻿using System;
-using Aspose.Email.Outlook;
+using Aspose.Email.Mapi;
 
 namespace Aspose.Email.Examples.CSharp.Email.POP3
 {

@@ -1,4 +1,4 @@
-﻿using Aspose.Email.Exchange;
+﻿using Aspose.Email.Clients.Exchange.WebService;
 using System;
 using System.Collections.Generic;
 using System.Linq;

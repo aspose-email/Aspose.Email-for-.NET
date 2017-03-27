@@ -2,9 +2,10 @@
 using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
-using Aspose.Email.Exchange;
-using Aspose.Email.Imap;
-using Aspose.Email.Mail;
+using Aspose.Email.Clients.Imap;
+using Aspose.Email.Mime;
+using Aspose.Email.Clients.Exchange.Dav;
+using Aspose.Email.Clients.Exchange;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 

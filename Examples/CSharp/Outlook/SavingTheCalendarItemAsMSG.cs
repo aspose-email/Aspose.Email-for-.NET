@@ -1,9 +1,10 @@
-﻿using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
+﻿using Aspose.Email.Mime;
+using Aspose.Email.Mapi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Aspose.Email.Calendar;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 

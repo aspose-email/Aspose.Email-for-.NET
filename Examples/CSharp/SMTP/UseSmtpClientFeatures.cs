@@ -1,4 +1,5 @@
-﻿using Aspose.Email.Mail;
+﻿using Aspose.Email.Clients.Smtp;
+using Aspose.Email.Mime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,6 @@ namespace Aspose.Email.Examples.CSharp.Email.SMTP
             // ExStart:SetAuthenticationMethod
             // Create an instance of SmtpClient class
             SmtpClient client = new SmtpClient("smtp.domain.com", 25);
-            client.AuthenticationMethod = SmtpAuthentication.Auto;
             // ExEnd:SetAuthenticationMethod
 
             // ExStart:SetDeliveryMethod

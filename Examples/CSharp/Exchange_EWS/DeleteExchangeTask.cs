@@ -1,5 +1,6 @@
 ﻿using System;
-using Aspose.Email.Exchange;
+using Aspose.Email.Clients.Exchange.WebService;
+using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.CSharp.Exchange
 {

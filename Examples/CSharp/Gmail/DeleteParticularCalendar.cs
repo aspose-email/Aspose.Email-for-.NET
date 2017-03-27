@@ -1,4 +1,4 @@
-﻿using Aspose.Email.Google;
+﻿using Aspose.Email.Clients.Google;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Gmail
                 string refreshToken;
                 GoogleOAuthHelper.GetAccessToken(User2, out accessToken, out refreshToken);
 
-                using (IGmailClient client = Aspose.Email.Google.GmailClient.GetInstance(accessToken, User2.EMail))
+                using (IGmailClient client = GmailClient.GetInstance(accessToken, User2.EMail))
                 {
                     // Access and delete calendar with summary starting from "Calendar summary - "
                     string summary = "Calendar summary - ";

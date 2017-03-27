@@ -1,10 +1,11 @@
-﻿using Aspose.Email.Google;
-using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
+﻿using Aspose.Email.Clients.Google;
+using Aspose.Email.Mime;
+using Aspose.Email.Mapi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Aspose.Email.PersonalInfo;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -29,7 +30,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Gmail
                 GoogleOAuthHelper.GetAccessToken(User2, out accessToken, out refreshToken);
 
                 // Get IGmailclient
-                using (IGmailClient client = Aspose.Email.Google.GmailClient.GetInstance(accessToken, User2.EMail))
+                using (IGmailClient client = GmailClient.GetInstance(accessToken, User2.EMail))
                 {
                     Contact[] contacts = client.GetAllContacts();
                     Contact contact = contacts[0];

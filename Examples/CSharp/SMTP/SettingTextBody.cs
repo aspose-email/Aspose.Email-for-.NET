@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
-using Aspose.Email.Mail;
+using Aspose.Email.Mime;
+using Aspose.Email.Clients.Smtp;
+using Aspose.Email.Clients;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {

@@ -1,5 +1,5 @@
-﻿using Aspose.Email.Formats.Mbox;
-using Aspose.Email.Mail;
+﻿using Aspose.Email.Storage.Mbox;
+using Aspose.Email.Mime;
 using System;
 using System.Collections.Generic;
 using System.IO;

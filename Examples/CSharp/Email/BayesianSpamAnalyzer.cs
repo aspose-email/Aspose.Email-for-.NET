@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using Aspose.Email.AntiSpam;
-using Aspose.Email.Mail;
+using Aspose.Email.Mime;
 
 
 /*

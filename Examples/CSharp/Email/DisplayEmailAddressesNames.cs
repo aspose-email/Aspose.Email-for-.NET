@@ -1,4 +1,4 @@
-﻿using Aspose.Email.Mail;
+﻿using Aspose.Email.Mime;
 
 namespace Aspose.Email.Examples.CSharp.Email
 {

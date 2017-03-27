@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Aspose.Email.Exchange;
-using Aspose.Email.Mail;
+using Aspose.Email.Mime;
+using Aspose.Email.Clients.Exchange.WebService;
+using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.CSharp.Exchange_EWS
 {

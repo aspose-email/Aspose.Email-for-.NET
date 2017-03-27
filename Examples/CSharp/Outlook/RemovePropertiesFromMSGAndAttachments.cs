@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using Aspose.Email;
 using Aspose.Email.Examples.CSharp.Email;
-using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
-using Aspose.Email.Outlook.Pst;
+using Aspose.Email.Mime;
+using Aspose.Email.Mapi;
+using Aspose.Email.Storage.Pst;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 

@@ -1,6 +1,6 @@
-﻿using Aspose.Email.Exchange;
+﻿using Aspose.Email.Clients.Exchange.WebService;
 using Aspose.Email.Mapi;
-using Aspose.Email.Outlook;
+using Aspose.Email.Mapi;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,5 +1,5 @@
-﻿using Aspose.Email.Outlook;
-using Aspose.Email.Recurrences;
+﻿using Aspose.Email.Mapi;
+using Aspose.Email.Calendar.Recurrences;
 using System;
 using System.Collections.Generic;
 using System.Linq;

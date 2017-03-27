@@ -1,5 +1,6 @@
 ﻿using System;
-using Aspose.Email.Pop3;
+using Aspose.Email.Clients.Pop3;
+using Aspose.Email.Clients;
 
 namespace Aspose.Email.Examples.CSharp.Email.POP3
 {

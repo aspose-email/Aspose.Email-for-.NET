@@ -1,4 +1,4 @@
-﻿using Aspose.Email.Mail;
+﻿using Aspose.Email.Mime;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -52,7 +52,7 @@ namespace Aspose.Email.Examples.CSharp.Email
                     MailMessage embeddedMessage = MailMessage.Load(ms);
                     UpdateResources(embeddedMessage, imgFileName);
                     MemoryStream msProcessedEmbedded = new MemoryStream();
-                    embeddedMessage.Save(msProcessedEmbedded, Aspose.Email.Mail.SaveOptions.DefaultMsgUnicode);
+                    embeddedMessage.Save(msProcessedEmbedded, SaveOptions.DefaultMsgUnicode);
                     msProcessedEmbedded.Position = 0;
                     msg.Attachments[i].ContentStream = msProcessedEmbedded;
                 }
