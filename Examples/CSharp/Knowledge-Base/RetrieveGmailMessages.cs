@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Aspose.Email.Clients;
+using Aspose.Email.Clients.Pop3;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +22,8 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             try
             {
                 // Create a POP3 client
-                Aspose.Email.Pop3.Pop3Client client;
-                client = new Aspose.Email.Pop3.Pop3Client();
+                Pop3Client client;
+                client = new Pop3Client();
 
                 // Basic settings (required)
                 client.Host = "pop.gmail.com";
@@ -38,7 +40,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
                 for (int i = 1; i <= messageCount; i++)
                 {
                     // Create an object of type MailMessage and Retrieve the message in MailMessage format directly
-                    Aspose.Email.Mail.MailMessage msg;
+                    Aspose.Email.MailMessage msg;
                     msg = client.FetchMessage(i);
                     Console.WriteLine("From:" + msg.From.ToString());
                     Console.WriteLine("Subject:" + msg.Subject);

@@ -1,4 +1,6 @@
-﻿using Aspose.Email.Mail;
+﻿using Aspose.Email.Calendar;
+using Aspose.Email.Calendar.Recurrences;
+using Aspose.Email.Clients.Smtp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +38,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             Appointment appUpdate = new Appointment("Different Place", StartDate,
             EndDate, "newcustomeronnet@gmail.com", "kashif.iqbal@aspose.com");
             appUpdate.UniqueId = szUniqueId;
-            Aspose.Email.Recurrences.WeeklyRecurrencePattern pattern3 = (Aspose.Email.Recurrences.WeeklyRecurrencePattern)appUpdate.Recurrence;
+            WeeklyRecurrencePattern pattern3 = (WeeklyRecurrencePattern)appUpdate.Recurrence;
             appUpdate.Summary = "update meeting request summary";
             appUpdate.Description = "update";
             MailMessage msgUpdate = new MailMessage("newcustomeronnet@gmail.com", "kashif.iqbal@aspose.com", "06 - test email - update meeting request", "test email");

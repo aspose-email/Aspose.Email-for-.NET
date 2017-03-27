@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Aspose.Email.Clients;
+using Aspose.Email.Clients.Pop3;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,8 +30,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
         {
             // ExStart:AsposeEmailPop3
             // Create a POP3 client
-            Aspose.Email.Pop3.Pop3Client client;
-            client = new Aspose.Email.Pop3.Pop3Client();
+            Pop3Client client = new Pop3Client();
 
             // Basic settings (required)
             client.Host = "pop3.youdomain.com";
@@ -39,7 +40,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             try
             {
                 // Retrieve first message in MailMessage format directly
-                Aspose.Email.Mail.MailMessage msg;
+                Aspose.Email.MailMessage msg;
                 msg = client.FetchMessage(1);
                 txtFrom.Text = msg.From.ToString();
                 txtSubject.Text = msg.Subject.ToString();
@@ -55,8 +56,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
         private void button2_Click(object sender, EventArgs e)
         {
             // Create a POP3 client
-            Aspose.Email.Pop3.Pop3Client client;
-            client = new Aspose.Email.Pop3.Pop3Client();
+            Pop3Client client = new Pop3Client();
 
             // Basic settings (required)
             client.Host = "pop3.youdomain.com";
@@ -65,13 +65,13 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
 
             // ExStart:SSLEnabledServer
             // Set implicit security mode
-            client.SecurityOptions = Aspose.Email.SecurityOptions.SSLImplicit;
+            client.SecurityOptions = SecurityOptions.SSLImplicit;
             // ExEnd:SSLEnabledServer
 
             try
             {
                 // Retrieve first message in MailMessage format directly
-                Aspose.Email.Mail.MailMessage msg;
+                Aspose.Email.MailMessage msg;
                 msg = client.FetchMessage(1);
                 txtFrom.Text = msg.From.ToString();
                 txtSubject.Text = msg.Subject.ToString();

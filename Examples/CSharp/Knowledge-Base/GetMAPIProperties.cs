@@ -1,4 +1,4 @@
-﻿using Aspose.Email.Outlook;
+﻿using Aspose.Email.Mapi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +24,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             MapiMessage msg = MapiMessage.FromFile(dataDir + "message3.msg");
 
             // ExStart:GetMAPIProperties
-            Aspose.Email.Outlook.MapiProperty mapi = msg.Properties[MapiPropertyTag.PR_SUBJECT_W];
+            MapiProperty mapi = msg.Properties[MapiPropertyTag.PR_SUBJECT_W];
             
             if (mapi.Name.Trim().Length > 0)
             {

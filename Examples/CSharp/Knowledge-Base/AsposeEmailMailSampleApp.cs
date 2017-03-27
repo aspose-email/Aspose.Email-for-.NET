@@ -1,4 +1,5 @@
-﻿using Aspose.Email.Mail;
+﻿using Aspose.Email.Clients;
+using Aspose.Email.Clients.Smtp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,7 +56,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
                 // ExStart:SSLEnabledSMTP
                 // Set the port to 587. This is the SSL port of Gmail SMTP server, set the security mode to explicit
                 client.Port = 587;
-                client.SecurityOptions = Aspose.Email.SecurityOptions.SSLExplicit;
+                client.SecurityOptions = SecurityOptions.SSLExplicit;
                 // ExEnd:SSLEnabledSMTP
 
                 client.Send(message);
