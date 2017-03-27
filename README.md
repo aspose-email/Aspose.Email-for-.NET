@@ -23,4 +23,4 @@ Directory | Description
 + **Download:** [Download Aspose.Email for .NET](http://www.aspose.com/downloads/email/net)
 + **Documentation:** [Aspose.Email for .NET Documentation](http://www.aspose.com/docs/display/emailnet/Home)
 + **Forum:** [Aspose.Email for .NET Forum](http://www.aspose.com/community/forums/aspose.email-product-family/188/showforum.aspx)
-+ **Blog:** [Aspose.Email for .NET Blog](http://www.aspose.com/blogs/aspose-products/aspose-email-product-family.html)
++ **Blog:** [Aspose.Email for .NET Blog](http://www.aspose.com/blogs/aspose-products/aspose-email-product-family.html) 
