@@ -1,4 +1,4 @@
-##Aspose.Email for .NET
+## Aspose.Email for .NET
 
 [Aspose.Email for .NET](http://www.aspose.com/products/email/net) is a complete set of Email Processing APIs to create, read and manipulate emails from within your .NET applications. It makes it easier to work with a number of Outlook email message formats such as MSG, EML, EMLX and MHT files without the need of installing Microsoft Outlook. It also enables you to manage message storage files - Personal Storage Files (PST), Offline Storage Files (OST) along with message sending and receiving capabilities. You can also read and extract Outlook PST file that can be saved to disk in MSG format.
 
