@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using System;
-using Aspose.Email.Outlook.Pst;
+using Aspose.Email.Storage.Pst;
 
 namespace Aspose.Email.Examples.CSharp.Email.Outlook
 {

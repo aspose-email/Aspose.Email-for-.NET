@@ -1,5 +1,6 @@
 ﻿using System;
-using Aspose.Email.Mail;
+using Aspose.Email.Mime;
+using Aspose.Email.Calendar;
 
 namespace Aspose.Email.Examples.CSharp.Email.SMTP
 {

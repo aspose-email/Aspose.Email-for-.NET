@@ -1,4 +1,4 @@
-﻿using Aspose.Email.Outlook.Pst;
+﻿using Aspose.Email.Storage.Pst;
 using System.IO;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 

@@ -1,5 +1,5 @@
-﻿using Aspose.Email.Formats.VCard;
-using Aspose.Email.Outlook;
+﻿using Aspose.Email.Mapi;
+using Aspose.Email.PersonalInfo.VCard;
 using System;
 using System.Collections.Generic;
 using System.Linq;

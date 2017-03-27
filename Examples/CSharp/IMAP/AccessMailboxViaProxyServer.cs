@@ -1,5 +1,5 @@
-﻿using Aspose.Email.Imap;
-using Aspose.Email.Protocols.Proxy;
+﻿using Aspose.Email.Clients;
+using Aspose.Email.Clients.Imap;
 using System;
 
 /*

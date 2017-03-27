@@ -1,6 +1,6 @@
 ﻿using System;
-using Aspose.Email.Mail;
-using Aspose.Email.Mail.Bounce;
+using Aspose.Email.Mime;
+using Aspose.Email.Bounce;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 

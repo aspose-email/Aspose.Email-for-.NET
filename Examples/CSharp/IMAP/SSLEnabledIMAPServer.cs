@@ -1,5 +1,6 @@
 ﻿using System;
-using Aspose.Email.Imap;
+using Aspose.Email.Clients.Imap;
+using Aspose.Email.Clients;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
@@ -9,7 +10,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
         {
             //ExStart:SSLEnabledIMAPServer
             // Create an instance of the ImapClient class
-            Aspose.Email.Imap.ImapClient client = new Aspose.Email.Imap.ImapClient("imap.domain.com", 993, "user@domain.com", "pwd");
+            ImapClient client = new ImapClient("imap.domain.com", 993, "user@domain.com", "pwd");
             
             // Set the security mode to implicit
             client.SecurityOptions = SecurityOptions.SSLImplicit;

@@ -1,5 +1,5 @@
-﻿using Aspose.Email.Outlook;
-using Aspose.Email.Outlook.Pst;
+﻿using Aspose.Email.Mapi;
+using Aspose.Email.Storage.Pst;
 using System;
 using System.Text;
 

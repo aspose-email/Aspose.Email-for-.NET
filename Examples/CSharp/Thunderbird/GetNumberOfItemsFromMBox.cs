@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Aspose.Email.Formats.Mbox;
 using System.IO;
+using Aspose.Email.Storage.Mbox;
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
 when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq for more information. 

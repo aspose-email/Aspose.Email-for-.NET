@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Net;
-using Aspose.Email.Exchange;
-using Aspose.Email.Mail;
-using Aspose.Email.Mail.Calendaring;
+using Aspose.Email.Clients.Exchange.WebService;
+using Aspose.Email.Mime;
+using Aspose.Email.Calendar;
+using Aspose.Email.Calendar.Recurrences;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -30,7 +31,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
                 app.Description = "description";
 
 
-                Aspose.Email.Recurrences.RecurrencePattern pattern = new Recurrences.DailyRecurrencePattern(DateTime.Now.AddDays(5));
+                RecurrencePattern pattern = new Aspose.Email.Calendar.Recurrences.DailyRecurrencePattern(DateTime.Now.AddDays(5));
                 app.Recurrence = pattern;
 
                 // Create the message and set the meeting request

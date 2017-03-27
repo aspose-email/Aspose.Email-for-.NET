@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net;
-using Aspose.Email.Exchange;
-using Aspose.Email.Mail;
+using Aspose.Email.Mime;
+using Aspose.Email.Clients.Exchange.WebService;
+using Aspose.Email.Storage.Pst;
+using Aspose.Email.Clients.Exchange;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -32,7 +34,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
             ExchangeFolderInfo info = client.GetFolderInfo(mailboxInfo.InboxUri);
             ExchangeFolderInfoCollection fc = new ExchangeFolderInfoCollection();
             fc.Add(info);
-            client.Backup(fc, dataDir + "Backup_out.pst", Aspose.Email.Outlook.Pst.BackupOptions.None);
+            client.Backup(fc, dataDir + "Backup_out.pst", BackupOptions.None);
             // ExEnd:ExchangeFoldersBackupToPST
         }
     }

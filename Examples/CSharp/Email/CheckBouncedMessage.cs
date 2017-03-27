@@ -1,9 +1,9 @@
-﻿using Aspose.Email.Mail;
-using Aspose.Email.Mail.Bounce;
+﻿using Aspose.Email.Mime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Aspose.Email.Bounce;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 

@@ -1,6 +1,9 @@
 ﻿using System;
-using Aspose.Email.Mail;
-using Aspose.Email.Recurrences;
+using Aspose.Email.Mime;
+using Aspose.Email.Calendar.Recurrences;
+using Aspose.Email.Clients;
+using Aspose.Email.Calendar;
+using Aspose.Email.Clients.Smtp;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -42,7 +45,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 agendaAppointment.Description = "----------------";
 
                 // Create a weekly reccurence pattern object
-                Aspose.Email.Recurrences.WeeklyRecurrencePattern pattern1 = new WeeklyRecurrencePattern(14);
+                WeeklyRecurrencePattern pattern1 = new WeeklyRecurrencePattern(14);
 
                 // Set weekly pattern properties like days: Mon, Tue and Thu
                 pattern1.StartDays = new CalendarDay[3];

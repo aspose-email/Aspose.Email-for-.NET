@@ -1,4 +1,4 @@
-﻿using Aspose.Email.Verifications;
+﻿using Aspose.Email.Tools.Verifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +21,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             try
             {
                 // ExStart:ValidatingEmails
-                Aspose.Email.Verifications.EmailValidator ev = new Aspose.Email.Verifications.EmailValidator();
-                Aspose.Email.Verifications.ValidationResult result;
+                EmailValidator ev = new EmailValidator();
+                ValidationResult result;
                 ev.Validate("user@domain.com", out result);
                 if (result.ReturnCode == ValidationResponseCode.ValidationSuccess)
                 {

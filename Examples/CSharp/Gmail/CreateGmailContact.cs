@@ -1,5 +1,6 @@
-﻿using Aspose.Email.Google;
-using Aspose.Email.Mail;
+﻿using Aspose.Email.Clients.Google;
+using Aspose.Email.Mime;
+using Aspose.Email.PersonalInfo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Gmail
                 GoogleOAuthHelper.GetAccessToken(User2, out accessToken, out refreshToken);
 
                 // Gmail Client
-                IGmailClient client = Aspose.Email.Google.GmailClient.GetInstance(accessToken, User2.EMail);
+                IGmailClient client = GmailClient.GetInstance(accessToken, User2.EMail);
 
                 // Create a Contact
                 Contact contact = new Contact();

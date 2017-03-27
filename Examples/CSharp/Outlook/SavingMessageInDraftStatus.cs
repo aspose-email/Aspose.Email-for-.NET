@@ -1,5 +1,5 @@
-﻿using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
+﻿using Aspose.Email.Mime;
+using Aspose.Email.Mapi;
 using System;
 using System.Collections.Generic;
 using System.Linq;

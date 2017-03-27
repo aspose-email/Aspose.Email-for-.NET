@@ -1,5 +1,6 @@
-﻿using Aspose.Email.Google;
-using Aspose.Email.Mail;
+﻿using Aspose.Email.Calendar;
+using Aspose.Email.Clients.Google;
+using Aspose.Email.Mime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,14 +30,14 @@ namespace Aspose.Email.Examples.CSharp.Email.Gmail
                 GoogleOAuthHelper.GetAccessToken(User2, out accessToken, out refreshToken);
 
                 // Get IGmailClient
-                using (IGmailClient client = Aspose.Email.Google.GmailClient.GetInstance(accessToken, User2.EMail))
+                using (IGmailClient client = GmailClient.GetInstance(accessToken, User2.EMail))
                 {
                     // Initialize calendar item
-                    Calendar calendar1 = new Calendar("summary - " + Guid.NewGuid().ToString(), null, null, "Europe/Kiev");
+                    Aspose.Email.Clients.Google.Calendar calendar1 = new Aspose.Email.Clients.Google.Calendar("summary - " + Guid.NewGuid().ToString(), null, null, "Europe/Kiev");
 
                     // Insert calendar and get back id of newly inserted calendar and Fetch the same calendar using calendar id
                     string id = client.CreateCalendar(calendar1);
-                    Calendar cal1 = client.FetchCalendar(id);
+                    Aspose.Email.Clients.Google.Calendar cal1 = client.FetchCalendar(id);
                     string calendarId1 = cal1.Id;
                     try
                     {

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using System;
-using Aspose.Email.Mail;
+using Aspose.Email.Mime;
 
 namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
 {

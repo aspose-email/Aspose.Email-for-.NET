@@ -1,7 +1,8 @@
 ﻿using System;
-using Aspose.Email.Pop3;
+using Aspose.Email.Clients.Pop3;
 using System.Threading;
-using Aspose.Email.Mail;
+using Aspose.Email.Mime;
+using Aspose.Email.Clients;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 

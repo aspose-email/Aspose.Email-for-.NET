@@ -1,4 +1,5 @@
-﻿using Aspose.Email.Pop3;
+﻿using Aspose.Email.Clients;
+using Aspose.Email.Clients.Pop3;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
             string dataDir = RunExamples.GetDataDir_POP3();
 
             // ExStart:Pop3ClientActivityLogging
-            Aspose.Email.Pop3.Pop3Client client = new Aspose.Email.Pop3.Pop3Client("pop.gmail.com", 995, "user@gmail.com", "password");
+            Pop3Client client = new Pop3Client("pop.gmail.com", 995, "user@gmail.com", "password");
 
             // Set security mode
             client.SecurityOptions = SecurityOptions.Auto;

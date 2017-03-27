@@ -1,4 +1,7 @@
-﻿using Aspose.Email.Mail;
+﻿using Aspose.Email.Clients;
+using Aspose.Email.Clients.Smtp;
+using Aspose.Email.Mime;
+using Aspose.Email.Tools.Merging;
 using System;
 using System.Collections.Generic;
 using System.Data;

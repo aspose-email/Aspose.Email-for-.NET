@@ -1,6 +1,6 @@
 ﻿using System;
-using Aspose.Email.Pop3;
-using Aspose.Email.Protocols.Proxy;
+using Aspose.Email.Clients.Pop3;
+using Aspose.Email.Clients;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -22,7 +22,7 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
             // Set proxy address, Port and Proxy
             string proxyAddress = "192.168.203.142";
             int proxyPort = 1080;
-            SocksProxy proxy = new SocksProxy(proxyAddress, proxyPort, Aspose.Email.Protocols.Proxy.SocksVersion.SocksV5);
+            SocksProxy proxy = new SocksProxy(proxyAddress, proxyPort, SocksVersion.SocksV5);
             client.SocksProxy = proxy;
 
             try

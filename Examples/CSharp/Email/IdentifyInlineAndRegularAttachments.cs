@@ -2,9 +2,9 @@
 using System.IO;
 using System.Text;
 using Aspose.Email.AntiSpam;
-using Aspose.Email.Mail;
 using Aspose.Email.Mime;
-using Aspose.Email.Outlook;
+using Aspose.Email.Mime;
+using Aspose.Email.Mapi;
 
 
 /*

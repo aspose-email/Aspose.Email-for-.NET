@@ -1,7 +1,8 @@
 ﻿using System.IO;
 using System;
-using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
+using Aspose.Email.Mime;
+using Aspose.Email.Mapi;
+using Aspose.Email.Calendar;
 
 namespace Aspose.Email.Examples.CSharp.Email
 {

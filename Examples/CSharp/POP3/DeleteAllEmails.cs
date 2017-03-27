@@ -1,4 +1,4 @@
-﻿using Aspose.Email.Pop3;
+﻿using Aspose.Email.Clients.Pop3;
 using System;
 using System.Collections.Generic;
 using System.Linq;

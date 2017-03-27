@@ -1,7 +1,8 @@
 ﻿using System.IO;
 using System.Security.Cryptography;
-using Aspose.Email.Mail;
-using Aspose.Email.Mail.DKIM;
+using Aspose.Email.Mime;
+using Aspose.Email.DKIM;
+using Aspose.Email.Clients.Smtp;
 
 /* This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET 
    API reference when the project is build. Please check https://Docs.nuget.org/consume/nuget-faq 

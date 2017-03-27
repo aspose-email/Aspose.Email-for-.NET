@@ -1,9 +1,9 @@
 ﻿using System.IO;
 using System;
 using Aspose.Email;
-using Aspose.Email.Outlook.Pst;
-using Aspose.Email.Outlook;
-using Aspose.Email.Mail;
+using Aspose.Email.Storage.Pst;
+using Aspose.Email.Mapi;
+using Aspose.Email.Mime;
 
 namespace Aspose.Email.Examples.CSharp.Email.Outlook
 {

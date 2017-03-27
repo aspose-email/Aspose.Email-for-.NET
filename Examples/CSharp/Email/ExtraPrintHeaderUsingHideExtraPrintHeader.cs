@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
-using Aspose.Email.Mail;
+using Aspose.Email.Mime;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -29,7 +29,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             MhtFormatOptions options = MhtFormatOptions.WriteCompleteEmailAddress | MhtFormatOptions.WriteHeader;
             mailFormatter.Format(message);
 
-            message.Save(mhtFileName, Aspose.Email.Mail.SaveOptions.DefaultMhtml);
+            message.Save(mhtFileName, SaveOptions.DefaultMhtml);
 
             if (File.ReadAllText(mhtFileName).Contains(encodedPageHeader))
             {
@@ -43,7 +43,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //Assert.True(File.ReadAllText(mhtFileName).Contains(encodedPageHeader));
             options = options | MhtFormatOptions.HideExtraPrintHeader;
             mailFormatter.Format(message);
-            message.Save(mhtFileName, Aspose.Email.Mail.SaveOptions.DefaultMhtml);
+            message.Save(mhtFileName, SaveOptions.DefaultMhtml);
             if (File.ReadAllText(mhtFileName).Contains(encodedPageHeader))
             {
                 Console.WriteLine("True");

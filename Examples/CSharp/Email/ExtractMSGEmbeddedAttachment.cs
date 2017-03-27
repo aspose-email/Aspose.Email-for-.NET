@@ -1,4 +1,4 @@
-﻿using Aspose.Email.Outlook;
+﻿using Aspose.Email.Mapi;
 using System;
 using System.Collections.Generic;
 using System.IO;

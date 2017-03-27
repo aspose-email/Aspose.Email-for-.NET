@@ -1,5 +1,6 @@
 ﻿using System;
-using Aspose.Email.Imap;
+using Aspose.Email.Clients.Imap;
+using Aspose.Email.Tools.Search;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 

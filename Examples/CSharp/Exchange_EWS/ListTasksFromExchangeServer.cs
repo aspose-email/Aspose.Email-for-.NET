@@ -1,5 +1,8 @@
-﻿using Aspose.Email.Exchange;
-using Aspose.Email.Mail;
+﻿using Aspose.Email.Calendar;
+using Aspose.Email.Clients.Exchange;
+using Aspose.Email.Clients.Exchange.WebService;
+using Aspose.Email.Mime;
+using Aspose.Email.Tools.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;

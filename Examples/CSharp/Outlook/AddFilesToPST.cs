@@ -1,4 +1,4 @@
-﻿using Aspose.Email.Outlook.Pst;
+﻿using Aspose.Email.Storage.Pst;
 using System.IO;
 
 /*
