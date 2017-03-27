@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aspose.Email.Mapi;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,7 +33,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             string dataDir = RunExamples.GetDataDir_KnowledgeBase();
 
             // Load the outlook message file
-            Aspose.Email.Outlook.MapiMessage msg1 = Aspose.Email.Outlook.MapiMessage.FromFile(dataDir + "Message.msg");
+            MapiMessage msg1 = MapiMessage.FromFile(dataDir + "Message.msg");
 
             // Use the public properties to assign the values to controls
             txtSubject.Text = msg1.Subject;

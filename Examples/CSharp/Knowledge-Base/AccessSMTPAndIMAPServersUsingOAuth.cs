@@ -1,6 +1,7 @@
-﻿using Aspose.Email.Examples.CSharp.Email.Gmail;
-using Aspose.Email.Imap;
-using Aspose.Email.Mail;
+﻿using Aspose.Email.Clients;
+using Aspose.Email.Clients.Imap;
+using Aspose.Email.Clients.Smtp;
+using Aspose.Email.Examples.CSharp.Email.Gmail;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -1,5 +1,4 @@
-﻿using Aspose.Email.Mail;
-using Aspose.Words;
+﻿using Aspose.Words;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,7 +24,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             string dataDir = RunExamples.GetDataDir_KnowledgeBase();
             MailMessage mailMsg = MailMessage.Load(dataDir + "message3.msg");
             MemoryStream ms = new MemoryStream();
-            mailMsg.Save(ms, Aspose.Email.Mail.SaveOptions.DefaultMhtml);
+            mailMsg.Save(ms, Aspose.Email.SaveOptions.DefaultMhtml);
 
             // create an instance of LoadOptions and set the LoadFormat to Mhtml
             var loadOptions = new Aspose.Words.LoadOptions();

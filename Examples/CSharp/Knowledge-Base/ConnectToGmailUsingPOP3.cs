@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Aspose.Email.Clients;
+using Aspose.Email.Clients.Pop3;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,8 +23,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             {
                 // ExStart:ConnectToGmailUsingPOP3
                 // Create a POP3 client
-                Aspose.Email.Pop3.Pop3Client client;
-                client = new Aspose.Email.Pop3.Pop3Client();
+                Pop3Client client = new Pop3Client();
 
                 // Basic settings (required)
                 client.Host = "pop.gmail.com";

@@ -1,4 +1,4 @@
-﻿using Aspose.Email.Mail;
+﻿using Aspose.Email.Clients.Smtp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,18 +29,18 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
                 client.Port = 587;
 
                 // ExStart:SendEmailMessage
-                Aspose.Email.Mail.MailMessage msg = new MailMessage();
+                MailMessage msg = new MailMessage();
 
                 // Set From, To whom
-                msg.From = new Aspose.Email.Mail.MailAddress("user@gmail.com");
-                msg.To.Add(new Aspose.Email.Mail.MailAddress("user@gmail.com"));
+                msg.From = new MailAddress("user@gmail.com");
+                msg.To.Add(new MailAddress("user@gmail.com"));
 
                 // Set the subject, priority, Set the message bodies (plain text and HTML), and Add the attachment
                 msg.Subject = "subject";
-                msg.Priority = Aspose.Email.Mail.MailPriority.High;
+                msg.Priority = MailPriority.High;
                 msg.Body = "Please open with html browser";
                 msg.HtmlBody = "<bold>this is the mail body</bold>";
-                Aspose.Email.Mail.Attachment attachment = new Attachment(dataDir + "File.txt");
+                Attachment attachment = new Attachment(dataDir + "File.txt");
                 msg.Attachments.Add(attachment);
                 client.Send(msg);
                 // ExEnd:SendEmailMessage

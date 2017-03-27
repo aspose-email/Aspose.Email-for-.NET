@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aspose.Email.Clients.Imap;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             {
                 // ExStart:ConnectToGmailUsingIMAP
                 // Connect to the Gmail server
-                Aspose.Email.Imap.ImapClient imap = new Aspose.Email.Imap.ImapClient("imap.gmail.com", 993, "user@gmail.com", "pwd");
+                ImapClient imap = new ImapClient("imap.gmail.com", 993, "user@gmail.com", "pwd");
                 // ExEnd:ConnectToGmailUsingIMAP
 
                 Console.WriteLine(imap.ListMessages().Count);

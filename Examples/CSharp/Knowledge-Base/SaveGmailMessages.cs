@@ -1,4 +1,4 @@
-﻿using Aspose.Email.Imap;
+﻿using Aspose.Email.Clients.Imap;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             try
             {
                 // Connect to the Gmail server
-                Aspose.Email.Imap.ImapClient imap = new Aspose.Email.Imap.ImapClient("imap.gmail.com", 993, "user@gmail.com", "pwd");
+                ImapClient imap = new ImapClient("imap.gmail.com", 993, "user@gmail.com", "pwd");
 
                 // ExStart:SaveGmailMessages
                 // Gets the message info collection and Download each message

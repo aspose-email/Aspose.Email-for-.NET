@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aspose.Email.Clients.Pop3;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,11 +22,11 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             try
             {
                 // Connect to the POP3 mail server and check messages.
-                Aspose.Email.Pop3.Pop3Client pop3Client = new Aspose.Email.Pop3.Pop3Client("pop.domain.com", 993, "username", "password");
+                Pop3Client pop3Client = new Pop3Client("pop.domain.com", 993, "username", "password");
 
                 // List all the messages
-                Aspose.Email.Pop3.Pop3MessageInfoCollection msgList = pop3Client.ListMessages();
-                foreach (Aspose.Email.Pop3.Pop3MessageInfo msgInfo in msgList)
+                Pop3MessageInfoCollection msgList = pop3Client.ListMessages();
+                foreach (Pop3MessageInfo msgInfo in msgList)
                 {
                     // Get the POP3 message's unique ID
                     string strUniqueID = msgInfo.UniqueId;
@@ -49,7 +50,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             
         }
 
-        private static void SavePop3MsgInLocalDB(Aspose.Email.Pop3.Pop3MessageInfo msgInfo)
+        private static void SavePop3MsgInLocalDB(Pop3MessageInfo msgInfo)
         {
             // Open the database connection according to your database. Use public properties (for example msgInfo.Subject) and store in database,
             // for example, " INSERT INTO POP3Mails (UniqueID, Subject) VALUES ('" + msgInfo.UniqueID + "' , '" + msgInfo.Subject + "') and Run the query to store in database.

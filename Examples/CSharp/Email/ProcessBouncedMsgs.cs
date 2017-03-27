@@ -4,7 +4,6 @@ using Aspose.Email.Mime;
 using Aspose.Email.Mapi;
 using Aspose.Email.Clients.Pop3;
 using Aspose.Email;
-using Aspose.Email.Mime;
 using Aspose.Email.Clients.Imap;
 using System.Configuration;
 using System.Data;

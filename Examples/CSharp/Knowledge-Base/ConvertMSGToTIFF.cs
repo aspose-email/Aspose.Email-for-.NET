@@ -1,5 +1,4 @@
-﻿using Aspose.Email.Mail;
-using Aspose.Words;
+﻿using Aspose.Words;
 using System;
 using System.Collections.Generic;
 using System.IO;

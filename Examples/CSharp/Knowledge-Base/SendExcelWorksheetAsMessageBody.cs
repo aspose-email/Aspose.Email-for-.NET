@@ -1,5 +1,6 @@
 ﻿using Aspose.Cells;
-using Aspose.Email.Mail;
+using Aspose.Email.Clients;
+using Aspose.Email.Clients.Smtp;
 using System;
 using System.Collections.Generic;
 using System.IO;

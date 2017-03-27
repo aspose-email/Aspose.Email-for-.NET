@@ -1,4 +1,5 @@
-﻿using Aspose.Email.Exchange;
+﻿using Aspose.Email.Clients.Exchange;
+using Aspose.Email.Clients.Exchange.Dav;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

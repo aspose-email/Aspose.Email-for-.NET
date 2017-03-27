@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Aspose.Email.Clients;
+using Aspose.Email.Clients.Pop3;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +22,8 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
             try
             {
                 // Create a POP3 client
-                Aspose.Email.Pop3.Pop3Client client;
-                client = new Aspose.Email.Pop3.Pop3Client();
+                Pop3Client client;
+                client = new Pop3Client();
 
                 // Basic settings (required)
                 client.Host = "pop.gmail.com";
@@ -32,8 +34,8 @@ namespace Aspose.Email.Examples.CSharp.Email.Knowledge.Base
 
                 // ExStart:CheckGmailMessageInformation
                 // Get the list of messages in the mailbox and Iterate through the messages
-                Aspose.Email.Pop3.Pop3MessageInfoCollection infos = client.ListMessages();
-                foreach (Aspose.Email.Pop3.Pop3MessageInfo info in infos)
+                Pop3MessageInfoCollection infos = client.ListMessages();
+                foreach (Pop3MessageInfo info in infos)
                 {
                     Console.Write("ID:" + info.UniqueId);
                     Console.Write("Index number:" + info.SequenceNumber);

@@ -1,7 +1,7 @@
-﻿using Aspose.Email.Mail;
-using Aspose.Email.Outlook;
-using Aspose.Email.Outlook.Pst;
-using Aspose.Email.Recurrences;
+﻿using Aspose.Email.Calendar;
+using Aspose.Email.Calendar.Recurrences;
+using Aspose.Email.Mapi;
+using Aspose.Email.Storage.Pst;
 using System;
 using System.Collections.Generic;
 using System.IO;

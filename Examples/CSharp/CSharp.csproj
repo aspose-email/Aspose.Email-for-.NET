@@ -36,7 +36,6 @@
     <StartupObject>Aspose.Email.Examples.CSharp.Email.RunExamples</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-
     <Reference Include="Aspose.Email">
       <HintPath>..\packages\Aspose.Email.17.3.0\lib\net40\Aspose.Email.dll</HintPath>
       <Private>True</Private>
@@ -248,7 +247,6 @@
     <Compile Include="Email\PreserveTNEFAttachment.cs" />
     <Compile Include="Email\PreserveOriginalBoundaries.cs" />
     <Compile Include="Email\BayesianSpamAnalyzer.cs" />
-    <Compile Include="Email\ExtraPrintHeaderUsingHideExtraPrintHeader.cs" />
     <Compile Include="Email\SetAlternateText.cs" />
     <Compile Include="Email\SetHTMLBody.cs" />
     <Compile Include="Email\RemoveAttachments.cs" />

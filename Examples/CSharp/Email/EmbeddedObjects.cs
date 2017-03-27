@@ -1,6 +1,5 @@
 ﻿using System;
 using Aspose.Email.Mime;
-using Aspose.Email.Mime;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
