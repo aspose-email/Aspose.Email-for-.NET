@@ -12,8 +12,8 @@ namespace Aspose.Email.Examples.CSharp.Email.SMTP
             string dataDir = RunExamples.GetDataDir_SMTP();
             string dstEmail = dataDir + "test.ics";
 
-            // 1. 
-            // Create and save an Appointment to disk.
+
+            // ExStart:CreateAppointment
 
             // Create and initialize an instance of the Appointment class
             Appointment appointment = new Appointment(
@@ -28,8 +28,9 @@ namespace Aspose.Email.Examples.CSharp.Email.SMTP
             // Save the appointment to disk in ICS format
             appointment.Save(dstEmail, AppointmentSaveFormat.Ics);
             Console.WriteLine("Appointment created and saved to disk successfully.");
+            // ExEnd:CreateAppointment
 
-
+            // ExStart:LoadAppointment
             // Load an Appointment just created and saved to disk and display its details.
             Appointment loadedAppointment = Appointment.Load(dstEmail);
             Console.WriteLine(Environment.NewLine + "Loaded Appointment details are as follows:");
@@ -42,6 +43,7 @@ namespace Aspose.Email.Examples.CSharp.Email.SMTP
             Console.WriteLine("Organizer: " + appointment.Organizer);
             Console.WriteLine("Attendees: " + appointment.Attendees);
             Console.WriteLine(Environment.NewLine + "Appointment loaded successfully from " + dstEmail);
+            // ExEnd:LoadAppointment
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Aspose.Email.Examples.CSharp.Email
     {
         public static void Run()
         {
+            // ExStart:DraftAppointmentRequest
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Email();
             string dstDraft = dataDir + "appointment-draft_out.msg";
@@ -30,6 +31,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             msg.Save(dstDraft);
 
             Console.WriteLine(Environment.NewLine + "Draft saved at " + dstDraft);
+            // ExEnd:DraftAppointmentRequest
         }
     }
 }

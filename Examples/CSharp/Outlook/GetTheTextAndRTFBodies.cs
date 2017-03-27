@@ -16,6 +16,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
     {
         public static void Run()
         {
+            // ExStart:GetTheTextAndRTFBodies
             string dataDir = RunExamples.GetDataDir_Outlook();
 
             // Load mail message
@@ -33,6 +34,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 Console.WriteLine(msg.BodyRtf);
             else
                 Console.WriteLine("There's no RTF body.");
+            // ExEnd:GetTheTextAndRTFBodies
         }
 
     }
