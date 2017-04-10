@@ -32,7 +32,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
         private static bool IsPasswordProtected(PersonalStorage pst)
         {
             // If the property exists and is nonzero, then the PST file is password protected.
-            if (pst.Store.Properties.Contains(MapiPropertyTag.PR_PST_PASSWORD))
+            if (pst.Store.Properties.ContainsKey(MapiPropertyTag.PR_PST_PASSWORD))
             {
                 long passwordHash = pst.Store.Properties[MapiPropertyTag.PR_PST_PASSWORD].GetLong();
                 return passwordHash != 0;

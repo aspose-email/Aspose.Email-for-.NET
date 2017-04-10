@@ -53,16 +53,16 @@ namespace Aspose.Email.Examples.CSharp.Email
                 case BodyContentType.Html:
 
                     // check the PidTagAttachFlags property
-                    if (att.Properties.Contains(0x37140003))
+                    if (att.Properties.ContainsKey(0x37140003))
                     {
                         long? attachFlagsValue = att.GetPropertyLong(0x37140003);
                         if (attachFlagsValue != null && (attachFlagsValue & 0x00000004) == 0x00000004)
                         {
                             // check PidTagAttachContentId property
-                            if (att.Properties.Contains(MapiPropertyTag.PR_ATTACH_CONTENT_ID) ||
-                                att.Properties.Contains(MapiPropertyTag.PR_ATTACH_CONTENT_ID_W))
+                            if (att.Properties.ContainsKey(MapiPropertyTag.PR_ATTACH_CONTENT_ID) ||
+                                att.Properties.ContainsKey(MapiPropertyTag.PR_ATTACH_CONTENT_ID_W))
                             {
-                                string contentId = att.Properties.Contains(MapiPropertyTag.PR_ATTACH_CONTENT_ID)
+                                string contentId = att.Properties.ContainsKey(MapiPropertyTag.PR_ATTACH_CONTENT_ID)
                                     ? att.Properties[MapiPropertyTag.PR_ATTACH_CONTENT_ID].GetString()
                                     : att.Properties[MapiPropertyTag.PR_ATTACH_CONTENT_ID_W].GetString();
                                 if (msg.BodyHtml.Contains(contentId))
@@ -71,20 +71,20 @@ namespace Aspose.Email.Examples.CSharp.Email
                                 }
                             }
                             // check PidTagAttachContentLocation property
-                            if (att.Properties.Contains(0x3713001E) ||
-                                att.Properties.Contains(0x3713001F))
+                            if (att.Properties.ContainsKey(0x3713001E) ||
+                                att.Properties.ContainsKey(0x3713001F))
                             {
                                 return true;
                             }
                         }
-                        else if ((att.Properties.Contains(0x3716001F) && att.GetPropertyString(0x3716001F) == "inline")
-                            || (att.Properties.Contains(0x3716001E) && att.GetPropertyString(0x3716001E) == "inline"))
+                        else if ((att.Properties.ContainsKey(0x3716001F) && att.GetPropertyString(0x3716001F) == "inline")
+                            || (att.Properties.ContainsKey(0x3716001E) && att.GetPropertyString(0x3716001E) == "inline"))
                         {
                             return true;
                         }
                     }
-                    else if ((att.Properties.Contains(0x3716001F) && att.GetPropertyString(0x3716001F) == "inline")
-                            || (att.Properties.Contains(0x3716001E) && att.GetPropertyString(0x3716001E) == "inline"))
+                    else if ((att.Properties.ContainsKey(0x3716001F) && att.GetPropertyString(0x3716001F) == "inline")
+                            || (att.Properties.ContainsKey(0x3716001E) && att.GetPropertyString(0x3716001E) == "inline"))
                     {
                         return true;
                     }
@@ -94,7 +94,7 @@ namespace Aspose.Email.Examples.CSharp.Email
 
                     // If the body is RTF, then all OLE attachments are inline attachments.
                     // OLE attachments have 0x00000006 for the value of the PidTagAttachMethod property
-                    if (att.Properties.Contains(MapiPropertyTag.PR_ATTACH_METHOD))
+                    if (att.Properties.ContainsKey(MapiPropertyTag.PR_ATTACH_METHOD))
                     {
                         return att.GetPropertyLong(MapiPropertyTag.PR_ATTACH_METHOD) == 0x00000006;
                     }
