@@ -20,7 +20,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // ExStart:RemovingPaswordProperty
             string dataDir = RunExamples.GetDataDir_Outlook();
             PersonalStorage personalStorage = PersonalStorage.FromFile(dataDir + "PersonalStorage1.pst");
-            if (personalStorage.Store.Properties.Contains(MapiPropertyTag.PR_PST_PASSWORD))
+            if (personalStorage.Store.Properties.ContainsKey(MapiPropertyTag.PR_PST_PASSWORD))
             {
                 MapiProperty property = new MapiProperty(MapiPropertyTag.PR_PST_PASSWORD, BitConverter.GetBytes((long)0));
                 personalStorage.Store.SetProperty(property);

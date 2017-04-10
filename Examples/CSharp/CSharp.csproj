@@ -36,12 +36,12 @@
     <StartupObject>Aspose.Email.Examples.CSharp.Email.RunExamples</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Email">
-      <HintPath>..\packages\Aspose.Email.17.3.0\lib\net40\Aspose.Email.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Aspose.Cells, Version=17.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\Aspose.Cells.17.02.0\lib\net40\Aspose.Cells.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Aspose.Email, Version=17.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.17.4.0\lib\net40\Aspose.Email.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Aspose.Words, Version=17.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">

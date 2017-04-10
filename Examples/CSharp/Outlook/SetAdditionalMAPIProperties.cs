@@ -101,6 +101,17 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             values.Add((int)4);
             property = new MapiProperty(message.NamedPropertyMapping.GetNextAvailablePropertyId(MapiPropertyType.PT_MV_LONG), values);
             message.AddCustomProperty(property, "customProperty");
+
+            //PT_FLOAT
+            //Please note that you need explicit cast to float value for this to work
+            float floatValue = (float)123.456;
+            MapiMessage newMsg = new MapiMessage();
+            long floatTag = newMsg.NamedPropertyMapping.GetNextAvailablePropertyId(MapiPropertyType.PT_FLOAT);
+            Guid guid = Guid.NewGuid();
+            MapiProperty newMapiProperty = new MapiProperty(floatTag, BitConverter.GetBytes(floatValue));
+            newMsg.NamedPropertyMapping.AddNamedPropertyMapping(newMapiProperty, 12, guid);
+            newMsg.SetProperty(newMapiProperty);
+
             // ExEnd:SetAdditionalMAPIProperties
         }
     }
