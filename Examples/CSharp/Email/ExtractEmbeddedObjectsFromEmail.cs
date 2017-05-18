@@ -29,26 +29,6 @@ namespace Aspose.Email.Examples.CSharp.Email
                 attachment.Save(dataDir + "MessageEmbedded_out.msg");
                 Console.WriteLine(attachment.Name);
             }
-
-            mailMsg.From = "sender@sender.com";
-            mailMsg.To.Add("receiver@receiver.com");
-
-            SmtpClient client = new SmtpClient("smtp.server.com")
-            {
-                Port = 25,
-                Username = "UserName",
-                Password = "password"
-            };
-
-            try
-            {
-                client.Send(dataDir + "Message.msg");
-            }
-            catch (Exception ex)
-            {
-                
-               Console.Write(ex.Message);
-            }          
             // ExEnd:ExtractEmbeddedObjectsFromEmail
         }
     }

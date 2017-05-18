@@ -36,9 +36,10 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             MhtSaveOptions mhtSaveOptions = new MhtSaveOptions();
             mhtSaveOptions.CheckBodyContentEncoding = true;
             mhtSaveOptions.PreserveOriginalBoundaries = true;
-            MhtFormatOptions formatOp = MhtFormatOptions.WriteHeader | MhtFormatOptions.HideExtraPrintHeader | MhtFormatOptions.RenderVCardInfo;
+            MhtFormatOptions formatOp = MhtFormatOptions.WriteHeader | MhtFormatOptions.RenderVCardInfo;
+            mhtSaveOptions.RenderedContactFields = ContactFieldsSet.NameInfo | ContactFieldsSet.PersonalInfo | ContactFieldsSet.Telephones | ContactFieldsSet.Events;
             mhtSaveOptions.MhtFormatOptions = formatOp;
-            eml.Save(dataDir + "ContactMhtml.mhtml", mhtSaveOptions);
+            eml.Save(dataDir + "ContactMhtml_out.mhtml", mhtSaveOptions);
             // ExEnd:RenderingContactInformationToMhtml
         }
     }

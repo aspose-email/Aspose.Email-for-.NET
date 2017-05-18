@@ -40,9 +40,8 @@
       <HintPath>..\packages\Aspose.Cells.17.02.0\lib\net40\Aspose.Cells.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Aspose.Email, Version=17.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Email.17.4.0\lib\net40\Aspose.Email.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aspose.Email, Version=17.5.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.17.5.0\lib\net40\Aspose.Email.dll</HintPath>
     </Reference>
     <Reference Include="Aspose.Words, Version=17.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\Aspose.Words.17.2.0\lib\net40\Aspose.Words.dll</HintPath>
@@ -106,10 +105,13 @@
     <Compile Include="Exchange_EWS\FilterTasksFromServer.cs" />
     <Compile Include="Exchange_EWS\FilterWithComplexQueriesUsingEWS.cs" />
     <Compile Include="Exchange_EWS\GetExchangeMessageInfoFromMessageURI.cs" />
+    <Compile Include="Exchange_EWS\GetFolderTypeInformationUsingEWS.cs" />
+    <Compile Include="Exchange_EWS\GetMessageTypeFromExchangeMessageInfo.cs" />
     <Compile Include="Exchange_EWS\GettingContactsUsingEWS.cs" />
     <Compile Include="Exchange_EWS\GettingUnifiedMessagingConfigurationInformation.cs" />
     <Compile Include="Exchange_EWS\IgnoringInvalidSSLCertificates.cs" />
     <Compile Include="Exchange_EWS\ListTasksFromExchangeServer.cs" />
+    <Compile Include="Outlook\ModifyDeleteOccurrenceInRecurrence.cs" />
     <Compile Include="Exchange_EWS\ResolveContactsUsingContactName.cs" />
     <Compile Include="Exchange_EWS\RetreiveExtAttributesForCalendarItems.cs" />
     <Compile Include="Exchange_EWS\RetrieveExtraParametersAsSummaryInformation.cs" />
@@ -548,6 +550,7 @@
     <Compile Include="SMTP\RetreiveServerExtensions.cs" />
     <Compile Include="SMTP\RowWiseMailMerge.cs" />
     <Compile Include="SMTP\SendEmailsSynchronously.cs" />
+    <Compile Include="SMTP\ForwardEmailWithoutUsingMailMessage.cs" />
     <Compile Include="SMTP\SendingEmailWithAlternateText.cs" />
     <Compile Include="SMTP\SignAMessage.cs" />
     <Compile Include="SMTP\SMTPClientActivityLogging.cs" />

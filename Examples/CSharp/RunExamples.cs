@@ -1,22 +1,5 @@
-﻿using Aspose.Email.Examples.CSharp.Email;
-using Aspose.Email.Examples.CSharp.Exchange;
-using Aspose.Email.Examples.CSharp.Email.IMAP;
-using Aspose.Email.Examples.CSharp.Email.Knowledge.Base;
-using Aspose.Email.Examples.CSharp.Email.Outlook;
-using Aspose.Email.Examples.CSharp.Email.POP3;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using Aspose.Email.Examples.CSharp.Email.Exchange;
-using Aspose.Email.Examples.CSharp.Email.SMTP;
-using System.Threading;
-using System.Windows.Forms;
-using Aspose.Email.Examples.CSharp.Email.Outlook.PST;
-using Aspose.Email.Examples.CSharp.Email.Exchange_EWS;
-using Aspose.Email.Examples.CSharp.Email.Exchange_WebDav;
-using Aspose.Email.Examples.CSharp.Email.Gmail;
 
 namespace Aspose.Email.Examples.CSharp.Email
 {
@@ -237,6 +220,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //DeleteMessagesFromPSTFiles.Run();
             //MergeFolderFromAnotherPSTFile.Run();
             //LoadingPSTFile.Run();
+            //ModifyDeleteOccurrenceInRecurrence.Run();
 
             //// =====================================================
             //// =====================================================
@@ -373,6 +357,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //CaseSensitiveEmailsFilteringUsingExchangeClient.Run();
             //GettingContactsFromAnExchangeServer.Run(); 
             //RetreiveExtAttributesForCalendarItems.Run();
+            //GetFolderTypeInformationUsingEWS.Run();
+            //GetMessageTypeFromExchangeMessageInfo.Run();
 
             //// =====================================================
             //// =====================================================
@@ -388,7 +374,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //UpdateGmailContact.Run();
             //DeleteGmailContact.Run();
             //SavingContact.Run();
-            
+
             //// =====================================================
             //// =====================================================
             //// POP3
@@ -497,6 +483,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //RetreiveServerExtensions.Run();
             //SMTPClientActivityLogging.Run();
             //UsingDetachedCertificate.Run();
+            //ForwardEmailWithoutUsingMailMessage.Run();
 
             //// =====================================================
             //// =====================================================
