@@ -108,6 +108,11 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
                 builder1.ContentClass.Equals(ContentClassType.MDN.ToString());
                 // ExEnd:GetMailDeliveryNotifications
 
+                //ExStart: FilterMessagesByMessageSize
+                builder1 = new ExchangeQueryBuilder();
+                builder1.ItemSize.Greater(80000);
+                //ExEnd: FilterMessagesByMessageSize
+ 
                 // Build the query and Get list of messages
                 query = builder1.GetQuery();
                 messages = client.ListMessages(client.MailboxInfo.InboxUri, query);
