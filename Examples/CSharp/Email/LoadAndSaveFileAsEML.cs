@@ -21,6 +21,7 @@ namespace Aspose.Email.Examples.CSharp.Email
 
             // Initialize and Load an existing EML file by specifying the MessageFormat
             MailMessage mailMessage = MailMessage.Load(dataDir + "Attachments.eml");
+
             mailMessage.Save(dataDir + "LoadAndSaveFileAsEML_out.eml", SaveOptions.DefaultEml);
             // ExEnd:LoadAndSaveFileAsEML
         }

@@ -25,6 +25,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             {
                 // To display the the attachment file name
                 attachment.Save(dataDir + "ExtractAttachments_out." + attachment.Name);
+
                 Console.WriteLine(attachment.Name);
             }           
         }

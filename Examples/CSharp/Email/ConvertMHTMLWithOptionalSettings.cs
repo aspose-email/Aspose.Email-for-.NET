@@ -27,11 +27,14 @@ namespace Aspose.Email.Examples.CSharp.Email
             // Save as mht with header
             MhtSaveOptions mhtSaveOptions = new MhtSaveOptions
             {
+                //Specify formatting options required
+                //Here we are specifying to write header informations to outpu without writing extra print header
+                //and the output headers should display as the original headers in message
+                MhtFormatOptions = MhtFormatOptions.WriteHeader | MhtFormatOptions.HideExtraPrintHeader | MhtFormatOptions.DisplayAsOutlook,
                 // Check the body encoding for validity. 
-                MhtFormatOptions = MhtFormatOptions.WriteHeader | MhtFormatOptions.HideExtraPrintHeader,
                 CheckBodyContentEncoding = true
             };
-            eml.Save(Path.Combine(dataDir, "outTest_out.mht"), mhtSaveOptions);
+            eml.Save(Path.Combine(dataDir, "outMessage_out.mht"), mhtSaveOptions);
             // ExEnd:ConvertMHTMLWithOptionalSettings
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Aspose.Email.Mime;
 
-namespace Aspose.Email.Examples.CSharp.Email.IMAP
+namespace Aspose.Email.Examples.CSharp.Email
 {
     class EmbeddedObjects
     {

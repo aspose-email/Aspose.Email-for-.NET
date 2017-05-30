@@ -38,11 +38,11 @@ namespace Aspose.Email.Examples.CSharp.Email
             message.CC.Add("cc2@domain.com");
 
             // Save message in EML, MSG and MHTML formats
-            message.Save(dataDir + "Message.eml", Aspose.Email.SaveOptions.DefaultEml);
+            message.Save(dataDir + "CreateNewEmail_out.eml", Aspose.Email.SaveOptions.DefaultEml);
 
-            message.Save(dataDir + "Message.msg", Aspose.Email.SaveOptions.DefaultMsgUnicode);
+            message.Save(dataDir + "CreateNewEmail_out.msg", Aspose.Email.SaveOptions.DefaultMsgUnicode);
 
-            message.Save(dataDir + "Message.mhtml", Aspose.Email.SaveOptions.DefaultMhtml);
+            message.Save(dataDir + "CreateNewEmail_out.mhtml", Aspose.Email.SaveOptions.DefaultMhtml);
 
             Console.WriteLine(Environment.NewLine + "Created new email in EML, MSG and MHTML formats successfully.");
         }

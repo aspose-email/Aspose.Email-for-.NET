@@ -22,7 +22,10 @@ namespace Aspose.Email.Examples.CSharp.Email
 
             // ExStart:RetrieveContentDescriptionFromAttachment
             MailMessage message = MailMessage.Load(dataDir + "EmailWithAttandEmbedded.eml");
+
             string description = message.Attachments[0].Headers["Content-Description"];
+
+            Console.WriteLine(description);
             // ExEnd:RetrieveContentDescriptionFromAttachment
         }
     }

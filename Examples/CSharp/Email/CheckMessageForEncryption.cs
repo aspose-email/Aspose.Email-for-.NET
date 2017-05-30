@@ -31,9 +31,9 @@ namespace Aspose.Email.Examples.CSharp.Email
 
             Console.WriteLine("Message is encrypted: {0}" , mailMessageOrig.IsEncrypted);
             MailMessage mailMessage = mailMessageOrig.Encrypt(publicCert);
-            Console.WriteLine("Message is encrypted: {0}", mailMessageOrig.IsEncrypted);
+            Console.WriteLine("Message is encrypted: {0}", mailMessage.IsEncrypted);
             mailMessage = mailMessage.Decrypt(privateCert);
-            Console.WriteLine("Message is encrypted: {0}", mailMessageOrig.IsEncrypted);
+            Console.WriteLine("Message is encrypted: {0}", mailMessage.IsEncrypted);
             // ExEnd:CheckMessageForEncryption
         }
 

@@ -18,10 +18,11 @@ namespace Aspose.Email.Examples.CSharp.Email
     {
         public static void Run()
         {
-            string dataDir = RunExamples.GetDataDir_Email();
-            MailMessage msg = MailMessage.Load(dataDir + "Message.eml");
-
             // ExStart:ExportEmailToEML
+            string dataDir = RunExamples.GetDataDir_Email();
+
+            MailMessage msg = MailMessage.Load(dataDir + "Message.eml");
+            
             msg.Save(dataDir + "ExporttoEml_out.eml", SaveOptions.DefaultEml);
             // ExEnd:ExportEmailToEML
 

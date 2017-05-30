@@ -25,8 +25,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             // Create a loop to display the no. of attachments present in email message
             foreach (Attachment attachment in message.Attachments)
             {
-                // Save your attachments here and Display the the attachment file name
-                attachment.Save("filename");
+                // Display the the attachment file name
                 Console.WriteLine(attachment.Name);
             }
             // ExEnd:DisplayAttachmentFileName

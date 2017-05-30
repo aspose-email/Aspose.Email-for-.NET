@@ -23,8 +23,11 @@ namespace Aspose.Email.Examples.CSharp.Email
 
             // ExStart:CreateTNEFEMLFromMSG
             MapiMessage mapiMsg = MapiMessage.FromFile(dataDir + "Message.msg");
+
             MailConversionOptions mco = new MailConversionOptions();
+
             mco.ConvertAsTnef = true;
+
             MailMessage message = mapiMsg.ToMailMessage(mco); 
             // ExEnd:CreateTNEFEMLFromMSG
         }

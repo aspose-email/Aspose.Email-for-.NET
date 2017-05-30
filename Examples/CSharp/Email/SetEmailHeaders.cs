@@ -33,7 +33,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             mailMessage.Date = new System.DateTime(2006, 3, 6);
             mailMessage.XMailer = "Aspose.Email";
             mailMessage.Headers.Add("secret-header", "mystery");
-            mailMessage.Save(dataDir + "MessageHeaders_out.msg", SaveOptions.DefaultMsg);
+            mailMessage.Save(dataDir + "SetEmailHeaders_out.msg", SaveOptions.DefaultMsg);
             // ExEnd:SetEmailHeaders
         }
     }

@@ -33,10 +33,10 @@ namespace Aspose.Email.Examples.CSharp.Email
             message.CC.Add(new MailAddress("cc2@domain.com", "Recipient 4", false));
 
             // Save message in EML, EMLX, MSG and MHTML formats
-            message.Save(dataDir + "Message_out.eml", SaveOptions.DefaultEml);
-            message.Save(dataDir + "Message_out.emlx", SaveOptions.CreateSaveOptions(MailMessageSaveType.EmlxFormat));
-            message.Save(dataDir + "Message_out.msg", SaveOptions.DefaultMsgUnicode);
-            message.Save(dataDir + "Message_out.mhtml", SaveOptions.DefaultMhtml);
+            message.Save(dataDir + "CreateNewMailMessage_out.eml", SaveOptions.DefaultEml);
+            message.Save(dataDir + "CreateNewMailMessage_out.emlx", SaveOptions.CreateSaveOptions(MailMessageSaveType.EmlxFormat));
+            message.Save(dataDir + "CreateNewMailMessage_out.msg", SaveOptions.DefaultMsgUnicode);
+            message.Save(dataDir + "CreateNewMailMessage_out.mhtml", SaveOptions.DefaultMhtml);
             // ExEnd:CreateNewMailMessage
         }
     }

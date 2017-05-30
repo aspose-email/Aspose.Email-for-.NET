@@ -23,6 +23,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             // ExStart:GetDecodedHeaderValue
             MailMessage mailMessage = MailMessage.Load(dataDir + "emlWithHeaders.eml");
             string decodedValue = mailMessage.Headers.GetDecodedValue("Thread-Topic");
+            Console.WriteLine(decodedValue);
             // ExEnd:GetDecodedHeaderValue
         }
     }

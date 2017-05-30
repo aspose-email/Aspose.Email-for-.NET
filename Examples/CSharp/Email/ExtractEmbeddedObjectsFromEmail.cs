@@ -27,6 +27,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             {
                 // To display the the attachment file name
                 attachment.Save(dataDir + "MessageEmbedded_out.msg");
+
                 Console.WriteLine(attachment.Name);
             }
             // ExEnd:ExtractEmbeddedObjectsFromEmail

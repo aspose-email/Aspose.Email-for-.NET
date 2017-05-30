@@ -21,6 +21,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             string dataDir = RunExamples.GetDataDir_Email() + "Message.eml";
 
             MailMessage mail = MailMessage.Load(dataDir);
+
             bool isTnef = mail.OriginalIsTnef;
             // ExEnd:DetectTNEFMessage
         }

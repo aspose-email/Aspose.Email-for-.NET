@@ -22,7 +22,10 @@ namespace Aspose.Email.Examples.CSharp.Email
 
             // ExStart:DetectMessageIsTNEF
             MailMessage mail = MailMessage.Load(dataDir + "tnefEml1.eml");
+
             bool isTnef = mail.OriginalIsTnef;
+
+            Console.WriteLine("Is input EML originally TNEF? {0}", isTnef.ToString());
             // ExEnd:DetectMessageIsTNEF
         }
     }
