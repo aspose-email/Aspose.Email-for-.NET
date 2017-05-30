@@ -28,7 +28,7 @@ namespace Aspose.Email.Examples.CSharp.Email
         {
             string fileName = dataDir + "tnefEML1.eml";
             string imgFileName = dataDir + "Untitled.jpg";
-            string outFileName = dataDir + "01_ExchangeMessage_SAVE_Preserve_out.eml";
+            string outFileName = dataDir + "UpdateTNEFAttachments_out.eml";
             MailMessage originalMailMessage = MailMessage.Load(fileName);
             UpdateResources(originalMailMessage, imgFileName);
             EmlSaveOptions emlSo = new EmlSaveOptions(MailMessageSaveType.EmlFormat);

@@ -30,7 +30,7 @@ namespace Aspose.Email.Examples.CSharp.Email
                 Console.WriteLine(attachment.Name);
 
                 // Save the attachment to disc
-                attachment.Save(attachment.Name);
+                attachment.Save(dataDir + attachment.Name);
 
                 // You can also save the attachment to memory stream
                 MemoryStream ms = new MemoryStream();
@@ -43,7 +43,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             {
                 Console.WriteLine(lr.ContentType.Name);
 
-                lr.Save(lr.ContentType.Name);
+                lr.Save(dataDir + lr.ContentType.Name);
             }
             // ExEnd:ExtractEmbeddedObjects
         }

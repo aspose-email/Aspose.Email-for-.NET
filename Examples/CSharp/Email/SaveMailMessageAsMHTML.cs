@@ -23,6 +23,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             // ExStart:SaveMailMessageAsMHTML
             // Initialize and Load an existing EML file by specifying the MessageFormat
             MailMessage eml = MailMessage.Load(dataDir + "Message.eml");
+
             eml.Save(dataDir + "AnEmail_out.mthml", SaveOptions.DefaultMhtml);
             // ExEnd:SaveMailMessageAsMHTML
         }

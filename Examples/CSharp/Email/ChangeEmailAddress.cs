@@ -20,7 +20,9 @@ namespace Aspose.Email.Examples.CSharp.Email
         public static void Run()
         {
             // ExStart:ChangeEmailAddress
-            MailMessage message = new MailMessage("Sender Name <sender@from.com>", "Kyle Huang <kyle@to.com>");
+            string dataDir = RunExamples.GetDataDir_Email();
+
+            MailMessage message = MailMessage.Load(dataDir + "test.eml");
 
             // A To address with a friendly name can also be specified like this
             message.To.Add(new MailAddress("kyle@to.com", "Kyle Huang"));
@@ -29,24 +31,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             message.CC.Add(new MailAddress("guangzhou@cc.com", "Guangzhou Team"));
             message.Bcc.Add(new MailAddress("ahaq@bcc.com", "Ammad ulHaq "));
 
-            // Create an instance of SmtpClient Class and Specify your mailing host server, Username, Password, Port
-            SmtpClient client = new SmtpClient();
-            client.Host = "smtp.server.com";
-            client.Username = "Username";
-            client.Password = "Password";
-            client.Port = 25;
-
-            try
-            {
-                // Client.Send will send this message
-                client.Send(message);
-                Console.WriteLine("Message sent");
-            }
-
-            catch (Exception ex)
-            {
-                System.Diagnostics.Trace.WriteLine(ex.ToString());
-            }
+            message.Save(dataDir + "MessageWithFrienlyName_out.eml", SaveOptions.DefaultEml);
             // ExEnd:ChangeEmailAddress
         }
     }

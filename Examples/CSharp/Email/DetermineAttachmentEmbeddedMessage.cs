@@ -19,10 +19,13 @@ namespace Aspose.Email.Examples.CSharp.Email
         {
             // ExStart:DetermineAttachmentEmbeddedMessage
             string dataDir = RunExamples.GetDataDir_Email() + "EmailWithAttandEmbedded.eml";
+
             MailMessage eml = MailMessage.Load(dataDir);
 
             if (eml.Attachments[0].IsEmbeddedMessage)
-                Console.WriteLine("Attachment is an embedded message");
+                Console.WriteLine("Attachment is an embedded message.");
+            else
+                Console.WriteLine("Attachment is not an embedded message.");
             // ExEnd:DetermineAttachmentEmbeddedMessage
         }
     }
