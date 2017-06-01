@@ -1,19 +1,18 @@
 ﻿using Aspose.Email.Storage.Mbox;
-using Aspose.Email.Mime;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
-namespace Aspose.Email.Examples.CSharp.Email.Thunderbird
+namespace Aspose.Email.Examples.CSharp.Email
 {
     class GetMarkerInformation
     {
-        static void Run()
-        { 
+        public static void Run()
+        {
             // ExStart: GetMarkerInformation
-            using (FileStream stream = new FileStream("inbox.dat", FileMode.Open, FileAccess.Read))
+            // The path to the File directory.
+            string dataDir = RunExamples.GetDataDir_Thunderbird();
+
+            using (FileStream stream = new FileStream(dataDir + "ExampleMbox.mbox", FileMode.Open, FileAccess.Read))
             using (MboxrdStorageReader reader = new MboxrdStorageReader(stream, false))
             {
                 MailMessage msg;
@@ -26,11 +25,11 @@ namespace Aspose.Email.Examples.CSharp.Email.Thunderbird
                 }
             }
 
-            using (FileStream writeStream = new FileStream("inbox.dat", FileMode.Create, FileAccess.Write))
+            using (FileStream writeStream = new FileStream(dataDir + "ExampleMbox.mbox", FileMode.Create, FileAccess.Write))
             using (MboxrdStorageWriter writer = new MboxrdStorageWriter(writeStream, false))
             {
                 string fromMarker = null;
-                MailMessage msg = MailMessage.Load("input.eml");
+                MailMessage msg = MailMessage.Load(dataDir + "EmailWithAttandEmbedded.eml");
                 writer.WriteMessage(msg, out fromMarker);
 
                 Console.WriteLine(fromMarker);

@@ -52,7 +52,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             }
 
             task.Recurrence = rec;
-            task.Save(dataDir  + "Yearly_out.msg", TaskSaveFormat.Msg);
+            //task.Save(dataDir  + "Yearly_out.msg", TaskSaveFormat.Msg);
             // ExSEnd:YearlyEndAfterNoccurrences
         }
          

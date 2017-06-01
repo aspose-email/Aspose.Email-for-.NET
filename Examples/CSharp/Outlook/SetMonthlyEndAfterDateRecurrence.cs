@@ -49,7 +49,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             };
 
             task.Recurrence = recurrence;
-            task.Save(dataDir + "SetMonthlyEndAfterDateRecurrence_out.msg", TaskSaveFormat.Msg);
+            //task.Save(dataDir + "SetMonthlyEndAfterDateRecurrence_out.msg", TaskSaveFormat.Msg);
             // ExEnd:SetMonthlyEndAfterDateRecurrence
         }
 

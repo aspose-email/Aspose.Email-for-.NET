@@ -46,7 +46,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // ExEnd:SetMonthlyNeverEndRecurrence
 
             task.Recurrence = recurrence;
-            task.Save(dataDir + "SetMonthlyNeverEndRecurrence_out.msg", TaskSaveFormat.Msg);            
+            //task.Save(dataDir + "SetMonthlyNeverEndRecurrence_out.msg", TaskSaveFormat.Msg);            
         }
     }
 }

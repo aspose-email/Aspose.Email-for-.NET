@@ -11,14 +11,17 @@ If you do not wish to use NuGet, you can manually download Aspose.Email for .NET
 install it and then add its reference to this project. For any issues, questions or suggestions 
 please feel free to contact us using http://www.aspose.com/community/forums/default.aspx
 */
-namespace Aspose.Email.Examples.CSharp.Thunderbird
+namespace Aspose.Email.Examples.CSharp.Email
 {
     class GetNumberOfItemsFromMBox
     {
         public static void Run()
         {
             //ExStart: GetNumberOfItemsFromMBox
-            using (FileStream stream = new FileStream("inbox.dat", FileMode.Open, FileAccess.Read))
+            // The path to the File directory.
+            string dataDir = RunExamples.GetDataDir_Thunderbird();
+
+            using (FileStream stream = new FileStream(dataDir + "ExampleMbox.mbox", FileMode.Open, FileAccess.Read))
             using (MboxrdStorageReader reader = new MboxrdStorageReader(stream, false))
             {
                 Console.WriteLine("Total number of messages in Mbox file: " + reader.GetTotalItemsCount());

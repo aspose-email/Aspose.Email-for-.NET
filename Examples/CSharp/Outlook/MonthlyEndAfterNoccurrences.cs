@@ -50,7 +50,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             }
 
             task.Recurrence = rec;
-            task.Save(dataDir + "Monthly_out.msg", TaskSaveFormat.Msg);
+            //task.Save(dataDir + "Monthly_out.msg", TaskSaveFormat.Msg);
             // ExEnd:MonthlyEndAfterNoccurrences
 
             // ExStart:SetFixNumberOfOccurrences
@@ -67,7 +67,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // ExEnd:SetFixNumberOfOccurrences
 
             task.Recurrence = records;
-            task.Save(dataDir + "SetFixNumberOfOccurrences_out.msg", TaskSaveFormat.Msg);
+            //task.Save(dataDir + "SetFixNumberOfOccurrences_out.msg", TaskSaveFormat.Msg);
         }
 
         // ExStart:EventsBetweenTheTwoDates     

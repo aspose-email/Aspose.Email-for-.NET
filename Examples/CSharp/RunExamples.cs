@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Aspose.Email.Examples.CSharp.Email.Outlook;
+using Aspose.Email.Examples.CSharp.Email.Outlook.PST;
+using System;
 using System.IO;
 
 namespace Aspose.Email.Examples.CSharp.Email
@@ -14,6 +16,7 @@ namespace Aspose.Email.Examples.CSharp.Email
 
             // Uncomment the one you want to try out
 
+            #region working with messages using MailMessage
             // =====================================================
             // =====================================================
             // Email
@@ -76,13 +79,15 @@ namespace Aspose.Email.Examples.CSharp.Email
             //UseMailMessageFeatures.Run();
             //ValidatingEmails.Run();
 
+            #endregion
+
             //// =====================================================
             //// =====================================================
             //// Outlook
             //// =====================================================
             //// =====================================================
 
-
+            #region Working with Outlook Items
             //NewPSTAddSubfolders.Run();
             //CreateSaveOutlookFiles.Run();
             //DeleteBulkItemsFromPSTFile.Run();
@@ -97,7 +102,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //RemovePropertiesFromMSGAndAttachments.Run();
             //ConvertEMLToMSG.Run();
             //CreatEMLFileAndConvertToMSG.Run();
-            //ReadAndWritingOutlookTemplateFile.Run();          
+            //ReadAndWritingOutlookTemplateFile.Run();
             //SetFollowUpflag.Run();
             //SetFollowUpForRecipients.Run();
             //MarkFollowUpFlagAsCompleted.Run();
@@ -137,12 +142,12 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ParseOutlookMessageFile.Run();
             //ConvertMSGToMIMEMessage.Run();
             //CreatingAndSavingOutlookMessages.Run();
-            //CreateMessagesWithAttachments.Run();
-            //Application.Run(new WorkingWithMSGAttachments());
+            ////CreateMessagesWithAttachments.Run();
+            ////Application.Run(new WorkingWithMSGAttachments());
             //CreatingMSGFilesWithRTFBody.Run();
             //SavingMessageInDraftStatus.Run();
             //SetBodyCompression.Run();
-            //Application.Run(new DragDropOutlookMessages());
+            ////Application.Run(new DragDropOutlookMessages());
             //ReadingVotingOptions.Run();
             //ReadingOnlyVotingButtons.Run();
             //SetAdditionalMAPIProperties.Run();
@@ -215,12 +220,15 @@ namespace Aspose.Email.Examples.CSharp.Email
             //LoadingPSTFile.Run();
             //ModifyDeleteOccurrenceInRecurrence.Run();
 
+            #endregion
+
             //// =====================================================
             //// =====================================================
             //// Knowledge-Base
             //// =====================================================
             //// =====================================================
 
+            #region Knowledge Base Examples
             //PrintEmail.Run();
             //ConnectingGmailSMTPServer.Run();
             //SendEmailMessage.Run();
@@ -258,11 +266,15 @@ namespace Aspose.Email.Examples.CSharp.Email
             //UsingMailMessageWrapper.Run();
             //CreateDraftAppointmentFromText.Run();
 
+            #endregion
+
             //// =====================================================
             //// =====================================================
             //// Exchange
             //// =====================================================
             //// =====================================================
+
+            #region Exchange Server Examples
 
             //GetMailboxInformationFromExchangeWebServices.Run();
             //GetMailboxInformationFromExchangeServer.Run();
@@ -352,6 +364,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //RetreiveExtAttributesForCalendarItems.Run();
             //GetFolderTypeInformationUsingEWS.Run();
             //GetMessageTypeFromExchangeMessageInfo.Run();
+            #endregion
 
             //// =====================================================
             //// =====================================================
@@ -442,6 +455,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //// =====================================================
             //// =====================================================
 
+            #region Smtp Client Examples
+
             //SetSpecificIpAddress.Run();
             //ExportAsEML.Run();
             //ImportEML.Run();
@@ -478,15 +493,20 @@ namespace Aspose.Email.Examples.CSharp.Email
             //UsingDetachedCertificate.Run();
             //ForwardEmailWithoutUsingMailMessage.Run();
 
+            #endregion
+
             //// =====================================================
             //// =====================================================
             //// Thunderbird
             //// =====================================================
             //// =====================================================
-
-            //ReadMessagesFromThunderbird.Run();
+            #region Thunderbird Examples
             //CreateNewMessagesToThunderbird.Run();
-
+            //GetMarkerInformation.Run();
+            //GetNumberOfItemsFromMBox.Run();
+            //ReadMessagesFromThunderbird.Run();
+            #endregion
+            
             // Stop before exiting
 
             Console.WriteLine(Environment.NewLine + "Program Finished. Press any key to exit....");
@@ -498,7 +518,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             return Path.GetFullPath(GetDataDir_Data() + "KnowledgeBase/");
         }
 
-        internal static string Thunderbird()
+        internal static string GetDataDir_Thunderbird()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Thunderbird/");
         }
