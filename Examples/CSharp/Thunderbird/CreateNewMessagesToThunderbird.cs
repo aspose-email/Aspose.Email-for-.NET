@@ -19,18 +19,19 @@ namespace Aspose.Email.Examples.CSharp.Email
         {
             
             // The path to the File directory.
-            string dataDir = RunExamples.GetDataDir_SMTP();
+            string dataDir = RunExamples.GetDataDir_Thunderbird();
 
             try
             {
                 // ExStart:WritingNewMessagesToThunderbird
                 // Open the storage file with FileStream
-                FileStream stream = new FileStream(@"Thunderbird\inbox", FileMode.Open, FileAccess.Write);
+                FileStream stream = new FileStream(dataDir + "ExampleMbox.mbox", FileMode.Open, FileAccess.Write);
 
                 // Initialize MboxStorageWriter and pass the above stream to it
                 MboxrdStorageWriter writer = new MboxrdStorageWriter(stream, false);
                 // Prepare a new message using the MailMessage class
-                MailMessage message = new MailMessage("from@domain.com", "to@domain.com", "added 1 from Aspose.Email", "added from Aspose.Email");
+                MailMessage message = new MailMessage("from@domain.com", "to@domain.com", Guid.NewGuid().ToString(), "added from Aspose.Email");
+                message.IsDraft = false;
                 // Add this message to storage
                 writer.WriteMessage(message);
                 // Close all related streams

@@ -36,6 +36,12 @@ namespace Aspose.Email.Examples.CSharp.Email
             };
             eml.Save(Path.Combine(dataDir, "outMessage_out.mht"), mhtSaveOptions);
             // ExEnd:ConvertMHTMLWithOptionalSettings
+
+            //ExStart: ConvertToMHTMLWithoutInlineImages
+            mhtSaveOptions.SkipInlineImages = true;
+
+            eml.Save(Path.Combine(dataDir, "EmlToMhtmlWithoutInlineImages_out.mht"), mhtSaveOptions);
+            //ExEnd: ConvertToMHTMLWithoutInlineImages
         }
     }
 }

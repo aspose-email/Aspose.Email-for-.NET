@@ -50,7 +50,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 recurrence.OccurrenceCount = 1;
             }
 
-            task.Save(dataDir + "SetYearlyNeverEndRecurrence_out.msg", TaskSaveFormat.Msg);
+            //task.Save(dataDir + "SetYearlyNeverEndRecurrence_out.msg", TaskSaveFormat.Msg);
         }
 
     }

@@ -44,7 +44,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             task.Save(dataDir + "AsposeDaily_out.msg", TaskSaveFormat.Msg);
 
             // Set the weekly recurrence
-            // Set the weekly recurrence
             var rec1 = new MapiCalendarWeeklyRecurrencePattern
             {
                 PatternType = MapiCalendarRecurrencePatternType.Week,
@@ -67,7 +66,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 WeekStartDay = DayOfWeek.Sunday,
             };
             task.Recurrence = recMonthly;
-            task.Save(dataDir + "AsposeMonthly_out.msg", TaskSaveFormat.Msg);
+            //task.Save(dataDir + "AsposeMonthly_out.msg", TaskSaveFormat.Msg);
 
             // Set the yearly recurrence
             var recYearly = new MapiCalendarMonthlyRecurrencePattern
@@ -78,7 +77,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 Period = 12,
             };
             task.Recurrence = recYearly;
-            task.Save(dataDir + "AsposeYearly_out.msg", TaskSaveFormat.Msg);
+            //task.Save(dataDir + "AsposeYearly_out.msg", TaskSaveFormat.Msg);
             // ExEnd:AddRecurrenceToMapiTask
         }
     }

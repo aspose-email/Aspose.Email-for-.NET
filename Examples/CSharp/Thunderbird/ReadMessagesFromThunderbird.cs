@@ -20,10 +20,10 @@ namespace Aspose.Email.Examples.CSharp.Email
             // ExStart:ReadMessagesFromThunderbird
 
             // The path to the File directory.
-            string dataDir = RunExamples.GetDataDir_SMTP();
+            string dataDir = RunExamples.GetDataDir_Thunderbird();
 
             // Open the storage file with FileStream
-            FileStream stream = new FileStream(dataDir + "Outlook.pst", FileMode.Open, FileAccess.Read);
+            FileStream stream = new FileStream(dataDir + "ExampleMbox.mbox", FileMode.Open, FileAccess.Read);
             // Create an instance of the MboxrdStorageReader class and pass the stream
             MboxrdStorageReader reader = new MboxrdStorageReader(stream, false);
             // Start reading messages

@@ -55,7 +55,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                 rec.OccurrenceCount = 1;
             }
 
-            task.Save(dataDir  + "Yearly_out.msg", TaskSaveFormat.Msg);
+            //task.Save(dataDir  + "Yearly_out.msg", TaskSaveFormat.Msg);
         }
 
         private static uint GetOccurrenceCount(DateTime start, DateTime endBy, string rrule)
