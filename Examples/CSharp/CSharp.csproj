@@ -40,8 +40,8 @@
       <HintPath>..\packages\Aspose.Cells.17.02.0\lib\net40\Aspose.Cells.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Aspose.Email, Version=17.5.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Email.17.5.0\lib\net40\Aspose.Email.dll</HintPath>
+    <Reference Include="Aspose.Email, Version=17.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.17.6.0\lib\net40\Aspose.Email.dll</HintPath>
     </Reference>
     <Reference Include="Aspose.Words, Version=17.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\Aspose.Words.17.2.0\lib\net40\Aspose.Words.dll</HintPath>
@@ -111,6 +111,7 @@
     <Compile Include="Exchange_EWS\GettingUnifiedMessagingConfigurationInformation.cs" />
     <Compile Include="Exchange_EWS\IgnoringInvalidSSLCertificates.cs" />
     <Compile Include="Exchange_EWS\ListTasksFromExchangeServer.cs" />
+    <Compile Include="IMAP\SetCustomFlag.cs" />
     <Compile Include="Outlook\ModifyDeleteOccurrenceInRecurrence.cs" />
     <Compile Include="Exchange_EWS\ResolveContactsUsingContactName.cs" />
     <Compile Include="Exchange_EWS\RetreiveExtAttributesForCalendarItems.cs" />

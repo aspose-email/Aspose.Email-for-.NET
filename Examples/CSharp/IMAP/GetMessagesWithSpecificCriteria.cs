@@ -84,6 +84,14 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                 builder.To.Contains("recipient");
                 // ExEnd:GetSpecificRecipientEmails
 
+                //ExStart: GetMessagesWithCustomFlags
+                ImapQueryBuilder queryBuilder = new ImapQueryBuilder();
+
+                queryBuilder.HasFlags(ImapMessageFlags.Keyword("custom1"));
+
+                queryBuilder.HasNoFlags(ImapMessageFlags.Keyword("custom2"));
+                //ExEnd: GetMessagesWithCustomFlags
+
                 // Build the query and Get list of messages
                 query = builder.GetQuery();
                 messages = client.ListMessages(query);

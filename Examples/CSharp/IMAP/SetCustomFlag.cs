@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Aspose.Email.Clients;
 using Aspose.Email.Clients.Imap;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -13,10 +15,10 @@ please feel free to contact us using http://www.aspose.com/community/forums/defa
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
-    class AddingNewMessage
+    class SetCustomFlag
     {
         public static void Run()
-        {        
+        {
             // Create an instance of the ImapClient class
             ImapClient client = new ImapClient();
 
@@ -28,24 +30,37 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             client.SecurityOptions = SecurityOptions.Auto;
             try
             {
-                //ExStart:AddingNewMessageToFolder
+                //ExStart:SetCustomFlag
                 // Create a message
-                MailMessage msg = new MailMessage("user@domain1.com", "user@domain2.com", "subject", "message");
+                MailMessage message = new MailMessage("user@domain1.com", "user@domain2.com", "subject", "message");
 
-                // Subscribe to the Inbox folder and Append the newly created message
+                //Append the message to mailbox
+                string uid = client.AppendMessage(ImapFolderInfo.InBox, message);
+
+                //Add custom flags to the added messge
+                client.AddMessageFlags(uid, ImapMessageFlags.Keyword("custom1") | ImapMessageFlags.Keyword("custom1_0"));
+
+                //Retreive the messages for checking the presence of custom flag
                 client.SelectFolder(ImapFolderInfo.InBox);
-                client.SubscribeFolder(client.CurrentFolder.Name);
-                client.AppendMessage(client.CurrentFolder.Name, msg);
-                //ExEnd:AddingNewMessageToFolder
 
-                Console.WriteLine("New Message Added Successfully");
+                ImapMessageInfoCollection messageInfos = client.ListMessages();
+                foreach (var inf in messageInfos)
+                {
+                    ImapMessageFlags[] flags = inf.Flags.Split();
+
+                    if (inf.ContainsKeyword("custom1"))
+                        Console.WriteLine("Keyword found");
+                }
+
+                //ExEnd:SetCustomFlag
+
+                Console.WriteLine("Setting Custom Flag to Message example executed successfully!");
                 client.Dispose();
             }
             catch (Exception ex)
             {
                 Console.Write(Environment.NewLine + ex);
             }
-            Console.WriteLine(Environment.NewLine + "Added new message on IMAP server.");
         }
     }
 }
