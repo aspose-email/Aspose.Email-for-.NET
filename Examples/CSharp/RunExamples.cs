@@ -1,4 +1,5 @@
-﻿using Aspose.Email.Examples.CSharp.Email.Outlook;
+﻿using Aspose.Email.Examples.CSharp.Email.Exchange_EWS;
+using Aspose.Email.Examples.CSharp.Email.Outlook;
 using Aspose.Email.Examples.CSharp.Email.Outlook.PST;
 using System;
 using System.IO;
@@ -54,6 +55,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //LoadAndSaveFileAsEML.Run();
             //LoadingEMLAndSavingToMSG.Run();
             //LoadMessageWithLoadOptions.Run();
+            //PreserveEmbeddedMSGFormatDuringLoad.Run();
             //PreserveOriginalBoundaries.Run();
             //PreserveTNEFAttachment.Run();
             //PreservingEmbeddedMsgFormat.Run();
@@ -342,6 +344,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //FetchMessageUsingEWS.Run();
             //FilterMessagesUsingEWS.Run();
             //FilterMessagesOnCriteriaUsingEWS.Run();
+            //FilterMessagesOnCriteriaUsingEWS.FilterMessagesWithPagingSupport();
             //FilterWithComplexQueriesUsingEWS.Run();
             //CaseSensitiveEmailsFilteringUsingEWS.Run();
             //CreatingUpdatingAndDeletingCalendarItemsUsingEWS.Run();
@@ -506,7 +509,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //GetNumberOfItemsFromMBox.Run();
             //ReadMessagesFromThunderbird.Run();
             #endregion
-            
+
             // Stop before exiting
 
             Console.WriteLine(Environment.NewLine + "Program Finished. Press any key to exit....");

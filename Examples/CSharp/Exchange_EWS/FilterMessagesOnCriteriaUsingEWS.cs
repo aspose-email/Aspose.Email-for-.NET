@@ -124,5 +124,35 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public static void FilterMessagesWithPagingSupport()
+        {
+            const string mailboxUri = "https://outlook.office365.com/ews/exchange.asmx";
+            const string username = "username";
+            const string password = "password";
+            const string domain = "domain";
+
+            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, username, password, domain);
+            //ExStart: FilterMessagesWithPagingSupport
+            int itemsPerPage = 5;
+            string sGuid = Guid.NewGuid().ToString();
+            string str1 = sGuid + " - " + "Query 1";
+            string str2 = sGuid + " - " + "Query 2";
+
+            MailQueryBuilder queryBuilder1 = new MailQueryBuilder();
+            queryBuilder1.Subject.Contains(str1);
+            MailQuery query1 = queryBuilder1.GetQuery();
+            List<ExchangeMessagePageInfo> pages = new List<ExchangeMessagePageInfo>();
+            ExchangeMessagePageInfo pageInfo = client.ListMessagesByPage(client.MailboxInfo.InboxUri, query1, itemsPerPage);
+            pages.Add(pageInfo);
+            int str1Count = pageInfo.Items.Count;
+            while (!pageInfo.LastPage)
+            {
+                pageInfo = client.ListMessagesByPage(client.MailboxInfo.InboxUri, query1, itemsPerPage, pageInfo.PageOffset + 1);
+                pages.Add(pageInfo);
+                str1Count += pageInfo.Items.Count;
+            }
+            //ExEnd: FilterMessagesWithPagingSupport
+        }
     }
 }
