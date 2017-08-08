@@ -1,6 +1,7 @@
 ﻿using Aspose.Email.Mime;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -32,6 +33,32 @@ namespace Aspose.Email.Examples.CSharp.Email
             options.HtmlFormatOptions = HtmlFormatOptions.WriteHeader | HtmlFormatOptions.WriteCompleteEmailAddress; //save the message headers to output HTML using the formatting options
             eml.Save(dataDir + "SaveAsHTML1_out.html", options);
             // ExEnd:SaveMessageAsHTML
+        }
+
+        public static void SaveAsHtmlWithoutEmbeddingResources()
+        {
+            string dataDir = RunExamples.GetDataDir_Email();
+
+            //ExStart: SaveAsHtmlWithoutEmbeddingResources
+            var fileName = "EmailWithAttandEmbedded.eml";
+            var filePath = Path.Combine(dataDir, fileName);
+
+            MailMessage msg = MailMessage.Load(filePath);
+            var outFileName = Path.Combine(dataDir, fileName + ".html");
+
+            var options = new HtmlSaveOptions()
+            {
+                EmbedResources = false,
+                SaveResourceHandler =
+                    (AttachmentBase attachment, out string resourcePath) =>
+                    {
+                        attachment.Save(Path.Combine(dataDir, attachment.ContentId));
+                        resourcePath = Path.Combine(".", attachment.ContentId);
+                    }
+            };
+
+            msg.Save(outFileName, options);
+            //ExEnd: SaveAsHtmlWithoutEmbeddingResources
         }
     }
 }

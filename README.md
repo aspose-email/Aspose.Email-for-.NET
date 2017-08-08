@@ -18,9 +18,9 @@ Directory | Description
 
 ## Resources
 
-+ **Website:** [www.aspose.com](http://www.aspose.com)
-+ **Product Home:** [Aspose.Email for .NET](http://www.aspose.com/products/email/net)
++ **Website:** [www.aspose.com](https://www.aspose.com)
++ **Product Home:** [Aspose.Email for .NET](https://www.aspose.com/products/email/net)
 + **Download:** [Download Aspose.Email for .NET](http://www.aspose.com/downloads/email/net)
 + **Documentation:** [Aspose.Email for .NET Documentation](http://www.aspose.com/docs/display/emailnet/Home)
-+ **Forum:** [Aspose.Email for .NET Forum](http://www.aspose.com/community/forums/aspose.email-product-family/188/showforum.aspx)
++ **Forum:** [Aspose.Email for .NET Forum](https://forums.aspose.com/c/email)
 + **Blog:** [Aspose.Email for .NET Blog](http://www.aspose.com/blogs/aspose-products/aspose-email-product-family.html) 
