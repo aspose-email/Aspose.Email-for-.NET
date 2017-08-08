@@ -68,6 +68,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //RetrieveContentDescriptionFromAttachment.Run();
             //SaveMailMessageAsMHTML.Run();
             //SaveMessageAsHTML.Run();
+            //SaveMessageAsHTML.SaveAsHtmlWithoutEmbeddingResources();
             //SaveMessageAsOFT.Run();
             //SavingMSGWithPreservedDates.Run();
             //SetAlternateText.Run();
