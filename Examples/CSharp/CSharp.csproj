@@ -112,6 +112,7 @@
     <Compile Include="Exchange_EWS\GettingUnifiedMessagingConfigurationInformation.cs" />
     <Compile Include="Exchange_EWS\IgnoringInvalidSSLCertificates.cs" />
     <Compile Include="Exchange_EWS\ListTasksFromExchangeServer.cs" />
+    <Compile Include="Exchange_EWS\WorkingWithExtendedAttributesOfMessages.cs" />
     <Compile Include="IMAP\SetCustomFlag.cs" />
     <Compile Include="Outlook\ModifyDeleteOccurrenceInRecurrence.cs" />
     <Compile Include="Exchange_EWS\ResolveContactsUsingContactName.cs" />
