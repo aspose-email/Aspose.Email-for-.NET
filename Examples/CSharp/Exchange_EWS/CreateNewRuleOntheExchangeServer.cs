@@ -18,7 +18,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
         public static void Run()
         {
             // ExStart:CreateNewRuleOntheExchangeServer
-            // Set Exchange Server 2010 web service URL, Username, password, domain information
+            // Set Exchange Server web service URL, Username, password, domain information
             string mailboxURI = "https://ex2010/ews/exchange.asmx";
             string username = "test.exchange";
             string password = "pwd";

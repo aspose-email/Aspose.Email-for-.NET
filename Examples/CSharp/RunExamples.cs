@@ -368,6 +368,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //RetreiveExtAttributesForCalendarItems.Run();
             //GetFolderTypeInformationUsingEWS.Run();
             //GetMessageTypeFromExchangeMessageInfo.Run();
+            //WorkingWithExtendedAttributesOfMessages.Run();
             #endregion
 
             //// =====================================================
