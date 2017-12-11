@@ -19,7 +19,7 @@ Directory | Description
 ## Resources
 
 + **Website:** [www.aspose.com](https://www.aspose.com)
-+ **Product Home:** [Aspose.Email for .NET](https://www.aspose.com/products/email/net)
++ **Product Home:** [Aspose.Email for .NET](https://products.aspose.com/email/net)
 + **Download:** [Download Aspose.Email for .NET](https://downloads.aspose.com/email/net)
 + **Documentation:** [Aspose.Email for .NET Documentation](https://docs.aspose.com/display/emailnet/Home)
 + **Forum:** [Aspose.Email for .NET Forum](https://forum.aspose.com/c/email)
