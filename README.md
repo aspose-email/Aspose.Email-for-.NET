@@ -20,7 +20,7 @@ Directory | Description
 
 + **Website:** [www.aspose.com](https://www.aspose.com)
 + **Product Home:** [Aspose.Email for .NET](https://products.aspose.com/email/net)
-+ **Download:** [Download Aspose.Email for .NET](https://downloads.aspose.com/email/net)
++ **Download:** [Download Aspose.Email for .NET](https://www.nuget.org/packages/Aspose.Email/)
 + **Documentation:** [Aspose.Email for .NET Documentation](https://docs.aspose.com/display/emailnet/Home)
 + **Forum:** [Aspose.Email for .NET Forum](https://forum.aspose.com/c/email)
 + **Blog:** [Aspose.Email for .NET Blog](https://blog.aspose.com/category/aspose-products/aspose-email-product-family/)
