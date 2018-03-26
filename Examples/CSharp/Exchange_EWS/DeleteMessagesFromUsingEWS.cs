@@ -34,7 +34,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
                 // Delete message based on some criteria
                 if (msgInfo.Subject != null && msgInfo.Subject.ToLower().Contains("delete") == true)
                 {
-                    client.DeleteMessage(msgInfo.UniqueUri); // EWS
+                    client.DeleteItem(msgInfo.UniqueUri, DeletionOptions.DeletePermanently); // EWS
                     Console.WriteLine("Message deleted...." + msgInfo.Subject);
                 }
                 else

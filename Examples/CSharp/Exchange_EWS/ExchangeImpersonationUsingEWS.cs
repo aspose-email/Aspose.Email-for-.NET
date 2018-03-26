@@ -26,12 +26,12 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
                 try
                 {
                     foreach (ExchangeMessageInfo messageInfo in client1.ListMessages(folder))
-                        client1.DeleteMessage(messageInfo.UniqueUri);
+                        client1.DeleteItem(messageInfo.UniqueUri, DeletionOptions.DeletePermanently);
                     string subj1 = string.Format("NETWORKNET_33354 {0} {1}", "User", "User1");
                     client1.AppendMessage(folder, new MailMessage("User1@exchange.conholdate.local", "To@aspsoe.com", subj1, ""));
 
                     foreach (ExchangeMessageInfo messageInfo in client2.ListMessages(folder))
-                        client2.DeleteMessage(messageInfo.UniqueUri);
+                        client2.DeleteItem(messageInfo.UniqueUri, DeletionOptions.DeletePermanently);
                     string subj2 = string.Format("NETWORKNET_33354 {0} {1}", "User", "User2");
                     client2.AppendMessage(folder, new MailMessage("User2@exchange.conholdate.local", "To@aspose.com", subj2, ""));
 
@@ -54,9 +54,9 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
                     try
                     {
                         foreach (ExchangeMessageInfo messageInfo in client1.ListMessages(folder))
-                            client1.DeleteMessage(messageInfo.UniqueUri);
+                            client1.DeleteItem(messageInfo.UniqueUri, DeletionOptions.DeletePermanently);
                         foreach (ExchangeMessageInfo messageInfo in client2.ListMessages(folder))
-                            client2.DeleteMessage(messageInfo.UniqueUri);
+                            client2.DeleteItem(messageInfo.UniqueUri, DeletionOptions.DeletePermanently);
                     }
                     catch { }
                 }

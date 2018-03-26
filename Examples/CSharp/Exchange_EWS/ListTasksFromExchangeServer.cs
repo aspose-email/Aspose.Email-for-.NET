@@ -37,7 +37,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
             //print retrieved tasks' details
             foreach (ExchangeTask task in taskCollection)
             {
-                Console.WriteLine(task.TimezoneId);
+                Console.WriteLine(client.TimezoneId);
                 Console.WriteLine(task.Subject);
                 Console.WriteLine(task.StartDate);
                 Console.WriteLine(task.DueDate);
@@ -59,7 +59,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
             //print retrieved tasks' details
             foreach (ExchangeTask task in taskCollection)
             {
-                Console.WriteLine(task.TimezoneId);
+                Console.WriteLine(client.TimezoneId);
                 Console.WriteLine(task.Subject);
                 Console.WriteLine(task.StartDate);
                 Console.WriteLine(task.DueDate);

@@ -35,7 +35,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
                 if (task.Subject.Equals("test"))
                 {
                     //Delete task from exchange
-                    client.DeleteTask(task.UniqueUri, DeleteTaskOptions.DeletePermanently);
+                    client.DeleteItem(task.UniqueUri, DeletionOptions.DeletePermanently);
                 }
             }
             // ExEnd:DeleteTaskOnExchange

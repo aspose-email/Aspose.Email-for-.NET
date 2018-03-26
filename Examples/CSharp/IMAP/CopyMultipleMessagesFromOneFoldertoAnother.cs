@@ -47,7 +47,8 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
                         Console.WriteLine(msgInfo.Subject);
 
                     // Copy multiple messages using the CopyMessages command and Verify that messages are copied to the destination folder
-                    client.CopyMessages(new[] { uniqueId1, uniqueId2 }, folderName, true);
+                    client.CopyMessages(new[] { uniqueId1, uniqueId2 }, folderName);
+
                     client.SelectFolder(folderName);
                     msgsColl = client.ListMessages();
                     foreach (ImapMessageInfo msgInfo in msgsColl)
