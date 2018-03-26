@@ -24,7 +24,7 @@ namespace Aspose.Email.Examples.CSharp.Exchange
                 if (task.Subject.Equals("test"))
                 {
                     // Delete task from exchange
-                    client.DeleteTask(task.UniqueUri, DeleteTaskOptions.DeletePermanently);
+                    client.DeleteItem(info.UniqueUri, DeletionOptions.DeletePermanently);
                 }
             }
 

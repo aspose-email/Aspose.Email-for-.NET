@@ -31,7 +31,8 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
                 foreach (Contact contact in contacts)
                 {
                     if (contact.DisplayName.Equals(strContactToDelete))
-                        client.DeleteContact(contact);
+                        client.DeleteItem(contact.Id.EWSId, DeletionOptions.DeletePermanently);
+                    
                 }
                 client.Dispose();
                 // ExEnd:DeleteContactsFromExchangeServerUsingEWS

@@ -1,6 +1,7 @@
 ﻿using Aspose.Email.Examples.CSharp.Email.Exchange_EWS;
 using Aspose.Email.Examples.CSharp.Email.Outlook;
 using Aspose.Email.Examples.CSharp.Email.Outlook.PST;
+using CSharp.Email;
 using System;
 using System.IO;
 
@@ -75,6 +76,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SetDefaultTextEncoding.Run();
             //SetEmailHeaders.Run();
             //SetHTMLBody.Run();
+            //SetParticipantStatusOfAppointmentAttendees.Run();
             //SignEmailsWithDKIM.Run();
             //SpecifyCustomHeader.Run();
             //SpecifyRecipientAddresses.Run();
