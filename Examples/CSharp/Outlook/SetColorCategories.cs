@@ -34,7 +34,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             FollowUpManager.AddCategory(msg, "Red Category");
 
             // Retrieve the list of available categories
-            IList categories = FollowUpManager.GetCategories(msg);
+            IList<string> categories = FollowUpManager.GetCategories(msg);
 
             // Remove the specified category and then Clear all categories
             FollowUpManager.RemoveCategory(msg, "Red Category");

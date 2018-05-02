@@ -25,61 +25,61 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
             // ExStart:SetAdditionalMAPIProperties
             // PT_MV_FLOAT, PT_MV_R4, mv.float
-            IList values = new ArrayList();
+            IList<object> values = new List<object>();
             values.Add((float)1);
             values.Add((float)2);
             msg.SetProperty(new MapiProperty(0x23901004, values));
 
             // PT_MV_DOUBLE, PT_MV_R8
-            values = new ArrayList();
+            values = new List<object>();
             values.Add((double)1);
             values.Add((double)2);
             msg.SetProperty(new MapiProperty(0x23901005, values));
 
             // PT_MV_CURRENCY, mv.fixed.14.4
-            values = new ArrayList();
+            values = new List<object>();
             values.Add((decimal)123.34);
             values.Add((decimal)289.45);
             msg.SetProperty(new MapiProperty(0x23901006, values));
 
             // PT_MV_APPTIME
-            values = new ArrayList();
+            values = new List<object>();
             values.Add(30456.34);
             values.Add(40655.45);
             msg.SetProperty(new MapiProperty(0x23901007, values));
 
             // PT_MV_I8, PT_MV_LONGLONG
-            values = new ArrayList();
+            values = new List<object>();
             values.Add((long)30456);
             values.Add((long)40655);
             msg.SetProperty(new MapiProperty(0x23901014, values));
 
             // PT_MV_CLSID, mv.uuid
-            values = new ArrayList();
+            values = new List<object>();
             values.Add(Guid.NewGuid());
             values.Add(Guid.NewGuid());
             msg.SetProperty(new MapiProperty(0x23901048, values));
 
             // PT_MV_SHORT, PT_MV_I2, mv.i2
-            values = new ArrayList();
+            values = new List<object>();
             values.Add((short)1);
             values.Add((short)2);
             msg.SetProperty(new MapiProperty(0x23901002, values));
 
             // PT_MV_SYSTIME
-            values = new ArrayList();
+            values = new List<object>();
             values.Add(DateTime.Now);
             values.Add(DateTime.Now);
             msg.SetProperty(new MapiProperty(0x23901040, values));
 
             // PT_MV_BOOLEAN
-            values = new ArrayList();
+            values = new List<object>();
             values.Add(true);
             values.Add(false);
             msg.SetProperty(new MapiProperty(0x2390100b, values));
 
             // PT_MV_BINARY
-            values = new ArrayList();
+            values = new List<object>();
             values.Add(Guid.NewGuid().ToByteArray());
             values.Add(new byte[]{1,2,4,5,6,7,5,4,3,5,6,7,8,6,4,3,4,5,6,7,8,6,5,4,3,7,8,9,0,2,3,4,});
             msg.SetProperty(new MapiProperty(0x23901102, values));
@@ -89,7 +89,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             MapiMessage message = new MapiMessage("sender@test.com", "recipient@test.com", "subj", "Body of test msg");
 
             // PT_MV_LONG
-            values = new ArrayList();
+            values = new List<object>();
             values.Add((int)4);
             MapiProperty property = new MapiProperty(message.NamedPropertyMapping.GetNextAvailablePropertyId(MapiPropertyType.PT_MV_LONG), values);
             message.NamedPropertyMapping.AddNamedPropertyMapping(property, 0x00008028, new Guid("00062004-0000-0000-C000-000000000046"));
@@ -97,7 +97,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
 
             // OR you can set the custom property (with the custom name)
             message = new MapiMessage("sender@test.com", "recipient@test.com", "subj", "Body of test msg");
-            values = new ArrayList();
+            values = new List<object>();
             values.Add((int)4);
             property = new MapiProperty(message.NamedPropertyMapping.GetNextAvailablePropertyId(MapiPropertyType.PT_MV_LONG), values);
             message.AddCustomProperty(property, "customProperty");
