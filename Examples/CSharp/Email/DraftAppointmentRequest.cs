@@ -20,8 +20,10 @@ namespace Aspose.Email.Examples.CSharp.Email
 
             MailMessage message = new MailMessage(sender, recipient, string.Empty, string.Empty);
 
-            Appointment app = new Appointment(string.Empty, DateTime.Now, DateTime.Now, sender, recipient);
-            app.Method = AppointmentMethodType.Publish;
+            Appointment app = new Appointment(string.Empty, DateTime.Now, DateTime.Now, sender, recipient)
+            {
+                MethodType = AppointmentMethodType.Publish
+            };
 
             message.AddAlternateView(app.RequestApointment());
 

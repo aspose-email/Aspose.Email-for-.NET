@@ -2,6 +2,7 @@
 using Aspose.Email.Examples.CSharp.Email.Outlook;
 using Aspose.Email.Examples.CSharp.Email.Outlook.PST;
 using CSharp.Email;
+using CSharp.Exchange_EWS;
 using System;
 using System.IO;
 
@@ -280,7 +281,6 @@ namespace Aspose.Email.Examples.CSharp.Email
             //// =====================================================
 
             #region Exchange Server Examples
-
             //GetMailboxInformationFromExchangeWebServices.Run();
             //GetMailboxInformationFromExchangeServer.Run();
             //ListExchangeServerMessages.Run();
@@ -321,6 +321,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //AccessAnotherMailboxUsingExchangeClient.Run();
             //AccessAnotherMailboxUsingExchangeWebServiceClient.Run();
             //AccessCustomFolderUsingExchangeWebServiceClient.Run();
+            AutoDiscoverUsingEWS.Run();
             //ExchangeImpersonationUsingEWS.Run();
             //RetrieveFolderPermissionsUsingExchangeWebServiceClient.Run();
             //SendTaskRequestUsingIEWSClient.Run();
