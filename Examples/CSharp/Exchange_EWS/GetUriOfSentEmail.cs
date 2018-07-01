@@ -24,13 +24,14 @@ namespace CSharp.Exchange_EWS
             //ExEnd: GetUriOfSentEmail
         }
 
+        //ExStart: GetUriOfSentEmailSentHandler
         // Define an event handler method
         private static void ItemSentHandler(object sender, SentItemEventArgs e)
         {
-            //ExStart: GetUriOfSentEmailSentHandler
+            
             // Now we can get an id of sent email, which was saved in Sent Items folder
             string id = e.SentFolderItemId;
-            //ExEnd: GetUriOfSentEmailSentHandler
         }
+        //ExEnd: GetUriOfSentEmailSentHandler
     }
 }
