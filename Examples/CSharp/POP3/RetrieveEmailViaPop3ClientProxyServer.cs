@@ -23,7 +23,7 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
             string proxyAddress = "192.168.203.142";
             int proxyPort = 1080;
             SocksProxy proxy = new SocksProxy(proxyAddress, proxyPort, SocksVersion.SocksV5);
-            client.SocksProxy = proxy;
+            client.Proxy = proxy;
 
             try
             {

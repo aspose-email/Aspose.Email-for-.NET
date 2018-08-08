@@ -26,7 +26,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             SocksProxy proxy = new SocksProxy(proxyAddress, proxyPort, SocksVersion.SocksV5);
 
             // Set the proxy
-            client.SocksProxy = proxy;
+            client.Proxy = proxy;
            
             try
             {

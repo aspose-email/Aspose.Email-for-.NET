@@ -41,12 +41,13 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                     ////////////////// RETREIVE THE MESSAGES USING PAGING SUPPORT////////////////////////////////////
 
                     List<ImapPageInfo> pages = new List<ImapPageInfo>();
-                    ImapPageInfo pageInfo = client.ListMessagesByPage(itemsPerPage);
+                    PageSettings pageSettings = new PageSettings();
+                    ImapPageInfo pageInfo = client.ListMessagesByPage(itemsPerPage, 0, pageSettings);
                     Console.WriteLine(pageInfo.TotalCount);
                     pages.Add(pageInfo);
                     while (!pageInfo.LastPage)
                     {
-                        pageInfo = client.ListMessagesByPage(pageInfo.NextPage);
+                        pageInfo = client.ListMessagesByPage(itemsPerPage, pageInfo.NextPage.PageOffset, pageSettings);
                         pages.Add(pageInfo);
                     }
                     int retrievedItems = 0;

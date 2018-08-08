@@ -23,7 +23,7 @@ namespace Aspose.Email.Examples.CSharp.Email.SMTP
             string proxyAddress = "192.168.203.142"; // proxy address
             int proxyPort = 1080; // proxy port
             SocksProxy proxy = new SocksProxy(proxyAddress, proxyPort, SocksVersion.SocksV5);
-            client.SocksProxy = proxy;
+            client.Proxy = proxy;
             client.Send(new MailMessage("sender@domain.com", "receiver@domain.com", "Sending Email via proxy", "Implement socks proxy protocol for versions 4, 4a, 5 (only Username/Password authentication)"));
             // ExEnd:SendEmailViaProxyServer
         }

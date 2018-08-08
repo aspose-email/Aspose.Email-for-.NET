@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Aspose.Email.Clients;
 using Aspose.Email.Clients.Imap;
 using Aspose.Email.Mime;
 using Aspose.Email.Tools.Search;
@@ -43,6 +44,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                         client.AppendMessage(ImapFolderInfo.InBox, message);
                     }
 
+                    client.SelectFolder("Inbox");
                     ImapQueryBuilder iqb = new ImapQueryBuilder();
                     iqb.Body.Contains(body);
                     MailQuery query = iqb.GetQuery();
@@ -52,9 +54,10 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
                     Console.WriteLine(totalMessageInfoCol.Count);
 
                     //////////////////////////////////////////////////////
-
+                     
                     List<ImapPageInfo> pages = new List<ImapPageInfo>();
-                    ImapPageInfo pageInfo = client.ListMessagesByPage(ImapFolderInfo.InBox, query, itemsPerPage);
+                    PageSettings pageSettings = new PageSettings();
+                    ImapPageInfo pageInfo = client.ListMessagesByPage(ImapFolderInfo.InBox, query, itemsPerPage);                    
                     pages.Add(pageInfo);
                     while (!pageInfo.LastPage)
                     {

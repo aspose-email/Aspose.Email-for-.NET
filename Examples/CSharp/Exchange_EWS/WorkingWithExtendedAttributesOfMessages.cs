@@ -53,7 +53,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
                     string uri = client.AppendMessage(message);
 
                     //Fetch the message from server
-                    MapiMessage mapiMessage = client.FetchMapiMessage(uri, new PropertyDescriptor[] { pd });
+                    MapiMessage mapiMessage = client.FetchItem(uri, new PropertyDescriptor[] { pd });
 
                     //Retreive the value from Message
                     string fetchedValue = mapiMessage.NamedProperties[pd].GetString();

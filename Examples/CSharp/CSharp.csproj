@@ -39,11 +39,11 @@
     <Reference Include="Aspose.Cells, Version=18.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\Aspose.Cells.18.6.0\lib\net40\Aspose.Cells.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Email, Version=18.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Email.18.6.0\lib\net40\Aspose.Email.dll</HintPath>
+    <Reference Include="Aspose.Email, Version=18.7.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.18.7.0\lib\net40\Aspose.Email.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Words, Version=18.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Words.18.6.0\lib\net40\Aspose.Words.dll</HintPath>
+    <Reference Include="Aspose.Words, Version=18.8.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Words.18.8.0\lib\net40\Aspose.Words.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Email\AddNewTNEFAttachments.cs" />
     <Compile Include="Email\ChangeEmailAddress.cs" />
+    <Compile Include="Email\ChangeFontWhileConvertingToMHT.cs" />
     <Compile Include="Email\CheckBouncedMessage.cs" />
     <Compile Include="Email\CheckMessageForEncryption.cs" />
     <Compile Include="Email\ConvertMHTMLWithOptionalSettings.cs" />
@@ -118,8 +119,10 @@
     <Compile Include="Exchange_EWS\ListTasksFromExchangeServer.cs" />
     <Compile Include="Exchange_EWS\WorkingWithExtendedAttributesOfMessages.cs" />
     <Compile Include="Exchange_EWS\WriteMultipleEventsToICS.cs" />
+    <Compile Include="IMAP\AccessMailboxViaHTTPProxy.cs" />
     <Compile Include="IMAP\SetCustomFlag.cs" />
     <Compile Include="Licensing\ApplyMeteredLicense.cs" />
+    <Compile Include="Outlook\ConvertMapiTaskToMHT.cs" />
     <Compile Include="Outlook\ModifyDeleteOccurrenceInRecurrence.cs" />
     <Compile Include="Exchange_EWS\ResolveContactsUsingContactName.cs" />
     <Compile Include="Exchange_EWS\RetreiveExtAttributesForCalendarItems.cs" />
@@ -529,6 +532,7 @@
     <Compile Include="IMAP\ListingMessagesRecursively.cs" />
     <Compile Include="IMAP\ListMessagesWithMaximumNumberOfMessages.cs" />
     <Compile Include="IMAP\SavingMessagesFromIMAPServer.cs" />
+    <Compile Include="POP3\AccessMailboxViaHttpProxy.cs" />
     <Compile Include="POP3\ApplyCaseSensitiveFilters.cs" />
     <Compile Include="POP3\BuildComplexQueries.cs" />
     <Compile Include="POP3\CancelDeletes.cs" />
@@ -560,6 +564,7 @@
     <Compile Include="SMTP\RowWiseMailMerge.cs" />
     <Compile Include="SMTP\SendEmailsSynchronously.cs" />
     <Compile Include="SMTP\ForwardEmailWithoutUsingMailMessage.cs" />
+    <Compile Include="SMTP\SendEmailViaHttpProxy.cs" />
     <Compile Include="SMTP\SendingEmailWithAlternateText.cs" />
     <Compile Include="SMTP\SignAMessage.cs" />
     <Compile Include="SMTP\SMTPClientActivityLogging.cs" />
