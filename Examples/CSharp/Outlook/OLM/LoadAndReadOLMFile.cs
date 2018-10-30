@@ -11,7 +11,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook.OLM
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
             string dst = dataDir + "OutlookforMac.olm";
-
             // ExStart:LoadAndReadOLMFile
             using (OlmStorage storage = new OlmStorage(dst))
             {
