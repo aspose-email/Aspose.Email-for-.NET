@@ -4,14 +4,14 @@ using Aspose.Email.Mapi;
 
 namespace Aspose.Email.Examples.CSharp.Email.Outlook.OLM
 {
-    class LoadOLMAddSubfolders
+    class LoadAndReadOLMFile
     {
         public static void Run()
         {
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Outlook();
             string dst = dataDir + "OutlookforMac.olm";
-
+            // ExStart:LoadAndReadOLMFile
             using (OlmStorage storage = new OlmStorage(dst))
             {
                 foreach (OlmFolder folder in storage.FolderHierarchy)
@@ -35,7 +35,7 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook.OLM
                     }
                 }
             }
-
+            // ExEnd:LoadAndReadOLMFile
         }
     }
 }

@@ -371,7 +371,7 @@
     <Compile Include="Outlook\MyPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Outlook\OLM\LoadOLMAddSubfolders.cs" />
+    <Compile Include="Outlook\OLM\LoadAndReadOLMFile.cs" />
     <Compile Include="Outlook\ParseOutlookMessageFile.cs" />
     <Compile Include="Outlook\GetTheTextAndRTFBodies.cs" />
     <Compile Include="Outlook\PST\ConvertingOSTToPST.cs" />
