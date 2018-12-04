@@ -25,6 +25,9 @@ namespace Aspose.Email.Examples.CSharp.Email.SMTP
                 "from@domain.com",                      // Organizer
                 "attendees@domain.com");                // Attendees
 
+            appointment.CreatedDate = new DateTime(2018, 09, 15, 0, 0, 0, DateTimeKind.Utc);
+            appointment.LastModifiedDate = new DateTime(2018, 09, 16, 0, 0, 0, DateTimeKind.Utc);
+
             // Save the appointment to disk in ICS format
             appointment.Save(dstEmail, AppointmentSaveFormat.Ics);
             Console.WriteLine("Appointment created and saved to disk successfully.");
@@ -42,6 +45,8 @@ namespace Aspose.Email.Examples.CSharp.Email.SMTP
             Console.WriteLine("End date: " + loadedAppointment.EndDate);
             Console.WriteLine("Organizer: " + appointment.Organizer);
             Console.WriteLine("Attendees: " + appointment.Attendees);
+            Console.WriteLine("Created Date: " + appointment.CreatedDate);
+            Console.WriteLine("Last Modified Date: " + appointment.LastModifiedDate);
             Console.WriteLine(Environment.NewLine + "Appointment loaded successfully from " + dstEmail);
             // ExEnd:LoadAppointment
         }
