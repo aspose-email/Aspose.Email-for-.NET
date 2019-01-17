@@ -225,6 +225,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //MergeFolderFromAnotherPSTFile.Run();
             //LoadingPSTFile.Run();
             //ModifyDeleteOccurrenceInRecurrence.Run();
+            CreateFolderHierarchyUsingStringNotation.Run();
 
             #endregion
 
@@ -321,7 +322,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //AccessAnotherMailboxUsingExchangeClient.Run();
             //AccessAnotherMailboxUsingExchangeWebServiceClient.Run();
             //AccessCustomFolderUsingExchangeWebServiceClient.Run();
-            AutoDiscoverUsingEWS.Run();
+            //AutoDiscoverUsingEWS.Run();
             //ExchangeImpersonationUsingEWS.Run();
             //RetrieveFolderPermissionsUsingExchangeWebServiceClient.Run();
             //SendTaskRequestUsingIEWSClient.Run();
