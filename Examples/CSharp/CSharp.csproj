@@ -39,11 +39,11 @@
     <Reference Include="Aspose.Cells, Version=19.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\packages\Aspose.Cells.19.2.0\lib\net40\Aspose.Cells.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Email, Version=19.1.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Email.19.1.1\lib\net40\Aspose.Email.dll</HintPath>
+    <Reference Include="Aspose.Email, Version=19.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.19.2.0\lib\net40\Aspose.Email.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Words, Version=19.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Words.19.2.0\lib\net40\Aspose.Words.dll</HintPath>
+    <Reference Include="Aspose.Words, Version=19.3.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Words.19.3.0\lib\net40\Aspose.Words.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -94,6 +94,7 @@
     <Compile Include="Email\UpdateTNEFAttachments.cs" />
     <Compile Include="Email\UseMailMessageFeatures.cs" />
     <Compile Include="Email\ValidatingEmails.cs" />
+    <Compile Include="Exchange_EWS\MoveItemsToInPlaceArchive.cs" />
     <Compile Include="Exchange_EWS\AbortPSTToExchangeServerOperation.cs" />
     <Compile Include="Exchange_EWS\AddContactsToExchangeServerUsingEWS.cs" />
     <Compile Include="Exchange_EWS\AutoDiscoverUsingEWS.cs" />
