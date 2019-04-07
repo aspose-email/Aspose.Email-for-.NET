@@ -1,4 +1,5 @@
 ﻿using Aspose.Email.Examples.CSharp.Email.Exchange_EWS;
+using Aspose.Email.Examples.CSharp.Email.IMAP;
 using Aspose.Email.Examples.CSharp.Email.Outlook;
 using Aspose.Email.Examples.CSharp.Email.Outlook.PST;
 using CSharp.Email;
@@ -373,7 +374,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //GetFolderTypeInformationUsingEWS.Run();
             //GetMessageTypeFromExchangeMessageInfo.Run();
             //WorkingWithExtendedAttributesOfMessages.Run();
-            MoveItemsToInPlaceArchive.Run();
+            //MoveItemsToInPlaceArchive.Run();
             #endregion
 
             //// =====================================================
@@ -458,6 +459,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //BuildingComplexQueries.Run();
             //CaseSensitiveEmailsFiltering.Run();
             //SpecifyEncodingForQueryBuilder.Run();
+            //ChangeOrderOfEmails.Run();
 
             //// =====================================================
             //// =====================================================
