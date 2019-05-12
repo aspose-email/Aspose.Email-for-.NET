@@ -4,6 +4,7 @@ using Aspose.Email.Examples.CSharp.Email.Outlook;
 using Aspose.Email.Examples.CSharp.Email.Outlook.PST;
 using CSharp.Email;
 using CSharp.Exchange_EWS;
+using CSharp.IMAP;
 using System;
 using System.IO;
 
@@ -227,6 +228,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //LoadingPSTFile.Run();
             //ModifyDeleteOccurrenceInRecurrence.Run();
             //CreateFolderHierarchyUsingStringNotation.Run();
+            CreateV30Contact.Run();
 
             #endregion
 
@@ -460,6 +462,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //CaseSensitiveEmailsFiltering.Run();
             //SpecifyEncodingForQueryBuilder.Run();
             //ChangeOrderOfEmails.Run();
+            FetchGroupMessages.Run();
+            GetListUnsubscribeHeader.Run();
 
             //// =====================================================
             //// =====================================================
