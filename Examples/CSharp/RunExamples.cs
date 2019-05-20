@@ -1,7 +1,9 @@
 ﻿using Aspose.Email.Examples.CSharp.Email.Exchange_EWS;
 using Aspose.Email.Examples.CSharp.Email.IMAP;
+using Aspose.Email.Examples.CSharp.Email.Knowledge.Base;
 using Aspose.Email.Examples.CSharp.Email.Outlook;
 using Aspose.Email.Examples.CSharp.Email.Outlook.PST;
+using Aspose.Email.Examples.CSharp.Email.POP3;
 using CSharp.Email;
 using CSharp.Exchange_EWS;
 using CSharp.IMAP;
@@ -185,6 +187,10 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SetMonthlyNeverEndRecurrence.Run();
             //YearlyEndAfterDate.Run();
             //SetYearlyNeverEndRecurrence.Run();
+            //CreateV30Contact.Run();
+            //ConvertAppointmentEMLToMSGWithHTMLBody.Run();
+
+
 
             // Working with Outlook Personal Storage (PST) files
             //SplitSinglePSTInToMultiplePST.Run();
@@ -228,7 +234,6 @@ namespace Aspose.Email.Examples.CSharp.Email
             //LoadingPSTFile.Run();
             //ModifyDeleteOccurrenceInRecurrence.Run();
             //CreateFolderHierarchyUsingStringNotation.Run();
-            CreateV30Contact.Run();
 
             #endregion
 
@@ -422,6 +427,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //BuildComplexQueries.Run();
             //ApplyCaseSensitiveFilters.Run();
             //ListMessagesAsynchronouslyWithMailQuery.Run();
+            //Pop3FetchGroupMessages.Run();
+            //Pop3ListMessagesWithMultiConnection.Run();
 
             //// =====================================================
             //// =====================================================
@@ -462,8 +469,11 @@ namespace Aspose.Email.Examples.CSharp.Email
             //CaseSensitiveEmailsFiltering.Run();
             //SpecifyEncodingForQueryBuilder.Run();
             //ChangeOrderOfEmails.Run();
-            FetchGroupMessages.Run();
-            GetListUnsubscribeHeader.Run();
+            //ImapFetchGroupMessages.Run();
+            //GetListUnsubscribeHeader.Run();
+            //ImapListMessagesWithMultiConnection.Run();
+            //ImapSpecialUseMailboxes.Run();
+            //ImapGroupAppendWithMultiConnection.Run();
 
             //// =====================================================
             //// =====================================================
@@ -508,6 +518,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SMTPClientActivityLogging.Run();
             //UsingDetachedCertificate.Run();
             //ForwardEmailWithoutUsingMailMessage.Run();
+            //SendWithMultiConnection.Run();
 
             #endregion
 

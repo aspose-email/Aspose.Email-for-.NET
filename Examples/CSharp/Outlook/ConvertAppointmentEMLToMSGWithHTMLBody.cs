@@ -12,7 +12,7 @@ using System;
 
 namespace Aspose.Email.Examples.CSharp.Email.Outlook
 {
-    class CreateV30Contact
+    class ConvertAppointmentEMLToMSGWithHTMLBody
     {
         public static void Run()
         {
@@ -20,19 +20,22 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // Outlook directory
             string dataDir = RunExamples.GetDataDir_Outlook();
 
-            MapiContact contact = new MapiContact();
-            contact.NameInfo = new MapiContactNamePropertySet("Jane", "A.", "Buell");
-            contact.ProfessionalInfo = new MapiContactProfessionalPropertySet("Aspose Pty Ltd", "Social work assistant");
-            contact.PersonalInfo.PersonalHomePage = "Aspose.com";
-            contact.ElectronicAddresses.Email1 = new MapiContactElectronicAddress("test@test.com");
-            contact.Telephones.HomeTelephoneNumber = "06605040000";
+            MailMessage mailMessage = MailMessage.Load(dataDir + "TestAppointment.eml");
 
-            VCardSaveOptions opt = new VCardSaveOptions();
-            opt.Version = VCardVersion.V30;
-            contact.Save(dataDir + "V30.vcf", opt);
+            MapiConversionOptions conversionOptions = new MapiConversionOptions();
+            conversionOptions.Format = OutlookMessageFormat.Unicode;
+
+            // default value for ForcedRtfBodyForAppointment is true
+            conversionOptions.ForcedRtfBodyForAppointment = false;
+
+            MapiMessage mapiMessage = MapiMessage.FromMailMessage(mailMessage, conversionOptions);
+
+            Console.WriteLine("Body Type: " + mapiMessage.BodyType);
+
+            mapiMessage.Save(dataDir + "TestAppointment_out.msg");
             // ExEnd:1
 
-            Console.WriteLine("CreateV30Contact executed successfully.");
+            Console.WriteLine("ConvertAppointmentEMLToMSGWithHTMLBody executed successfully.");
         }
     }
 }

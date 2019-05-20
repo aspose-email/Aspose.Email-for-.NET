@@ -9,7 +9,7 @@ using System.Text;
 
 namespace CSharp.IMAP
 {
-    public class FetchGroupMessages
+    public class ImapFetchGroupMessages
     {
         public static void Run()
         {
@@ -28,13 +28,13 @@ namespace CSharp.IMAP
             string[] uniqueIdAr = messageInfoCol.Select((ImapMessageInfo mi) => mi.UniqueId).ToArray();
 
             IList<MailMessage> fetchedMessagesBySNumMC = imapClient.FetchMessages(sequenceNumberAr);
-            Console.WriteLine("FetchMessages-sequenceNumberAr Count: " + messageInfoCol.Count);
+            Console.WriteLine("FetchMessages-sequenceNumberAr Count: " + fetchedMessagesBySNumMC.Count);
 
             IList<MailMessage> fetchedMessagesByUidMC = imapClient.FetchMessages(uniqueIdAr);
-            Console.WriteLine("FetchMessages-uniqueIdAr Count: " + messageInfoCol.Count);
+            Console.WriteLine("FetchMessages-uniqueIdAr Count: " + fetchedMessagesByUidMC.Count);
             //ExEnd: 1
 
-            Console.WriteLine("FetchGroupMessages executed successfully.");
+            Console.WriteLine("ImapFetchGroupMessages executed successfully.");
         }
     }
 }

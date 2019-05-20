@@ -10,7 +10,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
     {
         public static void Run()
         {
-            // ExStart:ChangeOrderOfEmails
+            // ExStart:1
             ImapClient imapClient = new ImapClient();
             imapClient.Host = "<HOST>";
             imapClient.Port = 993;
@@ -19,7 +19,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             imapClient.SupportedEncryption = EncryptionProtocols.Tls;
             imapClient.SecurityOptions = SecurityOptions.SSLImplicit;
 
-            PageSettings pageSettings = new PageSettings { AscendingSorting = true };
+            PageSettings pageSettings = new PageSettings { AscendingSorting = false };
             ImapPageInfo pageInfo = imapClient.ListMessagesByPage(5, pageSettings);
             ImapMessageInfoCollection messages = pageInfo.Items;
 
@@ -27,7 +27,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             {
                 Console.WriteLine(message.Subject + " -> " + message.Date.ToString());
             }
-            // ExEnd:ChangeOrderOfEmails
+            // ExEnd:1
         }
     }
 }

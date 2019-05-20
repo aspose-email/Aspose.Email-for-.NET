@@ -121,11 +121,17 @@
     <Compile Include="Exchange_EWS\WorkingWithExtendedAttributesOfMessages.cs" />
     <Compile Include="Exchange_EWS\WriteMultipleEventsToICS.cs" />
     <Compile Include="IMAP\GetListUnsubscribeHeader.cs" />
-    <Compile Include="IMAP\FetchGroupMessages.cs" />
+    <Compile Include="IMAP\ImapGroupAppendWithMultiConnection.cs" />
+    <Compile Include="IMAP\ImapReadOnlyMode.cs" />
+    <Compile Include="IMAP\ImapSpecialUseMailboxes.cs" />
+    <Compile Include="IMAP\ImapListMessagesWithMultiConnection.cs" />
+    <Compile Include="IMAP\ImapFetchGroupMessages.cs" />
     <Compile Include="IMAP\AccessMailboxViaHTTPProxy.cs" />
     <Compile Include="IMAP\ChangeOrderOfEmails.cs" />
     <Compile Include="IMAP\SetCustomFlag.cs" />
+    <Compile Include="Knowledge-Base\UsageOfConnectionAsgmtMode.cs" />
     <Compile Include="Licensing\ApplyMeteredLicense.cs" />
+    <Compile Include="Outlook\ConvertAppointmentEMLToMSGWithHTMLBody.cs" />
     <Compile Include="Outlook\CreateV30Contact.cs" />
     <Compile Include="Outlook\ConvertMapiTaskToMHT.cs" />
     <Compile Include="Outlook\ModifyDeleteOccurrenceInRecurrence.cs" />
@@ -543,6 +549,8 @@
     <Compile Include="POP3\ApplyCaseSensitiveFilters.cs" />
     <Compile Include="POP3\BuildComplexQueries.cs" />
     <Compile Include="POP3\CancelDeletes.cs" />
+    <Compile Include="POP3\Pop3ListMessagesWithMultiConnection.cs" />
+    <Compile Include="POP3\Pop3FetchGroupMessages.cs" />
     <Compile Include="POP3\ConnectingToPOP3.cs" />
     <Compile Include="POP3\DeleteAllEmails.cs" />
     <Compile Include="POP3\DeleteEmailByIndex.cs" />
@@ -566,6 +574,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SMTP\AppointmentInICSFormat.cs" />
     <Compile Include="Email\SignEmailsWithDKIM.cs" />
+    <Compile Include="SMTP\SendWithMultiConnection.cs" />
     <Compile Include="SMTP\LoadingEMLFilesFromDisk.cs" />
     <Compile Include="SMTP\RetreiveServerExtensions.cs" />
     <Compile Include="SMTP\RowWiseMailMerge.cs" />
