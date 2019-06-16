@@ -2,6 +2,7 @@
 using Aspose.Email.Examples.CSharp.Email.IMAP;
 using Aspose.Email.Examples.CSharp.Email.Knowledge.Base;
 using Aspose.Email.Examples.CSharp.Email.Outlook;
+using Aspose.Email.Examples.CSharp.Email.Outlook.OLM;
 using Aspose.Email.Examples.CSharp.Email.Outlook.PST;
 using Aspose.Email.Examples.CSharp.Email.POP3;
 using CSharp.Email;
@@ -234,6 +235,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //LoadingPSTFile.Run();
             //ModifyDeleteOccurrenceInRecurrence.Run();
             //CreateFolderHierarchyUsingStringNotation.Run();
+            //GetFoldersCreatedByUserOnly.Run();
+            //GetFolderPathInOLM.Run();
 
             #endregion
 
@@ -474,6 +477,10 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ImapListMessagesWithMultiConnection.Run();
             //ImapSpecialUseMailboxes.Run();
             //ImapGroupAppendWithMultiConnection.Run();
+            //ImapBackupOperation.Run();
+            //ImapBackupOperationWithMultiConnection.Run();
+            //ImapRestoreOperation.Run();
+            //ImapRestoreOperationWithMultiConnection.Run();
 
             //// =====================================================
             //// =====================================================
@@ -519,6 +526,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //UsingDetachedCertificate.Run();
             //ForwardEmailWithoutUsingMailMessage.Run();
             //SendWithMultiConnection.Run();
+            //UseDiskCacheAndSendingQueue.Run();
 
             #endregion
 

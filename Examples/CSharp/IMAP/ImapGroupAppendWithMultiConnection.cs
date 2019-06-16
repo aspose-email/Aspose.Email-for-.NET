@@ -4,8 +4,6 @@ using Aspose.Email.Clients.Base;
 using Aspose.Email.Clients.Imap;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CSharp.IMAP
 {
@@ -34,7 +32,7 @@ namespace CSharp.IMAP
             }
 
             imapClient.ConnectionsQuantity = 5;
-            imapClient.UseMultyConnection = MultyConnectionMode.Enable;
+            imapClient.UseMultiConnection = MultiConnectionMode.Enable;
             imapClient.AppendMessages(messages);
             //ExEnd: 1
 

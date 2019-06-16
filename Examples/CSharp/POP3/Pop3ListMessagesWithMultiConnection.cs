@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Aspose.Email.Clients;
 using Aspose.Email.Clients.Pop3;
 
@@ -19,12 +17,12 @@ namespace Aspose.Email.Examples.CSharp.Email.POP3
             pop3Client.Password = "<PASSWORD>";
 
             pop3Client.ConnectionsQuantity = 5;
-            pop3Client.UseMultyConnection = MultyConnectionMode.Enable;
+            pop3Client.UseMultiConnection = MultiConnectionMode.Enable;
             DateTime multiConnectionModeStartTime = DateTime.Now;
             Pop3MessageInfoCollection messageInfoCol1 = pop3Client.ListMessages();
             TimeSpan multiConnectionModeTimeSpan = DateTime.Now - multiConnectionModeStartTime;
 
-            pop3Client.UseMultyConnection = MultyConnectionMode.Disable;
+            pop3Client.UseMultiConnection = MultiConnectionMode.Disable;
             DateTime singleConnectionModeStartTime = DateTime.Now;
             Pop3MessageInfoCollection messageInfoCol2 = pop3Client.ListMessages();
             TimeSpan singleConnectionModeTimeSpan = DateTime.Now - singleConnectionModeStartTime;

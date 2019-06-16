@@ -36,14 +36,14 @@
     <StartupObject>Aspose.Email.Examples.CSharp.Email.RunExamples</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Cells, Version=19.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Cells.19.4.0\lib\net40\Aspose.Cells.dll</HintPath>
+    <Reference Include="Aspose.Cells, Version=19.5.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Cells.19.5.0\lib\net40\Aspose.Cells.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Email, Version=19.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Email.19.4.0\lib\net40\Aspose.Email.dll</HintPath>
+    <Reference Include="Aspose.Email, Version=19.5.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.19.5.0\lib\net40\Aspose.Email.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Words, Version=19.5.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Words.19.5.0\lib\net40\Aspose.Words.dll</HintPath>
+    <Reference Include="Aspose.Words, Version=19.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Words.19.6.0\lib\net40\Aspose.Words.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -120,6 +120,10 @@
     <Compile Include="Exchange_EWS\ListTasksFromExchangeServer.cs" />
     <Compile Include="Exchange_EWS\WorkingWithExtendedAttributesOfMessages.cs" />
     <Compile Include="Exchange_EWS\WriteMultipleEventsToICS.cs" />
+    <Compile Include="IMAP\ImapBackupOperationWithMultiConnection.cs" />
+    <Compile Include="IMAP\ImapRestoreOperationWithMultiConnection.cs" />
+    <Compile Include="IMAP\ImapRestoreOperation.cs" />
+    <Compile Include="IMAP\ImapBackupOperation.cs" />
     <Compile Include="IMAP\GetListUnsubscribeHeader.cs" />
     <Compile Include="IMAP\ImapGroupAppendWithMultiConnection.cs" />
     <Compile Include="IMAP\ImapReadOnlyMode.cs" />
@@ -381,12 +385,14 @@
     <Compile Include="Outlook\MyPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Outlook\OLM\GetFolderPathInOLM.cs" />
     <Compile Include="Outlook\OLM\LoadAndReadOLMFile.cs" />
     <Compile Include="Outlook\ParseOutlookMessageFile.cs" />
     <Compile Include="Outlook\GetTheTextAndRTFBodies.cs" />
     <Compile Include="Outlook\PST\CreateFolderHierarchyUsingStringNotation.cs" />
     <Compile Include="Outlook\PST\ConvertingOSTToPST.cs" />
     <Compile Include="Outlook\PST\LoadingPSTFile.cs" />
+    <Compile Include="Outlook\PST\GetFoldersCreatedByUserOnly.cs" />
     <Compile Include="Outlook\PST\ReadingOSTFiles.cs" />
     <Compile Include="Outlook\ReadEmbeddedMessageFromAttachment.cs" />
     <Compile Include="Outlook\ReadingDistributionListFromPST.cs" />
@@ -574,6 +580,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SMTP\AppointmentInICSFormat.cs" />
     <Compile Include="Email\SignEmailsWithDKIM.cs" />
+    <Compile Include="SMTP\UseDiskCacheAndSendingQueue.cs" />
     <Compile Include="SMTP\SendWithMultiConnection.cs" />
     <Compile Include="SMTP\LoadingEMLFilesFromDisk.cs" />
     <Compile Include="SMTP\RetreiveServerExtensions.cs" />

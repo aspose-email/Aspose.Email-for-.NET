@@ -1,11 +1,7 @@
-﻿using Aspose.Email;
-using Aspose.Email.Clients;
+﻿using Aspose.Email.Clients;
 using Aspose.Email.Clients.Base;
 using Aspose.Email.Clients.Imap;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CSharp.IMAP
 {
@@ -24,12 +20,12 @@ namespace CSharp.IMAP
 
             imapClient.SelectFolder("Inbox");
             imapClient.ConnectionsQuantity = 5;
-            imapClient.UseMultyConnection = MultyConnectionMode.Enable;
+            imapClient.UseMultiConnection = MultiConnectionMode.Enable;
             DateTime multiConnectionModeStartTime = DateTime.Now;
             ImapMessageInfoCollection messageInfoCol1 = imapClient.ListMessages(true);
             TimeSpan multiConnectionModeTimeSpan = DateTime.Now - multiConnectionModeStartTime;
 
-            imapClient.UseMultyConnection = MultyConnectionMode.Disable;
+            imapClient.UseMultiConnection = MultiConnectionMode.Disable;
             DateTime singleConnectionModeStartTime = DateTime.Now;
             ImapMessageInfoCollection messageInfoCol2 = imapClient.ListMessages(true);
             TimeSpan singleConnectionModeTimeSpan = DateTime.Now - singleConnectionModeStartTime;

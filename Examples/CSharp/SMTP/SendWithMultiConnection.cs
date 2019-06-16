@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Aspose.Email.Clients;
 using Aspose.Email.Clients.Base;
 using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Mime;
 
 namespace Aspose.Email.Examples.CSharp.Email.IMAP
 {
@@ -32,7 +31,7 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
             }
 
             smtpClient.ConnectionsQuantity = 5;
-            smtpClient.UseMultyConnection = MultyConnectionMode.Enable;
+            smtpClient.UseMultiConnection = MultiConnectionMode.Enable;
             smtpClient.Send(messages);
             //ExEnd: 1
 
