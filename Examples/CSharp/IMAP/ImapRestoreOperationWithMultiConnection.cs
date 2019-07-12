@@ -26,8 +26,8 @@ namespace Aspose.Email.Examples.CSharp.Email.IMAP
 
             RestoreSettings settings = new RestoreSettings();
             settings.Recursive = true;
-            PersonalStorage pst111 = PersonalStorage.FromFile(dataDir + @"\Outlook.pst");
-            imapClient.Restore(pst111, settings);
+            PersonalStorage pst = PersonalStorage.FromFile(dataDir + @"\Outlook.pst");
+            imapClient.Restore(pst, settings);
             //ExEnd:1
         }
     }

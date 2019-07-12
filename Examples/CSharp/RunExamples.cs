@@ -89,6 +89,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //UpdateTNEFAttachments.Run();
             //UseMailMessageFeatures.Run();
             //ValidatingEmails.Run();
+            //GetHTMLBodyAsPlainText.Run();
 
             #endregion
 
@@ -237,6 +238,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //CreateFolderHierarchyUsingStringNotation.Run();
             //GetFoldersCreatedByUserOnly.Run();
             //GetFolderPathInOLM.Run();
+            //LoadAndReadOLMFile.Run();
 
             #endregion
 

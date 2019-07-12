@@ -1,0 +1,40 @@
+From: Aspose@test.com
+To: Aspose2@test.com
+Subject: HTML URL Test(Aspose.Email Evaluation)
+Message-ID: <6e34772f-140f-1b5a-da12-7003520b8c27@test.com>
+Date: Fri, 12 Jul 2019 21:11:34 +0900
+MIME-Version: 1.0
+Content-Language: en-US
+Content-Type: multipart/alternative;
+ boundary="--_=_NextPart0_22149fce-723f-40bc-b4dd-50ab7e678120"
+
+This is a multi-part message in MIME format.
+
+----_=_NextPart0_22149fce-723f-40bc-b4dd-50ab7e678120
+Content-Type: text/plain; charset="utf-8"; format="flowed"
+Content-Transfer-Encoding: base64
+
+VGhpcyBpcyBhbiBldmFsdWF0aW9uIGNvcHkgb2YgQXNwb3NlLkVtYWlsIGZvciAuTkVUIA0KIGh0
+dHA6Ly93d3cuYXNwb3NlLmNvbS9jb3Jwb3JhdGUvcHVyY2hhc2UvZW5kLXVzZXItbGljZW5zZS1h
+Z3JlZW1lbnQuYXNweDogVmlldyBFVUxBIE9ubGluZQ0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tDQoNClRoaXMgaXMgYSB0ZXN0IG1lc3NhZ2UuDQoNCg==
+----_=_NextPart0_22149fce-723f-40bc-b4dd-50ab7e678120
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+  <head>
+    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf-8=
+">
+  </head>
+  <body text=3D"#000000" bgcolor=3D"#FFFFFF"><br><center>This is an evaluat=
+ion copy of Aspose=2EEmail for =2ENET</center><br><a href=3D"http://www=2Ea=
+spose=2Ecom/corporate/purchase/end-user-license-agreement=2Easpx"><center>V=
+iew EULA Online</center></a><hr>
+    <p>This is a test message=2E</p>
+    <p><a href=3D"http://example=2Ecom/">http://example=2Ecom/</a></p>
+  </body>
+</html>
+
+----_=_NextPart0_22149fce-723f-40bc-b4dd-50ab7e678120--
+
