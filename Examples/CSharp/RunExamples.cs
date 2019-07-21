@@ -90,6 +90,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //UseMailMessageFeatures.Run();
             //ValidatingEmails.Run();
             //GetHTMLBodyAsPlainText.Run();
+            //ChangeProdIdOfICS.Run();
 
             #endregion
 

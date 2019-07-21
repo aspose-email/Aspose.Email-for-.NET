@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email\ChangeProdIdOfICS.cs" />
     <Compile Include="Email\AddNewTNEFAttachments.cs" />
     <Compile Include="Email\ChangeEmailAddress.cs" />
     <Compile Include="Email\ChangeFontWhileConvertingToMHT.cs" />
