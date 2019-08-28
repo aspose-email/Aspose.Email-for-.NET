@@ -138,7 +138,6 @@
     <Compile Include="IMAP\AccessMailboxViaHTTPProxy.cs" />
     <Compile Include="IMAP\ChangeOrderOfEmails.cs" />
     <Compile Include="IMAP\SetCustomFlag.cs" />
-    <Compile Include="Knowledge-Base\UsageOfConnectionAsgmtMode.cs" />
     <Compile Include="Licensing\ApplyMeteredLicense.cs" />
     <Compile Include="Outlook\ConvertAppointmentEMLToMSGWithHTMLBody.cs" />
     <Compile Include="Outlook\CreateV30Contact.cs" />
