@@ -36,14 +36,14 @@
     <StartupObject>Aspose.Email.Examples.CSharp.Email.RunExamples</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Cells, Version=19.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Cells.19.6.0\lib\net40\Aspose.Cells.dll</HintPath>
+    <Reference Include="Aspose.Cells, Version=19.8.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Cells.19.8.0\lib\net40\Aspose.Cells.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Email, Version=19.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Email.19.6.0\lib\net40\Aspose.Email.dll</HintPath>
+    <Reference Include="Aspose.Email, Version=19.7.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Email.19.7.0\lib\net40\Aspose.Email.dll</HintPath>
     </Reference>
-    <Reference Include="Aspose.Words, Version=19.7.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Words.19.7.0\lib\net40\Aspose.Words.dll</HintPath>
+    <Reference Include="Aspose.Words, Version=19.8.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Words.19.8.0\lib\net40\Aspose.Words.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -59,6 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email\TrackDocumentConversionProgress.cs" />
+    <Compile Include="Email\SaveMessagesFromZimbraTgzStorage.cs" />
+    <Compile Include="Email\ReadAllMessagesFromZimbraTgzStorage.cs" />
     <Compile Include="Email\ChangeProdIdOfICS.cs" />
     <Compile Include="Email\AddNewTNEFAttachments.cs" />
     <Compile Include="Email\ChangeEmailAddress.cs" />
@@ -387,6 +390,7 @@
     <Compile Include="Outlook\MyPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Outlook\OLM\CountItemsInOLMFolder.cs" />
     <Compile Include="Outlook\OLM\GetFolderPathInOLM.cs" />
     <Compile Include="Outlook\OLM\LoadAndReadOLMFile.cs" />
     <Compile Include="Outlook\ParseOutlookMessageFile.cs" />

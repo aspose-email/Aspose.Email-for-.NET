@@ -1,4 +1,5 @@
 ﻿using Aspose.Email.Mime;
+using Aspose.Email.Storage.Zimbra;
 using System;
 
 /*
@@ -11,7 +12,7 @@ please feel free to contact us using https://forum.aspose.com/c/email
 
 namespace Aspose.Email.Examples.CSharp.Email
 {
-    class GetHTMLBodyAsPlainText
+    class ReadAllMessagesFromZimbraTgzStorage
     {
         public static void Run()
         {
@@ -19,12 +20,15 @@ namespace Aspose.Email.Examples.CSharp.Email
             // The path to the File directory.
             string dataDir = RunExamples.GetDataDir_Email();
 
-            MailMessage mail = MailMessage.Load(dataDir + "HtmlWithUrlSample.eml");
-            string body_with_url = mail.GetHtmlBodyText(true);// body will contain URL
-            string body_without_url = mail.GetHtmlBodyText(false);// body will not contain URL
+            TgzReader reader = new TgzReader(dataDir + "ZimbraSample.tgz");
 
-            Console.WriteLine("Body with URL: " + body_with_url);
-            Console.WriteLine("Body without URL: " + body_without_url);
+            while (reader.ReadNextMessage())
+            {
+                string directoryName = reader.CurrentDirectory;
+                Console.WriteLine(directoryName);
+                MailMessage eml = reader.CurrentMessage;
+                Console.WriteLine(eml.Subject);
+            }
             // ExEnd:1
         }
     }

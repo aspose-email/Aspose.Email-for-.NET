@@ -91,6 +91,9 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ValidatingEmails.Run();
             //GetHTMLBodyAsPlainText.Run();
             //ChangeProdIdOfICS.Run();
+            //ReadAllMessagesFromZimbraTgzStorage.Run();
+            //SaveMessagesFromZimbraTgzStorage.Run();
+            //TrackDocumentConversionProgress.Run();
 
             #endregion
 
@@ -240,7 +243,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //GetFoldersCreatedByUserOnly.Run();
             //GetFolderPathInOLM.Run();
             //LoadAndReadOLMFile.Run();
-
+            //CountItemsInOLMFolder.Run();
             #endregion
 
             //// =====================================================
