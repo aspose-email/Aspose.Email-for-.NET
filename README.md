@@ -15,6 +15,17 @@ Directory | Description
 [Examples](Examples)  | A collection of .NET examples that help you learn the product features
 [Plugins](Plugins)  | Plugins that will demonstrate one or more features of Aspose.Email for .NET
 
+## How to Run the Examples
+* You can either clone the repository using your favorite GitHub client or download the ZIP file from here.
+* Extract the contents of the ZIP file to any folder on your computer. All the examples are located in the Examples folder.
+* The projects are created in Visual Studio 2013, but the solution files are compatible with Visual Studio 2010 SP1 and higher.
+* Open the solution file in Visual Studio and build the project.
+* On first run, the dependencies will automatically be downloaded via NuGet.
+* Data folder at the root folder of Examples contains input files. It is mandatory that you download the Data folder along with the examples project.
+* Open **RunExamples.cs**, all the examples are called from here.
+* Uncomment the examples you want to run from within the project.
+
+Please find more details for how to run the examples [here](https://docs.aspose.com/display/emailnet/How+to+Run+the+Examples).
 
 ## Resources
 
