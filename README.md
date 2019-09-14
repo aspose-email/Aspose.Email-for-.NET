@@ -1,4 +1,4 @@
-## Aspose.Email for .NET
+# Aspose.Email for .NET
 
 [Aspose.Email for .NET](https://products.aspose.com/email/net) is a complete set of Email Processing APIs to create, read and manipulate emails from within your .NET applications. It makes it easier to work with a number of Outlook email message formats such as MSG, EML, EMLX and MHT files without the need of installing Microsoft Outlook. It also enables you to manage message storage files - Personal Storage Files (PST), Offline Storage Files (OST) along with message sending and receiving capabilities. You can also read and extract Outlook PST file that can be saved to disk in MSG format.
 
@@ -16,6 +16,7 @@ Directory | Description
 [Plugins](Plugins)  | Plugins that will demonstrate one or more features of Aspose.Email for .NET
 
 ## How to Run the Examples
+
 * You can either clone the repository using your favorite GitHub client or download the ZIP file from here.
 * Extract the contents of the ZIP file to any folder on your computer. All the examples are located in the Examples folder.
 * The projects are created in Visual Studio 2013, but the solution files are compatible with Visual Studio 2010 SP1 and higher.
@@ -29,9 +30,9 @@ Please find more details for how to run the examples [here](https://docs.aspose.
 
 ## Resources
 
-+ **Website:** [www.aspose.com](https://www.aspose.com)
-+ **Product Home:** [Aspose.Email for .NET](https://products.aspose.com/email/net)
-+ **Download:** [Download Aspose.Email for .NET](https://www.nuget.org/packages/Aspose.Email/)
-+ **Documentation:** [Aspose.Email for .NET Documentation](https://docs.aspose.com/display/emailnet/Home)
-+ **Forum:** [Aspose.Email for .NET Forum](https://forum.aspose.com/c/email)
-+ **Blog:** [Aspose.Email for .NET Blog](https://blog.aspose.com/category/aspose-products/aspose-email-product-family/)
+* **Website:** [www.aspose.com](https://www.aspose.com)
+* **Product Home:** [Aspose.Email for .NET](https://products.aspose.com/email/net)
+* **Download:** [Download Aspose.Email for .NET](https://www.nuget.org/packages/Aspose.Email/)
+* **Documentation:** [Aspose.Email for .NET Documentation](https://docs.aspose.com/display/emailnet/Home)
+* **Forum:** [Aspose.Email for .NET Forum](https://forum.aspose.com/c/email)
+* **Blog:** [Aspose.Email for .NET Blog](https://blog.aspose.com/category/email/)
