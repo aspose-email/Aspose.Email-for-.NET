@@ -95,6 +95,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SaveMessagesFromZimbraTgzStorage.Run();
             //TrackDocumentConversionProgress.Run();
             //ReadMessagesFromNSFStorage.Run();
+            CustomHyperlinkRendering.Run();
 
             #endregion
 
