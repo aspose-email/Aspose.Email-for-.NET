@@ -95,7 +95,8 @@ namespace Aspose.Email.Examples.CSharp.Email
             //SaveMessagesFromZimbraTgzStorage.Run();
             //TrackDocumentConversionProgress.Run();
             //ReadMessagesFromNSFStorage.Run();
-            CustomHyperlinkRendering.Run();
+            //CustomHyperlinkRendering.Run();
+            //WorkingWithAmpHtmlEmails.Run();
 
             #endregion
 
@@ -599,6 +600,11 @@ namespace Aspose.Email.Examples.CSharp.Email
         internal static string GetDataDir_Gmail()
         {
             return Path.GetFullPath(GetDataDir_Data() + "Gmail/");
+        }
+
+        internal static string GetDataDir_Output()
+        {
+            return Path.GetFullPath(GetDataDir_Data() + "OutputDirectory/");
         }
 
         private static string GetDataDir_Data()
