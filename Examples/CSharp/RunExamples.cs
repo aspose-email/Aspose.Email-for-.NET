@@ -97,6 +97,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //ReadMessagesFromNSFStorage.Run();
             //CustomHyperlinkRendering.Run();
             //WorkingWithAmpHtmlEmails.Run();
+            //CustomOrderOfInformationInMHTML.Run();
 
             #endregion
 
@@ -247,6 +248,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //GetFolderPathInOLM.Run();
             //LoadAndReadOLMFile.Run();
             //CountItemsInOLMFolder.Run();
+            //PSTPasswordValidation.Run();
             #endregion
 
             //// =====================================================
