@@ -396,6 +396,7 @@ namespace Aspose.Email.Examples.CSharp.Email
             //GetMessageTypeFromExchangeMessageInfo.Run();
             //WorkingWithExtendedAttributesOfMessages.Run();
             //MoveItemsToInPlaceArchive.Run();
+            //GetMessagesFromSharedMailbox.Run();
             #endregion
 
             //// =====================================================
