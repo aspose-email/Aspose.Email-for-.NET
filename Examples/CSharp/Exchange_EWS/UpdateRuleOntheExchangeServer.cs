@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
+using Aspose.Email.Clients.Exchange;
 using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
 
 /*
 This project uses Automatic Package Restore feature of NuGet to resolve Aspose.Email for .NET API reference 
@@ -17,10 +17,8 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
     {
         public static void Run()
         {
-
             try
             {
-
                 // ExStart:UpdateRuleOntheExchangeServer           
                 // Set mailboxURI, Username, password, domain information
                 string mailboxURI = "https://ex2010/ews/exchange.asmx";
@@ -52,7 +50,6 @@ namespace Aspose.Email.Examples.CSharp.Email.Exchange_EWS
             }
             catch (Exception ex)
             {
-
                 Console.Write(ex.Message);
             }
         }
