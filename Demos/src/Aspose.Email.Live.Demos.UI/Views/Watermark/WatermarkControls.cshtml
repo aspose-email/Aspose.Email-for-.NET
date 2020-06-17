@@ -1,0 +1,46 @@
+﻿@model ViewModel
+
+    <div class="app-contenttabs">
+        <div class="tabs__nav">
+            <a ID="TextWatermarkButton" class="tabs__link tabs__link_active" href="#addTextContent" watermarkType="text">ADD TEXT WATERMARK</a>
+            <a ID="ImageWatermarkButton" class="tabs__link" href="#addImageContent" watermarkType="image">ADD IMAGE WATERMARK</a>
+            <a ID="RemoveWatermarkButton" class="tabs__link" href="#removeContent" watermarkType="remove">REMOVE WATERMARK</a>
+        </div>
+        <div class="tabs__pane tabs__pane_show" id="addTextContent">
+            <div id="textSettings">
+                <br />
+                <div class="colorpicker">
+                    <div class="color-wrapper">
+                        <input type="text" name="custom_color" placeholder="@ViewBag.MainColor" value="@ViewBag.MainColor" id="pickcolorText" class="call-picker" />
+                        <div class="color-picker" id="color-pickerText" style="display: none"></div>
+                    </div>
+                </div>
+                <br />
+                <div class="watermark" style="margin-bottom: 0">
+                    <textarea id="watermarkText" class="form-control" placeholder="@Model.Resources["AddWatermarkTextPlaceholder"]"></textarea>
+                </div>
+                <br />
+            </div>
+        </div>
+        <div class="tabs__pane" id="addImageContent">
+            <div id="imageSettings">
+                <div class="filedropdown">
+                    <div class="filedrop" style="background-color: #F2F2F2;">
+                        <label class="dz-message needsclick">@Model.Resources["DropOrUploadImageFile"]</label>
+                        <input type="file" id="fileUploadImageInput"
+                               accept="@Model.Resources["AddSignatureImageFileExtenstions"].Replace("|.", ",.")" />
+                        <div id="fileUploadImage" style="position: relative; z-index: 5;">
+                            <span class="filename">
+                                <a>
+                                    <label for="fileUploadImageInput" class="custom-file-upload"></label>
+                                    <i class="fa fa-times" onclick='removefileimage()'></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabs__pane" id="removeContent"><br /></div>
+    </div>
+<br />

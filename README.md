@@ -2,7 +2,7 @@
 
 [Aspose.Email for .NET](https://products.aspose.com/email/net) is a complete set of Email Processing APIs to create, read and manipulate emails from within your .NET applications. It makes it easier to work with many Outlook email message formats such as MSG, EML, EMLX and MHT files without the need of installing Microsoft Outlook. It also enables you to manage message storage files - Personal Storage Files (PST), Offline Storage Files (OST) along with message sending and receiving capabilities. You can also read and extract Outlook PST file that can be saved to disk in MSG format.
 
-This repository contains [Examples](Examples), [Plugins](Plugins) and Showcase projects for [Aspose.Email for .NET](https://products.aspose.com/email/net) to help you learn and write your applications.
+This repository contains [Demos](Demos), [Examples](Examples), [Plugins](Plugins) and Showcase projects for [Aspose.Email for .NET](https://products.aspose.com/email/net) to help you learn and write your applications.
 
 <p align="center">
 <a title="Download complete Aspose.Email for .NET source code" href="https://github.com/aspose-email/Aspose.Email-for-.NET/archive/master.zip">
@@ -12,6 +12,7 @@ This repository contains [Examples](Examples), [Plugins](Plugins) and Showcase p
 
 Directory | Description
 --------- | -----------
+[Demos](Demos)  | Aspose.Email for .NET Live Demos Source Code
 [Examples](Examples)  | A collection of .NET examples that help you learn the product features
 [Plugins](Plugins)  | Plugins that will demonstrate one or more features of Aspose.Email for .NET
 

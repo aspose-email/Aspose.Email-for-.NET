@@ -1,0 +1,29 @@
+namespace  Aspose.Email.Live.Demos.UI.Parsing
+{
+    public enum CharType
+    {
+        Unknown,
+        Digit,
+        Letter,
+        OpenBracket,
+        CloseBracket,
+        OpenFigureBracket,
+        CloseFigureBracket,
+        Plus,
+        RightSlash,
+        Percent,
+        Star,
+        Menus,
+        Point,
+        Comma,
+        Space,
+        LeftSlash,
+        EarthLine,
+        Exclamation,
+        Equally,
+        LeftAngle,
+        RightAngle,
+        Quotes,
+        Dash
+    }
+}
