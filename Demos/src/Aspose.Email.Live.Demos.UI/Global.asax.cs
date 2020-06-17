@@ -93,6 +93,11 @@ namespace Aspose.Email.Live.Demos.UI
 				 new { controller = "Watermark", action = "Watermark" }
 			);
 			routes.MapRoute(
+				"AsposeEmailHeadersRoute",
+				"{product}/headers",
+				 new { controller = "Headers", action = "Headers" }
+			);
+			routes.MapRoute(
 				"AsposeEmailParserRoute",
 				"{product}/parser",
 				 new { controller = "Parser", action = "Parser" }

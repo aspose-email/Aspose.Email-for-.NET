@@ -179,7 +179,49 @@ function requestRedaction() {
 		'&metadata=' + $('#metadata').prop('checked');
 	request(url, data);
 }
+function requestHeaders() {
+	let data = fileDrop.prepareFormData();
 
+	var rawHeaders = $('#txtHeadersAsText').val();
+	var options = o;
+	if (data === null && !rawHeaders.length) {
+		showAlert(options.FileSelectMessage);
+		return;
+	}
+	hideAlert();
+	if (data === null) {
+		data = new FormData();
+		data.append('txtHeaders', rawHeaders);
+	}
+
+	let url = o.UIBasePath + 'api/AsposeEmailHeaders/AnalyzeEmailFiles?skipLocal=true';
+	showLoader();
+	$.ajax({
+		method: 'POST',
+		url: url,
+		data: data,
+		processData: false,
+		contentType: false,
+		cache: false,
+		timeout: 600000,
+		success: (d) => {
+			hideLoader();
+			$.headers(d);
+		},
+		xhr: function () {
+			var myXhr = $.ajaxSettings.xhr();
+			if (myXhr.upload)
+				myXhr.upload.addEventListener('progress', progress, false);
+			return myXhr;
+		},
+		error: (err) => {
+			if (err.data !== undefined && err.data.Status !== undefined)
+				showAlert(err.data.Status);
+			else
+				showAlert("Error " + err.status + ": " + err.statusText);
+		}
+	});
+}
 function validateComparison() {
 	if (fileDrop.droppedFiles.length === 1 && fileDrop.droppedFiles.length === 1)
 		return true;

@@ -272,6 +272,7 @@
 	<res name="AnnotationSuccessMessage">Annotations removed successfully</res>
 	<res name="AnnotationButton">REMOVE</res>
 	<res name="emailAnnotationValidationExpression">.eml|.msg</res>
+	
 	<res name="MetadataAPPName">Metadata</res>
 	<res name="MetadataSavedTitle">File successfully saved</res>
 	<res name="MetadataFeature1">Fast and Easy Metadata</res>
@@ -389,6 +390,34 @@
 	<res name="SignatureLiFeature1">Instantly download output file</res>
 	<res name="emailSignatureSaveAsOptions">MSG,EML</res>
 
+	<res name="HeadersAPPName">Headers</res>
+	<res name="HeadersSavedTitle">File successfully saved</res>
+	<res name="HeadersFeature1">Fast and Easy Email headers Analyzer</res>
+	<res name="HeadersFeature1Description">Upload your email and click on the “Analyze” button. You will get the results as soon as all email servers are found.</res>
+	<res name="HeadersFeature2">Analyze from Anywhere</res>
+	<res name="HeadersFeature2Description">It works from all platforms including Windows, Mac, Android and iOS. All files are processed on our servers. No plugin or software installation required by you</res>
+	<res name="HeadersFeature3">Analyze Quality</res>
+	<res name="QualityDescHeaders">All files are processed using Aspose APIs, which are being used by many Fortune 100 companies across 114 countries</res>
+	
+	<res name="HeadersSuccessMessage">Your file analyzed successfully</res>
+	
+	<res name="HeadersAction">Headers</res>
+	<res name="HeadersAnotherFile">Analyze another File</res>
+	
+
+	<res name="emailHeadersPageTitle">Free Web App to Analyze Email Headers</res>
+	<res name="emailHeadersMetaDescription">Free online email header analyzer app for MSG, TXT, EML files. Get IP location and intermediate servers info on the desktop or mobile devices.</res>
+	<res name="emailHeadersTitle">Free Email Header Analyzer App | Trace IP &amp; Server Info</res>
+	<res name="emailHeadersSubTitle">Analyze email headers from MSG, TXT, EML files and trace the email sender IP location as well as intermediate server addresses.</res>
+	<res name="HowtoHeadersTitle">How to Analyze Email using {1}</res>
+	<res name="HowtoHeadersFeature1">Click inside the file drop area to upload files or drag &amp; drop files.</res>
+	<res name="HowtoHeadersFeature2">File will be automatically rendered for you to analyze.</res>
+	
+	<res name="emailHeadersLiFeature1">Read email headers.</res>
+	<res name="emailHeadersLiFeature2">Trace email headers.</res>
+	<res name="emailHeadersLiFeature3">Find IP address from email, get IP address of email sender.</res>
+	<res name="emailHeadersValidationExpression">.eml|.msg|.txt</res>
+	<res name="HeadersButton">ANALYZE NOW</res>
 </resources>
 
 
