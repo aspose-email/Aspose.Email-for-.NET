@@ -103,6 +103,11 @@ namespace Aspose.Email.Live.Demos.UI
 				 new { controller = "Parser", action = "Parser" }
 			);
 			routes.MapRoute(
+				"AsposeEmailAssemblyRoute",
+				"{product}/assembly",
+				 new { controller = "Assembly", action = "Assembly" }
+			);
+			routes.MapRoute(
 				"AsposeEmailAnnotationRoute",
 				"{product}/annotation",
 				 new { controller = "Annotation", action = "Annotation" }

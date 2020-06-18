@@ -266,27 +266,29 @@
 			}
 		};
 		var twoBlocks = o.AppName === "Comparison";
-		var fileDropBlockStr = '\
+		if (!options.DefaultFileBlockDisabled) {
+			var fileDropBlockStr = '\
             <div class="filedrop filedrop-mvc fileplacement" id="filedrop-' + randomId + '"' + (twoBlocks ? 'style="padding:30px 0"' : '') + '>\
                 <label for="UploadFileInput-' + randomId + '" style="margin-top: 50px;text-decoration: underline">' + options.DropFilesPrompt + '</label>\
                 <input type="file" class="uploadfileinput" id="UploadFileInput-' + randomId + '" name="UploadFileInput-' + randomId + '"\
                     title=""\
                     accept="' + options.Accept + '"' +
-			(options.Multiple ? 'multiple="' + options.Multiple + '"' : '') +
-			'/>\
+				(options.Multiple ? 'multiple="' + options.Multiple + '"' : '') +
+				'/>\
             </div>';
 
-		if (twoBlocks) {
-			fileDropBlockStr = '\
+			if (twoBlocks) {
+				fileDropBlockStr = '\
 					<div class="col-md-6 col-sm-12">' +
-				fileDropBlockStr + '\
+					fileDropBlockStr + '\
 					</div>';
+			}
+			var fileDropBlock = $(fileDropBlockStr);
+
+
+			// adding file drop block
+			this.prepend(fileDropBlock);
 		}
-		var fileDropBlock = $(fileDropBlockStr);
-
-		// adding file drop block
-		this.prepend(fileDropBlock);
-
 		// adding event handlers
 		if (!options.UploadAndRedirect) {
 			$('input#UploadFileInput-' + randomId).on('change', uploadFileSelected);

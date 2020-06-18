@@ -28,7 +28,19 @@ namespace Aspose.Email.Live.Demos.UI.Models
 				Console.WriteLine(ex.Message);
 			}
 		}
-
+		public static void SetAsposeCellsLicense()
+		{
+			try
+			{
+				Aspose.Cells.License acLic = new Aspose.Cells.License();
+				acLic.SetLicense(_licenseFileName);
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
+		}
+		
 		///<Summary>
 		/// SetAsposeSlidesLicense method to Aspose.Words License
 		///</Summary>

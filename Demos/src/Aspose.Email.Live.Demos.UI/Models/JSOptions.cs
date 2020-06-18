@@ -24,7 +24,7 @@ namespace Aspose.Email.Live.Demos.UI.Models
     public string EditorPath => $"{UIBasePath}/{Parent.Product}/edit?";
 
     public string FileSelectMessage => Resources["FileSelectMessage"];
-
+		public bool DefaultFileBlockDisabled => Parent.DefaultFileBlockDisabled;
 		public string Product => Parent.Product;
 
 	public int MaximumUploadFiles => Parent.MaximumUploadFiles;

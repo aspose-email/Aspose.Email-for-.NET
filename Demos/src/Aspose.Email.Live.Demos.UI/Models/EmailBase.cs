@@ -239,6 +239,7 @@ namespace Aspose.Email.Live.Demos.UI.Models
 					}
 					catch (Exception ex)
 					{
+						Console.WriteLine(ex.Message);
 						throw;
 					}
 				}).ToArray());

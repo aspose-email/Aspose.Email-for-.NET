@@ -1,16 +1,32 @@
-
 using Microsoft.VisualBasic.FileIO;
 using Newtonsoft.Json;
 using System;
 using System.Data;
 using System.IO;
 using System.Xml;
+using Aspose.Cells;
 
 namespace Aspose.Email.Live.Demos.UI.LibraryHelpers
 {
 	public static class AssemblyDataHelper
 	{
-		
+		public static DataTable PrepareDataTable(string filename, string datasourceName, int datasourceTableIndex = 0, string delimiter = ",")
+		{
+			switch (Path.GetExtension(filename).ToLower())
+			{
+				case ".json":
+					return PrepareDataTableFromJson(filename, datasourceName);
+				case ".xml":
+					return PrepareDataTableFromXML(filename, datasourceName);
+				case ".csv":
+					return PrepareDataTableFromCSV(filename, datasourceName, delimiter);
+				case ".xls":
+				case ".xlsx":
+					return PrepareDataTableFromExcel(filename, datasourceTableIndex);
+				default:
+					return PrepareDataTableFromDocument(filename, datasourceName, datasourceTableIndex);
+			}
+		}
 
 		private static DataTable PrepareDataTableFromDocument(string filename, string datasourceName, int datasourceTableIndex)
 		{
@@ -32,7 +48,20 @@ namespace Aspose.Email.Live.Demos.UI.LibraryHelpers
 			//return dataTable;
 			throw new NotImplementedException();
 		}
-
+		public static DataTable PrepareDataTableFromExcel(string filename, int datasourceTableIndex)
+		{
+			Aspose.Email.Live.Demos.UI.Models.License.SetAsposeCellsLicense();
+			var excel = new Workbook(filename);
+			var cells = excel.Worksheets[datasourceTableIndex].Cells;
+			var lastColumn = cells.MaxColumn;
+			var lastRow = int.MinValue;
+			for (int i = 0; i < lastColumn; i++)
+				if (cells.GetLastDataRow(i) > lastRow)
+					lastRow = cells.GetLastDataRow(i);
+			if (lastRow == int.MinValue)
+				return null;
+			return cells.ExportDataTable(0, 0, lastRow + 1, lastColumn + 1, true);
+		}
 		public static DataTable PrepareDataTableFromJson(string filename, string datasourceName)
 		{
 			string content = System.IO.File.ReadAllText(filename);

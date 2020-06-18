@@ -40,7 +40,7 @@
 					</form>
 
 				</div>
-				@if (!Model.UploadAndRedirect || Model.AppName == "Metadata")
+				@if (!Model.UploadAndRedirect || Model.AppName == "Metadata" || Model.AppName == "Assembly")
 				{
 					@Html.Partial("Download")
 				}

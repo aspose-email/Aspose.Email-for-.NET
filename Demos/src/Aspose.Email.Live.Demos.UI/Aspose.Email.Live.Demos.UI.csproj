@@ -78,6 +78,9 @@
     <Reference Include="AspNet.ScriptManager.jQuery, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\AspNet.ScriptManager.jQuery.3.3.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
     </Reference>
+    <Reference Include="Aspose.Cells, Version=20.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Aspose.Cells.20.6.0\lib\net40\Aspose.Cells.dll</HintPath>
+    </Reference>
     <Reference Include="Aspose.Email, Version=20.3.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Aspose.Email.20.3.0\lib\net40\Aspose.Email.dll</HintPath>
     </Reference>
@@ -471,6 +474,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Shared\assembly.js" />
     <Content Include="Scripts\Shared\headers.js" />
     <Content Include="Scripts\Shared\metadata.js" />
     <Content Include="Scripts\Shared\signature.js" />
@@ -695,6 +699,8 @@
     <Content Include="Views\Signature\SignatureControls.cshtml" />
     <Content Include="Views\Headers\Headers.cshtml" />
     <Content Include="Views\Headers\HeadersControls.cshtml" />
+    <Content Include="Views\Assembly\Assembly.cshtml" />
+    <Content Include="Views\Assembly\AssemblyControls.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -712,6 +718,7 @@
       <DependentUpon>AssemblyApp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AnnotationController.cs" />
+    <Compile Include="Controllers\AsposeEmailAssemblyController.cs" />
     <Compile Include="Controllers\AsposeEmailEditorController.cs" />
     <Compile Include="Controllers\AsposeEmailHeadersController.cs" />
     <Compile Include="Controllers\AsposeEmailMetadataController.cs" />
@@ -731,6 +738,7 @@
     <Compile Include="Controllers\RedactionController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SignatureController.cs" />
+    <Compile Include="Controllers\AssemblyController.cs" />
     <Compile Include="Controllers\ViewerController.cs" />
     <Compile Include="Controllers\HeadersController.cs" />
     <Compile Include="Controllers\WatermarkController.cs" />

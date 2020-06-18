@@ -199,10 +199,7 @@
 	
 	<res name="MergerViewer">VIEW DOCUMENT</res>
 	<res name="MergerFileAmountMessage">Please select between two and ten files</res>	
-	<res name="MergerAction">Merge</res>
-	
-	
-	<res name="AssemblyAPPName">Assembly</res>
+	<res name="MergerAction">Merge</res>	
 	<res name="WatermarkButton">Add Watermark</res>
 	<res name="WatermarkAction">Watermark</res>
 	<res name="DropOrUploadImageFile">Drop or upload your image</res>
@@ -228,13 +225,15 @@
 	<res name="WatermarkFeature2Description">It works from all platforms including Windows, Mac, Android and iOS. All files are processed on our servers. No plugin or software installation required for you</res>
 	<res name="WatermarkFeature3">Watermark Quality</res>
 	<res name="WatermarkViewer">VIEW RESULTS</res>
-	<res name="cellsAssemblyPageTitle">Assemble Microsoft Excel &amp; OpenOffice Calc Spreadsheets</res>
-	<res name="cellsAssemblyMetaDescription">Free app to generate reports in XLS, XLSX, XLSM, XLSB &amp; ODS files using the template &amp; data sheet. Process Smart Markers in template to fill data from another data sheet.</res>
-	<res name="cellsAssemblyH1">Assemble Excel Document</res>
-	<res name="cellsAssemblyH4">Assemble data in Microsoft Excel (XLS, XLSX, XLSM, XLSB) and Open Document Spreadsheet (ODS) files.</res>
-	<res name="cellsAssemblyTitle">Assemble Excel Document</res>
-	<res name="cellsAssemblyTitleSub">Assemble data in Microsoft Excel (XLS, XLSX, XLSM, XLSB) and Open Document Spreadsheet (ODS) files.</res>
-	<res name="cellsAssemblyValidationExpression">.xls|.xlsx|.xlsm|.xlsb|.ods</res>
+	<res name="EmailResetButton">RESET</res>
+	<res name="AssemblyAPPName">Assembly</res>
+	<res name="emailAssemblyPageTitle">Free Web Assembly of MSG, PST, OST, MBOX &amp; EML File Formats</res>
+	<res name="emailAssemblyMetaDescription">Online creation of reports in MSG, PST, OST, MBOX and EML file formats. Document assembly.</res>
+	<res name="emailAssemblyH1">Free Web App to Assemble Email Processing Documents</res>
+	<res name="emailAssemblyH4">Web assembly of data in MSG, PST, OST, MBOX and EML file formats. Load a template &amp; fill it with data from a data source.</res>
+	<res name="emailAssemblyTitle">Free Web App to Assemble Email Processing Documents</res>
+	<res name="emailAssemblySubTitle">Web assembly of data in MSG, PST, OST, MBOX and EML file formats. Load a template &amp; fill it with data from a data source.</res>
+	<res name="emailAssemblyValidationExpression">.msg|.pst|.ost|.mbox|.eml</res>
 	<res name="AssemblyButton">ASSEMBLE NOW</res>
 	<res name="AssemblyFeature1">Fast and Easy Assemble Data</res>
 	<res name="AssemblyFeature1Description">Upload your template and data-source files, choose the appropriate options and click on “ASSEMBLE NOW” button. You will get the output file as soon as the files are assembled.</res>
@@ -418,6 +417,15 @@
 	<res name="emailHeadersLiFeature3">Find IP address from email, get IP address of email sender.</res>
 	<res name="emailHeadersValidationExpression">.eml|.msg|.txt</res>
 	<res name="HeadersButton">ANALYZE NOW</res>
+	<res name="HowtoAssemblyFeature1">Click inside the file drop area to upload {0} template or drag &amp; drop it. Click &#34;Help&#34; button to get help in creating template.</res>
+	<res name="HowtoAssemblyFeature2">Click &#34;Upload Template&#34; button. Your template file will be uploaded to server.</res>
+	<res name="HowtoAssemblyFeature3">Drop and upload your data source file. Click &#34;Help&#34; button to get help in creating data source file.</res>
+	<res name="HowtoAssemblyFeature4">Click &#34;Upload Data Source&#34; button. Your data source file will be uploaded to server.</res>
+	<res name="HowtoAssemblyFeature5">Click &#34;ASSEMBLE NOW&#34; button to assemble data into {0} template. You will get assembled file immediately.</res>
+	<res name="HowtoAssemblyTitle">How to Assemble Email Data using {1}</res>
+	<res name="emailAssemblyTemplateFormats">.msg|.eml|.pst|.mbox|.ost</res>
+	<res name="emailAssemblyDataSourceFormats">.json|.csv|.xml|.xls|.xlsx</res>
+	<res name="AssemblyViewer">VIEW DOCUMENT</res>
 </resources>
 
 

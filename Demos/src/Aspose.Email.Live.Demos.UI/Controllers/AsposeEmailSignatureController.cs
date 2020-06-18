@@ -87,7 +87,7 @@ namespace Aspose.Email.Live.Demos.UI.Controllers
 			}
 			catch (Exception ex)
 			{
-				
+				Console.WriteLine(ex.Message);
 				return new Response() { Status = "200", Text = "Error on processing file" };
 			}
 		}

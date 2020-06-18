@@ -261,7 +261,7 @@ namespace Aspose.Email.Live.Demos.UI.Models
 		#endregion
 
 		public string JSOptions => new JSOptions(this).ToString();
-
+		public bool DefaultFileBlockDisabled { get; set; }
 		public ViewModel(BaseController controller, string app)
 		{
 			Controller = controller;
