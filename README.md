@@ -35,8 +35,8 @@ Directory | Description
 
 ## Read & Write Email Formats
 
-**Microsoft Outlook:** MSG, PST, OST, OFT
-**Email:** EML, EMLX, MBOX
+**Microsoft Outlook:** MSG, PST, OST, OFT\
+**Email:** EML, EMLX, MBOX\
 **Others:** ICS, VCF, HTML, MHTML
 
 ## Read Email Formats
@@ -52,8 +52,6 @@ Aspose.Email for .NET is implemented using Managed C# and can be used with any .
 Are you ready to give Aspose.Email for .NET a try? Simply execute `Install-Package Aspose.Email` from Package Manager Console in Visual Studio to fetch the NuGet package. If you already have Aspose.Email for .NET and want to upgrade the version, please execute `Update-Package Aspose.Email` to get the latest version.
 
 ## Create an Email Message & Save it in MSG Format using C# Code
-
-You can execute below code snippet to see how Aspose.Email API performs in your environment or check the [GitHub Repository](https://github.com/aspose-email/Aspose.Email-for-.NET) for other common usage scenarios. 
 
 ```csharp
 // create an instance of the MailMessage class
