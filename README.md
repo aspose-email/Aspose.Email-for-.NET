@@ -1,6 +1,6 @@
-# Aspose.Email for .NET
+# .NET Email API
 
-[Aspose.Email for .NET](https://products.aspose.com/email/net) is a complete set of Email Processing APIs to create, read and manipulate emails from within your .NET applications. It makes it easier to work with many Outlook email message formats such as MSG, EML, EMLX and MHT files without the need of installing Microsoft Outlook. It also enables you to manage message storage files - Personal Storage Files (PST), Offline Storage Files (OST) along with message sending and receiving capabilities. You can also read and extract Outlook PST file that can be saved to disk in MSG format.
+[Aspose.Email for .NET](https://products.aspose.com/email/net) allows you to work with MIME messages, appointments, Microsoft Outlook® items, Outlook storage files, various clients & protocols ([SMTP](https://docs.aspose.com/email/net/connecting-to-smtp-server/), [POP3](https://docs.aspose.com/email/net/connect-to-pop3-server/), [IMAP](https://docs.aspose.com/email/net/connecting-to-imap-server/), [Exchange EWS](https://docs.aspose.com/email/net/connecting-to-exchange-server/), [Exchange WebDav](https://docs.aspose.com/email/net/connecting-to-exchange-server-using-webdav/), [Gmail](https://docs.aspose.com/email/net/gmail-utility-features/), [Thunderbird](https://docs.aspose.com/email/net/programming-with-thunderbird/), [Zimbra](https://docs.aspose.com/email/net/working-with-zimbra/), [IBM Notes](https://docs.aspose.com/email/net/working-with-ibm-notes/) & AMP HTML emails and more.
 
 <p align="center">
 <a title="Download complete Aspose.Email for .NET source code" href="https://github.com/aspose-email/Aspose.Email-for-.NET/archive/master.zip">
@@ -8,30 +8,25 @@
   </a>
 </p>
 
-This repository contains [Demos](Demos), [Examples](Examples), [Plugins](Plugins) and Showcase projects for [Aspose.Email for .NET](https://products.aspose.com/email/net) to help you learn and write your applications.
-
 Directory | Description
 --------- | -----------
-[Demos](Demos)  | Aspose.Email for .NET Live Demos Source Code
-[Examples](Examples)  | A collection of .NET examples that help you learn the product features
-[Plugins](Plugins)  | Plugins that will demonstrate one or more features of Aspose.Email for .NET
+[Demos](Demos)  | Source code for the live demos hosted at https://products.aspose.app/email/family.
+[Examples](Examples)  | A collection of .NET examples that help you learn the product features.
+[Plugins](Plugins)  | Visual Studio Plugins related to Aspose.Email for .NET.
 
-# .NET Email API
 
-[Aspose.Email for .NET](https://products.aspose.com/email/net) allows you to work with MIME messages, appointments, Microsoft Outlook® items, Outlook storage files, various clients & protocols ([SMTP](https://docs.aspose.com/display/emailnet/Working+with+SMTP+Client), [POP3](https://docs.aspose.com/display/emailnet/Working+with+POP3+Client), [IMAP](https://docs.aspose.com/display/emailnet/Working+with+IMAP+Client), [Exchange EWS](https://docs.aspose.com/display/emailnet/Working+with+Exchange+EWS+Client), [Exchange WebDav](https://docs.aspose.com/display/emailnet/Working+with+Exchange+WebDav+Client), [Gmail](https://docs.aspose.com/display/emailnet/Programming+with+Gmail), [Thunderbird](https://docs.aspose.com/display/emailnet/Programming+with+Thunderbird), [Zimbra](https://docs.aspose.com/display/emailnet/Working+with+Zimbra), [IBM Notes](https://docs.aspose.com/display/emailnet/Working+with+IBM+Notes) & AMP HTML emails and more.
-
-## Email API Features
+## Email Creation, Conversion & Transactional API
 
 - Open or save emails in Microsoft Outlook & other formats.
 - Conversion of email files to various formats.
 - Parse, read & save MS Outlook emails, PST & OST files.
-- [Comprehensive support for MIME messages](https://docs.aspose.com/display/emailnet/Working+with+MIME+Messages).
+- [Comprehensive support for MIME messages](https://docs.aspose.com/email/net/creating-and-setting-contents-of-emails/).
 - Send & receive emails via POP3, IMAP, Microsoft Exchange Server.
 - Send emails in bulk while performing mail merge via various types of data sources.
 - Send iCalendar compliant messages.
 - Consume and produce recurrence patterns in the iCalendar (RFC 2445) format.
 - Tools to verify email addresses, email syntax, email domain, mail server & MX records.
-- Extract objects from various mail storage formats as well as [create email storage files from scratch](https://docs.aspose.com/display/emailnet/Create+New+PST+File+and+Add+SubFolders).
+- Extract objects from various mail storage formats as well as [create email storage files from scratch](https://docs.aspose.com/email/net/create-new-pst-file-and-add-subfolders/).
 
 ## Read & Write Email Formats
 
@@ -47,11 +42,11 @@ Directory | Description
 
 Aspose.Email for .NET is implemented using Managed C# and can be used with any .NET based languages including C#, VB.NET, J# and so on. Aspose.Email for .NET can be integrated with any kind of application on Windows, Linux, Mac OS X and Xamarin Platforms.
 
-## Getting Started with Aspose.Email for .NET
+## Get Started with Aspose.Email for .NET
 
 Are you ready to give Aspose.Email for .NET a try? Simply execute `Install-Package Aspose.Email` from Package Manager Console in Visual Studio to fetch the NuGet package. If you already have Aspose.Email for .NET and want to upgrade the version, please execute `Update-Package Aspose.Email` to get the latest version.
 
-## Create an Email Message & Save it in MSG Format using C# Code
+## Create an Email Message in MSG Format
 
 ```csharp
 // create an instance of the MailMessage class
@@ -88,7 +83,7 @@ manyMsg.Add(message3);
 client.Send(manyMsg);
 ```
 
-## Use C# to Create an ICS Appointment
+## Create an ICS Appointment via .NET
 
 ```csharp
 // create and initialize an instance of the Appointment class
@@ -105,4 +100,4 @@ var appointment = new Appointment(
 appointment.Save("output.ics", AppointmentSaveFormat.Ics);
 ```
 
-[Product Page](https://products.aspose.com/email/net) | [Docs](https://docs.aspose.com/display/emailnet/Home) | [Demos](https://products.aspose.app/email/family) | [API Reference](https://apireference.aspose.com/email/net) | [Examples](https://github.com/aspose-email/Aspose.Email-for-.NET) | [Blog](https://blog.aspose.com/category/email/) | [Free Support](https://forum.aspose.com/c/email) | [Temporary License](https://purchase.aspose.com/temporary-license)
+[Home](https://www.aspose.com/) | [Product Page](https://products.aspose.com/email/net) | [Docs](https://docs.aspose.com/display/emailnet/Home) | [Demos](https://products.aspose.app/email/family) | [API Reference](https://apireference.aspose.com/email/net) | [Examples](https://github.com/aspose-email/Aspose.Email-for-.NET) | [Blog](https://blog.aspose.com/category/email/) | [Free Support](https://forum.aspose.com/c/email) | [Temporary License](https://purchase.aspose.com/temporary-license)
