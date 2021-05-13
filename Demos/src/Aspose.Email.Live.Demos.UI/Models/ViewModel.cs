@@ -1,91 +1,48 @@
+using Aspose.Email.Live.Demos.UI.Controllers;
+using Aspose.Email.Live.Demos.UI.Helpers;
+using Aspose.Email.Live.Demos.UI.Models.Email;
+using Aspose.Email.Live.Demos.UI.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
-using Aspose.Email.Live.Demos.UI.Config;
-using Aspose.Email.Live.Demos.UI.Controllers;
 
 namespace Aspose.Email.Live.Demos.UI.Models
 {
-	public class ViewModel
+    public partial class ViewModel
 	{
-		public int MaximumUploadFiles { get; set; }
+		public const int MaximumUploadFiles = 10;
+		public BaseController Controller { get; }
 
-		/// <summary>
-		/// Name of the product (e.g., words)
-		/// </summary>
-		public string Product { get; set; }
+		public Uri RequestUri {get;}
+		public EmailApps AppType { get; }
 
-		public BaseController Controller;
+		public string Product => "email";
+		public string ProductAppName { get; }
 
-		/// <summary>
-		/// Product + AppName, e.g. wordsMerger
-		/// </summary>
-		public string ProductAppName { get; set; }
-		private AsposeEmailContext _atcContext;
-		public AsposeEmailContext AsposeEmailContext
-		{
-			get
-			{
-				if (_atcContext == null) _atcContext = new AsposeEmailContext(HttpContext.Current);
-				return _atcContext;
-			}
-		}
-		private Dictionary<string, string> _resources;
-		public Dictionary<string, string> Resources
-		{
-			get
-			{
-				if (_resources == null) _resources = AsposeEmailContext.Resources;
-				return _resources;
-			}
-			set
-			{
-				_resources = value;
-			}
-		}
+		public string DocumentNaming => this["Document"];
 
-		public string UIBasePath => Configuration.AsposeEmailLiveDemosPath;
+		public string PageProductTitle => this["PageProductTitle", "Aspose.Email"];
 
-		public string PageProductTitle => Resources["Aspose" + TitleCase(Product)];
+		public string AppName { get; }
 
-		/// <summary>
-		/// The name of the app (e.g., Conversion, Merger)
-		/// </summary>
-		public string AppName { get; set; }
-
-		/// <summary>
-		/// The full address of the application without query string (e.g., https://products.aspose.app/words/conversion)
-		/// </summary>
-		public string AppURL { get; set; }
+		public string AppURL { get; }
+		public string AppRoute { get; }
 
 		/// <summary>
 		/// File extension without dot received by "fileformat" value in RouteData (e.g. docx)
 		/// </summary>
-		public string Extension { get; set; }
+		public string Extension1 { get; }
 
 		/// <summary>
 		/// File extension without dot received by "fileformat" value in RouteData (e.g. docx)
 		/// </summary>
-		public string Extension2 { get; set; }
+		public string Extension2 { get; }
+
+		public bool IsCanonical => string.IsNullOrEmpty(Extension1) && string.IsNullOrEmpty(Extension2);
 
 		/// <summary>
-		/// Redirect to main app, if there is no ExtensionInfoModel for auto generated models
-		/// </summary>
-		public bool RedirectToMainApp { get; set; }
-
-		/// <summary>
-		/// Name of the partial View of controls (e.g. UnlockControls)
+		/// Name of the partial View of controls (e.g. SignatureControls)
 		/// </summary>
 		public string ControlsView { get; set; }
-
-		/// <summary>
-		/// Is canonical page opened (/all)
-		/// </summary>
-		public bool IsCanonical;
-
-		
 
 		public string AnotherFileText { get; set; }
 		public string UploadButtonText { get; set; }
@@ -100,7 +57,6 @@ namespace Aspose.Email.Live.Demos.UI.Models
 
 		public string Title { get; set; }
 		public string TitleSub { get; set; }
-
 
 		public string PageTitle
 		{
@@ -121,9 +77,20 @@ namespace Aspose.Email.Live.Demos.UI.Models
 		}
 
 		/// <summary>
-		/// If the application doesn't need to upload several files (e.g. Viewer, Editor)
+		/// If the application doesn't need to upload several files (e.g. Viewer, Editor). Start the processing instantly after the dropping a file
 		/// </summary>
 		public bool UploadAndRedirect { get; set; }
+
+
+		/// <summary>
+		/// If the application needs custom process button when enabled <see cref="UploadAndRedirect"/> option
+		/// </summary>
+		public bool NeedsProcessButton { get; set; }
+
+		/// <summary>
+		/// If the application needs download form when enabled <see cref="UploadAndRedirect"/> option
+		/// </summary>
+		public bool NeedsDownloadForm { get; set; }
 
 		protected string TitleCase(string value) => new System.Globalization.CultureInfo("en-US", false).TextInfo.ToTitleCase(value);
 
@@ -133,7 +100,7 @@ namespace Aspose.Email.Live.Demos.UI.Models
 		public string ExtensionsString { get; set; }
 
 		#region SaveAs
-		private bool _saveAsComponent;
+		protected bool _saveAsComponent;
 		public bool SaveAsComponent
 		{
 			get => _saveAsComponent;
@@ -141,101 +108,26 @@ namespace Aspose.Email.Live.Demos.UI.Models
 			{
 				_saveAsComponent = value;
 				Controller.ViewBag.SaveAsComponent = value;
+
 				if (_saveAsComponent)
 				{
-					var sokey1 = $"{Product}{AppName}SaveAsOptions";
-					var sokey2 = $"{Product}SaveAsOptions";
-					
-					if (Resources.ContainsKey(sokey1))
-						SaveAsOptions = Resources[sokey1].Split(',');
-					else if (Resources.ContainsKey(sokey2))
+					SaveAsOptions = this["SaveAsOptions", ""].Split(',');
+
+					if (AppFeatures != null)
 					{
-						if (AppName == "Conversion" && Product == "words")
-						{
-							var lst = Resources[sokey2].Split(',').ToList();
-							try
-							{
-
-								var index = lst.FindIndex(x => x == "DOCX");
-								lst.RemoveAt(index);
-								var index2 = lst.FindIndex(x => x == "DOC");
-								lst.Insert(index2, "DOCX");
-
-							}
-							catch
-							{
-								//
-							}
-							finally
-							{
-								SaveAsOptions = lst.ToArray();
-							}
-						}
-						else if (AppName == "Conversion" && Product == "pdf")
-						{
-							var lst = Resources[sokey2].Split(',').ToList().Select(x => x.ToUpper().Trim()).ToList();
-							try
-							{
-
-								var index = lst.FindIndex(x => x == "DOCX");
-								lst.RemoveAt(index);
-								var index2 = lst.FindIndex(x => x == "DOC");
-								lst.Insert(index2, "DOCX");
-
-							}
-							catch
-							{
-								//
-							}
-							finally
-							{
-								SaveAsOptions = lst.ToArray();
-							}
-						}
-						else if (AppName == "Conversion" && Product == "page")
-						{
-							var lst = Resources[sokey2].Split(',').ToList().Select(x => x.ToUpper().Trim()).ToList();
-							SaveAsOptions = lst.ToArray();
-
-						}
-						else
-							SaveAsOptions = Resources[sokey2].Split(',');
+						if (AppResources.ContainsResource("SaveAsLiFeature"))
+							AppFeatures.Add(this["SaveAsLiFeature"]);
 					}
-
-					var lifeaturekey = Product + "SaveAsLiFeature";
-					if (AppFeatures != null && Resources.ContainsKey(lifeaturekey))
-						AppFeatures.Add(Resources[lifeaturekey]);
 				}
 			}
 		}
 
-		public string SaveAsOptionsList
-		{
-			get
-			{
-				string list = "";
-				if (SaveAsOptions != null)
-				{
-					foreach (var extensin in SaveAsOptions)
-					{
-						if (list == "")
-						{
-							list = extensin.ToUpper();
-						}
-						else
-						{
-							list = list + ", " + extensin.ToUpper();
-						}
-					}
-				}
-				return list;
-
-			}
-		}
 		/// <summary>
 		/// FileFormats in UpperCase
 		/// </summary>
 		public string[] SaveAsOptions { get; set; }
+
+		public Dictionary<string, string[]> SaveAsOptionsSpecific { get; set; }
 
 		/// <summary>
 		/// Original file format SaveAs option for multiple files uploading
@@ -248,120 +140,267 @@ namespace Aspose.Email.Live.Demos.UI.Models
 		/// </summary>
 		public bool UseSorting { get; set; }
 
-		public string DropOrUploadFileLabel { get; set; }
-		
+		public bool ShowFileDropButtonBar { get; set; }
 
-		#region ViewSections
-		public bool ShowExtensionInfo => ExtensionInfoModel != null;
-		public ExtensionInfoModel ExtensionInfoModel { get; set; }
+		public bool HowToPanelEnabled { get; set; }
+		public bool ShowHowTo => HowToModel != null && HowToPanelEnabled;
+		public EmailHowToModel HowToModel { get; set; }
 
-		public bool HowTo => HowToModel != null;
-		public HowToModel HowToModel { get; set; }
+		public bool FAQPagePanelEnabled { get; set; }
+		public bool ShowFAQPage => FAQPageModel != null && FAQPageModel.List.Count > 0 && FAQPagePanelEnabled;
+		public EmailFAQPageModel FAQPageModel { get; set; }
 
-		#endregion
+		public IEnumerable<EmailAnotherApp> OtherApps { get; set; }
 
-		public string JSOptions => new JSOptions(this).ToString();
+		public string JSOptions { get; private set; }
+
+		/// <summary>
+		/// The possibility of main button working with no files uploaded
+		/// </summary>
+		public bool CanWorkWithoutFiles { get; set; }
+
 		public bool DefaultFileBlockDisabled { get; set; }
-		public ViewModel(BaseController controller, string app)
+		public IAppResources AppResources { get; }
+
+
+		public string PopularFeaturesTitle { get; private set; }
+		public string PopularFeaturesTitleSub { get; private set; }
+		public string OtherFeaturesTitle { get; private set; }
+		public string OtherFeaturesTitleSub { get; private set; }
+
+		public string VideoUrl { get; private set; }
+		public string VideoTitle { get; private set; }
+		public string Locale { get; private set; }
+
+		public string BaseUrl
 		{
+			get
+			{
+				var request = Controller.Request;
+				return $"{request.Scheme}://{request.Host}{request.PathBase}";
+			}
+		}
+
+		public bool IsDummyPage { get; set; }
+
+		public bool OverviewPanelEnabled { get; set; }
+		public bool AppFeaturesPanelEnabled { get; set; }
+		public bool AppFeaturesActionStringEnabled { get; set; }
+
+
+		public string AppFeaturesTitle => this["AppFeaturesTitle", "Aspose.Email " + AppName];
+
+		/// <summary>
+		/// Product, (AppName, AnotherApp)
+		/// </summary>
+		protected Dictionary<string, Dictionary<string, EmailAnotherApp>> OtherAppsStatic = new Dictionary<string, Dictionary<string, EmailAnotherApp>>();
+
+		public ViewModel(IAppResources resources, BaseController controller, Uri requestUri, EmailApps appType, string locale, string app, string extension1 = null, string extension2 = null)
+		{
+			Locale = locale;
 			Controller = controller;
-			Resources = controller.Resources;
-			AppName = Resources.ContainsKey($"{app}APPName") ? Resources[$"{app}APPName"] : app;
-			Product = controller.Product;
-			var url = controller.Request.Url.AbsoluteUri;
-			AppURL = url.Substring(0, (url.IndexOf("?") > 0 ? url.IndexOf("?") : url.Length));
+			Extension1 = extension1;
+			Extension2 = extension2;
+			RequestUri = requestUri;
+
+			AppResources = resources; 
+
+			AppName = this[$"APPName", app];
 			ProductAppName = Product + app;
+			AppType = appType;
 
-			UploadButtonText = GetFromResources(ProductAppName + "Button", app + "Button");
-			ViewerButtonText = GetFromResources(app + "Viewer", "ViewDocument");
-			SuccessMessage = GetFromResources(app + "SuccessMessage");
-			AnotherFileText = GetFromResources(app + "AnotherFile");
+			var url = requestUri.OriginalString;
+			AppURL = url.Substring(0, (url.IndexOf("?") > 0 ? url.IndexOf("?") : url.Length));
+			AppRoute = requestUri.GetLeftPart(UriPartial.Path);
 
+			InitOtherApps(Product.ToLower(), AppURL);
 
-			IsCanonical = true;
-
-			HowToModel = new HowToModel(this);
+			PrepareHowToModel();
 
 			SetTitles();
 			SetAppFeatures(app);
+			PrepareFAQPageModel();
+
+			if (OtherAppsStatic.ContainsKey(Product.ToLower()))
+				OtherApps = OtherAppsStatic[Product.ToLower()].Values;
+
 			ShowViewerButton = true;
 			SaveAsOriginal = true;
 			SaveAsComponent = false;
-			SetExtensionsString();
 		}
 
-		private void SetTitles()
+		protected void PrepareHowToModel()
 		{
-			PageTitle = Resources[ProductAppName + "PageTitle"];
-			MetaDescription = Resources[ProductAppName + "MetaDescription"];
-			MetaKeywords = "";
-			Title = Resources[ProductAppName + "Title"];
-			TitleSub = Resources[ProductAppName + "SubTitle"];
-			Controller.ViewBag.CanonicalTag = null;
+			if (!string.IsNullOrEmpty(Extension1) || IsCanonical)
+			{
+				try
+				{
+					HowToModel = new EmailHowToModel(this);
+				}
+				catch
+				{
+					HowToModel = null;
+				}
+			}
 		}
 
-		private void SetAppFeatures(string app)
+		protected void PrepareFAQPageModel()
 		{
+			FAQPageModel = new EmailFAQPageModel(this);
+		}
 
+		/// <summary>
+		/// Returns Word, OpenOffice, RTF or Text
+		/// </summary>
+		/// <param name="extension"></param>
+		/// <param name="defaultValue"></param>
+		/// <returns></returns>
+		public string DesktopAppNameByExtension(string extension, string defaultValue = null)
+		{
+			if (!string.IsNullOrEmpty(extension))
+			{
+				switch (extension.ToLower())
+				{
+					case "docx":
+					case "doc":
+					case "dot":
+					case "dotx":
+						return "Word";
+					case "odt":
+					case "ott":
+						return "OpenOffice";
+					case "rtf":
+						return "RTF";
+					case "txt":
+						return this["Text"];
+					case "md":
+						return "Markdown";
+					case "ps":
+						return "PostScript";
+					case "tex":
+						return "LaTeX";
+					case "acroform":
+						return this["pdfXfaToAcroform"];
+					case "pdfa1a":
+						return "PDF/A-1A";
+					case "pdfa1b":
+						return "PDF/A-1B";
+					case "pdfa2a":
+						return "PDF/A-2A";
+					case "pdfa3a":
+						return "PDF/A-3A";
+					default:
+						return string.IsNullOrEmpty(defaultValue) ? extension.ToUpper() : defaultValue;
+				}
+			}
+
+			return defaultValue;
+		}
+
+		void SetTitles()
+		{
+			Title = this["H1"];
+			TitleSub = this["H4"];
+
+			VideoUrl = this["DefaultVideoUrl", null];
+			VideoTitle = this["DefaultVideoTitle", null];
+
+			PageTitle = this["PageTitle"];
+			MetaDescription = this["MetaDescription"];
+			MetaKeywords = this["MetaKeywords"];
+			ExtensionsString = this["ValidationExpression"];
+
+			OverviewPanelEnabled = this["OverviewPanelEnabled"].ParseToBoolOrDefault();
+			AppFeaturesPanelEnabled = this["AppFeaturesPanelEnabled"].ParseToBoolOrDefault();
+			
+			FAQPagePanelEnabled = this["FAQPagePanelEnabled"].ParseToBoolOrDefault();
+			HowToPanelEnabled = this["HowToPanelEnabled"].ParseToBoolOrDefault();
+			AppFeaturesActionStringEnabled = this["AppFeaturesActionStringEnabled"].ParseToBoolOrDefault();
+		}
+
+		void SetAppFeatures(string app)
+		{
 			AppFeatures = new List<string>();
 
 			var i = 1;
-			while (Resources.ContainsKey($"{ProductAppName}LiFeature{i}"))
-				AppFeatures.Add(Resources[$"{ProductAppName}LiFeature{i++}"]);
+
+			string value;
+			while ((value = AppResources.GetResourceOrDefault($"LiFeature{i++}")) != null)
+				AppFeatures.Add(ResourceHelper.InjectFormatLinks(value));
 
 			// Stop other developers to add unnecessary features.
 			if (AppFeatures.Count == 0)
 			{
 				i = 1;
-				while (Resources.ContainsKey($"{app}LiFeature{i}"))
+
+				while ((value = AppResources.GetResourceOrDefault($"LiFeature{i}")) != null)
 				{
-					if (!Resources[$"{app}LiFeature{i}"].Contains("Instantly download") || AppFeatures.Count == 0)
-						AppFeatures.Add(Resources[$"{app}LiFeature{i}"]);
+					if (!value.Contains("Instantly download") || AppFeatures.Count == 0)
+						AppFeatures.Add(ResourceHelper.InjectFormatLinks(value));
 					i++;
 				}
 			}
-
 		}
 
-		private string GetFromResources(string key, string defaultKey = null)
+	    void InitOtherApps(string product, string appUrl = null)
 		{
-			if (Resources.ContainsKey(key))
-				return Resources[key];
-			if (!string.IsNullOrEmpty(defaultKey) && Resources.ContainsKey(defaultKey))
-				return Resources[defaultKey];
-			return "";
+			var appList = new Dictionary<string, EmailAnotherApp>();
+
+			var apps = new[]
+			{
+				"Conversion",
+				"Viewer",
+				"Headers",
+				"Metadata",
+				"Parser",
+				"Search",
+				"Merger",
+				"Signature",
+				"Watermark",
+				"Assembly",
+				"Redaction",
+				"Annotation",
+				"Editor",
+				"Comparison"
+			};
+
+			foreach (var appName in apps)
+				appList.Add(appName, new EmailAnotherApp(appName, Locale));
+
+			OtherAppsStatic[product] = appList;
 		}
 
-		private void SetExtensionsString()
+		public string this[string key] => AppResources.GetResourceOrDefault(key);
+
+		public string this[string key, string defaultValue]
 		{
-			if (!ShowExtensionInfo)
+			get
 			{
-				var key1 = $"{Product}{AppName}ValidationExpression";
-				var key2 = $"{Product}ValidationExpression";
-				ExtensionsString = Resources.ContainsKey(key1) ? Resources[key1] : Resources[key2];
-				
-			}
-			else
-			{
-				switch (Extension)
+				var value = AppResources.GetResourceOrDefault(key);
+
+				if (value != null)
 				{
-					case "doc":
-					case "docx":
-						ExtensionsString = ".docx|.doc";
-						break;
-					case "html":
-					case "htm":
-					case "mhtml":
-					case "mht":
-						ExtensionsString = ".htm|.html|.mht|.mhtml";
-						break;
-					default:
-						ExtensionsString = $".{Extension}";
-						break;
+					return value;
 				}
 
-				if (AppName == "Comparison" && !string.IsNullOrEmpty(Extension2))
-					ExtensionsString += $"|.{Extension2}";
+				return defaultValue;
+			}
+		}
+
+		public void OnBeforeRendering()
+		{
+			JSOptions = new JSOptions(this).ToString();
+
+			// if the app has default process button
+			if (!UploadAndRedirect || NeedsProcessButton)
+				UploadButtonText = this["Button"];
+
+			// if the app has result downloading section
+			if (!UploadAndRedirect || NeedsDownloadForm)
+			{
+				ViewerButtonText = this["Viewer", "VIEW RESULTS"];
+				SuccessMessage = this["SuccessMessage", "Your file has been processed successfully"];
+				AnotherFileText = this["AnotherFile", "Process another file"];
 			}
 		}
 	}

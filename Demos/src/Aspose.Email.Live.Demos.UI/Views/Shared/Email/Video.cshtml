@@ -1,0 +1,9 @@
+﻿@model ViewModel
+
+@if (Model.VideoUrl != null)
+{
+    <div class="col-md-12 tl appvideo" id="dvVideoSection" runat="server">
+        <a class="anchor" name="video"></a>
+        <iframe width="910" height="512" src="@Model.VideoUrl" frameborder="0" title="@Model.VideoTitle" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+    </div>
+}

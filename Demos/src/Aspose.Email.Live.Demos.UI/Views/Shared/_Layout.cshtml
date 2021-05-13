@@ -1,62 +1,47 @@
 ﻿<!DOCTYPE html>
-<html lang="en-us">
-
+<html lang="en">
 <head>
-	<title>@ViewBag.PageTitle</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="description" content="@ViewBag.MetaDescription" />
-	<meta name="theme-color" content="#3C7DE7" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASPOSE EMAIL APPS</title>
 
+    <link href="@Url.Content("~/img/favicon.ico")" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 
-	<link href="@Url.Content("~/img/favicon.ico")" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <!-- Bootstrap & Font CSS -->
+    <link rel="stylesheet" href="https://cms.dynabic.com/templates/aspose/css/bootstrap.css?v=331" type="text/css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" type="text/css" />
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
 
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="https://cms.dynabic.com/templates/aspose/css/common.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/error404.min.css" type="text/css" />
 
+    <!-- Dynabic.Menu CSS -->
+    <link rel="stylesheet" href="https://cms.admin.containerize.com/templates/aspose/css/AsposePtyLtdMenu.css" type="text/css" />
+    <link rel="stylesheet" href="https://cms.admin.containerize.com/templates/aspose/css/font-awesome.css" type="text/css" />
 
-	<!-- Bootstrap & Font CSS -->
-	<link rel="stylesheet" href="https://cms.dynabic.com/templates/aspose/css/bootstrap.css?v=331" type="text/css" />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" type="text/css" />
+    <link rel="stylesheet" href="/css/asposeapp.css" type="text/css" />
 
-	<!-- Common CSS -->
-	<link rel="stylesheet" href="https://cms.dynabic.com/templates/aspose/css/common.css" type="text/css" />
-	<link rel="stylesheet" href="/css/error404.css" type="text/css" />
-
-	<!-- Dynabic.Menu CSS -->
-	<script src="https://menu.containerize.com/Scripts/Containerize.Menu.min.js"></script>
-	<link href="https://cms.admin.containerize.com/templates/aspose/css/AsposePtyLtdMenu.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="https://cms.admin.containerize.com/templates/aspose/css/font-awesome.css" type="text/css" />
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-
-	<link rel="stylesheet" href="/css/asposeapp.css" type="text/css" />
-	@if (IsSectionDefined("styles"))
-	{
-		@RenderSection("styles", false)
-	}
-
+    @if (IsSectionDefined("styles"))
+    {
+        @RenderSection("styles", false)
+    }
 
 </head>
 <body>
-	<div id='DynabicMenuInnerDiv'></div>
+    <div id='DynabicMenuInnerDiv'></div>
+    @RenderBody()
+    <div id='DynabicMenuFooter'></div>
 
-	@RenderBody()
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-	<div id='DynabicMenuFooter'></div>
+    <script src="https://menu.containerize.com/Scripts/Containerize.Menu.min.js"></script>
 
-	<script>
+    <script defer>
+        LoadMenu("AsposeApp");
+    </script>
 
-		LoadMenu("AsposeApp");
-	</script>
-
-	
-
-	@if (IsSectionDefined("scripts"))
-	{
-		@RenderSection("scripts", false)
-	}
-	
+    @RenderSection("Scripts", required: false)
 </body>
-
 </html>

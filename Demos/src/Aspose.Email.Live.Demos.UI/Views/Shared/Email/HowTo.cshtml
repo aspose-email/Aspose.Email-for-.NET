@@ -1,0 +1,22 @@
+﻿@model Aspose.Email.Live.Demos.UI.Models.Email.EmailHowToModel
+
+@* HowTo Section *@
+<div class="col-md-12 tl bg-darkgray howtolist" visible="false" runat="server">
+    <a class="anchor" name="howto"></a>
+    <div class="container tl dflex">
+        <div class="col-md-4 howtosectiongfx">
+            <img src="~/img/howto.png" alt="HowTo">
+        </div>
+        <div class="howtosection col-md-8">
+            <div>
+                <h2>@Model.Title</h2>
+                <ul>
+                    @foreach (var el in Model.List)
+                    {
+                        <li>@el.Text</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

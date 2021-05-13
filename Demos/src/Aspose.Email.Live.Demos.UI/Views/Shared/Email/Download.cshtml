@@ -1,0 +1,31 @@
+﻿@model ViewModel
+
+<div id="DownloadPlaceHolder" class="hidden">
+    <div class="filesuccess">
+        <label id="SuccessMessage">@Model.SuccessMessage</label>
+        <span class="convertbtn">
+            <a href="#" id="DownloadButton" class="btn btn-success btn-lg">@Model["DownLoadNow"]&nbsp;<i class="fa fa-download"></i></a>
+        </span>
+        @if (Model.ShowViewerButton)
+        {
+            <div class="clearfix">&nbsp;</div>
+            <span class="viewerbtn">
+                <a href="#" id="ViewerLink" target="_self" class="btn btn-success btn-lg">@Model.ViewerButtonText &nbsp;<i class="fa fa-eye"></i></a>
+            </span>
+        }
+        <div class="clearfix">&nbsp;</div>
+        <a href="@Model.AppURL" class="btn btn-link refresh-c">@Model.AnotherFileText &nbsp;<i class="fa-refresh fa"></i></a>
+        <a id="sendEmailButton" class="btn btn-link">@Model["SendToEmail"] &nbsp;<i class="fa-envelope-o fa"></i></a>
+        <a id="tryCloud" class="btn btn-link" target="_blank" href="https://products.aspose.cloud/email/family">@Model["TryCloudAPIFree"] &nbsp;<i class="fa-cloud fa"></i></a>
+    </div>
+    
+    <div id="feedback" class="row feedback-form">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 feedback-form">
+            <div>
+                <textarea id="feedbackText" maxlength="1000" placeholder="@Model["FeedbackPlaceholder"]"></textarea>
+                <div class="small text-left">@Model["FeedbackMaximumSize"]</div>
+            </div>
+            <a id="sendFeedbackBtn" class="btn btn-success">@Model["FeedbackSend"]</a>
+        </div>
+    </div>
+</div>

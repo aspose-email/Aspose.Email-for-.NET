@@ -1,0 +1,27 @@
+﻿@model ViewModel
+
+@{
+    Layout = "~/Views/Shared/Email/Layout.cshtml";
+    ViewBag.MainColor = "#000000";
+}
+
+@await Html.PartialAsync("Email/Main")
+
+@await Html.PartialAsync("Email/FooterProduct")
+
+@section scripts {
+    <script src="~/js/email/signature.min.js"></script>
+
+    <script type="text/javascript">
+        var o = @Html.Raw(Model.JSOptions);
+        $.extend(o, {
+            Method: requestSignature,
+            signatureType: 'drawing',
+            validationTextMessage: "@Html.Raw(Model["TextErrorMessage"])",
+            validationDrawMessage: "@Html.Raw(Model["DrawingErrorMessage"])"
+        });
+    </script>
+}
+@section styles {
+    <link href="/css/colorpicker.css" rel="stylesheet" type="text/css" />
+}

@@ -1,0 +1,29 @@
+﻿@model EmailFAQPageModel
+
+@* HowTo Section *@
+<div class="col-md-12 tl bg-darkgray howtolist" visible="false" runat="server">
+    <a class="anchor" name="faq"></a>
+    <div class="container tl dflex" itemscope="" itemtype="https://schema.org/FAQPage">
+        <div class="col-md-4 howtosectiongfx">
+            <img class="social-panel-hide-on-mobile" src="~/img/howto.png" alt="HowTo">
+        </div>
+        <div class="howtosection col-md-8">
+            <div>
+                <h2>FAQ</h2>
+                <ul>
+                    @foreach (var el in Model.List)
+                    {
+                        <li itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+                            <div>
+                                <span itemprop="name"><b>@el.Question</b></span>
+                            </div>
+                            <div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <span itemprop="text">@Html.Raw(@el.AcceptedAnswer)</span>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

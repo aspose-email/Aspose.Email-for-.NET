@@ -1,0 +1,86 @@
+[
+  {
+    "outputFileName": "wwwroot/js/email/assembly.min.js",
+    "inputFiles": [
+      "wwwroot/js/email/assembly.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/email/base.min.js",
+    "inputFiles": [
+      "wwwroot/js/email/base.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/email/filedrop.min.js",
+    "inputFiles": [
+      "wwwroot/js/email/filedrop.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/email/headers.min.js",
+    "inputFiles": [
+      "wwwroot/js/email/headers.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/email/metadata.min.js",
+    "inputFiles": [
+      "wwwroot/js/email/metadata.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/email/signature.min.js",
+    "inputFiles": [
+      "wwwroot/js/email/signature.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/email/watermark.min.js",
+    "inputFiles": [
+      "wwwroot/js/email/watermark.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/Editor/app.controller.main.min.js",
+    "inputFiles": [
+      "wwwroot/Editor/app.controller.main.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/Editor/app.min.js",
+    "inputFiles": [
+      "wwwroot/Editor/app.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/Editor/jquery-resizable-0.32.0.min.min.js",
+    "inputFiles": [
+      "wwwroot/Editor/jquery-resizable-0.32.0.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/Editor/editor.min.css",
+    "inputFiles": [
+      "wwwroot/Editor/editor.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/Editor/trumbowyg/trumbowyg.min.js",
+    "inputFiles": [
+      "wwwroot/Editor/trumbowyg/trumbowyg.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/editor/trumbowyg/plugins/ruby/trumbowyg.ruby.min.js",
+    "inputFiles": [
+      "wwwroot/editor/trumbowyg/plugins/ruby/trumbowyg.ruby.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/viewer/qi/doc/js/custom.min.js",
+    "inputFiles": [
+      "wwwroot/viewer/qi/doc/js/custom.js"
+    ]
+  }
+]

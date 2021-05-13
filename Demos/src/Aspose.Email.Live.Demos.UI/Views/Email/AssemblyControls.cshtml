@@ -1,0 +1,167 @@
+﻿@model ViewModel
+
+    <div class="container-fluid asposetools assembly">
+        <br />
+        <a id="StageLabel" class="btn-navigate" style="color:white">
+            STAGE 1/2
+        </a>
+        <br />
+
+        <div id="StageContent">
+            <div id="TemplateFileDrop" class="filedrop" style="background-color: #F2F2F2;">
+                <label style="margin-top: 50px;text-decoration: underline">@Model["AssemblyDropTemplate"]</label>
+                <input type="file" id="fileUploadTemplateInput"
+                       accept="@Model["TemplateFormats"]?.Replace("|.", ",.")" />
+                <br />
+                <div id="fileUploadTemplate" style="position: relative; z-index: 5;">
+                    <span class="filename">
+                        <a>
+                            <label for="fileUploadTemplateInput" class="custom-file-upload"></label>
+                            <i class="fa fa-times" onclick='removeTemplateData()'></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+
+            <div id="TemplateHelpButton" class="convertbtn">
+                <a class="btn btn-success btn-lg px-5"
+                   data-toggle="modal" data-target="#help-dialog-template">
+                    <i class="fa fa-info-circle">&nbsp;</i>Help with template
+                </a>
+            </div>
+
+            <div id="DataSourceFileDrop" class="filedrop" style="background-color: #F2F2F2;">
+                <label style="margin-top: 50px;text-decoration: underline">@Model["AssemblyDropDataSource"]</label>
+                <input type="file" id="fileUploadDataSourceInput"
+                       accept="@Model["DataSourceFormats"]?.Replace("|.", ",.")" />
+                <br />
+                <div id="fileUploadDataSource" style="position: relative; z-index: 5;">
+                    <span class="filename">
+                        <a>
+                            <label for="fileUploadDataSourceInput" class="custom-file-upload"></label>
+                            <i class="fa fa-times" onclick='removeDataSourceData()'></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+
+            <div id="DataSourceForms" class="form-inline">
+                <div class="color-wrapper">
+                    <em>Data Source Name<sup>*</sup></em> <input id="DataSourceName" class="form-control" type="text" placeholder="" required />
+                    <div id="TableIndex">
+                        <em class="btn">Table Index</em> <input class="form-control" id="datasourceTableIndex" type="number" min="0" style="width:60px" />
+                    </div>
+                    <div id="TableDelimiter">
+                        <em class="btn">Delimiter</em>
+                        <div class="dropdown" style="display:inline-block" id="delimiterdropdown">
+                            <button type="button" class="btn dropdown-toggle" id="delimiter" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" style="background-color:white;width:60px;border-radius:4px">
+                                ,
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="delimiter">
+                                <li><a click="setDelimiter(',')" class="dropdown-item">,</a></li>
+                                <li><a click="setDelimiter(';')" class="dropdown-item">;</a></li>
+                                <li><a click="setDelimiter('\t', 'Tab')" class="dropdown-item">Tab</a></li>
+                                <li><a click="setDelimiter(' ', 'Space')" class="dropdown-item">Space</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+
+            <div id="DataSourceHelpButton" class="convertbtn">
+                <br />
+                <a class="btn btn-success btn-lg px-5"
+                   data-toggle="modal" data-target="#help-dialog-datasource">
+                    <i class="fa fa-info-circle">&nbsp;</i>Help with datasource
+                </a>
+                <br />
+            </div>
+
+            <div id="AssembleButton" class="convertbtn">
+                <br />
+                <br />
+                <a class="btn btn-success btn-lg px-5">
+                    Assemble
+                </a>
+                <br />
+            </div>
+        </div>
+
+        <div>
+            <br />
+
+            <a id="BackButton" class="btn btn-link btn-navigate" style="color:white">
+                <i class="fa fa-arrow-left">&nbsp;</i>Back
+            </a>
+
+            <a id="NextButton" class="btn btn-link btn-navigate" style="color:white">
+                Next&nbsp;<i class="fa fa-arrow-right"></i>
+            </a>
+
+            <a id="AnotherFileButton" class="btn btn-link refresh-c btn-navigate" style="color:white">
+                <i class="fa fa-refresh">&nbsp;</i>@Model["EmailResetButton"]
+                <br />
+            </a>
+        </div>
+    </div>
+<br />
+
+<div id="help-dialog-template" class="modal fade" tabindex="-1" role="dialog" style="z-index: 99999999;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content template">
+            <div class="modal-header">
+                <h5 class="modal-title">Help &raquo; Upload Template</h5>
+            </div>
+            <div class="modal-body">
+                <p>
+                    EMAIL Assembly uses Search &Aacute; Replace algorithm to produce multiple messages.
+                </p>
+                <p>For quick testing, please create a new MSG email file with sample content.</p>
+                <blockquote>
+                    <h1>ICCI 2029</h1>
+                    <h2>Letter of Invitation</h2>
+                    <p>Dear #Salutation# #FirstName# #LastName#</p>
+                    <p>
+                        On behalf of the local organization committee we invite you to the 19th International Conference on Сultural Innovations. The conference takes place 18 - 21 January 2029 and the venue will be Conference Centre, Gothenburg, Sweden.
+                    </p>
+                </blockquote>
+                <p>Save this file as <b>Template.msg</b> and upload it as template. If you use a PST or MBOX file as template, the App will create new PST file for every row in the data set. Every message in the storage file will be used as template.</p>
+            </div>
+            <div class="modal-footer">
+                <span class="btn btn-primary" data-dismiss="modal">Close</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="help-dialog-datasource" class="modal fade" tabindex="-1" role="dialog" style="z-index: 99999999;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content datasource">
+            <div class="modal-header">
+                <h5 class="modal-title">Help &raquo; Upload Data Source</h5>
+            </div>
+            <div class="modal-body">
+                <p> For quick testing, please create a new Table in the document and add the data according to the following table.</p>
+                <code>
+                    {
+                    persons: [{
+                    Salutation: "Mr.",
+                    FirstName: "John",
+                    LastName: "Magnusson"
+                    }]
+                    }
+                </code>
+                <p>
+                    Save this file as <b>Data.json</b> and upload it as data source.<br />
+                    Set Table Index: 0<br />
+                    Set Data Source Name: persons
+                </p>
+            </div>
+            <div class="modal-footer">
+                <span class="btn btn-primary" data-dismiss="modal">Close</span>
+            </div>
+        </div>
+    </div>
+</div>

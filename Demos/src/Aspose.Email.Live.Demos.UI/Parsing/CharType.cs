@@ -1,4 +1,4 @@
-namespace  Aspose.Email.Live.Demos.UI.Parsing
+namespace Aspose.Email.Live.Demos.UI.Parsing
 {
     public enum CharType
     {

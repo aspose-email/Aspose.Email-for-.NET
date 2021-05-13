@@ -1,0 +1,177 @@
+﻿@model ViewModel
+
+@await Html.PartialAsync("Email/OtherApps")
+
+<div class="row">
+    <div class="container-fluid sub-menu-container">
+        <div id="sticky1" class="stickytopheight">&nbsp;</div>
+        <div id="sticky1" class="stickytopheight">&nbsp;</div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 title2">
+                    <h4>
+                        <span class="spanclass">
+                            <img src="~/img/aspose_email-for-net-min.png" alt="Aspose.Email for .NET">
+                        </span>
+                        @($"{Model.PageProductTitle} {Model["APPName"]}")
+                    </h4>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="mb-hide">@Model["MenuOverview"]</h4>
+                    <ul class="nav nav-pills mb-hide">
+                        @if (Model.IsCanonical && Model.OverviewPanelEnabled)
+                        {
+                            <li><a href="#overview" class="active">@Model[$"MenuOverview"]</a></li>
+                        }
+                        @if (Model.IsCanonical && Model.AppFeaturesPanelEnabled)
+                        {
+                            <li><a href="#features">@Model["MenuFeatures"]</a></li>
+                        }
+                        @if (Model.VideoUrl != null)
+                        {
+                            <li><a href="#video">@Model["MenuVideoBlock"]</a></li>
+                        }
+                        @if (Model.ShowHowTo)
+                        {
+                            <li><a href="#howto">@Model["MenuHowTo"]</a></li>
+                        }
+                        @if (Model.ShowFAQPage)
+                        {
+                            <li><a href="#faq">@Model["MenuFAQ"]</a></li>
+                        }
+                    </ul>
+                    <div class="submenu">
+                        <ul class="submenul">
+                            <li class="dropdown smenu-li">
+                                @if (Model.IsCanonical)
+                                {
+                                    <a class="dropdown-toggle arrow-dd" href="#overview" data-toggle="dropdown">@Model["MenuOverview"] </a>
+                                }
+                                else
+                                {
+                                    <a class="dropdown-toggle arrow-dd" href="#overview" data-toggle="dropdown">...</a>
+                                }
+                                <ul class="dropdown-menu smenu-dd">
+                                    @if (Model.IsCanonical)
+                                    {
+                                        <li><a href="#features">@Model["MenuFeatures"]</a></li>
+                                    }
+                                    @if (Model.VideoUrl != null)
+                                    {
+                                        <li><a href="#video">@Model["MenuVideoBlock"]</a></li>
+                                    }
+                                    @if (Model.ShowHowTo)
+                                    {
+                                        <li><a href="#howto">@Model["MenuHowTo"]</a></li>
+                                    }
+                                    @if (Model.ShowFAQPage)
+                                    {
+                                        <li><a href="#faq">@Model["MenuFAQ"]</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.IsCanonical && Model.OverviewPanelEnabled)
+{
+    <div class="overview">
+        <a class="anchor" name="overview"></a>
+        <div class="container-fluid diagram-tab-content bg-gray">
+            <div class="row">
+                <div class="container" style="margin-bottom: 30px !important;">
+                    <div class="cleartop">&nbsp;</div>
+                    <p style="font-size: 17px;">
+                        @Html.Raw(Model["RawHtmlOverview"])
+                    </p>
+                    <p style="font-size: 17px;">
+                        @Html.Raw(Model["RawHtmlCloudApi"])
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="col-md-12 pt-5 app-product-section tl">
+    <a class="anchor" name="features"></a>
+    <div class="container">
+        <div class="col-md-3 pull-right">
+            <img id="ProductImage" src="~/img/aspose-@Model.Product-app.png" alt="@Model.AppFeaturesTitle " />
+        </div>
+
+        <div class="col-md-9 pull-left">
+            <h2 id="AsposeProductTitle">@Html.Raw(Model.AppFeaturesTitle)</h2>
+            <ul>
+                @if (Model.AppFeatures != null)
+                {
+                    foreach (var feature in Model.AppFeatures)
+                    {
+                        <li>@Html.Raw(feature)</li>
+                    }
+                }
+
+                @if (Model.AppFeaturesActionStringEnabled)
+                {
+                    <li>
+                        @Html.Raw($" {Model["Action"]} {Aspose.Email.Live.Demos.UI.Helpers.ResourceHelper.InjectFormatLinks(Model.ExtensionsString.Replace("|.", ", ").Replace(".", "").ToUpper())}")
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>        
+
+@await Html.PartialAsync("Email/Video")
+
+@if (Model.ShowHowTo && !Model.HowToModel.List.IsNullOrEmpty())
+{
+    @await Html.PartialAsync("Email/HowTo", Model.HowToModel)
+}
+
+@if (Model.ShowFAQPage && !Model.FAQPageModel.List.IsNullOrEmpty())
+{
+    @await Html.PartialAsync("Email/FAQ", Model.FAQPageModel)
+}
+
+<div class="popup hidden" id="reportWindow">
+    <div class="pop-tit"> Oops! An error has occurred.</div>
+    <div id="reportErrorText" class="pop-tit"></div>
+    <br />
+    <div class="pop-tit2">Please ensure that uploading correct file.</div>
+    <div class="pop-main">
+        <div class="p-m-p">Would you like to report this error to the forum, so that we can look into it and resolve the issue? You will get the notification email when error is fixed.</div>
+        <div class="p-m-e">
+            Email:<br>
+            <input type="text" name="" id="feedbackEmail" class="ng-valid ng-dirty ng-touched">
+        </div>
+        <div class="p-m-c"> <input type="checkbox" id="privateReportCheckBox"> Make this forum private, so that it will only be accessible to you and our developers. </div>
+    </div>
+    <div class="pop-bottom">
+        <div class="btn-close" id="closeReportButton">Close</div><div class="btn-re" id="sendReportButton"> Report Error </div>
+    </div>
+</div>
+
+<div class="popup hidden" id="reportSentWindow">
+    <div>
+        <h4 class="modal-title" style="color: green;" id="reportSuccessLabel">Error has been reported successfully.</h4>
+    </div>
+    <div class="pop-main">
+        <div class="p-m-p">
+            <p>
+                <b><i>You have successfully reported the error, You will get the notification email when error is fixed.</i></b>
+                Click <a id="linkToForums" target="_blank" href="">this link</a> to visit the forums.
+            </p>
+        </div>
+    </div>
+    <div class="pop-bottom">
+        <div class="btn-close" id="closeReportSuccessButton">Close</div>
+    </div>
+</div>
+
+<div class="mask hidden" id="reportWindowMask"></div>
