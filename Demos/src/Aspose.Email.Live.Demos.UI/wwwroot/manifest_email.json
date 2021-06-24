@@ -1,0 +1,21 @@
+{
+  "short_name": "Aspose.Email apps",
+  "name": "Aspose.Email apps",
+  "icons": [
+    {
+      "src": "/img/email-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/email-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/email",
+  "background_color": "#3C7DE7",
+  "display": "standalone",
+  "scope": "/email",
+  "theme_color": "#3C7DE7"
+}
