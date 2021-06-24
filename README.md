@@ -101,4 +101,4 @@ var appointment = new Appointment(
 appointment.Save("output.ics", AppointmentSaveFormat.Ics);
 ```
 
-[Home](https://www.aspose.com/) | [Product Page](https://products.aspose.com/email/net) | [Docs](https://docs.aspose.com/email/net/) | [Demos](https://products.aspose.app/email/family) | [API Reference](https://apireference.aspose.com/email/net) | [Examples](https://github.com/aspose-email/Aspose.Email-for-.NET) | [Blog](https://blog.aspose.com/category/email/) | [Free Support](https://forum.aspose.com/c/email) | [Temporary License](https://purchase.aspose.com/temporary-license)
+[Home](https://www.aspose.com/) | [Product Page](https://products.aspose.com/email/net) | [Docs](https://docs.aspose.com/email/net/) | [Demos](https://products.aspose.app/email/family) | [API Reference](https://apireference.aspose.com/email/net) | [Examples](https://github.com/aspose-email/Aspose.Email-for-.NET) | [Blog](https://blog.aspose.com/category/email/) | [Search](https://search.aspose.com/) | [Free Support](https://forum.aspose.com/c/email) | [Temporary License](https://purchase.aspose.com/temporary-license)
