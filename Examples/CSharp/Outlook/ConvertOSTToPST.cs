@@ -18,12 +18,12 @@ namespace Aspose.Email.Examples.CSharp.Email.Outlook
             // ExStart:ConvertOSTToPST
             string dataDir = RunExamples.GetDataDir_Outlook();
 
-            // Load the Outlook file
-            string path = dataDir + "PersonalStorage.pst";
-
-            // Get the Display Name of the file
+            // Load the OST storage file
+            string path = dataDir + "SampleOstFile.ost";
+            
             using (PersonalStorage ost = PersonalStorage.FromFile(path))
             {
+				// Convert OST storage to PST and save the result to file
                 ost.SaveAs(dataDir + "ConvertOSTToPST_out.pst", FileFormat.Pst);
             }
             // ExEnd:ConvertOSTToPST
