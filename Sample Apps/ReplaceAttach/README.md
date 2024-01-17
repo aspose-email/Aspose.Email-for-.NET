@@ -1,0 +1,1 @@
+The app shows how to replace MapiMessage attachments by index.

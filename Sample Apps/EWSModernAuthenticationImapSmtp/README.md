@@ -1,0 +1,1 @@
+The app demonstrates making modern-authenticated IMAP, SMTP requests using delegated authentication.

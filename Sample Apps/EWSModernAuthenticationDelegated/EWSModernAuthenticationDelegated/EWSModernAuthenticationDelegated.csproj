@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+	
+  <ItemGroup>
+  	<Content Include="appsettings.json">
+  		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  	</Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspose.Email" Version="22.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.43.0" />
+  </ItemGroup>
+
+</Project>
