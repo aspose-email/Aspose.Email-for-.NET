@@ -1,0 +1,1 @@
+Simple apps that demonstrate the capabilities of the Aspose.Email

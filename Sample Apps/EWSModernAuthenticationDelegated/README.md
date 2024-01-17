@@ -1,0 +1,1 @@
+The app demonstrates making a modern-authenticated EWS request using delegated authentication.
