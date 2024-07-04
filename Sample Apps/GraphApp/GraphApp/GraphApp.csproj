@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Aspose.Email" Version="22.4.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0-preview.3.22175.4" />
+      <PackageReference Include="Microsoft.Identity.Web" Version="1.24.1" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="ProtectedApiCallHelper.cs" />
+      <Compile Remove="Messages.cs" />
+    </ItemGroup>
+
+</Project>
