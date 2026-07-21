@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net48;net8.0</TargetFrameworks>
+    <RootNamespace>Aspose.Email.Examples</RootNamespace>
+    <AssemblyName>Aspose.Email.Examples</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <Reference Include="System.Web">
+      <Version>4.0.0.0</Version>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <!-- Windows Forms and Gmail examples build on .NET Framework only. -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <Compile Remove="Email/EmailValidations.Designer.cs" />
+    <Compile Remove="Email/EmailValidations.cs" />
+    <Compile Remove="Email/SignEmailsWithDKIM.cs" />
+    <Compile Remove="Email/CreatingTNEFFromMSG.cs" />
+    <Compile Remove="Email/DetectTNEFMessage.cs" />
+    <Compile Remove="Gmail/*.cs" />
+    <Compile Remove="MAPI/DragDropOutlookMessages.Designer.cs" />
+    <Compile Remove="MAPI/DragDropOutlookMessages.cs" />
+    <Compile Remove="MAPI/MyPanel.cs" />
+    <Compile Remove="MAPI/WorkingWithMSGAttachments.Designer.cs" />
+    <Compile Remove="MAPI/WorkingWithMSGAttachments.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspose.Email" Version="26.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.44.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.2-mauipre.1.22054.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="clientsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

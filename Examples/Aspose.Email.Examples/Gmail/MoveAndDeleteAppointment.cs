@@ -1,0 +1,53 @@
+﻿using Aspose.Email.Calendar;
+using Aspose.Email.Clients.Google;
+using Aspose.Email.Mime;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Aspose.Email.Examples.Gmail
+{
+    class MoveAndDeleteAppointment
+    {
+        public static void Run()
+        {
+            try
+            {
+                GoogleTestUser User2 = new GoogleTestUser("user", "email address", "password", "clientId", "client secret");
+                string accessToken;
+                string refreshToken;
+                GoogleOAuthHelper.GetAccessToken(User2, out accessToken, out refreshToken);
+
+                // Get IGmailclient
+                using (IGmailClient client = Aspose.Email.Clients.Google.GmailClient.GetInstance(accessToken, User2.EMail))
+                {
+                    string SourceCalendarId = client.ListCalendars()[0].Id;
+                    string DestinationCalendarId = client.ListCalendars()[1].Id;
+                    string TargetAppUniqueId = client.ListAppointments(SourceCalendarId)[0].UniqueId;
+
+                    // Retrieve the list of appointments in the destination calendar before moving the appointment
+                    Appointment[] appointments = client.ListAppointments(DestinationCalendarId);
+                    Console.WriteLine("Before moving count = " + appointments.Length);
+                    Appointment Movedapp = client.MoveAppointment(SourceCalendarId, DestinationCalendarId, TargetAppUniqueId);
+
+                    // Retrieve the list of appointments in the destination calendar after moving the appointment
+                    appointments = client.ListAppointments(DestinationCalendarId);
+                    Console.WriteLine("After moving count = " + appointments.Length);
+
+                    // Delete particular appointment from a calendar using unique id
+                    client.DeleteAppointment(DestinationCalendarId, Movedapp.UniqueId);
+
+                    // Retrieve the list of appointments. It should be one less than the earlier appointments in the destination calendar
+                    appointments = client.ListAppointments(DestinationCalendarId);
+                    Console.WriteLine("After deleting count = " + appointments.Length);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+}

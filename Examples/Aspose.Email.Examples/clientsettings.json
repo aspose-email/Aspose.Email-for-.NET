@@ -1,0 +1,46 @@
+{
+  "Imap": {
+    "HostName": "outlook.office365.com",
+    "Port": 993,
+    "UserName": "",
+    "Password": "",
+    "ClientId": "",
+    "TenantId": "",
+    "RedirectUri": "http://localhost",
+    "Scope": [ "https://outlook.office.com/IMAP.AccessAsUser.All" ]
+  },
+
+    "Smtp": {
+        "HostName": "",
+        "Port": 587,
+        "UserName": "",
+        "Password": "",
+        "ClientId": "",
+        "TenantId": "",
+        "RedirectUri": "http://localhost",
+        "Scope": ["https://outlook.office.com/SMTP.Send"]
+    },
+
+    "Pop": {
+        "HostName": "",
+        "Port": 995,
+        "UserName": "",
+        "Password": "",
+        "ClientId": "",
+        "TenantId": "",
+        "RedirectUri": "http://localhost",
+        "Scope": ["https://outlook.office.com/POP.AccessAsUser.All"]
+    },
+
+  "Ews": {
+    "MailboxUri": "https://outlook.office365.com/EWS/Exchange.asmx",
+    "Domain": "",
+    "UserName": "",
+    "Password": "",
+    "ClientId": "",
+    "TenantId": "",
+    "ClientSecret": "",
+    "RedirectUri": "http://localhost",
+    "Scope": [ "https://outlook.office365.com/.default" ]
+  }
+}

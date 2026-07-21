@@ -1,0 +1,38 @@
+﻿using Aspose.Email;
+using Aspose.Email.Clients;
+using Aspose.Email.Clients.Base;
+using Aspose.Email.Clients.Imap;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Aspose.Email.Examples.IMAP
+{
+    public class ImapFetchGroupMessages
+    {
+        public static void Run()
+        {
+            ImapClient imapClient = new ImapClient();
+            imapClient.Host = "<HOST>";
+            imapClient.Port = 993;
+            imapClient.Username = "<USERNAME>";
+            imapClient.Password = "<PASSWORD>";
+            imapClient.SupportedEncryption = EncryptionProtocols.Tls;
+            imapClient.SecurityOptions = SecurityOptions.SSLImplicit;
+
+            ImapMessageInfoCollection messageInfoCol = imapClient.ListMessages();
+            Console.WriteLine("ListMessages Count: " + messageInfoCol.Count);
+            int[] sequenceNumberAr = messageInfoCol.Select((ImapMessageInfo mi) => mi.SequenceNumber).ToArray();
+            string[] uniqueIdAr = messageInfoCol.Select((ImapMessageInfo mi) => mi.UniqueId).ToArray();
+
+            IList<MailMessage> fetchedMessagesBySNumMC = imapClient.FetchMessages(sequenceNumberAr);
+            Console.WriteLine("FetchMessages-sequenceNumberAr Count: " + fetchedMessagesBySNumMC.Count);
+
+            IList<MailMessage> fetchedMessagesByUidMC = imapClient.FetchMessages(uniqueIdAr);
+            Console.WriteLine("FetchMessages-uniqueIdAr Count: " + fetchedMessagesByUidMC.Count);
+
+            Console.WriteLine("ImapFetchGroupMessages executed successfully.");
+        }
+    }
+}
