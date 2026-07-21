@@ -11,9 +11,8 @@
 
 Directory | Description
 --------- | -----------
-[Demos](Demos)  | Source code for the live demos hosted at https://products.aspose.app/email/family.
-[Examples](Examples)  | A collection of .NET examples that help you learn the product features.
-[Plugins](Plugins)  | Visual Studio Plugins related to Aspose.Email for .NET.
+[Examples](Examples)  | A collection of runnable .NET examples that help you learn the product features.
+[Sample Apps](Sample%20Apps)  | Simple apps that demonstrate the capabilities of Aspose.Email for .NET.
 
 
 ## Email Creation, Conversion & Transactional API
@@ -56,7 +55,7 @@ var message = new MailMessage();
 message.From = "sender@domain.com";
 message.To = "receiver@domain.com";
 message.Subject = "This is test message";
-mamessageilMsg.Body = "This is test body";
+message.Body = "This is test body";
 // create an instance of the MapiMessage class and pass object of MailMessage as argument
 var msg = MapiMessage.FromMailMessage(message);
 // save file on disc
