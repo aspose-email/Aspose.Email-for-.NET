@@ -1,0 +1,13 @@
+X-Unsent: 1
+From: sender@sender.com
+Subject: test mail(Aspose.Email Evaluation)
+Date: Sun, 5 Mar 2006 19:00:00 +0000
+X-Mailer: Aspose.Email
+To: receiver1@receiver.com
+Cc: receiver2@receiver.com
+Bcc: receiver3@receiver.com
+Reply-To: reply@reply.com
+secret-header: mystery
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
