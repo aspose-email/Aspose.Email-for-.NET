@@ -1,37 +1,50 @@
-﻿using Aspose.Email.Clients;
-using Aspose.Email.Clients.Imap;
+// Demonstrates logging the client's activity - every command sent and every response
+// received - to a file, with a separate file per day.
+//
+// EnableLogger switches logging on, LogFileName sets the file, and UseDateInLogFileName
+// adds the date to that name, so a long-running service gets one log per day instead of
+// a single ever-growing file. ConfigureLoggingInCode shows the same settings with a fixed
+// file name.
+//
+// The log can contain message content and authentication data - keep it private.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class ImapClientActivityLogging
+    internal static class ImapClientActivityLogging
     {
         public static void Run()
         {
-            ImapClient client = new ImapClient("imap.gmail.com", 993, "user@gmail.com", "password");
+            var logDir = Data.OutSub("ImapLogs");
+            var messagesDir = Data.OutSub("ImapClientActivityLogging");
 
-            // Set security mode
-            client.SecurityOptions = SecurityOptions.Auto;
-
-            try
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                // Get the message info collection
-                ImapMessageInfoCollection list = client.ListMessages();
+                client.LogFileName = logDir/"ImapClientActivity.log";
+                client.UseDateInLogFileName = true;
+                client.EnableLogger = true;
 
-                // Download each message
-                for (int i = 0; i < list.Count; i++)
-                {
-                    // Save the EML file locally
-                    client.SaveMessage(list[i].UniqueId, Data.Out + list[i].UniqueId + ".eml");
-                }
+                // Some activity worth logging: download a few messages.
+                client.SelectFolder(ImapFolderInfo.InBox);
+                var messages = client.ListMessages(ImapFolderInfo.InBox, ImapListFields.IdOnly, 3);
+
+                foreach (var info in messages)
+                    client.SaveMessage(info.UniqueId, messagesDir/(info.UniqueId + ".eml"));
+
+                Console.WriteLine($"Downloaded {messages.Count} message(s) to {messagesDir}");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }            
+
+            var logFiles = Directory.GetFiles(logDir, "*", SearchOption.AllDirectories);
+
+            Console.WriteLine($"\nLog file(s) in {logDir}:");
+            if (logFiles.Length == 0)
+                Console.WriteLine("  (none)");
+
+            foreach (var file in logFiles)
+                Console.WriteLine($"  {Path.GetFileName(file)}  ({new FileInfo(file).Length} bytes)");
         }
     }
 }

@@ -1,61 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
+// Demonstrates how to list a folder page by page instead of all at once.
+//
+// ListMessagesByPage returns one page of message summaries together with paging
+// information: TotalCount, LastPage and NextPage. Pass the offset of NextPage back in to
+// get the following page, until LastPage is true. PageSettings chooses the folder and
+// the sort direction.
+//
+// The example appends 12 messages to a uniquely named folder, reads them five at a time,
+// and deletes the folder at the end.
+
+using System;
 using Aspose.Email.Clients.Imap;
-using Aspose.Email.Mime;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class ListingMessagesWithPagingSupport
+    internal static class ListingMessagesWithPagingSupport
     {
-        static void Run()
+        public static void Run()
         {
-            ///<summary>
-            /// This example shows the paging support of ImapClient for listing messages from the server
-            /// Available in Aspose.Email for .NET 6.4.0 and onwards
-            ///</summary>
-            using (ImapClient client = new ImapClient("host.domain.com", 993, "username", "password"))
+            const int messageCount = 12;
+            const int itemsPerPage = 5;
+
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
+
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
+                client.CreateFolder(folderName);
+
                 try
                 {
-                    int messagesNum = 12;
-                    int itemsPerPage = 5;
-                    MailMessage message = null;
-                    // Create some test messages and append these to server's inbox
-                    for (int i = 0; i < messagesNum; i++)
+                    for (var i = 1; i <= messageCount; i++)
                     {
-                        message = new MailMessage(
-                            "from@domain.com",
-                            "to@domain.com",
-                            "EMAILNET-35157 - " + Guid.NewGuid(),
-                            "EMAILNET-35157 Move paging parameters to separate class");
-                        client.AppendMessage(ImapFolderInfo.InBox, message);
+                        client.AppendMessage(folderName,
+                            new MailMessage("from@example.com", "to@example.com", $"Message {i:D2}", "Body"));
                     }
 
-                    // List messages from inbox
-                    client.SelectFolder(ImapFolderInfo.InBox);
-                    ImapMessageInfoCollection totalMessageInfoCol = client.ListMessages();
-                    // Verify the number of messages added
-                    Console.WriteLine(totalMessageInfoCol.Count);
+                    client.SelectFolder(folderName);
 
-                    ////////////////// RETREIVE THE MESSAGES USING PAGING SUPPORT////////////////////////////////////
+                    var settings = new PageSettings { FolderName = folderName };
+                    var page = client.ListMessagesByPage(itemsPerPage, 0, settings);
+                    Console.WriteLine($"{page.TotalCount} message(s) in '{folderName}', {itemsPerPage} per page.");
 
-                    List<ImapPageInfo> pages = new List<ImapPageInfo>();
-                    PageSettings pageSettings = new PageSettings();
-                    ImapPageInfo pageInfo = client.ListMessagesByPage(itemsPerPage, 0, pageSettings);
-                    Console.WriteLine(pageInfo.TotalCount);
-                    pages.Add(pageInfo);
-                    while (!pageInfo.LastPage)
+                    var pageNumber = 1;
+                    var retrieved = 0;
+
+                    while (true)
                     {
-                        pageInfo = client.ListMessagesByPage(itemsPerPage, pageInfo.NextPage.PageOffset, pageSettings);
-                        pages.Add(pageInfo);
+                        Console.WriteLine($"\nPage {pageNumber} (offset {page.PageOffset}):");
+                        foreach (var info in page.Items)
+                            Console.WriteLine("  " + info.Subject);
+
+                        retrieved += page.Items.Count;
+
+                        if (page.LastPage)
+                            break;
+
+                        page = client.ListMessagesByPage(itemsPerPage, page.NextPage.PageOffset, settings);
+                        pageNumber++;
                     }
-                    int retrievedItems = 0;
-                    foreach (ImapPageInfo folderCol in pages)
-                        retrievedItems += folderCol.Items.Count;
-                    Console.WriteLine(retrievedItems);
+
+                    Console.WriteLine($"\nRetrieved {retrieved} message(s) in {pageNumber} page(s).");
                 }
                 finally
                 {
+                    client.DeleteFolder(folderName);
                 }
             }
         }
