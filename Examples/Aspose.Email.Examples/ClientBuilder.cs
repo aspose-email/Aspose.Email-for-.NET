@@ -1,6 +1,7 @@
 using System.Net;
 using Aspose.Email.Clients;
 using Aspose.Email.Clients.Exchange.WebService;
+using Aspose.Email.Clients.Graph;
 using Aspose.Email.Clients.Imap;
 using Aspose.Email.Clients.Pop3;
 using Aspose.Email.Clients.Smtp;
@@ -112,6 +113,98 @@ namespace Aspose.Email.Examples
                 default:
                     throw new ArgumentOutOfRangeException(nameof(authType), authType, null);
             }
+        }
+
+        // True when clientsettings.json carries the Graph application registration.
+        // The Graph examples check this so that they explain what is missing instead of
+        // failing with an authentication error.
+        public static bool IsGraphConfigured =>
+            !string.IsNullOrWhiteSpace(ClientSettings.GetSection("Graph")["ClientId"]) &&
+            !string.IsNullOrWhiteSpace(ClientSettings.GetSection("Graph")["TenantId"]);
+
+        // The mailbox the Graph examples act on. With application permissions the client
+        // has no signed-in user, so the mailbox has to be named explicitly.
+        public static string GraphMailboxId => ClientSettings.GetSection("Graph")["MailboxId"];
+
+        public static IGraphClient Graph(AuthType authType)
+        {
+            var settings = GraphSettings();
+            var client = GraphClient.GetClient(new TokenProvider(settings, RequireModern(authType)), settings.TenantId);
+            Configure(client, settings);
+            return client;
+        }
+
+        public static IGraphClientAsync GraphAsync(AuthType authType)
+        {
+            var settings = GraphSettings();
+            var client = GraphClient.GetClientAsync(new TokenProvider(settings, RequireModern(authType)), settings.TenantId);
+            Configure(client, settings);
+            return client;
+        }
+
+        private static GraphClientSettings GraphSettings()
+        {
+            var settings = new GraphClientSettings();
+            ClientSettings.GetSection("Graph").Bind(settings);
+            return settings;
+        }
+
+        // Graph is OAuth-only; there is no basic-authentication path to fall back on.
+        private static AuthType RequireModern(AuthType authType)
+        {
+            if (authType == AuthType.Basic)
+                throw new NotSupportedException("Microsoft Graph supports OAuth 2.0 only.");
+
+            return authType;
+        }
+
+        // IGraphClient and IGraphClientAsync declare these settings separately rather
+        // than sharing a base interface, so each one is configured on its own.
+        private static void Configure(IGraphClient client, GraphClientSettings settings)
+        {
+            if (!string.IsNullOrWhiteSpace(settings.EndPoint))
+                client.EndPoint = settings.EndPoint;
+
+            // With application permissions the token belongs to the app rather than to a
+            // person, so the mailbox to work on is addressed by its id.
+            if (!string.IsNullOrWhiteSpace(settings.MailboxId))
+            {
+                client.Resource = ResourceType.Users;
+                client.ResourceId = settings.MailboxId;
+            }
+        }
+
+        private static void Configure(IGraphClientAsync client, GraphClientSettings settings)
+        {
+            if (!string.IsNullOrWhiteSpace(settings.EndPoint))
+                client.EndPoint = settings.EndPoint;
+
+            if (!string.IsNullOrWhiteSpace(settings.MailboxId))
+            {
+                client.Resource = ResourceType.Users;
+                client.ResourceId = settings.MailboxId;
+            }
+        }
+
+        private class GraphClientSettings : IModernAuthSettings
+        {
+            public string UserName { get; set; }
+
+            public string Password { get; set; }
+
+            public string ClientId { get; set; }
+
+            public string TenantId { get; set; }
+
+            public string RedirectUri { get; set; }
+
+            public string[] Scope { get; set; }
+
+            public string ClientSecret { get; set; }
+
+            public string EndPoint { get; set; }
+
+            public string MailboxId { get; set; }
         }
 
         private interface IModernAuthSettings

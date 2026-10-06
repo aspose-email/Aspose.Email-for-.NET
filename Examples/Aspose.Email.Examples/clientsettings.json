@@ -32,6 +32,16 @@
         "Scope": ["https://outlook.office.com/POP.AccessAsUser.All"]
     },
 
+  "Graph": {
+    "TenantId": "",
+    "ClientId": "",
+    "ClientSecret": "",
+    "RedirectUri": "http://localhost",
+    "Scope": [ "https://graph.microsoft.com/.default" ],
+    "EndPoint": "https://graph.microsoft.com",
+    "MailboxId": ""
+  },
+
   "Ews": {
     "MailboxUri": "https://outlook.office365.com/EWS/Exchange.asmx",
     "Domain": "",
