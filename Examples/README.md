@@ -37,16 +37,31 @@ The environment variable wins if both are present. Get a free 30-day temporary l
 
 ## What is where
 
+File formats and storages:
+
 | Folder | What it covers |
 |---|---|
 | [`Email`](Aspose.Email.Examples/Email) | MIME messages: create, load, convert, attachments, headers, MHTML/HTML, iCalendar, TNEF |
 | [`MAPI`](Aspose.Email.Examples/MAPI) | Outlook items and PST storages: messages, contacts, tasks, notes, appointments, recurrences |
-| [`PST`](Aspose.Email.Examples/PST) | Personal storage files: open, inspect, convert OST → PST |
-| [`OLM`](Aspose.Email.Examples/OLM) | Outlook for Mac storages |
-| [`MBOX`](Aspose.Email.Examples/MBOX) | Thunderbird / mbox storages |
+| [`PST`](Aspose.Email.Examples/PST) | Personal storage files: open from a file or stream, enumerate folders, read asynchronously, convert OST → PST |
+| [`OLM`](Aspose.Email.Examples/OLM) | Outlook for Mac storages: find folders, filter and extract messages, handle damaged files |
+| [`MBOX`](Aspose.Email.Examples/MBOX) | Thunderbird / mbox storages: read sequentially, asynchronously or by page, filter, write |
+
+Mail servers and services:
+
+| Folder | What it covers |
+|---|---|
+| [`Graph`](Aspose.Email.Examples/Graph) | Microsoft 365 through Microsoft Graph: folders, messages, attachments, sending, calendars, contacts, To Do tasks, categories, inbox rules, OData queries, paging, throttling, asynchronous client |
 | [`EWS`](Aspose.Email.Examples/EWS) | Exchange Web Services |
-| [`IMAP`](Aspose.Email.Examples/IMAP), [`POP3`](Aspose.Email.Examples/POP3), [`SMTP`](Aspose.Email.Examples/SMTP) | Mail protocol clients |
-| [`Gmail`](Aspose.Email.Examples/Gmail) | Gmail via Google API |
+| [`IMAP`](Aspose.Email.Examples/IMAP) | IMAP client: connection and security, folders, messages and attachments, search, threading and sorting, CONDSTORE sync, quotas, folder monitoring (IDLE), backup and restore, task-based API |
+| [`POP3`](Aspose.Email.Examples/POP3) | POP3 client |
+| [`SMTP`](Aspose.Email.Examples/SMTP) | Sending mail over SMTP |
+| [`Gmail`](Aspose.Email.Examples/Gmail) | Gmail via Google API (.NET Framework 4.8 only) |
+
+Other:
+
+| Folder | What it covers |
+|---|---|
 | [`Licensing`](Aspose.Email.Examples/Licensing) | Metered licensing |
 | [`Tools`](Aspose.Email.Examples/Tools) | Utilities used to regenerate the sample data — not examples |
 
@@ -60,10 +75,40 @@ Supporting folders:
 `Email`, `MAPI`, `PST`, `OLM`, `MBOX` and `Licensing` work straight away against the files in
 `Data/` — no server, no account, nothing to configure.
 
-`EWS`, `IMAP`, `POP3`, `SMTP` and `Gmail` talk to a real mail server. Put your server details in
-[`clientsettings.json`](Aspose.Email.Examples/clientsettings.json) before running them. A few
-examples in the offline folders can also send their result by mail; they save it to `Out/` either
-way and only send when SMTP is configured.
+`Graph`, `EWS`, `IMAP`, `POP3`, `SMTP` and `Gmail` talk to a real mail server or service and need
+an account — see [Connecting to a mail server](#connecting-to-a-mail-server). A few examples in the
+offline folders can also send their result by mail; they save it to `Out/` either way and only
+send when SMTP is configured.
+
+## Connecting to a mail server
+
+Most server examples take their connection details from
+[`clientsettings.json`](Aspose.Email.Examples/clientsettings.json), one section per service:
+
+| Section | Used by | How it signs in | What to fill in |
+|---|---|---|---|
+| `Graph` | `Graph` examples | OAuth 2.0 with application permissions (client secret) | `TenantId`, `ClientId`, `ClientSecret`, `MailboxId` |
+| `Ews` | `EWS` examples | OAuth 2.0 with application permissions (client secret) | `TenantId`, `ClientId`, `ClientSecret`, `UserName` |
+| `Imap` | `IMAP` examples | OAuth 2.0 with delegated permissions — you sign in in the browser | `HostName`, `Port`, `UserName`, `TenantId`, `ClientId` |
+| `Smtp` | offline examples that can mail their result | user name and password | `HostName`, `Port`, `UserName`, `Password` |
+
+The OAuth sections assume an application registered in
+[Microsoft Entra ID](https://learn.microsoft.com/entra/identity-platform/quickstart-register-app):
+
+- **Graph** needs application permissions with admin consent for what the examples touch —
+  `Mail.ReadWrite`, `Mail.Send`, `Contacts.ReadWrite`, `Calendars.ReadWrite`, `Tasks.ReadWrite`.
+  With application permissions there is no signed-in user, so `MailboxId` names the mailbox to
+  work on (its user principal name). `EndPoint` only needs changing for a national cloud.
+  Until the section is filled in, the Graph examples print what is missing instead of failing.
+- **IMAP** needs the delegated `IMAP.AccessAsUser.All` permission and `http://localhost` as a
+  redirect URI for a public client.
+
+Examples that change the mailbox — append, move, flag, delete — work in a temporary folder with a
+unique name (`Aspose-<guid>`) and delete it at the end, so existing mail is only read.
+
+Older examples, including all of `POP3`, `SMTP` and `Gmail`, still carry their connection details
+as placeholders in the code (`<HOST>`, `username`, `password` and the like). Replace them before
+running such an example.
 
 ## Writing your own
 
@@ -77,6 +122,18 @@ Copy any example as a starting point. The conventions are:
   msg.Save(Data.Out/"MyExample_out.msg");
   ```
 
+- Server clients come from `ClientBuilder`, which reads `clientsettings.json`:
+
+  ```csharp
+  using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
+  {
+      client.SelectFolder(ImapFolderInfo.InBox);
+  }
+  ```
+
+  `ClientBuilder.Graph` / `ClientBuilder.GraphAsync` and `ClientBuilder.Ews` work the same way.
+- Asynchronous examples keep the synchronous `Run()` and call
+  `RunAsync().GetAwaiter().GetResult()` from it.
 - The class name is how the example is invoked, so keep it descriptive.
 
 ## Support
