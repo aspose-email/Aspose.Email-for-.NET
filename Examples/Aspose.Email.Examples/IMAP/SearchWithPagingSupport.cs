@@ -1,76 +1,85 @@
-﻿using System;
+// Demonstrates paging through the results of a search, using the task-based API.
+//
+// ListMessagesByPageAsync takes the search query, a PageInfo with the page size and the
+// PageSettings. Only matching messages are paged, so TotalCount is the number of hits;
+// each result carries NextPage to pass back in until LastPage is true.
+//
+// The example appends 12 messages of two kinds to a uniquely named folder, pages through
+// the ones whose body contains a marker, and deletes the folder at the end. Servers that
+// index message bodies in the background may need a moment before new messages match.
+
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Aspose.Email.Clients;
 using Aspose.Email.Clients.Imap;
-using Aspose.Email.Mime;
-using Aspose.Email.Tools.Search;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class SearchWithPagingSupport
+    internal static class SearchWithPagingSupport
     {
-        static void Run()
-        { 
-            // ///<summary>
-            // /// This example shows how to search for messages using ImapClient of the API with paging support
-            // /// Introduced in Aspose.Email for .NET 6.4.0
-            // ///</summary>
-            // using (ImapClient client = new ImapClient("host.domain.com", 84, "username", "password"))
-            // {
-            //     try
-            //     {
-            //         // Append some test messages
-            //         int messagesNum = 12;
-            //         int itemsPerPage = 5;
-            //         MailMessage message = null;
-            //         for (int i = 0; i < messagesNum; i++)
-            //         {
-            //             message = new MailMessage(
-            //                 "from@domain.com",
-            //                 "to@domain.com",
-            //                 "EMAILNET-35128 - " + Guid.NewGuid(),
-            //                 "111111111111111");
-            //             client.AppendMessage(ImapFolderInfo.InBox, message);
-            //         }
-            //         string body = "2222222222222";
-            //         for (int i = 0; i < messagesNum; i++)
-            //         {
-            //             message = new MailMessage(
-            //                 "from@domain.com",
-            //                 "to@domain.com",
-            //                 "EMAILNET-35128 - " + Guid.NewGuid(),
-            //                 body);
-            //             client.AppendMessage(ImapFolderInfo.InBox, message);
-            //         }
-            //
-            //         client.SelectFolder("Inbox");
-            //         ImapQueryBuilder iqb = new ImapQueryBuilder();
-            //         iqb.Body.Contains(body);
-            //         MailQuery query = iqb.GetQuery();
-            //
-            //         client.SelectFolder(ImapFolderInfo.InBox);
-            //         ImapMessageInfoCollection totalMessageInfoCol = client.ListMessages(query);
-            //         Console.WriteLine(totalMessageInfoCol.Count);
-            //
-            //         //////////////////////////////////////////////////////
-            //          
-            //         List<ImapPageInfo> pages = new List<ImapPageInfo>();
-            //         PageSettings pageSettings = new PageSettings();
-            //         ImapPageInfo pageInfo = client.ListMessagesByPage(ImapFolderInfo.InBox, query, itemsPerPage);                    
-            //         pages.Add(pageInfo);
-            //         while (!pageInfo.LastPage)
-            //         {
-            //             pageInfo = client.ListMessagesByPage(ImapFolderInfo.InBox, query, pageInfo.NextPage);
-            //             pages.Add(pageInfo);
-            //         }
-            //         int retrievedItems = 0;
-            //         foreach (ImapPageInfo folderCol in pages)
-            //             retrievedItems += folderCol.Items.Count;
-            //     }
-            //     finally
-            //     {
-            //     }
-            // }
+        public static void Run()
+        {
+            RunAsync().GetAwaiter().GetResult();
+        }
+
+        private static async Task RunAsync()
+        {
+            const int messagesPerKind = 6;
+            const int itemsPerPage = 4;
+            const string marker = "quarterly-report";
+
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
+
+            using (var imapClient = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
+            {
+                IAsyncImapClient client = imapClient;
+
+                await client.CreateFolderAsync(folderName);
+
+                try
+                {
+                    var messages = new List<MailMessage>();
+                    for (var i = 1; i <= messagesPerKind; i++)
+                    {
+                        messages.Add(new MailMessage("from@example.com", "to@example.com",
+                            $"Report {i}", $"Attached is the {marker} for region {i}."));
+                        messages.Add(new MailMessage("from@example.com", "to@example.com",
+                            $"Chat {i}", "Lunch at noon?"));
+                    }
+
+                    await client.AppendMessagesAsync(messages, folderName);
+                    await client.SelectFolderAsync(folderName);
+
+                    var builder = new ImapQueryBuilder();
+                    builder.Body.Contains(marker);
+                    var query = builder.GetQuery();
+
+                    var settings = new PageSettings { FolderName = folderName };
+                    var page = await client.ListMessagesByPageAsync(query, new PageInfo(itemsPerPage), settings);
+
+                    Console.WriteLine($"{page.TotalCount} of {messages.Count} message(s) mention '{marker}', " +
+                                      $"{itemsPerPage} per page.");
+
+                    var pageNumber = 1;
+                    while (true)
+                    {
+                        Console.WriteLine($"\nPage {pageNumber}:");
+                        foreach (var info in page.Items)
+                            Console.WriteLine("  " + info.Subject);
+
+                        if (page.LastPage)
+                            break;
+
+                        page = await client.ListMessagesByPageAsync(query, page.NextPage, settings);
+                        pageNumber++;
+                    }
+                }
+                finally
+                {
+                    await client.DeleteFolderAsync(folderName);
+                }
+            }
         }
     }
 }

@@ -1,62 +1,63 @@
-﻿using System;
+// Demonstrates how to move a single message to another folder.
+//
+// MoveMessage takes the message's unique id (or sequence number) and the target folder.
+// On servers with the MOVE extension (RFC 6851) this is one atomic command. Elsewhere it
+// is done as copy + delete, and the overloads with commitDeletions decide whether the
+// original is expunged right away. MoveMultipleMessages moves several at once.
+//
+// The example works in two uniquely named folders and deletes both at the end.
+
+using System;
 using Aspose.Email.Clients.Imap;
-using Aspose.Email.Mime;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class MoveMessage
+    internal static class MoveMessage
     {
-        static void Run()
-        { 
-            ///<summary>
-            /// This example shows how to move a message from one folder of a mailbox to another one using the ImapClient API of Aspose.Email for .NET
-            /// Available from Aspose.Email for .NET 6.4.0 onwards
-            /// -------------- Available API Overload Members --------------
-            /// Void ImapClient.MoveMessage(IConnection iConnection, int sequenceNumber, string folderName, bool commitDeletions)
-            /// Void ImapClient.MoveMessage(IConnection iConnection, string uniqueId, string folderName, bool commitDeletions)
-            /// Void ImapClient.MoveMessage(int sequenceNumber, string folderName, bool commitDeletions)
-            /// Void ImapClient.MoveMessage(string uniqueId, string folderName, bool commitDeletions)
-            /// Void ImapClient.MoveMessage(IConnection iConnection, int sequenceNumber, string folderName)
-            /// Void ImapClient.MoveMessage(IConnection iConnection, string uniqueId, string folderName)
-            /// Void ImapClient.MoveMessage(int sequenceNumber, string folderName)
-            /// Void ImapClient.MoveMessage(string uniqueId, string folderName)
-            ///</summary>
+        public static void Run()
+        {
+            var suffix = Guid.NewGuid().ToString("N").Substring(0, 8);
+            var sourceFolder = "Aspose-Source-" + suffix;
+            var targetFolder = "Aspose-Target-" + suffix;
 
-            using (ImapClient client = new ImapClient("host.domain.com", 993, "username", "password"))
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                string folderName = "EMAILNET-35151";
-                if (!client.ExistFolder(folderName))
-                    client.CreateFolder(folderName);
+                client.CreateFolder(sourceFolder);
+                client.CreateFolder(targetFolder);
+
                 try
                 {
-                    MailMessage message = new MailMessage(
-                        "from@domain.com",
-                        "to@domain.com",
-                        "EMAILNET-35151 - " + Guid.NewGuid(),
-                        "EMAILNET-35151 ImapClient: Provide option to Move Message");
-                    client.SelectFolder(ImapFolderInfo.InBox);
-                    // Append the new message to Inbox folder
-                    string uniqueId = client.AppendMessage(ImapFolderInfo.InBox, message);
-                    ImapMessageInfoCollection messageInfoCol1 = client.ListMessages();
-                    Console.WriteLine(messageInfoCol1.Count);
-                    // Now move the message to the folder EMAILNET-35151
-                    client.MoveMessage(uniqueId, folderName);
-                    client.CommitDeletes();
-                    // Verify that the message was moved to the new folder
-                    client.SelectFolder(folderName);
-                    messageInfoCol1 = client.ListMessages();
-                    Console.WriteLine(messageInfoCol1.Count);
-                    // Verify that the message was moved from the Inbox
-                    client.SelectFolder(ImapFolderInfo.InBox);
-                    messageInfoCol1 = client.ListMessages();
-                    Console.WriteLine(messageInfoCol1.Count);
+                    var uid = client.AppendMessage(sourceFolder,
+                        new MailMessage("from@example.com", "to@example.com", "Move me", "Body"));
+
+                    Console.WriteLine($"MOVE extension supported: {client.MoveSupported}");
+                    Console.WriteLine("\nBefore the move:");
+                    PrintFolder(client, sourceFolder);
+                    PrintFolder(client, targetFolder);
+
+                    client.SelectFolder(sourceFolder);
+                    client.MoveMessage(uid, targetFolder, true);
+
+                    Console.WriteLine("\nAfter the move:");
+                    PrintFolder(client, sourceFolder);
+                    PrintFolder(client, targetFolder);
                 }
                 finally
                 {
-                    try { client.DeleteFolder(folderName); }
-                    catch { }
+                    client.DeleteFolder(sourceFolder);
+                    client.DeleteFolder(targetFolder);
                 }
             }
+        }
+
+        private static void PrintFolder(ImapClient client, string folderName)
+        {
+            client.SelectFolder(folderName);
+            var messages = client.ListMessages();
+
+            Console.WriteLine($"  '{folderName}': {messages.Count} message(s)");
+            foreach (var info in messages)
+                Console.WriteLine("    " + info.Subject);
         }
     }
 }

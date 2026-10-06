@@ -1,62 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
+// Demonstrates downloading from several folders at the same time with the task-based
+// API. Despite its historical name, this example does not send mail.
+//
+// One IMAP connection runs one command at a time, so concurrent downloads need separate
+// connections. CreateConnection opens an extra one; passing it to the async methods - as
+// the connection argument, or with SetConnection on a parameter set - makes those calls
+// run over it, with a selected folder of their own. Dispose each connection when done.
+
+using System;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Aspose.Email.Clients.Imap;
-using Aspose.Email.Mime;
-using Aspose.Email.Mapi;
+using Aspose.Email.Clients.Imap.Models;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class SendIMAPasynchronousEmail
+    internal static class SendIMAPasynchronousEmail
     {
         public static void Run()
         {
-        //     try
-        //     {
-        //
-        //     // Create an imapclient with host, user and password
-        //     ImapClient client = new ImapClient();
-        //     client.Host = "domain.com";
-        //     client.Username = "username";
-        //     client.Password = "password";
-        //     client.SelectFolder("InBox");
-        //
-        //     ImapMessageInfoCollection messages = client.ListMessages();
-        //     IAsyncResult res1 = client.BeginFetchMessage(messages[0].UniqueId);
-        //     IAsyncResult res2 = client.BeginFetchMessage(messages[1].UniqueId);
-        //     MailMessage msg1 = client.EndFetchMessage(res1);
-        //     MailMessage msg2 = client.EndFetchMessage(res2);
-        //
-        //
-        //     List<MailMessage> List = new List<MailMessage>();
-        //     ThreadPool.QueueUserWorkItem(delegate(object o)
-        //     {
-        //         client.SelectFolder("folderName");
-        //         ImapMessageInfoCollection messageInfoCol = client.ListMessages();
-        //         foreach (ImapMessageInfo messageInfo in messageInfoCol)
-        //         {
-        //             List.Add(client.FetchMessage(messageInfo.UniqueId));
-        //         }
-        //     });
-        //
-        //     List<MailMessage> List1 = new List<MailMessage>();
-        //     ThreadPool.QueueUserWorkItem(delegate(object o)
-        //     {
-        //         using (IDisposable connection = client.CreateConnection())
-        //         {
-        //             client.SelectFolder("FolderName");
-        //             ImapMessageInfoCollection messageInfoCol =
-        //        client.ListMessages();
-        //             foreach (ImapMessageInfo messageInfo in messageInfoCol)
-        //                 List1.Add(client.FetchMessage(messageInfo.UniqueId));
-        //         }
-        //     });
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         Console.Write(ex.Message);
-        //         throw;
-        //     }
-         }
+            RunAsync().GetAwaiter().GetResult();
+        }
+
+        private static async Task RunAsync()
+        {
+            const int messagesPerFolder = 3;
+
+            using (var imapClient = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
+            {
+                IAsyncImapClient client = imapClient;
+
+                var folderNames = (await client.ListFoldersAsync())
+                    .Where(folder => folder.Selectable)
+                    .Select(folder => folder.Name)
+                    .Take(3)
+                    .ToList();
+
+                // One download per folder, all running at once.
+                var downloads = folderNames
+                    .Select(folderName => Task.Run(() => DownloadNewestAsync(imapClient, folderName, messagesPerFolder)))
+                    .ToArray();
+
+                foreach (var report in await Task.WhenAll(downloads))
+                    Console.WriteLine(report);
+            }
+        }
+
+        private static async Task<string> DownloadNewestAsync(ImapClient imapClient, string folderName, int count)
+        {
+            IAsyncImapClient client = imapClient;
+
+            using (var connection = imapClient.CreateConnection())
+            {
+                await client.SelectFolderAsync(folderName, connection: connection);
+                var infos = await client.ListMessagesAsync(folderName, connection: connection);
+
+                var newest = infos.OrderByDescending(info => info.InternalDate).Take(count).ToList();
+                var report = new StringBuilder($"{folderName} (connection #{connection.ConnectionId}):");
+
+                if (newest.Count == 0)
+                    return report.Append(" empty").ToString();
+
+                var messages = await client.FetchMessagesAsync(ImapFetchMessages.Create()
+                    .SetMessages(newest)
+                    .SetConnection(connection));
+
+                foreach (var message in messages)
+                    report.AppendLine().Append($"  {message.Date:g}  {message.Subject}");
+
+                return report.ToString();
+            }
+        }
     }
 }

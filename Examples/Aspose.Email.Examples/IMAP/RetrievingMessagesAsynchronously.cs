@@ -1,29 +1,59 @@
-﻿using System;
-using System.Threading;
+// Demonstrates downloading a message with the task-based API.
+//
+// FetchMessagesAsync takes an ImapFetchMessages parameter set; SetMessage picks a single
+// message by unique id or sequence number. The call hands back a Task, so the caller can
+// keep working - here it just reports progress - and await the message when it needs it.
+
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using Aspose.Email.Clients.Imap;
-using Aspose.Email.Mime;
+using Aspose.Email.Clients.Imap.Models;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class RetrievingMessagesAsynchronously
+    internal static class RetrievingMessagesAsynchronously
     {
         public static void Run()
         {
-            // // Connect and log in to IMAP
-            // using (ImapClient client = new ImapClient("host", "username", "password"))
-            // {
-            //     client.SelectFolder("Issues/SubFolder");
-            //     ImapMessageInfoCollection messages = client.ListMessages();
-            //     AutoResetEvent evnt = new AutoResetEvent(false);
-            //     MailMessage message = null;
-            //     AsyncCallback callback = delegate(IAsyncResult ar)
-            //     {
-            //         message = client.EndFetchMessage(ar);
-            //         evnt.Set();
-            //     };
-            //     client.BeginFetchMessage(messages[0].SequenceNumber, callback, null);
-            //     evnt.WaitOne();               
-            // }
+            RunAsync().GetAwaiter().GetResult();
+        }
+
+        private static async Task RunAsync()
+        {
+            using (var imapClient = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
+            {
+                IAsyncImapClient client = imapClient;
+
+                await client.SelectFolderAsync(ImapFolderInfo.InBox);
+                var infos = await client.ListMessagesAsync(ImapFolderInfo.InBox);
+
+                if (infos.Count == 0)
+                {
+                    Console.WriteLine("The Inbox is empty.");
+                    return;
+                }
+
+                var newest = infos.OrderByDescending(info => info.InternalDate).First();
+                var watch = Stopwatch.StartNew();
+
+                var download = client.FetchMessagesAsync(ImapFetchMessages.Create().SetMessage(newest.UniqueId));
+                Console.WriteLine($"{watch.ElapsedMilliseconds,6} ms  download of '{newest.Subject}' started");
+
+                while (!download.IsCompleted)
+                {
+                    Console.WriteLine($"{watch.ElapsedMilliseconds,6} ms  still downloading...");
+                    await Task.WhenAny(download, Task.Delay(200));
+                }
+
+                var message = (await download).First();
+                Console.WriteLine($"{watch.ElapsedMilliseconds,6} ms  done");
+
+                Console.WriteLine($"\n  subject:     {message.Subject}");
+                Console.WriteLine($"  from:        {message.From}");
+                Console.WriteLine($"  attachments: {message.Attachments.Count}");
+            }
         }
     }
 }
