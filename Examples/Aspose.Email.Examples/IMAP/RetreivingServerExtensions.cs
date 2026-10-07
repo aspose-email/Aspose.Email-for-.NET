@@ -1,18 +1,24 @@
-﻿using System;
-using Aspose.Email.Clients.Imap;
+// Demonstrates how to list the capabilities the IMAP server announces.
+//
+// GetCapabilities returns the server's CAPABILITY response: one entry per extension or
+// sign-in mechanism, such as IDLE, MOVE, UIDPLUS, CONDSTORE or AUTH=XOAUTH2.
+// DetectServerExtensions shows the same information as ready-made *Supported flags.
+
+using System;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class RetreivingServerExtensions
+    internal static class RetreivingServerExtensions
     {
         public static void Run()
         {
-            // Connect and log in to IMAP
-            ImapClient client = new ImapClient("imap.gmail.com", "username", "password");
-            string[] getCapabilities = client.GetCapabilities();
-            foreach (string getCap in getCapabilities)
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                Console.WriteLine(getCap);
+                var capabilities = client.GetCapabilities();
+
+                Console.WriteLine($"{client.Host} announces {capabilities.Length} capabilities:");
+                foreach (var capability in capabilities)
+                    Console.WriteLine("  " + capability);
             }
         }
     }

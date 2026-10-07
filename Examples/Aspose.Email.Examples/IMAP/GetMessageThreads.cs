@@ -28,7 +28,9 @@ namespace Aspose.Email.Examples.IMAP
 
                 Console.WriteLine($"Thread algorithms: {string.Join(", ", client.ThreadAlgorithms)}");
 
-                var algorithm = client.ThreadAlgorithms.Contains("REFERENCES") ? "REFERENCES" : client.ThreadAlgorithms[0];
+                var algorithm = client.ThreadAlgorithms.Contains("REFERENCES")
+                    ? "REFERENCES"
+                    : client.ThreadAlgorithms[0];
 
                 var conditions = new ThreadSearchConditions
                 {

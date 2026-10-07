@@ -27,7 +27,10 @@ namespace Aspose.Email.Examples.IMAP
                 Console.WriteLine($"{namespaces.Length} namespace(s):");
 
                 foreach (var ns in namespaces)
-                    Console.WriteLine($"  {ns.NamespaceType,-10}  prefix '{ns.Prefix}', delimiter '{ns.HierarchyDelimiter}'");
+                {
+                    Console.WriteLine($"  {ns.NamespaceType,-10}  prefix '{ns.Prefix}', " +
+                                      $"delimiter '{ns.HierarchyDelimiter}'");
+                }
             }
         }
     }

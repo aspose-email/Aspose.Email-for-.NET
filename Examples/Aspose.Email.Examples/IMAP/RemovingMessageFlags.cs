@@ -1,36 +1,47 @@
-﻿using System;
+// Demonstrates clearing message flags - for example marking a message as unread again.
+//
+// RemoveMessageFlags clears only the given flags and leaves the rest in place. Removing
+// IsRead (\Seen) makes a message show as unread in mail programs again.
+// The example works in a uniquely named folder and deletes it at the end.
+
+using System;
 using Aspose.Email.Clients.Imap;
-using Aspose.Email.Clients;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class RemovingMessageFlags
+    internal static class RemovingMessageFlags
     {
         public static void Run()
-        {            
-            // Create an instance of the ImapClient class
-            ImapClient client = new ImapClient();
+        {
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            // Specify host, username, password, Port and SecurityOptions for your client
-            client.Host = "imap.gmail.com";
-            client.Username = "your.username@gmail.com";
-            client.Password = "your.password";
-            client.Port = 993;
-            client.SecurityOptions = SecurityOptions.Auto;
-            try
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                Console.WriteLine("Logged in to the IMAP server");
+                client.CreateFolder(folderName);
 
-                // Remove the message flag
-                client.RemoveMessageFlags(1, ImapMessageFlags.IsRead);
+                try
+                {
+                    var uid = client.AppendMessage(folderName,
+                        new MailMessage("sender@example.com", "receiver@example.com", "Read me later", "Body"));
 
-                client.Dispose();
+                    client.SelectFolder(folderName);
+                    client.AddMessageFlags(uid, ImapMessageFlags.IsRead | ImapMessageFlags.Flagged);
+                    Report(client, uid, "Read and flagged:   ");
+
+                    client.RemoveMessageFlags(uid, ImapMessageFlags.IsRead);
+                    Report(client, uid, "After Remove(IsRead):");
+                }
+                finally
+                {
+                    client.DeleteFolder(folderName);
+                }
             }
-            catch (Exception ex)
-            {
-                Console.Write(Environment.NewLine + ex);
-            }            
-            Console.WriteLine(Environment.NewLine + "Removed message flags from IMAP server.");
+        }
+
+        private static void Report(ImapClient client, string uid, string title)
+        {
+            var info = client.ListMessage(uid);
+            Console.WriteLine($"{title} {info.Flags}  (read: {info.IsRead}, flagged: {info.Flagged})");
         }
     }
 }

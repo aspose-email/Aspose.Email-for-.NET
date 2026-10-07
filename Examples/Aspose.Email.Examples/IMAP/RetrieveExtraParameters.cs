@@ -1,55 +1,56 @@
-﻿using Aspose.Email.Clients.Imap;
-using Aspose.Email.Mime;
+// Demonstrates fetching additional, server-specific message attributes with the summary.
+//
+// ListMessage and ListMessages accept a list of extra FETCH items. Whatever the server
+// returns for them ends up in ImapMessageInfo.ExtraParameters, keyed by the item name.
+// Here they are Gmail's X-GM-MSGID (a message id stable across all folders) and
+// X-GM-THRID (the conversation id), so the example needs a Gmail account.
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class RetrieveExtraParameters
+    internal static class RetrieveExtraParameters
     {
         public static void Run()
         {
-            try
+            var extraFields = new[] { "X-GM-MSGID", "X-GM-THRID" };
+
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                using (ImapClient client = new ImapClient("host.domain.com", "username", "password"))
+                client.SelectFolder(ImapFolderInfo.InBox);
+
+                if (!client.GmExt1Supported)
                 {
-                    MailMessage message = new MailMessage("from@domain.com", "to@doman.com", "EMAILNET-38466 - " + Guid.NewGuid().ToString(), "EMAILNET-38466 Add extra parameters for UID FETCH command");
-
-                    // append the message to the server
-                    string uid = client.AppendMessage(message);
-
-                    // wait for the message to be appended
-                    Thread.Sleep(5000);
-
-                    // Define properties to be fetched from server along with the message
-                    string[] messageExtraFields = new string[] { "X-GM-MSGID", "X-GM-THRID" };
-
-                    // retreive the message summary information using it's UID
-                    ImapMessageInfo messageInfoUID = client.ListMessage(uid, messageExtraFields);
-
-                    // retreive the message summary information using it's sequence number
-                    ImapMessageInfo messageInfoSeqNum = client.ListMessage(1, messageExtraFields);
-
-                    // List messages in general from the server based on the defined properties
-                    ImapMessageInfoCollection messageInfoCol = client.ListMessages(messageExtraFields);
-
-                    ImapMessageInfo messageInfoFromList = messageInfoCol[0];
-
-                    // verify that the parameters are fetched in the summary information
-                    foreach (string paramName in messageExtraFields)
-                    {
-                        Console.WriteLine(messageInfoFromList.ExtraParameters.ContainsKey(paramName));
-                        Console.WriteLine(messageInfoUID.ExtraParameters.ContainsKey(paramName));
-                        Console.WriteLine(messageInfoSeqNum.ExtraParameters.ContainsKey(paramName));
-                    }
+                    Console.WriteLine("The server does not support X-GM-EXT-1 (this example needs Gmail).");
+                    return;
                 }
+
+                // A whole folder...
+                var messages = client.ListMessages(extraFields);
+                Console.WriteLine($"{messages.Count} message(s) listed with the extra fields, the first 5:");
+                foreach (var info in messages.Take(5))
+                    Print(info, extraFields);
+
+                if (messages.Count == 0)
+                    return;
+
+                // ...or a single message, here by unique id; another overload takes a
+                // sequence number.
+                Console.WriteLine("\nOne message by unique id:");
+                Print(client.ListMessage(messages[0].UniqueId, extraFields), extraFields);
             }
-            catch (Exception ex)
+        }
+
+        private static void Print(ImapMessageInfo info, string[] extraFields)
+        {
+            Console.WriteLine($"  {info.Subject}");
+            foreach (var field in extraFields)
             {
-                Console.Write(ex.Message);
+                string value;
+                info.ExtraParameters.TryGetValue(field, out value);
+                Console.WriteLine($"    {field}: {value ?? "(not returned)"}");
             }
         }
     }

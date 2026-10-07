@@ -1,35 +1,43 @@
-﻿using System;
-using Aspose.Email.Clients;
+// Demonstrates how to delete one message.
+//
+// Deleting in IMAP takes two steps: DeleteMessage marks the message with the \Deleted
+// flag, and CommitDeletes (EXPUNGE) removes every marked message from the selected
+// folder for good. Until the commit, UndeleteMarkedMessage shows how to take it back.
+// The example works in a uniquely named folder and deletes it at the end.
+
+using System;
 using Aspose.Email.Clients.Imap;
-using Aspose.Email.Mime;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class DeleteSingleMessage
+    internal static class DeleteSingleMessage
     {
         public static void Run()
         {
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
+
             using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                client.SecurityOptions = SecurityOptions.SSLImplicit;
+                client.CreateFolder(folderName);
 
-                // Append some test message
-                client.SelectFolder(ImapFolderInfo.InBox);
-
-                var eml = new MailMessage("from@from.com", "to@to.com")
+                try
                 {
-                    Subject = "Message to delete",
-                    Body = "Hey! This Message will be deleted!"
-                };
-                var emlId = client.AppendMessage(eml);
+                    var uid = client.AppendMessage(folderName,
+                        new MailMessage("sender@example.com", "receiver@example.com", "Message to delete", "Body"));
 
-                var fetchedEml = client.FetchMessage(emlId);
-                Console.WriteLine(fetchedEml.Subject);
+                    client.SelectFolder(folderName);
+                    Console.WriteLine($"Before: {client.ListMessages().Count} message(s) in '{folderName}'");
 
-                client.DeleteMessage(emlId);
-                client.CommitDeletes();
+                    client.DeleteMessage(uid);
+                    client.CommitDeletes();
+
+                    Console.WriteLine($"After:  {client.ListMessages().Count} message(s) in '{folderName}'");
+                }
+                finally
+                {
+                    client.DeleteFolder(folderName);
+                }
             }
         }
     }
 }
-

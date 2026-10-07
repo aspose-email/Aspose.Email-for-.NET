@@ -33,7 +33,8 @@ namespace Aspose.Email.Examples.IMAP
                     }
 
                     var appended = (AppendMessagesFromMessageObjectResult)client.AppendMessages(folderName, messages);
-                    Console.WriteLine($"Appended {appended.Succeeded.Count} message(s), {appended.Failed.Count} failed.");
+                    Console.WriteLine($"Appended {appended.Succeeded.Count} message(s), " +
+                                      $"{appended.Failed.Count} failed.");
 
                     client.SelectFolder(folderName);
                     Console.WriteLine($"Before: {client.ListMessages().Count} message(s) in '{folderName}'");

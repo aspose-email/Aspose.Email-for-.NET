@@ -44,7 +44,10 @@ namespace Aspose.Email.Examples.IMAP
 
                     Console.WriteLine($"Fetched the {newest.Count} newest message(s):");
                     foreach (var message in messages)
-                        Console.WriteLine($"  {message.Date:g}  {message.Subject} ({message.Attachments.Count} attachment(s))");
+                    {
+                        Console.WriteLine($"  {message.Date:g}  {message.Subject} " +
+                                          $"({message.Attachments.Count} attachment(s))");
+                    }
                 }
                 catch (OperationCanceledException)
                 {

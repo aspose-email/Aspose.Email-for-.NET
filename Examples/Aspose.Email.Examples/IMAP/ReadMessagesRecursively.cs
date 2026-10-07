@@ -1,92 +1,81 @@
-﻿using System;
+// Demonstrates walking the whole folder tree of a mailbox and saving messages to disk.
+//
+// ListFolders(name) returns the subfolders of a folder, so a recursive walk reaches every
+// level; folders that are only containers (not selectable) are skipped. The messages are
+// saved as .msg files in a matching directory tree under Out. To keep the run short, only
+// the three newest messages of each folder are downloaded.
+
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Aspose.Email.Clients.Imap;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class ReadMessagesRecursively
+    internal static class ReadMessagesRecursively
     {
+        private const int MessagesPerFolder = 3;
+
         public static void Run()
         {
-            // Create an instance of the ImapClient class
-            ImapClient client = new ImapClient();
+            var rootDir = Data.OutSub("ImapMailbox");
+            var visited = new HashSet<string>();
 
-            // Specify host, username, password, Port and SecurityOptions for your client
-            client.Host = "imap.gmail.com";
-            client.Username = "your.username@gmail.com";
-            client.Password = "your.password";
-            client.Port = 993;
-            client.SecurityOptions = SecurityOptions.Auto;
-            try
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                // The root folder (which will be created on disk) consists of host and username
-                string rootFolder = Path.Combine(Data.Out, client.Host + "-" + client.Username);
-
-                // Create the root folder and List all the folders from IMAP server
-                ImapFolderInfoCollection folderInfoCollection = client.ListFolders();
-                foreach (ImapFolderInfo folderInfo in folderInfoCollection)
-                {
-                    // Call the recursive method to read messages and get sub-folders
-                    ListMessagesInFolder(folderInfo, rootFolder, client);
-                }
-                // Disconnect to the remote IMAP server
-                client.Dispose();
-            }
-            catch (Exception ex)
-            {
-                Console.Write(Environment.NewLine + ex);
+                foreach (var folder in client.ListFolders())
+                    SaveFolder(client, folder, rootDir, visited);
             }
 
-            Console.WriteLine(Environment.NewLine + "Downloaded messages recursively from IMAP server.");
+            Console.WriteLine($"\n{visited.Count} folder(s) visited, messages saved under {rootDir}");
         }
 
-        /// Recursive method to get messages from folders and sub-folders
-        private static void ListMessagesInFolder(ImapFolderInfo folderInfo, string rootFolder, ImapClient client)
+        private static void SaveFolder(ImapClient client, ImapFolderInfo folder, string rootDir, HashSet<string> visited)
         {
-            // Create the folder in disk (same name as on IMAP server)
-            Directory.CreateDirectory(rootFolder);
+            // ListFolders() may already include subfolders, so skip what was done before.
+            if (!visited.Add(folder.Name))
+                return;
 
-            // Read the messages from the current folder, if it is selectable
-            if (folderInfo.Selectable)
+            if (folder.Selectable)
             {
-                // Send status command to get folder info
-                ImapFolderInfo folderInfoStatus = client.GetFolderInfo(folderInfo.Name);
-                Console.WriteLine(folderInfoStatus.Name + " folder selected. New messages: " + folderInfoStatus.NewMessageCount + ", Total messages: " + folderInfoStatus.TotalMessageCount);
+                var folderDir = Path.Combine(rootDir, ToRelativePath(folder.Name, client.Delimiter));
+                Directory.CreateDirectory(folderDir);
 
-                // Select the current folder and List messages
-                client.SelectFolder(folderInfo.Name);
-                ImapMessageInfoCollection msgInfoColl = client.ListMessages();
-                Console.WriteLine("Listing messages....");
-                foreach (ImapMessageInfo msgInfo in msgInfoColl)
+                client.SelectFolder(folder.Name);
+                var newest = client.ListMessages()
+                    .OrderByDescending(info => info.InternalDate)
+                    .Take(MessagesPerFolder)
+                    .ToList();
+
+                foreach (var info in newest)
                 {
-                    // Get subject and other properties of the message
-                    Console.WriteLine("Subject: " + msgInfo.Subject);
-                    Console.WriteLine("Read: " + msgInfo.IsRead + ", Recent: " + msgInfo.Recent + ", Answered: " + msgInfo.Answered);
-
-                    // Get rid of characters like ? and :, which should not be included in a file name and Save the message in MSG format
-                    string fileName = msgInfo.Subject.Replace(":", " ").Replace("?", " ");
-                    MailMessage msg = client.FetchMessage(msgInfo.SequenceNumber);
-                    msg.Save(Path.Combine(rootFolder, fileName + "-" + msgInfo.SequenceNumber + ".msg"), SaveOptions.DefaultMsgUnicode);
+                    var message = client.FetchMessage(info.UniqueId);
+                    message.Save(Path.Combine(folderDir, info.UniqueId + ".msg"), SaveOptions.DefaultMsgUnicode);
                 }
-                Console.WriteLine("============================\n");
-            }
-            else
-            {
-                Console.WriteLine(folderInfo.Name + " is not selectable.");
+
+                Console.WriteLine($"{folder.Name}: saved {newest.Count} of {client.CurrentFolder.TotalMessageCount}");
             }
 
-            try
-            {
-                // If this folder has sub-folders, call this method recursively to get messages
-                ImapFolderInfoCollection folderInfoCollection = client.ListFolders(folderInfo.Name);
-                foreach (ImapFolderInfo subfolderInfo in folderInfoCollection)
-                {
-                    ListMessagesInFolder(subfolderInfo, Path.Combine(rootFolder, subfolderInfo.Name), client);
-                }
-            }
-            catch (Exception) { }            
+            if (folder.NoInferiors)
+                return;
+
+            foreach (var subfolder in client.ListFolders(folder.Name))
+                SaveFolder(client, subfolder, rootDir, visited);
+        }
+
+        // Turns "Inbox/Projects/2026" into a relative path, dropping characters that are
+        // not allowed in file names.
+        private static string ToRelativePath(string folderName, string delimiter)
+        {
+            var parts = string.IsNullOrEmpty(delimiter)
+                ? new[] { folderName }
+                : folderName.Split(new[] { delimiter }, StringSplitOptions.RemoveEmptyEntries);
+
+            var invalid = Path.GetInvalidFileNameChars();
+            var safeParts = parts.Select(part => new string(part.Select(c => invalid.Contains(c) ? '_' : c).ToArray()));
+
+            return Path.Combine(safeParts.ToArray());
         }
     }
 }

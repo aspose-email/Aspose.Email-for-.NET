@@ -1,38 +1,45 @@
-﻿using Aspose.Email.Clients;
-using Aspose.Email.Clients.Base;
-using Aspose.Email.Clients.Imap;
+// Demonstrates listing a large folder over several connections and compares the time
+// with a single connection.
+//
+// With UseMultiConnection enabled, ListMessages spreads the work over up to
+// ConnectionsQuantity parallel connections. Whether that is faster
+// depends on the folder size and on how the server handles parallel connections - the
+// measured ratio below tells you for your server.
+
 using System;
+using System.Diagnostics;
+using Aspose.Email.Clients;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    public class ImapListMessagesWithMultiConnection
+    internal static class ImapListMessagesWithMultiConnection
     {
         public static void Run()
         {
-            ImapClient imapClient = new ImapClient();
-            imapClient.Host = "<HOST>";
-            imapClient.Port = 993;
-            imapClient.Username = "<USERNAME>";
-            imapClient.Password = "<PASSWORD>";
-            imapClient.SupportedEncryption = EncryptionProtocols.Tls;
-            imapClient.SecurityOptions = SecurityOptions.SSLImplicit;
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
+            {
+                client.SelectFolder(ImapFolderInfo.InBox);
+                client.ConnectionsQuantity = 5;
 
-            imapClient.SelectFolder("Inbox");
-            imapClient.ConnectionsQuantity = 5;
-            imapClient.UseMultiConnection = MultiConnectionMode.Enable;
-            DateTime multiConnectionModeStartTime = DateTime.Now;
-            ImapMessageInfoCollection messageInfoCol1 = imapClient.ListMessages(true);
-            TimeSpan multiConnectionModeTimeSpan = DateTime.Now - multiConnectionModeStartTime;
+                client.UseMultiConnection = MultiConnectionMode.Enable;
+                var watch = Stopwatch.StartNew();
+                var multi = client.ListMessages();
+                var multiTime = watch.Elapsed;
 
-            imapClient.UseMultiConnection = MultiConnectionMode.Disable;
-            DateTime singleConnectionModeStartTime = DateTime.Now;
-            ImapMessageInfoCollection messageInfoCol2 = imapClient.ListMessages(true);
-            TimeSpan singleConnectionModeTimeSpan = DateTime.Now - singleConnectionModeStartTime;
-            
-            double performanceRelation = singleConnectionModeTimeSpan.TotalMilliseconds / multiConnectionModeTimeSpan.TotalMilliseconds;
-            Console.WriteLine("Performance Relation: " + performanceRelation);
+                client.UseMultiConnection = MultiConnectionMode.Disable;
+                watch.Restart();
+                var single = client.ListMessages();
+                var singleTime = watch.Elapsed;
 
-            Console.WriteLine("ImapListMessagesWithMultiConnection executed successfully.");
+                Console.WriteLine($"Up to {client.ConnectionsQuantity} connections: {multi.Count} message(s) " +
+                                  $"in {multiTime.TotalMilliseconds:F0} ms");
+                Console.WriteLine($"One connection:     {single.Count} message(s) " +
+                                  $"in {singleTime.TotalMilliseconds:F0} ms");
+
+                if (multiTime.TotalMilliseconds > 0)
+                    Console.WriteLine($"Speed-up: {singleTime.TotalMilliseconds / multiTime.TotalMilliseconds:F2}x");
+            }
         }
     }
 }

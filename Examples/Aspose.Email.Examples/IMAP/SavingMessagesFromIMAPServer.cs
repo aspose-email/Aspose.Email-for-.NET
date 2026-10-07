@@ -1,26 +1,38 @@
-﻿using Aspose.Email.Clients.Imap;
-using Aspose.Email.Mime;
+// Demonstrates how to download messages and save them in Outlook's .msg format.
+//
+// FetchMessage parses the message into a MailMessage, and Save converts it to the format
+// chosen with SaveOptions - here Unicode MSG, which Outlook opens directly.
+// MessagesFromIMAPServerToDisk keeps the original .eml data instead.
+
+using System;
+using System.Linq;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class SavingMessagesFromIMAPServer
+    internal static class SavingMessagesFromIMAPServer
     {
         public static void Run()
         {
-            
-            // Create an imapclient with host, user and password
-            ImapClient client = new ImapClient("localhost", "user", "password");
+            var outputDir = Data.OutSub("ImapMsg");
 
-            // Select the inbox folder and Get the message info collection
-            client.SelectFolder(ImapFolderInfo.InBox);
-            ImapMessageInfoCollection list = client.ListMessages();
-
-            // Download each message
-            for (int i = 0; i < list.Count; i++)
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                // Save the message in MSG format
-                MailMessage message = client.FetchMessage(list[i].UniqueId);
-                message.Save(Data.Out + list[i].UniqueId + "_out.msg", SaveOptions.DefaultMsgUnicode);
+                client.SelectFolder(ImapFolderInfo.InBox);
+
+                var newest = client.ListMessages()
+                    .OrderByDescending(info => info.InternalDate)
+                    .Take(5)
+                    .ToList();
+
+                foreach (var info in newest)
+                {
+                    var message = client.FetchMessage(info.UniqueId);
+                    message.Save(outputDir/(info.UniqueId + ".msg"), SaveOptions.DefaultMsgUnicode);
+                    Console.WriteLine($"Saved {info.UniqueId}.msg  {message.Subject}");
+                }
+
+                Console.WriteLine($"\n{newest.Count} message(s) saved to {outputDir}");
             }
         }
     }

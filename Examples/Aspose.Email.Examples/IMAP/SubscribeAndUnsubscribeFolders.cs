@@ -44,9 +44,11 @@ namespace Aspose.Email.Examples.IMAP
                 return;
 
             // A null parent folder lists from the top of the hierarchy.
-            var subscribed = client.ListFolders(null, false, ListFoldersOptions.Subscribed, ListFoldersReturnOptions.None);
+            var subscribed = client.ListFolders(null, false,
+                ListFoldersOptions.Subscribed, ListFoldersReturnOptions.None);
+            var isListed = subscribed.Any(folder => folder.Name == folderName);
 
-            Console.WriteLine($"  on the server's subscription list: {subscribed.Any(folder => folder.Name == folderName)}");
+            Console.WriteLine($"  on the server's subscription list: {isListed}");
             Console.WriteLine($"  subscribed folders in total:       {subscribed.Count}");
         }
     }

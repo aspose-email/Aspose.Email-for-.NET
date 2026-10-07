@@ -25,7 +25,7 @@ namespace Aspose.Email.Examples.SMTP
                 {
                     Subject = "Text body in UTF-8",
                     BodyEncoding = Encoding.UTF8,
-                    Body = "Café, Привет, こんにちは"
+                    Body = "Caf\u00e9, \u041f\u0440\u0438\u0432\u0435\u0442, \u3053\u3093\u306b\u3061\u306f"
                 };
 
                 client.Send(message);

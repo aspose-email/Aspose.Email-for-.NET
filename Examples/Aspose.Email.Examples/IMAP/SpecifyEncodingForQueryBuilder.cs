@@ -1,45 +1,36 @@
-﻿using Aspose.Email.Clients.Imap;
-using Aspose.Email.Tools.Search;
+// Demonstrates searching for text that is not plain ASCII.
+//
+// IMAP sends search strings with a charset. Passing an Encoding to the ImapQueryBuilder
+// constructor makes the client send the conditions in that charset - UTF-8 covers every
+// language - so the server can match words with accented or non-Latin letters.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class SpecifyEncodingForQueryBuilder
+    internal static class SpecifyEncodingForQueryBuilder
     {
         public static void Run()
         {
-            // Connect and log in to IMAP
-            const string host = "host";
-            const int port = 143;
-            const string username = "user@host.com";
-            const string password = "password";
-            ImapClient client = new ImapClient(host, port, username, password);
+            // A German and a Russian greeting, written with escapes to keep the file ASCII.
+            var words = new[] { "Gr\u00fc\u00dfe", "\u041f\u0440\u0438\u0432\u0435\u0442" };
 
-            try
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                client.SelectFolder("Inbox");
+                client.SelectFolder(ImapFolderInfo.InBox);
 
-                // Set conditions
-                ImapQueryBuilder builder = new ImapQueryBuilder(Encoding.UTF8);
-                builder.Subject.Contains("ğüşıöç", true);
-                MailQuery query = builder.GetQuery();
-
-                // Get list of messages
-                ImapMessageInfoCollection messages = client.ListMessages(query);
-                foreach (ImapMessageInfo info in messages)
+                foreach (var word in words)
                 {
-                    Console.WriteLine("Message Id: " + info.MessageId);
-                }
+                    var builder = new ImapQueryBuilder(Encoding.UTF8);
+                    builder.Subject.Contains(word);
 
-                // Disconnect from IMAP
-                client.Dispose();           
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                    var messages = client.ListMessages(builder.GetQuery());
+                    Console.WriteLine($"Subject contains '{word}': {messages.Count} message(s)");
+                    foreach (var info in messages)
+                        Console.WriteLine($"  {info.Subject}");
+                }
             }
         }
     }

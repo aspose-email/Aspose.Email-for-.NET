@@ -1,31 +1,31 @@
-﻿using System;
-using Aspose.Email.Clients.Imap;
+// Demonstrates how to encrypt the connection to the IMAP server.
+//
+// There are two ways, tied to the port:
+// - SSLImplicit (usually port 993): the connection is encrypted from the first byte.
+// - SSLExplicit (STARTTLS, usually port 143): the client connects in plain text and
+//   upgrades the connection before signing in.
+// SecurityOptions.Auto lets the client work it out; setting the option explicitly
+// removes the guesswork. Never sign in over SecurityOptions.None.
+
+using System;
 using Aspose.Email.Clients;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class SSLEnabledIMAPServer
+    internal static class SSLEnabledIMAPServer
     {
         public static void Run()
         {
-            // Create an instance of the ImapClient class
-            ImapClient client = new ImapClient("imap.domain.com", 993, "user@domain.com", "pwd");
-            
-            // Set the security mode to implicit
-            client.SecurityOptions = SecurityOptions.SSLImplicit;
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
+            {
+                client.SecurityOptions = client.Port == 993 ? SecurityOptions.SSLImplicit : SecurityOptions.SSLExplicit;
 
-            try
-            {
-                Console.WriteLine("Logged in to the IMAP server");
-                // Disconnect to the remote IMAP server
-                client.Dispose();
-                Console.WriteLine("Disconnected from the IMAP server");
+                client.SelectFolder(ImapFolderInfo.InBox);
+
+                Console.WriteLine($"Connected to {client.Host}:{client.Port} using {client.SecurityOptions}.");
+                Console.WriteLine($"The Inbox holds {client.CurrentFolder.TotalMessageCount} message(s).");
             }
-            catch (Exception ex)
-            {
-                Console.Write(Environment.NewLine + ex);
-            }
-            Console.WriteLine(Environment.NewLine + "Connected to IMAP server with SSL.");
         }
     }
 }

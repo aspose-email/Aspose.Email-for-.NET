@@ -1,44 +1,39 @@
-﻿using System;
+// Demonstrates how to save messages from the server straight to .eml files.
+//
+// SaveMessage writes the raw message as the server stores it, without parsing it into a
+// MailMessage first - the quickest way to archive mail. The files can be opened by any
+// mail program or loaded later with MailMessage.Load.
+
+using System;
+using System.Linq;
 using Aspose.Email.Clients.Imap;
-using Aspose.Email.Clients;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class MessagesFromIMAPServerToDisk
+    internal static class MessagesFromIMAPServerToDisk
     {
         public static void Run()
         {
-            // The path to the File directory.
+            var outputDir = Data.OutSub("ImapMessages");
 
-            // Create an instance of the ImapClient class
-            ImapClient client = new ImapClient();
-
-            // Specify host, username, password, Port and SecurityOptions for your client
-            client.Host = "imap.gmail.com";
-            client.Username = "your.username@gmail.com";
-            client.Password = "your.password";
-            client.Port = 993;
-            client.SecurityOptions = SecurityOptions.Auto;
-            try
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                // Select the inbox folder and Get the message info collection
                 client.SelectFolder(ImapFolderInfo.InBox);
-                ImapMessageInfoCollection list = client.ListMessages();
 
-                // Download each message
-                for (int i = 0; i < list.Count; i++)
+                var newest = client.ListMessages()
+                    .OrderByDescending(info => info.InternalDate)
+                    .Take(5)
+                    .ToList();
+
+                foreach (var info in newest)
                 {
-                    // Save the EML file locally
-                    client.SaveMessage(list[i].UniqueId, Data.Out + list[i].UniqueId + ".eml");
+                    var outputPath = outputDir/(info.UniqueId + ".eml");
+                    client.SaveMessage(info.UniqueId, outputPath);
+                    Console.WriteLine($"Saved {info.UniqueId}.eml  {info.Subject}");
                 }
-                // Disconnect to the remote IMAP server
-                client.Dispose();
+
+                Console.WriteLine($"\n{newest.Count} message(s) saved to {outputDir}");
             }
-            catch (Exception ex)
-            {
-                Console.Write(Environment.NewLine + ex);
-            }
-            Console.WriteLine(Environment.NewLine + "Downloaded messages from IMAP server.");
         }
     }
 }

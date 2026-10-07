@@ -32,7 +32,9 @@ namespace Aspose.Email.Examples.IMAP
                 Console.WriteLine($"{folders.Count} folder(s):");
                 foreach (var folder in folders)
                 {
-                    var role = folder.FolderType == ImapSpecialFolderTypes.NotSpecified ? "" : $"  [{folder.FolderType}]";
+                    var role = folder.FolderType == ImapSpecialFolderTypes.NotSpecified
+                        ? ""
+                        : $"  [{folder.FolderType}]";
                     Console.WriteLine($"  {folder.Name}{role}");
                     Console.WriteLine($"    subscribed: {folder.Subscribed}, has children: {folder.HasChildren}, " +
                                       $"selectable: {folder.Selectable}");

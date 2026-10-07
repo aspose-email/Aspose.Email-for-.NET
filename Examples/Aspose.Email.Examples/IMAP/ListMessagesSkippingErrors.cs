@@ -39,7 +39,8 @@ namespace Aspose.Email.Examples.IMAP
                     foreach (var error in page.Items.Exceptions)
                     {
                         failures++;
-                        Console.WriteLine($"  position {error.ElementIndex}: {error.InnerException?.Message ?? error.Message}");
+                        var reason = error.InnerException?.Message ?? error.Message;
+                        Console.WriteLine($"  position {error.ElementIndex}: {reason}");
                     }
 
                     if (page.LastPage || pageNumber == maxPages)

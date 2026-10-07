@@ -1,54 +1,53 @@
-﻿using Aspose.Email.Clients;
-using Aspose.Email.Clients.Imap;
+// Demonstrates custom flags (IMAP keywords), which tag messages with your own labels.
+//
+// ImapMessageFlags.Keyword creates a flag with any name; it is stored on the server like
+// the standard flags, so every client sees it. ContainsKeyword checks for it, and
+// HasFlags searches for it. A server lists whether it accepts new keywords in its
+// PERMANENTFLAGS; a few do not.
+// The example works in a uniquely named folder and deletes it at the end.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class SetCustomFlag
+    internal static class SetCustomFlag
     {
         public static void Run()
         {
-            // Create an instance of the ImapClient class
-            ImapClient client = new ImapClient();
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            // Specify host, username, password, port and SecurityOptions for your client
-            client.Host = "imap.gmail.com";
-            client.Username = "your.username@gmail.com";
-            client.Password = "your.password";
-            client.Port = 993;
-            client.SecurityOptions = SecurityOptions.Auto;
-            try
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                // Create a message
-                MailMessage message = new MailMessage("user@domain1.com", "user@domain2.com", "subject", "message");
+                client.CreateFolder(folderName);
 
-                //Append the message to mailbox
-                string uid = client.AppendMessage(ImapFolderInfo.InBox, message);
-
-                //Add custom flags to the added messge
-                client.AddMessageFlags(uid, ImapMessageFlags.Keyword("custom1") | ImapMessageFlags.Keyword("custom1_0"));
-
-                //Retreive the messages for checking the presence of custom flag
-                client.SelectFolder(ImapFolderInfo.InBox);
-
-                ImapMessageInfoCollection messageInfos = client.ListMessages();
-                foreach (var inf in messageInfos)
+                try
                 {
-                    ImapMessageFlags[] flags = inf.Flags.Split();
+                    var tagged = client.AppendMessage(folderName,
+                        new MailMessage("sender@example.com", "receiver@example.com", "Contract draft", "Body"));
+                    client.AppendMessage(folderName,
+                        new MailMessage("sender@example.com", "receiver@example.com", "Lunch?", "Body"));
 
-                    if (inf.ContainsKeyword("custom1"))
-                        Console.WriteLine("Keyword found");
+                    client.SelectFolder(folderName);
+                    var legal = ImapMessageFlags.Keyword("legal");
+                    client.AddMessageFlags(tagged, legal | ImapMessageFlags.Keyword("urgent"));
+
+                    foreach (var info in client.ListMessages())
+                    {
+                        Console.WriteLine($"{info.Subject,-16} flags: {info.Flags}, " +
+                                          $"has 'legal': {info.ContainsKeyword("legal")}");
+                    }
+
+                    var builder = new ImapQueryBuilder();
+                    builder.HasFlags(legal);
+
+                    var found = client.ListMessages(builder.GetQuery());
+                    Console.WriteLine($"\nSearch for keyword 'legal': {found.Count} message(s)");
                 }
-
-                Console.WriteLine("Setting Custom Flag to Message example executed successfully!");
-                client.Dispose();
-            }
-            catch (Exception ex)
-            {
-                Console.Write(Environment.NewLine + ex);
+                finally
+                {
+                    client.DeleteFolder(folderName);
+                }
             }
         }
     }

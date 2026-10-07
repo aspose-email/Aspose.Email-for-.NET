@@ -1,46 +1,41 @@
-﻿using Aspose.Email.Clients;
-using Aspose.Email.Clients.Imap;
+// Demonstrates how to download messages from the server into MailMessage objects.
+//
+// ListMessages returns lightweight summaries; FetchMessage downloads the complete
+// message - body and attachments - by unique id, ready to read, convert or save.
+// MessagesFromIMAPServerToDisk saves messages without parsing them.
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class FetchEmailMessagesFromIMAPServer
+    internal static class FetchEmailMessagesFromIMAPServer
     {
         public static void Run()
         {
-            // Create an instance of the ImapClient class
-            ImapClient client = new ImapClient();
-
-            // Specify host, username, password, Port and SecurityOptions for your client
-            client.Host = "imap.gmail.com";
-            client.Username = "your.username@gmail.com";
-            client.Password = "your.password";
-            client.Port = 993;
-            client.SecurityOptions = SecurityOptions.Auto;
-
-            try
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                // Select the inbox folder and Get the message info collection
                 client.SelectFolder(ImapFolderInfo.InBox);
-                ImapMessageInfoCollection list = client.ListMessages();
 
-                // Download each message
-                for (int i = 0; i < list.Count; i++)
+                var newest = client.ListMessages()
+                    .OrderByDescending(info => info.InternalDate)
+                    .Take(5)
+                    .ToList();
+
+                Console.WriteLine($"The {newest.Count} newest message(s) in the Inbox:");
+
+                foreach (var info in newest)
                 {
-                    // Save the EML file locally
-                    client.SaveMessage(list[i].UniqueId, Data.Out + list[i].UniqueId + ".eml");
-                }
+                    var message = client.FetchMessage(info.UniqueId);
 
-                // Disconnect to the remote IMAP server
-                client.Dispose();
+                    Console.WriteLine($"\n  {message.Subject}");
+                    Console.WriteLine($"    from:        {message.From}");
+                    Console.WriteLine($"    date:        {message.Date}");
+                    Console.WriteLine($"    html body:   {message.IsBodyHtml}");
+                    Console.WriteLine($"    attachments: {message.Attachments.Count}");
+                }
             }
-            catch (Exception ex)
-            {
-                Console.Write(Environment.NewLine + ex);
-            }            
         }
     }
 }

@@ -1,47 +1,33 @@
-﻿using System;
-using Aspose.Email.Clients.Imap;
-using Aspose.Email.Clients;
+// Demonstrates how to list the folders of a mailbox with their message counts.
+//
+// ListFolders returns the folder names and attributes; GetFolderInfo asks the server for
+// the status of one folder - total, new and recent message counts and whether it is
+// read-only - without selecting it.
+
+using System;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class GettingFoldersInformation
+    internal static class GettingFoldersInformation
     {
         public static void Run()
-        {            
-            // Create an instance of the ImapClient class
-            ImapClient client = new ImapClient();
-
-            // Specify host, username, password, Port and SecurityOptions for your client
-            client.Host = "imap.gmail.com";
-            client.Username = "your.username@gmail.com";
-            client.Password = "your.password";
-            client.Port = 993;
-            client.SecurityOptions = SecurityOptions.Auto;
-
-            try
+        {
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                // Get all folders in the currently subscribed folder
-                ImapFolderInfoCollection folderInfoColl = client.ListFolders();
-
-                // Iterate through the collection to get folder info one by one
-                foreach (ImapFolderInfo folderInfo in folderInfoColl)
+                foreach (var folder in client.ListFolders())
                 {
-                    // Folder name and get New messages in the folder
-                    Console.WriteLine("Folder name is " + folderInfo.Name);
-                    ImapFolderInfo folderExtInfo = client.GetFolderInfo(folderInfo.Name);
-                    Console.WriteLine("New message count: " + folderExtInfo.NewMessageCount);
-                    Console.WriteLine("Is it readonly? " + folderExtInfo.ReadOnly);
-                    Console.WriteLine("Total number of messages " + folderExtInfo.TotalMessageCount);
-                }
+                    if (!folder.Selectable)
+                    {
+                        Console.WriteLine($"{folder.Name} (container only, holds no messages)");
+                        continue;
+                    }
 
-                // Disconnect to the remote IMAP server
-                client.Dispose();
+                    var info = client.GetFolderInfo(folder.Name);
+                    Console.WriteLine(folder.Name);
+                    Console.WriteLine($"  total: {info.TotalMessageCount}, new: {info.NewMessageCount}, " +
+                                      $"recent: {info.RecentMessageCount}, read-only: {info.ReadOnly}");
+                }
             }
-            catch (Exception ex)
-            {
-                Console.Write(Environment.NewLine + ex);
-            }
-            Console.WriteLine(Environment.NewLine + "Getting folders information from IMAP server.");
         }
     }
 }

@@ -44,9 +44,9 @@ namespace Aspose.Email.Examples.IMAP
                     }
 
                     Console.WriteLine("Restored:");
-                    Console.WriteLine($"  {folderName}: {client.GetFolderInfo(folderName).TotalMessageCount} message(s)");
+                    PrintCount(client, folderName);
                     foreach (var child in client.ListFolders(folderName))
-                        Console.WriteLine($"  {child.Name}: {client.GetFolderInfo(child.Name).TotalMessageCount} message(s)");
+                        PrintCount(client, child.Name);
                 }
                 finally
                 {
@@ -58,6 +58,11 @@ namespace Aspose.Email.Examples.IMAP
                     }
                 }
             }
+        }
+
+        private static void PrintCount(ImapClient client, string folderName)
+        {
+            Console.WriteLine($"  {folderName}: {client.GetFolderInfo(folderName).TotalMessageCount} message(s)");
         }
     }
 }

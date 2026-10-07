@@ -1,34 +1,39 @@
-﻿using Aspose.Email;
-using Aspose.Email.Clients;
-using Aspose.Email.Clients.Base;
-using Aspose.Email.Clients.Imap;
+// Demonstrates how to find the Sent, Drafts, Trash and other special folders.
+//
+// Folder names differ between servers and languages ("Sent Items", "[Gmail]/Sent Mail",
+// "Gesendet"...). Servers with SPECIAL-USE (RFC 6154) mark the folders by role instead,
+// and MailboxInfo exposes them by that role. A property is null when the server does
+// not mark a folder for it.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    public class ImapSpecialUseMailboxes
+    internal static class ImapSpecialUseMailboxes
     {
         public static void Run()
         {
-            ImapClient imapClient = new ImapClient();
-            imapClient.Host = "<HOST>";
-            imapClient.Port = 993;
-            imapClient.Username = "<USERNAME>";
-            imapClient.Password = "<PASSWORD>";
-            imapClient.SupportedEncryption = EncryptionProtocols.Tls;
-            imapClient.SecurityOptions = SecurityOptions.SSLImplicit;
-            
-            ImapMailboxInfo mailboxInfo = imapClient.MailboxInfo;
-            Console.WriteLine(mailboxInfo.Inbox);
-            Console.WriteLine(mailboxInfo.DraftMessages);
-            Console.WriteLine(mailboxInfo.JunkMessages);
-            Console.WriteLine(mailboxInfo.SentMessages);
-            Console.WriteLine(mailboxInfo.Trash);
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
+            {
+                var mailbox = client.MailboxInfo;
 
-            Console.WriteLine("ImapSpecialUseMailboxes executed successfully.");
+                Console.WriteLine($"SPECIAL-USE supported: {client.SpecialUseSupported}\n");
+                Show("Inbox", mailbox.Inbox);
+                Show("Drafts", mailbox.DraftMessages);
+                Show("Sent", mailbox.SentMessages);
+                Show("Junk", mailbox.JunkMessages);
+                Show("Trash", mailbox.Trash);
+                Show("Archive", mailbox.ArchivedMessages);
+                Show("All mail", mailbox.AllMessages);
+                Show("Flagged", mailbox.FlaggedMessages);
+                Show("Important", mailbox.Important);
+            }
+        }
+
+        private static void Show(string role, ImapFolderInfo folder)
+        {
+            Console.WriteLine($"  {role,-10} {folder?.Name ?? "(not marked)"}");
         }
     }
 }

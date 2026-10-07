@@ -1,49 +1,42 @@
-﻿using Aspose.Email;
-using Aspose.Email.Clients;
-using Aspose.Email.Clients.Base;
-using Aspose.Email.Clients.Imap;
-using Aspose.Email.Tools.Search;
+// Demonstrates reading messages without changing anything on the server.
+//
+// Fetching a message normally sets its \Seen flag, so it stops showing as unread in the
+// user's mail program. With ReadOnly set, the client selects folders read-only
+// (EXAMINE), and the server leaves every flag as it was - which suits archiving,
+// indexing or monitoring tools.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    public class ImapReadOnlyMode
+    internal static class ImapReadOnlyMode
     {
         public static void Run()
         {
-            ImapClient imapClient = new ImapClient();
-            imapClient.Host = "<HOST>";
-            imapClient.Port = 993;
-            imapClient.Username = "<USERNAME>";
-            imapClient.Password = "<PASSWORD>";
-            imapClient.SupportedEncryption = EncryptionProtocols.Tls;
-            imapClient.SecurityOptions = SecurityOptions.SSLImplicit;
-
-            ImapQueryBuilder imapQueryBuilder = new ImapQueryBuilder();
-            imapQueryBuilder.HasNoFlags(ImapMessageFlags.IsRead); /* get unread messages. */
-            MailQuery query = imapQueryBuilder.GetQuery();
-
-            imapClient.ReadOnly = true;
-            imapClient.SelectFolder("Inbox");
-            ImapMessageInfoCollection messageInfoCol = imapClient.ListMessages(query);
-            Console.WriteLine("Initial Unread Count: " + messageInfoCol.Count());
-            if (messageInfoCol.Count() > 0)
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                imapClient.FetchMessage(messageInfoCol[0].SequenceNumber);
+                client.ReadOnly = true;
+                client.SelectFolder(ImapFolderInfo.InBox);
 
-                messageInfoCol = imapClient.ListMessages(query);
-                // This count will be equal to the initial count
-                Console.WriteLine("Updated Unread Count: " + messageInfoCol.Count());
-            }
-            else
-            {
-                Console.WriteLine("No unread messages found");
-            }
+                var builder = new ImapQueryBuilder();
+                builder.HasNoFlags(ImapMessageFlags.IsRead);
+                var unreadQuery = builder.GetQuery();
 
-            Console.WriteLine("ImapReadOnlyMode executed successfully.");
+                var unread = client.ListMessages(unreadQuery);
+                Console.WriteLine($"Unread before fetching: {unread.Count}");
+
+                if (unread.Count == 0)
+                {
+                    Console.WriteLine("No unread messages to try it on.");
+                    return;
+                }
+
+                var message = client.FetchMessage(unread[0].UniqueId);
+                Console.WriteLine($"Fetched: {message.Subject}");
+
+                Console.WriteLine($"Unread after fetching:  {client.ListMessages(unreadQuery).Count}");
+            }
         }
     }
 }

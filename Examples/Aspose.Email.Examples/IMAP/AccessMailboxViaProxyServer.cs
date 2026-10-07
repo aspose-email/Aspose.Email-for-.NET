@@ -1,31 +1,32 @@
-﻿using Aspose.Email.Clients;
-using Aspose.Email.Clients.Imap;
+// Demonstrates connecting to the mailbox through a SOCKS proxy.
+//
+// Assign a SocksProxy to the client's Proxy property before the first command and the
+// IMAP connection is made through it. SOCKS 4 and 5 are supported; SOCKS 5 can
+// authenticate with a user name and password (the four-argument constructor).
+//
+// Replace the proxy address below with yours before running the example.
+
 using System;
+using Aspose.Email.Clients;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class AccessMailboxViaProxyServer
+    internal static class AccessMailboxViaProxyServer
     {
         public static void Run()
         {
-            // Connect and log in to IMAP and set SecurityOptions
-            ImapClient client = new ImapClient("imap.domain.com", "username", "password");
-            client.SecurityOptions = SecurityOptions.Auto;
-            
-            string proxyAddress = "192.168.203.142"; // proxy address
-            int proxyPort = 1080; // proxy port
-            SocksProxy proxy = new SocksProxy(proxyAddress, proxyPort, SocksVersion.SocksV5);
+            const string proxyHost = "socks.example.com";
+            const int proxyPort = 1080;
 
-            // Set the proxy
-            client.Proxy = proxy;
-           
-            try
+            using (var proxy = new SocksProxy(proxyHost, proxyPort, SocksVersion.SocksV5))
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                client.SelectFolder("Inbox");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                client.Proxy = proxy;
+
+                client.SelectFolder(ImapFolderInfo.InBox);
+                Console.WriteLine($"Connected through the SOCKS 5 proxy {proxyHost}:{proxyPort}.");
+                Console.WriteLine($"The Inbox holds {client.CurrentFolder.TotalMessageCount} message(s).");
             }
         }
     }

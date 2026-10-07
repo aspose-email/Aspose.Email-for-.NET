@@ -1,20 +1,29 @@
-﻿using System;
+// Demonstrates listing the messages of a folder together with all its subfolders.
+//
+// ListMessages(folderName, retrieveRecursively: true) walks the folder tree below the
+// given folder and returns one combined list; ParentFolder tells which folder each
+// message came from. ReadMessagesRecursively walks the tree itself and downloads the
+// messages.
+
+using System;
+using System.Linq;
 using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class ListingMessagesRecursively
+    internal static class ListingMessagesRecursively
     {
         public static void Run()
         {
-            // Create an imapclient with host, user and password
-            ImapClient client = new ImapClient();
-            client.Host = "domain.com";
-            client.Username = "username";
-            client.Password = "password";
-            client.SelectFolder("InBox");
-            ImapMessageInfoCollection msgsColl = client.ListMessages(true);
-            Console.WriteLine("Total Messages: " + msgsColl.Count);
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
+            {
+                var messages = client.ListMessages(ImapFolderInfo.InBox, true);
+
+                Console.WriteLine($"{messages.Count} message(s) in the Inbox and its subfolders:");
+
+                foreach (var folder in messages.GroupBy(info => info.ParentFolder))
+                    Console.WriteLine($"  {folder.Key}: {folder.Count()}");
+            }
         }
     }
 }

@@ -36,7 +36,8 @@ namespace Aspose.Email.Examples.IMAP
                         .Select(i => new MailMessage("from@example.com", "to@example.com", $"Alert {i}", "Body"))
                         .ToList();
 
-                    var appended = (AppendMessagesFromMessageObjectResult)await client.AppendMessagesAsync(messages, folderName);
+                    var result = await client.AppendMessagesAsync(messages, folderName);
+                    var appended = (AppendMessagesFromMessageObjectResult)result;
                     var uids = appended.Succeeded.Values.ToList();
 
                     await client.SelectFolderAsync(folderName);

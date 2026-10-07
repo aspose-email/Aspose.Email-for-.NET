@@ -1,31 +1,36 @@
-﻿using System;
+// Demonstrates backing up mailbox folders to a PST file.
+//
+// Backup downloads the given folders with their messages and writes them into a new
+// Outlook PST; BackupOptions.Recursive includes the subfolders as well. The PST can be
+// opened in Outlook, read with PersonalStorage, or uploaded again with Restore - see
+// ImapRestoreOperation. Here only the Inbox itself is backed up, to keep the run short.
+
+using System;
 using Aspose.Email.Clients.Imap;
-using Aspose.Email.Clients;
 using Aspose.Email.Storage.Pst;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class ImapBackupOperation
+    internal static class ImapBackupOperation
     {
         public static void Run()
         {
-            // Create an instance of the ImapClient class
-            ImapClient imapClient = new ImapClient();
+            var outputPath = Data.Out/"ImapBackupOperation_out.pst";
 
-            // Specify host, username and password, and set port for your client
-            imapClient.Host = "imap.gmail.com";
-            imapClient.Username = "your.username@gmail.com";
-            imapClient.Password = "your.password";
-            imapClient.Port = 993;
-            imapClient.SecurityOptions = SecurityOptions.Auto;
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
+            {
+                var inbox = client.GetFolderInfo(ImapFolderInfo.InBox);
+                Console.WriteLine($"Backing up '{inbox.Name}' ({inbox.TotalMessageCount} message(s))...");
 
-            ImapMailboxInfo mailboxInfo = imapClient.MailboxInfo;
+                client.Backup(new ImapFolderInfoCollection(inbox), outputPath, BackupOptions.None);
+            }
 
-            ImapFolderInfo info = imapClient.GetFolderInfo(mailboxInfo.Inbox.Name);
-            ImapFolderInfoCollection infos = new ImapFolderInfoCollection();
-            infos.Add(info);
-
-            imapClient.Backup(infos, Data.Out + @"\ImapBackup.pst", BackupOptions.Recursive);
+            using (var pst = PersonalStorage.FromFile(outputPath, false))
+            {
+                Console.WriteLine($"\nWritten to {outputPath}:");
+                foreach (var folder in pst.RootFolder.GetSubFolders())
+                    Console.WriteLine($"  {folder.DisplayName}: {folder.ContentCount} message(s)");
+            }
         }
     }
 }

@@ -1,29 +1,49 @@
-﻿using System;
+// Demonstrates the ID command (RFC 2971): client and server tell each other who they are.
+//
+// IntroduceClient sends ID and returns what the server reports about itself - name,
+// vendor, version, support address. Without arguments the client sends Aspose.Email's
+// default identification; pass an ImapIdentificationInfo to describe your own
+// application. SendClientIdAutomatically shows how to have this done on every connect.
+
+using System;
 using Aspose.Email.Clients.Imap;
-using Aspose.Email.Clients;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class IMAP4IDExtensionSupport
+    internal static class IMAP4IDExtensionSupport
     {
         public static void Run()
         {
-            using (ImapClient client = new ImapClient("imap.gmail.com", 993, "username", "password"))
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                // Set SecurityOptions
-                client.SecurityOptions = SecurityOptions.Auto;
-                Console.WriteLine(client.IdSupported.ToString());
+                client.GetCapabilities();
 
-                ImapIdentificationInfo serverIdentificationInfo1 = client.IntroduceClient();
-                ImapIdentificationInfo serverIdentificationInfo2 = client.IntroduceClient(ImapIdentificationInfo.DefaultValue);
+                if (!client.IdSupported)
+                {
+                    Console.WriteLine("The server does not support the ID command.");
+                    return;
+                }
 
-                // Display ImapIdentificationInfo properties
-                Console.WriteLine(serverIdentificationInfo1.ToString(), serverIdentificationInfo2);
-                Console.WriteLine(serverIdentificationInfo1.Name);
-                Console.WriteLine(serverIdentificationInfo1.Vendor);
-                Console.WriteLine(serverIdentificationInfo1.SupportUrl);
-                Console.WriteLine(serverIdentificationInfo1.Version);
+                Print("Reply to the default identification:", client.IntroduceClient());
+
+                var myApplication = new ImapIdentificationInfo
+                {
+                    Name = "Aspose.Email Examples",
+                    Version = "1.0",
+                    Vendor = "Example Corp"
+                };
+                Print("Reply to a custom identification:", client.IntroduceClient(myApplication));
             }
+        }
+
+        private static void Print(string title, ImapIdentificationInfo server)
+        {
+            Console.WriteLine(title);
+            Console.WriteLine($"  name:        {server?.Name}");
+            Console.WriteLine($"  vendor:      {server?.Vendor}");
+            Console.WriteLine($"  version:     {server?.Version}");
+            Console.WriteLine($"  support url: {server?.SupportUrl}");
+            Console.WriteLine();
         }
     }
 }

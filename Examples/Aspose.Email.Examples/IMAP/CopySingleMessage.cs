@@ -22,8 +22,9 @@ namespace Aspose.Email.Examples.IMAP
 
                 try
                 {
-                    var uid = client.AppendMessage(sourceFolder,
-                        new MailMessage("from@example.com", "to@example.com", "Invoice 1042", "Please find the invoice."));
+                    var message = new MailMessage("from@example.com", "to@example.com",
+                        "Invoice 1042", "Please find the invoice.");
+                    var uid = client.AppendMessage(sourceFolder, message);
 
                     client.SelectFolder(sourceFolder);
                     var copyUid = client.CopyMessage(uid, targetFolder);
@@ -31,8 +32,10 @@ namespace Aspose.Email.Examples.IMAP
                     Console.WriteLine($"Original uid in '{sourceFolder}': {uid}");
                     Console.WriteLine($"Copy uid in '{targetFolder}':     {copyUid ?? "(not reported, no UIDPLUS)"}");
 
-                    Console.WriteLine($"\n'{sourceFolder}': {client.GetFolderInfo(sourceFolder).TotalMessageCount} message(s)");
-                    Console.WriteLine($"'{targetFolder}': {client.GetFolderInfo(targetFolder).TotalMessageCount} message(s)");
+                    var sourceCount = client.GetFolderInfo(sourceFolder).TotalMessageCount;
+                    var targetCount = client.GetFolderInfo(targetFolder).TotalMessageCount;
+                    Console.WriteLine($"\n'{sourceFolder}': {sourceCount} message(s)");
+                    Console.WriteLine($"'{targetFolder}': {targetCount} message(s)");
                 }
                 finally
                 {

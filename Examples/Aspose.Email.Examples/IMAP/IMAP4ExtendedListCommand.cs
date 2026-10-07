@@ -1,42 +1,31 @@
-﻿using System;
-using Aspose.Email.Clients.Imap;
+// Demonstrates the folder attributes the LIST command reports.
+//
+// Besides the name, every folder in a LIST response carries attributes: whether it can
+// be selected, whether it has subfolders (CHILDREN, RFC 3348) or can never have any,
+// and whether the server marked it as interesting. Servers with LIST-EXTENDED
+// (RFC 5258) report more on request - see ListFoldersWithExtendedOptions.
+
+using System;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class IMAP4ExtendedListCommand
+    internal static class IMAP4ExtendedListCommand
     {
         public static void Run()
         {
-            using (ImapClient client = new ImapClient("imap.gmail.com", 993, "username", "password"))
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                ImapFolderInfoCollection folderInfoCol = client.ListFolders("*");
-                Console.WriteLine("Extended List Supported: " + client.ExtendedListSupported);
-                foreach (ImapFolderInfo folderInfo in folderInfoCol)
+                var folders = client.ListFolders();
+
+                Console.WriteLine($"LIST-EXTENDED supported: {client.ExtendedListSupported}");
+                Console.WriteLine($"CHILDREN supported:      {client.ChildrenSupported}");
+                Console.WriteLine($"\n{folders.Count} folder(s):");
+
+                foreach (var folder in folders)
                 {
-                    switch (folderInfo.Name)
-                    {
-                        case "[Gmail]/All Mail":
-                            Console.WriteLine("Has Children: " + folderInfo.HasChildren);
-                            break;
-                        case "[Gmail]/Bin":
-                            Console.WriteLine("Bin has children? " + folderInfo.HasChildren);
-                            break;
-                        case "[Gmail]/Drafts":
-                            Console.WriteLine("Drafts has children? " + folderInfo.HasChildren);
-                            break;
-                        case "[Gmail]/Important":
-                            Console.WriteLine("Important has Children? " + folderInfo.HasChildren);
-                            break;
-                        case "[Gmail]/Sent Mail":
-                            Console.WriteLine("Sent Mail has Children? " + folderInfo.HasChildren);
-                            break;
-                        case "[Gmail]/Spam":
-                            Console.WriteLine("Spam has Children? " + folderInfo.HasChildren);
-                            break;
-                        case "[Gmail]/Starred":
-                            Console.WriteLine("Starred has Children? " + folderInfo.HasChildren);
-                            break;
-                    }
+                    Console.WriteLine($"  {folder.Name}");
+                    Console.WriteLine($"    selectable: {folder.Selectable}, has children: {folder.HasChildren}, " +
+                                      $"no inferiors: {folder.NoInferiors}, marked: {folder.Marked}");
                 }
             }
         }

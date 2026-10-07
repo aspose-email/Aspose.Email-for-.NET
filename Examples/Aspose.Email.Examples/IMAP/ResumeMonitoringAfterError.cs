@@ -26,7 +26,10 @@ namespace Aspose.Email.Examples.IMAP
                     foreach (var info in e.NewMessages)
                         Console.WriteLine($"{DateTime.Now:T}  new in {e.FolderName}: {info.Subject}");
                     if (e.DeletedMessages.Length > 0)
-                        Console.WriteLine($"{DateTime.Now:T}  {e.DeletedMessages.Length} message(s) deleted from {e.FolderName}");
+                    {
+                        Console.WriteLine($"{DateTime.Now:T}  {e.DeletedMessages.Length} message(s) " +
+                                          $"deleted from {e.FolderName}");
+                    }
                 };
 
                 ImapMonitoringErrorEventHandler onError = (sender, e) =>

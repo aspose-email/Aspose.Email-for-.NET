@@ -1,30 +1,37 @@
-﻿using System;
+// Demonstrates capping the number of messages a search returns.
+//
+// ListMessages(query, maxNumberOfMessages) stops after the given number of matches, so
+// a broad search on a large folder does not download thousands of summaries when you
+// only need a few - for example to check whether anything matches at all.
+
+using System;
 using Aspose.Email.Clients.Imap;
-using Aspose.Email.Tools.Search;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class ListMessagesWithMaximumNumberOfMessages
+    internal static class ListMessagesWithMaximumNumberOfMessages
     {
         public static void Run()
         {
-            // Create an imapclient with host, user and password
-            ImapClient client = new ImapClient("localhost", "user", "password");
+            const int maxMessages = 5;
 
-            // Select the inbox folder and Get the message info collection
-            ImapQueryBuilder builder = new ImapQueryBuilder();
-            MailQuery query =
-                builder.Or(
-                builder.Or(
-                builder.Or(
-                builder.Or(
-                builder.Subject.Contains(" (1) "),
-                builder.Subject.Contains(" (2) ")),
-                builder.Subject.Contains(" (3) ")),
-                builder.Subject.Contains(" (4) ")),
-                builder.Subject.Contains(" (5) "));
-            ImapMessageInfoCollection messageInfoCol4 = client.ListMessages(query, 4);
-            Console.WriteLine((messageInfoCol4.Count == 4) ? "Success" : "Failure");
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
+            {
+                client.SelectFolder(ImapFolderInfo.InBox);
+
+                var builder = new ImapQueryBuilder();
+                builder.InternalDate.Since(DateTime.Today.AddDays(-30));
+                var query = builder.GetQuery();
+
+                var all = client.ListMessages(query);
+                var capped = client.ListMessages(query, maxMessages);
+
+                Console.WriteLine($"Arrived in the last 30 days: {all.Count} message(s)");
+                Console.WriteLine($"With a cap of {maxMessages}:           {capped.Count} message(s)");
+
+                foreach (var info in capped)
+                    Console.WriteLine($"  {info.InternalDate:g}  {info.Subject}");
+            }
         }
     }
 }

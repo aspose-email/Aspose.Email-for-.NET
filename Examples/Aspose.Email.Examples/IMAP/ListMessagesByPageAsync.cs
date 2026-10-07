@@ -37,7 +37,8 @@ namespace Aspose.Email.Examples.IMAP
 
                 var settings = new PageSettings { FolderName = ImapFolderInfo.InBox };
 
-                var page = await client.ListMessagesByPageAsync(query, new PageInfo(itemsPerPage), settings, cancellation.Token);
+                var firstPage = new PageInfo(itemsPerPage);
+                var page = await client.ListMessagesByPageAsync(query, firstPage, settings, cancellation.Token);
                 var pageNumber = 1;
 
                 Console.WriteLine($"{page.TotalCount} message(s) arrived in the last 30 days.");

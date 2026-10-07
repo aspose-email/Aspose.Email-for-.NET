@@ -1,25 +1,32 @@
-﻿using System;
+// Demonstrates how to connect to an IMAP server.
+//
+// Creating an ImapClient stores the server address and the credentials; the client
+// connects and signs in when the first command needs the server, here SelectFolder.
+// Disposing the client logs out and closes the connection, so keep it in a using block.
+// The host, port and account come from clientsettings.json through ClientBuilder.
+
+using System;
 using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class ConnectingWithIMAPServer
+    internal static class ConnectingWithIMAPServer
     {
         public static void Run()
         {
-            // Create an imapclient with host, user and password
-            ImapClient client = new ImapClient("localhost", "user", "password");
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
+            {
+                Console.WriteLine($"Server:   {client.Host}:{client.Port}");
+                Console.WriteLine($"Account:  {client.Username}");
+                Console.WriteLine($"Security: {client.SecurityOptions}");
 
-            try
-            {
-                // Disconnect to the remote IMAP server
-                client.Dispose();
+                client.SelectFolder(ImapFolderInfo.InBox);
+
+                Console.WriteLine($"\nConnected, connection is {client.ConnectionState}.");
+                Console.WriteLine($"The Inbox holds {client.CurrentFolder.TotalMessageCount} message(s).");
             }
-            catch (Exception ex)
-            {
-                Console.Write(Environment.NewLine + ex);
-            }
-            Console.WriteLine(Environment.NewLine + "Connected to IMAP server.");            
+
+            Console.WriteLine("Disconnected.");
         }
     }
 }

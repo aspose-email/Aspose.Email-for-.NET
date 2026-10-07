@@ -1,47 +1,39 @@
-﻿using Aspose.Email.Clients.Imap;
-using Aspose.Email.Tools.Search;
+// Demonstrates controlling whether letter case matters in a text search.
+//
+// The second argument of Contains is ignoreCase: true matches "newsletter",
+// "Newsletter" and "NEWSLETTER" alike, false asks for the exact spelling given. Without
+// the argument the server's default applies, which for IMAP is case-insensitive.
+// Compare the counts to see the difference in your mailbox.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.IMAP
 {
-    class CaseSensitiveEmailsFiltering
+    internal static class CaseSensitiveEmailsFiltering
     {
         public static void Run()
         {
-            // Connect and log in to IMAP
-            const string host = "host";
-            const int port = 143;
-            const string username = "user@host.com";
-            const string password = "password";
-            ImapClient client = new ImapClient(host, port, username, password);
+            const string text = "Newsletter";
 
-            try
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
             {
-                client.SelectFolder("Inbox");
+                client.SelectFolder(ImapFolderInfo.InBox);
 
-                // Set conditions, Subject contains "Newsletter", Emails that arrived today
-                ImapQueryBuilder builder = new ImapQueryBuilder();
-                builder.Subject.Contains("Newsletter", true);
-                builder.InternalDate.On(DateTime.Now);
-                MailQuery query = builder.GetQuery();
+                var builder = new ImapQueryBuilder();
+                builder.Subject.Contains(text, true);
+                var anyCase = client.ListMessages(builder.GetQuery());
 
-                // Get list of messages
-                ImapMessageInfoCollection messages = client.ListMessages(query);
-                foreach (ImapMessageInfo info in messages)
-                {
-                    Console.WriteLine("Message Id: " + info.MessageId);
-                }
+                builder = new ImapQueryBuilder();
+                builder.Subject.Contains(text, false);
+                var exactCase = client.ListMessages(builder.GetQuery());
 
-                // Disconnect from IMAP
-                client.Dispose();           
+                Console.WriteLine($"Subject contains '{text}', any case:   {anyCase.Count} message(s)");
+                Console.WriteLine($"Subject contains '{text}', exact case: {exactCase.Count} message(s)");
+
+                foreach (var info in exactCase)
+                    Console.WriteLine($"  {info.Subject}");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }            
         }
     }
 }

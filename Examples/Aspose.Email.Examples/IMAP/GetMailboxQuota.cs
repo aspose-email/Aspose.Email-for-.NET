@@ -31,7 +31,8 @@ namespace Aspose.Email.Examples.IMAP
                     foreach (var quota in client.GetQuota(root.QuotaRootName))
                     {
                         var percent = quota.Limit > 0 ? 100.0 * quota.Used / quota.Limit : 0;
-                        Console.WriteLine($"  {quota.ResourceName,-8} {quota.Used} of {quota.Limit} ({percent:F1}% used)");
+                        Console.WriteLine($"  {quota.ResourceName,-8} {quota.Used} of {quota.Limit} " +
+                                          $"({percent:F1}% used)");
                     }
                 }
             }
