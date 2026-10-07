@@ -29,7 +29,8 @@ namespace Aspose.Email.Examples.SMTP
             using (var client = ClientBuilder.Smtp(AuthType.Basic))
             {
                 var self = client.Username;
-                var unknown = "no-such-user-" + Guid.NewGuid().ToString("N").Substring(0, 8) + "@" + new MailAddress(self).Host;
+                var unknown = "no-such-user-" + Guid.NewGuid().ToString("N").Substring(0, 8) +
+                              "@" + new MailAddress(self).Host;
 
                 Console.WriteLine($"1. One message to {unknown}:");
                 try

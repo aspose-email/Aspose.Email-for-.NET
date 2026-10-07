@@ -27,7 +27,8 @@ namespace Aspose.Email.Examples.SMTP
                 client.SecurityOptions = client.Port == 465 ? SecurityOptions.SSLImplicit : SecurityOptions.SSLExplicit;
 
                 client.Send(new MailMessage(client.Username, client.Username, "Sent over TLS", "Body"));
-                Console.WriteLine($"Sent to {client.Username} via {client.Host}:{client.Port} using {client.SecurityOptions}.");
+                Console.WriteLine($"Sent to {client.Username} via {client.Host}:{client.Port} " +
+                                  $"using {client.SecurityOptions}.");
             }
         }
     }

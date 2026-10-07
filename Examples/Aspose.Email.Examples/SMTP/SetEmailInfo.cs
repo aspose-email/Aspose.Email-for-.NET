@@ -2,8 +2,8 @@
 // its date, priority and sensitivity.
 //
 // Priority is written to the priority headers that mail programs show as a flag or an
-// exclamation mark; Sensitivity (Personal, Private, Company-Confidential) is shown as a notice in
-// Outlook. Neither changes how the server delivers the message.
+// exclamation mark; Sensitivity (Personal, Private, Company-Confidential) is shown as a
+// notice in Outlook. Neither changes how the server delivers the message.
 
 using System;
 

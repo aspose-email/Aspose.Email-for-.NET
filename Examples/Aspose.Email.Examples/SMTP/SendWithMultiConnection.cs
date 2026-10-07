@@ -28,8 +28,9 @@ namespace Aspose.Email.Examples.SMTP
                 client.UseMultiConnection = MultiConnectionMode.Enable;
                 client.ConnectionsQuantity = 3;
 
+                var self = client.Username;
                 var messages = Enumerable.Range(1, 9)
-                    .Select(i => new MailMessage(client.Username, client.Username, $"Multi-connection message {i}", "Body"))
+                    .Select(i => new MailMessage(self, self, $"Multi-connection message {i}", "Body"))
                     .ToList();
 
                 var watch = Stopwatch.StartNew();

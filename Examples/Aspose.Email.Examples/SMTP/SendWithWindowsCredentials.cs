@@ -24,7 +24,8 @@ namespace Aspose.Email.Examples.SMTP
                     "Build finished", "The nightly build finished without errors.");
 
                 client.Send(message);
-                Console.WriteLine($"Sent as {Environment.UserDomainName}\\{Environment.UserName} through {client.Host}.");
+                var account = $"{Environment.UserDomainName}\\{Environment.UserName}";
+                Console.WriteLine($"Sent as {account} through {client.Host}.");
             }
         }
     }

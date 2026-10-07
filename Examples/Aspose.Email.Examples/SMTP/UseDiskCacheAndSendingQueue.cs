@@ -63,7 +63,8 @@ namespace Aspose.Email.Examples.SMTP
             }
 
             Console.WriteLine($"\n{succeeded} sent, {failed} failed.");
-            Console.WriteLine($"Files left in the queue folder: {Directory.GetFiles(queueDir, "*", SearchOption.AllDirectories).Length}");
+            var leftInQueue = Directory.GetFiles(queueDir, "*", SearchOption.AllDirectories).Length;
+            Console.WriteLine($"Files left in the queue folder: {leftInQueue}");
         }
     }
 }

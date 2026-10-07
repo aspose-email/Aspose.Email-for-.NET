@@ -26,7 +26,8 @@ namespace Aspose.Email.Examples.SMTP
                     Subject = "HTML message",
                     HtmlBody = "<html><body>" +
                                "<h2 style=\"color:#2b579a\">Monthly report</h2>" +
-                               "<p>Sales are <b>up 12%</b>. <a href=\"https://www.example.com/report\">Read more</a>.</p>" +
+                               "<p>Sales are <b>up 12%</b>. " +
+                               "<a href=\"https://www.example.com/report\">Read more</a>.</p>" +
                                "</body></html>"
                 };
 

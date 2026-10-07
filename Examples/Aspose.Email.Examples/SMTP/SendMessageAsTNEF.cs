@@ -20,7 +20,8 @@ namespace Aspose.Email.Examples.SMTP
                 return;
             }
 
-            var message = MailMessage.Load(Data.Email/"Message.eml", new EmlLoadOptions { PreserveTnefAttachments = true });
+            var loadOptions = new EmlLoadOptions { PreserveTnefAttachments = true };
+            var message = MailMessage.Load(Data.Email/"Message.eml", loadOptions);
 
             using (var client = ClientBuilder.Smtp(AuthType.Basic))
             {
