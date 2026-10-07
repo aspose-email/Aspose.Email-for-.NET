@@ -1,51 +1,53 @@
-﻿using System;
-using System.Diagnostics;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Clients;
+// Demonstrates how to send a meeting request.
+//
+// RequestApointment turns an Appointment into an iCalendar REQUEST part; added to a
+// message as an alternate view, it makes Outlook, Gmail and other clients show the
+// message as an invitation with Accept / Decline buttons. The attendees of the
+// appointment are normally also the recipients of the message.
+//
+// The request is saved to Out. When SMTP is configured it is also sent, with your own
+// address as the only attendee.
+
+using System;
 using Aspose.Email.Calendar;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class MeetingRequests
+    internal static class MeetingRequests
     {
         public static void Run()
         {
-            // Create an instance of the MailMessage class
-            MailMessage msg = new MailMessage();
+            var organizer = "organizer@example.com";
+            var attendees = "attendee1@example.com, attendee2@example.com";
 
-            // Set the sender, recipient, who will receive the meeting request. Basically, the recipient is the same as the meeting attendees
-            msg.From = "newcustomeronnet@gmail.com";
-            msg.To = "person1@domain.com, person2@domain.com, person3@domain.com, asposetest123@gmail.com";
-
-            // Create Appointment instance
-            Appointment app = new Appointment("Room 112", new DateTime(2015, 7, 17, 13, 0, 0), new DateTime(2015, 7, 17, 14, 0, 0), msg.From, msg.To);
-            app.Summary = "Release Meetting";
-            app.Description = "Discuss for the next release";
-
-            // Add appointment to the message and Create an instance of SmtpClient class
-            msg.AddAlternateView(app.RequestApointment());
-            SmtpClient client = GetSmtpClient();
-
-            try
+            using (var client = ClientBuilder.IsSmtpConfigured ? ClientBuilder.Smtp(AuthType.Basic) : null)
             {
-                // Client.Send will send this message
-                client.Send(msg);
-                Console.WriteLine("Message sent");
-            }
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex.ToString());
-            }
+                if (client != null)
+                    organizer = attendees = client.Username;
 
-            Console.WriteLine(Environment.NewLine + "Meeting request send successfully.");
-        }
+                var start = DateTime.Today.AddDays(7).AddHours(13);
+                var appointment = new Appointment("Room 112", start, start.AddHours(1), organizer, attendees)
+                {
+                    Summary = "Release meeting",
+                    Description = "Let's discuss the next release."
+                };
 
-        private static SmtpClient GetSmtpClient()
-        {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
-            client.SecurityOptions = SecurityOptions.Auto;
-            return client;
+                var message = new MailMessage { From = organizer, To = attendees, Subject = appointment.Summary };
+                message.AddAlternateView(appointment.RequestApointment());
+
+                var outputPath = Data.Out/"MeetingRequests_out.eml";
+                message.Save(outputPath, SaveOptions.DefaultEml);
+                Console.WriteLine($"Meeting request for {start:g} saved to {outputPath}");
+
+                if (client == null)
+                {
+                    Console.WriteLine("Set Smtp.HostName in clientsettings.json to also send it.");
+                    return;
+                }
+
+                client.Send(message);
+                Console.WriteLine($"Sent to {attendees}.");
+            }
         }
     }
 }

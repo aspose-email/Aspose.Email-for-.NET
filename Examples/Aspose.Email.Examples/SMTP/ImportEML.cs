@@ -1,46 +1,44 @@
-﻿using System;
-using System.Diagnostics;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Clients;
+// Demonstrates loading an .eml file with load options and sending it.
+//
+// EmlLoadOptions controls how the file is parsed - PreserveTnefAttachments, for example,
+// decides whether the files inside a winmail.dat (TNEF) attachment are extracted or the
+// attachment is kept as it is. After loading, the message is an ordinary MailMessage
+// whose headers can be changed before sending.
+
+using System;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class ImportEML
+    internal static class ImportEML
     {
         public static void Run()
         {
-            // Create an instance of the MailMessage class
-            MailMessage msg = new MailMessage();
-
-            // Import from EML format
-            msg = MailMessage.Load(Data.Smtp + "test.eml", new EmlLoadOptions());
-
-            // Create an instance of SmtpClient class
-            SmtpClient client = GetSmtpClient();
-
-            try
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                // Client.Send will send this message
-                client.Send(msg);
-                // Show Message if email sent successfully
-                Console.WriteLine("Message sent");
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
             }
 
-            catch (Exception ex)
+            var emlPath = Data.Smtp/"test.eml";
+            var message = MailMessage.Load(emlPath, new EmlLoadOptions { PreserveTnefAttachments = true });
+
+            Console.WriteLine($"Loaded {emlPath}");
+            Console.WriteLine($"  subject:     {message.Subject}");
+            Console.WriteLine($"  from:        {message.From}");
+            Console.WriteLine($"  attachments: {message.Attachments.Count}");
+
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
             {
-                Trace.WriteLine(ex.ToString());
+                // The file is addressed to sample recipients; send it to yourself instead.
+                message.From = client.Username;
+                message.To.Clear();
+                message.CC.Clear();
+                message.Bcc.Clear();
+                message.To.Add(client.Username);
+
+                client.Send(message);
+                Console.WriteLine($"\nSent to {client.Username}.");
             }
-
-            Console.WriteLine(Environment.NewLine + "Email sent. ");
-        }
-
-        private static SmtpClient GetSmtpClient()
-        {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
-            client.SecurityOptions = SecurityOptions.Auto;
-
-            return client;
         }
     }
 }

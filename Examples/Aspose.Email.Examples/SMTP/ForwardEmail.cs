@@ -1,28 +1,33 @@
-﻿using System;
-using System.IO;
-using System.Security.Cryptography;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Clients;
+// Demonstrates forwarding a message as it is.
+//
+// Forward sends an existing message to new recipients without changing it: the original
+// From, To and Subject stay in the headers, and only the envelope - who the server
+// delivers to - is new. That is how mail is redirected, unlike a "Fwd:" message that
+// quotes the original in a new one.
+
+using System;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class ForwardEmail
+    internal static class ForwardEmail
     {
         public static void Run()
         {
+            if (!ClientBuilder.IsSmtpConfigured)
+            {
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
+            }
 
-            //Create an instance of SmtpClient class
-            SmtpClient client = new SmtpClient();
+            var message = MailMessage.Load(Data.Smtp/"Message.eml");
 
-            // Specify your mailing host server, Username, Password, Port and SecurityOptions
-            client.Host = "mail.server.com";
-            client.Username = "username";
-            client.Password = "password";
-            client.Port = 587;
-            client.SecurityOptions = SecurityOptions.SSLExplicit;
-            MailMessage message = MailMessage.Load(Data.Smtp + "Message.eml");
-            client.Forward("Recipient1@domain.com", "Recipient2@domain.com", message);
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
+            {
+                client.Forward(client.Username, client.Username, message);
+
+                Console.WriteLine($"Forwarded '{message.Subject}' to {client.Username}.");
+                Console.WriteLine($"Its headers still name the original recipients: {message.To}");
+            }
         }
     }
 }

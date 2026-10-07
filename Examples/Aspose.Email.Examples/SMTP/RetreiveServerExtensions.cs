@@ -1,31 +1,31 @@
-﻿using Aspose.Email.Clients;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Mime;
+// Demonstrates how to list the extensions the SMTP server announces.
+//
+// GetCapabilities returns the server's reply to EHLO: one entry per extension, such as
+// STARTTLS, AUTH with its mechanisms, SIZE with the largest message accepted, PIPELINING,
+// 8BITMIME or DSN. Check it to see, for example, whether delivery notifications or
+// pipelining are worth using with this server.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class RetreiveServerExtensions
+    internal static class RetreiveServerExtensions
     {
         public static void Run()
         {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", "user@gmail.com", "password");
-            client.SecurityOptions = SecurityOptions.SSLExplicit;
-            client.Port = 587;
-
-            try
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                string[] caps = client.GetCapabilities();
-
-                foreach (string str in caps)
-                    Console.WriteLine(str);
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
             }
-            catch (Exception ex)
+
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
             {
-                Console.WriteLine(ex.Message);
+                var capabilities = client.GetCapabilities();
+
+                Console.WriteLine($"{client.Host} announces {capabilities.Length} extension(s):");
+                foreach (var capability in capabilities)
+                    Console.WriteLine("  " + capability);
             }
         }
     }

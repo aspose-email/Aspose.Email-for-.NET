@@ -1,55 +1,69 @@
-﻿using System;
-using System.Collections.Generic;
+// Demonstrates sending a batch through the client's disk-backed queue.
+//
+// SendToQueue stores the messages in SmtpQueueLocation (an absolute path) and returns,
+// leaving the client to deliver them from there; SucceededSending and FailedSending
+// report each outcome, possibly from other threads. Keeping the queue on disk means a
+// large batch does not have to sit in memory.
+//
+// The example waits up to a minute for all outcomes and then shows what is left in the
+// queue folder.
+
+using System;
+using System.IO;
+using System.Linq;
 using System.Threading;
-using Aspose.Email.Clients;
-using Aspose.Email.Clients.Base;
-using Aspose.Email.Clients.Smtp;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class UseDiskCacheAndSendingQueue
+    internal static class UseDiskCacheAndSendingQueue
     {
         public static void Run()
         {
-            // SmtpClient smtpClient = new SmtpClient();
-            // smtpClient.Host = "<HOST>";
-            // smtpClient.Username = "<USERNAME>";
-            // smtpClient.Password = "<PASSWORD>";
-            // smtpClient.Port = 587;
-            // smtpClient.SupportedEncryption = EncryptionProtocols.Tls;
-            // smtpClient.SecurityOptions = SecurityOptions.SSLExplicit;
-            //
-            // int messageNumber = 30;
-            // List<MailMessage> messages = new List<MailMessage>();
-            // for (int i = 0; i < messageNumber; i++)
-            // {
-            //     MailMessage message = new MailMessage(
-            //         "mactest18.email@gmail.com",
-            //         "aspose.test18@gmail.com",
-            //         "Test Message - " + Guid.NewGuid().ToString(),
-            //         "Use disk cache and sending queue in group SMTP send operation");
-            //     messages.Add(message);
-            // }
-            //
-            // smtpClient.SmtpQueueLocation = @"D:\E\AsposeTestDir\queue";
-            // int counter = 0;
-            // smtpClient.SucceededQueueSending += delegate (object sender, MailMessageEventArgs arguments)
-            // {
-            //     counter++;
-            // };
-            // smtpClient.FailedQueueSending += delegate (object sender, MailMessageEventArgs arguments)
-            // {
-            //     counter++;
-            // };
-            // smtpClient.SendToQueue(messages);
-            // IAsyncResult asyncResult = smtpClient.BeginSendQueue();
-            // while (counter != messageNumber)
-            // {
-            //     Thread.Sleep(50);
-            // }
-            // smtpClient.CancelAsyncOperation(asyncResult);
-            //
-            // Console.WriteLine("UseDiskCacheAndSendingQueue executed successfully.");
+            if (!ClientBuilder.IsSmtpConfigured)
+            {
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
+            }
+
+            const int messageCount = 5;
+            var queueDir = Data.OutSub("SmtpQueue");
+
+            var succeeded = 0;
+            var failed = 0;
+
+            using (var allDone = new ManualResetEventSlim(false))
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
+            {
+                client.SmtpQueueLocation = queueDir;
+
+                client.SucceededSending += (sender, e) =>
+                {
+                    if (Interlocked.Increment(ref succeeded) + Volatile.Read(ref failed) == messageCount)
+                        allDone.Set();
+                };
+
+                client.FailedSending += (sender, e) =>
+                {
+                    Console.WriteLine($"  failed: {e.Message.Subject} - {e.OperationError?.Message}");
+                    if (Interlocked.Increment(ref failed) + Volatile.Read(ref succeeded) == messageCount)
+                        allDone.Set();
+                };
+
+                var messages = Enumerable.Range(1, messageCount)
+                    .Select(i => new MailMessage(client.Username, client.Username, $"Queued message {i}", "Body"))
+                    .ToList();
+
+                client.SendToQueue(messages);
+                Console.WriteLine($"Queued {messageCount} message(s) in {queueDir}");
+
+                var finished = allDone.Wait(TimeSpan.FromMinutes(1));
+                Console.WriteLine(finished
+                    ? "All messages processed."
+                    : "Stopped waiting after a minute.");
+            }
+
+            Console.WriteLine($"\n{succeeded} sent, {failed} failed.");
+            Console.WriteLine($"Files left in the queue folder: {Directory.GetFiles(queueDir, "*", SearchOption.AllDirectories).Length}");
         }
     }
 }

@@ -1,42 +1,49 @@
-﻿using Aspose.Email.Clients;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Mime;
+// Demonstrates how to sign a message with a detached S/MIME signature.
+//
+// A detached signature (multipart/signed) leaves the message body readable as it is and
+// adds the signature as a separate part, so mail programs without S/MIME support still
+// show the text. An opaque signature wraps body and signature into one binary part that
+// only S/MIME-aware programs can open. The second argument of AttachSignature chooses
+// between the two.
+//
+// The signed message is saved to Out, and sent to your own address when SMTP is
+// configured.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class UsingDetachedCertificate
+    internal static class UsingDetachedCertificate
     {
         public static void Run()
         {
-            string privateCertFile = Data.Smtp + "MartinCertificate.pfx";
-            X509Certificate2 privateCert = new X509Certificate2(privateCertFile, "anothertestaccount");
+            var certificate = new X509Certificate2(Data.Smtp/"MartinCertificate.pfx", "anothertestaccount");
 
-            MailMessage msg = new MailMessage("user@domain.com", "receiver@domain.com", "subject:Signed message only by AE", "body:Test Body of signed message by AE");
-
-            MailMessage signed = msg.AttachSignature(privateCert, true);
-            SmtpClient smtp = GetSmtpClient();
-            
-            try
+            using (var client = ClientBuilder.IsSmtpConfigured ? ClientBuilder.Smtp(AuthType.Basic) : null)
             {
-                smtp.Send(signed);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
+                var sender = client != null ? client.Username : "sender@example.com";
+                var recipient = client != null ? client.Username : "receiver@example.com";
 
-        private static SmtpClient GetSmtpClient()
-        {
- 	        SmtpClient client = new SmtpClient("smtp.domain.com", "user@domain.com", "password");
-            client.Port = 25;
-            client.SecurityOptions = SecurityOptions.SSLAuto;
-            return client;
+                var message = new MailMessage(sender, recipient,
+                    "Signed message", "This text stays readable without S/MIME support.");
+
+                var signed = message.AttachSignature(certificate, true);
+                Console.WriteLine($"Signed with {certificate.Subject}, is signed = {signed.IsSigned}");
+
+                var outputPath = Data.Out/"UsingDetachedCertificate_out.eml";
+                signed.Save(outputPath, SaveOptions.DefaultEml);
+                Console.WriteLine($"Saved to {outputPath}");
+
+                if (client == null)
+                {
+                    Console.WriteLine("Set Smtp.HostName in clientsettings.json to also send it.");
+                    return;
+                }
+
+                client.Send(signed);
+                Console.WriteLine($"Sent to {recipient}.");
+            }
         }
     }
 }

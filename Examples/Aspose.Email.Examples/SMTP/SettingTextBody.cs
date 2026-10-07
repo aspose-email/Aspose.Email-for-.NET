@@ -1,42 +1,36 @@
-﻿using System;
-using System.Diagnostics;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Clients;
+// Demonstrates setting a text body that is not plain ASCII.
+//
+// BodyEncoding decides how the text is encoded on the wire; UTF-8 carries any language,
+// so accented letters, Cyrillic or CJK text arrive intact. SendPlainTextEmailMessage
+// shows the ASCII-only case.
+
+using System;
+using System.Text;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class SettingTextBody
+    internal static class SettingTextBody
     {
         public static void Run()
         {
-            // Declare msg as MailMessage instance
-            MailMessage msg = new MailMessage();
-
-            // Use MailMessage properties like specify sender, recipient and message
-            msg.From = "newcustomeronnet@gmail.com";
-            msg.To = "newcustomeronnet2@gmail.com";
-            msg.Subject = "Test subject";
-            msg.Body = "This is text body";
-            SmtpClient client = GetSmtpClient();
-            try
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                // Client will send this message
-                client.Send(msg);
-                Console.WriteLine("Message sent");
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
             }
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex.ToString());
-            }
-            Console.WriteLine(Environment.NewLine + "Email sent with Text body.");
-        }
 
-        private static SmtpClient GetSmtpClient()
-        {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
-            client.SecurityOptions = SecurityOptions.Auto;
-            return client;
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
+            {
+                var message = new MailMessage(client.Username, client.Username)
+                {
+                    Subject = "Text body in UTF-8",
+                    BodyEncoding = Encoding.UTF8,
+                    Body = "Café, Привет, こんにちは"
+                };
+
+                client.Send(message);
+                Console.WriteLine($"Sent a UTF-8 text body to {client.Username}.");
+            }
         }
     }
 }

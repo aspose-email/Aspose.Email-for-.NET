@@ -1,39 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
+// Demonstrates sending a large batch over several connections at once.
+//
+// With UseMultiConnection enabled, Send(messages) spreads the batch over up to
+// ConnectionsQuantity parallel connections. That can shorten big mailings, but servers
+// limit connections and messages per account, so more connections are not always
+// faster - measure with your server. SendOverDedicatedConnections shows how to manage
+// the connections yourself.
+
+using System;
+using System.Diagnostics;
+using System.Linq;
 using Aspose.Email.Clients;
-using Aspose.Email.Clients.Base;
-using Aspose.Email.Clients.Smtp;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class SendWithMultiConnection
+    internal static class SendWithMultiConnection
     {
         public static void Run()
         {
-            SmtpClient smtpClient = new SmtpClient();
-            smtpClient.Host = "<HOST>";
-            smtpClient.Username = "<USERNAME>";
-            smtpClient.Password = "<PASSWORD>";
-            smtpClient.Port = 587;
-            smtpClient.SupportedEncryption = EncryptionProtocols.Tls;
-            smtpClient.SecurityOptions = SecurityOptions.SSLExplicit;
-
-            List<MailMessage> messages = new List<MailMessage>();
-            for (int i = 0; i < 20; i++)
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                MailMessage message = new MailMessage(
-                    "<EMAIL ADDRESS>",
-                    "<EMAIL ADDRESS>",
-                    "Test Message - " + Guid.NewGuid().ToString(),
-                    "SMTP Send Messages with MultiConnection");
-                messages.Add(message);
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
             }
 
-            smtpClient.ConnectionsQuantity = 5;
-            smtpClient.UseMultiConnection = MultiConnectionMode.Enable;
-            smtpClient.Send(messages);
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
+            {
+                client.UseMultiConnection = MultiConnectionMode.Enable;
+                client.ConnectionsQuantity = 3;
 
-            Console.WriteLine("SendWithMultiConnection executed successfully.");
+                var messages = Enumerable.Range(1, 9)
+                    .Select(i => new MailMessage(client.Username, client.Username, $"Multi-connection message {i}", "Body"))
+                    .ToList();
+
+                var watch = Stopwatch.StartNew();
+                client.Send(messages);
+
+                Console.WriteLine($"Sent {messages.Count} message(s) over up to {client.ConnectionsQuantity} " +
+                                  $"connections in {watch.ElapsedMilliseconds} ms.");
+            }
         }
     }
 }

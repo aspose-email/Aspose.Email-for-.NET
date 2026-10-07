@@ -1,50 +1,39 @@
-﻿using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Mime;
+// Demonstrates an HTML message with a plain-text alternative.
+//
+// Alternate views put several versions of the same content into one message
+// (multipart/alternative); each mail program shows the richest one it can display.
+// Here the body is HTML and the alternate view adds plain text for programs, screen
+// readers and filters that prefer it. SendEmailWithAlternateText shows the opposite
+// arrangement.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class SendingEmailWithAlternateText
+    internal static class SendingEmailWithAlternateText
     {
         public static void Run()
         {
-            // Create an instance of MailMessage class
-            MailMessage message = new MailMessage();
-
-            // From and To field
-            message.From = "sender@sender.com";
-            message.To.Add("receiver@receiver.com");
-
-            AlternateView alternate;
-
-            // Create an instance of AlternateView to view an email message using the content specified in the string
-            alternate = AlternateView.CreateAlternateViewFromString("This is the alternate Text");
-
-            // Add alternate text
-            message.AlternateViews.Add(alternate);
-
-            // Create an instance of SmtpClient Class
-            SmtpClient client = new SmtpClient();
-
-            // Specify your mailing host server, user name, mail password and Port #
-            client.Host = "smtp.server.com";
-            client.Username = "Username";
-            client.Password = "Password";
-            client.Port = 25;
-            try
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                // Client.Send will send this message
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
+            }
+
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
+            {
+                var message = new MailMessage(client.Username, client.Username)
+                {
+                    Subject = "HTML with a plain-text alternative",
+                    HtmlBody = "<p>Your order <b>A-1001</b> has shipped.</p>"
+                };
+
+                message.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(
+                    "Your order A-1001 has shipped."));
+
                 client.Send(message);
+                Console.WriteLine($"Sent to {client.Username} with {message.AlternateViews.Count} alternate view(s).");
             }
-
-            catch (Exception ex)
-            {
-                System.Diagnostics.Trace.WriteLine(ex.ToString());
-            }
-
         }
     }
 }

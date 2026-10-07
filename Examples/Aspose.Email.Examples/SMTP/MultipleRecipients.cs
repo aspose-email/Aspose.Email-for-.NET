@@ -1,62 +1,55 @@
-﻿using System;
-using System.Diagnostics;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Clients;
+// Demonstrates sending one message to several To, Cc and Bcc recipients.
+//
+// To and Cc recipients appear in the message headers; Bcc recipients receive the message
+// but are left out of the headers, so the others do not see them. The server gets every
+// address as a separate envelope recipient.
+//
+// To stay within your own mailbox the example uses sub-addresses of your address
+// (user+tag@domain), which Gmail, Outlook.com, Microsoft 365 and many other providers
+// deliver to the same mailbox. If yours does not, put real addresses here.
+
+using System;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class MultipleRecipients
+    internal static class MultipleRecipients
     {
         public static void Run()
         {
-            // Declare msg as MailMessage instance
-            MailMessage message = new MailMessage();
-
-            // Use MailMessage properties like specify sender, recipient and message
-
-            // Specify the recipients mail addresses
-            message.To.Add("receiver1@receiver.com");
-            message.To.Add("receiver2@receiver.com");
-            message.To.Add("receiver3@receiver.com");
-            message.To.Add("receiver4@receiver.com");
-
-            message.CC.Add("CC1@receiver.com");
-            message.CC.Add("CC2@receiver.com");
-
-            message.Bcc.Add("Bcc1@receiver.com");
-            message.Bcc.Add("Bcc2@receiver.com");
-
-            message.From = "newcustomeronnet@gmail.com";
-            message.Subject = "Test Email";
-            message.Body = "Hello World!";
-
-
-            // Create an instance of SmtpClient class
-            SmtpClient client = GetSmtpClient();
-
-            try
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                // Client will send this message
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
+            }
+
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
+            {
+                var self = new MailAddress(client.Username);
+
+                var message = new MailMessage
+                {
+                    From = self,
+                    Subject = "Message to several recipients",
+                    Body = "Check the To and Cc lines; the Bcc recipient is not listed."
+                };
+
+                message.To.Add(SubAddress(self, "to1"));
+                message.To.Add(SubAddress(self, "to2"));
+                message.CC.Add(SubAddress(self, "cc1"));
+                message.Bcc.Add(SubAddress(self, "bcc1"));
+
                 client.Send(message);
-                // Show only if message sent successfully
-                Console.WriteLine("Message sent");
-            }
 
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex.ToString());
+                Console.WriteLine("Sent to:");
+                Console.WriteLine($"  To:  {message.To}");
+                Console.WriteLine($"  Cc:  {message.CC}");
+                Console.WriteLine($"  Bcc: {message.Bcc}");
             }
-
-            Console.WriteLine(Environment.NewLine + "Email sent to multiple recipients successfully.");
         }
 
-        private static SmtpClient GetSmtpClient()
+        private static string SubAddress(MailAddress address, string tag)
         {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
-            client.SecurityOptions = SecurityOptions.Auto;
-
-            return client;
+            return $"{address.User}+{tag}@{address.Host}";
         }
     }
 }

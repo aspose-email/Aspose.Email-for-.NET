@@ -1,33 +1,41 @@
-﻿using System;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Clients;
+// Demonstrates sending a message in Outlook's TNEF format (winmail.dat).
+//
+// With UseTnef set, the client packs the message into a TNEF attachment, which keeps
+// Outlook-specific properties - rich text, voting buttons, custom forms - intact between
+// Outlook and Exchange. Programs other than Outlook usually just show a winmail.dat
+// attachment, so use it only when the recipients run Outlook.
+// PreserveTnefAttachments keeps an incoming TNEF attachment as it is while loading.
+
+using System;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class SendMessageAsTNEF
+    internal static class SendMessageAsTNEF
     {
         public static void Run()
         {
-            try
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                var emlFileName = Data.Email + "Message.eml";     // A TNEF Email
-
-                // Load from eml
-                MailMessage eml1 = MailMessage.Load(emlFileName, new EmlLoadOptions());
-                eml1.From = "somename@gmail.com";
-                eml1.To.Clear();
-                eml1.To.Add(new MailAddress("first.last@test.com"));
-                eml1.Subject = "With PreserveTnef flag during loading";
-                eml1.Date = DateTime.Now;
-                SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "somename", "password");
-                client.SecurityOptions = SecurityOptions.Auto;
-                client.UseTnef = true;     // Use this flag to send as TNEF
-                client.Send(eml1);
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
             }
-            catch (Exception ex)
+
+            var message = MailMessage.Load(Data.Email/"Message.eml", new EmlLoadOptions { PreserveTnefAttachments = true });
+
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
             {
-                Console.Write(ex.Message);
+                message.From = client.Username;
+                message.To.Clear();
+                message.CC.Clear();
+                message.Bcc.Clear();
+                message.To.Add(client.Username);
+                message.Subject = "Sent as TNEF";
+                message.Date = DateTime.Now;
+
+                client.UseTnef = true;
+                client.Send(message);
+
+                Console.WriteLine($"Sent to {client.Username} in TNEF format.");
             }
         }
     }

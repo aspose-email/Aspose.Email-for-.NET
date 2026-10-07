@@ -1,59 +1,40 @@
-﻿using System;
-using System.Diagnostics;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Clients;
+// Demonstrates the message properties that tell the recipient how to treat a message:
+// its date, priority and sensitivity.
+//
+// Priority is written to the priority headers that mail programs show as a flag or an
+// exclamation mark; Sensitivity (Personal, Private, Company-Confidential) is shown as a notice in
+// Outlook. Neither changes how the server delivers the message.
+
+using System;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class SetEmailInfo
+    internal static class SetEmailInfo
     {
         public static void Run()
         {
-            // Create an instance MailMessage class
-            MailMessage msg = new MailMessage();
-
-            // Setting Date 
-            msg.Date = DateTime.Now;
-
-            // Setting Priority
-            msg.Priority = MailPriority.High;
-
-            // Setting Sensitivity
-            msg.Sensitivity = MailSensitivity.Normal;
-
-            // Use MailMessage properties like specify sender, recipient and message
-            msg.To = "asposetest123@gmail.com";
-            msg.From = "asposetest123@gmail.com";
-            msg.Subject = "Test Email";
-            msg.Body = "Hello World!";
-
-
-            // Create an instance of SmtpClient class
-            SmtpClient client = GetSmtpClient();
-
-            try
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                // Client.Send will send this message
-                client.Send(msg);
-                // Message sent successfully
-                Console.WriteLine("Message sent");
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
             }
 
-            catch (Exception ex)
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
             {
-                Trace.WriteLine(ex.ToString());
+                var message = new MailMessage(client.Username, client.Username, "Quarterly results", "Please review.")
+                {
+                    Date = DateTime.Now,
+                    Priority = MailPriority.High,
+                    Sensitivity = MailSensitivity.CompanyConfidential
+                };
+
+                client.Send(message);
+
+                Console.WriteLine($"Sent to {client.Username}:");
+                Console.WriteLine($"  date:        {message.Date}");
+                Console.WriteLine($"  priority:    {message.Priority}");
+                Console.WriteLine($"  sensitivity: {message.Sensitivity}");
             }
-
-            Console.WriteLine(Environment.NewLine + "Email sent with setting message properties.");
-        }
-
-        private static SmtpClient GetSmtpClient()
-        {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
-            client.SecurityOptions = SecurityOptions.Auto;
-
-            return client;
         }
     }
 }

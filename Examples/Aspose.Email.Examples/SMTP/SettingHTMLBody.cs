@@ -1,43 +1,38 @@
-﻿using System;
-using System.Diagnostics;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Clients;
+// Demonstrates sending an HTML message.
+//
+// Setting HtmlBody makes the message text/html, so the recipient sees formatting, links
+// and colours. Keep the markup simple and the styles inline - mail programs ignore most
+// of what a browser supports. SendingEmailWithAlternateText adds a plain-text version
+// for programs that do not show HTML.
+
+using System;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class SettingHTMLBody
+    internal static class SettingHTMLBody
     {
         public static void Run()
         {
-            // Declare msg as MailMessage instance
-            MailMessage msg = new MailMessage();
-
-            // Use MailMessage properties like specify sender, recipient, message and HtmlBody
-            msg.From = "newcustomeronnet@gmail.com";
-            msg.To = "asposetest123@gmail.com";
-            msg.Subject = "Test subject";
-            msg.HtmlBody = "<html><body>This is the HTML body</body></html>";
-            SmtpClient client = GetSmtpClient();
-            try
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                // Client will send this message
-                client.Send(msg);
-                Console.WriteLine("Message sent");
-            }
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex.ToString());
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
             }
 
-            Console.WriteLine(Environment.NewLine + "Email sent with HTML body.");
-        }
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
+            {
+                var message = new MailMessage(client.Username, client.Username)
+                {
+                    Subject = "HTML message",
+                    HtmlBody = "<html><body>" +
+                               "<h2 style=\"color:#2b579a\">Monthly report</h2>" +
+                               "<p>Sales are <b>up 12%</b>. <a href=\"https://www.example.com/report\">Read more</a>.</p>" +
+                               "</body></html>"
+                };
 
-        private static SmtpClient GetSmtpClient()
-        {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
-            client.SecurityOptions = SecurityOptions.Auto;
-            return client;
+                client.Send(message);
+                Console.WriteLine($"Sent an HTML message to {client.Username} (IsBodyHtml = {message.IsBodyHtml}).");
+            }
         }
     }
 }

@@ -1,33 +1,39 @@
-﻿using System;
-using System.Diagnostics;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Clients;
+// Demonstrates sending a message that was saved as an .eml file earlier.
+//
+// MailMessage.Load restores the message completely - body, attachments and headers - so
+// it can be sent again as it is or after changing its recipients. ExportAsEML shows how
+// such a file is created; ForwardEmailWithoutUsingMailMessage sends a file without
+// loading it.
+
+using System;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class SendingEMLFilesWithSMTP
+    internal static class SendingEMLFilesWithSMTP
     {
         public static void Run()
         {
-            // Import from EML format
-            MailMessage message = MailMessage.Load(Data.Smtp + "Message.eml", new EmlLoadOptions());
-
-            // Create an instance of SmtpClient class
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
-            client.SecurityOptions = SecurityOptions.Auto;
-
-            try
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                // Client.Send will send this message
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
+            }
+
+            var emlPath = Data.Smtp/"Message.eml";
+            var message = MailMessage.Load(emlPath);
+            Console.WriteLine($"Loaded '{message.Subject}', originally to {message.To}");
+
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
+            {
+                // The file is addressed to sample recipients; send it to yourself instead.
+                message.From = client.Username;
+                message.To.Clear();
+                message.CC.Clear();
+                message.To.Add(client.Username);
+
                 client.Send(message);
-                Console.WriteLine("Message sent");
+                Console.WriteLine($"Sent to {client.Username}.");
             }
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex.ToString());
-            }
-            Console.WriteLine(Environment.NewLine + "Email sent using EML file successfully. ");
         }
     }
 }

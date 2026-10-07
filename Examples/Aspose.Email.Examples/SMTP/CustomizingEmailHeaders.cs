@@ -1,44 +1,41 @@
-﻿using System;
-using Aspose.Email.Mime;
+// Demonstrates how to set the standard address and date headers of a message and add a
+// custom one, then save it as an Outlook .msg file.
+//
+// Custom headers - by convention starting with "X-" - travel with the message and can be
+// read by the receiving side, for example to tag mail sent by your application.
+// CustomizingEmailHeader sends a message built the same way.
+
+using System;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class CustomizingEmailHeaders
+    internal static class CustomizingEmailHeaders
     {
         public static void Run()
         {
-            // Create an instance MailMessage class
-            MailMessage msg = new MailMessage();
+            var message = new MailMessage
+            {
+                From = "sender@example.com",
+                Subject = "Test mail",
+                Date = new DateTime(2026, 3, 6),
+                XMailer = "Aspose.Email"
+            };
 
-            // Specify ReplyTo
-            msg.ReplyToList.Add("reply@reply.com");
+            message.To.Add("receiver1@example.com");
+            message.CC.Add("receiver2@example.com");
+            message.Bcc.Add("receiver3@example.com");
+            message.ReplyToList.Add("reply@example.com");
+            message.Headers.Add("X-Secret-Header", "mystery");
 
-            // From field
-            msg.From = "sender@sender.com";
+            var outputPath = Data.Out/"CustomizingEmailHeaders_out.msg";
+            message.Save(outputPath, SaveOptions.DefaultMsgUnicode);
+            Console.WriteLine($"Saved to {outputPath}");
 
-            // To field
-            msg.To.Add("receiver1@receiver.com");
-
-            // Adding Cc and Bcc Addresses
-            msg.CC.Add("receiver2@receiver.com");
-            msg.Bcc.Add("receiver3@receiver.com");
-
-            // Message subject
-            msg.Subject = "test mail";
-
-            // Specify Date
-            msg.Date = new DateTime(2006, 3, 6);
-
-            // Specify XMailer
-            msg.XMailer = "Aspose.Email";
-
-            // Specify Secret Header
-            msg.Headers.Add("secret-header", "mystery");
-
-            // Save message to disc
-            msg.Save(Data.Out + "MsgHeaders.msg", SaveOptions.DefaultMsgUnicode);
-
-            Console.WriteLine(Environment.NewLine + $"Message saved with customized headers successfully at {Data.Out}/MsgHeaders.msg");
+            var loaded = MailMessage.Load(outputPath);
+            Console.WriteLine("\nRead back:");
+            Console.WriteLine($"  subject:         {loaded.Subject}");
+            Console.WriteLine($"  reply to:        {loaded.ReplyToList}");
+            Console.WriteLine($"  X-Secret-Header: {loaded.Headers["X-Secret-Header"]}");
         }
     }
 }

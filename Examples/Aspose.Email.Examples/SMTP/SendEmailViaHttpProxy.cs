@@ -1,26 +1,37 @@
-﻿using Aspose.Email;
-using Aspose.Email.Clients;
-using Aspose.Email.Clients.Smtp;
+// Demonstrates sending through an HTTP proxy.
+//
+// Where outgoing connections must go through a proxy, assign an HttpProxy to the
+// client's Proxy property; the client then tunnels the SMTP connection through it
+// (HTTP CONNECT). The proxy must allow tunnelling to the SMTP port. Pass a user name and
+// password to the HttpProxy constructor if the proxy requires them.
+//
+// Replace the proxy address below with yours before running the example.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Clients;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    public class SendEmailViaHttpProxy
+    internal static class SendEmailViaHttpProxy
     {
         public static void Run()
         {
-            HttpProxy proxy = new HttpProxy("18.222.124.59", 8080);
-            using (SmtpClient client = new SmtpClient("host", 587, "username", "password"))
+            if (!ClientBuilder.IsSmtpConfigured)
+            {
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
+            }
+
+            const string proxyHost = "proxy.example.com";
+            const int proxyPort = 8080;
+
+            using (var proxy = new HttpProxy(proxyHost, proxyPort))
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
             {
                 client.Proxy = proxy;
-                client.Send(new MailMessage(
-                    "from@domain.com",
-                    "to@domain.com",
-                    "NETWORKNET-34226 - " + Guid.NewGuid().ToString(),
-                    "NETWORKNET-34226 Implement socks proxy protocol for versions 4, 4a, 5 (only Username/Password authentication)"));
+
+                client.Send(new MailMessage(client.Username, client.Username, "Sent through an HTTP proxy", "Body"));
+                Console.WriteLine($"Sent to {client.Username} through the HTTP proxy {proxyHost}:{proxyPort}.");
             }
         }
     }

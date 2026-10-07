@@ -1,39 +1,33 @@
-﻿using System;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
+// Demonstrates sending a plain-text message.
+//
+// Body sets the text; with IsBodyHtml left false the message goes out as text/plain,
+// which every mail program displays the same way and spam filters treat kindly.
+
+using System;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class SendPlainTextEmailMessage
+    internal static class SendPlainTextEmailMessage
     {
         public static void Run()
         {
-            //Create an instance of the MailMessage class
-            MailMessage message = new MailMessage();
-
-            // Set From field, To field and Plain text body
-            message.From = "sender@sender.com";
-            message.To.Add("receiver@receiver.com");
-            message.Body = "This is Plain Text Body";
-
-            // Create an instance of the SmtpClient class
-            SmtpClient client = new SmtpClient();
-
-            // And Specify your mailing host server, Username, Password and Port
-            client.Host = "smtp.server.com";
-            client.Username = "Username";
-            client.Password = "Password";
-            client.Port = 25;
-
-            try
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                //Client.Send will send this message
-                client.Send(message);
-                Console.WriteLine("Message sent");
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
             }
-            catch (Exception ex)
+
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
             {
-                System.Diagnostics.Trace.WriteLine(ex.ToString());
+                var message = new MailMessage(client.Username, client.Username)
+                {
+                    Subject = "Plain-text message",
+                    Body = "This is a plain-text body.\r\nLine breaks are kept as they are.",
+                    IsBodyHtml = false
+                };
+
+                client.Send(message);
+                Console.WriteLine($"Sent a plain-text message to {client.Username}.");
             }
         }
     }

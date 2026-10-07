@@ -1,45 +1,44 @@
-﻿using System;
-using System.Configuration;
-using System.Diagnostics;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
+// Demonstrates keeping SMTP settings in a configuration file instead of in code.
+//
+// SmtpClient has no constructor that reads a configuration file, so read the settings
+// with the configuration library of your choice and pass them to the client. This
+// example reads the "Smtp" section of clientsettings.json with
+// Microsoft.Extensions.Configuration - the same file the other examples use through
+// ClientBuilder.
+
+using System;
 using Aspose.Email.Clients;
+using Aspose.Email.Clients.Smtp;
+using Microsoft.Extensions.Configuration;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class LoadSmtpConfigFile
+    internal static class LoadSmtpConfigFile
     {
         public static void Run()
         {
-            // // The path to the File directory.
-            // string dataDir = RunExamples.GetDataDir_SMTP();
-            // string dstEmail = dataDir + "EmbeddedImage.msg";
-            //
-            // // Declare msg as MailMessage instance
-            // MailMessage msg = new MailMessage();
-            //
-            // // Use MailMessage properties like specify sender, recipient and message
-            // msg.To = "asposetest123@gmail.com";
-            // msg.From = "aspose2@gmail.com";
-            // msg.Subject = "Test Email";
-            // msg.Body = "Hello World!";
-            //
-            // // Create an instance of SmtpClient class and load SMTP Authentication settings from Config file
-            // SmtpClient client = new SmtpClient(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None));
-            //
-            // client.SecurityOptions = SecurityOptions.Auto;
-            //
-            // try
-            // {
-            //     // Client.Send will send this message
-            //     client.Send(msg);
-            //     Console.WriteLine("Message sent");
-            // }
-            // catch (Exception ex)
-            // {
-            //     Trace.WriteLine(ex.ToString());
-            // }
-            // Console.WriteLine(Environment.NewLine + "Message sent after loading configuration from config file.");
+            var smtp = new ConfigurationBuilder()
+                .AddJsonFile("clientsettings.json")
+                .Build()
+                .GetSection("Smtp");
+
+            var host = smtp["HostName"];
+            if (string.IsNullOrWhiteSpace(host))
+            {
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
+            }
+
+            var port = int.Parse(smtp["Port"] ?? "587");
+            var userName = smtp["UserName"];
+
+            Console.WriteLine($"Settings read from clientsettings.json: {userName} at {host}:{port}");
+
+            using (var client = new SmtpClient(host, port, userName, smtp["Password"], SecurityOptions.Auto))
+            {
+                client.Send(new MailMessage(userName, userName, "Settings from a config file", "Body"));
+                Console.WriteLine($"Sent to {userName}.");
+            }
         }
     }
 }

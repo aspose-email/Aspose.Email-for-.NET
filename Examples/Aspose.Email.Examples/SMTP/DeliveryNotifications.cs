@@ -1,54 +1,39 @@
-﻿using System;
-using System.Diagnostics;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Clients;
+// Demonstrates how to request delivery status notifications (DSN, RFC 3461).
+//
+// DeliveryNotificationOptions asks the mail servers along the way to report back to the
+// sender: on successful delivery, on failure, and/or when delivery is delayed. A server
+// that does not support the DSN extension ignores the request, and many providers only
+// honour failure reports - so treat a missing notification as "unknown", not "failed".
+// A read receipt, which the recipient's program sends, is a different mechanism.
+
+using System;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class DeliveryNotifications
+    internal static class DeliveryNotifications
     {
         public static void Run()
         {
-            // Create an instance MailMessage class
-            MailMessage msg = new MailMessage();
-
-            // Setting Delivery Notification 
-            msg.DeliveryNotificationOptions = DeliveryNotificationOptions.OnSuccess;
-
-
-            // Use MailMessage properties like specify sender, recipient and message
-            msg.To = "asposetest123@gmail.com";
-            msg.From = "newcustomeronnet@gmail.com";
-            msg.Subject = "Test Email";
-            msg.Body = "Hello World!";
-
-
-            // Create an instance of SmtpClient class
-            SmtpClient client = GetSmtpClient();
-
-            try
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                // Client.Send will send this message
-                client.Send(msg);
-                // Message sent successfully
-                Console.WriteLine("Message sent");
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
             }
 
-            catch (Exception ex)
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
             {
-                Trace.WriteLine(ex.ToString());
+                var message = new MailMessage(client.Username, client.Username, "Delivery report requested", "Body")
+                {
+                    DeliveryNotificationOptions =
+                        DeliveryNotificationOptions.OnSuccess |
+                        DeliveryNotificationOptions.OnFailure |
+                        DeliveryNotificationOptions.Delay
+                };
+
+                client.Send(message);
+                Console.WriteLine($"Sent to {client.Username}, requesting: {message.DeliveryNotificationOptions}.");
+                Console.WriteLine("Delivery reports, if the servers support DSN, arrive at the sender address.");
             }
-
-            Console.WriteLine(Environment.NewLine + "Email sent with delivery notification.");
-        }
-
-        private static SmtpClient GetSmtpClient()
-        {
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
-            client.SecurityOptions = SecurityOptions.Auto;
-
-            return client;
         }
     }
 }

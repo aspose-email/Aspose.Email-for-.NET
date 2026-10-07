@@ -1,45 +1,34 @@
-﻿using System;
-using System.Diagnostics;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
+// Demonstrates how to encrypt the connection to the SMTP server.
+//
+// There are two ways, tied to the port:
+// - SSLExplicit (STARTTLS, usually port 587): the client connects in plain text and
+//   upgrades the connection before signing in.
+// - SSLImplicit (usually port 465): the connection is encrypted from the first byte.
+// SecurityOptions.Auto lets the client work it out; setting the option explicitly
+// removes the guesswork. Never send credentials over SecurityOptions.None.
+
+using System;
 using Aspose.Email.Clients;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class SSLEnabledSMTPServer
+    internal static class SSLEnabledSMTPServer
     {
         public static void Run()
-        {        
-
-            SmtpClient client = new SmtpClient("smtp.gmail.com");
-
-            // Set username, Password, Port No, and SecurityOptions
-            client.Username = "your.email@gmail.com";
-            client.Password = "your.password";
-            client.Port = 587;
-            client.SecurityOptions = SecurityOptions.SSLExplicit;
-
-            // Declare message as MailMessage instance
-            MailMessage message = new MailMessage();
-
-            // Use MailMessage properties like specify sender, recipient and message
-            message.To = "newcustomeronnet@gmail.com";
-            message.From = "newcustomeronnet@gmail.com";
-            message.Subject = "Test Email";
-            message.Body = "Hello World!";
-            try
+        {
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                // Client will send this message
-                client.Send(message);
-                Console.WriteLine("Message sent");
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
             }
 
-            catch (Exception ex)
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
             {
-                Trace.WriteLine(ex.ToString());
-            }
+                client.SecurityOptions = client.Port == 465 ? SecurityOptions.SSLImplicit : SecurityOptions.SSLExplicit;
 
-            Console.WriteLine(Environment.NewLine + "Email sent SSL successfully.");
+                client.Send(new MailMessage(client.Username, client.Username, "Sent over TLS", "Body"));
+                Console.WriteLine($"Sent to {client.Username} via {client.Host}:{client.Port} using {client.SecurityOptions}.");
+            }
         }
     }
 }

@@ -55,7 +55,7 @@ Mail servers and services:
 | [`EWS`](Aspose.Email.Examples/EWS) | Exchange Web Services |
 | [`IMAP`](Aspose.Email.Examples/IMAP) | IMAP client: connection and security, folders, messages and attachments, search, threading and sorting, CONDSTORE sync, quotas, folder monitoring (IDLE), backup and restore, task-based API |
 | [`POP3`](Aspose.Email.Examples/POP3) | POP3 client |
-| [`SMTP`](Aspose.Email.Examples/SMTP) | Sending mail over SMTP |
+| [`SMTP`](Aspose.Email.Examples/SMTP) | SMTP client: plain-text, HTML and alternate-view messages, bulk, multi-connection and queued sending, forwarding, mail merge, meeting requests, S/MIME, TNEF, pickup directory, delivery notifications, error handling, OAuth, TLS and proxies, task-based API |
 | [`Gmail`](Aspose.Email.Examples/Gmail) | Gmail via Google API (.NET Framework 4.8 only) |
 
 Other:
@@ -76,9 +76,12 @@ Supporting folders:
 `Data/` — no server, no account, nothing to configure.
 
 `Graph`, `EWS`, `IMAP`, `POP3`, `SMTP` and `Gmail` talk to a real mail server or service and need
-an account — see [Connecting to a mail server](#connecting-to-a-mail-server). A few examples in the
-offline folders can also send their result by mail; they save it to `Out/` either way and only
-send when SMTP is configured.
+an account — see [Connecting to a mail server](#connecting-to-a-mail-server).
+
+Some examples do useful work either way: they build their result offline, save it to `Out/`, and
+only send it when SMTP is configured. That covers a few examples in the offline folders and,
+in `SMTP`, mail merge, meeting requests, S/MIME signing and the iCalendar, EML and pickup-directory
+examples.
 
 ## Connecting to a mail server
 
@@ -90,7 +93,7 @@ Most server examples take their connection details from
 | `Graph` | `Graph` examples | OAuth 2.0 with application permissions (client secret) | `TenantId`, `ClientId`, `ClientSecret`, `MailboxId` |
 | `Ews` | `EWS` examples | OAuth 2.0 with application permissions (client secret) | `TenantId`, `ClientId`, `ClientSecret`, `UserName` |
 | `Imap` | `IMAP` examples | OAuth 2.0 with delegated permissions — you sign in in the browser | `HostName`, `Port`, `UserName`, `TenantId`, `ClientId` |
-| `Smtp` | offline examples that can mail their result | user name and password | `HostName`, `Port`, `UserName`, `Password` |
+| `Smtp` | `SMTP` examples, and offline examples that can mail their result | user name and password | `HostName`, `Port`, `UserName`, `Password` |
 
 The OAuth sections assume an application registered in
 [Microsoft Entra ID](https://learn.microsoft.com/entra/identity-platform/quickstart-register-app):
@@ -103,12 +106,18 @@ The OAuth sections assume an application registered in
 - **IMAP** needs the delegated `IMAP.AccessAsUser.All` permission and `http://localhost` as a
   redirect URI for a public client.
 
+For **SMTP**, `UserName` must be an e-mail address: the `SMTP` examples send their test messages
+to it, so nothing leaves your own mailbox. Port 587 means STARTTLS, port 465 implicit TLS. Until
+`HostName` is filled in, the `SMTP` examples print what is missing instead of failing.
+
 Examples that change the mailbox — append, move, flag, delete — work in a temporary folder with a
 unique name (`Aspose-<guid>`) and delete it at the end, so existing mail is only read.
 
-Older examples, including all of `POP3`, `SMTP` and `Gmail`, still carry their connection details
-as placeholders in the code (`<HOST>`, `username`, `password` and the like). Replace them before
-running such an example.
+Some examples keep values in the code on purpose, because those values are what the example is
+about: OAuth tokens and Entra ID app ids, NTLM, certificate validation and allowed sign-in
+mechanisms, and the proxy addresses in the proxy examples. Older examples, including all of
+`POP3` and `Gmail`, still carry their connection details as placeholders in the code (`<HOST>`,
+`username`, `password` and the like). Replace such values before running these examples.
 
 ## Writing your own
 
@@ -131,7 +140,9 @@ Copy any example as a starting point. The conventions are:
   }
   ```
 
-  `ClientBuilder.Graph` / `ClientBuilder.GraphAsync` and `ClientBuilder.Ews` work the same way.
+  `ClientBuilder.Smtp`, `ClientBuilder.Graph` / `ClientBuilder.GraphAsync` and `ClientBuilder.Ews`
+  work the same way. Check `ClientBuilder.IsSmtpConfigured` or `ClientBuilder.IsGraphConfigured`
+  first, so that the example explains what is missing when it runs without a server.
 - Asynchronous examples keep the synchronous `Run()` and call
   `RunAsync().GetAwaiter().GetResult()` from it.
 - The class name is how the example is invoked, so keep it descriptive.

@@ -1,33 +1,34 @@
-﻿using Aspose.Email;
-using Aspose.Email.Clients;
-using Aspose.Email.Clients.Smtp;
+// Demonstrates forwarding a saved message straight from a stream.
+//
+// The Forward overload that takes a Stream sends the raw message to the given envelope
+// recipients without loading it into a MailMessage first - handy for relaying files
+// from a folder or an archive. Several recipients go into a MailAddressCollection.
+
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class ForwardEmailWithoutUsingMailMessage
+    internal static class ForwardEmailWithoutUsingMailMessage
     {
         public static void Run()
         {
-            string host = "mail.server.com";
-            string username = "username";
-            string password = "password";
-            int smtpPort = 587;
-            string sender = "Sender@domain.com";
-            MailAddressCollection recipients = new MailAddressCollection();
-            recipients.Add("recepient1@domain.com, recepient2@domain.com");
-
-            using (SmtpClient client = new SmtpClient(host, smtpPort, username, password, SecurityOptions.Auto))
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                string fileName = @"test.eml";
-                using (FileStream fs = File.OpenRead(Data.Email + fileName))
-                {
-                    client.Forward(sender, recipients, fs);
-                }
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
+            }
+
+            var emlPath = Data.Email/"test.eml";
+
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
+            using (var stream = File.OpenRead(emlPath))
+            {
+                var recipients = new MailAddressCollection();
+                recipients.Add(client.Username);
+
+                client.Forward(client.Username, recipients, stream);
+                Console.WriteLine($"Forwarded {Path.GetFileName(emlPath)} ({stream.Length} bytes) to {recipients}.");
             }
         }
     }

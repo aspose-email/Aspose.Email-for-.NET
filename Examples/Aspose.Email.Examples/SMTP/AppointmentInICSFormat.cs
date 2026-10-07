@@ -1,47 +1,47 @@
-﻿using System;
-using Aspose.Email.Mime;
+// Demonstrates how to save an appointment as an iCalendar (.ics) file and read it back.
+//
+// An .ics file is what calendar programs exchange: attach it to a message, offer it for
+// download, or import it into Outlook, Google Calendar and others. MeetingRequests shows
+// how to send the same appointment as a meeting request instead.
+
+using System;
 using Aspose.Email.Calendar;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class AppointmentInICSFormat
+    internal static class AppointmentInICSFormat
     {
         public static void Run()
         {
-            string dstEmail = Data.Out + "test.ics";
+            var outputPath = Data.Out/"AppointmentInICSFormat_out.ics";
 
+            var appointment = new Appointment(
+                "Meeting Room 3 at Office Headquarters",  // location
+                "Monthly Meeting",                        // summary
+                "Please confirm your availability.",      // description
+                new DateTime(2026, 2, 8, 13, 0, 0),       // start
+                new DateTime(2026, 2, 8, 14, 0, 0),       // end
+                "organizer@example.com",                  // organizer
+                "attendee@example.com");                  // attendees
 
-            // Create and initialize an instance of the Appointment class
-            Appointment appointment = new Appointment(
-                "Meeting Room 3 at Office Headquarters",// Location
-                "Monthly Meeting",                      // Summary
-                "Please confirm your availability.",    // Description
-                new DateTime(2015, 2, 8, 13, 0, 0),     // Start date
-                new DateTime(2015, 2, 8, 14, 0, 0),     // End date
-                "from@domain.com",                      // Organizer
-                "attendees@domain.com");                // Attendees
+            appointment.CreatedDate = new DateTime(2026, 1, 15, 0, 0, 0, DateTimeKind.Utc);
+            appointment.LastModifiedDate = new DateTime(2026, 1, 16, 0, 0, 0, DateTimeKind.Utc);
 
-            appointment.CreatedDate = new DateTime(2018, 09, 15, 0, 0, 0, DateTimeKind.Utc);
-            appointment.LastModifiedDate = new DateTime(2018, 09, 16, 0, 0, 0, DateTimeKind.Utc);
+            appointment.Save(outputPath, AppointmentSaveFormat.Ics);
+            Console.WriteLine($"Saved to {outputPath}");
 
-            // Save the appointment to disk in ICS format
-            appointment.Save(dstEmail, AppointmentSaveFormat.Ics);
-            Console.WriteLine("Appointment created and saved to disk successfully.");
+            var loaded = Appointment.Load(outputPath);
 
-            // Load an Appointment just created and saved to disk and display its details.
-            Appointment loadedAppointment = Appointment.Load(dstEmail);
-            Console.WriteLine(Environment.NewLine + "Loaded Appointment details are as follows:");
-            // Display the appointment information on screen
-            Console.WriteLine("Summary: " + loadedAppointment.Summary);
-            Console.WriteLine("Location: " + loadedAppointment.Location);
-            Console.WriteLine("Description: " + loadedAppointment.Description);
-            Console.WriteLine("Start date: " + loadedAppointment.StartDate);
-            Console.WriteLine("End date: " + loadedAppointment.EndDate);
-            Console.WriteLine("Organizer: " + appointment.Organizer);
-            Console.WriteLine("Attendees: " + appointment.Attendees);
-            Console.WriteLine("Created Date: " + appointment.CreatedDate);
-            Console.WriteLine("Last Modified Date: " + appointment.LastModifiedDate);
-            Console.WriteLine(Environment.NewLine + "Appointment loaded successfully from " + dstEmail);
+            Console.WriteLine("\nRead back:");
+            Console.WriteLine($"  summary:       {loaded.Summary}");
+            Console.WriteLine($"  location:      {loaded.Location}");
+            Console.WriteLine($"  description:   {loaded.Description}");
+            Console.WriteLine($"  start:         {loaded.StartDate}");
+            Console.WriteLine($"  end:           {loaded.EndDate}");
+            Console.WriteLine($"  organizer:     {loaded.Organizer}");
+            Console.WriteLine($"  attendees:     {loaded.Attendees}");
+            Console.WriteLine($"  created:       {loaded.CreatedDate}");
+            Console.WriteLine($"  last modified: {loaded.LastModifiedDate}");
         }
     }
 }

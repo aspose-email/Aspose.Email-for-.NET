@@ -1,94 +1,80 @@
-﻿using Aspose.Email.Clients;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Mime;
-using Aspose.Email.Tools.Merging;
+// Demonstrates mail merge one data row at a time.
+//
+// TemplateEngine.Merge(row) produces the copy for a single row, so each message can be
+// sent - or checked, logged, skipped - as soon as it is built, instead of building the
+// whole batch first as MailMerge does with Instantiate. That also keeps memory flat for
+// large mailings.
+//
+// The merged messages are saved to Out. The data source holds sample addresses, so when
+// SMTP is configured each copy is sent to your own address instead.
+
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Clients.Smtp;
+using Aspose.Email.Tools.Merging;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class RowWiseMailMerge
-    {        
+    internal static class RowWiseMailMerge
+    {
         public static void Run()
         {
-            // Create a new MailMessage instance
-            MailMessage msg = new MailMessage();
+            var template = new MailMessage
+            {
+                From = "sender@example.com",
+                Subject = "Your order #OrderId# has shipped",
+                HtmlBody = "Hello #FirstName#,<br><br>Your order <strong>#OrderId#</strong> is on its way."
+            };
+            template.To.Add(new MailAddress("#Email#", true));
 
-            // Add subject and from address
-            msg.Subject = "Hello, #FirstName#";
-            msg.From = "sender@sender.com";
+            var engine = new TemplateEngine(template);
+            var outputDir = Data.OutSub("RowWiseMailMerge");
 
-            // Add email address to send email also Add mesage field to HTML body
-            msg.To.Add("your.email@gmail.com");
-            msg.HtmlBody = "Your message here";
-            msg.HtmlBody += "Thank you for your interest in <STRONG>Aspose.Email</STRONG>.";
+            SmtpClient client = null;
+            if (ClientBuilder.IsSmtpConfigured)
+                client = ClientBuilder.Smtp(AuthType.Basic);
 
-            // Use GetSignment as the template routine, which will provide the same signature
-            msg.HtmlBody += "<br><br>Have fun with it.<br><br>#GetSignature()#";
-
-            // Create a new TemplateEngine with the MSG message,  Register GetSignature routine. It will be used in MSG.
-            TemplateEngine engine = new TemplateEngine(msg);
-            engine.RegisterRoutine("GetSignature", GetSignature);
-
-            // Create an instance of DataTable and Fill a DataTable as data source
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Receipt", typeof(string));
-            dt.Columns.Add("FirstName", typeof(string));
-            dt.Columns.Add("LastName", typeof(string));
-
-            DataRow dr = dt.NewRow();
-            dr["Receipt"] = "abc<asposetest123@gmail.com>";
-            dr["FirstName"] = "a";
-            dr["LastName"] = "bc";
-            dt.Rows.Add(dr);
-            dr = dt.NewRow();
-            dr["Receipt"] = "John<email.2@gmail.com>";
-            dr["FirstName"] = "John";
-            dr["LastName"] = "Doe";
-            dt.Rows.Add(dr);
-            dr = dt.NewRow();
-            dr["Receipt"] = "Third Recipient<email.3@gmail.com>";
-            dr["FirstName"] = "Third";
-            dr["LastName"] = "Recipient";
-            dt.Rows.Add(dr);
-
-            MailMessage message;
             try
             {
-                foreach (DataRow currentRow in dt.Rows)
+                foreach (DataRow row in CreateOrders().Rows)
                 {
-                    // Create message from the data in current row.
-                    message = engine.Merge(currentRow);
+                    var message = engine.Merge(row);
+                    message.Save(outputDir/$"order-{row["OrderId"]}.eml", SaveOptions.DefaultEml);
+                    Console.Write($"{message.To}: {message.Subject}");
 
-                    // Create an instance of SmtpClient and specify server, port, username and password
-                    SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
-                    client.SecurityOptions = SecurityOptions.Auto;
+                    if (client != null)
+                    {
+                        message.To.Clear();
+                        message.To.Add(client.Username);
+                        client.Send(message);
+                        Console.Write($"  -> sent to {client.Username}");
+                    }
 
-                    // Send messages in bulk
-                    client.Send(message);
-                }            
+                    Console.WriteLine();
+                }
             }
-            catch (MailException ex)
+            finally
             {
-                Debug.WriteLine(ex.ToString());
+                client?.Dispose();
             }
 
-            catch (SmtpException ex)
-            {
-                Debug.WriteLine(ex.ToString());
-            }
-
-            Console.WriteLine(Environment.NewLine + "Message sent after performing mail merge.");
+            Console.WriteLine($"\nMessages saved to {outputDir}");
+            if (client == null)
+                Console.WriteLine("Set Smtp.HostName in clientsettings.json to also send them.");
         }
 
-        // Template routine to provide signature
-        static object GetSignature(object[] args)
+        private static DataTable CreateOrders()
         {
-            return "Aspose.Email Team<br>Aspose Ltd.<br>" + DateTime.Now.ToShortDateString();
+            var table = new DataTable();
+            table.Columns.Add("Email", typeof(string));
+            table.Columns.Add("FirstName", typeof(string));
+            table.Columns.Add("OrderId", typeof(string));
+
+            table.Rows.Add("alex.smith@example.com", "Alex", "A-1001");
+            table.Rows.Add("john.doe@example.com", "John", "A-1002");
+            table.Rows.Add("maria.garcia@example.com", "Maria", "A-1003");
+
+            return table;
         }
     }
 }

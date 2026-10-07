@@ -1,48 +1,39 @@
-﻿using System;
-using System.Diagnostics;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Clients;
+// Demonstrates how to send a message with a custom header.
+//
+// Custom headers - by convention starting with "X-" - travel with the message to the
+// recipient, where filters and programs can read them, for example to recognise mail
+// sent by your application. XMailer names the sending program. CustomizingEmailHeaders
+// builds a similar message and saves it instead.
+
+using System;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class CustomizingEmailHeader
+    internal static class CustomizingEmailHeader
     {
         public static void Run()
         {
-            // Create an instance MailMessage class
-            MailMessage message = new MailMessage();
-
-            // Specify ReplyTo, From, To field
-            message.ReplyToList.Add("reply@reply.com");
-            message.From = "sender@sender.com";
-            message.To.Add("receiver1@receiver.com");
-
-            // Adding CC and BCC Addresses
-            message.CC.Add("receiver2@receiver.com");
-            message.Bcc.Add("receiver3@receiver.com");
-
-            // Specify Message subject, Specify Date and Specify XMailer
-            message.Subject = "test mail";
-            message.Date = new DateTime(2006, 3, 6);
-            message.XMailer = "Aspose.Email";
-            message.Headers.Add_("secret-header", "mystery");
-
-            // Create an instance of SmtpClient class
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587, "your.email@gmail.com", "your.password");
-            client.SecurityOptions = SecurityOptions.Auto;
-
-            try
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                // Client.Send will send this message
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
+            }
+
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
+            {
+                var message = new MailMessage(client.Username, client.Username,
+                    "Message with custom headers", "Look at the headers of this message.")
+                {
+                    XMailer = "Aspose.Email Examples"
+                };
+
+                message.ReplyToList.Add(client.Username);
+                message.Headers.Add("X-Campaign-Id", "spring-2026");
+                message.Headers.Add("X-Secret-Header", "mystery");
+
                 client.Send(message);
-                Console.WriteLine("Message sent");
+                Console.WriteLine($"Sent to {client.Username} with X-Campaign-Id and X-Secret-Header.");
             }
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex.ToString());
-            }
-            Console.WriteLine(Environment.NewLine + "Email sent with customized headers.");
         }
     }
 }

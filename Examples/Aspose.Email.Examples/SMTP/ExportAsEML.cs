@@ -1,37 +1,36 @@
-﻿using System;
-using Aspose.Email.Mime;
+// Demonstrates how to create an HTML message and save it as an .eml file.
+//
+// EML is the plain MIME format every mail program understands, which makes it the
+// natural format for a message that is to be sent later - SendingEMLFilesWithSMTP and
+// LoadingEMLFilesFromDisk send such files.
+
+using System;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class ExportAsEML
+    internal static class ExportAsEML
     {
         public static void Run()
         {
-            // Create a new instance of MailMessage class
-            MailMessage message = new MailMessage();
+            var message = new MailMessage
+            {
+                From = "from@example.com",
+                Subject = "New message created by Aspose.Email for .NET",
+                IsBodyHtml = true,
+                HtmlBody = "<b>This line is in bold.</b><br/><br/><font color=\"blue\">This line is in blue.</font>"
+            };
 
-            // Set subject of the message
-            message.Subject = "New message created by Aspose.Email for .NET";
+            message.To.Add("to1@example.com");
+            message.To.Add("to2@example.com");
+            message.CC.Add("cc1@example.com");
+            message.CC.Add("cc2@example.com");
 
-            // Set Html body
-            message.IsBodyHtml = true;
-            message.HtmlBody = "<b>This line is in bold.</b> <br/> <br/><font color=blue>This line is in blue color</font>";
+            var outputPath = Data.Out/"ExportAsEML_out.eml";
+            message.Save(outputPath, SaveOptions.DefaultEml);
 
-            // Set sender information
-            message.From = "from@domain.com";
-
-            // Add TO recipients
-            message.To.Add("to1@domain.com");
-            message.To.Add("to2@domain.com");
-
-            // Add CC recipients
-            message.CC.Add("cc1@domain.com");
-            message.CC.Add("cc2@domain.com");
-
-            // Save message in EML, MSG and MHTML formats
-            message.Save(Data.Out + "Message.eml", SaveOptions.DefaultEml);  
-
-            Console.WriteLine(Environment.NewLine + $"Email saved at {Data.Out}/Message.eml");
+            Console.WriteLine($"Saved to {outputPath}");
+            Console.WriteLine($"  to: {message.To}");
+            Console.WriteLine($"  cc: {message.CC}");
         }
     }
 }

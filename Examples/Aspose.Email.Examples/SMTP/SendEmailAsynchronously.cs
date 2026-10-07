@@ -1,72 +1,57 @@
-﻿using System;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Smtp;
-using Aspose.Email.Clients;
+// Demonstrates sending without blocking the caller.
+//
+// SendAsync returns a Task, so the program can keep working - here it just reports
+// progress - while the message is transferred, and await the result when it needs it.
+// The CancellationToken abandons the send if it takes too long. SendMessagesAsync shows
+// the parameter-object form of the same API.
+
+using System;
+using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Aspose.Email.Examples.SMTP
 {
-    class SendEmailAsynchronously
+    internal static class SendEmailAsynchronously
     {
         public static void Run()
         {
-            SendMail();
+            RunAsync().GetAwaiter().GetResult();
         }
 
-        static SmtpClient GetSmtpClient2()
+        private static async Task RunAsync()
         {
-            SmtpClient client = new SmtpClient();
-            client.Host = "smtp.gmail.com";
-            //Specify your mail Username, Password, Port # and security option
-            client.Username = "user";
-            client.Password = "password";
-            client.Port = 587;
-            client.SecurityOptions = SecurityOptions.SSLExplicit;
-            return client;
-        }
-        static void SendMail()
-        {
-            // try
-            // {
-            //
-            //     // Declare msg as MailMessage instance
-            //     MailMessage msg = new MailMessage("sender@gmail.com", "receiver@gmail.com", "Test subject", "Test body");
-            //     SmtpClient client = GetSmtpClient2();
-            //     object state = new object();
-            //     IAsyncResult ar = client.BeginSend(msg, Callback, state);
-            //
-            //     Console.WriteLine("Sending message... press c to cancel mail. Press any other key to exit.");
-            //     string answer = Console.ReadLine();
-            //
-            //     // If the user canceled the send, and mail hasn't been sent yet,
-            //     if (answer != null && answer.StartsWith("c"))
-            //     {
-            //         client.CancelAsyncOperation(ar);
-            //     }
-            //
-            //     msg.Dispose();
-            //     Console.WriteLine("Goodbye.");
-            // }
-            // catch (Exception ex)
-            // {
-            //     Console.WriteLine(ex.Message);
-            // }
-        }
-        static AsyncCallback Callback = delegate(IAsyncResult ar)
-        {
-            var task = ar as IAsyncResultExt;
-            if (task != null && task.IsCanceled)
+            if (!ClientBuilder.IsSmtpConfigured)
             {
-                Console.WriteLine("Send canceled.");
+                SmtpExampleInfo.PrintNotConfigured();
+                return;
             }
 
-            if (task != null && task.ErrorInfo != null)
+            using (var client = ClientBuilder.Smtp(AuthType.Basic))
+            using (var cancellation = new CancellationTokenSource(TimeSpan.FromSeconds(30)))
             {
-                Console.WriteLine("{0}", task.ErrorInfo);
+                var message = new MailMessage(client.Username, client.Username, "Sent asynchronously", "Body");
+                var watch = Stopwatch.StartNew();
+
+                try
+                {
+                    var sending = client.SendAsync(message, cancellation.Token);
+                    Console.WriteLine($"{watch.ElapsedMilliseconds,6} ms  sending started");
+
+                    while (!sending.IsCompleted)
+                    {
+                        Console.WriteLine($"{watch.ElapsedMilliseconds,6} ms  still sending...");
+                        await Task.WhenAny(sending, Task.Delay(200));
+                    }
+
+                    await sending;
+                    Console.WriteLine($"{watch.ElapsedMilliseconds,6} ms  sent to {client.Username}");
+                }
+                catch (OperationCanceledException)
+                {
+                    Console.WriteLine("Gave up: sending took longer than 30 seconds.");
+                }
             }
-            else
-            {
-                Console.WriteLine("Message Sent.");
-            }
-        };
+        }
     }
 }
