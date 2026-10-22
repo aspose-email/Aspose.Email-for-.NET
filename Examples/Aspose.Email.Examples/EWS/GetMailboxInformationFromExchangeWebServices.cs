@@ -1,31 +1,30 @@
-﻿using System;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Clients.Exchange;
+// Demonstrates reading the basic facts about a mailbox.
+//
+// GetMailboxInfo returns the URIs of the well-known folders - Inbox, Sent Items,
+// Drafts, Calendar, Contacts and so on - which every other call takes as input.
+// GetMailboxSize returns the total size in bytes; GetFolderSizeRecursively shows how
+// to measure single folders.
+
+using System;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class GetMailboxInformationFromExchangeWebServices
+    internal static class GetMailboxInformationFromExchangeWebServices
     {
         public static void Run()
         {
-            try
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Create instance of EWSClient class by giving credentials         
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+                var mailbox = client.GetMailboxInfo();
 
-                // Get mailbox size, exchange mailbox info, Mailbox and Inbox folder URI
-                Console.WriteLine("Mailbox size: " + client.GetMailboxSize() + " bytes");
-                ExchangeMailboxInfo mailboxInfo = client.GetMailboxInfo();
-                Console.WriteLine("Mailbox URI: " + mailboxInfo.MailboxUri);
-                Console.WriteLine("Inbox folder URI: " + mailboxInfo.InboxUri);
-                Console.WriteLine("Sent Items URI: " + mailboxInfo.SentItemsUri);
-                Console.WriteLine("Drafts folder URI: " + mailboxInfo.DraftsUri);
+                Console.WriteLine($"Mailbox size: {client.GetMailboxSize() / 1024.0 / 1024.0:F1} MB");
+                Console.WriteLine($"Mailbox URI:  {mailbox.MailboxUri}");
+                Console.WriteLine($"Inbox:        {mailbox.InboxUri}");
+                Console.WriteLine($"Sent Items:   {mailbox.SentItemsUri}");
+                Console.WriteLine($"Drafts:       {mailbox.DraftsUri}");
+                Console.WriteLine($"Calendar:     {mailbox.CalendarUri}");
+                Console.WriteLine($"Contacts:     {mailbox.ContactsUri}");
             }
-            catch (Exception ex)
-            {
-                Console.Write(ex.Message);
-            }
-
         }
     }
 }

@@ -1,42 +1,27 @@
-﻿using Aspose.Email.Clients.Exchange;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
+// Demonstrates downloading a complete message.
+//
+// FetchMessage takes the UniqueUri from a listing and returns the full message as a
+// MailMessage - body, headers and attachments - ready to read, convert or save.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class FetchMessageUsingEWS
+    internal static class FetchMessageUsingEWS
     {
         public static void Run()
         {
-            try
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Create instance of ExchangeWebServiceClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
-
-                // Call ListMessages method to list messages info from Inbox
-                ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
-
-                // Loop through the collection to get Message URI
-                foreach (ExchangeMessageInfo msgInfo in msgCollection)
+                foreach (var info in client.ListMessages(client.MailboxInfo.InboxUri, 5))
                 {
-	                String strMessageURI = msgInfo.UniqueUri;
+                    var message = client.FetchMessage(info.UniqueUri);
 
-	                // Now get the message details using FetchMessage()
-	                MailMessage msg = client.FetchMessage(strMessageURI);
-	                
-                    foreach (Attachment att in msg.Attachments)
-	                {
-		                Console.WriteLine("Attachment Name: " + att.Name);
-	                }
+                    Console.WriteLine($"{message.Subject}");
+                    Console.WriteLine($"  from {message.From}, {message.Attachments.Count} attachment(s)");
+                    foreach (var attachment in message.Attachments)
+                        Console.WriteLine($"    {attachment.Name}");
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
             }
         }
     }

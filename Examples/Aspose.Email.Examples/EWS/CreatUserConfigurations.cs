@@ -1,36 +1,43 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Mime;
+// Demonstrates storing application settings in the mailbox (user configuration).
+//
+// A user configuration is a named settings object attached to a folder. It is hidden
+// from the user and travels with the mailbox, which makes it a place for an add-in or
+// application to keep per-user settings. Its Dictionary holds key/value pairs; XmlData
+// and BinaryData hold larger payloads. The example attaches a configuration to a
+// uniquely named folder and deletes the folder, and with it the configuration, at the
+// end.
+
+using System;
 using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class CreatUserConfigurations
+    internal static class CreatUserConfigurations
     {
         public static void Run()
         {
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            IEWSClient client = GetExchangeEWSClient();
-            Console.WriteLine("Connected to Exchange 2010");
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
+            {
+                var folder = client.CreateFolder(client.MailboxInfo.InboxUri, folderName);
 
-            // Create the User Configuration for Inbox folder
-            UserConfigurationName userConfigName = new UserConfigurationName("inbox.config", client.MailboxInfo.InboxUri);
-            UserConfiguration userConfig = new UserConfiguration(userConfigName);
-            userConfig.Dictionary.Add("key1", "value1");
-            userConfig.Dictionary.Add("key2", "value2");
-            userConfig.Dictionary.Add("key3", "value3");
-            client.CreateUserConfiguration(userConfig);
-        }
+                try
+                {
+                    var name = new UserConfigurationName("Aspose.Example.Settings", folder.Uri);
+                    var configuration = new UserConfiguration(name);
+                    configuration.Dictionary.Add("theme", "dark");
+                    configuration.Dictionary.Add("pageSize", "50");
 
-        private static IEWSClient GetExchangeEWSClient()
-        {
-            const string mailboxUri = "https://outlook.office365.com/ews/exchange.asmx";
-            const string domain = @"";
-            const string username = @"username@ASE305.onmicrosoft.com";
-            const string password = @"password";
-            NetworkCredential credentials = new NetworkCredential(username, password, domain);
-            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
-            return client;
+                    client.CreateUserConfiguration(configuration);
+                    Console.WriteLine($"Created the configuration '{configuration.UserConfigurationName.Name}' " +
+                                      $"with {configuration.Dictionary.Count} setting(s).");
+                }
+                finally
+                {
+                    client.DeleteFolder(folder.Uri, true);
+                }
+            }
         }
     }
 }

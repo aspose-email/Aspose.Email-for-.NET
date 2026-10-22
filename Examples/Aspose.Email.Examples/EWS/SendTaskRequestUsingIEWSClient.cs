@@ -1,32 +1,31 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates sending a task request saved as an Outlook .msg file.
+//
+// A task request is an Outlook task packed into a message (TNEF). Loading the .msg with
+// MsgLoadOptions.PreserveTnefAttachments keeps that packing intact, so the recipient's
+// Outlook shows it as a task to accept or decline. The request goes to the configured
+// mailbox itself.
+
+using System;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class SendTaskRequestUsingIEWSClient
+    internal static class SendTaskRequestUsingIEWSClient
     {
         public static void Run()
         {
-            try
-            {
-                // Create instance of ExchangeClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+            var self = ClientBuilder.EwsUserName;
 
-                MsgLoadOptions options = new MsgLoadOptions();
-                options.PreserveTnefAttachments = true;
-
-                // load task from .msg file
-                MailMessage eml = MailMessage.Load(Data.Ews + "task.msg", options);
-                eml.From = "firstname.lastname@domain.com";
-                eml.To.Clear();
-                eml.To.Add(new MailAddress("firstname.lastname@domain.com"));
-                client.Send(eml);
-            }
-            catch (Exception ex)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Console.Write(ex.Message);
+                var loadOptions = new MsgLoadOptions { PreserveTnefAttachments = true };
+                var message = MailMessage.Load(Data.Ews/"task.msg", loadOptions);
+
+                message.From = self;
+                message.To.Clear();
+                message.To.Add(self);
+
+                client.Send(message);
+                Console.WriteLine($"Sent the task request '{message.Subject}' to {self}.");
             }
         }
     }

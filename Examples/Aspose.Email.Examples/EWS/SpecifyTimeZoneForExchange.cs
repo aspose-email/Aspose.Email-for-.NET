@@ -1,37 +1,31 @@
-﻿using Aspose.Email.Calendar;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
+// Demonstrates choosing the time zone in which task and calendar dates are returned.
+//
+// Exchange stores dates in UTC and converts them for the client. TimezoneId takes a
+// Windows time zone id (see GetServerTimeZonesUsingEWS for the ids the server knows);
+// dates read after setting it are expressed in that zone. The example lists the same
+// tasks in two time zones.
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Text;
+using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class SpecifyTimeZoneForExchange
+    internal static class SpecifyTimeZoneForExchange
     {
         public static void Run()
         {
-            try
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Set mailboxURI, Username, password, domain information
-                string mailboxUri = "https://ex2010/ews/exchange.asmx";
-                string username = "test.exchange";
-                string password = "pwd";
-                string domain = "ex2010.local";
-                NetworkCredential credentials = new NetworkCredential(username, password, domain);
-                IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);              
-                
-                client.TimezoneId = "Central Europe Standard Time";
+                foreach (var timeZone in new[] { "UTC", "Tokyo Standard Time" })
+                {
+                    client.TimezoneId = timeZone;
 
-                // Listing Tasks from Server
-                TaskCollection taskCollection = client.ListTasks(client.MailboxInfo.TasksUri);
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                    Console.WriteLine($"Tasks in {client.TimezoneId}:");
+                    foreach (var task in client.ListTasks(client.MailboxInfo.TasksUri, 3).Cast<ExchangeTask>())
+                        Console.WriteLine($"  {task.Subject}: start {task.StartDate:g}, due {task.DueDate:g}");
+                    Console.WriteLine();
+                }
             }
         }
     }

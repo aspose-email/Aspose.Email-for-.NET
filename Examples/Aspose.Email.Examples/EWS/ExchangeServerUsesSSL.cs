@@ -1,36 +1,28 @@
-﻿using System;
-using System.Net.Security;
-using System.Security.Cryptography.X509Certificates;
-using Aspose.Email.Clients.Imap;
+// Demonstrates connecting to Exchange over IMAP with implicit TLS.
+//
+// EWS always runs over HTTPS. For IMAP, Exchange listens on port 993 with implicit TLS
+// (SecurityOptions.SSLImplicit): the connection is encrypted before the client signs
+// in. The server's certificate is checked by the operating system - do not switch that
+// off; IgnoringInvalidSSLCertificates shows how to trust a single test certificate.
+
+using System;
 using Aspose.Email.Clients;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class ExchangeServerUsesSSL
+    internal static class ExchangeServerUsesSSL
     {
         public static void Run()
-        {            
-            // Connect to Exchange Server using ImapClient class
-            ImapClient imapClient = new ImapClient("ex07sp1", 993, "Administrator", "Evaluation1", new RemoteCertificateValidationCallback(RemoteCertificateValidationHandler));
-            imapClient.SecurityOptions = SecurityOptions.SSLExplicit;
-
-            // Select the Inbox folder
-            imapClient.SelectFolder(ImapFolderInfo.InBox);
-
-            // Get the list of messages
-            ImapMessageInfoCollection msgCollection = imapClient.ListMessages();
-            foreach (ImapMessageInfo msgInfo in msgCollection)
-            {
-                Console.WriteLine(msgInfo.Subject);
-            }
-            // Disconnect from the server
-            imapClient.Dispose();   
-        }
-
-        // Certificate verification handler
-        private static bool RemoteCertificateValidationHandler(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
-            return true; // ignore the checks and go ahead
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
+            {
+                client.SecurityOptions = SecurityOptions.SSLImplicit;
+
+                client.SelectFolder(ImapFolderInfo.InBox);
+                Console.WriteLine($"Connected to {client.Host}:{client.Port} using {client.SecurityOptions}; " +
+                                  $"{client.CurrentFolder.TotalMessageCount} message(s) in the Inbox.");
+            }
         }
     }
 }

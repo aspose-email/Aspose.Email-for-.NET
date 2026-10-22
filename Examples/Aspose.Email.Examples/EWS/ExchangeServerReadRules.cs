@@ -1,56 +1,38 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Clients.Exchange;
-using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates reading the Inbox rules of a mailbox.
+//
+// GetInboxRules returns every rule with its name, order and state, its conditions -
+// senders, subject words and more - and its actions, such as the folder messages are
+// moved to.
+
+using System;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class ExchangeServerReadRules
+    internal static class ExchangeServerReadRules
     {
         public static void Run()
         {
-            // Set mailboxURI, Username, password, domain information
-            string mailboxURI = "https://ex2010/ews/exchange.asmx";
-            string username = "test.exchange";
-            string password = "pwd";
-            string domain = "ex2010.local";
-
-            // Connect to the Exchange Server
-            NetworkCredential credential = new NetworkCredential(username, password, domain);
-            IEWSClient client = EWSClient.GetEWSClient(mailboxURI, credential);
-            
-            Console.WriteLine("Connected to Exchange server");
-
-            // Get all Inbox Rules
-            InboxRule[] inboxRules = client.GetInboxRules();
-
-            // Display information about each rule
-            foreach (InboxRule inboxRule in inboxRules)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Console.WriteLine("Display Name: " + inboxRule.DisplayName);
+                var rules = client.GetInboxRules();
+                Console.WriteLine($"{rules.Length} Inbox rule(s):");
 
-                // Check if there is a "From Address" condition
-                if (inboxRule.Conditions.FromAddresses.Count > 0)
+                foreach (var rule in rules)
                 {
-                    foreach (MailAddress fromAddress in inboxRule.Conditions.FromAddresses)
+                    Console.WriteLine($"\n  {rule.DisplayName} (priority {rule.Priority}, enabled: {rule.IsEnabled})");
+
+                    if (rule.Conditions != null)
                     {
-                        Console.WriteLine("From: " + fromAddress.DisplayName + " - " + fromAddress.Address);
+                        foreach (var from in rule.Conditions.FromAddresses)
+                            Console.WriteLine($"    from:             {from.Address}");
+                        foreach (var subject in rule.Conditions.ContainsSubjectStrings)
+                            Console.WriteLine($"    subject contains: {subject}");
                     }
-                }
-                // Check if there is a "Subject Contains" condition
-                if (inboxRule.Conditions.ContainsSubjectStrings.Count > 0)
-                {
-                    foreach (String subject in inboxRule.Conditions.ContainsSubjectStrings)
-                    {
-                        Console.WriteLine("Subject contains: " + subject);
-                    }
-                }
-                // Check if there is a "Move to Folder" action
-                if (inboxRule.Actions.MoveToFolder.Length > 0)
-                {
-                    Console.WriteLine("Move message to folder: " + inboxRule.Actions.MoveToFolder);
+
+                    if (!string.IsNullOrEmpty(rule.Actions?.MoveToFolder))
+                        Console.WriteLine($"    moves to:         {rule.Actions.MoveToFolder}");
                 }
             }
-        }        
+        }
     }
 }

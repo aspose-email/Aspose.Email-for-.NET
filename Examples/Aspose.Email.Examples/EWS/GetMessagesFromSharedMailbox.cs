@@ -1,32 +1,31 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Clients.Exchange;
-using Aspose.Email.Mapi;
+// Demonstrates reading messages from a shared mailbox.
+//
+// The ListItems overload that takes a mailbox address lists items of a folder in that
+// mailbox, and FetchItem downloads each one as a MapiMessage. The signed-in account
+// needs at least read permission on the shared mailbox. Replace the address below.
+
+using System;
+using System.Linq;
 
 namespace Aspose.Email.Examples.EWS
 {
-    public class GetMessagesFromSharedMailbox
+    internal static class GetMessagesFromSharedMailbox
     {
         public static void Run()
         {
-            const string mailboxUri = "<HOST>";
-            const string domain = "";
-            const string username = "<EMAIL ADDRESS>";
-            const string password = "<PASSWORD>";
-            const string sharedEmail = "<SHARED EMAIL ADDRESS>";
-            NetworkCredential credentials = new NetworkCredential(username, password, domain);
-            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
+            const string sharedMailbox = "shared@example.com";
 
-            string[] items = client.ListItems(sharedEmail, "Inbox");
-
-            foreach (string item in items)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                MapiMessage msg = client.FetchItem(item);
-                Console.WriteLine("Subject:" + msg.Subject);
+                var items = client.ListItems(sharedMailbox, "Inbox");
+                Console.WriteLine($"{items.Length} item(s) in the Inbox of {sharedMailbox}, the first 5:");
+
+                foreach (var uri in items.Take(5))
+                {
+                    var message = client.FetchItem(uri);
+                    Console.WriteLine($"  {message.SenderName}: {message.Subject}");
+                }
             }
-            client.Dispose();
-            Console.WriteLine("GetMessagesFromSharedMailbox executed successfully");
         }
     }
 }

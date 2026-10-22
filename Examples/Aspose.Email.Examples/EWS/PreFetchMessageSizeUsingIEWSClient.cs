@@ -1,30 +1,29 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Mime;
-using Aspose.Email.Mapi;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Clients.Exchange;
+// Demonstrates reading message sizes before downloading anything.
+//
+// Every ExchangeMessageInfo from a listing carries the message size, so a client can
+// decide up front what to download - skip huge messages on a metered connection, or
+// fetch them later in the background.
+
+using System;
+using System.Linq;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class PreFetchMessageSizeUsingIEWSClient
+    internal static class PreFetchMessageSizeUsingIEWSClient
     {
         public static void Run()
         {
-            // Create instance of ExchangeWebServiceClient class by giving credentials
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+            const long largeMessage = 1024 * 1024;
 
-            // Call ListMessages method to list messages info from Inbox
-            ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
-
-            // Loop through the collection to display the basic information
-            foreach (ExchangeMessageInfo msgInfo in msgCollection)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Console.WriteLine("Subject: " + msgInfo.Subject);
-                Console.WriteLine("From: " + msgInfo.From.ToString());
-                Console.WriteLine("To: " + msgInfo.To.ToString());
-                Console.WriteLine("Message Size: " + msgInfo.Size);
-                Console.WriteLine("==================================");
+                var messages = client.ListMessages(client.MailboxInfo.InboxUri, 50);
+
+                Console.WriteLine($"{messages.Count} message(s), {messages.Sum(info => info.Size) / 1024} KB in total.");
+                Console.WriteLine("Larger than 1 MB:");
+
+                foreach (var info in messages.Where(info => info.Size > largeMessage))
+                    Console.WriteLine($"  {info.Size / 1024,8} KB  {info.Subject}");
             }
         }
     }

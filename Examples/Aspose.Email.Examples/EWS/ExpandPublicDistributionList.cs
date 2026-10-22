@@ -1,36 +1,26 @@
-﻿using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
+// Demonstrates listing the members of an organisation-wide distribution group.
+//
+// ExpandDistributionList takes the e-mail address of a distribution group from the
+// global address list and returns its members, as the "+" next to a group name in
+// Outlook does. Replace the address below with a group of your organisation.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class ExpandPublicDistributionList
+    internal static class ExpandPublicDistributionList
     {
         public static void Run()
         {
-            try
-            {
-                // Set mailboxURI, Username, password, domain information
-                string mailboxUri = "https://ex2010/ews/exchange.asmx";
-                string username = "test.exchange";
-                string password = "pwd";
-                string domain = "ex2010.local";
-                NetworkCredential credentials = new NetworkCredential(username, password, domain);
-                IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
+            const string groupAddress = "all-staff@example.com";
 
-                MailAddressCollection members = client.ExpandDistributionList(new MailAddress("public.distribution.list@host.com"));
-                foreach (MailAddress member in members)
-                {
-                    Console.WriteLine(member.Address);
-                }
-            }
-            catch (Exception ex)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Console.WriteLine(ex.Message);
+                var members = client.ExpandDistributionList(new MailAddress(groupAddress));
+
+                Console.WriteLine($"{groupAddress} has {members.Count} member(s):");
+                foreach (var member in members)
+                    Console.WriteLine($"  {member.DisplayName} <{member.Address}>");
             }
         }
     }

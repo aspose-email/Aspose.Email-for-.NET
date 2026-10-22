@@ -1,18 +1,31 @@
-﻿using Aspose.Email.Clients.Exchange;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
+// Demonstrates working with a mailbox other than the one the client signed in to.
+//
+// GetMailboxInfo(mailbox) returns the folder URIs of another mailbox - a shared mailbox
+// or a colleague's - provided the account has permission to open it; those URIs then
+// work with every other call. Replace the address below with a mailbox of your
+// organisation.
+
+using System;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class AccessAnotherMailboxUsingExchangeWebServiceClient
+    internal static class AccessAnotherMailboxUsingExchangeWebServiceClient
     {
         public static void Run()
         {
-            // Create instance of EWSClient class by giving credentials
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+            const string otherMailbox = "shared@example.com";
 
-            // Get Exchange mailbox info of other email account
-            ExchangeMailboxInfo mailboxInfo = client.GetMailboxInfo("otherUser@domain.com");
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
+            {
+                var mailbox = client.GetMailboxInfo(otherMailbox);
+
+                Console.WriteLine($"Mailbox of {otherMailbox}:");
+                Console.WriteLine($"  Inbox:    {mailbox.InboxUri}");
+                Console.WriteLine($"  Calendar: {mailbox.CalendarUri}");
+
+                var inbox = client.GetFolderInfo(mailbox.InboxUri);
+                Console.WriteLine($"  {inbox.TotalCount} message(s) in its Inbox, {inbox.UnreadCount} unread");
+            }
         }
     }
 }

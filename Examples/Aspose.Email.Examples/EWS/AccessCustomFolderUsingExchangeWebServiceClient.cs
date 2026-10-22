@@ -1,39 +1,50 @@
-﻿using System;
+// Demonstrates finding a folder by name and reading the messages in it.
+//
+// Folders are addressed by URI, not by name. FolderExists looks a folder up by its
+// display name under a parent folder and, through the out parameter, returns its
+// ExchangeFolderInfo with the URI to work with. The example creates a uniquely named
+// folder with two messages, finds it again, and deletes it at the end.
+
+using System;
 using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class AccessCustomFolderUsingExchangeWebServiceClient
+    internal static class AccessCustomFolderUsingExchangeWebServiceClient
     {
         public static void Run()
         {
-            // Create instance of EWSClient class by giving credentials
-            var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission);
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            // Create ExchangeMailboxInfo, ExchangeMessageInfoCollection instance
-            var mailbox = client.GetMailboxInfo();
-            ExchangeMessageInfoCollection messages;
-            ExchangeFolderInfo subfolderInfo;
-
-            // Check if specified custom folder exisits and Get all the messages info from the target Uri
-            client.FolderExists(mailbox.InboxUri, "TestInbox", out subfolderInfo);
-
-            //if custom folder exists
-            if (subfolderInfo != null)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                messages = client.ListMessages(subfolderInfo.Uri);
+                var inboxUri = client.MailboxInfo.InboxUri;
+                var created = client.CreateFolder(inboxUri, folderName);
 
-                // Parse all the messages info collection
-                foreach (var messageInfo in messages)
+                try
                 {
-                    // now get the message details using FetchMessage()
-                    var msg = client.FetchMessage(messageInfo.UniqueUri);
-                    Console.WriteLine($"Subject: {msg.Subject}");
+                    client.AppendMessages(created.Uri,
+                        new MailMessage("sender@example.com", "receiver@example.com", "First", "Body"),
+                        new MailMessage("sender@example.com", "receiver@example.com", "Second", "Body"));
+
+                    ExchangeFolderInfo folder;
+                    if (!client.FolderExists(inboxUri, folderName, out folder))
+                    {
+                        Console.WriteLine($"No folder named '{folderName}' under the Inbox.");
+                        return;
+                    }
+
+                    Console.WriteLine($"Found '{folder.DisplayName}' ({folder.TotalCount} item(s)):");
+                    foreach (var info in client.ListMessages(folder.Uri))
+                    {
+                        var message = client.FetchMessage(info.UniqueUri);
+                        Console.WriteLine($"  {message.Subject}");
+                    }
                 }
-            }
-            else
-            {
-                Console.WriteLine("No folder with this name found.");
+                finally
+                {
+                    client.DeleteFolder(created.Uri, true);
+                }
             }
         }
     }

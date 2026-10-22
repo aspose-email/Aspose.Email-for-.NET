@@ -1,66 +1,60 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
-using Aspose.Email.Mapi;
+// Demonstrates reading messages from public folders.
+//
+// ListPublicFolders returns the top of the organisation's public folder tree;
+// ListMessagesFromPublicFolder lists the messages of one public folder, and
+// ListSubFolders goes one level deeper. The messages are saved as .msg files under
+// Out - at most three per folder, to keep the run short. This needs public folders to
+// be set up and the account to have read access.
+
+using System;
+using System.IO;
+using System.Linq;
 using Aspose.Email.Clients.Exchange;
+using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class DownloadMessagesFromPublicFolders
+    internal static class DownloadMessagesFromPublicFolders
     {
-        public static string mailboxUri = "https://exchange/ews/exchange.asmx"; // EWS
-        public static string username = "administrator";
-        public static string password = "pwd";
-        public static string domain = "ex2013.local";
+        private const int MessagesPerFolder = 3;
 
         public static void Run()
         {
-            try
+            var rootDir = Data.OutSub("EwsPublicFolders");
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                ReadPublicFolders();
+                var folders = client.ListPublicFolders();
+                Console.WriteLine($"{folders.Count} top-level public folder(s).");
+
+                foreach (var folder in folders)
+                    SaveFolder(client, folder, rootDir);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+
+            Console.WriteLine($"\nMessages saved under {rootDir}");
         }
 
-        private static void ReadPublicFolders()
+        private static void SaveFolder(IEWSClient client, ExchangeFolderInfo folder, string parentDir)
         {
-            NetworkCredential credential = new NetworkCredential(username, password, domain);
-            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credential);
+            var safeName = string.Concat(folder.DisplayName.Split(Path.GetInvalidFileNameChars()));
+            var folderDir = Path.Combine(parentDir, safeName);
+            Directory.CreateDirectory(folderDir);
 
-            ExchangeFolderInfoCollection folders = client.ListPublicFolders();
-            foreach (ExchangeFolderInfo publicFolder in folders)
+            var messages = client.ListMessagesFromPublicFolder(folder).Take(MessagesPerFolder).ToList();
+            for (var i = 0; i < messages.Count; i++)
             {
-                Console.WriteLine("Name: " + publicFolder.DisplayName);
-                Console.WriteLine("Subfolders count: " + publicFolder.ChildFolderCount);
-                ListMessagesFromSubFolder(publicFolder, client);
-
-            }
-        }
-
-        private static void ListMessagesFromSubFolder(ExchangeFolderInfo publicFolder, IEWSClient client)
-        {
-            Console.WriteLine("Folder Name: " + publicFolder.DisplayName);
-            ExchangeMessageInfoCollection msgInfoCollection = client.ListMessagesFromPublicFolder(publicFolder);
-            foreach (ExchangeMessageInfo messageInfo in msgInfoCollection)
-            {
-                MailMessage msg = client.FetchMessage(messageInfo.UniqueUri);
-                Console.WriteLine(msg.Subject);
-                msg.Save(Data.Out +  msg.Subject + ".msg",  SaveOptions.DefaultMsgUnicode);
+                var message = client.FetchMessage(messages[i].UniqueUri);
+                message.Save(Path.Combine(folderDir, $"message-{i + 1}.msg"), SaveOptions.DefaultMsgUnicode);
             }
 
-            // Call this method recursively for any subfolders
-            if (publicFolder.ChildFolderCount > 0)
-            {
-                ExchangeFolderInfoCollection subfolders = client.ListSubFolders(publicFolder);
-                foreach (ExchangeFolderInfo subfolder in subfolders)
-                {
-                    ListMessagesFromSubFolder(subfolder, client);
-                }
-            }
+            Console.WriteLine($"{folder.DisplayName}: saved {messages.Count} message(s), " +
+                              $"{folder.ChildFolderCount} subfolder(s)");
+
+            if (folder.ChildFolderCount == 0)
+                return;
+
+            foreach (var child in client.ListSubFolders(folder))
+                SaveFolder(client, child, folderDir);
         }
     }
 }

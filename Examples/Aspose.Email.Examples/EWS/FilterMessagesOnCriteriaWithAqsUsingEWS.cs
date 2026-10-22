@@ -1,68 +1,37 @@
-﻿using Aspose.Email.Clients.Exchange;
+// Demonstrates searching with Advanced Query Syntax (AQS), the language of the Outlook
+// search box.
+//
+// AQS searches use the mailbox's search index, which makes them fast on large folders
+// and lets them look into attachments. ExchangeAdvancedSyntaxQueryBuilder builds the
+// query in code; ExchangeAdvancedSyntaxMailQuery takes a ready-made AQS string such as
+// "subject:invoice hasattachment:true".
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.EWS
 {
-    public class FilterMessagesOnCriteriaWithAqsUsingEWS
+    internal static class FilterMessagesOnCriteriaWithAqsUsingEWS
     {
         public static void Run()
         {
-            // using the builder
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
-                {
-                    List<string> messagesIDs = new List<string>();
-                    var foldersList = client.ListSubFolders(client.GetMailboxInfo().RootUri);
-                    var folderInfo =
-                        foldersList.FirstOrDefault(folder => folder.DisplayName.Equals("test", StringComparison.Ordinal));
-                    if (folderInfo == null)
-                    {
-                        folderInfo = client.GetFolderInfo("test");
-                    }
+                var inboxUri = client.MailboxInfo.InboxUri;
 
-                    ExchangeFolderInfo userFolder = folderInfo;
-                    ExchangeMessageInfoCollection list = client.ListMessages(userFolder.Uri);
-                    foreach (var email in list)
-                    {
-                        messagesIDs.Add(email.UniqueUri);
-                    }
-                }
+                var builder = new ExchangeAdvancedSyntaxQueryBuilder();
+                builder.Subject.Contains("invoice");
+                builder.HasAttachment.Equals(true);
 
-                //var advancedBuilder = new ExchangeAdvancedSyntaxQueryBuilder();
-                //advancedBuilder.From.Equals("Microsoft");
-                //advancedBuilder.Subject.Contains("credit card");
+                var built = client.ListMessages(inboxUri, builder.GetQuery());
+                Console.WriteLine($"Built with the builder:  {built.Count} message(s)");
+                foreach (var info in built)
+                    Console.WriteLine($"  {info.Subject}");
 
-                //var msgCollection = ewsClient.ListMessages(ewsClient.MailboxInfo.InboxUri, advancedBuilder.GetQuery());
-
-                //Console.WriteLine(@"Filter messages by using the query builder: ");
-                //Console.WriteLine(@"=========================================");
-
-                //foreach (var msgInfo in msgCollection)
-                //{
-                //    Console.WriteLine(msgInfo.Subject);
-                //}
+                var query = new ExchangeAdvancedSyntaxMailQuery("subject:invoice hasattachment:true");
+                var fromString = client.ListMessages(inboxUri, query);
+                Console.WriteLine($"Written as an AQS string: {fromString.Count} message(s)");
             }
-
-            //Console.WriteLine();
-
-            //// using the AQS
-            //{
-            //    using var ewsClient = ClientBuilder.Ews(AuthType.ModernWithAppPermission);
-
-            //    ExchangeAdvancedSyntaxMailQuery query = new ExchangeAdvancedSyntaxMailQuery("subject:Your digest email");
-
-            //    var msgCollection = ewsClient.ListMessages(ewsClient.MailboxInfo.InboxUri, query);
-
-            //    Console.WriteLine(@"Filter messages by using the AQS syntax: ");
-            //    Console.WriteLine(@"=========================================");
-
-            //    foreach (var msgInfo in msgCollection)
-            //    {
-            //        Console.WriteLine(msgInfo.Subject);
-            //    }
-            //}
         }
     }
 }

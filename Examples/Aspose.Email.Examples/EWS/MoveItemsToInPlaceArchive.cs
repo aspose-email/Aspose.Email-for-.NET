@@ -1,35 +1,44 @@
-﻿using Aspose.Email.Clients.Exchange;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Common.Delegate;
-using Aspose.Email.Mapi;
+// Demonstrates moving items to the mailbox's In-Place Archive (online archive).
+//
+// ArchiveItem moves an item from the given folder to the archive mailbox, keeping its
+// folder structure there - the same as Outlook's "Archive" for archive-enabled
+// mailboxes. The mailbox needs an archive. The example archives two test messages from
+// a uniquely named folder; they stay in the archive afterwards, so delete them there
+// when you are done.
+
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
 
 namespace Aspose.Email.Examples.EWS
 {
-    public class MoveItemsToInPlaceArchive
+    internal static class MoveItemsToInPlaceArchive
     {
         public static void Run()
         {
-            const string mailboxUri = "<HOST>";
-            const string domain = @"";
-            const string username = @"<USERNAME>";
-            const string password = @"<PASSWORD>";
-            NetworkCredential credentials = new NetworkCredential(username, password, domain);
-            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
-
-            foreach (ExchangeMessageInfo msgInfo in msgCollection)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Console.WriteLine("Subject:" + msgInfo.Subject);
-                client.ArchiveItem(client.MailboxInfo.InboxUri, msgInfo.UniqueUri);
+                var folder = client.CreateFolder(client.MailboxInfo.InboxUri, folderName);
+
+                try
+                {
+                    var messages = Enumerable.Range(1, 2)
+                        .Select(i => new MailMessage("sender@example.com", "receiver@example.com",
+                            $"Archive me {i}", "Body"));
+                    var uris = client.AppendMessages(folder.Uri, messages);
+
+                    foreach (var uri in uris)
+                        client.ArchiveItem(folder.Uri, uri);
+
+                    var left = client.ListMessages(folder.Uri).Count;
+                    Console.WriteLine($"Archived {uris.Length} message(s); {left} left in '{folderName}'.");
+                }
+                finally
+                {
+                    client.DeleteFolder(folder.Uri, true);
+                }
             }
-            client.Dispose();
         }
     }
 }

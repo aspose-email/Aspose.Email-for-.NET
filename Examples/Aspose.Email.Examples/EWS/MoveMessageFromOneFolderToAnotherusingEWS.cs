@@ -1,35 +1,41 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Clients.Exchange;
+// Demonstrates moving a message to another folder.
+//
+// MoveItem takes the item URI first and the destination folder second, and returns the
+// item's new URI - an item gets a new id when it changes folders, so keep using the
+// returned one. The example works in two uniquely named folders and deletes both at the
+// end.
+
+using System;
+using System.Collections.Specialized;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class MoveMessageFromOneFolderToAnotherusingEWS
+    internal static class MoveMessageFromOneFolderToAnotherusingEWS
     {
         public static void Run()
         {
-            // Create instance of IEWSClient class by giving credentials
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+            var suffix = Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            ExchangeMailboxInfo mailboxInfo = client.GetMailboxInfo();
-
-            // List all messages from Inbox folder
-            Console.WriteLine("Listing all messages from Inbox....");
-            ExchangeMessageInfoCollection msgInfoColl = client.ListMessages(mailboxInfo.InboxUri);
-            foreach (ExchangeMessageInfo msgInfo in msgInfoColl)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Move message to "Processed" folder, after processing certain messages based on some criteria
-                if (msgInfo.Subject != null &&
-                    msgInfo.Subject.ToLower().Contains("process this message") == true)
+                var source = client.CreateFolder(client.MailboxInfo.InboxUri, "Aspose-Inbox-" + suffix);
+                var processed = client.CreateFolder(client.MailboxInfo.InboxUri, "Aspose-Processed-" + suffix);
+
+                try
                 {
-                    client.MoveItem(mailboxInfo.DeletedItemsUri, msgInfo.UniqueUri); // EWS
-                    Console.WriteLine("Message moved...." + msgInfo.Subject);
+                    var uri = client.AppendMessage(source.Uri,
+                        new MailMessage("from@example.com", "to@example.com", "Process this message", "Body"));
+
+                    var newUri = client.MoveItem(uri, processed.Uri);
+                    Console.WriteLine($"Moved: {client.FetchMessage(newUri).Subject}");
+
+                    Console.WriteLine($"  '{source.DisplayName}': {client.ListMessages(source.Uri).Count} message(s)");
+                    var processedCount = client.ListMessages(processed.Uri).Count;
+                    Console.WriteLine($"  '{processed.DisplayName}': {processedCount} message(s)");
                 }
-                else
+                finally
                 {
-                    // Do something else
+                    client.DeleteFolders(new StringCollection { source.Uri, processed.Uri }, true);
                 }
             }
         }

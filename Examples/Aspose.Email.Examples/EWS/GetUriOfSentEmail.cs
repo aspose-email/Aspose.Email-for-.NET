@@ -1,33 +1,36 @@
-﻿using Aspose.Email;
-using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates finding the copy of a sent message in Sent Items.
+//
+// Send does not return anything, but the ItemSent event reports the id of the copy that
+// Exchange saved in Sent Items. Keep it to fetch, move or categorise the sent message
+// later. The message goes to the configured mailbox itself.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    public class GetUriOfSentEmail
+    internal static class GetUriOfSentEmail
     {
         public static void Run()
         {
-            using (IEWSClient client = EWSClient.GetEWSClient("https://exchange.office365.com/ews/exchange.asmx", "username", "password"))
+            var self = ClientBuilder.EwsUserName;
+            string sentItemId = null;
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Register the event handler
-                client.ItemSent += new EventHandler<SentItemEventArgs>(ItemSentHandler);
+                client.ItemSent += (sender, e) => sentItemId = e.SentFolderItemId;
 
-                MailMessage eml = new MailMessage("test@test.com", "test@test.com", "test message", "This is a test message");
+                client.Send(new MailMessage(self, self, "Track me", "Find this message in Sent Items."));
 
-                client.Send(eml);
+                if (sentItemId == null)
+                {
+                    Console.WriteLine("The ItemSent event did not report an id.");
+                    return;
+                }
+
+                Console.WriteLine($"Sent Items id: {sentItemId}");
+                Console.WriteLine($"Fetched back:  {client.FetchMessage(sentItemId).Subject}");
             }
-        }
-
-        // Define an event handler method
-        private static void ItemSentHandler(object sender, SentItemEventArgs e)
-        {
-            
-            // Now we can get an id of sent email, which was saved in Sent Items folder
-            string id = e.SentFolderItemId;
         }
     }
 }

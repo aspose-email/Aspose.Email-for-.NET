@@ -1,47 +1,42 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
+// Demonstrates sending a recurring meeting request.
+//
+// RequestApointment turns an Appointment into an iCalendar REQUEST part; added to a
+// message as an alternate view, it makes Outlook show the message as an invitation with
+// Accept / Decline buttons. A Recurrence pattern makes it a series - here daily for five
+// days. The request goes to the configured mailbox itself.
+
+using System;
 using Aspose.Email.Calendar;
 using Aspose.Email.Calendar.Recurrences;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class SendMeetingRequestsUsingEWS
+    internal static class SendMeetingRequestsUsingEWS
     {
         public static void Run()
         {
-            try
+            var self = ClientBuilder.EwsUserName;
+            var start = DateTime.Today.AddDays(1).AddHours(9);
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Create instance of IEWSClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+                var appointment = new Appointment("Room 4", start, start.AddMinutes(15), self, self)
+                {
+                    Summary = "Daily stand-up",
+                    Description = "Fifteen minutes, every morning this week.",
+                    Recurrence = new DailyRecurrencePattern(start.AddDays(4))
+                };
 
-                // Create the meeting request
-                Appointment app = new Appointment("meeting request", DateTime.Now.AddHours(1), DateTime.Now.AddHours(1.5), "administrator@test.com", "bob@test.com");
-                app.Summary = "meeting request summary";
-                app.Description = "description";
+                var message = new MailMessage(self, self)
+                {
+                    Subject = appointment.Summary,
+                    HtmlBody = "<p>Please join the daily stand-up.</p>"
+                };
+                message.AddAlternateView(appointment.RequestApointment());
 
-
-                RecurrencePattern pattern = new Aspose.Email.Calendar.Recurrences.DailyRecurrencePattern(DateTime.Now.AddDays(5));
-                app.Recurrence = pattern;
-
-                // Create the message and set the meeting request
-                MailMessage msg = new MailMessage();
-                msg.From = "administrator@test.com";
-                msg.To = "bob@test.com";
-                msg.IsBodyHtml = true;
-                msg.HtmlBody = "<h3>HTML Heading</h3><p>Email Message detail</p>";
-                msg.Subject = "meeting request";
-                msg.AddAlternateView(app.RequestApointment(0));
-
-                // send the appointment
-                client.Send(msg);
-                Console.WriteLine("Appointment request sent");
+                client.Send(message);
+                Console.WriteLine($"Sent the meeting request '{appointment.Summary}' to {self}.");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }        
+        }
     }
 }

@@ -1,50 +1,56 @@
-﻿using Aspose.Email.Calendar;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
+// Demonstrates the life cycle of a calendar item: create, read, update, cancel.
+//
+// CreateAppointment stores an Appointment in a calendar folder and returns its id;
+// FetchAppointment reads it back, UpdateAppointment saves changes, and
+// CancelAppointment cancels it. The configured mailbox is both organiser and attendee,
+// so any meeting messages stay in that mailbox. The example works in a uniquely named
+// calendar folder and deletes it at the end.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Calendar;
+using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class CreatingUpdatingAndDeletingCalendarItemsUsingEWS
+    internal static class CreatingUpdatingAndDeletingCalendarItemsUsingEWS
     {
         public static void Run()
         {
-            try
+            var self = ClientBuilder.EwsUserName;
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "your.username", "your.Password");
-                DateTime date = DateTime.Now;
-                DateTime startTime = new DateTime(date.Year, date.Month, date.Day, date.Hour, 0, 0);
-                DateTime endTime = startTime.AddHours(1);
-                string timeZone = "America/New_York";
+                var calendar = client.CreateFolder(client.MailboxInfo.CalendarUri, folderName,
+                    ExchangeFolderType.Appointment);
 
-                Appointment app = new Appointment("Room 112", startTime, endTime, "organizeraspose-email.test3@domain.com","attendee@gmail.com");
-                app.SetTimeZone(timeZone);
-                app.Summary = "NETWORKNET-34136" + Guid.NewGuid().ToString();
-                app.Description = "NETWORKNET-34136 Exchange 2007/EWS: Provide support for Add/Update/Delete calendar items";
+                try
+                {
+                    var start = DateTime.Today.AddDays(1).AddHours(10);
+                    var appointment = new Appointment("Room 112", start, start.AddHours(1), self, self)
+                    {
+                        Summary = "Planning session",
+                        Description = "Plan the next sprint."
+                    };
 
-                string uid = client.CreateAppointment(app);
-                Appointment fetchedAppointment1 = client.FetchAppointment(uid);
-                app.Location = "Room 115";
-                app.Summary = "New summary for " + app.Summary;
-                app.Description = "New Description";
-                client.UpdateAppointment(app);
+                    var id = client.CreateAppointment(appointment, calendar.Uri);
+                    var created = client.FetchAppointment(id, calendar.Uri);
+                    Console.WriteLine($"Created:   {created.Summary} in {created.Location} at {created.StartDate:g}");
 
-                Appointment[] appointments1 = client.ListAppointments();
-                Console.WriteLine("Total Appointments: "  + appointments1.Length);
-                Appointment fetchedAppointment2 = client.FetchAppointment(uid);
-                Console.WriteLine("Summary: " + fetchedAppointment2.Summary);
-                Console.WriteLine("Location: " + fetchedAppointment2.Location);
-                Console.WriteLine("Description: " + fetchedAppointment2.Description);
-                client.CancelAppointment(app);
-                Appointment[] appointments2 = client.ListAppointments();
-                Console.WriteLine("Total Appointments: " + appointments2.Length);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                    created.Location = "Room 115";
+                    created.Summary = "Planning session (moved)";
+                    client.UpdateAppointment(created, calendar.Uri);
+
+                    var updated = client.FetchAppointment(id, calendar.Uri);
+                    Console.WriteLine($"Updated:   {updated.Summary} in {updated.Location}");
+
+                    client.CancelAppointment(id, calendar.Uri);
+                    Console.WriteLine($"Cancelled; appointments left: {client.ListAppointments(calendar.Uri).Length}");
+                }
+                finally
+                {
+                    client.DeleteFolder(calendar.Uri, true);
+                }
             }
         }
     }

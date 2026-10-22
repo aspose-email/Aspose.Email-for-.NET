@@ -1,44 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Clients.Exchange;
+// Demonstrates listing the subfolders of a folder page by page.
+//
+// ListSubFoldersByPage returns one page of folders together with TotalCount and
+// LastPage; pass the next page offset back in until LastPage is true. Paging matters
+// for public folder trees or archive mailboxes with thousands of folders.
+
+using System;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class PagingSupportForListingFolders
+    internal static class PagingSupportForListingFolders
     {
-        static void Run()
+        public static void Run()
         {
-            ///<summary>
-            /// This example shows how to retrieve folders information from Exchange Server with Paging Support
-            /// Introduced in Aspose.Email for .NET 6.4.0
-            ///</summary>
-            using (IEWSClient client = EWSClient.GetEWSClient("exchange.domain.com", "username", "password"))
+            const int itemsPerPage = 5;
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                int itemsPerPage = 5;
-                ExchangeFolderInfoCollection totalFoldersCollection = client.ListSubFolders(client.MailboxInfo.RootUri);
-                Console.WriteLine(totalFoldersCollection.Count);
+                var rootUri = client.MailboxInfo.RootUri;
 
-                //////////////////// RETREIVING INFORMATION USING PAGING SUPPORT //////////////////////////////////
+                var page = client.ListSubFoldersByPage(rootUri, itemsPerPage);
+                Console.WriteLine($"{page.TotalCount} top-level folder(s), {itemsPerPage} per page.");
 
-                List<ExchangeFolderPageInfo> pages = new List<ExchangeFolderPageInfo>();
-                ExchangeFolderPageInfo pagedFoldersCollection = client.ListSubFoldersByPage(client.MailboxInfo.RootUri, itemsPerPage);
-
-                Console.WriteLine(pagedFoldersCollection.TotalCount);
-
-                pages.Add(pagedFoldersCollection);
-                while (!pagedFoldersCollection.LastPage)
+                var pageNumber = 1;
+                while (true)
                 {
-                    pagedFoldersCollection = client.ListSubFoldersByPage(client.MailboxInfo.RootUri, itemsPerPage, pagedFoldersCollection.PageOffset + 1);
-                    pages.Add(pagedFoldersCollection);
-                }
-                int retrievedFolders = 0;
-                foreach (ExchangeFolderPageInfo pageCol in pages)
-                    retrievedFolders += pageCol.Items.Count;
+                    Console.WriteLine($"\nPage {pageNumber}:");
+                    foreach (var folder in page.Items)
+                        Console.WriteLine("  " + folder.DisplayName);
 
-                // Verify the total count of folders
-                Console.WriteLine(retrievedFolders);
-            }            
+                    if (page.LastPage)
+                        break;
+
+                    page = client.ListSubFoldersByPage(rootUri, itemsPerPage, page.PageOffset + 1);
+                    pageNumber++;
+                }
+            }
         }
     }
 }

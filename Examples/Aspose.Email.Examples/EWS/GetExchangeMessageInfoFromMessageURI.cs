@@ -1,44 +1,40 @@
-﻿using Aspose.Email.Clients.Exchange;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
+// Demonstrates getting message summaries for known item URIs.
+//
+// When you already hold item URIs - saved from AppendMessage, a previous listing or
+// your own database - ListMessages(ids) returns their current summaries in one
+// request, without listing whole folders. The example works in a uniquely named folder
+// and deletes it at the end.
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class GetExchangeMessageInfoFromMessageURI
+    internal static class GetExchangeMessageInfoFromMessageURI
     {
         public static void Run()
         {
-            try
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "user@domain.com", "pwd", "domain");
+                var folder = client.CreateFolder(client.MailboxInfo.InboxUri, folderName);
 
-                List<string> ids = new List<string>();
-                List<MailMessage> messages = new List<MailMessage>();
-
-                for (int i = 0; i < 5; i++)
+                try
                 {
-                    MailMessage message = new MailMessage("user@domain.com", "receiver@domain.com", "EMAILNET-35033 - " + Guid.NewGuid().ToString(), "EMAILNET-35033 Messages saved from Sent Items folder doesn't contain 'To' field");
-                    messages.Add(message);
-                    string uri = client.AppendMessage(message);
-                    ids.Add(uri);
+                    var messages = Enumerable.Range(1, 3)
+                        .Select(i => new MailMessage("sender@example.com", "receiver@example.com",
+                            $"Message {i}", "Body"));
+                    var uris = client.AppendMessages(folder.Uri, messages);
+
+                    foreach (var info in client.ListMessages(uris))
+                        Console.WriteLine($"{info.Subject}: {info.Size} bytes, read: {info.IsRead}");
                 }
-
-                ExchangeMessageInfoCollection messageInfoCol = client.ListMessages(ids);
-
-                foreach (ExchangeMessageInfo messageInfo in messageInfoCol)
+                finally
                 {
-                    // Do something ...
-                    Console.WriteLine(messageInfo.UniqueUri);
+                    client.DeleteFolder(folder.Uri, true);
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }            
         }
     }
 }

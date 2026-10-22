@@ -1,103 +1,57 @@
-﻿using System;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
+// Demonstrates working with a secondary calendar - one besides the default Calendar.
+//
+// A calendar folder is created with the Appointment folder type. Appointment methods
+// accept the folder URI explicitly, or use CurrentCalendarFolderUri as the default when
+// none is given - handy when all work happens in one secondary calendar. The example
+// creates a uniquely named calendar, adds an event both ways, and deletes the calendar
+// at the end.
+
+using System;
 using Aspose.Email.Calendar;
 using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class SecondaryCalendarEvents
+    internal static class SecondaryCalendarEvents
     {
         public static void Run()
         {
-            using (IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "your.username", "your.Password"))
+            var self = ClientBuilder.EwsUserName;
+            var folderName = "Aspose-Calendar-" + Guid.NewGuid().ToString("N").Substring(0, 8);
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
+                var calendar = client.CreateFolder(client.MailboxInfo.CalendarUri, folderName,
+                    ExchangeFolderType.Appointment);
+
                 try
                 {
-                    // Create an appointmenta that will be added to secondary calendar folder
+                    var start = DateTime.Today.AddDays(2).AddHours(9);
 
-                    DateTime date = DateTime.Now;
-                    DateTime startTime = new DateTime(date.Year, date.Month, date.Day, date.Hour, 0, 0);
-                    DateTime endTime = startTime.AddHours(1);
-
-                    string timeZone = "America/New_York";
-
-                    Appointment[] listAppointments;
-                    Appointment appointment = new Appointment("Room 121", startTime, endTime, "from@domain.com", "attendee@domain.com");
-                    appointment.SetTimeZone(timeZone);
-                    appointment.Summary = "EMAILNET-35198 - " + Guid.NewGuid().ToString();
-                    appointment.Description = "EMAILNET-35198 Ability to add event to Secondary Calendar of Office 365";
-
-                    // Verify that the new folder has been created
-                    ExchangeFolderInfoCollection calendarSubFolders = client.ListSubFolders(client.MailboxInfo.CalendarUri);
-
-                    string getfolderName;
-                    string setFolderName = "New Calendar";
-                    bool alreadyExits = false;
-
-                    // Verify that the new folder has been created already exits or not 
-
-                    for (int i = 0; i < calendarSubFolders.Count; i++)
-                    {
-                        getfolderName = calendarSubFolders[i].DisplayName;
-
-                        if (getfolderName.Equals(setFolderName))
+                    // With the folder URI given explicitly.
+                    client.CreateAppointment(
+                        new Appointment("Room 121", start, start.AddHours(1), self, self)
                         {
-                            alreadyExits = true;
-                        }
-                    }
+                            Summary = "Explicit folder"
+                        },
+                        calendar.Uri);
 
-                    if (alreadyExits)
-                    {
-                        Console.WriteLine("Folder Already Exists");
-                    }
-                    else
-                    {
-                        // Create new calendar folder
-                        client.CreateFolder(client.MailboxInfo.CalendarUri, setFolderName, null, "IPF.Appointment");
+                    // With the folder set once as the current calendar.
+                    client.CurrentCalendarFolderUri = calendar.Uri;
+                    client.CreateAppointment(
+                        new Appointment("Room 122", start.AddHours(2), start.AddHours(3), self, self)
+                        {
+                            Summary = "Current folder"
+                        });
 
-                        Console.WriteLine(calendarSubFolders.Count);
-
-                        // Get the created folder URI
-                        string newCalendarFolderUri = calendarSubFolders[0].Uri;
-
-                        // appointment api with calendar folder uri
-                        // Create
-                        client.CreateAppointment(appointment, newCalendarFolderUri);
-                        appointment.Location = "Room 122";
-                        // update
-                        client.UpdateAppointment(appointment, newCalendarFolderUri);
-                        // list
-                        listAppointments = client.ListAppointments(newCalendarFolderUri);
-
-                        // list default calendar folder
-                        listAppointments = client.ListAppointments(client.MailboxInfo.CalendarUri);
-
-                        // Cancel
-                        client.CancelAppointment(appointment, newCalendarFolderUri);
-                        listAppointments = client.ListAppointments(newCalendarFolderUri);
-
-                        // appointment api with context current calendar folder uri
-                        client.CurrentCalendarFolderUri = newCalendarFolderUri;
-                        // Create
-                        client.CreateAppointment(appointment);
-                        appointment.Location = "Room 122";
-                        // update
-                        client.UpdateAppointment(appointment);
-                        // list
-                        listAppointments = client.ListAppointments();
-
-                        // list default calendar folder
-                        listAppointments = client.ListAppointments(client.MailboxInfo.CalendarUri);
-
-                        // Cancel
-                        client.CancelAppointment(appointment);
-                        listAppointments = client.ListAppointments();
-
-                    }
+                    Console.WriteLine($"Events in '{folderName}':");
+                    foreach (var appointment in client.ListAppointments(calendar.Uri))
+                        Console.WriteLine($"  {appointment.StartDate:g}  {appointment.Summary}");
                 }
                 finally
                 {
+                    client.CurrentCalendarFolderUri = null;
+                    client.DeleteFolder(calendar.Uri, true);
                 }
             }
         }

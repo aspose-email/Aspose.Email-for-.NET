@@ -1,52 +1,41 @@
-﻿using System;
-using System.Threading;
-using Aspose.Email.Clients.Imap;
-using Aspose.Email.Mime;
+// Demonstrates fetching extra MAPI properties as part of a message listing.
+//
+// The ListMessages overload that takes property descriptors returns those properties
+// with each summary, in ExchangeMessageInfo.Properties - so values such as the
+// conversation topic or importance are available without downloading the messages.
+// Any property from KnownPropertyList, or a custom named property, can be requested.
+
+using System;
+using Aspose.Email.Clients.Exchange;
+using Aspose.Email.Mapi;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class RetrieveExtraParametersAsSummaryInformation
+    internal static class RetrieveExtraParametersAsSummaryInformation
     {
         public static void Run()
         {
-            try
+            var extraProperties = new PropertyDescriptor[]
             {
-                using (ImapClient client = new ImapClient("host.domain.com", "username", "password"))
+                KnownPropertyList.ConversationTopic,
+                KnownPropertyList.Importance,
+                KnownPropertyList.LastModificationTime
+            };
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
+            {
+                var messages = client.ListMessages(client.MailboxInfo.InboxUri, ExchangeListMessagesOptions.None,
+                    extraProperties);
+
+                foreach (var info in messages)
                 {
-                    MailMessage message = new MailMessage("from@domain.com", "to@doman.com", "EMAILNET-38466 - " + Guid.NewGuid().ToString(), "EMAILNET-38466 Add extra parameters for UID FETCH command");
-
-                    // append the message to the server
-                    string uid = client.AppendMessage(message);
-
-                    // wait for the message to be appended
-                    Thread.Sleep(5000);
-
-                    // Define properties to be fetched from server along with the message
-                    string[] messageExtraFields = new string[] { "X-GM-MSGID", "X-GM-THRID" };
-
-                    // retreive the message summary information using it's UID
-                    ImapMessageInfo messageInfoUID = client.ListMessage(uid, messageExtraFields);
-
-                    // retreive the message summary information using it's sequence number
-                    ImapMessageInfo messageInfoSeqNum = client.ListMessage(1, messageExtraFields);
-
-                    // List messages in general from the server based on the defined properties
-                    ImapMessageInfoCollection messageInfoCol = client.ListMessages(messageExtraFields);
-
-                    ImapMessageInfo messageInfoFromList = messageInfoCol[0];
-
-                    // verify that the parameters are fetched in the summary information
-                    foreach (string paramName in messageExtraFields)
-                    {
-                        Console.WriteLine(messageInfoFromList.ExtraParameters.ContainsKey(paramName));
-                        Console.WriteLine(messageInfoUID.ExtraParameters.ContainsKey(paramName));
-                        Console.WriteLine(messageInfoSeqNum.ExtraParameters.ContainsKey(paramName));
-                    }
+                    Console.WriteLine(info.Subject);
+                    var topic = info.Properties[KnownPropertyList.ConversationTopic]?.GetString();
+                    Console.WriteLine($"  topic:         {topic}");
+                    Console.WriteLine($"  importance:    {info.Properties[KnownPropertyList.Importance]?.GetInt32()}");
+                    var modified = info.Properties[KnownPropertyList.LastModificationTime]?.GetDateTime();
+                    Console.WriteLine($"  last modified: {modified:g}");
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.Message);
             }
         }
     }

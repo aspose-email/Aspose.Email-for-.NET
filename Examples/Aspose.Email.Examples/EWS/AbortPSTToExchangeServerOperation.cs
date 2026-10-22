@@ -1,58 +1,68 @@
-﻿using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Common.Delegate;
-using Aspose.Email.Mapi;
-using Aspose.Email.Storage.Pst;
+// Demonstrates stopping a PST restore part-way.
+//
+// RestoreSettings.BeforeItemCallback is called before every folder and item is
+// uploaded. Throwing an exception from it aborts the restore - useful to enforce a time
+// limit, react to a cancel button, or upload only part of a large PST. The example
+// builds a PST with 20 messages in a uniquely named folder, stops after five items,
+// and removes the restored folder at the end.
+
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
+using Aspose.Email.Clients.Exchange.WebService;
+using Aspose.Email.Mapi;
+using Aspose.Email.Storage.Pst;
 
 namespace Aspose.Email.Examples.EWS
 {
-    public class CustomAbortRestoreException : Exception { }
-
-    public class AbortPSTToExchangeServerOperation
+    internal static class AbortPSTToExchangeServerOperation
     {
+        private sealed class RestoreAbortedException : Exception
+        {
+        }
+
         public static void Run()
         {
-            using (IEWSClient client = EWSClient.GetEWSClient("https://exchange.office365.com/ews/exchange.asmx", "username", "password"))
+            const int maxItems = 5;
+            var folderName = "Aspose-Restore-" + Guid.NewGuid().ToString("N").Substring(0, 8);
+
+            using (var stream = new MemoryStream())
+            using (var pst = PersonalStorage.Create(stream, FileFormatVersion.Unicode))
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                DateTime startTime = DateTime.Now;
-                TimeSpan maxRestoreTime = TimeSpan.FromSeconds(15);
-                int processedItems = 0;
+                var folder = pst.RootFolder.AddSubFolder(folderName);
+                for (var i = 1; i <= 20; i++)
+                    folder.AddMessage(new MapiMessage("from@example.com", "to@example.com", $"Message {i}", "Body"));
 
-                BeforeItemCallback callback = delegate
+                var processed = 0;
+                var settings = new RestoreSettings
                 {
-                    if (DateTime.Now >= startTime.Add(maxRestoreTime))
+                    BeforeItemCallback = item =>
                     {
-                        throw new CustomAbortRestoreException();
+                        if (processed == maxItems)
+                            throw new RestoreAbortedException();
+                        processed++;
                     }
-
-                    processedItems++;
                 };
 
                 try
                 {
-                    //create a test pst and add some test messages to it
-                    var pst = PersonalStorage.Create(new MemoryStream(), FileFormatVersion.Unicode);
-                    var folder = pst.RootFolder.AddSubFolder("My test folder");
-                    for (int i = 0; i < 20; i++)
-                    {
-                        var message = new MapiMessage("from@gmail.com", "to@gmail.com", "subj", new string('a', 10000));
-                        folder.AddMessage(message);
-                    }
-
-                    //now restore the PST with callback
-                    client.Restore(pst, new Aspose.Email.Clients.Exchange.WebService.RestoreSettings
-                    {
-                        BeforeItemCallback = callback
-                    });
-                    Console.WriteLine("Success!");
+                    client.Restore(pst, settings);
+                    Console.WriteLine("The restore finished before the limit was reached.");
                 }
-                catch (CustomAbortRestoreException)
+                catch (RestoreAbortedException)
                 {
-                    Console.WriteLine($"Timeout! {processedItems}");
+                    Console.WriteLine($"Restore stopped after {processed} item(s).");
+                }
+                finally
+                {
+                    var restored = client.ListSubFolders(client.MailboxInfo.RootUri)
+                        .FirstOrDefault(f => f.DisplayName == folderName);
+                    if (restored != null)
+                    {
+                        Console.WriteLine($"'{folderName}' received {restored.TotalCount} message(s); deleting it.");
+                        client.DeleteFolder(restored.Uri, true);
+                    }
                 }
             }
         }

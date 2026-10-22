@@ -1,58 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Net;
-using System.Threading;
-using Aspose.Email.Mime;
-using Aspose.Email.Mapi;
-using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates printing the folder tree of a mailbox.
+//
+// ListSubFolders returns the direct children of a folder, so a recursive walk from the
+// root reaches every level. Each ExchangeFolderInfo carries the display name, item and
+// unread counts and the number of child folders, which saves a request for leaves.
+
+using System;
 using Aspose.Email.Clients.Exchange;
+using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class ListFoldersFromExchangeServer
+    internal static class ListFoldersFromExchangeServer
     {
         public static void Run()
         {
-            try
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
-                Console.WriteLine("Downloading all messages from Inbox....");
-
-                ExchangeMailboxInfo mailboxInfo = client.GetMailboxInfo();
-                Console.WriteLine("Mailbox URI: " + mailboxInfo.MailboxUri);
-                string rootUri = client.GetMailboxInfo().RootUri;
-                // List all the folders from Exchange server
-                ExchangeFolderInfoCollection folderInfoCollection = client.ListSubFolders(rootUri);
-                foreach (ExchangeFolderInfo folderInfo in folderInfoCollection)
-                {
-                    // Call the recursive method to read messages and get sub-folders
-                    ListSubFolders(client, folderInfo);
-                }
-
-                Console.WriteLine("All messages downloaded.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Folders of the mailbox:");
+                foreach (var folder in client.ListSubFolders(client.MailboxInfo.RootUri))
+                    Print(client, folder, 1);
             }
         }
-        private static void ListSubFolders(IEWSClient client, ExchangeFolderInfo folderInfo)
+
+        private static void Print(IEWSClient client, ExchangeFolderInfo folder, int depth)
         {
-            // Create the folder in disk (same name as on IMAP server)
-            Console.WriteLine(folderInfo.DisplayName);
-            try
-            {
-                // If this folder has sub-folders, call this method recursively to get messages
-                ExchangeFolderInfoCollection folderInfoCollection = client.ListSubFolders(folderInfo.Uri);
-                foreach (ExchangeFolderInfo subfolderInfo in folderInfoCollection)
-                {
-                    ListSubFolders(client, subfolderInfo);
-                }
-            }
-            catch (Exception)
-            {
-            }
+            Console.WriteLine($"{new string(' ', depth * 2)}{folder.DisplayName} " +
+                              $"({folder.TotalCount} item(s), {folder.UnreadCount} unread)");
+
+            if (folder.ChildFolderCount == 0)
+                return;
+
+            foreach (var child in client.ListSubFolders(folder.Uri))
+                Print(client, child, depth + 1);
         }
     }
 }

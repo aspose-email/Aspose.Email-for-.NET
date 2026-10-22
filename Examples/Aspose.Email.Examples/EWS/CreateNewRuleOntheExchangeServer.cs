@@ -1,38 +1,45 @@
-﻿using System;
+// Demonstrates creating an Inbox rule that the server applies to incoming mail.
+//
+// A rule combines conditions (RulePredicates: words in the subject, senders, ...),
+// optional exceptions and actions (RuleActions: move, copy, delete, forward, ...).
+// Exchange runs it on the server, so it works even when no client is open. The example
+// creates a rule with a unique name and deletes it again at the end.
+
+using System;
+using System.Linq;
 using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class CreateNewRuleOntheExchangeServer
+    internal static class CreateNewRuleOntheExchangeServer
     {
         public static void Run()
         {
+            var ruleName = "Aspose example rule " + Guid.NewGuid().ToString("N").Substring(0, 8);
+
             using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Console.WriteLine("Connected to Exchange server");
-
-                // Add conditions
-                var newRules = new RulePredicates();
-
-                // Set Subject contains string "ABC" and Add the conditions
-                newRules.ContainsSubjectStrings.Add("ABC");
-                newRules.FromAddresses.Add(new MailAddress("administrator@ex2010.local", true));
-
-                // Add Actions and Move the message to a folder
-                var newActions = new RuleActions
-                {
-                    MoveToFolder = client.MailboxInfo.DeletedItemsUri
-                };
+                var conditions = new RulePredicates();
+                conditions.ContainsSubjectStrings.Add("[newsletter]");
+                conditions.FromAddresses.Add(new MailAddress("news@example.com", true));
 
                 var rule = new InboxRule
                 {
-                    DisplayName = "Message from client ABC",
-                    Conditions = newRules,
-                    Actions = newActions
+                    DisplayName = ruleName,
+                    Conditions = conditions,
+                    Actions = new RuleActions { MoveToFolder = client.MailboxInfo.DeletedItemsUri }
                 };
 
                 client.CreateInboxRule(rule);
+
+                var created = client.GetInboxRules().FirstOrDefault(r => r.DisplayName == ruleName);
+                Console.WriteLine(created != null
+                    ? $"Created '{created.DisplayName}', enabled: {created.IsEnabled}"
+                    : "The new rule was not found.");
+
+                if (created != null)
+                    client.DeleteInboxRule(created.RuleId);
             }
-        }        
+        }
     }
 }

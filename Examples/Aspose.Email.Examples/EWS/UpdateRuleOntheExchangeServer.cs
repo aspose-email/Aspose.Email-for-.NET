@@ -1,46 +1,50 @@
-﻿using System;
-using System.Net;
+// Demonstrates changing an existing Inbox rule.
+//
+// Read the rule with GetInboxRules, change its conditions, exceptions or actions, and
+// pass it to UpdateInboxRule. The example creates a rule with a unique name, adds a
+// second sender to it, and deletes it again at the end.
+
+using System;
+using System.Linq;
 using Aspose.Email.Clients.Exchange;
-using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class UpdateRuleOntheExchangeServer
+    internal static class UpdateRuleOntheExchangeServer
     {
         public static void Run()
         {
-            try
+            var ruleName = "Aspose example rule " + Guid.NewGuid().ToString("N").Substring(0, 8);
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Set mailboxURI, Username, password, domain information
-                string mailboxURI = "https://ex2010/ews/exchange.asmx";
-                string username = "test.exchange";
-                string password = "pwd";
-                string domain = "ex2010.local";
+                var newRule = InboxRule.CreateRuleMoveFrom(new MailAddress("news@example.com", true),
+                    client.MailboxInfo.DeletedItemsUri);
+                newRule.DisplayName = ruleName;
+                client.CreateInboxRule(newRule);
 
-                // Connect to the Exchange Server
-                NetworkCredential credential = new NetworkCredential(username, password, domain);
-                IEWSClient client = EWSClient.GetEWSClient(mailboxURI, credential);
-
-                Console.WriteLine("Connected to Exchange server");
-
-                // Get all Inbox Rules
-                InboxRule[] inboxRules = client.GetInboxRules();
-
-                // Loop through each rule
-                foreach (InboxRule inboxRule in inboxRules)
+                // Find it by its unique name, so no other rule is touched.
+                var rule = client.GetInboxRules().FirstOrDefault(r => r.DisplayName == ruleName);
+                if (rule == null)
                 {
-                    Console.WriteLine("Display Name: " + inboxRule.DisplayName);
-                    if (inboxRule.DisplayName == "Message from client ABC")
-                    {
-                        Console.WriteLine("Updating the rule....");
-                        inboxRule.Conditions.FromAddresses[0] = new MailAddress("administrator@ex2010.local", true);
-                        client.UpdateInboxRule(inboxRule);
-                    }
+                    Console.WriteLine("The new rule was not found.");
+                    return;
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.Message);
+
+                try
+                {
+                    rule.Conditions.FromAddresses.Add(new MailAddress("offers@example.com", true));
+                    client.UpdateInboxRule(rule);
+
+                    var updated = client.GetInboxRules().First(r => r.RuleId == rule.RuleId);
+                    Console.WriteLine($"'{updated.DisplayName}' now applies to:");
+                    foreach (var from in updated.Conditions.FromAddresses)
+                        Console.WriteLine($"  {from.Address}");
+                }
+                finally
+                {
+                    client.DeleteInboxRule(rule.RuleId);
+                }
             }
         }
     }

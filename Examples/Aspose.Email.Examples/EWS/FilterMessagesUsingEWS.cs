@@ -1,46 +1,30 @@
-﻿using Aspose.Email.Clients.Exchange;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Tools.Search;
+// Demonstrates filtering a folder on the server instead of downloading it.
+//
+// Build the conditions with ExchangeQueryBuilder, turn them into a MailQuery with
+// GetQuery and pass it to ListMessages: Exchange evaluates the restriction and only the
+// matching summaries come back. All conditions in one builder must hold at the same
+// time.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class FilterMessagesUsingEWS
+    internal static class FilterMessagesUsingEWS
     {
         public static void Run()
         {
-            try
-            {                
-                // Connect to EWS
-                const string mailboxUri = "https://outlook.office365.com/ews/exchange.asmx";
-                const string username = "username";
-                const string password = "password";
-                const string domain = "domain";
-
-                IEWSClient client = EWSClient.GetEWSClient(mailboxUri, username, password, domain);
-
-                // Query building by means of ExchangeQueryBuilder class
-                ExchangeQueryBuilder builder = new ExchangeQueryBuilder();
-
-                // Set Subject and Emails that arrived today
-                builder.Subject.Contains("Newsletter");
-                builder.InternalDate.On(DateTime.Now);
-
-                MailQuery query = builder.GetQuery();
-
-                // Get list of messages
-                ExchangeMessageInfoCollection messages = client.ListMessages(client.MailboxInfo.InboxUri, query, false);
-                Console.WriteLine("EWS: " + messages.Count + " message(s) found.");
-
-                // Disconnect from EWS
-                client.Dispose();                
-            }
-            catch (Exception ex)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Console.WriteLine(ex.Message);
+                var builder = new ExchangeQueryBuilder();
+                builder.Subject.Contains("newsletter");
+                builder.InternalDate.Since(DateTime.Today.AddDays(-30));
+
+                var messages = client.ListMessages(client.MailboxInfo.InboxUri, builder.GetQuery(), false);
+
+                Console.WriteLine($"'newsletter' in the subject, last 30 days: {messages.Count} message(s)");
+                foreach (var info in messages)
+                    Console.WriteLine($"  {info.InternalDate:d}  {info.From}  {info.Subject}");
             }
         }
     }

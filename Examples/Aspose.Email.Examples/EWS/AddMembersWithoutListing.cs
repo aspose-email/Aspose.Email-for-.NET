@@ -1,29 +1,47 @@
-﻿using Aspose.Email.Clients.Exchange;
+// Demonstrates adding members to a distribution list known only by its id.
+//
+// A distribution list is identified by Id and ChangeKey. Store both when you first see
+// the list, and later an ExchangeDistributionList with just those two values is enough
+// for AddToDistributionList - no need to list all distribution lists again. The example
+// creates a uniquely named list, "stores" its ids, and deletes the list at the end.
+
+using System;
+using System.Linq;
+using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class AddMembersWithoutListing
+    internal static class AddMembersWithoutListing
     {
         public static void Run()
         {
+            var listName = "Aspose list " + Guid.NewGuid().ToString("N").Substring(0, 8);
+
             using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
+                client.CreateDistributionList(new ExchangeDistributionList { DisplayName = listName },
+                    new MailAddressCollection { "member1@example.com" });
 
-                // Create a local distribution list with a known Id and ChangeKey.
-                ExchangeDistributionList distributionList =  new ExchangeDistributionList()
+                // Normally saved earlier, for example in your database.
+                var created = client.ListDistributionLists().First(l => l.DisplayName == listName);
+                var storedId = created.Id;
+                var storedChangeKey = created.ChangeKey;
+
+                var list = new ExchangeDistributionList { Id = storedId, ChangeKey = storedChangeKey };
+
+                try
                 {
-                    Id = "AAMkAGJhZjYzY2I5LTdjYWMtNGFmMC05ODI1LTA5MTAzYTgwZTc4OQBGAAAAAABdN1MC60QcSpWwPYUTPhL2BwATlR+p0q0wT6WD0+d4WJhWAAAAAAEOAAATlR+p0q0wT6WD0+d4WJhWAACImuRlAAA=",
-                    ChangeKey = "EgAAABYAAAATlR+p0q0wT6WD0+d4WJhWAACKy8ZX"
-                };
+                    client.AddToDistributionList(list, new MailAddressCollection { "member2@example.com" });
 
-                // Init a new members
-                MailAddressCollection newMembers = new MailAddressCollection()
+                    Console.WriteLine($"Members of '{listName}' now:");
+                    foreach (var member in client.FetchDistributionList(list))
+                        Console.WriteLine($"  {member.Address}");
+                }
+                finally
                 {
-                    "address6@host.com"
-                };
-
-                // Udpdate a distribution list on the server with new member.
-                client.AddToDistributionList(distributionList, newMembers);
+                    // The change key is outdated after the update; the id alone is enough.
+                    client.DeleteDistributionList(new ExchangeDistributionList { Id = list.Id }, true);
+                }
             }
         }
     }

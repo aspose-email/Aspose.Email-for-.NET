@@ -1,39 +1,38 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Mime;
+// Demonstrates mail tips - what Outlook warns about before you send.
+//
+// GetMailTips checks recipients before a message is sent: whether they are out of
+// office (with their automatic reply), whether the address is invalid or the mailbox
+// full, how large a message they accept, and how many members a group has. Put the
+// addresses you are about to write to into the list below.
+
+using System;
 using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class GetMailTips
+    internal static class GetMailTips
     {
         public static void Run()
         {
-            // Create instance of EWSClient class by giving credentials
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
-            Console.WriteLine("Connected to Exchange server...");
-            // Provide mail tips options
-            MailAddressCollection addrColl = new MailAddressCollection();
-            addrColl.Add(new MailAddress("test.exchange@ex2010.local", true));
-            addrColl.Add(new MailAddress("invalid.recipient@ex2010.local", true));
-            GetMailTipsOptions options = new GetMailTipsOptions("administrator@ex2010.local", addrColl, MailTipsType.All);
-
-            // Get Mail Tips
-            MailTips[] tips = client.GetMailTips(options);
-
-            // Display information about each Mail Tip
-            foreach (MailTips tip in tips)
+            var sender = ClientBuilder.EwsUserName;
+            var recipients = new MailAddressCollection
             {
-                // Display Out of office message, if present
-                if (tip.OutOfOffice != null)
-                {
-                    Console.WriteLine("Out of office: " + tip.OutOfOffice.ReplyBody.Message);
-                }
+                new MailAddress(sender, true),
+                new MailAddress("no.such.user@example.com", true)
+            };
 
-                // Display the invalid email address in recipient, if present
-                if (tip.InvalidRecipient == true)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
+            {
+                var options = new GetMailTipsOptions(new MailAddress(sender, true), recipients, MailTipsType.All);
+
+                foreach (var tip in client.GetMailTips(options))
                 {
-                    Console.WriteLine("The recipient address is invalid: " + tip.RecipientAddress);
+                    Console.WriteLine(tip.RecipientAddress);
+                    Console.WriteLine($"  invalid recipient:  {tip.InvalidRecipient}");
+                    Console.WriteLine($"  mailbox full:       {tip.MailboxFull}");
+                    Console.WriteLine($"  max message size:   {tip.MaxMsgSize} bytes");
+                    if (tip.OutOfOffice?.ReplyBody != null)
+                        Console.WriteLine($"  out of office:      {tip.OutOfOffice.ReplyBody.Message}");
                 }
             }
         }

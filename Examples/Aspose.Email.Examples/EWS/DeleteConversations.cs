@@ -1,33 +1,43 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates deleting a whole conversation in one call.
+//
+// DeleteConversationItems removes every message of a conversation - only those in the
+// context folder, when one is given - like "Delete conversation" in Outlook.
+// The example deletes a conversation it created in a uniquely named folder and deletes
+// the folder at the end.
+
+using System;
+using System.Linq;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class DeleteConversations
+    internal static class DeleteConversations
     {
         public static void Run()
         {
-            const string mailboxUri = "https://exchange/ews/exchange.asmx";
-            const string domain = @"";
-            const string username = @"username@ASE305.onmicrosoft.com";
-            const string password = @"password";
-            NetworkCredential credentials = new NetworkCredential(username, password, domain);
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
-            Console.WriteLine("Connected to Exchange 2010");
-            
-            // Find those Conversation Items in the Inbox folder which we want to delete
-            ExchangeConversation[] conversations = client.FindConversations(client.MailboxInfo.InboxUri);
-            foreach (ExchangeConversation conversation in conversations)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Console.WriteLine("Topic: " + conversation.ConversationTopic);
-                // Delete the conversation item based on some condition
-                if (conversation.ConversationTopic.Contains("test email") == true)
+                var folder = client.CreateFolder(client.MailboxInfo.InboxUri, folderName);
+
+                try
                 {
-                    client.DeleteConversationItems(conversation.ConversationId);
-                    Console.WriteLine("Deleted the conversation item");
+                    client.AppendMessages(folder.Uri,
+                        new MailMessage("alice@example.com", "bob@example.com", "Old thread", "Body"),
+                        new MailMessage("carol@example.com", "bob@example.com", "Keep this", "Body"));
+
+                    Console.WriteLine($"Before: {client.ListMessages(folder.Uri).Count} message(s)");
+
+                    var conversation = client.FindConversations(folder.Uri)
+                        .First(c => c.ConversationTopic == "Old thread");
+                    client.DeleteConversationItems(conversation.ConversationId, folder.Uri);
+                    Console.WriteLine($"Deleted the conversation '{conversation.ConversationTopic}'.");
+
+                    Console.WriteLine($"After:  {client.ListMessages(folder.Uri).Count} message(s)");
+                }
+                finally
+                {
+                    client.DeleteFolder(folder.Uri, true);
                 }
             }
         }

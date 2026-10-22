@@ -1,40 +1,43 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Mime;
+// Demonstrates reading a user configuration (settings stored in the mailbox).
+//
+// GetUserConfiguration takes the configuration's name and folder and returns it with its
+// key/value pairs. The example first creates a configuration on a uniquely named folder,
+// reads it back, and deletes the folder at the end.
+
+using System;
 using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class ReadUserConfiguration
+    internal static class ReadUserConfiguration
     {
         public static void Run()
         {
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            IEWSClient client = GetExchangeEWSClient();
-            Console.WriteLine("Connected to Exchange 2010");
-
-            // Get the User Configuration for Inbox folder
-            UserConfigurationName userConfigName = new UserConfigurationName("inbox.config", client.MailboxInfo.InboxUri);
-            UserConfiguration userConfig = client.GetUserConfiguration(userConfigName);
-
-            Console.WriteLine("Configuration Id: " + userConfig.Id);
-            Console.WriteLine("Configuration Name: " + userConfig.UserConfigurationName.Name);
-            Console.WriteLine("Key value pairs:");
-            foreach (string key in userConfig.Dictionary.Keys)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Console.WriteLine(key + ": " + userConfig.Dictionary[key].ToString());
-            }
-        }
+                var folder = client.CreateFolder(client.MailboxInfo.InboxUri, folderName);
+                var name = new UserConfigurationName("Aspose.Example.Settings", folder.Uri);
 
-        private static IEWSClient GetExchangeEWSClient()
-        {
-            const string mailboxUri = "https://outlook.office365.com/ews/exchange.asmx";
-            const string domain = @"";
-            const string username = @"username@ASE305.onmicrosoft.com";
-            const string password = @"password";
-            NetworkCredential credentials = new NetworkCredential(username, password, domain);
-            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
-            return client;
+                try
+                {
+                    var created = new UserConfiguration(name);
+                    created.Dictionary.Add("theme", "dark");
+                    created.Dictionary.Add("pageSize", "50");
+                    client.CreateUserConfiguration(created);
+
+                    var configuration = client.GetUserConfiguration(name);
+                    Console.WriteLine($"Configuration '{configuration.UserConfigurationName.Name}' " +
+                                      $"(id {configuration.Id}):");
+                    foreach (var key in configuration.Dictionary.Keys)
+                        Console.WriteLine($"  {key} = {configuration.Dictionary[key]}");
+                }
+                finally
+                {
+                    client.DeleteFolder(folder.Uri, true);
+                }
+            }
         }
     }
 }

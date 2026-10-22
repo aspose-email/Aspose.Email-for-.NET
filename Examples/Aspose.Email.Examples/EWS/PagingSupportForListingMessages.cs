@@ -1,69 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Clients.Exchange;
+// Demonstrates listing a folder page by page with explicit page offsets.
+//
+// ListMessagesByPage(folder, itemsPerPage, pageOffset) returns the requested page with
+// TotalCount and LastPage; increase the offset until LastPage is true. The example
+// appends 12 messages to a uniquely named folder, reads them five at a time, and
+// deletes the folder at the end.
+
+using System;
+using System.Linq;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class PagingSupportForListingMessages
+    internal static class PagingSupportForListingMessages
     {
-        static void Run()
-        {            
-            ///<summary>
-            /// This example shows how to list messages from Exchange Server with Paging support
-            /// Introduced in Aspose.Email for .NET 6.4.0
-            /// ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage);
-            /// ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage, int offset);
-            /// ExchangeMessagePageInfo ListMessagesByPage(string folder, int itemsPerPage, int pageOffset, ExchangeListMessagesOptions options);
-            /// ExchangeMessagePageInfo ListMessagesByPage(string folder, PageInfo pageInfo);
-            /// ExchangeMessagePageInfo ListMessagesByPage(string folder, PageInfo pageInfo, ExchangeListMessagesOptions options);
-            ///</summary>
-            using (IEWSClient client = EWSClient.GetEWSClient("exchange.domain.com", "username", "password"))
+        public static void Run()
+        {
+            const int itemsPerPage = 5;
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
+                var folder = client.CreateFolder(client.MailboxInfo.InboxUri, folderName);
+
                 try
                 {
-                    // Create some test messages to be added to server for retrieval later
-                    int messagesNum = 12;
-                    int itemsPerPage = 5;
-                    MailMessage message = null;
-                    for (int i = 0; i < messagesNum; i++)
+                    var messages = Enumerable.Range(1, 12)
+                        .Select(i => new MailMessage("sender@example.com", "receiver@example.com",
+                            $"Message {i:D2}", "Body"));
+                    client.AppendMessages(folder.Uri, messages);
+
+                    var page = client.ListMessagesByPage(folder.Uri, itemsPerPage);
+                    Console.WriteLine($"{page.TotalCount} message(s), {itemsPerPage} per page.");
+
+                    var retrieved = 0;
+                    while (true)
                     {
-                        message = new MailMessage(
-                            "from@domain.com",
-                            "to@domain.com",
-                            "EMAILNET-35157_1 - " + Guid.NewGuid().ToString(),
-                            "EMAILNET-35157 Move paging parameters to separate class");
-                        client.AppendMessage(client.MailboxInfo.InboxUri, message);
+                        var subjects = string.Join(", ", page.Items.Select(i => i.Subject));
+                        Console.WriteLine($"Page {page.PageOffset}: {subjects}");
+                        retrieved += page.Items.Count;
+
+                        if (page.LastPage)
+                            break;
+
+                        page = client.ListMessagesByPage(folder.Uri, itemsPerPage, page.PageOffset + 1);
                     }
-                    // Verfiy that the messages have been added to the server
-                    ExchangeMessageInfoCollection totalMessageInfoCol = client.ListMessages(client.MailboxInfo.InboxUri);
-                    Console.WriteLine(totalMessageInfoCol.Count);
 
-                    ////////////////// RETREIVING THE MESSAGES USING PAGING SUPPORT ////////////////////////////////////
-
-                    List<ExchangeMessagePageInfo> pages = new List<ExchangeMessagePageInfo>();
-                    ExchangeMessagePageInfo pageInfo = client.ListMessagesByPage(client.MailboxInfo.InboxUri, itemsPerPage);
-                    // Total Pages Count
-                    Console.WriteLine(pageInfo.TotalCount);
-
-                    pages.Add(pageInfo);
-                    while (!pageInfo.LastPage)
-                    {
-                        pageInfo = client.ListMessagesByPage(client.MailboxInfo.InboxUri, itemsPerPage, pageInfo.PageOffset + 1);
-                        pages.Add(pageInfo);
-                    }
-                    int retrievedItems = 0;
-                    foreach (ExchangeMessagePageInfo pageCol in pages)
-                        retrievedItems += pageCol.Items.Count;
-                    // Verify total message count using paging
-                    Console.WriteLine(retrievedItems);
+                    Console.WriteLine($"Retrieved {retrieved} message(s).");
                 }
                 finally
                 {
+                    client.DeleteFolder(folder.Uri, true);
                 }
-            }            
-        
+            }
         }
     }
 }

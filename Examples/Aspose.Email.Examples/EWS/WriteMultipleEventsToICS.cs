@@ -1,26 +1,39 @@
-﻿using Aspose.Email.Calendar;
+// Demonstrates writing several events into one iCalendar (.ics) file.
+//
+// CalendarWriter appends appointments to a single .ics file one by one, so a long
+// list - for example everything read from an Exchange calendar - can be exported
+// without holding it all in memory. The file imports into Outlook, Google Calendar and
+// other calendar programs. This example runs offline.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Calendar;
+
 namespace Aspose.Email.Examples.EWS
 {
-    public class WriteMultipleEventsToICS
+    internal static class WriteMultipleEventsToICS
     {
         public static void Run()
         {
-            AppointmentIcsSaveOptions saveOptions = new AppointmentIcsSaveOptions();
-            saveOptions.Action = AppointmentAction.Create;
-            using (CalendarWriter writer = new CalendarWriter(Data.Email + "WriteMultipleEventsToICS_out.ics", saveOptions))
+            var outputPath = Data.Out/"WriteMultipleEventsToICS_out.ics";
+            var saveOptions = new AppointmentIcsSaveOptions { Action = AppointmentAction.Create };
+            var start = DateTime.Today.AddDays(1).AddHours(9);
+
+            using (var writer = new CalendarWriter(outputPath, saveOptions))
             {
-                for (int i = 0; i < 10; i++)
+                for (var i = 0; i < 5; i++)
                 {
-                    Appointment app = new Appointment(string.Empty, DateTime.Now, DateTime.Now, "sender@domain.com", "receiver@domain.com");
-                    app.Description = "Test body " + i;
-                    app.Summary = "Test summary:" + i;
-                    writer.Write(app);
+                    var appointment = new Appointment("Room 101", start.AddDays(i), start.AddDays(i).AddMinutes(30),
+                        "organizer@example.com", "attendee@example.com")
+                    {
+                        Summary = $"Daily stand-up {i + 1}",
+                        Description = "Fifteen minutes, standing."
+                    };
+
+                    writer.Write(appointment);
                 }
             }
+
+            Console.WriteLine($"Wrote 5 events to {outputPath}");
         }
     }
 }

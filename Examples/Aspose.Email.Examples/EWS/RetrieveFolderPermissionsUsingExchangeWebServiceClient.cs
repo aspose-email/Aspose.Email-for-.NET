@@ -1,56 +1,46 @@
-﻿using System;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
+// Demonstrates reading who has access to a folder, and how much.
+//
+// GetFolderPermissions returns one entry per user (plus the Default and Anonymous
+// entries) with the permission level and the individual rights - read, create, edit,
+// delete, folder owner. This is the "Permissions" tab of a folder in Outlook. The
+// example reads the permissions of the Calendar and Contacts folders.
+
+using System;
 using Aspose.Email.Clients.Exchange;
+using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class RetrieveFolderPermissionsUsingExchangeWebServiceClient
+    internal static class RetrieveFolderPermissionsUsingExchangeWebServiceClient
     {
         public static void Run()
         {
-            string folderName = "DesiredFolderName";
-
-            // Create instance of EWSClient class by giving credentials
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
-
-            ExchangeFolderInfoCollection folders = client.ListPublicFolders();
-            ExchangeFolderPermissionCollection permissions = new ExchangeFolderPermissionCollection();
-
-            ExchangeFolderInfo publicFolder = null;
-            try
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                foreach (ExchangeFolderInfo folderInfo in folders)
-                    if (folderInfo.DisplayName.Equals(folderName))
-                        publicFolder = folderInfo;
-
-                if (publicFolder == null)
-                    Console.WriteLine("public folder was not created in the root public folder");
-
-                ExchangePermissionCollection folderPermissionCol = client.GetFolderPermissions(publicFolder.Uri);
-                foreach (ExchangeBasePermission perm in folderPermissionCol)
-                {
-                    ExchangeFolderPermission permission = perm as ExchangeFolderPermission;
-                    if (permission == null)
-                        Console.WriteLine("Permission is null.");
-                    else
-                    {
-                        Console.WriteLine("User's primary smtp address: {0}", permission.UserInfo.PrimarySmtpAddress);
-                        Console.WriteLine("User can create Items: {0}", permission.CanCreateItems.ToString());
-                        Console.WriteLine("User can delete Items: {0}", permission.DeleteItems.ToString());
-                        Console.WriteLine("Is Folder Visible: {0}", permission.IsFolderVisible.ToString());
-                        Console.WriteLine("Is User owner of this folder: {0}", permission.IsFolderOwner.ToString());
-                        Console.WriteLine("User can read items: {0}", permission.ReadItems.ToString());
-                    }
-                }
-                ExchangeMailboxInfo mailboxInfo = client.GetMailboxInfo();
-                //Get the Permissions for the Contacts and Calendar Folder
-                ExchangePermissionCollection contactsPermissionCol = client.GetFolderPermissions(mailboxInfo.ContactsUri);
-                ExchangePermissionCollection calendarPermissionCol = client.GetFolderPermissions(mailboxInfo.CalendarUri);
+                Print(client, "Calendar", client.MailboxInfo.CalendarUri);
+                Print(client, "Contacts", client.MailboxInfo.ContactsUri);
             }
-            finally
+        }
+
+        private static void Print(IEWSClient client, string name, string folderUri)
+        {
+            Console.WriteLine($"{name}:");
+
+            foreach (var entry in client.GetFolderPermissions(folderUri))
             {
-                //Do the needfull
+                var user = entry.UserInfo?.PrimarySmtpAddress ?? entry.UserInfo?.DisplayName ?? "(default)";
+                var permission = entry as ExchangeFolderPermission;
+
+                if (permission == null)
+                {
+                    Console.WriteLine($"  {user}: {entry.GetType().Name}");
+                    continue;
+                }
+
+                Console.WriteLine($"  {user}: {permission.PermissionLevel}");
+                Console.WriteLine($"    read: {permission.ReadItems}, create: {permission.CanCreateItems}, " +
+                                  $"delete: {permission.DeleteItems}, owner: {permission.IsFolderOwner}, " +
+                                  $"visible: {permission.IsFolderVisible}");
             }
         }
     }

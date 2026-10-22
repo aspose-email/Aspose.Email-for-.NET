@@ -1,45 +1,47 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Mime;
+// Demonstrates changing a user configuration (settings stored in the mailbox).
+//
+// Read the configuration, change its Dictionary and pass it to UpdateUserConfiguration;
+// the stored settings are replaced with the new ones. The example creates a
+// configuration on a uniquely named folder, updates it and deletes the folder at the
+// end.
+
+using System;
 using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class UpdateUserConfiguration
+    internal static class UpdateUserConfiguration
     {
         public static void Run()
         {
-            try
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
+                var folder = client.CreateFolder(client.MailboxInfo.InboxUri, folderName);
+                var name = new UserConfigurationName("Aspose.Example.Settings", folder.Uri);
 
-                IEWSClient client = GetExchangeEWSClient();
-                Console.WriteLine("Connected to Exchange 2010");
+                try
+                {
+                    var created = new UserConfiguration(name);
+                    created.Dictionary.Add("theme", "dark");
+                    client.CreateUserConfiguration(created);
 
-                // Create the User Configuration for Inbox folder
-                UserConfigurationName userConfigName = new UserConfigurationName("inbox.config", client.MailboxInfo.InboxUri);
-                UserConfiguration userConfig = client.GetUserConfiguration(userConfigName);
-                userConfig.Id = null;
+                    var configuration = client.GetUserConfiguration(name);
+                    configuration.Dictionary["theme"] = "light";
+                    configuration.Dictionary["language"] = "en";
+                    client.UpdateUserConfiguration(configuration);
 
-                // Update User Configuration
-                userConfig.Dictionary["key1"] = "new-value1";
-                client.UpdateUserConfiguration(userConfig);
+                    var updated = client.GetUserConfiguration(name);
+                    Console.WriteLine("Settings after the update:");
+                    foreach (var key in updated.Dictionary.Keys)
+                        Console.WriteLine($"  {key} = {updated.Dictionary[key]}");
+                }
+                finally
+                {
+                    client.DeleteFolder(folder.Uri, true);
+                }
             }
-            catch (Exception ex)
-            {
-
-                Console.Write(ex.Message);
-            }
-        }
-
-        private static IEWSClient GetExchangeEWSClient()
-        {
-            const string mailboxUri = "https://outlook.office365.com/ews/exchange.asmx";
-            const string domain = @"";
-            const string username = @"username@ASE305.onmicrosoft.com";
-            const string password = @"password";
-            NetworkCredential credentials = new NetworkCredential(username, password, domain);
-            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
-            return client;
         }
     }
 }

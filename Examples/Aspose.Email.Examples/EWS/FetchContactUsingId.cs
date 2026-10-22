@@ -1,30 +1,33 @@
-﻿using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
-using Aspose.Email.PersonalInfo;
+// Demonstrates fetching a single contact by its id.
+//
+// Every Contact carries its Exchange id in Id.EWSId. Keep that id - in your own database,
+// for example - and GetContact fetches the current version of the contact later without
+// listing the folder again.
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class FetchContactUsingId
+    internal static class FetchContactUsingId
     {
         public static void Run()
         {
-            try
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Create instance of IEWSClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://exchange.aspose.com/ews/exchange.asmx", "asposeemail.test3", "Aspose2016", "");
-                string id = client.GetContacts(client.MailboxInfo.ContactsUri)[0].Id.EWSId;
+                var first = client.GetContacts(client.MailboxInfo.ContactsUri).FirstOrDefault();
+                if (first == null)
+                {
+                    Console.WriteLine("The Contacts folder is empty.");
+                    return;
+                }
 
-                Contact fetchedContact = client.GetContact(id);
+                var id = first.Id.EWSId;
+                Console.WriteLine($"Stored id: {id}");
 
-                Console.WriteLine("Name: " + fetchedContact.DisplayName);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                var contact = client.GetContact(id);
+                Console.WriteLine($"Fetched:   {contact.DisplayName}, {contact.CompanyName}, " +
+                                  $"{contact.EmailAddresses.FirstOrDefault()?.Address}");
             }
         }
     }

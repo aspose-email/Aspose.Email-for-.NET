@@ -1,57 +1,42 @@
-﻿using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mapi;
+// Demonstrates storing your own data on a message as an extended (named) MAPI property.
+//
+// A PidNamePropertyDescriptor defines a custom property by name, type and property set.
+// Set it on a MapiMessage, upload the message, and request the same descriptor when
+// fetching to get the value back - Exchange only returns custom properties you ask for.
+// The example works in a uniquely named folder and deletes it at the end.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
+using Aspose.Email.Mapi;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class WorkingWithExtendedAttributesOfMessages
+    internal static class WorkingWithExtendedAttributesOfMessages
     {
         public static void Run()
         {
-            // Set Exchange Server web service URL, Username, password, domain information
-            string mailboxURI = "https://ex2010/ews/exchange.asmx";
-            string username = "test.exchange";
-            string password = "pwd";
-            string domain = "ex2010.local";
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            var property = new PidNamePropertyDescriptor("OrderNumber", PropertyDataType.String,
+                KnownPropertySets.PublicStrings);
 
-            // Connect to the Exchange Server
-            NetworkCredential credential = new NetworkCredential(username, password, domain);
-            IEWSClient client = EWSClient.GetEWSClient(mailboxURI, credential);
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
+                var folder = client.CreateFolder(client.MailboxInfo.InboxUri, folderName);
+
                 try
                 {
-                    //Create a new Property
-                    PidNamePropertyDescriptor pd = new PidNamePropertyDescriptor(
-                        "MyTestProp",
-                        PropertyDataType.String,
-                        KnownPropertySets.PublicStrings);
-                    string value = "MyTestPropValue";
+                    var message = new MapiMessage("sender@example.com", "receiver@example.com",
+                        "Order confirmation", "Body");
+                    message.SetProperty(property, "A-1001");
 
-                    //Create a message
-                    MapiMessage message = new MapiMessage(
-                        "from@domain.com",
-                        "to@domain.com",
-                        "EMAILNET-38844 - " + Guid.NewGuid().ToString(),
-                        "EMAILNET-38844 EWS: Support for create, retrieve and update Extended Attributes for Emails");
+                    var uri = client.AppendMessage(folder.Uri, message, true);
 
-                    //Set property on the message
-                    message.SetProperty(pd, value);
-
-                    //append the message to server
-                    string uri = client.AppendMessage(message);
-
-                    //Fetch the message from server
-                    MapiMessage mapiMessage = client.FetchItem(uri, new PropertyDescriptor[] { pd });
-
-                    //Retreive the value from Message
-                    string fetchedValue = mapiMessage.NamedProperties[pd].GetString();
+                    var fetched = client.FetchItem(uri, new PropertyDescriptor[] { property });
+                    var orderNumber = fetched.NamedProperties[property].GetString();
+                    Console.WriteLine($"'{fetched.Subject}' carries OrderNumber = {orderNumber}");
                 }
                 finally
                 {
+                    client.DeleteFolder(folder.Uri, true);
                 }
             }
         }

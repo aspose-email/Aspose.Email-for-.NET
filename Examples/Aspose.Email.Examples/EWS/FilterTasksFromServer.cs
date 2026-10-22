@@ -1,67 +1,49 @@
-﻿using Aspose.Email.Clients.Exchange;
+// Demonstrates the ways to filter tasks by status.
+//
+// ExchangeQueryBuilder.TaskStatus supports Equals, NotEquals, In and NotIn, so tasks can
+// be selected by one status, all but one, or any of several. The example counts the
+// tasks of the Tasks folder for each kind of condition.
+
+using System;
+using Aspose.Email.Clients.Exchange;
 using Aspose.Email.Clients.Exchange.WebService;
 using Aspose.Email.Tools.Search;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class FilterTasksFromServer
+    internal static class FilterTasksFromServer
     {
         public static void Run()
         {
-            // Set mailboxURI, Username, password, domain information
-            string mailboxUri = "https://ex2010/ews/exchange.asmx";
-            string username = "test.exchange";
-            string password = "pwd";
-            string domain = "ex2010.local";
-            NetworkCredential credentials = new NetworkCredential(username, password, domain);
-            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
+            var openStatuses = new[] { ExchangeTaskStatus.NotStarted, ExchangeTaskStatus.InProgress };
 
-            ExchangeQueryBuilder queryBuilder = null;
-            MailQuery query = null;
-            ExchangeTask fetchedTask = null;
-            ExchangeMessageInfoCollection messageInfoCol = null;
-            client.TimezoneId = "Central Europe Standard Time";
-            Array values = Enum.GetValues(typeof(ExchangeTaskStatus));
-
-            //Now retrieve the tasks with specific statuses
-            foreach (ExchangeTaskStatus status in values)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                queryBuilder = new ExchangeQueryBuilder();
-                queryBuilder.TaskStatus.Equals(status);
-                query = queryBuilder.GetQuery();
-                messageInfoCol = client.ListMessages(client.MailboxInfo.TasksUri, query);
-                fetchedTask = client.FetchTask(messageInfoCol[0].UniqueUri);
+                foreach (ExchangeTaskStatus status in Enum.GetValues(typeof(ExchangeTaskStatus)))
+                {
+                    var builder = new ExchangeQueryBuilder();
+                    builder.TaskStatus.Equals(status);
+                    Count(client, $"Status is {status}", builder.GetQuery());
+                }
+
+                var notCompleted = new ExchangeQueryBuilder();
+                notCompleted.TaskStatus.NotEquals(ExchangeTaskStatus.Completed);
+                Count(client, "Status is not Completed", notCompleted.GetQuery());
+
+                var open = new ExchangeQueryBuilder();
+                open.TaskStatus.In(openStatuses);
+                Count(client, "Not started or in progress", open.GetQuery());
+
+                var closed = new ExchangeQueryBuilder();
+                closed.TaskStatus.NotIn(openStatuses);
+                Count(client, "Neither not started nor in progress", closed.GetQuery());
             }
+        }
 
-            //retrieve all other than specified
-            foreach (ExchangeTaskStatus status in values)
-            {
-                queryBuilder = new ExchangeQueryBuilder();
-                queryBuilder.TaskStatus.NotEquals(status);
-                query = queryBuilder.GetQuery();
-                messageInfoCol = client.ListMessages(client.MailboxInfo.TasksUri, query);
-            }
-
-            //specifying multiple criterion
-            ExchangeTaskStatus[] selectedStatuses = new ExchangeTaskStatus[]
-                    {
-            ExchangeTaskStatus.Completed,
-            ExchangeTaskStatus.InProgress
-                    };
-            queryBuilder = new ExchangeQueryBuilder();
-            queryBuilder.TaskStatus.In(selectedStatuses);
-            query = queryBuilder.GetQuery();
-            messageInfoCol = client.ListMessages(client.MailboxInfo.TasksUri, query);
-
-            queryBuilder = new ExchangeQueryBuilder();
-            queryBuilder.TaskStatus.NotIn(selectedStatuses);
-            query = queryBuilder.GetQuery();
-            messageInfoCol = client.ListMessages(client.MailboxInfo.TasksUri, query);
+        private static void Count(IEWSClient client, string description, MailQuery query)
+        {
+            var tasks = client.ListTasks(client.MailboxInfo.TasksUri, query);
+            Console.WriteLine($"{description,-38} {tasks.Count} task(s)");
         }
     }
 }

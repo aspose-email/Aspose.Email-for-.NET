@@ -1,51 +1,71 @@
-﻿using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
-using Aspose.Email.PersonalInfo;
+// Demonstrates creating a contact with phone numbers, related people, web sites and an
+// e-mail address.
+//
+// Contact is the vCard-style contact model; CreateContact stores it in a contacts folder
+// and returns its id. The example creates the contact in a uniquely named contacts
+// folder, reads it back and deletes the folder at the end.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
+using Aspose.Email.Clients.Exchange;
+using Aspose.Email.PersonalInfo;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class AddContactsToExchangeServerUsingEWS
+    internal static class AddContactsToExchangeServerUsingEWS
     {
         public static void Run()
         {
-            var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission);
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            //Create New Contact
-            var contact = new Contact()
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Gender = Gender.Male,
-                DisplayName = "Frank Lin",
-                CompanyName = "ABC Co.",
-                JobTitle = "Executive Manager"
-            };
+                var folder = client.CreateFolder(client.MailboxInfo.ContactsUri, folderName, ExchangeFolderType.Contact);
 
-            //Add Phone numbers
-            contact.PhoneNumbers.Add(new PhoneNumber { Number = "123456789", Category = PhoneNumberCategory.Home });
+                try
+                {
+                    var contact = new Contact
+                    {
+                        Gender = Gender.Male,
+                        DisplayName = "Frank Lin",
+                        CompanyName = "ABC Co.",
+                        JobTitle = "Executive Manager"
+                    };
+                    contact.PhoneNumbers.Add(new PhoneNumber
+                    {
+                        Number = "+1 555 0100",
+                        Category = PhoneNumberCategory.Home
+                    });
+                    contact.AssociatedPersons.Add(new AssociatedPerson
+                    {
+                        Name = "Catherine",
+                        Category = AssociatedPersonCategory.Spouse
+                    });
+                    contact.Urls.Add(new Url
+                    {
+                        Href = "https://www.example.com/frank",
+                        Category = UrlCategory.HomePage
+                    });
+                    contact.EmailAddresses.Add(new EmailAddress
+                    {
+                        Address = "frank.lin@example.com",
+                        DisplayName = "Frank Lin",
+                        Category = EmailAddressCategory.Email1
+                    });
 
-            //contact's associated persons
-            contact.AssociatedPersons.Add(new AssociatedPerson { Name = "Catherine", Category = AssociatedPersonCategory.Spouse });
-            contact.AssociatedPersons.Add(new AssociatedPerson { Name = "Bob", Category = AssociatedPersonCategory.Child });
-            contact.AssociatedPersons.Add(new AssociatedPerson { Name = "Merry", Category = AssociatedPersonCategory.Sister });
+                    client.CreateContact(folder.Uri, contact);
 
-            //URLs
-            contact.Urls.Add(new Url { Href = "www.blog.com", Category = UrlCategory.Blog });
-            contact.Urls.Add(new Url { Href = "www.homepage.com", Category = UrlCategory.HomePage });
-
-            //Set contact's Email address
-            contact.EmailAddresses.Add(new EmailAddress { Address = "Frank.Lin@Abc.com", DisplayName = "Frank Lin", Category = EmailAddressCategory.Email1 });
-
-            try
-            {
-                client.CreateContact(contact);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                    foreach (var stored in client.GetContacts(folder.Uri))
+                    {
+                        Console.WriteLine($"Created {stored.DisplayName}, {stored.JobTitle} at {stored.CompanyName}");
+                        Console.WriteLine($"  phones: {stored.PhoneNumbers.Count}, " +
+                                          $"e-mails: {stored.EmailAddresses.Count}, " +
+                                          $"web sites: {stored.Urls.Count}");
+                    }
+                }
+                finally
+                {
+                    client.DeleteFolder(folder.Uri, true);
+                }
             }
         }
     }

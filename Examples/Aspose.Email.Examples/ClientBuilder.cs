@@ -116,6 +116,10 @@ namespace Aspose.Email.Examples
             }
         }
 
+        // The mailbox the EWS examples work on, as an e-mail address. Examples that send
+        // mail use it as both sender and recipient, so test messages stay in that mailbox.
+        public static string EwsUserName => ClientSettings.GetSection("Ews")["UserName"];
+
         // IEWSClient and IAsyncEwsClient are separate interfaces, so the task-based
         // client is created on its own, from the same "Ews" settings as Ews().
         public static Task<IAsyncEwsClient> EwsAsync(AuthType authType)

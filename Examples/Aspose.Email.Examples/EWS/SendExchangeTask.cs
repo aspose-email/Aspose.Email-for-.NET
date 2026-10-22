@@ -1,44 +1,45 @@
-﻿using System;
-using System.Text;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates sending a task created in code.
+//
+// An ExchangeTask can be saved as an Outlook .msg; loading that with
+// MsgLoadOptions.PreserveTnefAttachments gives a MailMessage that carries the task, ready
+// to send. The task goes to the configured mailbox itself, where Outlook shows it as a
+// task.
 
+using System;
+using System.IO;
+using Aspose.Email.Calendar;
+using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class SendExchangeTask
+    internal static class SendExchangeTask
     {
         public static void Run()
         {
+            var self = ClientBuilder.EwsUserName;
 
-            try
+            var task = new ExchangeTask
             {
+                Subject = "Review the contract",
+                Status = ExchangeTaskStatus.NotStarted,
+                StartDate = DateTime.Today,
+                DueDate = DateTime.Today.AddDays(2),
+                Body = "Please review the attached contract by Friday."
+            };
 
-                // The path to the File directory.
-
-                string dstEmail = Data.Out + "Message.eml";
-
-                // Create instance of ExchangeClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
-
-                // load task from .eml file
-                EmlLoadOptions loadOptions = new EmlLoadOptions();
-
-                loadOptions.PreferredTextEncoding = Encoding.UTF8;
-                loadOptions.PreserveTnefAttachments = true;
-
-                // load task from .msg file
-                MailMessage eml = MailMessage.Load(dstEmail, loadOptions);
-                eml.From = "firstname.lastname@domain.com";
-                eml.To.Clear();
-                eml.To.Add(new MailAddress("firstname.lastname@domain.com"));
-                client.Send(eml);
-                Console.WriteLine(Environment.NewLine + "Task sent on Exchange Server successfully.");
-            }
-            catch (Exception ex)
+            using (var stream = new MemoryStream())
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
+                task.Save(stream, new TaskMsgSaveOptions());
+                stream.Position = 0;
 
-                Console.Write(ex.Message);
+                var message = MailMessage.Load(stream, new MsgLoadOptions { PreserveTnefAttachments = true });
+                message.From = self;
+                message.To.Clear();
+                message.To.Add(self);
+
+                client.Send(message);
+                Console.WriteLine($"Sent the task '{task.Subject}' to {self}.");
             }
         }
     }

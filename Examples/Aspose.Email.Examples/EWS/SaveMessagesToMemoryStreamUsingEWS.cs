@@ -1,37 +1,31 @@
-﻿using System;
+// Demonstrates downloading messages into memory instead of files.
+//
+// The SaveMessage overload that takes a Stream writes the MIME content there - handy for
+// storing messages in a database, uploading them elsewhere or computing a hash, without
+// touching the disk. MailMessage.Load parses the stream when needed.
+
+using System;
 using System.IO;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class SaveMessagesToMemoryStreamUsingEWS
+    internal static class SaveMessagesToMemoryStreamUsingEWS
     {
         public static void Run()
         {
-
-            try
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Create instance of EWSClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
-
-                // Call ListMessages method to list messages info from Inbox
-                ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
-
-                // Loop through the collection to get Message URI
-                foreach (ExchangeMessageInfo msgInfo in msgCollection)
+                foreach (var info in client.ListMessages(client.MailboxInfo.InboxUri, 5))
                 {
-                    string strMessageURI = msgInfo.UniqueUri;
+                    using (var stream = new MemoryStream())
+                    {
+                        client.SaveMessage(info.UniqueUri, stream);
 
-                    // Now save the message in memory stream
-                    MemoryStream stream = new MemoryStream();
-                    client.SaveMessage(strMessageURI, stream);
+                        stream.Position = 0;
+                        var message = MailMessage.Load(stream);
+                        Console.WriteLine($"{stream.Length,10:N0} bytes  {message.Subject}");
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-
-                Console.Write(ex.Message);
             }
         }
     }

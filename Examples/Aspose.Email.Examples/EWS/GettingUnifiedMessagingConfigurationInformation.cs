@@ -1,30 +1,25 @@
-﻿using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates reading the Unified Messaging (voice mail) settings of a mailbox.
+//
+// GetUMConfiguration tells whether Unified Messaging is enabled and whether "Play on
+// Phone" can read messages out over a phone call. Unified Messaging was removed in
+// Exchange Server 2019 and Exchange Online, where it reports as disabled; the call is
+// meaningful for Exchange 2010 to 2016.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class GettingUnifiedMessagingConfigurationInformation
+    internal static class GettingUnifiedMessagingConfigurationInformation
     {
         public static void Run()
         {
-            const string mailboxUri = "https://exchange.domain.com/ews/Exchange.asmx";
-            const string domain = @"";
-            const string username = @"username";
-            const string password = @"password";
-            NetworkCredential credential = new NetworkCredential(username, password, domain);
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
+            {
+                var configuration = client.GetUMConfiguration();
 
-            try
-            {
-                IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credential);
-                UnifiedMessagingConfiguration umConf = client.GetUMConfiguration();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"Unified Messaging enabled: {configuration.UMEnabled}");
+                Console.WriteLine($"Play on Phone enabled:     {configuration.PlayOnPhoneEnabled}");
+                Console.WriteLine($"Play on Phone dial string: {configuration.PlayOnPhoneDialString}");
             }
         }
     }

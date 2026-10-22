@@ -1,33 +1,49 @@
-﻿using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mapi;
+// Demonstrates reading custom (named) MAPI properties of calendar items.
+//
+// FetchMapiCalendar returns calendar items as MapiCalendar objects; extended properties
+// are included only when their descriptors are passed in. The example creates an
+// appointment carrying a custom property in a uniquely named calendar folder, reads the
+// property back and deletes the folder at the end.
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Aspose.Email.Clients.Exchange;
+using Aspose.Email.Mapi;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class RetreiveExtAttributesForCalendarItems
+    internal static class RetreiveExtAttributesForCalendarItems
     {
         public static void Run()
         {
-            IEWSClient client = EWSClient.GetEWSClient("https://exchange.office365.com/Exchange.asmx", "username","password");
-            
-            //Fetch all calendars from Exchange calendar's folder
-            string[] uriList = client.ListItems(client.MailboxInfo.CalendarUri);
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
+            var property = new PidNamePropertyDescriptor("ProjectCode", PropertyDataType.String,
+                KnownPropertySets.PublicStrings);
 
-            //Define the Extended Attribute Property Descriptor for searching purpose
-            //In this case, we have a K1 Long named property for Calendar item
-            PropertyDescriptor propertyDescriptor = new PidNamePropertyDescriptor("K1", PropertyDataType.Integer32, new Guid("00020329-0000-0000-C000-000000000046"));
-
-            //Fetch calendars that have the custom property
-            IList<MapiCalendar> mapiCalendarList = client.FetchMapiCalendar(uriList, new PropertyDescriptor[] { propertyDescriptor });
-
-            foreach (MapiCalendar cal in mapiCalendarList)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                foreach (MapiNamedProperty namedProperty in cal.NamedProperties.Values)
+                var calendar = client.CreateFolder(client.MailboxInfo.CalendarUri, folderName,
+                    ExchangeFolderType.Appointment);
+
+                try
                 {
-                    Console.WriteLine(namedProperty.NameId + " = " + namedProperty.GetInt32());
+                    var start = DateTime.Today.AddDays(1).AddHours(14);
+                    var item = new MapiCalendar("Room 7", "Project review", "Quarterly review",
+                        start, start.AddHours(1));
+                    item.SetProperty(property, "PRJ-42");
+
+                    client.CreateAppointment(item, calendar.Uri, true);
+
+                    var uris = client.ListItems(calendar.Uri);
+                    foreach (var fetched in client.FetchMapiCalendar(uris, new PropertyDescriptor[] { property }))
+                    {
+                        var value = fetched.NamedProperties.Values.FirstOrDefault()?.GetString();
+                        Console.WriteLine($"{fetched.Subject}: ProjectCode = {value}");
+                    }
+                }
+                finally
+                {
+                    client.DeleteFolder(calendar.Uri, true);
                 }
             }
         }

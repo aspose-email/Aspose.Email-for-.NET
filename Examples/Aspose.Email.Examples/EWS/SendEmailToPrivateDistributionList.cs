@@ -1,37 +1,44 @@
-﻿using Aspose.Email.Clients.Exchange;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
+// Demonstrates sending a message to a private distribution list.
+//
+// ToMailAddress turns an ExchangeDistributionList into an address that can be put into
+// To, Cc or Bcc; Exchange expands it to the members when sending. The example creates a
+// uniquely named list whose only member is the configured mailbox, sends to it, and
+// deletes the list at the end.
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Text;
+using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class SendEmailToPrivateDistributionList
+    internal static class SendEmailToPrivateDistributionList
     {
         public static void Run()
         {
-            try
-            {
-                // Set mailboxURI, Username, password, domain information
-                string mailboxUri = "https://ex2010/ews/exchange.asmx";
-                string username = "test.exchange";
-                string password = "pwd";
-                string domain = "ex2010.local";
-                NetworkCredential credentials = new NetworkCredential(username, password, domain);
-                IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
+            var self = ClientBuilder.EwsUserName;
+            var listName = "Aspose list " + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-                ExchangeDistributionList[] distributionLists = client.ListDistributionLists();
-                MailAddress distributionListAddress = distributionLists[0].ToMailAddress();
-                MailMessage message = new MailMessage(new MailAddress("from@host.com"), distributionListAddress);
-                message.Subject = "sendToPrivateDistributionList";
-                client.Send(message);
-            }
-            catch (Exception ex)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Console.WriteLine(ex.Message);
+                client.CreateDistributionList(new ExchangeDistributionList { DisplayName = listName },
+                    new MailAddressCollection { self });
+                var list = client.ListDistributionLists().First(l => l.DisplayName == listName);
+
+                try
+                {
+                    var message = new MailMessage(new MailAddress(self), list.ToMailAddress())
+                    {
+                        Subject = "Message to a distribution list",
+                        Body = "Everyone on the list receives this."
+                    };
+
+                    client.Send(message);
+                    Console.WriteLine($"Sent to the list '{listName}'.");
+                }
+                finally
+                {
+                    client.DeleteDistributionList(list, true);
+                }
             }
         }
     }

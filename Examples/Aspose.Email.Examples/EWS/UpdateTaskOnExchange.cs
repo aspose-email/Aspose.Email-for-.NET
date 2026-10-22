@@ -1,51 +1,45 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates updating a task through its MAPI representation.
+//
+// The UpdateTask overload that takes a MapiTask writes Outlook task properties - such as
+// percent complete and status - that the ExchangeTask model does not cover, and returns
+// the task's URI. The example creates a task in a uniquely named tasks folder, marks it
+// half done, and deletes the folder at the end.
+
+using System;
 using Aspose.Email.Clients.Exchange;
+using Aspose.Email.Clients.Exchange.WebService;
+using Aspose.Email.Mapi;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class UpdateTaskOnExchange
+    internal static class UpdateTaskOnExchange
     {
         public static void Run()
         {
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            try
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
+                var folder = client.CreateFolder(client.MailboxInfo.TasksUri, folderName, ExchangeFolderType.Task);
 
-                // Create and initialize credentials
-                var credentials = new NetworkCredential("username", "12345");
-
-                // Create instance of ExchangeClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
-
-                // Get all tasks info collection from exchange
-                ExchangeMessageInfoCollection tasks = client.ListMessages(client.MailboxInfo.TasksUri);
-
-                // Parse all the tasks info in the list
-                foreach (ExchangeMessageInfo info in tasks)
+                try
                 {
-                    // Fetch task from exchange using current task info
-                    ExchangeTask task = client.FetchTask(info.UniqueUri);
+                    var uri = client.CreateTask(folder.Uri, new ExchangeTask { Subject = "Migrate the wiki" });
 
-                    // Update the task status to NotStarted
-                    task.Status = ExchangeTaskStatus.NotStarted;
+                    var task = (MapiTask)client.FetchItem(uri).ToMapiMessageItem();
+                    Console.WriteLine($"Before: {task.Status}, {task.PercentComplete}% done");
 
-                    // Set the task due date
-                    task.DueDate = new DateTime(2013, 2, 26);
+                    task.Status = MapiTaskStatus.InProgress;
+                    task.PercentComplete = 50;
+                    client.UpdateTask(uri, task);
 
-                    // Set task priority
-                    task.Priority = MailPriority.Low;
-
-                    // Update task on exchange
-                    client.UpdateTask(task);
+                    var updated = (MapiTask)client.FetchItem(uri).ToMapiMessageItem();
+                    Console.WriteLine($"After:  {updated.Status}, {updated.PercentComplete}% done");
                 }
-            }
-            catch (Exception ex)
-            {
-
-                Console.Write(ex.Message);
+                finally
+                {
+                    client.DeleteFolder(folder.Uri, true);
+                }
             }
         }
     }

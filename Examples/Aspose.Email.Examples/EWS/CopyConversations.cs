@@ -1,30 +1,49 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Mime;
+// Demonstrates copying a whole conversation to another folder in one call.
+//
+// CopyConversationItems copies every message of a conversation; the context folder
+// limits it to the messages in that folder. The originals stay where they are.
+// The example works in two uniquely named folders and deletes both at the end.
+
+using System;
+using System.Collections.Specialized;
+using System.Linq;
 using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class CopyConversations
+    internal static class CopyConversations
     {
         public static void Run()
-        {   
-            var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission);
+        {
+            var suffix = Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            // Find those Conversation Items in the Inbox folder which we want to copy
-            var conversations = client.FindConversations(client.MailboxInfo.InboxUri);
-            
-            foreach (var conversation in conversations)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Console.WriteLine("Topic: " + conversation.ConversationTopic);
+                var source = client.CreateFolder(client.MailboxInfo.InboxUri, "Aspose-Source-" + suffix);
+                var target = client.CreateFolder(client.MailboxInfo.InboxUri, "Aspose-Target-" + suffix);
 
-                // Copy the conversation item based on some condition
-                if (conversation.ConversationTopic.Contains("test email") == true)
+                try
                 {
-                    client.CopyConversationItems(conversation.ConversationId, client.MailboxInfo.DeletedItemsUri);
-                    Console.WriteLine("Copied the conversation item to another folder");
+                    client.AppendMessages(source.Uri,
+                        new MailMessage("alice@example.com", "bob@example.com", "Budget 2027", "Draft attached."));
+
+                    var conversation = client.FindConversations(source.Uri).First();
+                    client.CopyConversationItems(conversation.ConversationId, source.Uri, target.Uri);
+                    Console.WriteLine($"Copied the conversation '{conversation.ConversationTopic}'.");
+
+                    Report(client, source.DisplayName, source.Uri);
+                    Report(client, target.DisplayName, target.Uri);
+                }
+                finally
+                {
+                    client.DeleteFolders(new StringCollection { source.Uri, target.Uri }, true);
                 }
             }
+        }
+
+        private static void Report(IEWSClient client, string name, string folderUri)
+        {
+            Console.WriteLine($"  '{name}': {client.ListMessages(folderUri).Count} message(s)");
         }
     }
 }

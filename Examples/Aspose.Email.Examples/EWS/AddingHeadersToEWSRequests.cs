@@ -1,23 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Net;
-using System.Threading;
-using Aspose.Email.Mime;
-using Aspose.Email.Mapi;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Clients.Exchange;
+// Demonstrates adding an HTTP header to every EWS request.
+//
+// Exchange Online uses the X-AnchorMailbox header to route a request straight to the
+// server that holds the target mailbox. Microsoft recommends sending it when working
+// with another mailbox - impersonation, shared mailboxes - to avoid failed or slow
+// requests. Replace the address below with the mailbox you work with.
+
+using System;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class AddingHeadersToEWSRequests
+    internal static class AddingHeadersToEWSRequests
     {
         public static void Run()
         {
+            const string targetMailbox = "user@example.com";
+
             using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                client.AddHeader("X-AnchorMailbox", "username@domain.com");
-                var messageInfoCol = client.ListMessages(client.MailboxInfo.InboxUri);
+                client.AddHeader("X-AnchorMailbox", targetMailbox);
+
+                var messages = client.ListMessages(client.MailboxInfo.InboxUri, 5);
+                Console.WriteLine($"Listed {messages.Count} message(s) with X-AnchorMailbox: {targetMailbox}");
             }
         }
     }

@@ -1,32 +1,31 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates listing the conversations in a folder.
+//
+// FindConversations groups the messages of a folder the way Outlook's conversation view
+// does and returns one ExchangeConversation per thread: its topic, how many messages it
+// has and how many are unread, who took part, and its flag status. The ConversationId
+// is what the conversation-wide operations (copy, move, delete, mark read) take.
+
+using System;
+using System.Linq;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class FindConversationsOnExchangeServer
+    internal static class FindConversationsOnExchangeServer
     {
         public static void Run()
         {
-            const string mailboxUri = "https://exchange/ews/exchange.asmx";
-            const string domain = @"";
-            const string username = @"username@ASE305.onmicrosoft.com";
-            const string password = @"password";
-            NetworkCredential credentials = new NetworkCredential(username, password, domain);
-            
-            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
-            Console.WriteLine("Connected to Exchange 2010"); 
-            
-            // Find Conversation Items in the Inbox folder
-            ExchangeConversation[] conversations = client.FindConversations(client.MailboxInfo.InboxUri);
-            // Show all conversations
-            foreach (ExchangeConversation conversation in conversations)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Display conversation properties like Id and Topic
-                Console.WriteLine("Topic: " + conversation.ConversationTopic);
-                Console.WriteLine("Flag Status: " + conversation.FlagStatus.ToString());
-                Console.WriteLine();
+                var conversations = client.FindConversations(client.MailboxInfo.InboxUri);
+                Console.WriteLine($"{conversations.Length} conversation(s) in the Inbox, the 10 latest:");
+
+                foreach (var conversation in conversations.OrderByDescending(c => c.LastDeliveryTime).Take(10))
+                {
+                    Console.WriteLine($"  {conversation.ConversationTopic}");
+                    Console.WriteLine($"    {conversation.MessageCount} message(s), " +
+                                      $"{conversation.UnreadCount} unread, " +
+                                      $"flag: {conversation.FlagStatus}, last: {conversation.LastDeliveryTime:g}");
+                }
             }
         }
     }

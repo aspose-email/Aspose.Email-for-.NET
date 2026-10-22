@@ -1,34 +1,28 @@
-﻿using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
-using Aspose.Email.Mapi;
+// Demonstrates listing the contacts of a mailbox.
+//
+// GetContacts returns the contacts of a folder as Contact objects - names, e-mail
+// addresses, phone numbers, company and so on. ListContactsAsMapiContacts shows the
+// same data as Outlook MapiContact objects.
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Aspose.Email.PersonalInfo;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class GettingContactsUsingEWS
+    internal static class GettingContactsUsingEWS
     {
         public static void Run()
         {
-            try
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Create instance of IEWSClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+                var contacts = client.GetContacts(client.MailboxInfo.ContactsUri);
+                Console.WriteLine($"{contacts.Length} contact(s):");
 
-                // List all the contacts
-                Contact[] contacts = client.GetContacts(client.MailboxInfo.ContactsUri);
-                foreach (MapiContact contact in contacts)
+                foreach (var contact in contacts)
                 {
-                    // Display name and email address
-                    Console.WriteLine("Name: " + contact.NameInfo.DisplayName + ", Email Address: " + contact.ElectronicAddresses.Email1);
+                    var email = contact.EmailAddresses.FirstOrDefault()?.Address;
+                    Console.WriteLine($"  {contact.DisplayName} <{email}>");
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
             }
         }
     }

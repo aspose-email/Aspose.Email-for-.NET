@@ -1,35 +1,49 @@
-﻿using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
-using Aspose.Email.PersonalInfo;
+// Demonstrates deleting a contact.
+//
+// Contacts are items like messages, so DeleteItem removes them by id - Id.EWSId of the
+// Contact - with the usual DeletionOptions. The example creates two contacts in a
+// uniquely named contacts folder, deletes one by name and deletes the folder at the end.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Clients.Exchange;
+using Aspose.Email.Clients.Exchange.WebService;
+using Aspose.Email.PersonalInfo;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class DeleteContactsFromExchangeServerUsingEWS
+    internal static class DeleteContactsFromExchangeServerUsingEWS
     {
         public static void Run()
         {
-            try
-            {
-                // Create instance of EWSClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+            const string contactToDelete = "John Teddy";
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-                string strContactToDelete = "John Teddy";
-                Contact[] contacts = client.GetContacts(client.MailboxInfo.ContactsUri);
-                foreach (Contact contact in contacts)
-                {
-                    if (contact.DisplayName.Equals(strContactToDelete))
-                        client.DeleteItem(contact.Id.EWSId, DeletionOptions.DeletePermanently);
-                    
-                }
-                client.Dispose();
-            }
-            catch (Exception ex)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Console.WriteLine(ex.Message);
+                var folder = client.CreateFolder(client.MailboxInfo.ContactsUri, folderName, ExchangeFolderType.Contact);
+
+                try
+                {
+                    client.CreateContact(folder.Uri, new Contact { DisplayName = contactToDelete });
+                    client.CreateContact(folder.Uri, new Contact { DisplayName = "Mary Keep" });
+
+                    foreach (var contact in client.GetContacts(folder.Uri))
+                    {
+                        if (contact.DisplayName == contactToDelete)
+                        {
+                            client.DeleteItem(contact.Id.EWSId, DeletionOptions.DeletePermanently);
+                            Console.WriteLine($"Deleted {contact.DisplayName}.");
+                        }
+                    }
+
+                    Console.WriteLine("Left in the folder:");
+                    foreach (var contact in client.GetContacts(folder.Uri))
+                        Console.WriteLine($"  {contact.DisplayName}");
+                }
+                finally
+                {
+                    client.DeleteFolder(folder.Uri, true);
+                }
             }
         }
     }

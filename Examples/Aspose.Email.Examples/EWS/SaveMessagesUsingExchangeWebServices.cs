@@ -1,36 +1,30 @@
-﻿using System;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Clients.Exchange;
+// Demonstrates saving messages straight to .eml files.
+//
+// SaveMessage writes the message's MIME content to a file without parsing it into a
+// MailMessage first - the quickest way to archive mail. The files open in any mail
+// program and load with MailMessage.Load.
+
+using System;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class SaveMessagesUsingExchangeWebServices
+    internal static class SaveMessagesUsingExchangeWebServices
     {
         public static void Run()
         {
-            try
+            var outputDir = Data.OutSub("EwsEml");
+            var index = 0;
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Create instance of IEWSClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
-
-                // Call ListMessages method to list messages info from Inbox
-                ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
-
-                // Loop through the collection to get Message URI
-                foreach (ExchangeMessageInfo msgInfo in msgCollection)
+                foreach (var info in client.ListMessages(client.MailboxInfo.InboxUri, 5))
                 {
-                    string strMessageURI = msgInfo.UniqueUri;
-
-                    // Now save the message in disk
-                    client.SaveMessage(strMessageURI, Data.Out + msgInfo.MessageId + "out.eml");
+                    client.SaveMessage(info.UniqueUri, outputDir/$"message-{++index}.eml");
+                    Console.WriteLine($"Saved message-{index}.eml  {info.Subject}");
                 }
             }
-            catch (Exception ex)
-            {
 
-                Console.Write(ex.Message);
-            }
-
+            Console.WriteLine($"\n{index} message(s) saved to {outputDir}");
         }
     }
 }

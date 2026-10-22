@@ -1,25 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+// Demonstrates accepting the self-signed certificate of one known test server - and
+// nothing else.
+//
+// Test and lab Exchange servers often use self-signed certificates, which .NET rejects.
+// Never switch validation off altogether: a callback that always returns true accepts
+// any certificate and exposes credentials to man-in-the-middle attacks. Instead accept
+// only the exact certificate you expect, identified by its thumbprint, and keep the
+// operating system's checks for everything else. Put your server's thumbprint below.
+
+using System;
 using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class IgnoringInvalidSSLCertificates
+    internal static class IgnoringInvalidSSLCertificates
     {
+        private const string TrustedThumbprint = "0123456789ABCDEF0123456789ABCDEF01234567";
+
         public static void Run()
         {
-            // Register callback method for SSL validation event
-            ServicePointManager.ServerCertificateValidationCallback += RemoteCertificateValidationHandler;
+            ServicePointManager.ServerCertificateValidationCallback += ValidateCertificate;
+
+            try
+            {
+                using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
+                    Console.WriteLine($"Connected to {client.MailboxInfo.MailboxUri}");
+            }
+            finally
+            {
+                // Do not leave the relaxed check in place for the rest of the process.
+                ServicePointManager.ServerCertificateValidationCallback -= ValidateCertificate;
+            }
         }
 
-        // This event handler is called when SSL certificate is verified
-        private static bool RemoteCertificateValidationHandler(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        private static bool ValidateCertificate(object sender, X509Certificate certificate, X509Chain chain,
+            SslPolicyErrors errors)
         {
-            return true; //Ignore the checks and go ahead
+            if (errors == SslPolicyErrors.None)
+                return true;
+
+            var thumbprint = new X509Certificate2(certificate).Thumbprint;
+            var trusted = string.Equals(thumbprint, TrustedThumbprint, StringComparison.OrdinalIgnoreCase);
+
+            Console.WriteLine($"Certificate {certificate.Subject} has errors ({errors}); " +
+                              (trusted ? "accepted, it is the known test certificate." : "rejected."));
+            return trusted;
         }
     }
 }

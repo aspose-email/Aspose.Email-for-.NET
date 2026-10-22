@@ -1,51 +1,43 @@
-﻿using Aspose.Email.Clients.Exchange;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Tools.Search;
+// Demonstrates combining search conditions with AND and OR.
+//
+// Every condition added to a builder must hold (AND). For alternatives, pass two
+// conditions to Or; the result is a single condition that can be combined further, so
+// nesting Or calls builds longer chains. Exchange evaluates the query on the server.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class FilterWithComplexQueriesUsingEWS
+    internal static class FilterWithComplexQueriesUsingEWS
     {
         public static void Run()
         {
-            // Connect to EWS
-            const string mailboxUri = "https://outlook.office365.com/ews/exchange.asmx";
-            const string username = "username";
-            const string password = "password";
-            const string domain = "domain";      
-
-            try
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                IEWSClient client = EWSClient.GetEWSClient(mailboxUri, username, password, domain);
+                var inboxUri = client.MailboxInfo.InboxUri;
 
-                MailQueryBuilder builder = new MailQueryBuilder();
+                // AND: from example.com, during the last 7 days, but not today.
+                var builder = new ExchangeQueryBuilder();
+                builder.From.Contains("example.com");
+                builder.InternalDate.Since(DateTime.Today.AddDays(-7));
+                builder.InternalDate.Before(DateTime.Today);
+                Console.WriteLine($"From example.com, last 7 days before today: " +
+                                  $"{client.ListMessages(inboxUri, builder.GetQuery()).Count} message(s)");
 
-                // Emails from specific host, get all emails that arrived before today and all emails that arrived since 7 days ago
-                builder.From.Contains("SpecificHost.com");
-                builder.InternalDate.Before(DateTime.Now);
-                builder.InternalDate.Since(DateTime.Now.AddDays(-7));
+                // OR: subject mentions "invoice" or the sender is billing@example.com.
+                builder = new ExchangeQueryBuilder();
+                builder.Or(builder.Subject.Contains("invoice"), builder.From.Contains("billing@example.com"));
+                Console.WriteLine($"Invoice in subject or from billing:         " +
+                                  $"{client.ListMessages(inboxUri, builder.GetQuery()).Count} message(s)");
 
-                // Build the query and Get list of messages
-                MailQuery query = builder.GetQuery();
-                ExchangeMessageInfoCollection messages = client.ListMessages(client.MailboxInfo.InboxUri, query);
-                Console.WriteLine("EWS: " + messages.Count + " message(s) found.");
-
-                builder = new MailQueryBuilder();
-
-                builder.Or(builder.Subject.Contains("test"), builder.From.Contains("noreply@host.com"));
-
-                // Build the query and Get list of messages
-                query = builder.GetQuery();
-                messages = client.ListMessages(client.MailboxInfo.InboxUri, query);
-                Console.WriteLine("EWS: " + messages.Count + " message(s) found.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                // Nested OR: any of three subjects.
+                builder = new ExchangeQueryBuilder();
+                builder.Or(
+                    builder.Or(builder.Subject.Contains("order"), builder.Subject.Contains("shipment")),
+                    builder.Subject.Contains("delivery"));
+                Console.WriteLine($"Order, shipment or delivery in subject:     " +
+                                  $"{client.ListMessages(inboxUri, builder.GetQuery()).Count} message(s)");
             }
         }
     }

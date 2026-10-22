@@ -1,51 +1,22 @@
-﻿using Aspose.Email.Clients.Exchange;
-using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates telling folders apart by what they hold.
+//
+// FolderType says whether a folder holds mail, appointments, contacts, tasks, notes or
+// journal entries, and FolderClass gives the underlying Outlook class (IPF.Note,
+// IPF.Appointment, ...). Use them to pick the right API for a folder - ListMessages,
+// ListAppointments, GetContacts or ListTasks.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class GetFolderTypeInformationUsingEWS
+    internal static class GetFolderTypeInformationUsingEWS
     {
         public static void Run()
         {
-            const string mailboxUri = "https://exchange/ews/exchange.asmx";
-            const string domain = @"";
-            const string username = @"username@ASE305.onmicrosoft.com";
-            const string password = @"password";
-            NetworkCredential credentials = new NetworkCredential(username, password, domain);
-
-            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
-
-            ExchangeFolderInfoCollection folderInfoCol = client.ListSubFolders(client.MailboxInfo.RootUri);
-            foreach (ExchangeFolderInfo folderInfo in folderInfoCol)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                switch (folderInfo.FolderType)
-                {
-                    case ExchangeFolderType.Appointment:
-                        // handle Appointment
-                        break;
-                    case ExchangeFolderType.Contact:
-                        // handle Contact
-                        break;
-                    case ExchangeFolderType.Task:
-                        // handle Task
-                        break;
-                    case ExchangeFolderType.Note:
-                        // handle email message
-                        break;
-                    case ExchangeFolderType.StickyNote:
-                        // handle StickyNote
-                        break;
-                    case ExchangeFolderType.Journal:
-                        // handle Journal
-                        break;
-                    default:
-                        break;
-                }
+                foreach (var folder in client.ListSubFolders(client.MailboxInfo.RootUri))
+                    Console.WriteLine($"  {folder.DisplayName,-28} {folder.FolderType,-12} {folder.FolderClass}");
             }
         }
     }

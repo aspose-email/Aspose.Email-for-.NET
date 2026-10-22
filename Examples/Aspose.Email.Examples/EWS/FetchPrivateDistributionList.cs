@@ -1,22 +1,27 @@
-﻿using System;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Clients.Exchange;
+// Demonstrates reading the private distribution lists of a mailbox and their members.
+//
+// ListDistributionLists returns the contact groups of the Contacts folder;
+// FetchDistributionList returns the member addresses of one of them.
+
+using System;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class FetchPrivateDistributionList
+    internal static class FetchPrivateDistributionList
     {
         public static void Run()
         {
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
-            ExchangeDistributionList[] distributionLists = client.ListDistributionLists();
-            foreach (ExchangeDistributionList distributionList in distributionLists)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                MailAddressCollection members = client.FetchDistributionList(distributionList);
-                foreach (MailAddress member in members)
+                var lists = client.ListDistributionLists();
+                Console.WriteLine($"{lists.Length} private distribution list(s):");
+
+                foreach (var list in lists)
                 {
-                    Console.WriteLine(member.Address);
+                    var members = client.FetchDistributionList(list);
+                    Console.WriteLine($"  {list.DisplayName} ({members.Count} member(s))");
+                    foreach (var member in members)
+                        Console.WriteLine($"    {member.Address}");
                 }
             }
         }

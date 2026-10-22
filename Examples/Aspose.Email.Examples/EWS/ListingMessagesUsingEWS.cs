@@ -1,34 +1,31 @@
-﻿using System;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Clients.Exchange;
+// Demonstrates listing the messages of a folder.
+//
+// ListMessages returns a summary per message - subject, sender, recipients, date,
+// Message-ID and the UniqueUri that identifies the item for fetching, moving or
+// deleting - without downloading the messages themselves.
+
+using System;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class ListingMessagesUsingEWS
+    internal static class ListingMessagesUsingEWS
     {
         public static void Run()
         {
-            try
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Create instance of ExchangeWebServiceClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "UserName", "Password");
+                var messages = client.ListMessages(client.MailboxInfo.InboxUri, 10);
+                Console.WriteLine($"{messages.Count} message(s) from the Inbox:");
 
-                // Call ListMessages method to list messages info from Inbox
-                ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.MailboxInfo.InboxUri);
-
-                // Loop through the collection to display the basic information
-                foreach (ExchangeMessageInfo msgInfo in msgCollection)
+                foreach (var info in messages)
                 {
-                    Console.WriteLine("Subject: " + msgInfo.Subject);
-                    Console.WriteLine("From: " + msgInfo.From.ToString());
-                    Console.WriteLine("To: " + msgInfo.To.ToString());
-                    Console.WriteLine("Message ID: " + msgInfo.MessageId);
-                    Console.WriteLine("Unique URI: " + msgInfo.UniqueUri);
+                    Console.WriteLine($"\n  {info.Subject}");
+                    Console.WriteLine($"    from:       {info.From}");
+                    Console.WriteLine($"    to:         {info.To}");
+                    Console.WriteLine($"    received:   {info.InternalDate:g}");
+                    Console.WriteLine($"    message id: {info.MessageId}");
+                    Console.WriteLine($"    unique uri: {info.UniqueUri}");
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.Message);
             }
         }
     }

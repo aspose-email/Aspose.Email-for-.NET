@@ -1,27 +1,22 @@
-﻿using Aspose.Email.Clients.Exchange;
-using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates telling ordinary mail from other item types in a listing.
+//
+// A mail folder can hold more than messages: meeting requests and responses, delivery
+// reports, posts. MessageInfoType and MessageClass on ExchangeMessageInfo say what each
+// item is, so it can be handled accordingly before anything is downloaded.
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class GetMessageTypeFromExchangeMessageInfo
+    internal static class GetMessageTypeFromExchangeMessageInfo
     {
-        static void Run()
+        public static void Run()
         {
-            const string mailboxUri = "https://exchange/ews/exchange.asmx";
-            const string domain = @"";
-            const string username = @"username@ASE305.onmicrosoft.com";
-            const string password = @"password";
-            NetworkCredential credentials = new NetworkCredential(username, password, domain);
-
-            IEWSClient client = EWSClient.GetEWSClient(mailboxUri, credentials);
-
-            ExchangeMessageInfoCollection list = client.ListMessages(client.MailboxInfo.DeletedItemsUri);
-            Console.WriteLine(list[0].MessageInfoType.ToString());
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
+            {
+                foreach (var info in client.ListMessages(client.MailboxInfo.InboxUri, 20))
+                    Console.WriteLine($"  {info.MessageInfoType,-14} {info.MessageClass,-28} {info.Subject}");
+            }
         }
     }
 }

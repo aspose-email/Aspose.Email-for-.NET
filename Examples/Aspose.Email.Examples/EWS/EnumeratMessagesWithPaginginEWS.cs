@@ -1,45 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Clients.Exchange;
+// Demonstrates walking through a large folder page by page with PageInfo.
+//
+// Pass a PageInfo with the page size to ListMessagesByPage; every result carries
+// NextPage, which you pass back in until LastPage is true. Only one page of summaries
+// is held in memory at a time. PagingSupportForListingMessages shows the variant with
+// explicit page offsets.
+
+using System;
 using Aspose.Email.Clients;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class EnumeratMessagesWithPaginginEWS
+    internal static class EnumeratMessagesWithPaginginEWS
     {
         public static void Run()
         {
-            try
-            {
-                // Create instance of ExchangeWebServiceClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "UserName", "Password");
+            const int itemsPerPage = 10;
+            const int maxPages = 5;
 
-                // Call ListMessages method to list messages info from Inbox
-                ExchangeMessageInfoCollection msgCollection = client.ListMessages(client.GetMailboxInfo().InboxUri);
-                int itemsPerPage = 5;
-                List<PageInfo> pages = new List<PageInfo>();
-                PageInfo pagedMessageInfoCol = client.ListMessagesByPage(client.MailboxInfo.InboxUri, itemsPerPage);
-                pages.Add(pagedMessageInfoCol);
-                while (!pagedMessageInfoCol.LastPage)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
+            {
+                var inboxUri = client.MailboxInfo.InboxUri;
+
+                var page = client.ListMessagesByPage(inboxUri, new PageInfo(itemsPerPage));
+                Console.WriteLine($"{page.TotalCount} message(s) in the Inbox.");
+
+                var pageNumber = 1;
+                while (true)
                 {
-                    pagedMessageInfoCol = client.ListMessagesByPage(client.MailboxInfo.InboxUri, itemsPerPage);
-                    pages.Add(pagedMessageInfoCol);
-                }
-                pagedMessageInfoCol = client.ListMessagesByPage(client.MailboxInfo.InboxUri, itemsPerPage);
-                while (!pagedMessageInfoCol.LastPage)
-                {
-                    client.ListMessages(client.MailboxInfo.InboxUri);
-                }
-            }
-            catch (Exception ex)
-            {
+                    Console.WriteLine($"\nPage {pageNumber}:");
+                    foreach (var info in page.Items)
+                        Console.WriteLine($"  {info.InternalDate:g}  {info.Subject}");
 
-                Console.Write(ex.Message);
-            }
-            finally
-            {
+                    if (page.LastPage || pageNumber == maxPages)
+                        break;
 
+                    page = client.ListMessagesByPage(inboxUri, page.NextPage);
+                    pageNumber++;
+                }
             }
         }
     }

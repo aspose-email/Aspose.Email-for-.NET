@@ -1,36 +1,50 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Clients.Exchange.Dav;
-using Aspose.Email.Mime;
+// Demonstrates deleting messages that match a condition.
+//
+// DeleteItem takes an item URI and DeletionOptions: MoveToDeletedItems keeps the message
+// recoverable, DeletePermanently removes it for good. Here every message whose subject
+// contains "delete" is removed. The example works on its own messages in a uniquely
+// named folder and deletes the folder at the end.
+
+using System;
 using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class DeleteMessagesFromusingEWS
+    internal static class DeleteMessagesFromUsingEWS
     {
         public static void Run()
         {
-            
-            // Create instance of IEWSClient class by giving credentials
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            ExchangeMailboxInfo mailboxInfo = client.GetMailboxInfo();
-
-            // List all messages from Inbox folder
-            Console.WriteLine("Listing all messages from Inbox....");
-            ExchangeMessageInfoCollection msgInfoColl = client.ListMessages(mailboxInfo.InboxUri);
-            foreach (ExchangeMessageInfo msgInfo in msgInfoColl)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Delete message based on some criteria
-                if (msgInfo.Subject != null && msgInfo.Subject.ToLower().Contains("delete") == true)
+                var folder = client.CreateFolder(client.MailboxInfo.InboxUri, folderName);
+
+                try
                 {
-                    client.DeleteItem(msgInfo.UniqueUri, DeletionOptions.DeletePermanently); // EWS
-                    Console.WriteLine("Message deleted...." + msgInfo.Subject);
+                    client.AppendMessages(folder.Uri,
+                        new MailMessage("sender@example.com", "receiver@example.com", "Please delete me", "Body"),
+                        new MailMessage("sender@example.com", "receiver@example.com", "Keep me", "Body"),
+                        new MailMessage("sender@example.com", "receiver@example.com", "Delete this too", "Body"));
+
+                    foreach (var info in client.ListMessages(folder.Uri))
+                    {
+                        var matches = info.Subject != null &&
+                                      info.Subject.IndexOf("delete", StringComparison.OrdinalIgnoreCase) >= 0;
+                        if (matches)
+                        {
+                            client.DeleteItem(info.UniqueUri, DeletionOptions.DeletePermanently);
+                            Console.WriteLine($"Deleted: {info.Subject}");
+                        }
+                    }
+
+                    Console.WriteLine("Left in the folder:");
+                    foreach (var info in client.ListMessages(folder.Uri))
+                        Console.WriteLine($"  {info.Subject}");
                 }
-                else
+                finally
                 {
-                    // Do something else
+                    client.DeleteFolder(folder.Uri, true);
                 }
             }
         }

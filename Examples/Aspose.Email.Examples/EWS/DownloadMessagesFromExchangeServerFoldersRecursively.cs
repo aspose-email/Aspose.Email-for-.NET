@@ -1,107 +1,67 @@
-﻿using System;
+// Demonstrates walking the whole folder tree of a mailbox and saving messages to disk.
+//
+// ListSubFolders returns the children of a folder, so a recursive walk from the root
+// reaches every level. Mail folders are recognised by their folder class, and their
+// messages are saved as .msg files in a matching directory tree under Out. To keep the
+// run short, only the three newest messages of each folder are downloaded.
+
+using System;
 using System.IO;
-using System.Net;
-using System.Net.Security;
-using System.Security.Cryptography.X509Certificates;
-using Aspose.Email.Mime;
-using Aspose.Email.Mapi;
-using Aspose.Email.Clients.Exchange.WebService;
+using System.Linq;
 using Aspose.Email.Clients.Exchange;
+using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class DownloadMessagesFromExchangeServerFoldersRecursively
+    internal static class DownloadMessagesFromExchangeServerFoldersRecursively
     {
-        static string username = "administrator";
-        static string password = "pwd";
-        static string domain = "ex2010.local";
+        private const int MessagesPerFolder = 3;
+
         public static void Run()
         {
-            // Register callback method for SSL validation event
-            ServicePointManager.ServerCertificateValidationCallback += RemoteCertificateValidationHandler;
-            try
+            var rootDir = Data.OutSub("EwsMailbox");
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                DownloadAllMessages();
+                foreach (var folder in client.ListSubFolders(client.MailboxInfo.RootUri))
+                    SaveFolder(client, folder, rootDir);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+
+            Console.WriteLine($"\nMessages saved under {rootDir}");
         }
 
-        private static void DownloadAllMessages()
+        private static void SaveFolder(IEWSClient client, ExchangeFolderInfo folder, string parentDir)
         {
-            try
+            var folderDir = Path.Combine(parentDir, SafeName(folder.DisplayName));
+
+            if (folder.FolderClass == "IPF.Note" && folder.TotalCount > 0)
             {
-                string rootFolder = domain + "-" + username;
-                Directory.CreateDirectory(rootFolder);
-                string inboxFolder = rootFolder + "\\Inbox";
-                Directory.CreateDirectory(inboxFolder);
+                Directory.CreateDirectory(folderDir);
 
-                Console.WriteLine("Downloading all messages from Inbox....");
-                // Create instance of IEWSClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", username, password, domain);
+                var newest = client.ListMessages(folder.Uri)
+                    .OrderByDescending(info => info.InternalDate)
+                    .Take(MessagesPerFolder)
+                    .ToList();
 
-                ExchangeMailboxInfo mailboxInfo = client.GetMailboxInfo();
-                Console.WriteLine("Mailbox URI: " + mailboxInfo.MailboxUri);
-                string rootUri = client.GetMailboxInfo().RootUri;
-                // List all the folders from Exchange server
-                ExchangeFolderInfoCollection folderInfoCollection = client.ListSubFolders(rootUri);
-                foreach (ExchangeFolderInfo folderInfo in folderInfoCollection)
+                for (var i = 0; i < newest.Count; i++)
                 {
-                    // Call the recursive method to read messages and get sub-folders
-                    ListMessagesInFolder(client, folderInfo, rootFolder);
+                    var message = client.FetchMessage(newest[i].UniqueUri);
+                    message.Save(Path.Combine(folderDir, $"message-{i + 1}.msg"), SaveOptions.DefaultMsgUnicode);
                 }
 
-                Console.WriteLine("All messages downloaded.");
+                Console.WriteLine($"{folder.DisplayName}: saved {newest.Count} of {folder.TotalCount}");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+
+            if (folder.ChildFolderCount == 0)
+                return;
+
+            foreach (var child in client.ListSubFolders(folder.Uri))
+                SaveFolder(client, child, folderDir);
         }
 
-        // Recursive method to get messages from folders and sub-folders
-        private static void ListMessagesInFolder(IEWSClient client, ExchangeFolderInfo folderInfo, string rootFolder)
+        private static string SafeName(string name)
         {
-            // Create the folder in disk (same name as on IMAP server)
-            string currentFolder = rootFolder + "\\" + folderInfo.DisplayName;
-            Directory.CreateDirectory(currentFolder);
-
-            // List messages
-            ExchangeMessageInfoCollection msgInfoColl = client.ListMessages(folderInfo.Uri);
-            Console.WriteLine("Listing messages....");
-            int i = 0;
-            foreach (ExchangeMessageInfo msgInfo in msgInfoColl)
-            {
-                // Get subject and other properties of the message
-                Console.WriteLine("Subject: " + msgInfo.Subject);
-
-                // Get rid of characters like ? and :, which should not be included in a file name
-                string fileName = msgInfo.Subject.Replace(":", " ").Replace("?", " ");
-
-                MailMessage msg = client.FetchMessage(msgInfo.UniqueUri);
-                msg.Save(Data.Out + "\\" + fileName + "-" + i + ".msg");
-          
-                i++;
-            }
-            Console.WriteLine("============================\n");
-            try
-            {
-                // If this folder has sub-folders, call this method recursively to get messages
-                ExchangeFolderInfoCollection folderInfoCollection = client.ListSubFolders(folderInfo.Uri);
-                foreach (ExchangeFolderInfo subfolderInfo in folderInfoCollection)
-                {
-                    ListMessagesInFolder(client, subfolderInfo, currentFolder);
-                }
-            }
-            catch (Exception)
-            {
-            }
-        }
-        private static bool RemoteCertificateValidationHandler(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
-        {
-            return true; // Ignore the checks and go ahead
+            return string.Concat(name.Split(Path.GetInvalidFileNameChars()));
         }
     }
 }

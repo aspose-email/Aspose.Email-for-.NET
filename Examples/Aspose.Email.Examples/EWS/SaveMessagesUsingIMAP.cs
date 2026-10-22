@@ -1,38 +1,34 @@
-﻿using Aspose.Email.Clients;
-using Aspose.Email.Clients.Imap;
-using Aspose.Email.Mime;
+// Demonstrates saving messages from Exchange over IMAP as Outlook .msg files.
+//
+// FetchMessage downloads a message over IMAP into a MailMessage, and Save converts it
+// to Unicode MSG. Only the five newest messages of the Inbox are saved, under Out.
+// SaveMessagesInMSGFormatExchangeEWS does the same over EWS.
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Aspose.Email.Clients.Imap;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class SaveMessagesUsingIMAP
+    internal static class SaveMessagesUsingIMAP
     {
         public static void Run()
         {
-            try
-            {
-                ImapClient imapClient = new ImapClient("ex07sp1", "Administrator", "Evaluation1");
-                imapClient.SecurityOptions = SecurityOptions.Auto;
+            var outputDir = Data.OutSub("ExchangeImapMsg");
 
-                // Select the Inbox folder
-                imapClient.SelectFolder(ImapFolderInfo.InBox);
-                // Get the list of messages
-                ImapMessageInfoCollection msgCollection = imapClient.ListMessages();
-                foreach (ImapMessageInfo msgInfo in msgCollection)
+            using (var client = ClientBuilder.Imap(AuthType.ModernWithDelegatedPermission))
+            {
+                client.SelectFolder(ImapFolderInfo.InBox);
+
+                var newest = client.ListMessages().OrderByDescending(info => info.InternalDate).Take(5).ToList();
+                foreach (var info in newest)
                 {
-                    // Fetch the message from inbox using its SequenceNumber from msgInfo
-                    MailMessage message = imapClient.FetchMessage(msgInfo.SequenceNumber);
-
-                    // Save the message to disc now
-                    message.Save(Data.Out + msgInfo.SequenceNumber + "_out.msg", SaveOptions.DefaultMsgUnicode);
+                    var message = client.FetchMessage(info.UniqueId);
+                    message.Save(outputDir/(info.UniqueId + ".msg"), SaveOptions.DefaultMsgUnicode);
+                    Console.WriteLine($"Saved {info.UniqueId}.msg  {message.Subject}");
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+
+                Console.WriteLine($"\n{newest.Count} message(s) saved to {outputDir}");
             }
         }
     }

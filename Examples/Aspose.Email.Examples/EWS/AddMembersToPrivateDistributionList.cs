@@ -1,29 +1,43 @@
-﻿using Aspose.Email.Clients.Exchange;
+// Demonstrates adding members to an existing private distribution list.
+//
+// AddToDistributionList adds the given addresses to the list on the server. The example
+// creates a uniquely named list, adds two members, shows the result and deletes the
+// list at the end.
+
 using System;
+using System.Linq;
+using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class AddMembersToPrivateDistributionList
+    internal static class AddMembersToPrivateDistributionList
     {
         public static void Run()
         {
+            var listName = "Aspose list " + Guid.NewGuid().ToString("N").Substring(0, 8);
+
             using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                var distributionLists = client.ListDistributionLists();
+                client.CreateDistributionList(new ExchangeDistributionList { DisplayName = listName },
+                    new MailAddressCollection { "member1@example.com" });
+                var list = client.ListDistributionLists().First(l => l.DisplayName == listName);
 
-                if (distributionLists.Length != 0)
+                try
                 {
-                    var newMembers = new MailAddressCollection
+                    client.AddToDistributionList(list, new MailAddressCollection
                     {
-                        "address4@host.com",
-                        "address5@host.com"
-                    };
-                    
-                    client.AddToDistributionList(distributionLists[0], newMembers);
+                        "member2@example.com",
+                        "member3@example.com"
+                    });
+
+                    Console.WriteLine($"Members of '{listName}' now:");
+                    foreach (var member in client.FetchDistributionList(list))
+                        Console.WriteLine($"  {member.Address}");
                 }
-                else
+                finally
                 {
-                    Console.WriteLine(@"There is no distribution lists in ""Contacts"" folder");
+                    // The change key is outdated after the update; the id alone is enough.
+                    client.DeleteDistributionList(new ExchangeDistributionList { Id = list.Id }, true);
                 }
             }
         }

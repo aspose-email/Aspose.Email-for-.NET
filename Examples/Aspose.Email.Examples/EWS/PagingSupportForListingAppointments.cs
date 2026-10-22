@@ -1,62 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates listing the appointments of a calendar page by page.
+//
+// ListAppointmentsByPage returns one page of appointments together with TotalCount and
+// LastPage; increase the offset until LastPage is true. The example creates eight
+// appointments in a uniquely named calendar folder, reads them three at a time, and
+// deletes the folder at the end.
+
+using System;
+using System.Linq;
 using Aspose.Email.Calendar;
 using Aspose.Email.Clients.Exchange;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class PagingSupportForListingAppointments
+    internal static class PagingSupportForListingAppointments
     {
-        static void Run()
-        { 
-            using (IEWSClient client = EWSClient.GetEWSClient("exchange.domain.com", "username", "password"))
+        public static void Run()
+        {
+            const int itemsPerPage = 3;
+            var self = ClientBuilder.EwsUserName;
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
+
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
+                var calendar = client.CreateFolder(client.MailboxInfo.CalendarUri, folderName,
+                    ExchangeFolderType.Appointment);
+
                 try
                 {
-                    Appointment[] appts = client.ListAppointments();
-                    Console.WriteLine(appts.Length);
-                    DateTime date = DateTime.Now;
-                    DateTime startTime = new DateTime(date.Year, date.Month, date.Day, date.Hour, 0, 0);
-                    DateTime endTime = startTime.AddHours(1);
-                    int appNumber = 10;
-                    Dictionary<string, Appointment> appointmentsDict = new Dictionary<string, Appointment>();
-                    for (int i = 0; i < appNumber; i++)
+                    var start = DateTime.Today.AddDays(1).AddHours(9);
+                    for (var i = 0; i < 8; i++)
                     {
-                        startTime = startTime.AddHours(1);
-                        endTime = endTime.AddHours(1);
-                        string timeZone = "America/New_York";
-                        Appointment appointment = new Appointment(
-                            "Room 112",
-                            startTime,
-                            endTime,
-                            "from@domain.com",
-                            "to@domain.com");
-                        appointment.SetTimeZone(timeZone);
-                        appointment.Summary = "NETWORKNET-35157_3 - " + Guid.NewGuid().ToString();
-                        appointment.Description = "EMAILNET-35157 Move paging parameters to separate class";
-                        string uid = client.CreateAppointment(appointment);
-                        appointmentsDict.Add(uid, appointment);
+                        var slotStart = start.AddHours(i);
+                        client.CreateAppointment(new Appointment("Room 1", slotStart, slotStart.AddMinutes(30),
+                            self, self) { Summary = $"Slot {i + 1}" }, calendar.Uri);
                     }
-                    AppointmentCollection totalAppointmentCol = client.ListAppointments();
 
-                    ///// LISTING APPOINTMENTS WITH PAGING SUPPORT ///////
-                    int itemsPerPage = 2;
-                    List<AppointmentPageInfo> pages = new List<AppointmentPageInfo>();
-                    AppointmentPageInfo pagedAppointmentCol = client.ListAppointmentsByPage(itemsPerPage);
-                    Console.WriteLine(pagedAppointmentCol.Items.Count);
-                    pages.Add(pagedAppointmentCol);
-                    while (!pagedAppointmentCol.LastPage)
+                    var page = client.ListAppointmentsByPage(calendar.Uri, itemsPerPage);
+                    Console.WriteLine($"{page.TotalCount} appointment(s), {itemsPerPage} per page.");
+
+                    while (true)
                     {
-                        pagedAppointmentCol = client.ListAppointmentsByPage(itemsPerPage, pagedAppointmentCol.PageOffset + 1);
-                        pages.Add(pagedAppointmentCol);
+                        Console.WriteLine($"Page {page.PageOffset}: " +
+                                          string.Join(", ", page.Items.Select(appointment => appointment.Summary)));
+                        if (page.LastPage)
+                            break;
+
+                        page = client.ListAppointmentsByPage(calendar.Uri, itemsPerPage, page.PageOffset + 1);
                     }
-                    int retrievedItems = 0;
-                    foreach (AppointmentPageInfo folderCol in pages)
-                        retrievedItems += folderCol.Items.Count;
                 }
                 finally
                 {
+                    client.DeleteFolder(calendar.Uri, true);
                 }
             }
         }

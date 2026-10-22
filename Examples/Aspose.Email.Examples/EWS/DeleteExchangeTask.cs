@@ -1,34 +1,42 @@
-﻿using System;
-using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates deleting a task.
+//
+// Tasks are items like messages, so DeleteItem removes them by URI with the usual
+// DeletionOptions. The example creates two tasks in a uniquely named tasks folder,
+// deletes one and deletes the folder at the end.
+
+using System;
 using Aspose.Email.Clients.Exchange;
+using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class DeleteExchangeTask
+    internal static class DeleteExchangeTask
     {
         public static void Run()
         {
-            // Create instance of IEWSClient class by giving credentials
-            IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            // Get all tasks info collection from exchange
-            ExchangeMessageInfoCollection tasks = client.ListMessages(client.MailboxInfo.TasksUri);
-
-            // Parse all the tasks info in the list
-            foreach (ExchangeMessageInfo info in tasks)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                // Fetch task from exchange using current task info
-                ExchangeTask task = client.FetchTask(info.UniqueUri);
+                var folder = client.CreateFolder(client.MailboxInfo.TasksUri, folderName, ExchangeFolderType.Task);
 
-                // Check if the current task fulfills the search criteria
-                if (task.Subject.Equals("test"))
+                try
                 {
-                    // Delete task from exchange
-                    client.DeleteItem(info.UniqueUri, DeletionOptions.DeletePermanently);
+                    var obsolete = client.CreateTask(folder.Uri, new ExchangeTask { Subject = "Obsolete task" });
+                    client.CreateTask(folder.Uri, new ExchangeTask { Subject = "Keep this task" });
+
+                    client.DeleteItem(obsolete, DeletionOptions.DeletePermanently);
+                    Console.WriteLine("Deleted 'Obsolete task'.");
+
+                    Console.WriteLine("Left in the folder:");
+                    foreach (ExchangeTask task in client.ListTasks(folder.Uri))
+                        Console.WriteLine($"  {task.Subject}");
+                }
+                finally
+                {
+                    client.DeleteFolder(folder.Uri, true);
                 }
             }
-
-            Console.WriteLine(Environment.NewLine + "Task deleted on Exchange Server successfully.");
         }
     }
 }

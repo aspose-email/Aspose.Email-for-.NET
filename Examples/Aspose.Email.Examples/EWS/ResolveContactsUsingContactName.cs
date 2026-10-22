@@ -1,34 +1,31 @@
-﻿using Aspose.Email.Clients.Exchange.WebService;
-using Aspose.Email.Mime;
-using Aspose.Email.Mapi;
+// Demonstrates resolving a partial name to contacts, like "Check Names" in Outlook.
+//
+// ResolveContacts searches the user's contacts and the directory for entries matching
+// an ambiguous name or address fragment and returns them as Contact objects;
+// ExchangeListContactsOptions.FetchPhoto also loads their photos.
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Aspose.Email.PersonalInfo;
+using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class ResolveContactsUsingContactName
+    internal static class ResolveContactsUsingContactName
     {
         public static void Run()
         {
-            try
-            {
-                // Create instance of IEWSClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
+            const string name = "john";
 
-                // List all the contacts
-                Contact[] contacts = client.ResolveContacts("Changed Name", ExchangeListContactsOptions.FetchPhoto);
-                foreach (MapiContact contact in contacts)
-                {
-                    // Display name and email address
-                    Console.WriteLine("Name: " + contact.NameInfo.DisplayName + ", Email Address: " + contact.ElectronicAddresses.Email1);
-                }
-            }
-            catch (Exception ex)
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
-                Console.WriteLine(ex.Message);
+                var contacts = client.ResolveContacts(name, ExchangeListContactsOptions.FetchPhoto);
+
+                Console.WriteLine($"'{name}' resolves to {contacts.Length} contact(s):");
+                foreach (var contact in contacts)
+                {
+                    Console.WriteLine($"  {contact.DisplayName} <{contact.EmailAddresses.FirstOrDefault()?.Address}>" +
+                                      (contact.Photo != null ? "  [photo]" : ""));
+                }
             }
         }
     }

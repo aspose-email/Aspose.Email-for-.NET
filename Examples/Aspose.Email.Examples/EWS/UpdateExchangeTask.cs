@@ -1,53 +1,49 @@
-﻿using System;
-using System.Net;
-using Aspose.Email.Mime;
-using Aspose.Email.Clients.Exchange.WebService;
+// Demonstrates changing an existing task.
+//
+// FetchTask reads the task by URI; change its status, dates or priority and pass it to
+// UpdateTask. The example creates a task in a uniquely named tasks folder, updates it
+// and deletes the folder at the end.
+
+using System;
 using Aspose.Email.Clients.Exchange;
+using Aspose.Email.Clients.Exchange.WebService;
 
 namespace Aspose.Email.Examples.EWS
 {
-    class UpdateExchangeTask
+    internal static class UpdateExchangeTask
     {
         public static void Run()
         {
+            var folderName = "Aspose-" + Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            try
+            using (var client = ClientBuilder.Ews(AuthType.ModernWithAppPermission))
             {
+                var folder = client.CreateFolder(client.MailboxInfo.TasksUri, folderName, ExchangeFolderType.Task);
 
-                // Create and initialize credentials
-                var credentials = new NetworkCredential("username", "12345");
-
-                // Create instance of ExchangeClient class by giving credentials
-                IEWSClient client = EWSClient.GetEWSClient("https://outlook.office365.com/ews/exchange.asmx", "testUser", "pwd", "domain");
-
-                // Get all tasks info collection from exchange
-                ExchangeMessageInfoCollection tasks = client.ListMessages(client.MailboxInfo.TasksUri);
-
-                // Parse all the tasks info in the list
-                foreach (ExchangeMessageInfo info in tasks)
+                try
                 {
-                    // Fetch task from exchange using current task info
-                    ExchangeTask task = client.FetchTask(info.UniqueUri);
+                    var uri = client.CreateTask(folder.Uri, new ExchangeTask
+                    {
+                        Subject = "Renew the domain",
+                        Status = ExchangeTaskStatus.NotStarted,
+                        DueDate = DateTime.Today.AddDays(30)
+                    });
 
-                    // Update the task status to NotStarted
-                    task.Status = ExchangeTaskStatus.NotStarted;
+                    var task = client.FetchTask(uri);
+                    Console.WriteLine($"Before: {task.Status}, due {task.DueDate:d}, {task.Priority}");
 
-                    // Set the task due date
-                    task.DueDate = new DateTime(2013, 2, 26);
-
-                    // Set task priority
-                    task.Priority = MailPriority.Low;
-
-                    // Update task on exchange
+                    task.Status = ExchangeTaskStatus.InProgress;
+                    task.DueDate = DateTime.Today.AddDays(7);
+                    task.Priority = MailPriority.High;
                     client.UpdateTask(task);
+
+                    var updated = client.FetchTask(uri);
+                    Console.WriteLine($"After:  {updated.Status}, due {updated.DueDate:d}, {updated.Priority}");
                 }
-
-                Console.WriteLine(Environment.NewLine + "Task updated on Exchange Server successfully.");
-            }
-            catch (Exception ex)
-            {
-
-                Console.Write(ex.Message);
+                finally
+                {
+                    client.DeleteFolder(folder.Uri, true);
+                }
             }
         }
     }
