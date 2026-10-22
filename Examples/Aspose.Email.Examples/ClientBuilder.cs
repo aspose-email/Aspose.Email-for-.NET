@@ -8,6 +8,7 @@ using Aspose.Email.Clients.Smtp;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Identity.Client;
 using System;
+using System.Threading.Tasks;
 
 namespace Aspose.Email.Examples
 {
@@ -109,6 +110,33 @@ namespace Aspose.Email.Examples
                         NetworkCredential credentials =
                             new OAuthNetworkCredential(settings.UserName, tokenProvider.GetAccessToken()?.Token);
                         return EWSClient.GetEWSClient("https://outlook.office365.com/EWS/Exchange.asmx", credentials);
+                    }
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(authType), authType, null);
+            }
+        }
+
+        // IEWSClient and IAsyncEwsClient are separate interfaces, so the task-based
+        // client is created on its own, from the same "Ews" settings as Ews().
+        public static Task<IAsyncEwsClient> EwsAsync(AuthType authType)
+        {
+            EwsClientSettings settings = new EwsClientSettings();
+            ClientSettings.GetSection("Ews")
+                .Bind(settings);
+
+            switch (authType)
+            {
+                case AuthType.Basic:
+                    return EWSClient.GetEwsClientAsync(settings.MailboxUri,
+                        new NetworkCredential(settings.UserName, settings.Password));
+                case AuthType.ModernWithAppPermission:
+                case AuthType.ModernWithDelegatedPermission:
+                    {
+                        var tokenProvider = new TokenProvider(settings, authType);
+                        NetworkCredential credentials =
+                            new OAuthNetworkCredential(settings.UserName, tokenProvider.GetAccessToken()?.Token);
+                        return EWSClient.GetEwsClientAsync(
+                            "https://outlook.office365.com/EWS/Exchange.asmx", credentials);
                     }
                 default:
                     throw new ArgumentOutOfRangeException(nameof(authType), authType, null);
